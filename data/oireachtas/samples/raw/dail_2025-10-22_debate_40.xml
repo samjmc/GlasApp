@@ -1,0 +1,966 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_transport/2025-10-22/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_transport/2025-10-22/debate"/>
+          <FRBRdate date="2025-10-22" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_transport"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_transport/2025-10-22/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_transport/2025-10-22/debate/mul@"/>
+          <FRBRdate date="2025-10-22" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_transport/2025-10-22/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_transport/2025-10-22/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-25" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="JoanneCollins" href="/ie/oireachtas/member/id/Joanne-Collins.S.2025-01-29" showAs="Joanne Collins"/>
+        <TLCPerson eId="LouisOHara" href="/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29" showAs="Louis O'Hara"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="MarkDuffy" href="/ie/oireachtas/member/id/Mark-Duffy.S.2025-01-29" showAs="Mark Duffy"/>
+        <TLCPerson eId="MichaelCollins2016" href="/ie/oireachtas/member/id/Michael-Collins.D.2016-10-03" showAs="Michael Collins"/>
+        <TLCPerson eId="NessaCosgrove" href="/ie/oireachtas/member/id/Nessa-Cosgrove.S.2025-01-29" showAs="Nessa Cosgrove"/>
+        <TLCPerson eId="PaDaly" href="/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08" showAs="Pa Daly"/>
+        <TLCPerson eId="RodericOGorman" href="/ie/oireachtas/member/id/Roderic-O'Gorman.D.2020-02-08" showAs="Roderic O'Gorman"/>
+        <TLCPerson eId="RyanOMeara" href="/ie/oireachtas/member/id/Ryan-O'Meara.D.2024-11-29" showAs="Ryan O'Meara"/>
+        <TLCPerson eId="ShaneMoynihan" href="/ie/oireachtas/member/id/Shane-Moynihan.D.2024-11-29" showAs="Shane Moynihan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM IOMPAR</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Transport</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-22">Dé Céadaoin, 22 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-22">Wednesday, 22 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoanneCollins">Joanne Collins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MichaelCollins2016">Michael Collins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#NessaCosgrove">Nessa Cosgrove</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#CathalCrowe">Cathal Crowe</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MarkDuffy">Mark Duffy.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PaDaly">Pa Daly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MichaelMurphy">Michael Murphy</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#RodericOGorman">Roderic O'Gorman</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#LouisOHara">Louis O'Hara.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputies Malcolm Byrne, Ryan O'Meara and Darren O'Rourke.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#ShaneMoynihan">Teachta / Deputy Shane Moynihan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i>The joint committee met in private session until 10.03 a.m. </i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>All-Island Strategic Rail Review: Iarnród Éireann<recordedTime time="2025-10-22T10:00:00+01:00"/></heading>
+        <speech by="#ShaneMoynihan" eId="spk_1">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_14">Apologies have been received from the Cathaoirleach, Deputy Murphy, and in accordance with Standing Orders I wish to make the following declaration:</p>
+          <p class="indent_1" eId="para_15">I do solemnly declare that I will duly and faithfully and to the best of my knowledge and ability execute the office of Leas-Chathaoirleach of the Joint Committee on Transport without fear or favour, apply the rules as laid down by the House, and in an impartial and fair manner maintain order and uphold the rights and privileges of members in accordance with the Constitution and the Standing Orders of Dáil Éireann.</p>
+          <p eId="para_16"> We will now go into private session.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i>The joint committee went into private session at 10.04 a.m. and resumed in public session at 10.05 a.m.</i>
+        </summary>
+        <speech by="#ShaneMoynihan" eId="spk_2">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_17">The purpose of the meeting this morning is to discuss the all-island strategic rail review. I am pleased to welcome from Iarnród Éireann Ms Mary Considine, CEO, and Mr. Barry Kenny, head of corporate communications. Before we begin, I will read some notes on privilege. Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of that person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_18"> Members are reminded of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against a person outside the Houses or an official, either by name or in such a way as to make him or her identifiable. I remind members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask members participating via MS Teams that prior to making their contribution to the meeting they confirm that they are on the grounds of the Leinster House campus.</p>
+          <p eId="para_19"> I now invite Ms Considine to make her opening statement on behalf of Iarnród Éireann.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_20">I thank the committee very much for its invitation to attend today to discuss the items outlined on the agenda. It is a timely opportunity, as this is Iarnród Éireann’s first official engagement with the committee since the Dáil and Seanad elections, and my first engagement with it as chief executive, having taken up the role this week. I know from my predecessor, Jim Meade, the really positive and constructive engagement the organisation has had with the committee and its members in the past, and the support we have received for our ambitions for Irish Rail to develop and grow capacity.</p>
+          <p eId="para_21"> I give the committee my personal commitment that as a company we will continue to engage with it and all Members of the Oireachtas to detail our plans and ambitions, and to engage with it on its priorities and queries and those of our customers, who are the members' constituents, as we work together to ensure that we develop rail to be the backbone of Ireland’s sustainable transport network.</p>
+          <p eId="para_22"> In the document we have submitted, we have included a graphic depicting the activity in Iarnród Éireann. The graphic shows that at present we are carrying over 1 million passengers a week. Last year was a record year for Iarnród Éireann as we carried 50.7 million passengers. This year, we will surpass this and we expect to have carried approximately 55 million passengers by the end of the year.</p>
+          <p class="indent_1" eId="para_23">We will record our highest ever demand across all services - intercity, DART and commuter - with the full-year benefit of the introduction of 41 new intercity railcar carriages to our fleet and service expansion on many of the really popular routes, including Waterford, Galway, Cobh, Midleton and the hourly Belfast service we operate with our colleagues in Translink.</p>
+          <p class="indent_1" eId="para_24">The continued growth in demand demonstrates how crucial our investment is in a range of programmes, such as DART+, the Cork area commuter rail programme, Galway Ceannt and Oranmore stations and other national and regional projects, to build the capacity of our network and frequency of our services. This investment will facilitate wider national strategic imperatives, including unlocking potential for greater housing development along major transport corridors, addressing the needs of the climate action plan and aligning with the national planning framework, NPF.</p>
+          <p class="indent_1" eId="para_25">It is within this context that the all-island strategic rail review, AISRR, has been developed by the Department of Transport and Northern Ireland's Department for Infrastructure. The AISRR is a strategic, ambitious framework to develop rail for the long-term requirements of the country, the environment and the economy. It is the first time such a framework has been developed by the State on an all-island basis and taking a strategic outlook over a 25-year period.</p>
+          <p class="indent_1" eId="para_26">Today's rail network began to be constructed more than 190 years ago. It is an incredibly strategic asset for the country that must be planned for beyond short-term economic cycles. What we build today, and what is outlined in the review, will benefit us for centuries through three key areas. First is balanced regional development, aligning with the national planning framework. The second is about unlocking land for housing through transport-oriented development and facilitating sustainable development that will be supported through the planning system. The third area is about transforming the capacity of our rail network for passenger and freight services, allowing people and goods to travel and be transported in a more sustainable manner. </p>
+          <p eId="para_27"> The strategy will deliver a more extensive and resilient network, with new rail routes and double-tracking and four-tracking of key locations, to enable improved speeds and a higher frequency of services. We will move from 2025 levels today of approximately 55 million journeys to 180 million journeys per annum by the end of the strategy. The network interventions that are planned, as outlined in my statement, will deliver faster and more frequent services to make rail the mode of choice for interurban rail travel. An important point is that this will really support and underpin the sustainability strategy through decarbonisation of rail, electrification of the core lines and emerging fuel options on other lines, including battery-electric, hydrogen and biofuels.</p>
+          <p eId="para_28"> We are already working to progress the strategy. The pipeline of projects leading from the national development plan to the AISRR is being confirmed. We are working with the Department of Transport to identify priority projects to support the delivery of the AISRR vision. We are also working closely with our colleagues in Translink and their counterparts in the Department for Infrastructure in Northern Ireland to harness and maximise the all-island benefits from the strategy. Again, this will build on existing improvements, with the shared island fund supporting the hourly service introduced last October. We are progressing the tender process for the new Enterprise fleet, which, subject to funding approval, we hope to order by the end of this year for delivery by 2029.</p>
+          <p eId="para_29"> I know the committee is keen to discuss the issue of disability and accessibility. Core to our current and future investment programmes is to ensure that all who want to use our services can do so. To that end, supported by the National Transport Authority and working with our disability users group for direct input and guidance from the planning stage, all elements of our investment programme have, as a priority, accessibility for persons with reduced mobility. Additionally, we are investing in training and resources to ensure our people have the insight and tools to deliver the best possible service to customers who require assistance.</p>
+          <p eId="para_30"> I will outline some of the measures we are putting in place. We have customer service officers on all our intercity trains who ensure assistance is available to customers. The new DART+ fleet has a retractable step at every door to address the gap between train and platform, which will facilitate independent access for many customers with disabilities. A total of 185 carriages are on order, with further orders planned for the DART+ programme. The requirement to support independent access will be incorporated in all future fleet orders by the company, including the new Enterprise fleet. Platform modification works will take place at 13 stations to support independent access at stations served by the DART+ fleet. As we work towards independent access network-wide, a reduced advised notice period for assistance of one hour has been implemented at 15 major stations. That measure alone addresses some 60% of all assistance requests we receive. There is continuing investment in stations with one or more inaccessible platforms, introducing new bridges with lifts to ensure all platforms are accessible. Works are being completed this year at stations to include Rathmore, Maynooth, Athy and Rathdrum, with planning under way for Boyle, Claremorris, Dromod, Longford, Rushbrooke and Wicklow stations. Preplanning has already commenced for a further 15 stations. The big lift programme saw investment in existing lifts at 52 stations across the network between 2020 and 2024, significantly improving lift reliability. The LiftCall system is also in place at most station lifts, ensuring live monitored access and preventing vandalism and antisocial behaviour. Three stations - Connolly, Heuston and Limerick Colbert - have been equipped with changing places welfare facilities.</p>
+          <p eId="para_31"> In addition, we are engaging with representative bodies and enhancing training for rail staff to ensure a better understanding of the needs of our customers with disabilities, including hidden disabilities, and to improve customer service for all who travel by train. There are many such initiatives in place. All our customer-facing colleagues are receiving new accessibility training with Vision Ireland through its Wayfinding Centre. That training has been configured with the use of a disused DART carriage provided by us to support practical training development, delivered in collaboration with users of public transport who have disabilities. Sign language training has commenced with our on-board customer service staff. Other initiatives such as dementia awareness training and epilepsy training are being rolled out to ensure our staff are trained to work with people with those disabilities. More than 5,000 sensory packs have been distributed to customers with additional needs to facilitate a more comfortable journey. Training on a new just a minute, JAM, card initiative has been provided to 1,600 of our front-facing staff. We have also introduced wayfinding solutions to improve the customer experience for customers with a disability.</p>
+          <p eId="para_32"> The committee also asked us to address the matter of catering on our services. Like all our customers, we wish to see catering services restored, particularly across our intercity network. We are working to resolve the issues and expand the service beyond the current offering of Dublin to Cork and Dublin to Belfast. I will give the committee a bit of background on the issue. Back in 2020, with the emergence of Covid-19, restrictions were put in place that meant we were not permitted to provide catering on trains for a two-year period. Upon the easing of those restrictions, in May 2022, our then supplier, Rail Gourmet, withdrew from the contract. There followed an extensive market engagement, both in respect of interim service provision and, more recently, by way of a national tender process. Disappointingly, the results mean we are looking at a significant cost to the Exchequer of providing that service. Given the funding constraint represented by the amount we currently receive under our public service obligation, PSO, from the National Transport Authority, we are only in a position to provide two services. One is on the Dublin to Cork route, which also covers some services for passengers changing at Mallow for Kerry and those changing at Limerick Junction for Limerick.</p>
+          <p eId="para_33">They resumed in March 2023. We also have the Translink service to Belfast provided by the Enterprise fleet.</p>
+          <p eId="para_34"> From our perspective, we know that it is the customer expectation to have catering, particularly on those longer distance services. I have asked our train operations and procurement colleagues to re-engage with the existing providers in the market, albeit they are limited in number, and with those that are not currently in the market. We are asking potential suppliers to be creative and innovative in identifying solutions that will allow us to expand our catering offering in a cost-effective manner. Separately, we will continue to work with our CIÉ group property to enhance in-station retail facilities. That ranges from high-street brands in the bigger stations to give a choice of offerings to mobile units in the smaller stations around the country.</p>
+          <p eId="para_35"> I thank the Leas-Chathaoirleach and committees members for their attention. I am more than happy to take any answers that they may have.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_4">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_36">I thank Ms Considine. I will go through the speaking rota. There will be seven minutes per speaker. We are tight on time, and I will keep people to seven minutes. Deputy Boland has swapped with Senator Duffy. I call Deputy Boland.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_5">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_37">The witnesses are very welcome. I have probably said the following many times at this committee. I am a huge supporter of public transport. I use Irish Rail. I am one of its customers, so I am very aware of the issues and challenges faced by the company. As my time is limited, I will concentrate on a few things.</p>
+          <p eId="para_38"> First, when will we see a specific project plan and timeline for the various projects covered under and the 32 recommendations in the strategy?</p>
+          <p eId="para_39"> Second, in terms of deployment, my understanding, from information I received in reply to a parliamentary question I tabled in February, is that there are 95 battery-electric sets or carriages that have been delivered. My understanding is that they were due to enter service in quarter 1 of 2026. The commencement date has now been moved to quarter 3 of 2026. I have heard that it may have been pushed out further. How long should it take to get new sets deployed on the train lines? Is there are a further delay? If so, why?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_40">On the first question, there is a timeline in place for the number of projects that are covered in the all-island strategic rail review. As the Deputy will know, there are a number of significant projects involved, starting with DART+, double-tracking, four-tracking, increased intercity services, improved speed access and the electrification of rail lines. There is a major amount of work planned in the pipeline. Of course, this is all subject to funding. I am not long with Irish Rail, but I have observed that there is a really competent team in place. These are really skilled people who are ambitious to deliver all the projects included in the all-island strategic rail review and, indeed, more. We know that the process relating to the latter is emerging and that there will be a review after the first ten-year period. There are already other projects that people would like to see proceeding, particularly in the regions.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_7">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_41">We would like to see that too.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_42">Yes.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_9">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_43">When will we have a document that will give us an indication of some of the timelines or outline which projects are going to be prioritised?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_44">We have mapped out the projects. There is a huge amount of work being done to make sure that they are shovel ready. As stated, it is dependent on funding. There is a clear pipeline - and we are happy to share that information with the committee - of immediate projects that are going through the preliminary detailed design stage by means of the gateway processes. Again, that is subject to Government funding. All of that is in place. We are happy to share the information with the committee.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_11">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_45">That would be great.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_46">The Deputy mentioned DART+. A total of 15 sets have been delivered for testing. During the testing process, it has emerged that our supplier - and we are dependent on a supplier - has had some difficulties with the sub-supplier it uses in the context of the battery sets. Following testing, there were some modifications made to the battery design. That is going through a reconfiguration and testing regime that we hope will be completed early next year. At that point, we will have to go through the certification process. My understanding is that the information in this regard came to light as a result of a parliamentary question the Deputy tabled previously. We agreed a new programme with the supplier in recent days. At this stage, we appear to be looking at taking delivery of the first set in quarter 2 of 2027.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_13">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_47">Is that deployment?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_48">Yes. The Deputy rightly said that we were expecting deployment by the end of 2026. That has now been pushed out to quarter 2 of 2027.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_15">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_49">As Ms Considine can imagine, I am disappointed. Is the supplier reputable? I will provide some context. I regularly get the commuter train from Drogheda to Dublin. I board it at Skerries. There are only four carriages, and I have sent photos to Irish Rail to highlight the issue. People have to stand. To be honest, the carriages are fairly dirty. It is not a particularly pleasant experience to stand in one of the carriages, let alone in a very tight and constrained space, for 50 minutes. That is the time it takes because there are regular delays coming into Connolly Station.</p>
+          <p eId="para_50"> Given that deployment of these sets has been pushed out to quarter 2 of 2027, I would very much appreciate if some new carriages were deployed for use on the northern commuter line as soon as possible or if Ms Considine could look at the service. Four carriages at peak time and during commuter times are simply not sufficient. The confined space means I cannot encourage people to avail of public transport. Separately, people cannot get buggies or wheelchairs onto the train. Those with accessibility issues will not get the train because they are afraid of being pushed over. This matter has been ongoing for some time.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_51">I hear what the Deputy is saying. I know that the team is really anxious that this project will be delivered as soon as possible. Huge pressure is being kept on the supplier. This supplier is really reputable. It is one of the biggest train suppliers in the world. The battery testing is taking place in another country. Modifications are required. Safety is always paramount, so it goes through a really rigorous testing and certification regime. We are keeping the pressure on the supplier to deliver. It now looks like it will be delivered in quarter 2 of 2027. In the meantime, we will do anything we can. However, it has to be acknowledged that there are capacity constraints. We would love to deliver all these things sooner, but the reality is there is huge catch-up when it comes to infrastructure and fleet.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_17">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_52">Given that there are issues with the product being supplied, which will cause delays, is there any clawback under the contract whereby we would at least be able to get some financial compensation for the delays relating to the batteries we ordered?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_53">I am not in a position to answer that here, but I can come back to the Deputy on it.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_19">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_54">I would appreciate that. In terms of disruption to DART+, when actually we start electrifying the line - and we talked about four-tracking to Malahide - is there a plan in place? Can Ms Considine confirm that there will be no reduction in services on the northern commuter line during the roll-out of DART+?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_55">Like any programme, we will have to manage. When you are trying to operate a live railway and provide services, safety is always paramount. You are trying to operate a live railway and you are building out, to borrow a phrase from a colleague of mine, tomorrow's railway at the same time. We will do everything we can to minimise disruption to services, but I could not guarantee that there will not be disruption.</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_21">
+          <from>Senator Joanne Collins<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_56">I welcome Ms Considine and wish her well in her new role. Our expectations are quite high. We know she worked for Shannon Airport for a long time and did an amazing job. It would be nice to see rail go the same way as Shannon Airport. As the new CEO, she has a lot to do to make us as happy with rail as we are with Shannon Airport.</p>
+          <p eId="para_57"> The Foynes to Limerick rail will be open for freight early in 2026. What is the timeline? Is there a guarantee that the rail service will be opened to passengers after that?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_58">As the Deputy rightly stated, the line is being opened. The plan is to open it for freight. Once the line is <i>in situ</i> and fully commissioned, we hope that we would be able to develop passenger services at a future date. It is not in the immediate pipeline. As the Deputy knows, in the context of the redevelopment of the platform at Adare, passenger services are going to be running as far as Adare, particularly for the Ryder Cup. The introduction of a temporary platform at Adare is a really positive story for the region. In the longer term, we would always like to be able to develop more passenger services, particularly across the country, because we know these constitute a real enabler of economic development.</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_23">
+          <from>Senator Joanne Collins<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_59">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_60">The other thing rail does is unlock land. It captures land value for transport-orientated development. It will be key to Government's larger plan to deliver more housing throughout the country.</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_25">
+          <from>Senator Joanne Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_61">It would be great to see Foynes in particular. I am biased because I live on that side of County Limerick. On the day I turned 17, I bought a car because I did not have a choice. There is no public transport that is sufficient to do what I need it to do. I said only last week that the first time I used a train was when I was 15 and had to come up to Dublin to get a passport. The second time was in February when I started here. That is because it does not suit everybody. When you live outside the cities, Irish Rail and Bus Éireann do not seem offer services at times that suit people's needs.</p>
+          <p eId="para_62"> When there was something on in Sligo, I wondered whether I would get the train. I looked and it would take me seven hours to get to Sligo, outside the near hour it takes to get from my house into the city to get the train. I would then have to get on the train at Colbert Station, go as far as Heuston Station, then have to make my way from Heuston Station to Connolly Station and then on to Sligo. It is absolute madness that we do not seem to have direct trains from Cork to Limerick and Limerick to Galway, and a split for Galway-Dublin. We should have rail lines going up all sides so that people are not put off using rail and are forced into their cars. I would love to see something like that come on stream. Have we any sort of a timeline for that?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_63">The plan relating to the all-island strategic rail review provides for an upgrade of the key intercity routes and the improvement of regional lines. What needs to be upgraded is the line between Limerick through to Ennis and on to Galway, and then the western rail corridor will be opened up. However, and I am repeating myself, it is all subject to funding. From an Irish Rail perspective, the plans are being put in place in order that we will be ready-----</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_27">
+          <from>Senator Joanne Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_64">Irish Rail will be ready when funding comes through.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_65">-----when funding becomes available. That is why we have the relationship with this committee, and working with members, to deliver on that. We have a job of work to do, but it is dependent on funding. That is why it is positive to see the commitment to capital funding in the programme for Government. We need to look at multi-annual capital funding in order that, rather than have this stop-start on projects, we can continue what we are doing and really get going.</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_29">
+          <from>Senator Joanne Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_66">To keep rolling with the plans.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_67">That delivers value for money. It means that the team of experts working on a project can keep driving it on.</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_31">
+          <from>Senator Joanne Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_68">That is brilliant. Thank you so much. I will leave the rest of my time to somebody else.</p>
+        </speech>
+        <speech by="#MichaelCollins2016" eId="spk_32">
+          <from>Deputy Michael Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_69">I welcome our guests. This is meant to be an all-island strategic rail review. Am I correct?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_70">Yes.</p>
+        </speech>
+        <speech by="#MichaelCollins2016" eId="spk_34">
+          <from>Deputy Michael Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_71">How is it that in the context of the 130 km from Cork station to Ardgroom there is not one single railway line? How is it that there is no rail link to Mizen Head, which is 125 km from Cork, and no plans for such a link that I know of? I may stand to be corrected on that. It is an an-island review. If there are no plans, however, it is not an all-island review and the name needs to be changed immediately. You cannot leave out 130 km to the west and 125 km to the south west and say that it is an all-island review. Will Iarnród Éireann commit to commissioning a feasibility study on restoring rail links to west Cork?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_72">I will address the issue of the Cork area. I am sure the Deputy is aware of the significant work that is under way in the Cork area commuter belt. There is a tripling of the commuter capacity to a ten-minute frequency on all the commuter lines. The first package of work there is a new platform has been completed. The Midleton to Glounthaune twin-tracking is under way; it is hoped that this will be completed in August of next year. There is re-signalling that will be complete by the end of next year. We will then move on to packages 4, 5 and 6, which include eight new stations, a depot and electrification. There will be planning for that in summer 2026. Subject to funding, the infrastructure could be delivered by 2030, with a fleet in place by 2032. The first two of those stations, Dunkettle and Blackpool, are already in the forward-planning stage in the event that funding becomes available.</p>
+          <p eId="para_73"> I absolutely hear what the Deputy is saying about how we extend beyond that. We are coming from a place where there was significant underfunding of rail infrastructure in this country for many decades. We are playing catch-up. It is about prioritising those projects that will probably deliver the highest capacity enhancement and value for money. If we can deal with putting more capacity on those key intercity routes and key regional lines, we can then build from there. The Deputy is representing what political Oireachtas Members right across the country are saying, which is that they want more public transport in their areas. We want to deliver that but it is about doing things on a phased basis where we can deliver the biggest bang for our buck and then build out from there.</p>
+        </speech>
+        <speech by="#MichaelCollins2016" eId="spk_36">
+          <from>Deputy Michael Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_74">The thing is that this is referred to as an all-island strategic rail review. That cannot be the case. The name has to be changed. It has to be called the "some of the island rail review". It certainly cannot be all-island when a whole area of west Cork is ignored and there is not one single sign of rail there. There is not an even a sign, signal or post telling people the way to the rail station in west Cork. It is non-existent. The funny thing is that rail did come to Mizen Head in 1850 or whenever. It was in Bantry in 1950, but, today, we cannot get rail out beyond Cork city. Will Iarnród Éireann explore innovative, low-cost rail solutions, such as narrow gauge or a light-rail system, for rural areas like west Cork, where full-scale rail may not be immediately viable?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_75">I go back to the Deputy's point about it not being all-island. The emergence of this vision was a result of work done by the Department of Transport and the Department for Infrastructure in Northern Ireland. It is subject to review. There will be a ten-year review in 2035 or thereabouts. That will be the opportunity to ask where we go from here and what revisions need to be made. The Deputy is right to point out that we need rail connectivity all over the country. We had much more track capacity 100 years ago than we do today. It is about building that back up. We take on board the Deputy's comments. All of this will feed into a future review of the strategy.</p>
+        </speech>
+        <speech by="#MichaelCollins2016" eId="spk_38">
+          <from>Deputy Michael Collins<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_76">Ms Considine is saying this is all-island and that it includes Northern Ireland. That is absolutely perfect, but if the whole of Northern Ireland, or the whole of Dublin or Galway, were exempted from it, there would be an outcry. From Cork, there are 135 km of roadway to Ardgroom and 125 km to Mizen Head, but there is no rail. There is no way we can wait until 2035. We may all be pushing up the daisies at that stage. We need to look at what other means of transport Iarnród Éireann can put together for people in those areas. Why is there not bus transport every morning from those areas direct to the train station? It might only be once a day or whatever, but at least it would be a move in the right direction that people from all over the country are recognised by Irish Rail as being valuable people to it.</p>
+          <p eId="para_77"> Senator Joanne Collins said something about the amount of time involved. I would like to use the train, but by the time I use it, it is two and a half hours, so I may as well keep driving to Dublin. It is not just for me; it is for everybody who lives in west Cork, which does not have rail but which did have it. We had rail in poor times in 1850, when nobody had money in their pockets. We had a rail line to Schull. In 2025, we cannot even contemplate it. We may be able to do so in 2035. Iarnród Éireann has to compensate for that. I ask its representatives to go back and say that while there is no have rail, there will be bus connectivity to rail. At least there will be a signpost there and a recognition that rail exists for the people in an area for which Irish Rail is not delivering at this time. That is at least something that could be given to people. There could be some kind of connectivity that is not there at present.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_78">The National Transport Authority licenses bus services. We can certainly work with it to support integration. I know it is very keen to develop better integration in the context of linking bus services up with rail timetables. That is something we can look at further.</p>
+        </speech>
+        <speech by="#MichaelCollins2016" eId="spk_40">
+          <from>Deputy Michael Collins<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_79">Yes, I would appreciate that. I do not have much time left, but it is hugely important because these areas cannot be thrown to the wolves. Rail, when we do use it, is second to none. I do not want to be slating what it is but that is the problem. There needs to be some kind of connectivity and that is all I ask Iarnród Éireann to work on because it looks like rail will not happen there and we have to at least have some discussion. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_41">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_80">I welcome Ms Considine to the committee. I have known her for a long time, in Clare, and she has done a fantastic job with Shannon Airport, so we have every confidence locally and nationally that she will be an equally great leader in the Irish Rail organisation. I think Mr. Kenny for his continued work. I thank Ms Considine's predecessor, Mr. Jim Meade, who was a fantastic CEO of Irish Rail. I have quite a few questions, so I will go through them quickly.</p>
+          <p eId="para_81"> With metro north now looking to be advanced, it is all the more important that we have that vital rail spur into Shannon Airport. It is contained in the strategic rail review. How does Irish Rail envisage this being developed in terms of acquiring any lands along the way and having it financed? Ultimately, is there a timeline in which Irish Rail could envisage all of this being built, if it was supported by the Government?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_82">I thank Deputy Crowe for his good wishes. He is absolutely right that the all-island strategic rail review does provide for a rail link to Shannon Airport. At the moment, it is envisaged that it would be a spur off the Limerick to Ennis line. What needs to happen now is a feasibility study to look at the preferred routing of that line. As the Deputy will be aware, there are also plans to upgrade the entrance road to the airport, so it is about making sure that, in planning those works, we are keeping the land available for a future rail link. To progress that rail link, the feasibility study on the land needs to be done in the near term. That is still subject to funding; there still is not funding allocated to that. We will be working with the National Transport Authority and the Department to secure funding to get that initial piece of work done. Subject to that, we would be able to get into detailed design and put a more likely timeframe on it. It is within the first ten-year period of the strategy. We would like to accelerate that because it is an easy enough solution to put in place and something we would like to see happen. As a country, our airports and ports should be connected by rail and that is one of our priorities. It is certainly central to the strategic rail review.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_43">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_83">I thank Ms Considine. I will next ask about the section of the line that gets flooded at Ballycar. Is there anything in the 2026 plans for Irish Rail about doing anything on that stretch of line?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_84">I am just getting my head around some of these issues in my new brief.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_45">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_85">Of course.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_86">My understanding is we need to work with the local authority there and probably the OPW to address that, and I am subject to correction on that. It is not within the remit of Irish Rail. Having said that, it is really important it is done because we want to upgrade the line between Limerick and Ennis and on to Galway and, ultimately, on to the western rail corridor, when that is delivered. We need to lengthen the platforms along that line; we need to improve the infrastructure. That will then enable more capacity and larger set sizes to be put on. There is a significant amount of work to be done there but we need to address the issue of flooding in Ballycar so we will work with the other stakeholders to do that. Mr. Kenny might come in on that.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_87">There was the work with multiple agencies, including the local authority and the OPW, that identified the solution. We have a plan that will address that flooding and will not divert the problem somewhere else. It is about the delivery agency and the funding being identified for it. That is something we have submitted to the Department of Transport, and it is with the OPW as well.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_48">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_88">Will Mr. Kenny a briefing note on that matter? If there is some material on that, I would be very grateful to receive it. On that stretch of line, there is a proposal within the all-island strategic rail review to open the railway station at Crusheen. The idea of having a new railway station in the northern part of Limerick city, at Moyross, is advancing. Can the witnesses give any update on either of those matters?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_89">Yes, absolutely. Starting with the railway station in Limerick city at Moyross, a planning application has been submitted for that station, so that is really positive. Significant works are planned for the Limerick rail network. Colbert Station was the first phase of that and was redeveloped in 2024. A planning application has gone in for Moyross and capacity studies for the Limerick, Limerick Junction and the Limerick to Galway line are already under way. We are working with Limerick City and County Council and the Land Development Agency, LDA, to advance commuter rail studies for the broader Limerick programme. </p>
+          <p eId="para_90"> Specifically in regard to Clare and as Mr. Kenny said, we need to address the flooding issues but we also need to look at funding being allocated to lengthen the platforms so we can improve the service and capacity there. Crusheen is not in the plan today but we have been talking separately with Clare County Council, which is seeking funding to have that platform reopened, so subject to funding, that certainly could be accommodated within the redevelopment of the line from Limerick to Galway. If funding can be secured for that, it can be done.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_50">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_91">In the minute and a half I have left, I want to talk about car parking at stations. I parked at Limerick station yesterday and got the train. I meet the same cohort of people every day and if they are lucky, they have a parking space, but more often than not, spaces are taken up by people who are going to work in the city or shopping in town because the parking rate seems to be cheaper than in the city car parks. The upshot of that is many people from Clare, Limerick and north Cork who are trying to get trains in the morning drive in a quarter of an hour before the train to park, have to do circles of the car park and can get no parking spaces. They are either clamped by the company, have to park out on the street or get parking tickets. Are there any plans for this?</p>
+          <p eId="para_92"> The parking charge in that car park, and indeed in most of the car parks, was nearly doubled in the past three months by APCOA, the contractor that runs them. Has that additional revenue gone to Irish Rail or to APCOA? The charge has gone from €3.50 for a 24-hour period to €6.</p>
+          <p eId="para_93"> In that car park, a camper van has been abandoned for about five weeks. I actually made a 999 call about it because I park up beside it every day and thought it was not right and wondered whether the welfare of the owner had even been checked. The camper van is still there. It is not deemed to be suspicious but it is taking up a parking space and people cannot use it every day. Will Ms Considine ask the station management to tow the camper van from the facility please?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_94">The Deputy rightly said the car parks are being managed on our behalf by APCOA. My understanding is that the revised rates have been introduced recently in Limerick and it is to deal with the very issue he raised, of people using it as a car park and taking up spaces our customers need. We will keep that under review. On the matter of, and I have seen it myself-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_52">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_95">Who gets the additional revenue?</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_53">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_96">I want to move on as we are tight on time, so very quickly.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_97">The revenue from car parks comes back to Irish Rail.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_55">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_98">I congratulate Ms Considine on her new post. It is good to see Mr. Kenny again. I am a huge supporter of the all-island strategic rail review and it should be considered a cornerstone for the building of a new Ireland, so it is an exciting, positive project the public can get involved in.</p>
+          <p eId="para_99"> Looking at the length of time it takes for MetroLink and, in my own area, DART+ West, what are the next steps Irish Rail is involved in to progress this project from an all-island perspective?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_100">I thank Deputy Currie for her good wishes. Significant work is under way. The all-island strategic rail review has two key elements. There is the link with Belfast. Under the current plans, we are out to procurement for a new fleet there, so that will significantly enhance capacity and allow us to swap out some of the older fleet and provide an enhanced service. We hope to be in a position to place orders by the end of the year and deliver the new fleet by 2029.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_57">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_101">Is this on the Dublin to Belfast line?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_102">That is on the Enterprise service. In regard to the DART+ programme, positively, we now have the railway orders, which are planning permission in my old world, on the DART+ West, DART+ South West and DART+ Coastal North.</p>
+          <p eId="para_103">In the case of DART+ West and DART+ South West, we are in very detailed design and we hope to be bringing business cases to Government for approval in the very near term. On DART+ Coastal North, we have just received-----</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_59">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_104">That is okay. DART+ West is what I am concerned with. In that business case, will there be an overview of the disruption to existing services? Commuters are already asking questions about those plans.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_105">We will do everything we can to avoid disruption to our customers but the reality is when you are still operating a live railway today and building out new capacity for tomorrow's railway, we cannot guarantee there will not be disruption. There will be essential works to the infrastructure and we are already testing the new fleet. It is a combination of all of those and, obviously, we always have to put safety at the very core of everything we do and make sure it is paramount. I cannot guarantee that there will not be disruption.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_61">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_106">No, but it has been flagged that there will be disruption and the sooner we get to the details of that, the better. When talking about the business case, that has to go hand in hand with it because people's lives continue and they want confidence that this is going to be managed in a way that avoids as much disruption as possible.</p>
+          <p eId="para_107"> I have spoken about this next matter before. When the 41 new carriages were first announced, some of those were earmarked for the Maynooth line, which would benefit commuters in my constituency of Dublin West, but they have been reprioritised for the journeys going north to, I think, Drogheda. We have only benefited from four on the Sligo-Dublin route. When it comes to the 95 new carriages we were told were due in January 2026, 65 of those are also going to Drogheda and 30 to the existing DART line. When will the Maynooth line benefit from additional carriages? I can tell the witnesses now that we are overcrowded at peak times and we need more capacity.</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_108">To deal with the Deputy's first point, I probably did not make it clear enough with regard to the disruption. We will plan out the disruptive periods as part of planning the project. That would be normal. Every effort is made to do the really disruptive work over weekends or when people are not travelling or commuting for work. We are always very conscious of that customer need, so we try to build that into any programme.</p>
+          <p eId="para_109"> In relation to capacity issues, I hear every day all around the country the issue of capacity constraints. One of the issues is that, even though we introduced - I alluded to this in my opening statement - 41 new carriages to the intercity services last year and capacity has grown, passenger growth has surpassed that. We are constrained-----</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_63">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_110">I am sorry. I am under time pressure and that is what Mr. Jim Meade said the last time he was here. It is the DART+ West capacity I am most interested in.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_111">I understand. We hope that when the new DART+ fleet starts to come into service from quarter 2 of 2027, it will give us more capacity and free it up. We hope that will add more services.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_65">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_112">I just find it hard to understand why, back in 2018 or 2019, we had an idea of percentages about uplift in certain areas. Now, however, the numbers seem quite vague. I know Ms Considine is new so I would ask her to examine that. I am so sorry to be pushing Ms Considine because I am constrained by time and there are so many questions that come in.</p>
+          <p eId="para_113"> With regard to signalling issues, we have had serious problems on the Maynooth line recently - on 24 September and 8 October - where services have been cancelled. I was told that control equipment had been migrated to the national train control centre on 21 and 28 September. Then, on 24 September, a fault was identified that has now been fixed. This is about extending the life of this equipment until we get DART+ West. However, we had another fault on 8 October, so people are really concerned. Will Ms Considine advise what that problem was and whether it is going to happen again?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_114">I might pass over to Mr. Kenny to take that detail, if the Deputy does not mind.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_67">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_115">Mr. Kenny might keep this answer to within 30 seconds.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_116">They were unrelated. The second issue was a power supply issue locally that affected the signalling. We are dealing with a legacy system on the Maynooth line pending the DART+ upgrades. We have put the maintenance regime there to sustain that and, obviously, we are as anxious as anybody to replace it. There was a permanent fix put in for that initial fault on the first issue the Deputy described but the second issue concerned the power supply and was unrelated. I appreciate that, with them being so close together, they did impact customer confidence at that time.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_69">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_117">I thank Mr. Kenny. I am sorry for rushing the witnesses.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_70">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_118">I welcome the witnesses and congratulate Ms Considine on her new appointment. She has a tough act to follow. Not only did Mr. Jim Meade oversee a very progressive team, as Ms Considine stated, but he also oversaw a mindset change. I remember about ten years ago, when I was on the council, three of us from Tralee went to a council meeting in Rathmore. We took the train and people laughed at us but it is accepted now that public transport is really an option with more trains and such a reliable service.</p>
+          <p eId="para_119"> Last week, I had to deal with Mr. Kenny about an issue of later trains going down to Limerick and Cork. I welcome the witnesses' offer to come in and meet us. As public representatives, we need to have answers for our constituents as soon as possible. I know from her previous role that Ms Considine was excellent at doing that. I congratulate her.</p>
+          <p eId="para_120"> I have a couple of questions. I welcome the all-Ireland approach that is being taken. We have seen decades of rail lines and services being shuttered up over many years. It makes common sense, particularly for the west and north west of the country, to open up. Senator Joanne Collins set out in a very practical way the need for the western rail corridor to open up all the way so you can get a train from Limerick - ideally, it would be from Tralee - to Sligo and the practical difficulties of getting that. I hope that is going to be done.</p>
+          <p eId="para_121"> The catering services were mentioned. I find it difficult to understand. There was a figure of €2 million mentioned to get this up and running. The longest train journey in the State is from Tralee to Heuston Station, which is almost a four-hour journey. Many older people and people getting medical appointments use that service. They like a direct line. They do not want to have to change at Mallow and there is no catering service on that. I find it difficult to see how it would be hard for the company coming in to make a profit. Why can there not be a bottle of water? I recently spoke to one of Irish Rail's customer service operators who was sitting in a dining carriage. I asked why it could not be used. Directly employing staff would be my view on it but I am not an expert.</p>
+          <p eId="para_122"> There was also mention of the upgrade of railway stations and one of them that has not been done and is not on the list is Tralee railway station. There was talk for a number of years of opening the area up - it is a beautiful old limestone building, probably going back to the 1860s - and enhancing it with a plaza-type effect that would enhance the town centre. I am not convinced the Government is interested in town centres because if it was, it would have refurbished Tralee courthouse a long time ago rather than moving it somewhere else. Are there any plans to knock down the old wall at the railway station, open it up and have a plaza-type situation?</p>
+          <p eId="para_123"> I will ask one more question. We have seen the comparison over many years. There were a lot of new light rail projects in Dublin in the first decade of this century but there does not seem to have been a pipeline of projects since. It has stalled somewhat. For example, if you compare Dublin to Madrid, Madrid added 200 km to its metro system over a 12-year period. Dublin began construction of light rail in 2001, and some 24 years later, there are only 42 km extra. The Finglas one is the only one before An Coimisiún Pleanála at the moment. It is important to have a pipeline of projects where you are scaling up and using the expertise as quickly as possible.</p>
+          <p eId="para_124">They are a few of the questions I would like answered, if possible, please.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_125">The first question is around catering. My understanding is that the €2 million figure is what is covering existing services. If they were to be extended across the network, the figure would be significantly higher under the current operating model. The challenge is that they are being funded through the PSO by the National Transport Authority. As I said in my opening statement, we are looking at other options to see if we can do this in a cost-effective manner for the Exchequer. It has been outlined to this committee previously that the Exchequer is not willing to fund anything beyond that, so we need to find another way of providing catering.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_72">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_126">Is the company operating the Cork-Dublin line, for example, not making a profit at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_127">I cannot answer that. I do not have those details. It is costing Irish Rail and that is being funded through the NTA. We need to find a way that does not pull off our PSO funding or increase our ask of Government for PSO. I hear very clearly from customers the length and breadth of the country that they want catering on the trains, as I said in my opening statement.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_74">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_128">Is there a timeline for that, given that one of the 32 recommendations is to continue to benchmark and monitor service quality and continuous improvement? Service, in my view, is being able to buy a bottle of water on a train on a four-hour journey.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_129">I have just spoken with our own team internally this week to see if we can look at other options. We will be considering those and seeing if there are viable ways to do this. I cannot give the Deputy a timeline yet, it would be premature of me to give it. It is certainly very much a priority for the board of Irish Rail, just to give the Deputy that assurance.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_76">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_130">Will Ms Considine have an answer before Christmas?</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_131">I do not know. I cannot say that.</p>
+          <p eId="para_132"> Just on Tralee, the station and the plaza, my understanding is that there is work going on with Kerry County Council and there are significant plans to improve the public realm there. It has secured URDF funding to advance that. We would be really supportive of that project and do what we need to do to support it and make sure it will happen.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_78">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_133">Ms Considine has spoken about the challenges Irish Rail has. Is there any particular project she would like to bring forward but the funding has not been granted? What would be the first in line?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_134">There is a very significant pipeline of projects in place. We want certainty of the funding so we can keep the resources on those projects and deliver. We know there are other emerging priorities like the western rail corridor. We are hearing that very strongly from the Government. We want to be ready with those projects so that if funding is made available, we are ready to get going. We are already doing preliminary work on a number of those projects.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_80">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_135">Would it be fair to say that if the funding was available for the western rail corridor, Irish Rail would do that?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_136">We would do it, yes.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_82">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_137">I want to be fair to everybody else, Deputy. I am going to go to my own time now.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_83">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_138">It is frustrating that it is not there.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_84">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_139">I will move on to my own slot now. Is the DART+ South West plan on track? When will we see increased capacity on the south-western DART network?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_140">The DART+ South West has got the railway order. We are preparing the detailed business case for Government-committed funding on that project. I do not have the exact timeline; I do not know. I will hand over to Mr. Kenny on the timeline.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_141">We are out to tender at the moment with west and south west together. The major contract will be awarded by the end of next year, with physical work starting in 2027 and completion for 2030 or 2031.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_87">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_142">We will not expect increased capacity on those lines until 2030 anyway.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_143">We will, in that the DART+ trains, when they come in on the northern commuter and existing DART, will free up intercity and commuter trains for the rest of the network. All ships will rise with the tide and we will be able to start deploying those commuter trains onto other routes from 2027 onwards.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_89">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_144">Regarding Irish Rail's engagement with the Department for Infrastructure in Northern Ireland on the all-island strategic rail review, what does that relationship look like at the moment in terms of the overall pathway towards delivery? There was reference to a 25-year time window for the delivery of the rail review. From our end, it certainly seems like Irish Rail is tooled up and ready to go. Is that reciprocated on the other side of the Border?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_145">The most immediate project is the fleet order for the Enterprise service. We are working very closely with our colleagues in Translink and there are governance structures in place to oversee the delivery of that. That service works very well. We have seen significant passenger growth and it is now up to an hourly service. The introduction of the new fleet will improve the reliability of the service. We hope that fleet will be in place by 2029.</p>
+          <p eId="para_146"> I would say there is a very positive relationship. Again, I am going to preface everything by saying I am new to the role but certainly the early conversations I have had are very positive. That project is being funded through special European project funding and matched funding by the Department of Transport and the Department for Infrastructure in Northern Ireland. That is a very significant project that is under way.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_91">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_147">Moving to bus and train services, what sort of timetable co-ordination exists between Irish Rail and public transport bus operators around the country? One of the great things about the Dublin network is that there are bus stops at train stations. Is there co-ordination of timetabling for when a train pulls in and a bus arrives? What does that look like and who does it?</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_148">The National Transport Authority licenses the bus and also approves our timetable. That co-ordination between the bus company and ourselves is really through the NTA.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_93">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_149">Has Ms Considine had sight of how that process happens?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_150">I have not yet personally. I might hand over to Mr. Kenny.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_95">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_151">We are confident that the NTA does the co-ordination.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_152">There is a range of interactions with the NTA. On services, there is a monthly review. When we have a timetable review process, the timetable is ultimately approved by the NTA. It will look at the linkages that occur around the network as well for buses.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_97">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_153">Going back to catering, what is the feedback from suppliers in the market on why they do not want to bid for these contracts? Do they believe the costs are such that they need to charge these high tendering costs? What do they see as so prohibitive?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_154">My understanding is that there is a very limited pool of caterers that currently provide this service.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_99">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_155">Why is that?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_156">I do not know the answer to that. Some of them would have pulled out. The previous provider, Rail Gourmet, pulled out after Covid. There was a national tender process and it did not yield the results that we wanted. We now want to see if there are other ways or other providers outside the normal, traditional pool. I spoke with colleagues in the UK and they would have similar issues. The actual pool of dedicated train catering providers is quite small. We need to see if there are other more creative ways of providing this that will not cost money.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_101">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_157">Interesting. Deputy O'Gorman is next.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_102">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_158">I congratulate Ms Considine on her new role. I am looking forward to working with her.</p>
+          <p eId="para_159"> I have two higher level questions first. We have been experiencing a persistent and damaging housing crisis for the last decade. To what extent can the expansion of new rail services open up more land for transport-oriented housing development and help to address the housing crisis we are dealing with? The all-island rail review contains real ambition. What are the steps the Government and this committee can take to enable Irish Rail to speed up the delivery of some of the items that are in the rail review?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_160">I thank Deputy O'Gorman for his good wishes. He has hit on two important points there. The all-island strategic rail review is a really strategic document. It is putting rail at the forefront of sustainable transport solutions. However, it is also key to unlocking land value and transport-oriented development. As we build out the rail network, particularly as we open more stations, the vision within the strategy is that people will be living in close proximity to a rail station. That is very much centre to our plans. Really, it is about ourselves working with stakeholders, local authorities, Oireachtas Members, the National Transport Authority and the Department of Transport to make sure all our plans are aligned and we have certainty of funding.</p>
+          <p eId="para_161">It goes back to that multi-annual funding and having certainty, no matter what the economic cycle is going through, that we will have that funding. It allows us then to resource accordingly, do the detailed design, have projects ready to go to planning and just accelerate the delivery.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_104">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_162">Right now, Irish Rail's funding is very much annual. What sort of line of sight does Ms Considine have on funding right now?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_163">We have very positive engagements with the National Transport Authority, NTA, and the Department of Transport. There is a real understanding of the importance of this strategic rail review and the importance of funding it. Certainly, the programme for Government commits to funding capital infrastructure. However, we are still going back at each gateway. We only have permission to go so far and then it is subject to funding again, so it is just really to address that.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_106">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_164">I thank Ms Considine for that. I was delighted to hear her reference opening new stations. There is a new station at Woodbrook and there is a commitment to a new station in Cabra. Can Ms Considine talk about how Irish Rail makes a decision on a new station? For example, in Dublin 15, we are seeing a huge number of new housing developments. New land is being opened up at Kellystown. This is a site between Coolmine station and Clonsilla station. There is a reservation of land for what would have been metro west back in the day, so there is a site there. How are those decisions made? I know a lot of residents would love to see a new station opened there. What is the thought process and decision process within Irish Rail in determining when a new station is opened?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_165">Within the strategy for the greater Dublin area, it is very much about working with - again going back to my point about the stakeholders - the local authority and the Land Development Agency. It is understanding where the population density is, where we want to grow the population going forward and where there is a housing need today. It is making sure that all of it is aligned, and that is feeding into our own modelling. It is really that close alignment. We are a significant enabler for the State, and it is working with the other arms of the State to make sure we deliver.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_108">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_166">My time is coming towards an end. I will just ask two questions, the first of which concerns the double-tracking of the Limerick to Limerick Junction line. Consultants were appointed in 2022. Is there any update on that project and particularly the Ballysimon station section?</p>
+          <p eId="para_167"> Second, over the summer, there was some great work in terms of running late trains for some of the big events that took place, particularly in the park and so forth. Is there any capacity to have later trains operating on a more permanent basis rather than just on a once-off basis? They are hugely beneficial for people trying to enjoy themselves, but when they are done on a once-off basis, people cannot really plan for it.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_168">On that latter point, we have capacity constraints. Where we know there are matches and special events, we will work with the organisers and the local authority to put extra sets on where we can, but we are capacity constrained.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_110">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_169">Are they staffing constraints or is it the actual physical infrastructure?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_170">Infrastructure is my understanding. In relation to Limerick Junction, the capacity study for Limerick to Limerick Junction is under way. Ballysimon and others are being planned for and, again, it goes back to my earlier comment that we need to increase capacity around the country. This is very much in the planning design. Obviously, again, I have to preface that everything is subject to funding, so it is about getting the certainty of funding and progressing these critical projects.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_112">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_171">On the commuter line to Maynooth, which is my line, we are going to encounter probably two significant impacts on services, namely, the development of DART+ West and MetroLink, both of which we all welcome. At what point will Irish Rail be able to give clarity to people in terms of the length of disruptions and the alternative measures that are going to be put in place? Will there be any effort such that the disruption for DART+ West and MetroLink can at least be done at the same time and that the closures could be operated at the same time? Will they be two completely separate sets of disruptions, or at least when will we know about this?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_172">We are working with the team that will be delivering the MetroLink to reduce the impact to services. As the Deputy knows, this has just received planning, so it is still early-stages discussion, but there has been dialogue for the last number of years with the team there and we will be working very closely with it to absolutely minimise disruption and really co-ordinate around that interchange at Glasnevin. That dialogue is ongoing.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_114">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_173">That is great. I thank Ms Considine very much.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_115">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_174">I thank Ms Considine and Mr. Kenny. I congratulate Ms Considine on her new role. I want to begin by talking about capacity because I have raised overcrowding on rail services arriving into Galway city at peak times with Irish Rail many times. I welcome the new 6.50 a.m. service from Athenry to Galway. That is a help. It allows people to get into Galway city earlier in the mornings. That has started in recent days, but there are still serious issues on the existing services leaving Athenry and the likes of the ones leaving at 7.48 a.m. and 8.16 a.m. I was sent photographs only this morning from a service that left this morning showing people squished in. There was standing room only. It is a health and safety issue. There have been incidents of people getting hurt. People have not been able to board trains. They are being left behind on the platform. There are only two carriages on the 7.48 a.m. train, for example, which I am sure Ms Considine will acknowledge is totally inadequate. I understand that improvements are coming down the line, such as the passing loop at Oranmore and so on, but we have a real crisis for commuters now, and we need action now. Are additional carriages being considered in the short term?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_175">There are a couple of issues there. We have the redevelopment of Ceannt Station. We are hoping that will be open next year, and that will provide for five platforms and, again, the platform extension allowing for the larger sets. The Deputy mentioned the passing loop at Oranmore and, indeed, the underpass was put in there the weekend before last. I believe platform 5 is opening in Galway this weekend. As the Deputy rightly pointed out, we have been able due to reconfiguration to introduce that early morning Athenry service that comes through Oranmore. That is only in place until August of next year, so it will be subject to review and we will see whether the funding will continue to retain that service thereafter. However, I believe the numbers are growing at it, and we know there is demand for more services. To answer the Deputy's question, we are hoping that when the DART+ fleet is up and running in summer 2027, that will free up more sets to introduce additional capacity. We are really constrained at the moment. I would love to be able to say to the Deputy today that we will be able to address this in the coming months. Unfortunately, there are real capacity constraints with the fleet.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_117">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_176">Of course. I have made representations on this before to Irish Rail and to the Minister and the response has been that the existing diesel carriages from the DART fleet will be provided to the regional routes. I am very concerned to hear today that there are even further delays in the deployment of the new carriages and that we are talking 2027 or 2028, realistically, for regional routes like between Athenry and Galway to benefit from this. We have a real crisis now, and it is a problem that is not going away and is going to get worse. Is there any alternative solution to this? Can new carriages be sourced elsewhere? Can additional services be put in place here?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_177">To give some assurance to the Deputy, once the new DART+ fleet starts to come into service in quarter 2 of 2027, which is the programme we have now agreed with the supplier, they will start to come in very quickly. It should not be 2028. We should be able to immediately start to free up sets there to put additional capacity on those intercity routes and those routes where capacity is most badly needed. In the short term, however - again I am going to preface that I am new into the role so I do not know all the details - my understanding, certainly from talking to colleagues over the last number of weeks, is that there is a real constraint with fleet, so I could not make any commitment beyond that.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_119">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_178">Okay. I urge Ms Considine to look at any and all possible alternative solutions because this is causing chaos in my constituency for people who are commuting in and out of Galway city.</p>
+          <p eId="para_179"> In terms of the western rail corridor, there is a recommendation in the rail review for Athenry to Claremorris to be reopened. That is very welcome. The key focus now is to see the funding actually allocated for that project. Can Ms Considine talk a little bit about that?</p>
+          <p eId="para_180">I think it was mentioned that preliminary work is being done at the moment. Would Iarnród Éireann be in a position to begin construction on that project as soon as the funding is allocated?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_181">There is identification of the route and the preliminary designs and feasibility works. There is already a team in our organisation looking at that. There is not a specific pot of funding allocated to this project at the moment, so that is a constraint. We have started the feasibility works with some funding from the Department of Transport but we need funding for the next stage to do that detailed design. We are having those conversations. It will go back to those priority projects that will be identified in the NDP. We hope to have sight of that in the coming month as well as information as to how they will be funded.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_121">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_182">I am sorry to interrupt but I am short on time. How quickly does Ms Considine think Iarnród Éireann could have it up and running? We have the announcement coming in the coming weeks in terms of the national development plan and the projects that will be funded. If the western rail corridor is included in that in the coming weeks, how quickly, realistically, does Ms Considine see that project getting up and running?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_183">At this stage, if there were no constraint on funding, this project could be delivered probably in three years. We would be looking at the end of this decade to at least have construction well under way.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_123">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_184">The section from Claremorris to Collooney has not been included in the rail review, but I ask for Ms Considine's views on that and whether it is a project she thinks is feasible in the medium to long term - say, in the next ten, 15 or 20 years.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_185">It goes back to the point about the western rail corridor. The initial feasibility and the initial soundings are looking very positive for that route, and the more there is demand for it the more the extension to Collooney looks like it would be viable. As the Deputy rightly pointed out, it is not in the current strategic rail review, but there is, as I mentioned earlier, an opportunity. That will be reviewed at a point in time. If the first stage goes really well, one would be optimistic that it could be included at that stage.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_125">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_186">That is very welcome. I thank the witnesses.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_126">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_187">I will take the committee and the witnesses through the timetable for the next while. Next I will call Senator Duffy, who also has been allocated Deputy Murphy's time. Then I will go to Senator Cosgrove. Then, as we have other Members joining us, I will give them four minutes each, starting with Deputy Byrne, then Deputy O'Rourke and then Deputy O'Meara.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_127">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_188">Chairman, will members of the committee have a second contribution?</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_128">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_189">I do not think we will have time on this occasion, Deputy Crowe. We are tight on time. I did flag that at the start of the meeting but I appreciate your asking. That is why I am trying to keep everybody as close to their time as I can.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_129">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_190">I congratulate Ms Considine on her appointment and welcome her and Mr. Kenny to the session. I place on record my thanks to Jim Meade for his service down through the years. He was an excellent person to deal with in terms of improving and expanding rail connectivity right across the island, in particular in Mayo, where I am based.</p>
+          <p eId="para_191"> I welcome the discussion on the all-island rail review as a regular rail user and someone who has advocated regularly for additional services. The increase in services has been very positive, in particular in Mayo, on which I will focus most of my contribution.</p>
+          <p eId="para_192"> The introduction of the early-morning rail service connecting Ballina into Manulla Junction and onwards to Dublin has been a very significant and very positive development for County Mayo, in particular north Mayo, which was previously isolated. Are there plans for additional services on the Mayo line? As previous contributors have said, capacity is the issue and it is felt on every single line. I wish to advocate for additional services on the Mayo line. Could the witnesses clarify if there are plans for additional services on the Mayo route?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_193">I am probably repeating myself a little so I apologise to the Leas-Chathaoirleach and the members, but, as more fleet comes on, particularly with the DART+ fleet coming on in 2027, we hope that will allow us to put more services on, particularly where there is high demand, such as for the Ballina service, and that we will be able to improve the frequency of that service. We would be very open to that.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_131">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_194">Currently, though, there are no plans.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_195">There are no immediate plans, but we would like to expand the service to at least every two hours.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_133">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_196">Manulla Junction is a unique location in that it is not accessible by car for passengers but is a strategic location. In Mayo many users of the service now travel intercounty, that is, from Westport to Ballina or to Castlebar in each direction to Foxford. Something that has been raised with me very regularly - I do not think it has ever been highlighted in this forum - is shelter facilities at Manulla Junction. Are there plans for that or can facilities be introduced for passengers to improve conditions there?</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_197">I will take that away, if that is okay, because I do not know the answer to that at the moment. We will come back to the Senator on that.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_135">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_198">That is okay. To reiterate, going into the winter months there is a kind of time lag between different services connecting in, and it rains twice as much on the west coast as it does on the east coast. We do not need reminding of that. For passengers it would be very much welcomed as an improvement of the rail experience. The witnesses will be able to contact me directly on that, will they?</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_199">Yes, we will come back to the Senator on that.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_137">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_200">That is great. I thank Ms Considine.</p>
+          <p eId="para_201"> Onboard catering has been discussed, and I welcome it being discussed at length. From a political point of view, we will not be satisfied until customers are satisfied, and they will be satisfied when they have adequate experience on their commutes. We had representatives of the NTA in here last summer and they said one of the constraints in delivering the onboard catering service was that the NTA did not have enough funding. When I asked how much funding it would cost to realise the onboard catering, they said they did not know, so there seems to be a lack of clarity. From my point of view, and from a political point of view, it has been made very clear in every contribution that we would like to see this. I publicly called on the NTA to make it clear what its ask was pre-budget to realise this service. If funding is the problem or the obstacle, how much would it cost? Do we have any sight as to exactly how much it would cost? When, as everyone has highlighted, there is so much demand for service on all our rail routes and many routes are at capacity, what is the obstacle financially, and why is that not so clear?</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_202">To take a step back, we did go to the markets so we do know what it would cost to provide the service across our network. However, it was cost prohibitive. We do not have funding for it and-----</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_139">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_203">I am sorry to interrupt. Was that cost prohibitive by Iarnród Éireann's interpretation or was that discussed with the Minister?</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_204">It was not included in our PSO funding from the National Transport Authority, NTA, which funds the PSO to Irish Rail.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_141">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_205">Did Iarnród Éireann ask the NTA for it and did the NTA say it did not see it as valuable or value for money?</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_206">My understanding is that we would have sought the funding. I suppose it is a matter of prioritising where the funding would go. My understanding is that the NTA would prioritise putting more services on rather than funding catering. From our perspective, we are looking at that and whether it is value for money. That is why we have not publicly declared a figure. We need to look at a commercial arrangement that would not cost the Exchequer the amount of money that that tender would have resulted in, if we had implemented it. We want to find a cost-effective way of doing this but we absolutely understand our customers' requirement to have catering provided, so we are trying to find an alternative way to do it. That may involve entering into a commercial arrangement with a third party or looking at it in a different way. I ask the committee to bear with us for a while as I work through that with my team. We will come back to the committee.</p>
+          <p eId="para_207">However, I hear clearly the demand from the people from the Senator's area.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_143">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_208">I look forward to your work on that because it is important, even from a health and safety point of view. Some routes on the Mayo line take more than five hours. Most are under four hours, but some are close to five hours. Passengers might be diabetic, going to a hospital appointment, elderly and have to take medication regularly, or they may be expecting mothers. There are lots of examples where basic access to water, tea, coffee and refreshments is important. It is important to reiterate that and I welcome Ms Considine's work on realising it.</p>
+          <p eId="para_209"> On disability access on the Mayo line, I have done a lot of work with wheelchair users in Mayo. Ms Considine mentioned changing places facilities in her opening statement, which are all over the UK. They are incredible facilities. Anyone who has a family member who requires their use will know how much it means to them and how important they are. Can we aspire to and work towards every Irish Rail station having a changing places facility that can be used by the public?</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_210">As we redevelop and modernise our stations, we will include changing places welfare facilities. The Senator is right that they are hugely beneficial to people with a disability. It is subject to funding and the redevelopment of the station, but it is in our design plans to include in any modernisation of a station.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_145">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_211">It should not just be in the redevelopment and modernisation, which is great wherever that happens. That is good for those towns or cities. However, there are places where there is no requirement for development, but there is a requirement for a facility like that. These facilities offer incredible dignity to families and we should aspire to and work towards having them. Politically, if the request is made and work is done to identify how much it would cost to put into each station, it would be inclusive and a practical measure to improve the quality of the lives of people with disabilities. Can we work towards putting them in, for example, stations in Ballina, Claremorris, Castlebar, Westport?</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_212">Today, we do not have accommodation in all our stations. However, as we work, we will prioritise the busier stations and the stations where there are interchanges, where people might change trains, such as the junction at Athlone. We will prioritise those and build them into our pipeline, but we will certainly look at where we can do it along the network.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_147">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_213">I would appreciate if Irish Rail did. There are stations in Mayo, and I am parochial in that way, but a policy should be in place generally for the country. It should be on a capital works list. However long that list is and however long it takes to get through, we should aspire to installing them for society generally. It would be very welcome and, practically speaking, it would, as I said, offer great dignity to those who are the most vulnerable and need it most. That includes not only the users, but also their families.</p>
+          <p eId="para_214"> Irish Rail has work carriages. Are there any plans for quiet carriages, which could be positive for people with autism or people who would like to work quietly and peacefully while commuting? Can we aspire to those on all our routes?</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_215">We have quiet carriages. I am looking to Mr. Kenny for the detail, but I often take the Cork service at the junction and there is certainly a quiet carriage on that train.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_216">It is on the Cork-Dublin train - what we call the mark 4 trains - already. We are working with Translink to extend it to that line. Capacity will bring the opportunity for it. As we expand frequency on various routes, we can start dedicating carriages. The short answer is that we want to expand the quiet carriages. They are quite popular where they have been introduced. Where we have three carriage trains and things like that, giving the full capacity over is a little restrictive, but as we expand the service we will look to introduce it.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_150">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_217">That is great and will be welcome. Ms Considine mentioned works in Claremorris station in her opening statement. What do they entail?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_218">We started the lift and footbridge works there in August. There will be a brand new bridge with integrated lifts in Claremorris station and it should be complete in July next year.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_152">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_219">That is great. Going back to wheelchair users, they have to pre-book their journeys, but when they go to do so, in Mayo in particular - wheelchair users and advocates have made this point to me - they are told it is booked out. However, when they arrive at the station there are no wheelchair users using the service so they are able to use the train to commute to wherever they need to go. It is a big problem. There is an issue with the system and a lack of service to get these individuals on. Why is that a problem and can it be improved?</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_220">I am not aware of the detail of the system. I just heard recently that a new system is being introduced, but I need to understand it, so if it is okay with the Senator, we will come back to him on that point.</p>
+        </speech>
+        <speech by="#MarkDuffy" eId="spk_154">
+          <from>Senator Mark Duffy<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_221">Yes, that is fine. I offer my support for the all-island rail review, the double-tracking from Mayo to Dublin, but most important, the realisation of the first phase of the western rail corridor from Athenry to Claremorris. It is important we identify now what success on that service would look like in terms of numbers. Many numbers have been depressed in the projections for these potential routes. We need to identify what success looks like on this route to make sure we have the argument to continue the line north to Sligo and connect all the western seaboard. I thank the witnesses for their time today. I wish them well and look forward to engaging with them throughout their terms.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_155">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-10-22T11:30:00+01:00"/></from>
+          <p eId="para_222">I congratulate Ms Considine on her new job. Her reputation precedes her. She is getting lots of compliments today. I live in Sligo and I have read in detail the all-island strategic rail review. I have raised this at a number of meetings. I am delighted to be part of this committee and have the opportunity to raise it here. It is disappointing that the Claremorris to Collooney section of the western rail corridor is not included because there was a lot of ambiguity from Irish Rail around whether the existing route would be retained in public ownership. It was always a given, but there was a lot of controversy and confusion around the idea that it would be extended as a greenway. The confusion caused a lot of upset in Sligo County Council. There was a lot of division between members about it and it was great when I started here that we got clarity from the former CEO, Mr. Jim Meade, that it would only be used for rail infrastructure. In light of that, we were on the back foot straight away and did not have time to lobby as politicians to have it included in the all-island strategic rail review. Huge credit has to be given to Dr. John Bradley - it is sad he has passed away - for the West on Track campaign. As we were overlooked and because there was so much confusion around it, could an addendum be looked at to include this section of the railway if the work is going ahead as it is only 75 km? There is still no full commitment to it. The Minister of State, Deputy Canney, is keen as a west of Ireland man to see it moving. It is wonderful it is moving. Mr. Kenny said that capacity brings opportunity, but it is hard to have capacity if we do not have the opportunity in the first place. I hope this can be looked at again because if Irish Rail builds it, people will use it. That has been proved along different sections of this line, for example at Athenry.</p>
+          <p eId="para_223"> Ms Considine also mentioned that part of the premise behind the all-island rail review was for airports to be connected to ports. Ireland West Airport at Knock is developing and it is wonderful for us to have it in the west of Ireland. It could be connected to Sligo port, which is for freight. That is another reason to include this part of the line.</p>
+          <p eId="para_224"> I have raised the issue of the catering cart many times. I have 1,000 signatures on a petition about this. Ms Considine said in her opening statement that Iarnród Éireann is looking at "creative ... solutions". I would love to hear more about them. The line is very long. This feeds into my next question about Dublin-Sligo-Dublin train. I use it weekly. I come up to Dublin every Tuesday and I love the train. It is a fantastic service. It is so comfortable and wonderful. However, the journey takes too long. Often there are delays coming into Dublin. What measures are being put in place to rectify this? I know there is a looping service from Maynooth. I would like to get more detail. In the meantime, could there be positive discrimination for people in the west of Ireland, like Senator Duffy said? It is not about commercial viability but about providing a service. We often do not have the healthcare service provision in the west of Ireland so there are many people coming to Dublin using these trains to attend appointments in Dublin. I am a Cork woman so I know that the service has returned to the Dublin-Cork railway line. Leaving the commercial aspect of it aside, as a basic provision for balanced regional development could get it returned to the Sligo-Dublin train and the Mayo trains? That is my second question.</p>
+          <p eId="para_225"> Last week I heard Mr. Kenny on the radio saying that all the commuter services should not be based around Dublin. We have a really good opportunity. ATU in Sligo did a study about having an early-morning commuter train in Sligo. I have spoken to Irish Rail before about this and received fantastic feedback. However, the response said that it might not be until 2027. We think that a commuter service would be a really good option to relieve the student accommodation crisis in the ever-growing ATU. The engineering department did a simulation, so a feasibility study has been done. I ask that this be fast-tracked. </p>
+          <p eId="para_226"> My final point is about refurbishments to MacDiarmada Station in Sligo. At the moment it is like a skeleton structure, with no roof on it. We have explored various heritage grants and looked at ways that it could be possibly used. As Senator Duffy said, the weather in the west of Ireland does not lend itself to be standing out in the rain. The station is a wonderful old building but it is like a skeleton. The old iron structure is there, but there is nothing on top of it.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_156">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_227">There is a lot there. Ms Considine has a minute and a half to respond.</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_228">Okay, I will be very brief. I thank the Senator for her questions. As I am from the west of Ireland, I empathise and I understand the importance of rail from the perspective of balanced regional development. Regarding the extension out to Collooney, the line is being preserved for future rail reuse. That is really important. The plan is a framework. If we can accelerate some projects, we would be very open to that. It is all subject to funding and the business case but the initial soundings around the western rail corridor are very positive. We hope that this momentum will continue for the spur further out.</p>
+          <p eId="para_229"> I hear very clearly what the Senator is saying on catering. If we are able to reintroduce catering, we will prioritise services with longer journey times. We heard from Deputy Pa Daly earlier about the Kerry line. For those longer journey times, we totally appreciate the requirement for catering. </p>
+          <p eId="para_230"> Regarding the refurbishment of Sligo station, I have been there and I have seen the roof the Senator referred to. This goes back to funding, but it is certainly on our radar. I know the staff there have been raising it with the infrastructure department. We certainly will look at that, subject to funding.</p>
+          <p eId="para_231"> The Senator's last point was about train speeds. My understanding is that as DART+ West is rolled out, we will have more capacity on the Mullingar-Maynooth section. Double tracking will improve train speeds because there are probably speed restrictions. As I am new to the role, I am going to qualify everything I say. I might not have all the facts, but my preliminary understanding is that speed restrictions apply there.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_158">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_232">I congratulate Ms Considine on her appointment. Mr. Kenny will probably know already the question I am going to ask. I will have to excuse myself in a moment. I am actually due on RTÉ in three minutes. This is a very direct and blunt question. I am from Gorey, County Wexford. Gorey is the same distance from Dublin as Carlow, Portlaoise, Drogheda and Dundalk. In my constituency there are three railway stations, Rathdrum, Arklow and Gorey. I have six rail services that I can use every day. Somebody from Carlow will have 11, somebody from Dundalk will have 16 and someone from Portlaoise will have 32. I love when we hear all the talk about the double track in other parts of the country but we are not seeing it on the Rosslare rail line. I put a question to Mr. Kenny's predecessor, Jim Meade, about services to be developed south of Wicklow town, but the answer I received was about all the services being developed north of Wicklow town. Is Iarnród Éireann going to provide any improvements to rail services for those in Gorey and Arklow in the constituency I represent?</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_233">Mr. Kenny and I discussed this very briefly this morning. He has more details, so because the Deputy is constrained for time, I will hand over to him.</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_234">The Wicklow capacity will help, because as we have more services in Wicklow, it frees up room on trains the Deputy was referring to. When we free up trains, that is when we start having options. I know that the Deputy is not very keen on shuttle services that connect. I think in the shorter term it is probably our main opportunity to expand the services so that there would be some connections.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_161">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_235">What about better rolling stock?</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Mr. Barry Kenny<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_236">More intercity trains and commuter trains will be freed up when the DART+ trains start coming in, so that will allow the intercity trains to be used. Commuter trains are important at peak hours because otherwise, there is simply not the room, but it is a debate to be had.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_163">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_237">I will look to meet Mr. Kenny about this again.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_164">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_238">Best wishes to Ms Considine in her new role. I want to raise the Navan rail line. In January 2024, in the previous transport committee, we heard from Irish Rail that the plan was that the project would move to route selection and project design. This would be completed by the end of 2025 and the application for the railway order would be submitted in 2026. The latest responses I have received suggest that there will be a public consultation on the route options in early 2026. Is it still the plan to apply for the railway order in the calendar year of 2026? Is it still the expectation that this might take 12 or 18 months? What level of funding will be available to bring this project to construction at that stage, when the railway order is in place?</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_239">The information I have is that the preferred route, the emerging route, will be going to public consultation as the Deputy said, in the spring of 2026. We are aiming to have lodged the railway order application by the end of 2027. The fiscal works, all subject to planning and funding coming through, will start from 2030 as per the greater Dublin area transport strategy. We will be engaging with Meath County Council to support the envisaged development. That is the current timeline I have been informed of.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_166">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_240">That is disappointing. In January 2024, 21 months ago, we were told that the railway order would be submitted in the calendar year 2026 and that is now potentially a year delayed, so that is disappointing. I ask that whatever time can be taken off those timelines will be taken off them. On the issue of advancing the project when the railway order is in place, we know that caps on funding are in place for the Department, the NTA and out to 2035 for the Government. We have all mentioned different projects. How are those projects going to be prioritised within a limited budget?</p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:40:00+01:00"/></from>
+          <p eId="para_241">We are expecting the NDP to be published in the coming month. That will prioritise projects aligned with the national planning framework. We are working on the basis that funding will be allowed to deliver those projects, so that will form our own project pipeline. We are working on a very extensive pipeline, so that we are ready to get going on whatever projects emerge through the NDP funding envelope. We have the skill set and the capability internally to deliver projects.</p>
+          <p eId="para_242">It is about getting them prioritised and funded. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_168">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_243">What is the indicative timeline for the Navan rail project at this stage?</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_244">As I outlined there, we are talking about physical works from 2030 per the current timeline. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_170">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_245">I would just re-emphasise that point. Our concern in the county is that, first, there will be delay in securing the railway order but then when it is secured, that there could be downtime of a couple of years. We have the experience of downtime of decades because there was a railway order in place before for this project and then it fell off the priority list. We need to maintain momentum on it to see it delivered. </p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_246">We would be very much in agreement with the Deputy on that. Subject to getting the railway order and funding being secured, we want to keep going with projects and accelerate the delivery of it. I think the record in recent years will show that where the funding and the railway orders are in place, we have delivered. It is about building on that momentum and looking at that multi-annual funding so that we have certainty of capital funding and we can plan resources accordingly. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_172">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_247">Thank you.</p>
+        </speech>
+        <speech by="#RyanOMeara" eId="spk_173">
+          <from>Deputy Ryan O'Meara<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_248">I will start by congratulating Ms Considine on her new position and thank her for everything she did for Shannon Airport and the region while she was there. I also welcome Mr. Kenny. I represent north Tipperary so I want to ask about the regional line across north Tipperary from Limerick to Ballybrophy. It is a 52.25 miles in length and serves Castleconnell, Birdhill, Nenagh, Cloughjordan and Roscrea. It runs two return trips per day as well as the morning Nenagh to Limerick commuter service. There has been no direct Dublin service on the line since 1986. Journey times are around one hour and 42 minutes, with the slowest being two hours, which is almost 30 minutes slower than it was in the 1990s. I welcome the fact we have that line there to begin with and that it was never lost, unlike a lot of areas where it was, but I am trying to get people to see the importance of this line and its potential. I have issues with the maximum line speed being 50 miles per hour when so much of it is continuous welded rail in comparison with some other lines. Large sections of it are restricted to 30 miles per hour. I also have an issue with public perception and marketing suggesting it is a lightly used line. It is not marketed, but also not seen, as being reliable, with an awful lot of bus or coach services being put on because of closures. People just cannot rely on it for connectivity and it takes a long time to travel the line because of speeds, and the times at which trains depart stations and arriving at Limerick or Ballybrophy does not suit commuters. In the immediate term I would like to see a third service put on the line at midday. There are carriages there and I believe there has been work towards staff funding for that. </p>
+          <p eId="para_249"> I have a few questions for Ms Considine. I know Mr. Kenny will be familiar with the North Tipperary Community Rail Partnership as well. In her new position, is it on Ms Considine’s agenda to deliver a regional rail line beyond Limerick and Clare? I am thinking across north Tipperary in particular and the benefits and potential that are there.</p>
+          <p eId="para_250"> Second, why has the Limerick-Ballybrophy timetable remained largely unchanged for 50 years? Her predecessor, Jim Meade, committed to North Tipperary Community Rail Partnership, and he had very good engagements with it over the years, that the line would see additional services from the December 2025 timetable. Where are we with that?</p>
+          <p eId="para_251"> Third, there were good meetings with North Tipperary Community Rail Partnership. I ask Ms Considine to continue those engagements in her new role along with Mr. Kenny.</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Ms Mary Considine<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_252">I thank the Deputy for his good wishes. I am very determined to engage with local communities and all stakeholders because that partnership approach is where we can deliver the change that is required to deliver huge infrastructure right across the country. As the Deputy will know from my previous role, I am really passionate about developing infrastructure in the region. I think it is a really important economic enabler. Any investment in rail across the country is a real enabler of economic activity. </p>
+          <p eId="para_253"> The Deputy might forgive me but I am just learning about the whole network. On Ballybrophy, my understanding is that it is about the state of the infrastructure and its quality. It would need significant investment if we were to increase journey times and lift those speed restrictions. There is no immediate funding to do that. That is obviously a constraint we are working in. We need to invest to improve line speeds but also the level crossings. The Deputy mentioned the partnership group there. I think Mr. Kenny may have sat in on meetings with it and Mr. Meade would have met them. It is certainly on our radar but, again, it is subject to funding. </p>
+        </speech>
+        <speech by="#RyanOMeara" eId="spk_175">
+          <from>Deputy Ryan O'Meara<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_254">There has been quite a significant level of funding with the continuous welded rail and the maintenance and improvement works on that line over the last decade or so. The frustration is that there are no additional services, the times at which they run do not suit commuters and the journey times are still so slow and the journey is so long. Until it is built in such a way that people can use it, it is going to be termed as not being used with high frequency or being in high demand. That is obviously going to be the case when it is unreliable and the services are slow. I am here at this committee today as a non-member to bring Ms Considine’s attention to it because it is something I will be continuing to raise with her.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_176">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-22T11:50:00+01:00"/></from>
+          <p eId="para_255">I thank Ms Considine and Mr. Kenny for assisting us with the important review of the all-Ireland strategic rail review and the wider service issues they dealt with. </p>
+        </speech>
+        <summary eId="sum_8"> The joint committee adjourned at 11.56 a.m. until 9.30 a.m. on Wednesday, 12 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

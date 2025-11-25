@@ -1,0 +1,130 @@
+1) Point-based heatmap with Leaflet.heat
+Ideal if you just want to show “hotspots” of sentiment rather than crisp cell borders.
+
+Collect & store user location
+At signup, capture their geolocation (e.g. via the browser’s navigator.geolocation or by asking for a postcode and geocoding it). Store each user’s { lat, lng, sentimentScore } on your server.
+
+Expose an API endpoint
+For example, GET /api/heat-data?topic=immigration returns:
+
+json
+Copy
+Edit
+[
+  { "lat": 53.3, "lng": -6.2, "value": 0.8 },
+  { "lat": 52.9, "lng": -8.5, "value": 0.3 },
+  …  
+]
+where value is 0 (disagree) → 1 (agree).
+
+Install & include the heat plugin
+
+html
+Copy
+Edit
+<script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+Render the heatmap
+
+js
+Copy
+Edit
+fetch('/api/heat-data?topic=immigration')
+  .then(r => r.json())
+  .then(points => {
+    // convert to [lat, lng, intensity]
+    const heatPoints = points.map(p => [p.lat, p.lng, p.value]);
+    L.heatLayer(heatPoints, {
+      radius: 25,
+      blur: 15,
+      maxZoom: 10,
+      gradient: {
+        0.0: 'purple',
+        0.5: 'yellow',
+        1.0: 'yellow'
+      }
+    }).addTo(map);
+  });
+2) Grid-based choropleth (10 × 10 km cells) with Turf.js
+Ideal if you want discrete squares, each coloured by the average or total of user scores within that cell.
+
+Fetch raw user points
+Same as above—your API returns an array of { lat, lng, score }.
+
+Generate a square grid
+Use Turf.js on the client (or server) to build a 10 km grid covering Ireland’s bounding box:
+
+js
+Copy
+Edit
+// include Turf via CDN
+<script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+js
+Copy
+Edit
+// define Ireland bbox [minX, minY, maxX, maxY]
+const bbox = [-10.6, 51.3, -5.3, 55.4];
+// 10 km cells
+const cellSide = 10;
+const grid = turf.squareGrid(bbox, cellSide, { units: 'kilometers' });
+Aggregate user data into each cell
+
+js
+Copy
+Edit
+// assume `points` is your fetched array of GeoJSON Point features
+const ptFC = turf.featureCollection(
+  points.map(p => turf.point([p.lng, p.lat], { score: p.value }))
+);
+
+grid.features.forEach(cell => {
+  const ptsWithin = turf.pointsWithinPolygon(ptFC, cell);
+  if (ptsWithin.features.length) {
+    // for example, average score:
+    const avg = ptsWithin.features.reduce((sum, f) => sum + f.properties.score, 0)
+              / ptsWithin.features.length;
+    cell.properties.avgScore = avg;
+  } else {
+    cell.properties.avgScore = null;
+  }
+});
+Draw the grid layer
+
+js
+Copy
+Edit
+L.geoJSON(grid, {
+  style: feature => {
+    const v = feature.properties.avgScore;
+    const color = v === null
+      ? '#ccc'
+      : getColorForAgreement(v);  // same interpolate fn from before
+    return {
+      weight: 0.5,
+      color: '#444',
+      fillColor: color,
+      fillOpacity: v === null ? 0.1 : 0.7
+    };
+  },
+  onEachFeature: (f, layer) => {
+    const v = f.properties.avgScore;
+    layer.bindTooltip(v !== null
+      ? `Avg sentiment: ${ (v*100).toFixed(1) }%` 
+      : 'No data', { sticky: true });
+  }
+}).addTo(map);
+Why these help
+No giant GeoJSON of 40 complex shapes—just lightweight points or small grid cells.
+
+Fetch only what you need (user data per topic), not full boundary files.
+
+Grid is trivial to compute on the client with Turf.js, or you can precompute on the server and serve a cached GeoJSON.
+
+Heatmap uses a WebGL‐accelerated canvas plugin (Leaflet.heat) that can handle thousands of points instantly.
+
+Pick the pattern that best fits your UX:
+
+Continuous “blobby” heat → go with Leaflet.heat.
+
+Discrete area squares → use Turf.js + geoJSON grid.
+
+Either approach will give you near-instant rendering without wrestling with heavyweight constituency boundaries.

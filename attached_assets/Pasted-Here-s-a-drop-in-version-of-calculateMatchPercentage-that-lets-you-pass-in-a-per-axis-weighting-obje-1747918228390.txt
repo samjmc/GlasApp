@@ -1,0 +1,108 @@
+Here’s a drop-in version of calculateMatchPercentage that lets you pass in a per-axis weighting object. I’ve kept the defaults at 1 (so it behaves exactly like your current unweighted version) but you can override any axis to emphasize or de-emphasize it.
+
+ts
+Copy
+Edit
+// same interface you already have
+interface IdeologicalDimensions {
+  economic: number;
+  social: number;
+  cultural: number;
+  globalism: number;
+  environmental: number;
+  authority: number;
+  welfare: number;
+  technocratic: number;
+}
+
+// new type for weights: any subset of axes
+type DimensionKey = keyof IdeologicalDimensions;
+type Weights = Partial<Record<DimensionKey, number>>;
+
+// default all weights to 1
+const DEFAULT_WEIGHTS: Record<DimensionKey, number> = {
+  economic:      1,
+  social:        1,
+  cultural:      1,
+  globalism:     1,
+  environmental: 1,
+  authority:     1,
+  welfare:       1,
+  technocratic:  1,
+};
+
+/**
+ * Calculate match % with optional per-axis weights.
+ * @param user        The user's 8-d vector
+ * @param party       The party row from your DB
+ * @param weightsCfg  Optional: { economic: 2, authority: 0.5, ... }
+ */
+function calculateMatchPercentage(
+  user: IdeologicalDimensions,
+  party: any,
+  weightsCfg: Weights = {}
+): number {
+  // resolve governance field
+  const govScore = party.technocraticScore != null
+    ? party.technocraticScore
+    : party.governanceScore ?? 0;
+
+  // axes list
+  const axes: DimensionKey[] = [
+    "economic","social","cultural","globalism",
+    "environmental","authority","welfare","technocratic"
+  ];
+
+  // merge defaults + overrides
+  const weights: Record<DimensionKey, number> = {
+    ...DEFAULT_WEIGHTS,
+    ...weightsCfg
+  };
+
+  // sum of weighted squared diffs
+  let sumSq = 0;
+  for (const axis of axes) {
+    const u = user[axis];
+    const p = axis === "technocratic"
+      ? govScore
+      : party[`${axis}Score`] ?? 0;
+    const diff = u - p;
+    sumSq += weights[axis] * diff * diff;
+  }
+
+  // distance
+  const distance = Math.sqrt(sumSq);
+
+  // maxDistance = sqrt( Σ (weight[axis] * 4²) )
+  const maxDistance = Math.sqrt(
+    axes.reduce((acc, axis) => acc + weights[axis] * 4 * 4, 0)
+  );
+
+  // linear map to 0–100%
+  const raw = (1 - distance / maxDistance) * 100;
+
+  // clamp & round
+  return Math.round(Math.max(0, Math.min(100, raw)) * 10) / 10;
+}
+How to use
+Default (no weights):
+
+ts
+Copy
+Edit
+const match = calculateMatchPercentage(userDims, partyRow);
+Custom weights (e.g. double “authority”, half “social”):
+
+ts
+Copy
+Edit
+const weights = { authority: 2, social: 0.5 };
+const match = calculateMatchPercentage(userDims, partyRow, weights);
+That will stretch “authority” differences twice as much and soften “social” ones by half. Feel free to experiment with different weight sets to tune your match results!
+
+
+
+
+
+
+

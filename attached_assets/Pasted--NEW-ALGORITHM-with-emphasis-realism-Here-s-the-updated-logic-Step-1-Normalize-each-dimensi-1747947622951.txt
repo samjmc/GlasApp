@@ -1,0 +1,90 @@
+🔁 NEW ALGORITHM (with emphasis & realism)
+Here’s the updated logic:
+
+Step 1: Normalize each dimension to a scale of –1 to +1
+ts
+Copy
+Edit
+const normalize = (x: number) => x / 10;
+Step 2: Compute cosine similarity
+ts
+Copy
+Edit
+function cosineSimilarity(
+  user: IdeologicalDimensions,
+  party: IdeologicalDimensions,
+  weights?: Partial<DimensionWeights>
+): number {
+  const defaultWeights: DimensionWeights = {
+    economic: 1,
+    social: 1,
+    cultural: 1,
+    globalism: 1,
+    environmental: 1,
+    authority: 1,
+    welfare: 1,
+    technocratic: 1
+  };
+
+  const finalWeights = { ...defaultWeights, ...weights };
+
+  const axes: (keyof IdeologicalDimensions)[] = Object.keys(finalWeights) as any;
+
+  let dotProduct = 0;
+  let userMagnitudeSq = 0;
+  let partyMagnitudeSq = 0;
+
+  for (const axis of axes) {
+    const u = normalize(user[axis]);
+    const p = normalize(party[axis]);
+    const w = finalWeights[axis];
+
+    dotProduct += w * u * p;
+    userMagnitudeSq += w * u * u;
+    partyMagnitudeSq += w * p * p;
+  }
+
+  const userMagnitude = Math.sqrt(userMagnitudeSq);
+  const partyMagnitude = Math.sqrt(partyMagnitudeSq);
+
+  if (userMagnitude === 0 || partyMagnitude === 0) return 0;
+
+  const cosine = dotProduct / (userMagnitude * partyMagnitude);
+  return Math.round(cosine * 1000) / 10; // scale to 0-100%
+}
+Step 3: Add penalty for major disagreements
+ts
+Copy
+Edit
+function calculatePenalty(
+  user: IdeologicalDimensions,
+  party: IdeologicalDimensions
+): number {
+  let penalty = 0;
+
+  for (const axis of Object.keys(user) as (keyof IdeologicalDimensions)[]) {
+    const u = normalize(user[axis]);
+    const p = normalize(party[axis]);
+    const diff = Math.abs(u - p);
+
+    if (diff > 1.2) penalty += 0.05;  // small penalty
+    if (diff > 1.6) penalty += 0.1;   // bigger penalty
+    if (diff > 2.0) penalty += 0.2;   // huge disagreement
+  }
+
+  return penalty;
+}
+Step 4: Final match percentage
+ts
+Copy
+Edit
+const cosine = cosineSimilarity(user, party, weights);
+const penalty = calculatePenalty(user, party);
+const matchPercentage = Math.max(0, cosine * (1 - penalty));
+✅ Instructions for Replit Dev:
+🔧 Update calculateMatchPercentage() in partyMatchRoutes.ts to use cosine similarity instead of Euclidean
+📉 Normalize each dimension between –1 and +1
+🚫 Add a penalty function based on dimension disagreements > 1.5
+📈 Return matchPercentage = cosine * (1 - penalty) scaled to 0–100%
+
+Let me know if you want me to rewrite your partyMatchRoutes.ts file in full with this logic ready to paste.

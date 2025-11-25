@@ -1,0 +1,646 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-11-04/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-11-04/debate"/>
+          <FRBRdate date="2025-11-04" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-11-04/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-11-04/debate/mul@"/>
+          <FRBRdate date="2025-11-04" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-11-04/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-11-04/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-05" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LynnRuane" href="/ie/oireachtas/member/id/Lynn-Ruane.S.2016-04-25" showAs="Lynn Ruane"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-04">Dé Máirt, 04 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-04">Tuesday, 04 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#NoelODonovan">Noel O'Donovan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LynnRuane">Lynn Ruane</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarethScahill">Gareth Scahill.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Artificial Intelligence and Disability: Discussion (Resumed)<recordedTime time="2025-11-04T11:10:00+00:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T11:10:00+00:00"/></from>
+          <p eId="para_13">Good morning, ladies and gentlemen. I welcome everyone to the committee. We have received apologies from Deputy Naoise Ó Cearúil, who may be able to join us depending on when another committee finishes, and Senator Dee Ryan. </p>
+          <p eId="para_14"> We have been discussing the issue of artificial intelligence through the lens of AI and young people, AI and older people and AI and disability. We began this discussion on 7 October, which was budget day, and we met with the Disability Federation of Ireland, the National Disability Authority and Voice of Vision Impairment. We are delighted to have the DPO Network with us today for the second session on AI and disability. In attendance on behalf of the DPO Network we have: Ms Elaine Grehan, advocacy manager with the Irish Deaf Society; Dr. Michael Seifu, policy officer with Independent Living Movement Ireland; and Mr. John Sherwin, CEO of the Irish Deaf Society and secretary of the DPO Network. I thank the witnesses and welcome them here. I invite Ms Grehan, as the advocacy manager on the behalf of the Irish Deaf Society, to deliver the opening statement on behalf of the DPO Network. </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T11:10:00+00:00"/></from>
+          <p eId="para_15">The DPO Network welcomes the opportunity to be here today. The DPO Network organisations are As I Am, Ireland's national autism advocacy organisation, Disabled Women Ireland, DWI, Independent Living Movement Ireland, ILMI, the Irish Deaf Society, IDS, and the National Platform of Self Advocates. We understand that AI-powered assistive technology can provide supports for us inside and outside the home, such as access to information, the Internet, home controls and so on. Disabled people are using AI to help with composing letters or documents that they need, such as using large language models like ChatGPT to help with information to bring to medical professionals. However, we are concerned about the growth of AI and its unknown applications. We are concerned that there is little transparency on how AI is working and how it will be controlled for human benefit or for profit. </p>
+          <p eId="para_16"> Disabled people and deaf people must have a role in shaping how AI is developed now and into the future. AI is not neutral. Disabled people fear that AI will reflect existing institutional and structural barriers and attitudes, including biases relating to gender, ethnicity and impairment, unless there is clear transparency to ensure that structural biases are not built into these systems. A recent study in the UK by the London School of Economics care policy and evaluation centre reports that large language models, LLMs, used by over half of England's local authorities to support social workers may be introducing gender bias into care decisions. For example, Google's widely used AI model, Gemma, downplays women's physical and mental issues in comparison with men's when used to generate and summarise case notes.</p>
+          <p eId="para_17">AI is impacting on jobs. This is a serious concern, given the levels of unemployment among disabled people in Ireland, recently reported as the worst in the EU, at 20% below the EU average. Disabled people need support around AI and digital literacy. We need to ensure equality of access for all disabled people and to ensure there is no digital divide. There are huge concerns about the carbon footprint and energy demands of AI systems. AI contributes to climate change, and climate change will likely have a disproportionate impact on the lives of disabled people.</p>
+          <p eId="para_18"> Deaf people have specific concerns about AI related to sign language, and the Irish Deaf Society has submitted a separate paper on this topic. The development of AI and sign languages must be grounded in rights, inclusion and respect. The Irish Deaf Society calls for national- and EU-level frameworks that recognise deaf people's linguistic autonomy, promote meaningful participation and ensure technology is rooted in respect. Deaf people must be central in the design, development and deployment of sign language AI technologies.</p>
+          <p eId="para_19"> We are aware that State agencies are likely to look to deploy AI for data-driven decisions. Disabled people, through our DPOs, need to inform that decisions made relating to AI bring potential risks around the autonomy and choice of disabled people. Under the public sector duty, when AI contracts are awarded, we need to ensure equality and human rights standards are applied. We need transparency around the deployment of AI with a clear role for DPOs. State agencies need to build in informed consent, the right to opt out and transparency in how and what information is going to be used. We are afraid that AI and technology will be seen as cost-effective replacements for human supports such as personal assistance services. We fear that decisions requiring human analysis or instinct will be made by an AI that cannot manage the nuances of life. We need to control and direct AI to meet our needs and not have AI direct and control our lives. We have provided more information in the documentation submitted to the committee.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T11:15:00+00:00"/></from>
+          <p eId="para_20">I thank Ms Grehan for her opening statement. We will provide an opportunity for any of our witnesses to respond to any of the questions. We will now turn to members, who have a maximum of seven minutes each to pose questions and receive answers. I encourage people to be succinct. We may have time for a second round. Members know the order in which they are speaking and I first call Deputy Mythen.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_4">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T11:15:00+00:00"/></from>
+          <p eId="para_21">I thank the witnesses for coming this morning. The traffic seemed to be heavier this morning than other mornings. I will pose my first questions. What are the DPO Network's priorities for AI inclusion and oversight? What role should a DPO play in auditing AI systems for bias and accessibility?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:15:00+00:00"/></from>
+          <p eId="para_22">The involvement of DPOs in AI is from a meaningful participation perspective rather than necessarily an expert stance on artificial intelligence itself, which, of course, is a very highly developed technical pursuit. Where we can contribute is on the lived experience of our members. Next week, we will launch the second position paper from the DPO Network, a blueprint for co-creation, in the audiovisual room here. This is a buzzword the committee will, hopefully, hear more about.</p>
+          <p eId="para_23">It is involved in the human rights for disabled people strategy that has been launched recently by the Department of Children, Disability and Equality. Co-creation is where disabled people are at the table discussing the development of strategies and services. They are involved in an appropriate way in terms of the implementation of strategies and the monitoring of them. They cannot be involved in everything throughout every process. We are looking for our Government partners to find appropriate ways where we are at the table and discussing with them, beyond what is traditionally called consultancy, where a Government Department or State body might ask for feedback from disabled people at the start of the development of a process and, the next thing you know, the service is being launched, typically with problems because we have not been involved in the design of the service. Typically, we are not involved in the assessment of the service. This is where problems lie. We propose there is time and budget saving by involving disabled people in the services that are for them from the start and throughout that. We will send copies of the blueprint for co-creation, which will be launched next week, to all the Oireachtas committees, Senators and TDs. We hope that will provide a good blueprint for how we should be involved in all processes, including the development of the Government's approach to AI. We have also submitted the Irish Deaf Society's paper, but what we are trying to do is outline our concerns. However, a key priority for us is to be at the table when there are rules being developed about procurement of AI, protection of people’s identities and how it will be assessed. It is clear in the AI bubble happening in the United States at the moment that there is a huge amount of hype and over specification of what AI is capable of. We can see in chatbots and other forms of assistance that disabled people engaging with Government services quickly hit a wall where the AI cannot help them any more. It does not have the nuance to understand how to help.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_6">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T11:20:00+00:00"/></from>
+          <p eId="para_24">Picking up on that, will Mr. Sherwin explain to us in simple terms the difficulties a deaf person would have with an avatar interpreter versus a qualified human interpreter? We have to explain and explore. Will Mr. Sherwin explain exactly the difference and the difficulties he has?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:20:00+00:00"/></from>
+          <p eId="para_25">I will hand over to Ms Grehan to talk to that.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T11:20:00+00:00"/></from>
+          <p eId="para_26">When it comes to sign language, 70% of how emotion and tone are communicated in sign language is not in words. It is more through emotion and expression. How can AI understand that if it does not have emotions itself? Does that make sense? I hope that answers the Deputy's question.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:20:00+00:00"/></from>
+          <p eId="para_27">I will add that the World Federation of the Deaf, of which we are a member, is supportive of using AI and avatars at the moment for children's programmes and repetitive public messaging like signage or that type of thing. For full conversations it is not adequate and is not communicating to deaf people. The technology may get there in the future but, for example, there is still no significant corpus of ISL signing in this country for AI to learn from. We are a bit away from that at the moment.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_10">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T11:20:00+00:00"/></from>
+          <p eId="para_28">How can the Oireachtas help in supporting the DPO-led pilot schemes?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:20:00+00:00"/></from>
+          <p eId="para_29">The Oireachtas, and all of the Oireachtas committees, can help us by making sure we are at the table at the appropriate times, as I said earlier. We really hope to engage with each of the committees about the blueprint for co-creation. That attitude of involvement is embedded in the human rights for disabled people strategy. It is a relatively new thing. The Oireachtas committees and the Government Departments can help us by learning about that in the first instance. An awareness-raising needs to happen. Whatever influence the committees have to raise awareness about that, we would be happy to meet individually with the committees to have a workshop on the blueprint for co-creation.</p>
+          <p eId="para_30">Members' awareness in the first instance, and their identifying where disabled people should be at the table and are not, and asking for that, would be very supportive of us.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_12">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-04T11:25:00+00:00"/></from>
+          <p eId="para_31">This is very informative in terms of the potential and opportunity but also the risks and blind spots of AI and AI development. If the witnesses were advising the directors or CEOs of these big AI companies on where to focus their efforts to help support and realise opportunities for people with disabilities, what would they advise them to prioritise?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T11:25:00+00:00"/></from>
+          <p eId="para_32">I reiterate what Mr. Sherwin said. DPO engagement is key but, at the same time, I emphasise that DPOs are not as strong as they should be. Most of the DPOs are just emerging and they need capacity-building supports to make sure that when we sit at the table we can contribute adequately. At the same time, we also know that digital literacy is a big problem among disabled people. Therefore, State investment in supporting capacity building of DPOs and also improving digital literacy among disabled people would go some way towards an effective engagement regarding AI.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:25:00+00:00"/></from>
+          <p eId="para_33">I will add to that by saying that if you are in a position where you can ask corporates what they are doing to address this and you are trying to set out some State requirements for their engagement, there are two areas. First, they should involve disabled people in their accessibility workshops around the development of services and, second, they should be employers of disabled people and deaf people. Integrating disabled people in the workplace, whether in the Oireachtas, Google or whatever other companies might be developing AI, where they are actually on the team as staff, is the most profound and best way to involve disabled input into the development of services. Failing that, they should ensure there are sufficient thought and workshops so that services can be developed with everyone in mind and not just able-bodied people.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_15">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-04T11:25:00+00:00"/></from>
+          <p eId="para_34">That piece on co-creation is interesting. Mr. Sherwin referred to the role of the Oireachtas. A challenge here is that so much of this is in a black box in private companies. Is it the witnesses' sense that achieving the best possible outcome here - and there are balances in all of this - will require strong regulation and legislation to mandate and enforce? My concern would be that this is a suite of guidelines that are quite optional and they do not always align with the interests of private companies.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T11:25:00+00:00"/></from>
+          <p eId="para_35">That is a key question. As I said, there is room to address that, particularly if DPOs are involved in the development of AI ethical regulations. That ethical issue applies to private businesses as well as Government agencies. There should be sufficient DPO involvement in the ethical part of the regulation. It gives us some kind of guarantee that the new or already existing AI solutions would not be biased towards disabled people.</p>
+          <p eId="para_36">That is one more key area of intervention. </p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:30:00+00:00"/></from>
+          <p eId="para_37">I have some policy recommendations from the Irish Deaf Society paper that would also be relevant. These include recommendations to establish ethical review boards with disabled experts for all projects on AI and sign languages, to recognise and protect people's information and data rights and to mandate transparency about AI and the use of human oversight in deployment. Then, from a legislative perspective, national legislation should mirror and expand upon the EU AI Act to specifically address disability impacts. There is a high-risk classification for AI under the EU AI Act and that should automatically apply for areas around disability and supports for disability, particularly in legal, medical and educational support contexts. It is fair to say the development of AI is way ahead of law throughout the world. We can see a bullish attitude from companies in relation to AI development and there must be some legislative controls there from our perspective or how would the Government have any ability to enforce anything.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_18">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-04T11:30:00+00:00"/></from>
+          <p eId="para_38">A theme that has been coming up across a number of submissions is that good participation or co-creation or co-development needs resourcing of all parties. That is an important point that has been made by the Irish Deaf Society too.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:30:00+00:00"/></from>
+          <p eId="para_39">Yes. The launch of the human rights for disabled people strategy is extremely welcome and is the first time the words “human rights” are in the title, which is leading from the top. In the few months since that launch we are finding the responses from the Government in relation to it, which are welcome, looking for consultation and feedback are already starting to become a bit overwhelming because we have limited resources and we have not been called upon for this type of input by the Government writ large before. Therefore we do require support in order to support you.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_20">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-04T11:30:00+00:00"/></from>
+          <p eId="para_40">Okay. I thank Mr. Sherwin. </p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_21">
+          <from>Senator Lynn Ruane<recordedTime time="2025-11-04T11:30:00+00:00"/></from>
+          <p eId="para_41">I thank everyone for their presentations. Mr. Sherwin mentioned co-creation and Ms Grehan spoke about AI not being neutral. Looking at those two things together, I am wondering about when DPOs should be included. Are we looking at a pilot programme where it is tested on real people who are living with particular disabilities that the AI is related to or does it need to go back a step further in relation to that co-creation piece? Should the technologies be regulated in the same way that medical equipment is? What are the witnesses' thoughts on that?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:30:00+00:00"/></from>
+          <p eId="para_42">Any complex tool that will have a serious impact on the lives of people needs to be regulated in the same way. The example we included in the opening statement was of 50% of local authorities introducing gender bias into care decisions through Google Gemma. Every other week there is news about some AI system that is clearly showing bias in terms of Nazi sympathising or some sort of racist comments and gendered issues. It is in the mainstream media very clearly. When disabled people and deaf people are brought in to do testing after a system has already been developed, it is too late. We saw this even during the Covid pandemic where it had to be done very quickly-----</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_23">
+          <from>Senator Lynn Ruane<recordedTime time="2025-11-04T11:30:00+00:00"/></from>
+          <p eId="para_43">Once industry is involved, the money is already in and has been used up developing the equipment. I have concerns that AI is in the Department it is in, that is, it is in enterprise.</p>
+          <p eId="para_44">Does Mr. Sherwin know what I mean? If something is seen as enterprise and the testing is done later, nobody really wants to put the product back on the shelf, in a sense.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:35:00+00:00"/></from>
+          <p eId="para_45">No. It is costly at that point.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_25">
+          <from>Senator Lynn Ruane<recordedTime time="2025-11-04T11:35:00+00:00"/></from>
+          <p eId="para_46">Exactly. I wonder about affordability when we get to the stage where there are AI-powered tools that are beneficial and we are going to use them. Obviously, there are already wealth, educational, literacy and digital literacy gaps in Ireland. People who live with a disability are more likely to experience poverty. Then we have people who are extremely impoverished in many different ways in their lives and who will not be able to access, or have the financial ability to access, AI-powered tools. For example, there are AI-powered dyslexia pens. Currently, we cannot get them into prisons because when they come up on the scanner machine, the authorities say they look like a weapon. A whole population that falls under the DPO structures and whose members are in certain congregated settings has its rights restricted. Not only will they not be able to afford access to AI-powered tools that they need, but they will be further disenfranchised. What role can the DPOs play in ensuring that equity, fairness and advocacy are extended to those furthest on the fringes, who have a disability and are going to be more heavily impacted because they may have little agency or voice to be able to engage in the conversation?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:35:00+00:00"/></from>
+          <p eId="para_47">The cost of disability is a huge factor. It is something we are campaigning on all the time. It needs to be considered from the start.</p>
+          <p eId="para_48"> Gender and race bias are not the only biases that can get introduced to processes. When you have enterprise, a profit bias can be introduced and disabled people and deaf people are in the minority in terms of customer income and revenue for companies. This is where there needs to be a legislative approach to making sure that products, including software products like AI, are equitable for everyone to use.</p>
+          <p eId="para_49"> Yes, there is a severe poverty and income gap for disabled people. As we mentioned, Ireland has the worst record for disabled employment in Europe, which is a shameful thing and must be addressed. We are very concerned about the financial gap. We are also concerned about the training gap. Often, disabled people have lower levels of educational attainment and the quality of their education can be poorer. There is the availability of the tools but also the ability to use the tools.</p>
+          <p eId="para_50"> The bigger concern is whether AI tools are going to end up taking control away from disabled people rather than providing them with more control. All of these questions are related, but certainly we need to be involved at product design and creation stage and not just at the testing stage.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_27">
+          <from>Senator Lynn Ruane<recordedTime time="2025-11-04T11:35:00+00:00"/></from>
+          <p eId="para_51">In my last few seconds, I will speak about involvement. The govtech delivery board is being established. We are facing the possibility that AI will become embedded in public services in what I would consider concerning ways. That is especially the case when we speak of emotion and how it is communicated. What does that mean if AI is built into those public service systems? Does Mr. Sherwin think the DPOs should have a place on the likes of the AI advisory council and also the govtech delivery board?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:35:00+00:00"/></from>
+          <p eId="para_52">We are going to have to scale up the involvement of DPOs with our ability to respond to requests. We have a lot of requests to sit on boards and panels that have significant time and resource impacts and it is not always possible.</p>
+          <p eId="para_53">There are some boards, panels and executives that we should be on all the time and there are others that we would maybe have to have a visiting input to rather than sitting on them full time. Also, our frame of reference in terms of how these services impact disabled and deaf individuals may not have the broader expertise that people want in relation to sitting on a committee full time. However, the first point should be the consideration of that. Is it a permanent seat? Is it a regular seat? Is it a consultation-----</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_29">
+          <from>Senator Lynn Ruane<recordedTime time="2025-11-04T11:40:00+00:00"/></from>
+          <p eId="para_54">What people would pick up on is when human rights or data rights are not being protected under the model. Even though there may not be the expertise and development of particular AI, when people have experience, they can see where the barriers or potential concerns are. Therefore, knowing what the role would be and what that looks like within those support structures is important.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_30">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-04T11:40:00+00:00"/></from>
+          <p eId="para_55">I welcome the witnesses. A lot of the issues they highlighted have been highlighted previously by many others who have contributed. It is interesting to see that consistency. What I want to get back to is the bias. Ms Grehan mentioned the London School of Economics care policy and evaluation centre. It was female bias that was being produced through that. I am trying to discover, from the witnesses’ point of view, what is the best way to overcome that. For example, how can we identify and address disability bias while also properly collecting the information? What is the witnesses’ solution to that in terms of collecting the information safely for their organisations in order that they can influence the correct bias, let us say?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:40:00+00:00"/></from>
+          <p eId="para_56">That is a difficult question to answer. The testing of these systems before they are released and deployed needs to be significantly more effective than it is at the moment. Systems are being released with bias and are based on casual testing by public testers, who may be keen to expose those problems and post them on social media in order that they become apparent very quickly. To have chatbots, GhatGPT, Grok or whatever, where they are being used for advice is one thing, but when there is an AI-powered service that is going to determine care decisions, that needs a significantly higher level of testing. There is a testing component to it that is really important before it gets released, and also a commitment from the company for ongoing assessment when it is released.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_32">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-04T11:40:00+00:00"/></from>
+          <p eId="para_57">On the survey or report from the UK, are the witnesses engaging with any of the bodies there to see how they might be trying to address that? Are they looking for examples of other systems in other jurisdictions that are working on this at the moment in order be able to recommend those?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:40:00+00:00"/></from>
+          <p eId="para_58">It is early days for us, as it is for the committee. Other than some Internet research, we have not engaged with organisations to develop any kind of formal collaboration around this. It would be positive to create those international references, look to others and what they are learning and look to other organisations internationally to see what can be learned from them. The area is so broad that we are not going to do it all by ourselves.</p>
+          <p eId="para_59"> From the deaf perspective, we are engaged with the World Federation of the Deaf and the European Union of the Deaf to follow their policy positions as they are developing from a European and global perspective. Equally, there is the European Disability Forum and other organisations that we need to look to in order to have our own opinions informed. I imagine that Government collaboration with other governments, in particular in the UK, in relation to how this should be dealt with would be very valuable.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T11:40:00+00:00"/></from>
+          <p eId="para_60">It is very early days. As individual organisations and as a network, we are trying to come up with policy position papers on AI and how it is impacting disabled people.</p>
+          <p eId="para_61">That is the early stage for us. At the same time, we realise there is no such thing as perfect regulation. What we are trying to do is mitigate the risk as much as possible. We know that, at any time, even if they want to be in an AI system which is totally free of bias or something, we also know that step by step, phase by phase we can mitigate some of the risk we see. That is why we are focusing on particular AI solutions like the large language models and those kinds of things, where we are working on those.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:45:00+00:00"/></from>
+          <p eId="para_62">I will mention something about bias. It is often unconscious, and it is not always clear to someone that they are being biased. When you are in an environment with deaf and disabled people, they can spot bias more quickly than someone who is not disabled or deaf and they can bring it to your attention. Often, well-intentioned development of products and services includes bias. Even though the people developing them are following accessibility guidelines and doing their level best, that bias can be completely unconscious. People are not aware of it until it is pointed out later. When people see it, they question why they had not seen that before.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_36">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-04T11:45:00+00:00"/></from>
+          <p eId="para_63">Mr. Sherwin also mentioned human rights in one of his answers to Senator Ruane. This afternoon in the Seanad there will be statements on human rights within disability, a strategy on which was published recently. We are going through that. Employment is a big issue in that area. One of the key things in the EU Artificial Intelligence Act, which is being implemented, is that high-risk systems must be accessible, transparent and non-discriminatory. That is across employment, education and healthcare. Mr. Sherwin is right. We are at an early stage. It is time. Is the witnesses' big ask from today that their representative bodies have more involvement at this early stage?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:45:00+00:00"/></from>
+          <p eId="para_64">It is co-creation of the services. It is working together to find out the appropriate points where we should be involved. We cannot be involved in an entire process. However, one of the points where we can be influential is bringing the correct information to the table to guide the development of processes and be involved in the assessment as well. For too long it has been involvement in consultation at the start, and then you see what the service looks like at the end, and it is not enough.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_38">
+          <from>Deputy James Geoghegan<recordedTime time="2025-11-04T11:45:00+00:00"/></from>
+          <p eId="para_65">I thank the witnesses. There are some familiar faces I dealt with in the Dublin transport plan. Mr. Sherwin mentioned earlier that the language learning models do not even have a corpus of ISL to work from. Will he expand on what he meant by that?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:45:00+00:00"/></from>
+          <p eId="para_66">The institutions around the world are developing language corpus models of sign language. There is an American Sign Language, ASL, and a British Sign Language, BSL. There is not a significant Irish Sign Language one yet. Typically, these are done in collaboration between government and academia. We have an Irish deaf research network, which involves academia and deaf academics. We are looking to find a way to build that corpus, which is a quantity situation. We need to have thousands upon thousands of hours of Irish Sign Language being communicated so large language models can learn from that. That will be core to the development of any AI-powered translation or interpretation and the accuracy of that. That is a piece of work around which there is not a strong strategy at the moment. There should be. It needs to have deaf people involved. We saw on the news not too long ago a proposal by one TD that Irish Sign Language should be included in the Constitution as the third language of Ireland.</p>
+          <p eId="para_67">That is something we would like to campaign for in the future but, for the moment, Irish Sign Language is not taught to deaf people in schools. They learn sign language through their communities. There is no standardisation of Irish Sign Language. There is no terminology committee. All these things inform the fact that, as a result, without even a terminology committee, there is no corpus of Irish Sign Language at the moment. That is a key element in the development of AI and ISL in the future. One specialist topic working group will be involved in the development of the new human rights strategy. It is an Irish Sign Language working group. This will come up on the agenda of that group to see what we can do and how we can help the Government to do some medium- and long-term planning around this.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_40">
+          <from>Deputy James Geoghegan<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_68">Mr. Sherwin said there is nobody really working on a strategy in relation to this corpus at the moment. Who would be the appropriate entity or Department to build on a strategy like that?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_69">I believe it would most likely be the Department of Children, Disability and Equality in collaboration with an organisation like the Irish Deaf Research Network, which has members from academia and from rights-based groups, including ourselves as the DPO in the sector.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_42">
+          <from>Deputy James Geoghegan<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_70">Is Ireland an outlier in comparison, let us say, to our fellow European Union member states? Are there other EU member states that would have a corpus of sign language that we can look to in terms of the strategies they have developed?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_71">Yes, there are, and we can provide some more information on that. There is a huge disparity in the development of deaf rights and representation around the world but there are some notable examples. Ireland is actually doing reasonably well in terms of representation, but that is probably an indicator of how bad deaf communities around the world have it, rather than Ireland doing particularly well. The Nordic countries are setting examples. America has always set an example. There is a very strong deaf community over there and in the UK. There would be references.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_44">
+          <from>Deputy James Geoghegan<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_72">I think Mr. Sherwin has already said this, but does it stand to reason that countries that have a corpus of sign language should be the greatest beneficiaries from AI technology if they get it right as to what it can offer deaf people? Is that too simplistic?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_73">There have to be guardrails there about the efficacy of any LLM to reproduce authentic, native sign language. We see it all the time with technology and we see it even in schools here with teachers signing. They are not signing correctly or there are mistakes. We see it in technology. That is not visible to the hearing audience. They see some signing happening on screen and there is an assumption that it is correct, whether it is communicating clearly or not to deaf people, which others have no visibility of. There is a requirement for guardrails around that, but the countries that have developed a corpus would, of course, be in line for benefiting more quickly around AI-powered sign language resources.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_46">
+          <from>Deputy James Geoghegan<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_74">This committee will compile reports at various stages of the work we are doing. We will also engage with - or we hope to engage with - some of the major technology companies building these LLMs. It seems a pretty obvious thing this committee should at least recommend or explore. Presumably, building a corpus of Irish Sign Language is something the witnesses have been trying to do for a long time, irrespective of AI developments or otherwise, but now, with what is taking place in AI, that gives a bit of impetus to this. That is something we should put forward.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T11:50:00+00:00"/></from>
+          <p eId="para_75">May I come in on that? The EU has a huge project called SignON. It has involved five different countries, five different deaf organisations, and Ireland is one of them.</p>
+          <p eId="para_76">Everybody has come together to look at AI and not avoid it because we know it is an inevitable part of our future in terms of technology. We also have to realise that these other projects are not easy. Languages and sign languages are not easy to record and be input ready for an avatar to use because there is so much facial expression and body language involved. It is a huge project but we are not able to solve that issue just yet, and that is worth mentioning.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_48">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-11-04T11:55:00+00:00"/></from>
+          <p eId="para_77">I thank all the witnesses for being here this morning. It is great to have them here. Co-creation is not a new concept but is new terminology. It is about that effective consultation and engagement, as the witnesses have described throughout. I am curious about how we can learn from what I am hearing is a frustration on the part of DPOs that corporates do not engage in meaningful co-creation but instead tick boxes and pay lip service to the process of consultation for people with disabilities and do not engage DPOs throughout the process. Do the witnesses have faith or confidence that it is going to be different in the world of AI than it has been in the development of technologies to date? Have the witnesses, as DPOs, had, or do they have, regular direct engagement with corporates who are developing tools?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:55:00+00:00"/></from>
+          <p eId="para_78">We have very little engagement with corporates. DPOs tend to have engagement with corporates around things like corporate social responsibility and involvement from that end of things. For instance, the Irish Deaf Society would engage with corporates on providing Irish Sign Language and deaf awareness training. It is very much a high level of awareness but not involved in product design in any way. We would assume that the same lack in other technological development is still going to continue in the development of AI. We are on an awareness-building programme with Government about co-creation and we are struggling in certain areas of Government to get into that space. Certainly with less guardrails or demand from corporates, there is not the incentive that there is for Government to look after minorities in the corporate sector. From a Government perspective, perhaps if there is funding, Government supports and enterprise development, there should be conditions around that and some of the conditions should include co-creation with disabled people and deaf people.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_50">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-11-04T11:55:00+00:00"/></from>
+          <p eId="para_79">I do not know if the DPO representatives have had the opportunity to review EU legislation in this area and EU directives like the Digital Services Act and the AI Act, but do the witnesses think any of them will force this issue? Do they think any of them will meaningfully instil the process of co-creation into the corporate sphere?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T11:55:00+00:00"/></from>
+          <p eId="para_80">Europe has probably one of the better track records for enforcing legislation as far as big tech companies are concerned, whether it is fines or data-related issues and penalties. I see that this is a trend that needs to continue. Ireland can follow EU directives and apply them here. It would be important that Ireland would implement those. I do see the EU doing work. It needs to be expanded on. A lot of the time when we bring things to the table here, we cite EU directives or legislation and ask for consideration of that in a domestic sense. There are models there to be looked at.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T11:55:00+00:00"/></from>
+          <p eId="para_81">We still expect a lot from the EU, but at the same time, recent legislation in respect of the accessibility Act we take as a big positive measure to be inclusive of disabled people.</p>
+          <p eId="para_82">We are saying that not enough has been done; we are not saying that nothing has been done. We hope that a lot will come from the EU side, which Ireland will also implement.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_53">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_83">In our last session, concerns were raised about privacy for disabled people, the use of the data of disabled people in the development of technology and the handling of that data by corporate entities. What is the witnesses' take on that? In that session, I think there was only one disabled person's representative body but no DPO. I would love to hear the witnesses' thoughts, as representatives of DPOs, on that specific element.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_84">Data is as important for disabled and deaf people as it is for other people in society. We can see how our data is being mined, sold and used for commercial purposes every day through apps, websites, browsers and data collection. We have an additional concern that data will be used against us, not only in terms of commerciality but also in terms of control and decision making. Decision making for disabled people is a very complex subject. Data use, in terms of decision making, can be misimplemented and that one example that we have included shows how that is happening in 50% of settings in England already. We have huge concerns about that. The guardrails need to be there in terms of what our rights are <i>vis-à-vis</i> data, its use in AI and how it can be removed and changed. </p>
+          <p eId="para_85"> That is a huge concern.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_55">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_86">Are the witnesses aware of any Irish academic initiatives that are exploring the intersection of disability and AI?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_87">I am not, personally.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_88">Me neither. There have been a few studies but the intersectionality issue usually comes up as a kind of footnote, just to strengthen notes with the intent to explain deeply how it affects people with different identities. Intersectionality is being spoken about a lot but in terms of actually addressing it, there is nothing.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_58">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_89">I have one final quick question. We have discussed DPOs today and their role in society. That role is very clearly articulated in the CRPD. Do the witnesses believe that the State is meeting its obligations under the CRPD to support DPOs in providing the consultation that they are providing today, for example, on a wider basis? Is the State meeting its obligations? I see Ms Grehan shaking her head.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_90">Unfortunately, the answer is "No". The State is not meeting its obligations. We have submitted to the UNCRPD in relation to the list of issues process. The State has also submitted reports on its implementation of the CRPD. The State will acknowledge the areas that it is behind on and we would challenge the State to acknowledge more than that in the list of issues. Unfortunately, we are far behind where we need to be in terms of CRPD. However, the human rights strategy and the implementation of co-creation will start to take us a long way there and so we are very hopeful that, over the next number of years, we will get a lot further towards implementation of respectful CRPD. We would have to say that, at the moment, it is not there.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_60">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_91">Particularly in that context of not being supported, I thank all of the witnesses for being here today. It is very much appreciated.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_61">
+          <from>Senator Laura Harmon<recordedTime time="2025-11-04T12:00:00+00:00"/></from>
+          <p eId="para_92">I thank all of the witnesses for their presentations today, which were really insightful. I have a particular interest in this area as the Labour Party spokesperson on disability. What they say is quite worrying. AI is not neutral, as we know, and it can enforce existing biases and structural inequalities in society.</p>
+          <p eId="para_93">Co-creation is a huge element to guarding against that. Do the witnesses have any other recommendations on how we can guard against this and ensure that AI can improve the lives of people with disabilities as opposed to reinforcing structural inequalities? Are there positives that we can use, or good examples of international best practice?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:05:00+00:00"/></from>
+          <p eId="para_94">This is an area that needs more work. There are a lot of jurisdictions and organisations around the world that are probably asking the same question and hoping for some guiding lights or direction. Certainly we are all in this together trying to figure it out at the moment. I would go back to the three areas, namely, enforceable guardrails that need to be set up and to be part of any Government support for AI development; legislative action to make sure we are following international best practice, including the EU AI Act; and investment in community-led development. We need resourced development so we can contribute effectively and professionally on these complex topics. Many of the DPOs, including our membership, are run on an entirely voluntary basis with no income, but are still expected to be able to contribute to very complex subjects at the same level as professional peers who are involved in the same things. We do need investment in DPOs to get us to the point where the Government is able to deliver on the CRPD with our support.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T12:05:00+00:00"/></from>
+          <p eId="para_95">The State could do much better than now, particularly in terms of addressing the ethical issues related to AI. We also have concerns, for instance, in cases where job displacement is happening because of AI and the most likely candidates to lose their jobs will be disabled people. We have seen it before, not just with technology but with other unexpected situations. It is disabled people who shoulder the burden of job losses. DPO engagement goes a long way to address these issues with AI.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_64">
+          <from>Senator Laura Harmon<recordedTime time="2025-11-04T12:05:00+00:00"/></from>
+          <p eId="para_96">My next question is more directed to Ms Grehan. She mentioned the risk of ISL being commodified as a result of AI. How are we seeing that happening at the minute? Are there specific examples? How do we guard against it? How is AI being used by the deaf community currently? Are there positives that we should be improving upon?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T12:05:00+00:00"/></from>
+          <p eId="para_97">Yes, there was a trial which took place which looked at avatars. We did take a look at this trial, but again, as I talked about expression when it comes to sign languages, eyebrows have meaning, your cheeks have meaning, your lip patterns - they all have meaning. That all conveys information. When it comes to AI they do not have those features. That information is not being conveyed, especially when they are creating avatars. They have pixellated images. A lot of that information is not actually coming across. Sometimes it is completely impossible to identify that information from an avatar whereas you would understand a person signing that information to you. It is really just word for word. It is robotic rather than using the important parts of sign language, in which 70% of meaning is actually in body language and how you use your body, not just the sign. It is more focusing on words for signs, rather than the all-encompassing use of sign language, expression and body movement.</p>
+          <p eId="para_98">That is going to be a huge difficulty when it comes to conveying information in sign language. There is a lot of work that needs to come. We are very much just at the start. I have not seen a perfect example yet. There is no country that has created or achieved that yet. There is a lot of work to come.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:10:00+00:00"/></from>
+          <p eId="para_99">Deaf people and disabled people are using AI tools to refine their English, including ChatGPT, OpenAI and different products like that. There needs to be some training around the results that people are getting as well because people with low levels of English language literacy do not necessarily recognise some of the hallucinations that happen in LLMs and whether the information coming back is correct. In the Irish Deaf Society, we have a strict policy that people must edit their AI content after it is produced. There is a learning there. However, there are benefits. We are focusing here a lot today on concerns and fears but, at the same time, AI can unlock clear communication, particularly in spoken languages, and translation that can be of benefit to disabled people and deaf people.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_67">
+          <from>Deputy Keira Keogh<recordedTime time="2025-11-04T12:10:00+00:00"/></from>
+          <p eId="para_100">I thank the witnesses for being here. I had eight fantastic questions, and they have all been answered. It has been a really good session. This is the difficulty, but also the benefit, of contributing last. I will touch on the last topic that was raised. If we look at the national human rights strategy for disabled people, it referred to better access to digital and assistive technologies and the National Disability Authority also spoke a bit more about AI supporting independent living through universal designs. To delve into that positive piece a little bit more, how do the DPO Network and the Irish Deaf Society see AI improving accessibility? I was thinking about the example of airports when we hear an announcement and maybe an avatar comes on the screen, and it will not be perfect. Are there any other real-life examples that the witnesses could give in a positive way about how they are seeing AI, especially when we look at independent living? This is something I am interested in.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:10:00+00:00"/></from>
+          <p eId="para_101">I have not seen too many examples yet. We discussed the Braille pen earlier. AI is not going to be only used in a way where it is explicitly visible. AI can drive solutions in an invisible way behind them. The way we have seen it most visibly at this point is in relation to English language tools, such as ChatGPT, helping people to write more effectively. The avatars are being used currently for children's programmes. That reduces costs and therefore makes ISL more available, more broadly at a cheaper price. We have concerns that this will become seductive and then people give the green light to substandard ISL that is ticking an accessibility box but is not actually communicating or, worse, is teaching children something that is incorrect.</p>
+          <p eId="para_102"> AI is going to be employed in the background in terms of developing care decisions, as in the example in the UK. That is completely invisible to disabled people. They are not even going see the influence of AI in that cost and time-saving product that is working in the background. We see the potential there, but we have not seen so many examples of it in place yet. It is racing at such a speed and the guardrails seem to be lifted in countries that are leading in developing these technologies in order to compete in a race. We are concerned that, by the time we see bias and influenced decisions that are negative in practice, we are then in a situation where we are trying to reverse something or fix something that is already in place and widespread. The guardrails element in development is critically important.</p>
+          <p eId="para_103"> To answer the Deputy's question as to whether we can see other positive examples of AI in place at the moment, there are more planned and there are more optimistically coming down the road than there are examples that actually affect people's lives at the moment.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_69">
+          <from>Deputy Keira Keogh<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_104">The co-creation will be so important for that piece because when we look at independent living, everybody's needs are different. Sticking with that piece, I am thinking about what Ms Grehan spoke about earlier. Sorry, did she want to say something on that?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_105">Yes, I would like to come in there. Sorry, with the time lag of the interpreter, I was waiting for a chance to come in. The Deputy talked about airport announcements. The UK uses a digital post, if you like, where there is a deaf person giving information. It is not AI but they have a deaf person there employed who makes the announcements if flights are delayed. That has worked really well and it is also in train stations in London when there are delays.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_71">
+          <from>Deputy Keira Keogh<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_106">It is technology use rather than AI. Keep the people as much as possible. </p>
+          <p eId="para_107"> Looking at Irish Sign Language data sets and how we ensure that kind of regional sign language, I also think about the number of children in Ireland being taught Lámh. They would probably be completely out of this world because there are enough people using Irish Sign Language to get those data sets and those video data into AI systems. However, when you look at Lámh, it is such a limited use. I can see them being totally in this digital divide and falling even further behind. </p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_108">There can be confusion about Lámh and Irish Sign Language. Lámh is not actually a language, but a communication tool, so in a sense, it is a lot simpler. It is worrying for us that people are being taught Lámh as a substitute for Irish Sign Language. There is a place for Lámh in terms of disability where children do not have the physical ability to sign or to use facial expressions and they are severely impacted by communication needs. Of course, there is a place for Lámh as a medically generated communication tool that has some basis in Irish Sign Language but there can be confusion in the community. It is not really appropriate to teach schoolchildren, for example, Lámh when they are well able to use Irish Sign Language, which is a full and communicative language. </p>
+          <p eId="para_109"> We do not have a relationship with the Lámh organisation in order to try and resolve this and we do not see why this would not be declared for what it is, as a communication tool as opposed to a language. The two should be able to exist in appropriate settings. That is a little bit of a concern but I think the relative, simpler nature of Lámh probably has some advantages in terms of how quickly it can be supported by AI. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_73">
+          <from>Deputy Keira Keogh<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_110">I thank Mr. Sherwin.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_111">I also think it is very important that when we are talking about communicating with children and communicating with adults, we adapt our language use slightly when we talk to deaf children. It is different with adults. Lámh is a supportive communication tool, but not a linguistic language. It is for somebody who has difficulty with verbalising what they want to say but deaf children use ISL the way deaf adults also do. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_112">I thank the witnesses for their answers. I call Deputy Murphy. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_76">
+          <from>Deputy Paul Murphy<recordedTime time="2025-11-04T12:15:00+00:00"/></from>
+          <p eId="para_113">This is very interesting. The witnesses are ringing alarm bells on a number of fronts in terms of the significant potential for AI to reflect and then amplify the biases and discrimination that already exist in our society and then make disabled people's lives worse. That is clearly posed as a possibility in what the witnesses have presented in terms of employment, discrimination, etc. There is a lot there for us to work on. </p>
+          <p eId="para_114"> To start, I was struck by the points in terms of the Irish Deaf Society about the dangers. For example, it might start as being seen as great that we can have Irish Sign Language in children's programmes that maybe we otherwise would not have had.</p>
+          <p eId="para_115">That then becomes a slippery slope to the view that "Sure this is great and we will just get rid of ISL interpreters and use it everywhere". A picture is painted of potentially fatal implications for people; certainly life-changing implications in terms of the misuse of this in legal or medical contexts. One can imagine just how wrong this could go. There is a real warning for us. There is a really good series of principles to be respected. They seem very strong. There are policy recommendations to make that real. To what extent do the witnesses think those principles are currently being respected given the point Mr. Sherwin made about the pace of things? There is this race going on between different corporations. We are trying to define these principles and say they have to abide by them but things are moving on. To what extent are these principles currently being either respected or not respected?</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:20:00+00:00"/></from>
+          <p eId="para_116">They are not being respected. There is no evidence of them being respected. Until relatively recently, large corporates were projecting that they would like to be accessible and they were promoting diversity, equality and inclusion. Of course, we all know that has been stripped back to a large degree over the past number of years. There is a certain amount of lip service paid to the issues and concerns we have, which is often included in presentations from larger corporates and would no doubt be presented to government in that way also. There is a real insight that disabled people have, based on their lived experience, that can expose that kind of bias, inaccuracy or lip service very quickly. It is critical, when government is engaging with large corporates on these topics, that it has disabled people on the team to help it see through the jargon and determine whether there is real implementation or real intent.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T12:20:00+00:00"/></from>
+          <p eId="para_117">We see a big gap between the actual applications and what is intended. Most of the big companies like IBM and Microsoft already have big ethical departments, so the commitment is already there. However, when it comes to applying it, they do it differently in different jurisdictions, so state regulation is probably a better avenue than totally relying on the self-monitoring of companies.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T12:20:00+00:00"/></from>
+          <p eId="para_118">At the moment, we have the nine grounds of discrimination and it is already there within those grounds. We have those nine grounds of respect within society. We are not reinventing the wheel. We have that and it is important to make sure it is included in people's attitudes.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_80">
+          <from>Deputy Paul Murphy<recordedTime time="2025-11-04T12:20:00+00:00"/></from>
+          <p eId="para_119">To take that up further, one point particular raised by the DPO Network is the issue of employment. I think Ireland has the worst rate of employment for disabled people in Europe. I think the Disability Federation of Ireland flagged in our previous session the prospect that the use of AI in, for example, scanning CVs could have results where AI just puts disability in the reject pile. Are the witnesses concerned that this will exacerbate discrimination against disabled people in employment opportunities? Are they aware of anything like this happening in Ireland yet?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:20:00+00:00"/></from>
+          <p eId="para_120">I am not aware of specific examples but I can easily see how that could happen, particularly when people have the right not to be discriminated against in relation to their disability.</p>
+          <p eId="para_121">They are not adding "I am a disabled person" or "I am a deaf person" to their CV. Consequently, how does AI determine the difference between a poor CV and a CV with which someone is struggling in relation to his or her disability? These kinds of automated decisions do not have the nuance to determine those things. Earlier we talked about a creep of low-quality sign language potentially coming in due to cost-effective AI solutions. We also have a concern around personal assistance for disabled people and how personal assistance of a lower quality can creep in to replace personal assistant jobs and human contact, which it does not have the ability to meet. We have to be cautious and introduce these kind of supports only when they are proven to be effective, rather than introducing them and then testing them out with a user group that could have potentially catastrophic, life-changing effects as a result of that testing in the marketplace. </p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T12:25:00+00:00"/></from>
+          <p eId="para_122">Sometimes these effects may not come explicitly; they could be indirect. We see the pattern of jobs which are at risk of being rendered out of the job market. We know that those are largely places where disabled people are employed, like in stores, departments and that kind of thing. We can easily guess where the effect comes for disabled people.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:25:00+00:00"/></from>
+          <p eId="para_123">I am a bit of a tech optimist. Certainly, there is always the danger where technology fails but if we put the guardrails in place, how can we use technology to improve the lives and opportunities for people with a disability? That is my argument. I am conscious of the work of Adam Munder, who has done a lot of work as a deaf man around how technology can be used to help people who are deaf and who are hard of hearing. There is work being done at UCD on being able to improve understanding of Irish Sign Language. On Ms Grehan's point, as the technology is going to be there, our obligation as legislators and policymakers is to ensure it is used in the best interests of citizens and that we put the guardrails in place. </p>
+          <p eId="para_124"> Perhaps the witnesses can talk about where they would like to see the technology. In other words, how can we ensure the technology will be able to help those with a disability, those who are hard of hearing or those who are deaf to engage more within society?</p>
+          <p eId="para_125"> There is always the problem around bias and there is that danger. The large language models are based on the data that is fed into them. They do amplify it and it reflects the bias. Are the possibilities that we can also use AI to tackle that bias?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:25:00+00:00"/></from>
+          <p eId="para_126">Yes, AI working on AI is something that would be helpful and supportive in the development of the product. It is a unique product in that sense. It can be analytical and it can assess in the same way OpenAI's ChatGPT is used to write code, assess where the errors are in the code, and then correct the code. It can certainly be used as a tool. Our assertion at the moment is that it needs human input to determine that. We are speaking in a negative sense about the potential risks and outcomes but we are optimistic as well that AI can improve the lives of disabled people and deaf people. However, we are quite sure the bias will be there if we are not around the table. That is our main, overriding message today in terms of co-creation.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:25:00+00:00"/></from>
+          <p eId="para_127">In terms of being able to improve the opportunities, how do the witnesses see that as best being able to happen?</p>
+          <p eId="para_128">We obviously address the bias, but as this technology develops-----</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_129">To improve the opportunities-----</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_130">-----what difference can it make?</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_131">The way to determine that is by having disabled people around the table when we are talking about ideas for services and improvements to them. Too often, able-bodied groups, Departments and State agencies decide what is good for disabled people. Sometimes, this means services that are not quite needed or are not geared in the right direction. We need closer consultation with disabled people about what will improve their lives. We need to determine what the gap is before we rush to provide solutions for things that may be less of a priority. Dr. Seifu may have a comment on that.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_132">The potential for AI to benefit disabled people outweighs the costs. The most important thing is that from our perspective, the costs are very high. As a result, it is about minimising those costs. As Mr. Sherwin said, one way to address that is to have disabled people meaningfully represented in the development of new AI tools and solutions. Also, we know that if the State intervenes to make AI tools accessible to all disabled people and regards less their income levels or certain status, that is one positive that AI can contribute.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_133">Does Dr. Seifu use any AI tools?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_134">Yes. At home I have Alexa. She is an AI but not necessarily disability specific.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_135">I was making reference to the work being done in UCD and other places, but are there any disability-specific AI tools of which Dr. Seifu is aware, even if he does not use them? Are there any which the people he represents have said have helped make their lives easier?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Dr. Michael Seifu<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_136">Yes. Smart wheelchairs, for instance. I have not seen them in Ireland, but I have read about many people who use smart wheelchairs and who stated that they have had a better experience when they go outside than was the case when they used traditional wheelchairs to do so. That is one experience I have heard of. I am sure there are more.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_137">For me, AI is really good. This is not when we are talking about ISL but in terms of English being my second language and not having access to information. A lot of deaf people do not have access to information, such as what is a different way to present what they want to say or how they would express something. In terms of me understanding medical terminology or being able to answer or prepare ahead for potential questions, AI is extremely helpful for me to be better able to respond in English. However, that is not in the context of ISL. AI is very positive for the deaf community. Members of the community feel more able to converse with hearing society in the mainstream in having this as a help in the context of English.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_138">Just to say that when we are talking about co-creation, our focus here today is with Government. We have touched on co-creation with commercial organisations which seems very far away but also even in academia. We are not aware of that programme mentioned being developed in UCD. Across the board, we need to raise awareness that there is a role for representative organisations to play - whether it is in respect of the Government, academia or corporate - to present the lived experience that can really enlighten products and service development.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_139">Thank you. I will go back to Deputy Mythen if he has other questions? </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_97">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T12:30:00+00:00"/></from>
+          <p eId="para_140">Yes. Following on from the conversation, I am thinking of something practical we can do. </p>
+          <p eId="para_141">Obviously, there are going to be AI-assisted public service contracts. What would Mr. Sherwin like to see included in those contracts to benefit the members of his group? Is this something practical we can do now?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_142">Yes. In terms of contracts being awarded, we mentioned that we need to ensure equality and human rights standards are applied and there is transparency around their deployment. There must also be clear roles for DPOs in terms of informed consent. I think the Government does have an element of enforcement in the context of addressing AI-related development in the right way at that contract point. It will be difficult to impose outside of that contract point. The development of those conditions around contracts is work that should include DPOs and is probably a very important element of giving the Government some kind of authority and teeth in relation to enforcement after the fact.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_99">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_143">Are there gaps in the current funding? Is more support needed for AI accessibility in the context of disability?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_144">I am not aware of the current funding structures around that area, I am afraid. I think we would all be happy to learn a little bit more about the funding structures in place now and give some feedback, perhaps after this meeting.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_101">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_145">That is fine. I thank Mr. Sherwin.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_146">In wrapping up, I might just ask a question. There is an intention on the part of the Government to establish a national AI office next year. Its key role will be overseeing the implementation of the EU AI Act and how it will impact. We are obviously going to be making recommendations around the establishment of that office and its role in terms of partnership and ensuring that those with a disability are engaged. The office will be talking to companies, Government agencies and others on how we roll out AI as a society. Are there any other specific recommendations or messages that Mr. Sherwin would like to see included as part of that endeavour when the office is set up? Is there anything we might be able to recommend in the context of the advice the office will be giving to companies and organisations around the roll out of the AI Act?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_147">The specific advice we would want to give would be the same message around co-creation. The office should have the input of disabled people in developing its remit, functions, staffing and services to bring these topics to the table. This should not only concern disabled people in terms of potential staffing but also engagement with DPOs at a policy level. Much of that will need some specific discussion about that office, but a very good place to start off would be with the attitude of inclusion in terms of planning.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_148">I thank Mr. Sherwin. Would any of the members like to say anything else? I call Deputy Mythen.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_105">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_149">Following on from that point, if Mr. Sherwin had the power to do so this minute, what legislation would he bring in immediately to help? I know it is probably a difficult question, but if he could, what would he like to see being done?</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_150">I am not sure, actually, how I would answer that question.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_107">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_151">Yes. I know it is difficult.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. John Sherwin<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_152">I am not sure the answer is a magic wand kind of answer either. Our magic wand would be in ensuring there is co-creation around the production of services and legislation that would allow us to have the input to make sure bias is not integrated.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Elaine Grehan<recordedTime time="2025-11-04T12:35:00+00:00"/></from>
+          <p eId="para_153">I would like to come in here. When we talk about co-creation, it is really important to look at this as a cost saving when we are involved right from the beginning, rather than creating something and then afterwards going out to the community, talking to people and realising there has been a waste of money. Instead, we need to include the deaf community and people with disabilities from day one in respect of services in terms of AI tools for deaf people to use.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-11-04T12:40:00+00:00"/></from>
+          <p eId="para_154">That is an appropriate point at which to bring today's proceedings to a close. I thank Mr. Sherwin, Dr. Seifu and Ms Grehan for their engagement with us today. Certainly from the perspective of our committee, this is a hugely exciting technology. Our objective is that is to improve the lives of all of our citizens as it is rolled out and that guardrails are put in place. It is very specifically why we chose to ensure that we would have sessions on AI and disability so that when we engage with AI in healthcare, education, the State and all those other modules, we can at least consider the points that have been raised today and we see it through the lens of people with disability. We continue to be keen to receive input right through our discussions, so any individuals or groups can contact us at <i>ai@oireachtas.ie</i>, because it will inform how we report to Government.</p>
+          <p eId="para_155"> Again, I thank the witnesses for their input today. I hope they found this meeting useful because I certainly did and the members will have as well. This meeting is now adjourned until 18 November when we will discuss the use of AI in the public sector.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee adjourned at 12.41 p.m. until 11 a.m. on Tuesday, 18 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

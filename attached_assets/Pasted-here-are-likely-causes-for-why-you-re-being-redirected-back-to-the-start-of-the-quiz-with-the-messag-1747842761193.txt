@@ -1,0 +1,82 @@
+here are likely causes for why you're being redirected back to the start of the quiz with the message “no responses to calculate results from” after completion:
+
+✅ Root Cause Categories
+1. Responses State Is Not Being Persisted
+If your app is using client-side state (e.g. React useState, context, or Redux) and:
+
+The page reloads or is navigated without carrying that state forward,
+
+The responses array is empty when the results page mounts,
+
+You'll get that error.
+
+Fix:
+
+Confirm that responses are stored in a global context or persisted in localStorage/sessionStorage.
+
+If you're using a page-based router (e.g. Next.js or React Router), ensure state is not lost during navigation.
+
+2. Quiz Submission Flow Is Incomplete
+You may have a conditional like:
+
+ts
+Copy
+Edit
+if (responses.length === 0) navigate("/quiz");
+… which would send users back to the quiz if something prevented the final submission from triggering.
+
+Fix:
+
+Make sure the final button calls the function that stores responses and redirects properly:
+
+ts
+Copy
+Edit
+onClick={() => {
+  saveResponses(); // e.g., context.setResponses()
+  navigate("/results");
+}}
+3. Sample Button or Testing Mode Isn’t Hooked Properly
+You mentioned using a "Sample Quiz Result" button to test results.
+
+If that sample result:
+
+Doesn’t actually populate the response array properly,
+
+Or redirects before setting responses,
+
+Then results would load without data.
+
+Fix:
+Double-check the button logic:
+
+ts
+Copy
+Edit
+<Button
+  onClick={() => {
+    context.setResponses(sampleData); // <- make sure this fires
+    navigate("/results");
+  }}
+>
+  Test the Quiz
+</Button>
+4. results Page is Accessed Directly Without Data
+If someone hits /results manually in the URL or via a reload, it’ll fail if responses are only stored in memory (not persisted).
+
+Fix:
+
+Add a guard: if no responses in memory, try to load them from localStorage.
+
+Or disable direct /results access unless you detect stored responses.
+
+✅ How to Debug
+Add a console.log(responses) at the top of your Results component.
+
+Check your context/state provider — are responses saved there and passed through properly?
+
+Add a breakpoint on the “Next” or “Submit” button of the final quiz question and check that:
+
+responses.length > 0
+
+Navigation is going to /results

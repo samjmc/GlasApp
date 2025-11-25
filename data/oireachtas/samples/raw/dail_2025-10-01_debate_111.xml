@@ -1,0 +1,959 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-01/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-01/debate"/>
+          <FRBRdate date="2025-10-01" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_climate_environment_and_energy"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-01/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-01/debate/mul@"/>
+          <FRBRdate date="2025-10-01" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-01/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-01/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-07" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="CiaranAhern" href="/ie/oireachtas/member/id/Ciarán-Ahern.D.2024-11-29" showAs="Ciarán Ahern"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="MalcolmNoonan" href="/ie/oireachtas/member/id/Malcolm-Noonan.D.2020-02-08" showAs="Malcolm Noonan"/>
+        <TLCPerson eId="MartinKenny" href="/ie/oireachtas/member/id/Martin-Kenny.D.2016-10-03" showAs="Martin Kenny"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="NoelODonovan" href="/ie/oireachtas/member/id/Noel-O'Donovan.S.2025-01-29" showAs="Noel O'Donovan"/>
+        <TLCPerson eId="ParaicBrady" href="/ie/oireachtas/member/id/Paraic-Brady.S.2025-01-29" showAs="Paraic Brady"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM AERÁID, COMHSHAOL AGUS FUINNEAMH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Climate, Environment and Energy</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-01">Dé Céadaoin, 01 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-01">Wednesday, 01 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CiaranAhern">Ciarán Ahern</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MalcolmNoonan">Malcolm Noonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#ReadaCronin">Réada Cronin</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#NoelODonovan">Noel O'Donovan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaDaly">Pa Daly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MartinKenny">Martin Kenny,+</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#JenniferWhitmore">Jennifer Whitmore.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">+ In éagmais le haghaidh cuid den choiste / In the absence for part of the meeting of Deputy Pa Daly.</summary>
+          <summary eId="sum_5">I láthair / In attendance: Senator Paraic Brady.</summary>
+          <summary eId="sum_6">
+            <person as="#Chair" refersTo="#NaoiseOMuiri">Teachta / Deputy Naoise Ó Muirí sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Climate Change Targets 2026-2030: Discussion (Resumed)<recordedTime time="2025-10-01T12:30:00+01:00"/></heading>
+        <speech by="#NaoiseOMuiri" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T12:30:00+01:00"/></from>
+          <p eId="para_13">Apologies have been received from Deputy Barry Heneghan.</p>
+          <p eId="para_14"> First item on the clár is engagement with the agricultural sector on climate change targets, 2026 to 2030. The purpose of meeting today is to start a discussion with the goal of the committee identifying 15 to 20 barriers that will prevent Ireland from achieving its short-term climate change targets for 2026 to 2030. The committee wants to take a pragmatic approach to identifying 15 to 20 barriers across all sectors, the elimination of which the committee will advocate for. The committee will work towards those aims.</p>
+          <p eId="para_15"> We are engaging in this topic on a sector-by-sector basis. Today, we have witnesses from the agricultural sector. Today's meeting is split into two sessions. In session 1, we will engage with representatives from the Department of Agriculture, Food and the Marine and Teagasc. In session 2, we will welcome representatives from the Irish Farmer’s Association.</p>
+          <p eId="para_16"> I welcome to our meeting the following witnesses from the Department: Mr. Bill Callanan, chief inspector; Ms Michelle Corrigan, principal officer; Mr. Liam Brennan, senior inspector; and Mr. Fergus Moore, senior inspector. From Teagasc, we have: Dr. Pat Dillon, director of research; Dr. Karl Richards, head of Teagasc climate centre; and Dr. Kevin Hanrahan, head of rural economy and development programmes. They are all very welcome. I thank them for coming.</p>
+          <p eId="para_17"> I remind everybody in attendance to ensure his or her mobile phone is on silent or switched off. Before I invite witnesses to deliver opening statements, I want to advise them of the following in relation to parliamentary privilege. Witnesses and members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_18"> As regards the format of the meeting, I will invite witnesses in turn to make opening statements to a maximum of five minutes. Once the opening statements have been delivered, I will then call on the members of the committee, in the order that they have indicated to me, to put their questions. We operate a rota system, which provides each member with an initial five minutes to engage with our witnesses. It is important to note that five minutes is for both questions and answers, and therefore it is essential for members to put their questions succinctly and witnesses to be succinct in their responses.</p>
+          <p eId="para_19"> We have session 1 today, followed by session 2 and a private session regarding the report on the carbon budgets. There is quite a bit to be done, so co-operation on the clár will be welcome. Please note that the duration of this meeting is limited and, therefore, times must be strictly adhered to. I ask everybody to focus on his or her contribution.</p>
+          <p eId="para_20"> I will ask the organisations to deliver their opening statements as follows: first, Mr. Callanan from the Department of Agriculture, Food and the Marine, followed by Dr. Richards from Teagasc.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T12:30:00+01:00"/></from>
+          <p eId="para_21">I thank the members of the committee for the invitation and opportunity to discuss the critical challenge that is meeting the 2026-30 climate change target and the potential solutions to ensure sustainable progress.</p>
+          <p eId="para_22"> For agriculture, the 25% sectoral emission ceiling is a hugely challenging target. Agriculture has long been an important and integral part of Ireland's economic, social and cultural history, even beyond its critical role in food production. Indeed, the special economic and social role of agriculture is recognised in Ireland's<b>
+						</b>Climate Action and Low Carbon Development (Amendment) Act 2021.</p>
+          <p eId="para_23"> Climate change is already impacting agriculture in Ireland, with the increased frequency of extreme weather events, and our farmers, more than most, are working together with nature and appreciate the need to address emissions and to build resilience into our food system. The Environmental Protection Agency data sets out that, in 2024, agriculture reduced its emissions by 1.7%, which built on a 4.8% reduction in 2023. This is the third year in a row to see emissions reductions from the sector and these figures reflect the efforts farmers are putting in on the ground, with a strong focus on the measures outlined in the agricultural chapter of Ireland's climate action plan. This includes improving the genetic quality of our herd, adopting more sustainable practices to fertilise land and the adoption of new technologies to mitigate emissions.</p>
+          <p eId="para_24">Coupled with these measures, the climate action plan focuses on creating diversification opportunities for Irish farmers. Agriculture has made significant progress in several areas, for example, in reducing fertiliser usage and changing fertiliser type, with current usage rates being significantly lower than in 2018. The Department of Agriculture, Food and the Marine has put in place a number of schemes aimed at embedding these reductions in the system, including support for soil sampling and the establishment of nitrogen-fixing multispecies swards, red clover and protein crops.</p>
+          <p eId="para_25"> Targeted breeding strategies will play an important role in supporting the sector in meeting its climate targets. The Department is supporting improved animal breeding through the suckler carbon efficiency programme and national genotyping programme. The suckler carbon efficiency programme is designed specifically to improve the environmental sustainability and genetic merit of the suckler herd, with an overall allocation to this scheme of €256 million. The national genotyping programme is a hugely ambitious and world-first voluntary genotyping programme for both dairy and beef herd owners.</p>
+          <p eId="para_26"> In relation to diversification, the development of the organic sector has been a significant success over the last number of years. The latest tranche of the organic farming scheme means that there are now approximately 5,500 organic farmers in Ireland farming an estimated 248,000 ha. The 2024 national biomethane strategy highlighted opportunities for farmers to diversify into production of feedstocks, creating a new value stream for animal manures and forage, as well as highlighting the contribution to decarbonising Ireland’s energy system. To support the development of the sector, a biomethane capital grant scheme, resourced from the EU’s REPowerEU fund, was launched in August 2024. However, it must be noted that the sector is at an early stage of development and, as such, time is needed before we can expect a direct impact on the achievement of our energy and climate targets.</p>
+          <p eId="para_27"> There are barriers that must be overcome if the sector is to achieve its 2026-30 climate change targets. For instance, mitigation technologies such as feed additives or slurry amendments, while available, are pre-commercialisation in many cases and costly to implement. Not all mitigation technologies have production efficiency benefits and may represent a cost to farmers. It should also be noted that, when adding new technologies to our list of mitigation tools, food safety is paramount and it takes time to achieve regulatory approval while ensuring food safety standards are met. The recent social media storm around feed additives demonstrates that cultural acceptance of these technologies cannot be taken for granted in our export-oriented sector.</p>
+          <p eId="para_28"> That said, technological advancement is key to achieving climate targets in the sector and the Department continues to significantly invest in agri-climate research and innovation. Since 2020, the Department has provided over €48 million in climate-related agricultural research and innovation funding through both national and international research calls. Uptake of mitigation measures varies significantly across different farms and farm types. Through the signpost farms programme, the Department has supported Teagasc in the development of a network of over 120 demonstration farms aimed at showcasing science-based technologies and how they can be practically implemented on the ground. The Department has also supported the development of the AgNav platform, an online sustainability tool that facilitates a whole-farm sustainability assessment and counting of carbon emissions and removals. </p>
+          <p eId="para_29"> In conclusion, I would like to thank the members of the committee once again for allowing me to highlight the key challenges within the agricultural sector that may prevent Ireland from meeting its 2026-30 climate change targets and the potential solutions to ensure we continue to make sustainable progress. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T12:40:00+01:00"/></from>
+          <p eId="para_30">I thank Mr. Callanan and invite Dr. Richards to make his opening statement on behalf of Teagasc.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T12:40:00+01:00"/></from>
+          <p eId="para_31">I thank the committee for the opportunity to present Teagasc’s views on the key barriers that may prevent Ireland’s agricultural sector from meeting its 2026-30 climate change targets. The Teagasc climate action strategy was launched in late 2022 to support farmers and the industry in responding to the climate challenge. The strategy increased resources devoted to climate- and biodiversity-related research and knowledge transfer. The strategy has three pillars, namely, the signpost advisory service, the Teagasc climate centre and the AgNav decision support tool, which was developed in collaboration with Bord Bia and the Irish Cattle Breeding Federation with support from the Department of Agriculture, Food and the Marine.</p>
+          <p eId="para_32"> According to the provisional inventory estimates for 2024 by the EPA, agricultural emissions have reduced by 4.6% since 2018. The emissions reductions have been mainly driven by reductions in nitrogen fertiliser use, increased use of protected urea and a decline in animal numbers, which has continued into 2025. Fertiliser use in 2024 and 2025 has increased due to the reduction in the cost of fertiliser relative to output prices.</p>
+          <p eId="para_33"> In 2023, Teagasc published the latest marginal abatement cost curve, MACC, for the Irish agricultural and land use sectors. Within the agricultural MACC, we have identified 16 proven scientific technological measures that can be adopted on farm to reduce agricultural greenhouse gas emissions. We looked at ambitious and very ambitious levels of measure adoption. We coupled the technological measures with three projections of how agricultural activities may develop to 2030. These three sets of activity projections were: the most likely; a lower level of activity; and a higher level of activity. Our analysis highlighted that the very ambitious level of adoption of the technological measures is needed to remain within the allocated sectoral ceiling of 202 million tonnes of carbon dioxide. The key technological measures in the agricultural MACC and the very ambitious adoption levels from 2018 to 2030 include reducing the age of finishing cattle from 26 to 21.6 months by 2030; reducing fertiliser use from 408,000 tonnes to 287,000 tonnes by 2030; changing the type of fertiliser to protected urea, rising from less than 1% of the straight nitrogen used to over 95% in 2030; increasing the dairy economic breeding index from €190 to €240 in 2030; and increasing lime use from 1 million tonnes to 2.5 million tonnes by 2030. Diversification is also incredibly important. Diversification of agricultural practices that we included in the MACC are: increasing organic farming to 7.5% of the utilisable agricultural area, UAA; achieving our afforestation targets of 8,000 ha per year; and switching 156,000 ha of grassland from animal agriculture to producing feed stocks for anaerobic digestion.</p>
+          <p eId="para_34"> There has been good progress made on the implementation of some MACC measures, such as organic farming, reduction in nitrogen fertiliser use and the adoption of protected urea, while the launch of the national biomethane strategy should support the development of the anaerobic digestion, AD, industry in Ireland. This progress needs to be maintained and further accelerated. Progress on the implementation of other key MACC measures has been slower and will have to be accelerated over the period 2026 to 2030. For example, lime use has remained static at 1 million tonnes per year, the age of finishing cattle has increased to 26.5 months in 2024 and afforestation rates in 2024 were 1,573 ha compared to the target of 8,000 ha per year. The growing of grass for biomethane and the use of AD digestate to replace chemical nitrogen fertiliser needs to be accelerated.</p>
+          <p eId="para_35"> Teagasc has expanded its research capacity through the Teagasc climate centre, strengthening our mitigation science and refining the national greenhouse gas inventory across methane, nitrous oxide and carbon dioxide. The centre has also established significant research facilities to support the research programme. The MACC incorporates a pipeline of emerging technologies. Some, such as methane-reducing feed additives, are expected to deliver in the second carbon budget period. We have increased our capacity to measure methane emissions from cattle and our current research programme focuses on evaluating the efficacy of feed additives in cutting methane emissions and developing slow-release delivery mechanisms for feed additives; assessing how feed additives influence methane and nitrous oxide emissions; developing manure additives to reduce methane and ammonia losses; and designing and testing new low-emission fertilisers. This research will produce practical, evidence-based measures for adoption on farm level.</p>
+          <p eId="para_36"> Teagasc has strengthened knowledge transfer support on climate action and the implementation of MACC measures through both the free-to-farmers signpost advisory programme and the signpost farms programme, which demonstrate the adoption of MACC measures.</p>
+          <p eId="para_37">The signpost advisory programme, using AgNav, has prepared over 16,000 farm sustainability plans where farmers have voluntarily self-selected MACC measures to implement on their farms. During the MACC launch we indicated that while knowledge transfer is important for the adoption of new measures, policies and incentives are also needed to achieve the ambitious levels of adoption required to deliver on the sectoral target. There is a need to urgently accelerate the on-farm adoption of the 16 measures through policy development, supply chain and Government initiatives that incentivise farm adoption. The carbon farming framework may be one mechanism to incentivise farmers if it is sufficiently attractive to farmers.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_5">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_38">I thank the witnesses for their presentations. Obviously, while there have been some improvements in emissions reductions we are still nowhere near where we need to be. I believe much of those emissions reductions, particularly when talking about fertiliser reductions, were really as a result of the incredibly high prices we saw in the market. That obviously influenced people's ability to purchase fertiliser.</p>
+          <p eId="para_39"> My first question is for the Department. While this is an issue that is not usually spoken about in terms of emissions but of water quality, has it done any emissions analysis of the impact of the nitrates derogation? It is usually discussed as a water quality issue, but I think that is a flaw in our system and how we discuss these things. Obviously, there are multiple issues at play here. I would like an answer on that if possible.</p>
+          <p eId="para_40"> Teagasc spelt out a number of measures, which if implemented under the MACC, would bring us up to the full emissions requirement. The witnesses mentioned the age of finishing of cattle from 26 to 21.6 months but we saw a rise in that in 2024. Will they tell me why that increase happened and how that reduction can be encouraged or facilitated, because that is a key issue for them? As part of that MACC did Teagasc consider a reduction in the herd as a potential policy measure that could be used? I know that at one stage the Department of agriculture was looking at that, but did Teagasc consider that as part of the MACC process?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_41">On the issue of fertiliser reductions, I think the Deputy is right that the high prices initiated it. However, if you look at the evidence over the last couple of years that has become more embedded. We were at 408,000 tonnes in 2018. It dropped to 280,000. It is 310,000 for 2024. It will likely go up this year somewhat. Indications are that way. When you look at that relative to where we were in 2018, however, I think farmers have become more judicious in their usage. It has prompted a rethink in terms of the capacity to grow grass without as much chemical fertiliser. We in the Department have facilitated it. When you need to grow you need some type of fertilisation, so how much can you use from slurry? We have improved grant aid towards slurry storage. The facilitation of low-emission spreading increases the efficiency of that slurry. Regulatory change has also driven farmers towards better usage. That has all enabled the lower chemical fertiliser figure. We also have a number of schemes that embedded. Red clover, multispecies and other actions have facilitated that transition, which has become more embedded, albeit likely to fluctuate year on year.</p>
+          <p eId="para_42"> On the nitrates derogation, I have always cautioned on a view that the nitrates derogation is in any way a control on the national herd. It is not. That is quite simply because the nitrates directive is clear. It is a limit on the amount of manure applied. It is nothing to do with the number of animals. By way of example, every sector in the country is subject to nitrates. Your pig herd would traditionally have a high stocking density. What is required there is adequate land to recycle the nutrient under the nitrates directive, rather than it being a cap on the total numbers.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_7">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_43">It may not necessarily be a direct cap but the reality is that there would be a reduction if applied and the land is not going to be available for everyone. Has the Department ever looked at that in the context of a model?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_44">No. Continued access to the derogation is Government policy. From my perspective I cover both sides so there are a lot of mitigation actions available that a farmer can take in the absence of derogation, whether it is moving slurry, or the procurement of additional land, etc. If you look at the economic analysis we had done by Teagasc on the impact of the loss of derogation, reduction in numbers is probably the most costly at individual farm level. It is least likely to be taken up by individual farms. It will be difficult to establish if it would have a direct impact on livestock numbers. It may have on individual farms, but not at national level.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_9">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_45">The Department has modelled this out to show the potential impact of the nitrates derogation. It has looked at what the impacts are, like will we have fewer farms economically-----</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_46">An economic assessment, yes.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_11">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_47">Does Mr. Callanan think there is also a responsibility under the climate Act for the Department to model out each of those potential outcomes from an emissions perspective? This is a key responsibility of the Department, and if it is making policy decisions, it and the Minister need to consider them in light of the emissions as well.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_48">The economic assessment, which we have published, and which was specifically done for us by Teagasc identifies the number of dairy cows that would technically have to reduce if everybody in dairy farming was compliant with the 170 kg N/ha level. That number has been modelled. However, the economic assessment is clear that is the least palatable option for a farmer. It is more attractive to procure additional land, which has an impact. That is the big policy challenge for derogation. Land area is limited. The reality of the economic strength of dairy is that it could impact on other sectors like tillage. When you are looking for land for organics, forestry or HNV farming, you have to counter the challenge of effectively having to displace that dairy herd over a larger area, if it does not reduce.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_13">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_49">Or reduce, yes.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_50">The relative economic performance of each sector would suggest that dairying would survive more than other sectors, whether forestry, organics or arable. It would have an impact of approximately 110,000 ha.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_15">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_51">That is where Government support is required. We have been calling for a plan B for the agricultural sector for a long time. I believe the chances of the derogation going through again are very low. Mr. Callanan is spelling out the significant financial and economic impacts. That is where the Government needs to come in to provide that support, and not force them out into tillage and into other land. That is where the Government needs to support the agricultural sector and that is what is missing in the discussions.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_52">My two colleagues will answer on the causes of the increase in finishing age and on whether we considered alternative herd sizes.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Dr. Pat Dillon<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_53">On the beef, the Deputy is right to say the average age of finishing increased last year. Our analysis will say it was a real reflection of the year because the autumn and the spring were so poor. However, if we look at the previous ten years it had reduced. Going forward we think there is every reason it will continue to reduce. You have seen a shift from suckler beef to dairy beef. Dairy beef naturally finishes, and they are distinct. We have a good breeding programme on dairy beef in terms of commercial beef value, which is selecting for earlier finishing. We are confident, going forward, that the age of finish will continue to reduce, even though there was a blip last year.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_18">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_54">Perfect, I thank Dr. Dillon.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T12:50:00+01:00"/></from>
+          <p eId="para_55">We have done scenarios, which, as Dr. Richards stated in his opening statement, have higher and lower levels of agricultural activity. Those were not designed because there is not a policy to make that happen. However, they were done to explore the impact of lower activity levels on the emissions profile of the sector. We have done scenarios in support of the first two carbon budgets. I think we did six scenarios for the Climate Change Advisory Council at the time. Those looked at stable dairy cow numbers and at lower, and much lower dairy cow numbers and equivalent changes in the beef cow herd.</p>
+          <p eId="para_56">We have looked at scenarios, those informed the setting of the carbon budgets in the first carbon budget cycle and similar analysis was done for the most recent carbon budget cycle setting-----</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_20">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_57">But for the MACC, Teagasc only considered existing Government policy.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_58">No. We had three scenarios in the MACC. Scenario 1 was the baseline policy as currently set up and then we had two other scenarios, one with a higher level of economic activity and one with a lower level of economic activity. Most of the discussion in the document is about the central scenario, the reference scenario, but two other scenarios were run with all the MACC measures applied. Of course, with a lower level of economic activity in the sector, less money being made but fewer animals, and less fertiliser being spread, emissions are, as one would expect, lower.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_22">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_59">By how much?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Dr. Pat Dillon<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_60">To follow up on that point, the lower to the higher level was plus or minus 4% in total greenhouse gas emissions, so if we are looking at just animal number reduction to reach our targets, it is not going to be achieved by those numbers. That is why mitigation is so important.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_24">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_61">Yes, and I think a jigsaw of policy responses will be required.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_62">The critical thing in terms of meeting the 25% sectoral ceiling target was the pathway of measures being adopted rather than just thinking we could solve the problem by having a much lower level of economic activity. That was our conclusion.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_63">We can do a second round. Deputy Ahern may go ahead.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_27">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_64">I thank all the witnesses for coming in and giving us the benefit of their knowledge. As they will be aware, over recent weeks we have been discussing the method by which we are going to be calculating our carbon emissions and that the Climate Change Advisory Council is proposing to move from a Paris test, which we have used for the past five years, to using a temperature neutrality test for the next five years. This new test allows for increased levels of methane. It is said that it protects high-emitting sectors such as the agriculture sector from making the same level of cuts to their emissions than they would have made under the Paris test. What I am interested to know is the witnesses' views on the Paris test as opposed to the climate neutrality test. Have they lobbied the Climate Change Advisory Council? I know Teagasc sits on the Climate Change Advisory Council. Has it proposed to the council that it would change its method from the Paris test to the temperature neutrality test? Has either the Department or Teagasc been lobbied by external organisations or individuals in respect of moving from one test to another? That is really what I am looking to hear from the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_65">I am a civil servant and have huge regard for the democratic process. We do not lobby. I certainly have not lobbied the Climate Change Advisory Council. We are informed by the council as to how Government policy is developed. That order is important to restate. I spoke at a climate conference the Department held quite recently and articulated that it is clear that methane is different from carbon dioxide. It is a trajectory that has to halve rather than zero emissions in terms of 2050 targets. I think that is scientifically accepted. My personal view, rather than the Department's, is that in many ways this comes down to a communications challenge that I think will be there going forward. Achieving climate targets across all sectors, including reductions in methane, will be incredibly challenging. We have to be conscious of how to convey that to the public in terms of the realities of each sector having to do what it can and should do. In that context, there is the old philosophy that if you are explaining you are losing. That is what it comes down to in relation to how methane is dealt with into the future. In my view, separate accounting in terms of methane would bring clarity and would avoid a situation where every sector is pitted against one another in terms of saying they do not have the same targets or otherwise compared to other sectors of society. That clarity, I think, over the longer term, would bring an easier debate in terms of the requirements of every sector in terms of contribution. Let us be clear, though: any approach to how methane is calculated from here to 2030 is set out in how the inventories are computed by the EPA. That is not going to change any time soon, I think, in reality, but it can influence Government policy as to what an appropriate target is in terms of methane going forward.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_29">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_66">Was the Deputy directing the same question to Teagasc?</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_30">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_67">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_68">Methane emissions, from our MACC analysis, are not increasing. Depending on the scenario-----</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_32">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_69">The point, however, is that they are at a very high level.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_70">Yes, because we have a high herd number. Within the MACC, we are projecting reductions of between 15% and 19% in methane emissions to 2030 based on the measures we have in there. As regards the work we did for the CCAC, those projections to 2050 reduce methane from 31% to 47%, so there are really substantial reductions in methane emissions. That is within the MACC analysis we have done.</p>
+          <p eId="para_71"> In relation to lobbying, while the director of Teagasc sits on the CCAC, the organisation is not a lobbying organisation. We are a technical, scientific organisation providing scientific support to the Government.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_34">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_72">Has Teagasc advocated on the CCAC for the adoption of this new measure?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_73">No. Again, Dr. Hanrahan-----</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_74">I have served on the carbon budgets working group, and the analysis of the temperature neutrality issue was done by people other than people from Teagasc. We were not advocating for it. We provided data and simulations of future paths of emissions. That analysis was done by Joe Wheatley from UCD. The choice to use the temperature neutrality concept was made by the council, not by the carbon budgets working group and certainly not by Teagasc.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_37">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_75">I thank the witnesses. In relation to LULUCF, it appears - I will put this question to the Department - that with the additional measure scenario, Ireland would be in a good position in terms of the effort-sharing regulation for this period, for 2021-25. Is it the Department's view that going for that higher level of ambition would give us that flexibility to meet our EU targets under LULUCF?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_76">To apprise everybody, the reality is that the accounting mechanism in terms of LULUCF at European level changed post 2025. That has made a difference in terms of net-net versus gross-net accounting. Yes, we are on track in terms of 2025. It is becoming increasingly challenging in terms of 2025-30, however, and that is clear. The issues that arise in terms of that are, first, to recognise that the inventory has changed four times in five years, so our greatest effort is around understanding what is happening in terms of land use emissions. We have invested heavily in NASCO, the soil carbon observatory, which Teagasc is implementing on our behalf to better understand. We have the highest density of those machines per square kilometre anywhere in Europe, as we understand it, but the big drivers of the emissions on LULUCF have also changed. First, on forestry, we were in removals. Because of the age class and the type of land that was planted, that will convert to an emission factor by 2030. Similarly, in terms of peatlands, agricultural peat was seen to be a particularly negative emission - in other words, an emitter rather than a remover. The volume of that area has reduced because of work that has been done in terms of the amount of land that is fully drained or rewetted, etc. All those factors have changed. They also impact the volume of work you have to do to achieve your targets because the emissions have reduced per hectare; therefore, the hectares, in terms of restoration etc., also have to increase. It is a challenging space. Up to 2025, Ireland Inc. is in a good space in terms of its EU targets, but up to 2030 there is a delta target 0.626 megatonnes. That is incredibly challenging to achieve, particularly because of our peat soils and their age class.</p>
+          <p eId="para_77"> Does Mr. Moore want to comment on the forestry side of that?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Fergus Moore<recordedTime time="2025-10-01T13:00:00+01:00"/></from>
+          <p eId="para_78">Yes. I thank Mr. Callanan. Certainly, our plantations are coming to a stage whereby we are increasing the levels of harvesting. Obviously, with increased levels of harvesting you get increased emissions. We have a lot of legacy plantations on peat soils as well and have had low afforestation levels in recent years.</p>
+          <p eId="para_79">Certainly, if you look at what we have done over the past number of years, our licensing has improved. We have a well-funded afforestation programme. We have a lot of scheme measures. We are looking for a wide range and diversity of forest types to be planted in the years ahead, which is really promising. The Minister of State, Deputy Healy-Rae, and others have been actively involved and have even contacted local farmers who have licences and who have not gone ahead with planting. They have inquired about why they have not gone ahead. There has certainly been a big communications drive in recent months that has really seen a turnaround. We have raised our afforestation levels. So far this year, 2,200 ha have been planted, as opposed to last year, when he planted 1,495 ha. I know they are small numbers but it looks like the ship has turned a bit. People are getting more engaged with the forestry schemes we have. In the years ahead, with a big drive on afforestation, we can certainly contribute to a whole-farm approach to diversification.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_40">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_80">With the ongoing work that is taking place around the nature restoration plan, does the Department see a really good opportunity for farmers to be involved in schemes and embed, through the CAP strategic plan, schemes that would have had short-term cycles, such as LIFE projects and EIPs, into a much longer-term funding mechanism for restoration, grassland management and expansion of wet woodlands on farms? There is a really good opportunity for farming here to see co-benefits for water quality, nature and carbon sequestration from the nature restoration plan. How does the Department anticipate that we look towards the next cycle of the CAP strategic plan to embed that work into mainstream schemes for farmers?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_81">As a general comment, the Department has always been conscious of facilitating the sector with regard to achievement of its sustainability targets. They are tied in with those regulatory targets as well as market-orientated targets. The way I describe it to farmers is that there is effectively a hierarchy regarding food. If you are hungry, it is about availability and you are not concerned beyond that. When that is achieved, it is about food safety. That is not universally present across the world. Then it is about sustainability and that is very much the marketplace we are exporting to. Finally, food and nutrition is going to be a big issue into the future.</p>
+          <p eId="para_82"> The sector has ambitions in the context of achieving sustainability along with the regulatory side of things. The CAP plan has always been cognisant of that. The Department has, for example, worked with the NPWS on the identification of where the priorities areas are for participation in agri-environment and with the EPA on water quality actions. We work very much hand in glove with the other organisations on the development of the appropriate actions in the right places.</p>
+          <p eId="para_83"> On the nature-based solutions the Senator talked about, there are opportunities. It is around creating awareness and understanding. By way of example, ACRES today has somewhere around 600,000 ha of peat soils under agri-environment performance measures. That is a mixture of commonage, lowland peat soils, etc., that are subject to payments based on how effective they are and so forth. It is illustrative of how we combine the likes of an agri-environment scheme that is targeted with what are national ambitions, be it nature restoration, our objectives under LULUCF or whatever. We are well engaged on that through good participation with stakeholders and in terms of explaining and bringing them on the journey with us.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_42">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_84">This obviously involves the work with Teagasc in not just socialising that - I apologise to the Chair, I will come back in the second round - but also ensuring there are good training programmes embedded in Kildalton to support farmers to make that. For a lot of farms over the past number of years, particularly those in the south east and intensive dairy farms where farmers are implementing really good measures, there is a fantastic opportunity for farmers who are even on highly productive land to be involved in schemes. I hope we would move into that space much more over the next number of years.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_85">On how we tend to structure things, if you look at the reality of supporting the sector, there is an element of regulation. There is an element of incentive and there is an element of support, which is around education. Teagasc would be foremost in that but also the likes of ACRES training courses and the water EIP. All of those actions are supporting actions to educate and bring people with us with regard to the rationale for measures. We are also working with FÁS advisers in particular in order that they can better communicate why the rules and regulations are as they are. Rather than them being just rules and regulations, they are there for a reason or as an enhancement. They are a strong cohort, both Teagasc and private advisers, with regard to being able to communicate the rationale behind what we are asking farmers to do.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_44">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_86">I apologise for being late. I was in another meeting but I have gone through the witnesses' statements.</p>
+          <p eId="para_87"> On the statement from Teagasc, there was mention of the measures in the agricultural MACC. The first one is around reducing the age of finishing with beef cattle from 26 to 21.6 months by 2030. I appreciate the answer the witnesses gave earlier on about the difficulties last year. My question on that is whether moving ex-dairy cows into the beef market is being considered, or is that percentage so small that it is not going to have an impact? Naturally, they are going to be a lot older than the rest of them.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Dr. Pat Dillon<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_88">Going on history, the proportion of beef coming from the dairy herd has moved from 40% to 60% and the corresponding thing from the suckler herd has reduced from 60% to 40%. Dairy beef is naturally earlier finishing. It is probably two months earlier finishing, on average, than suckler beef. As you shift, you will automatically see a reduction.</p>
+          <p eId="para_89"> The second thing is the change in genetics. You have sexed semen coming through the system and you have much more beef used in the dairy herd. You have much more dairy beef and they are, naturally, also for slaughter at a younger age. You have a number of things working in your favour with regard to reducing the age of slaughter.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_90">The analysis that was done for the MACC with regard to that measure primarily focused on the life cycle of the animals born from the dairy and beef cows. It looked at the animals that are not breeding animals and how we can reduce their age of slaughter. They are the vast majority of the animals processed in Irish factories. We have got about 800,000 beef cows and 1.6 million dairy cows; it is their sons and daughters that are on farms all over the country being raised for beef. They are the ones the measure is really thinking about. Cows will always be slaughtered at ages well in excess of the targets that are in the measure. That is just the nature of it.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_47">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_91">That is fine. I wanted to clarify the position.</p>
+          <p eId="para_92"> I refer to diversification and the increase in organic farming to 7.5% of agricultural land area. With regard to how diversification targets are met, if they are met, has this been modelled at all in terms of a reduction in carbon?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_93">Within the MACC, we have estimated primarily what the livestock displacement is. For organic farming, it is to reduce your stocking rate to what would typically be found on an organic farm. Displacement from forestry and displacement of animals by production of grass for AD are included in there but there are some uncertainities on the organic farming side as to what the emissions from organically raised animals are. That is an area of work that is currently being done within the national farm survey.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_94">As Department officials have stated, there has been a very welcome growth in the number of organic farms and the area of organic farming but my expectation would have been that the first people to become organic farmers are those with the shortest to travel to qualify as an organic farmer. That is, they are relatively low-stocked, with low levels of use of chemical fertilisers. That seems to be revealed in the data. For the time, we have got an NFS sample of organic farms that we hope to publish before the end of the year. That will give us an insight into what these farms look like and how less intensive they are. That will basically help us inform our assessment of what this movement into organics means in terms of animals displaced and emissions reduced.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_50">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T13:10:00+01:00"/></from>
+          <p eId="para_95">I thank the witnesses. I am sorry to be jumping around, but if we look at the afforestation rates in 2024, they were 1,573 ha compared with a target of 8,000 ha.</p>
+          <p eId="para_96">Also, there is how the growing of grass for biomethane and the use of AD digestate to replace chemical nitrogen fertiliser needs to be accelerated. We have seen an increase in the number of solar farms, particularly on arable land. Is that having an impact on afforestation targets and has this been considered?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_97">I might direct the last question to, perhaps, Mr. Moore on the Department's side.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_98">There has been a growth in solar farms. There is a commitment in terms of the development of planning guidelines. That is not within our Department's remit, but a matter for the Department of housing. Relative volumes and areas would not be challenging in terms of incorporation from a forestry point of view. I would not see them as diminishing the land available for afforestation in any way.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_53">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_99">I am happy with that.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_54">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_100">I thank the witnesses for their opening statements. What work is taking place in respect of where we are now and where we need to be with the nitrates derogation? River basin management plans and all of that are coming into play, we have measurements and we may see increases and decreases in nitrates from time to time. How are we in terms of timing and bringing a solution back to the European Commission?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_101">That is a different topic but I am comfortable with answering. On the derogation overall, there is a format in terms of our engagement with the Commission, which requires three presentations to the nitrates committee, which meets four times a year. We have completed those three presentations. The last one was on 19 September. Overall, the presentations were comprehensive and well received by other member states.</p>
+          <p eId="para_102"> There is engagement at a political level. Recently, the Minister met Commissioner Roswall, who is responsible for this area, and issued her an invitation to visit Ireland, which is to be taken up some time in November.</p>
+          <p eId="para_103"> There is engagement at the level of officials on a couple of aspects. One is the development of our nitrates action programme, which is the underlying set of actions and criteria for all farmers, not just derogation farmers, but also the evidence in terms of derogation. To explain, the big issue is that Ireland has always implemented compliance with the habitats directive in term of nitrates. That has been at plan level. Increasingly, however, European Court of Justice, ECJ, judgments since 2018 have identified the need for a more granular approach, which is what we are currently scoping out and developing. This will be subject to engagement with the Commission, which has asked for assurances about compliance on that side.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_104">Deputy, let us stay on topic and discuss carbon budgets, please.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_57">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_105">Okay.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_58">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_106">I share those concerns and the carbon issue.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_59">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_107">It is quite related, in fairness.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_60">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_108">Yes.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_109">I will allow a little bit of leeway.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_62">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_110">On the granular issue, how far down will the Department go?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_111">We are developing a plan in terms of the approach to demonstrating compliance with the habitats directive. We are proposing that at the catchment level. That is quite similar to how it is dealt with in other areas.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_64">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_112">Are there 40 catchments?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_113">There are 46 catchments and more than 540-odd subcatchments.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_66">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_114">I believe it was the Teagasc presentation that mentioned forestry. A lot of forestry that is on peatlands is being harvested. Is that forestry being replanted on those peatlands?</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Fergus Moore<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_115">Yes, those forests are being replanted on peatlands. It depends on the type of description used because there are lots of different definitions of "peat". At the moment, we have a lot of legacy plantations on peatlands causing emissions. Coillte is looking at a land use strategy to look at rehabilitating some of those forests back to blanket bogs. There is active work ongoing regarding EU LIFE projects.</p>
+          <p eId="para_116"> Regarding other areas of plantations on peat, we are replanting those but it is in the context of the overall land use strategy. As the Deputy will know, we are not adding to the legacy issues because our new forestry programme has basically taken out those areas that were planted in the past. We are managing our existing forest estate. Over 40% of our forests are on peatlands at the moment, so there is quite a significant amount of forests already there. It is important to try to manage those forests. A lot of them produce quality timber. They also help to use wood to decarbonise the built environment. One must consider the whole picture of forests in these areas. It is not very straightforward to say forests on peat are bad and need to be replaced.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_68">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_117">What is happening seems to fly in the face of logic. On the one hand, people with new forestry are told that peatlands are not appropriate because their usage will release more carbon than it will capture. At the same time, there are peatlands, particularly in my part of the world - many thousands of acres of mountain bog there were planted, which in some cases resulted in serious environmental consequences such as massive landslides - that are going to be replanted again. Many private forestry owners, a large number of whom will have lost their forests as a consequence of recent storms, have their forests on peatlands and will have to replant. The current situation must be reconsidered because it does not make sense to the normal person. Perhaps the witnesses can come up with science that proves otherwise but-----</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Fergus Moore<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_118">At a landscape level, the Department is investing in a re-peat project, which is a multimillion euro investment project to analyse how we manage our forests on peatlands. The project has started, is based in Limerick, will give us a lot of science and information on how forests on peatlands are performing, and look at the various management options that one should consider. We are looking at science informing our future policy. It will be an instrumental project. Multiple partners are involved in it and it will take place over the next five years. It will provide good information on how forests perform on peatlands and inform the associated policy options.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_70">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_119">Please forgive me for suggesting that when it takes 40 years to produce a crop, it seems strange for the Department to wait another five years before deciding what to do. Forestry planted in the next five years will be there for the next 30 to 40 years, so a lot of peatland will be in forestry and we do not know what the science in the report will say. There is a lot of scepticism about whether it is a good policy to pursue.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Fergus Moore<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_120">Our policy for future afforestation is that we have come off those peatland areas and we are not planting those. It is basically mineral soils that we are planting for the future. That will reduce the impact on our greenhouse gas profile. We must be mindful that we have a lot of forests that are currently on peats, and there are lots of different management options associated with that. Obviously, some forests on peats are worse than others. The science and policy will help inform the best decisions for those in the future.</p>
+        </speech>
+        <speech by="#NoelODonovan" eId="spk_72">
+          <from>Senator Noel O'Donovan<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_121">We are having an important debate. As many of my colleagues know, I come from a rural constituency in west Cork. As we are having this debate, I think of the current farmers, the farmers from the older generation who are leaving the sector, and those in their 20s and 30s thinking about pursuing a career in farming. All of us are here because we want to see emissions reduced and to protect our climate. The messaging and communication from this room are important as well, and we should acknowledge the work being done by the farming community. We have seen reductions in emissions in the last number of years and we need to see more. It is very important that this committee convey a strong message because it is only by bringing the members of the farming community with us that we will achieve emission reductions.</p>
+          <p eId="para_122"> I somewhat agree with Deputy Whitmore about preparing a plan B for derogation. I am on the record as supporting derogation because we need it. Derogation farms are some of the best performing farms in terms of water quality and reducing emissions. It is not always pointed out that derogation farmers are the best at protecting our environment. Perhaps we need to consider preparing a plan B if Europe does not give us a derogation. I would welcome a comment from the witnesses on that.</p>
+          <p eId="para_123"> I ask the Chair for his indulgence. Not to focus too much on derogation, but will the departmental officials outline the timelines for the catchment work?</p>
+          <p eId="para_124"> I reiterate that the farming community works continuously to reduce emissions. That must be acknowledged. I ask the Department to comment on that and the committee to acknowledge the work being done by the farming community. What is the ask in the years ahead and the derogation?</p>
+          <p eId="para_125"> Second-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:20:00+01:00"/></from>
+          <p eId="para_126">Let us get a response, and then the Senator can come back in because there was a fair bit there.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_127">I fully agree with the Senator in terms of the engagement of the sector. We published a plan, Water and Agriculture: A Collaborative Approach, which identified exactly the three pillars I mentioned earlier: some element of regulation in terms of what we are doing, an element of incentive and supports such as a free advisory service. The EIP is built on that and also on using the likes of the EPA maps to identify the right action in the right place, etc. I agree there is now a cohesion and a collectiveness in terms of improving water quality, as well as education of farmers on what is necessary and what should be done. We all have a part to play in that.</p>
+          <p eId="para_128"> Government policy is to secure a continuation of the derogation and my job is to ensure delivery of that. We must comply with a more granular habitats assessment and there will be outcomes to that. Realistically, the scale of that work will not be delivered by 1 January, and we have been clear and consistent in that regard. It requires the development of a plan for a process of how to do it. The Minister has been clear in articulating that as we work our way through the various catchments, there is a need for equity, which means ensuring some farmers are not disadvantaged by being early movers in that assessment. It should be that we complete all assessments and then it would apply to all farmers equally, fairly and at the same time. That has been the Minister's direction in this regard.</p>
+          <p eId="para_129"> That will take some time and it is not easy. For example, even an appropriate assessment or an assessment on a forestry licence takes six months. We are talking about a much bigger scale and a larger area across the country. We propose doing it at catchment level rather than farm level. We have an outline of how that will be built, which is identifying the source, the pathway and the impacted habitat. It is looking at all three aspects. That will take some time. I cannot give the Senator a definitive timeline. It is subject to scoping out and agreement with the Commission over the next number of months in terms of the time period. Realistically, it cannot be delivered by 1 January and we have been clear with everybody about that. We would prefer to do this correctly and properly as opposed to in a rushed manner.</p>
+        </speech>
+        <speech by="#NoelODonovan" eId="spk_75">
+          <from>Senator Noel O'Donovan<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_130">I also had a question on a plan B.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_131">Our objective is to secure a derogation. There are various plans B that apply at an individual farm level. For instance, we have approximately 7,000 farmers in derogation who are at more than 170 kg. We have 5,000 or 6,000 farmers who are either exporting slurry, moving young stock or taking temporary grazing or more land to ensure compliance. Those tend to be the actions farmers take in their individual circumstances in the absence of a derogation.</p>
+        </speech>
+        <speech by="#NoelODonovan" eId="spk_77">
+          <from>Senator Noel O'Donovan<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_132">The Department could do a little more in terms of advising and informing farmers of how the process works regarding slurry storage and management and importation and exportation of slurry. There is still fear in the farming community that taking extra will lead to being tarnished or some other impact. There is work that can be done in that regard in preparing the document and showing it to the Commission.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_133">I draw the Senator's attention to our new MyAgFood platform, which is the Department's interface with farmers and advisers. Within that system, we have a nitrates predictor that assists farmers by telling them where they are at in terms of the year and predicting forward to the end of the year as to where they are likely to finish within the 170 kg. I accept exactly what the Senator is saying. It is a challenge for farmers in terms of planning for the year ahead and whether they can accommodate slurry or will need to move it. We have tightened up the process. We now have a system of reported slurry movements, which requires that farmers report such movements within four days. This ensures we get a true and accurate reflection of where manure is being moved.</p>
+        </speech>
+        <speech by="#NoelODonovan" eId="spk_79">
+          <from>Senator Noel O'Donovan<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_134">I am conscious of the messaging from this committee, as I said. It would be helpful to have a comment from the Department directly to farmers on the work done in the past number of years in terms of reducing emissions and where the farming community needs to go. When the news was coming out about derogation and the new habitats directive, people I represent in west Cork were, rightly, asking questions. They were saying they had been doing all this, it had come to no avail and now the goalposts had changed. I want a strong message from the Department in terms of keeping up this work because complacency tends to set in-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_135">The Senator is almost out of time.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_136">I want to be very clear on this. We have been asking farmers to improve practice to improve water quality. The exact same actions will deliver on habitats because the habitats will be assessed in terms of derogation purely from a nutrient point of view. The Senator is dead right that it is important to clarify this for farmers. The actions farmers have been doing are the exact same actions that would be required in terms of compliance with the habitats directive from a nutrients perspective. They are no different.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_82">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_137">Before getting into the curve modelling, I have a follow-up question to Deputy Kenny's very relevant query. Specifically in regard to situations where we have forestry on peatland that has recently been or is about to be felled, and, indeed, where we had forestry on peatland that has, in effect, collapsed from the impact of storms and so forth, it seems to have been suggested that in that scenario of an existing footprint of forestry that has been clear felled - we are not talking about managing a forest but, rather, about a site that had been afforested and has been felled - there would be replanting. Is that the case? The RePEAT strategy that was mentioned sounds like a repeat of the strategy we have done in other areas whereby we hypothetically look to the science to see whether we can find a future scientific argument but we will come up with that science in five years when we have a new 40-year lock-in of something, when the science is already crystal clear that this is not appropriate for peatlands. It seems we have to do five years of trying to find a way around that, and while those five years are going on, we will be tied into 40 years.</p>
+          <p eId="para_138"> I say this because we, as a committee, look at the carbon budgets as a whole and we see Ireland is up against it. We are looking at failing to meet our carbon budgets, which is very significant. It is not an abstract mathematical exercise but an issue of failing to meet our target. Has there been consideration of some kind of join-up whereby those farmers who were previously in an afforestation scheme and are now clear felling would be given a direct route - a linked route, rather than a separate or parallel process - into something like peatland rewetting or restoration, which is an underfunded area, as an alternative to replanting?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Fergus Moore<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_139">Coillte is doing a lot of work at the moment in regard to-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_84">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_140">I am talking about private forestry as well.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Fergus Moore<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_141">I understand. Looking at the public forest estate, the Derryclare project in the west of Ireland is one Coillte has put forward for restoration to peatland. That project is up and running. There are also other significant areas where Coillte is looking at restoring up to 30,000 ha of peatlands by taking off the forests in very low-productive areas. That will inform some of the private side in terms of how we can manage some of these existing forests. There could be an option of removing the forests from those areas and allowing them to revert back into peatlands. That certainly is up for discussion as well.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_86">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_142">Is it up for discussion in the short term?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Fergus Moore<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_143">Yes, in the short term. Under our forestry licensing system, forest owners can come to us and request to replant areas. Certain areas are part of EU LIFE projects. We certainly are open to suggestions from private landowners adjoining some of these larger landscape areas who are looking at alternatives to replanting. That can also be considered.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_88">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:30:00+01:00"/></from>
+          <p eId="para_144">It does sound like the plan is replanting right now. I am worried about the lock-in and the examination of that lock-in.</p>
+          <p eId="para_145"> I turn to the proposed curve modelling. The thing with a curve is it goes up. It seems to be the case that in all these curves - in all three scenarios being looked at - there is a plan for increasing dairy production and, in effect, increasing dairy emissions. How is that even remotely consistent with the short-term pressure Ireland is under in terms of our immediate carbon budgets and the prospect of significant fines? Is staying level not the most that can be argued for in the interim, rather than a curve with an idea that it will go down?</p>
+          <p eId="para_146">I am curious on that.</p>
+          <p eId="para_147"> I have some questions on the modelling piece because it comes into Teagasc's piece as well. We know the national climate objective is not just around climate neutrality, which the science seems to suggest is about emissions; it is also around being biodiversity-rich and environmentally sustainable. How is that being modelled? We simply hear that it is so hard to model biodiversity, which I do not really buy. We had strong indicators being talked about in terms of the CAP previously for biodiversity and baseline levels for species. We now have nature restoration strategies. How is the modelling going now for improving how biodiversity richness, in terms of what comes out at the end, is being factored in, especially given the nature restoration obligations coming down the line? That is my second question; my first question is about the way the curve goes up.</p>
+          <p eId="para_148"> I have two more questions. On the forestry piece and rewilding, what we have here is nature restoration. The diversification is a small shift to organic farming. It is 7.5%. That seems very low. I do not know why it is so low. Forestation is largely plantation based still. Grasslands are being diversified from animal agriculture to anaerobic digestion. Has Teagasc been modelling a land use shift, which is paid and renumerated for farmers, in terms of nature restoration and the kind of ecological care we are talking about? We are going to have to change how a lot of our land is used if we are going to hit our targets. If we do not, we are paying massive fines. Surely we should be paying the money upfront now to farmers, so they can plan.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_149">I will talk about the curves in terms of the dairy activity. The analysis that was done in forming the first two carbon budgets was probably done in 2021-22. That was a ten-year forward projection of where we thought international agricultural commodity markets would go and what economic signals we expected farmers to be responding to. At that point, and it is still the case, the markets for dairy products globally and in the European Union were positive. We would have expected, in all three scenarios we looked at, that dairy farmers would continue to respond to those profit-making opportunities down the margin. We had our base case scenario where we had continuing but slowing growth in the medium term in dairy cow numbers. We had a high activity scenario where we had even more dairy cows. We had a lower activity scenario where the rate of growth in dairy cow numbers was very low and effectively flat. We did not look at a scenario where we had large reductions in dairy cow numbers because we thought that if we had to reduce cattle numbers to meet a given quantity of emissions reductions, the most likely place that it would come from would be from lower-profit economic activities, which in a comparative sense and an Irish context are beef cow-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_90">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_150">It is basically the profit opportunities that are driving the approach, not the continued plan for increase in dairy. How does that fit with the common differentiators, such as the-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_151">We have to watch the clock.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_152">At the moment, all models are wrong but some models are useful. Dairy cow numbers are declining. They are down 2% compared to this time last year. The latest numbers came out on Monday from the CSO. Department data corroborates that. It is released on a monthly basis. Beef cow numbers are also falling by low amounts. Suckler cow numbers are contracting at a rate of around 5% per year. In a big-picture sense, our numbers are on the curve. Where we want the curve to get to is open to discussion. Where we are today is not dramatically different from where we were projected to be when we did the first analysis for the first two carbon budget cycles.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_93">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_153">To be clear, is it projected to increase in all the scenarios?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_154">Yes, it is.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_155">The reality of the agriculture policy is around increasing value add rather than volume. As has been indicated, the overall national herd is smaller than it was even in 2021. It is pretty static since 2018. However, it is down from 2021. Bovine total numbers were 7.3 million in 2021. Today, they are 6.8 million. It is down. The overall national dairy herd has been pretty static. The suckler herd has fallen. The message from the Department of agriculture has to be that it is all about value add as opposed to maximising the market return in terms of dairy that is produced here rather than a volume expansion.</p>
+          <p eId="para_156"> On payments for eco-schemes and eco-services as a means of support for delivering on biodiversity, there has been a huge shift. Under the current CAP, 25% of all basic payments are now eco-scheme payments. That is in relation to space for nature. On about 85% or 90% of all farms, that is the option they have selected. The payment is for hedges and ponds, etc. that are on farms. That constitutes 25% of the total payments. I will describe what the agri-environment scheme has become. The rural environment protection scheme was broad as a scheme. Various iterations have become more informed in terms of what we are trying to do and where in particular. It is about the right action in the right location. We are using data from the NPWS and the EPA etc., to better inform the structure and objectives of our agri-environment scheme. We have to remember that we have 55,000 of our 130,000 farmers in an agri-environment scheme. We have about 1 million ha of high nature value farming land in this country. There is a significant investment in biodiversity, water and climate through the strategic CAP, but also through national funding for the delivery on these objectives.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_96">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_157">Yes, but I do not see them in the modelling. I am very aware of that.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_158">We need to keep to the time. We are going to do a second round. We are going to keep it tight to 90 seconds because we are under time pressure, and we have other witnesses coming in. Before I do that, I am going to ask both groups about the curve. We are looking to hear from them about the two items on their curve that they are banging their head off the wall about. What can we help with in terms of advocacy? It is the same for the Department. We are looking for two items because that is where we want to help. I ask the witnesses to bear that in mind because I will ask them about this at the end.</p>
+          <p eId="para_159"> There is an interesting line in the Department's submission which states that "Not all mitigation technologies have production efficiency benefits and may represent a cost to farmers." To be fair to farmers, all along down through the years it has been a case of production, production, production. From a climate perspective, we have to be looking at moving away from that mindset into payments for environmental services. That model is the model in reality for the future.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_98">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_160">I will be quick because I have to go. This is for the Department. It is important to be able to map things. We are doing the land use planning. We are setting out all the major potential things that could impact on our environment. The Department of agriculture was recently ordered to release information to make it public that it has essentially been fighting the provision of any transparency in relation to certain matters. One instance relates to the number of herds of more than 500 animals. Apparently, there are 603 such herds. There was a request to provide the location of those very large herds and the Department fought that. The Commissioner for Environmental Information rejected the Department's claims and upheld the applicant's case. Why did the Department not wish to release that information? It was not personal information; it was not the names. These are large herds. I believe, and the commissioner believed, that because of the potential impact on emissions, water quality and environmental issues there was a right for people to know that information. Why did the Department fight that case? Will it be appealing it?</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_161">I do not know the detail of it. I would not like it to go out from this room that we fight access to environmental information; we do not.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_100">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_162">The Department would not provide that information.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:40:00+01:00"/></from>
+          <p eId="para_163">Let me explain.</p>
+          <p eId="para_164">I assume that in that case it is an interpretation of what we legally should or should not do. We are very much bound by the requirement on access to environmental information and we do not fight it. We generally have to adjudicate, though, on whether we have legal authority to release or not. That would be the logic applied. As the likes of a commissioner makes adjudications, the legal knowledge increases and therefore facilitates further decisions. Let us call a spade a spade: the Civil Service works off precedent in terms of awareness. We cannot afford to be non-compliant legally in terms of access to information. Somebody obviously made an adjudication as to whether this should be released, based on best advice. As a consequence of adjudication subsequent to that, we now have case law on what goes out and what does not. We do not fight our legislative requirements; we just have to interpret whether something is right or wrong. Somebody made a call here and that has now been rescinded. We will fully comply.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_102">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_165">So the Department will not be appealing the decision.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_166">That certainly has not come to my desk. I would not think it will be appealed.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_104">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_167">This has been a really useful session. I have a quick question on AD. The biomethane strategy seems to be very much based on using grass rather than secondary farm slurries or food waste, with which we could actually deliver greater benefits in addressing emissions. One of the early AD plants in this country, in Kilkenny, my home county, has been using secondary farm slurries consistently for the past 20 years. It is a farm-scale plant. It has also been taking in food waste. Why has the thrust of the biomethane strategy been based around grassland?</p>
+          <p eId="para_168"> We are still awaiting the publication of the land use plan, but from a land use perspective it seems to be far more carbon intensive to use grass as a feedstock rather than secondary slurries and, say, food waste from the services sector.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_169">In simple terms, it is down to volume. To reach 5.7 TWh, it takes around 200 plants. If using food waste and other materials, there would be feedstock for around 50 plants rather than 200. The introduction of grass is making up the differential between 50 and 200. It is not going to be 50 plants exclusively on food waste, but the volume of material required across 200 plants requires you to go beyond food waste or animal slurries.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_106">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_170">I have a second question. Has the carbon intensity of using the land for AD rather than for ruminants been calculated? Has there been a cross-check analysis of the carbon savings from such a system?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_171">I cannot say it if was a cross-check but we have calculated the contribution in terms of emissions reductions, which will fall largely on the energy side. My recollection – I do not have the figure in front of me – is that the amount is 1.2 megatonnes. It is similar in agriculture. I am referring effectively to what is a diversification option in agriculture. I appreciate that I am not answering the question directly in terms of the carbon emissions factor associated with the production of biomethane but the contributions on the energy and agricultural sides have been calculated. These figures are stated in the climate plan.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_172">I will add to that. The SEAI contracted a study to examine the carbon intensity of AD biogas generation because it has to meet the renewable energy directive requirements. You have to displace a huge amount of carbon relative to standard fossil-fuel gas. The calculations were made, and the grass is to boost the methane yields coming from AD. However, there are some plants being proposed that will be 100% slurry based and not have any grass going into them.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_109">
+          <from>Deputy John Clendennen<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_173">The climate targets and productivity were referred to. Should we be considering a revision of the three-crop rule to ensure viability for farmers at a time when we are looking at climate targets?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_174">On the crop diversity rule in terms of CAP payments, our analysis for the previous round of the CAP was that it was not going to be a major problem for most farmers. I do not think it is a major barrier. However, the CAP is up for re-negotiation, as the Deputy probably knows. This matter may well be discussed in terms of the development of our national CAP strategic plan but I do not believe it is a major obstacle.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_175">CAP payments are universal across the EU and subject to universal rules, and these include the three-crop rule. The arable sector in Ireland makes up about 5% to 6% of the total land area, whereas in Europe it is 50%. Therefore, its impact is driven by many European countries as opposed to Ireland. Equally, from a climate perspective, whether there are three different crops or a monoculture of barley, wheat or another crop is not going to make a difference to our overall climate numbers. It is the volume of arable that is the critical issue.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_112">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_176">It looks like we are into the additional-measures space in terms of the carbon budgets. The ultimate objective, our key goal, is to keep the global average temperature rise below 1.5°C or 2°C. We know the world is very close to a rise of 1.5°C, 0.5°C of which is attributable to methane. Why is methane significant? It has a shorter lifespan but a quicker impact. However, this means that if we really want to keep global temperatures from reaching the tipping point, we should note that earlier action has an earlier impact. Some of what we are doing to lower what is responsible for the rest of the rise will take decades to take effect. With methane, and thinking of it as an acknowledged climate forcer, we are constantly renewing the 0.5°C push.</p>
+          <p eId="para_177"> Given the increase in dairy, and beyond the previous modellings and the various pilots schemes, examples and rewetting, what are the big-ticket measures that could be adopted to reduce methane? The peatlands are as significant here as other elements. It is not solely about dairy and cattle farming. When we see the world teetering at 1.5°C and going towards 2°C, what can be done?</p>
+          <p eId="para_178"> My next point relates very much to Teagasc and those who play a role on the climate council. I am referring to the common but differentiated responsibilities. This matter is key. Reference was made to opportunities for profit, but the whole point is that countries that have profited for a long time have done so at the expense of other countries. Small farmers in the global south are seeing failing crops year after year and livestock dead on the ground. We are already seeing the most blunt impacts of climate change destroying livelihoods of small farmers across the world. Does the common but differentiated responsibility aspect kick in especially in this sector?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_179">In our marginal abatement cost curve, there are two measures. The first relates to manure additives. Manure accounts for about 10% of our methane emissions. We know there are certain additives that would reduce those emissions by 50% or 60% and potentially up to 90% plus. Those concerned are close to commercial implementation. Included is one national company producing the additives.</p>
+          <p eId="para_180"> Another aspect is feed additives. This area is subject to a huge amount of research. There is one feed additive already approved for use in dairy farming. The same feed additive, the 3-NOP product, is going through the EFSA approval process in respect of beef. These products are good to go. We know they work, particularly when animals are in the shed. During the dry-cow period, they would be very effective. Our research programme is focusing on how to develop them so they can be used within a grazing situation. There is less control over what the feed animals eat in a grass-based system, so getting an effective feed additive into them is more challenging in our grazing-based systems.</p>
+          <p eId="para_181"> Those are two really practical solutions. In our marginal abatement cost curve, we project that the inclusion of both will reduce methane emissions by between 15% and 19% by 2030, and could reduce emissions by up to 47% by 2050. Those are really substantial reductions in methane.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_114">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T13:50:00+01:00"/></from>
+          <p eId="para_182">But it is future-science-based mainly.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_183">Who is going to take the other question?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Dr. Kevin Hanrahan<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_184">On common but differentiated responsibilities, the richer world has to do more and that is part of the whole process. That is not something I philosophically disagree with at all but it does get difficult if you are trying to tell people they have to reduce their incomes and reduce activity levels to contribute to that differentiated responsibility. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_117">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_185">Those incomes can be replaced. That is a choice for Government in terms of what it chooses to subsidise or not. The goal is a national objective of-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_186">I do not think there is any point in getting into that now. </p>
+          <p eId="para_187"> What are the two items that have the Department and Teagasc banging their heads off the wall which we can help with? </p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Bill Callanan<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_188">As a civil servant, I take the responsibility very strongly and ours is not to advocate. We have identified that the way to communicate this is there are three areas focused on. One is the question of reducing fertiliser usage and changing type, the second is breeding and feeding, in other words, improving the genetic merit and the likes of feed additives, and the third is diversification. I can assure the committee the Department of agriculture is engaged across all those platforms in trying to drive the MACC into policy. </p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Dr. Karl Richards<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_189">Similarly, when you look at our summary for policymakers report from the MACC, the top two measures are reducing the age of finishing which in 2030 will reduce emissions by 0.7 million tonnes, which is quite substantial, and the other is switching our main fertiliser type to protected urea, which adds an additional half a million tonnes in 2030. The cumulative of both of those to 2030 is about 6.2 million tonnes, which is a substantial reduction, but the MACC does not stand on two measures. We need to deliver the 16 measures to deliver the entire 25% reduction, and that includes diversification as well. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_190">That is great. I thank everybody for coming in and answering questions and interacting with the committee. The transcript will go up on the website and I presume that is okay. I thank the witnesses for coming in.</p>
+          <p eId="para_191"> I will now suspend the meeting to allow the next round of witnesses to come in. </p>
+        </speech>
+        <summary eId="sum_7">
+          <i>Sitting suspended at 2.02 p.m. and resumed at 2.07 p.m.</i>
+        </summary>
+        <speech by="#NaoiseOMuiri" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_192">In session two, we are continuing our discussion on identifying the barriers that will prevent Ireland from achieving the climate change targets for 2026 to 2030. I welcome to the meeting the following witnesses: Mr. John Murphy, environmental and rural affairs chair, Irish Farmers Association, IFA; Mr. Tadhg Buckley, director of policy and chief economist; and Ms Geraldine O'Sullivan, senior policy executive. They are all very welcome.</p>
+          <p eId="para_193"> Before I invite the witnesses to deliver their opening statement, I advise everyone of the following in relation to parliamentary privilege. Witnesses are reminded of the long-standing practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if witnesses' statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative they comply with any such direction.</p>
+          <p eId="para_194"> I invite witnesses to make an opening statement of a maximum of five minutes. Once this has been delivered, I will call on the members of the committee in the order they indicate to me to put their questions. I call Mr. Murphy to deliver his opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:00:00+01:00"/></from>
+          <p eId="para_195">I thank the Chairman and the committee for inviting us here today. </p>
+          <p eId="para_196"> At the outset, I want to make clear Irish farmers understand the urgency of climate action and are determined to play their part in our national emissions target reductions. On their own farms, farmers are witnessing the reality of climate change, with longer periods of heavy rain and more frequent and severe storms, such as Storm Éowyn. Farmers are ready to be part of the solution but the transition must be fair and practical. Climate policy must reflect Ireland's unique grass-based land intensive farming system, protecting farmers' livelihoods, maintaining competitiveness and avoiding unnecessary administration burdens. Only then can farmers fully engage and make the necessary changes at farm level to meet these targets.</p>
+          <p eId="para_197"> Agriculture is central to Ireland, not just as our largest land use, covering over 70% of the countryside, but as a cornerstone of our rural economy. It sustains nearly 170,000 jobs and generates more than €19 billion per year for the economy. This scale naturally shapes our emissions profile. Agriculture accounts for 38% of Ireland's total greenhouse gas emissions, compared with the EU average of 11%. Our emissions are dominated by short-lived gases, particularly methane, which in 2023 represented 29% of Ireland's total emissions, more than double the EU average.</p>
+          <p eId="para_198">Ireland’s climate challenge is therefore distinct, and any effective solution must reflect the realities of our agricultural system.</p>
+          <p eId="para_199"> Under the Climate Action and Low Carbon Development (Amendment) Act 2021, Ireland set legally binding targets to reduce greenhouse gas, GHG, emissions by 51% by 2030 and achieve climate neutrality by 2050. Within this framework, agriculture has been assigned a sectoral target of reducing emissions by 25% by 2030 relative to 2018. In addition to this end-point target, binding limits are set for the first two carbon budget periods, 2021-2025 and 2026-2030, which cap total agricultural emissions over the decade at 202 million tonnes of CO2 equivalent, Mt CO2 eq. In 2024, agricultural emissions fell by 1.7% compared with 2023, and by 4.6% relative to 2018, driven largely by a reduction in livestock numbers. Notably, this marked the first annual decrease in dairy cow numbers after thirteen consecutive years of growth. It also represents the third consecutive year of reductions in agricultural emissions. These trends demonstrate farmers’ willingness to adapt and make tangible changes to reduce their climate impact.</p>
+          <p eId="para_200"> Current EPA projections indicate that, under the with additional measures scenario, emissions could fall by approximately 16% by 2030, assuming the implementation of mitigation measures outlined in the climate action plan 2025. If on-farm diversification measures are included, agricultural emissions could fall by 23% by 2030, significantly narrowing the gap toward meeting our sectoral 25% reduction target. The scale of the challenge to meet the emission reduction target should not be underestimated, given that agricultural emissions are inherently linked to the production source. Achieving these reductions, will require supportive policies, incentives and a just transition, to enable sustainable emission reductions.</p>
+          <p eId="para_201"> Recent refinements to the national greenhouse gas emissions inventory have led to a systematic 6.8% reduction in estimated agricultural emissions - excluding fossil-fuels - compared with the 2022 data that informed the Climate Change Advisory Council’s 2021–2030 first carbon-budget proposals. These changes primarily relate methane and nitrous oxide emission factors for non-dairy cattle and sheep. This means that according to the EPA, agriculture will meet its sectoral emission ceiling, SEC, target, provided emissions fall a further 0.1% in both 2024 and 2025 relative to 2023 levels. While continuous refinement of emissions data is positive in order to build confidence in climate policy, it is vital that the SEC targets are not changed every time new and improved data becomes available. Changing targets will send mixed signals to farmers and create policy uncertainty. Keeping the SEC targets fixed preserves transparency and keeps the focus on on-farm emission reductions rather than accounting adjustments. A stable SEC target rewards accurate measurement and sustained action, ensuring that improvements in data strengthen credibility instead of undermining the drive for real climate progress.</p>
+          <p eId="para_202"> The agriculture sector has a clear, science-based mitigation pathway, with measures outlined in the climate action plan 2025 and grounded in the Teagasc marginal abatement cost curve, MACC, which identifies the most cost-effective routes to meet the 2030 emissions-reduction target. Farmers are already making significant progress, demonstrating a willingness to adopt measures that are cost-saving or cost-neutral, and where resources allow investing in more advanced and costly innovations. These include reducing the use of inorganic nitrogen, increased adoption of low emissions slurry spreading, the genotyping of over half of our national cow herd to identify lower-methane stock to breed from and the development of the AgNav digital sustainability platform. These achievements show that Irish farmers are already delivering measurable, science-based reductions and investing in innovations that will secure deeper cuts in the years ahead.</p>
+          <p eId="para_203"> While progress is evident, farmers remain concerned that further action will stall without stronger supports to offset the costs of high-impact mitigation measures that cannot yet be recouped from the marketplace. At present, the marketplace rewards low cost over low carbon, leaving many farmers, who are already operating on tight margins unable to invest in new technologies or systems unless clear incentives or market-based payment mechanisms are introduced. Regulatory instability is an additional barrier. Over the past five years, frequent changes to farm-related regulations have created uncertainty, making medium-term planning and investment decisions difficult and reducing overall farm efficiency. A period of stable policy is now required, with a pause on new regulatory changes to allow farmers to plan and invest confidently.</p>
+          <p eId="para_204"> Several high-impact mitigation measures identified in the climate action plan and highlighted by the Climate Change Advisory Council could deliver rapid emissions reductions if properly incentivised, including use of approved feed additives and incorporation of additives in slurry to cut methane emissions; earlier finishing of livestock by supporting farmers to achieve target carcass weights at a younger age; backing an agri-led, farmer-centric biomethane sector, creating a viable business case for renewable gas production and use; and introducing carbon and nature farming schemes to de-risk forestry as a land-use option and to support the rehabilitation of peatlands.</p>
+          <p eId="para_205"> Given agriculture’s strategic importance and the scale of the transition required, the IFA proposes that a significant proportion of the €3.15 billion Climate and Nature Fund 2026–2030 is ring-fenced and directed toward on-farm interventions and diversification activities, with higher support rates for farmers on designated lands. This could be a major lever to support on-farm climate action. Feed and slurry additives offer promising opportunities to reduce agricultural emissions, but their financial viability, scalability, and adoption face several challenges. In particular, the cost-effectiveness of slurry additives and the effectiveness of feed additives in Ireland’s predominantly pasture-based system require further research. To enable widespread uptake, targeted supports will be needed to offset the high costs and make these technologies accessible to farmers.</p>
+          <p eId="para_206"> I would like to raise a concern regarding the potential impact of the EU’s carbon border adjustment mechanism, CBAM, coming into effect on 1 January 2026, which could undermine Ireland’s plan to replace CAN with protected urea. With 80% to 85% of Europe’s urea imported, and urea’s carbon intensity at 4 t CO2 eq per tonne, the CBAM costs could reach €340 per tonne significantly higher than CAN, at €230 per tonne. Critically, CBAM does not account for the emission reducing benefits of inhibitors in protected urea, potentially penalising a lower emission fertiliser and slowing Ireland’s progress toward its climate targets.</p>
+          <p eId="para_207"> Carbon leakage occurs when climate policies in one country or region lead to an increase in greenhouse gas emissions in another region with less strict regulations. The 2021 Climate Act required the appropriate Minister and Government to have regard to “the risk of substantial and unreasonable carbon leakage as a consequence of measures implemented by the State to pursue the national climate objective.” Irish agricultural produce is internationally recognised as having among the lowest carbon footprints per equivalent kg of output across the world. It is therefore highly likely that regulations impeding the sustainable production of produce in Ireland will most likely lead to carbon leakage. While IFA fully recognises the need for Irish agriculture to minimise overall carbon emissions, the inevitable consequences from a carbon leakage perspective must also be considered.</p>
+          <p eId="para_208"> The aforementioned Climate Act of 2021 specifically mentions “the special economic and social role of agriculture, including with regard to the distinct characteristics of biogenic methane.” The current programme for Government also recognises the distinct characteristics of biogenic methane, as described by the Intergovernmental Panel on Climate Change, IPCC, and advocates for the accounting of this greenhouse gas to be reclassified at EU and international level. The IPCC report highlights that conventional GWP100 metrics overstate the warming impact of constant methane emissions by three to four times over 20 years, while understating the impact of new emissions by four to five times. Biogenic methane produced during the digestion in ruminant animals is part of a natural carbon cycle, carbon from plants is converted to methane and oxidises back to carbon dioxide within about a decade. While stable methane emissions do not increase long-term atmospheric carbon dioxide, methane remains a potent short-lived greenhouse gas, so reductions are important for near-term climate goals.</p>
+          <p eId="para_209"> The Climate Change Advisory Council considered this science when developing the carbon budget proposal 2031-2040, interpreting climate neutrality as stabilising Ireland’s warming impact through net-zero carbon dioxide emissions, alongside deep cuts in methane and nitrous oxide - achieving temperature neutrality. Adopting a net-zero carbon dioxide plus temperature-neutrality target by 2050 is scientifically grounded, economically prudent and supports a just transition for Irish farmers. It aligns with the Paris Agreement’s temperature goals, avoids over-reliance on uncertain large-scale carbon removal technologies, and reflects Ireland’s agricultural emissions profile, delivering genuine climate stability rather than an unattainable net-zero accounting target.</p>
+          <p eId="para_210">The IFA also believes that the adoption of GWP* as an alternative approach to measuring methane is much more appropriate to ensure a more accurate measure of methane takes place. Without fair accounting for methane’s short-lived nature and adequate supports and safeguards for production, climate policy risks squeezing farmers' incomes, compromising food production and undermining rural resilience.</p>
+          <p eId="para_211"> For all sectors like agriculture, where emissions are deeply embedded in economic viability, land use and national identity, the challenge is not simply to reduce emissions at all costs. Effective climate action must be paired with incentives that drive meaningful reductions while supporting farmers and rural communities. Both Ireland’s Climate Action and Low Carbon Development (Amendment) Act 2021 and the EU’s nationally determined contribution to the UNFCCC recognise the importance of a just transition. This principle ensures that climate measures are not only environmentally effective but also socially acceptable and politically legitimate.</p>
+          <p eId="para_212"> Agriculture has a central role to play in helping Ireland meet its national and EU emissions reduction targets. Failure to act risks financial penalties, diminished policy sovereignty, reputational loss and missed economic opportunities. Conversely, timely and well-supported climate action in agriculture is not merely a legal obligation; it is a strategic investment in Ireland’s economy, society and environmental future.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_124">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_213">I thank Mr. Murphy, Mr. Buckley and Ms O'Sullivan for that comprehensive statement. I have just one quick question about the Climate Change Advisory Council and the mitigation measures it highlighted. For example, the use of improved feeds was discussed there. Do the members of the IFA accept these are the best mitigation measures for reducing greenhouse gases from the agricultural sector by 25% by 2030?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_214">The feed additives and such?</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_126">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_215">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_216">It is one part of the toolbox but the difficulty we see with it is there is a cost to it, particularly with the feed additives.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_128">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_217">This is my follow up question and Mr. Murphy might not have the information to hand but if we were to look at the average feed cost per annum, and if you were to add these additives, what percentage increase is there for the feed per annum? Does it increase the cost by 5% per annum or does Mr. Murphy have a rough idea of how much it increases the cost to a farmer? I know it depends on livestock numbers, etc., but is there an indication of the cost in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_218">One answer I received when I asked was that it could roughly increase costs by €80 to €100 per animal but we have other issues with it as well. With the grazing structure or the animal raising structure we have when animals are outside, the difficulty would be giving them the additive on an ongoing basis. These additives work well indoors because you can feed the animals the additive continuously in the feed. There is a lot of work to be done to see can we get an additive that will last a number of hours in the animal so that when they come back for their next feed, particularly dairy cows at milking, it will still be effective. The effectiveness of the additive decreases the longer it is in the animal's system so we need to develop a system where we can feed the animal twice a day with it and it is effective for the whole day. However, if it is an indoor system, you can feed the additive continuously because you control the feed.</p>
+          <p eId="para_219"> The cost is a huge issue because the reality is farmers are price takers. When you impose more costs on us, it is difficult to get it from the marketplace. Everybody talks about sustainability but no one wants to pay for it, particularly at a consumer level. Therefore, we say that the Government and the State needs to support the introduction of this type of measure.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_130">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_220">So Mr. Murphy is saying there will be another increase in the price of beef.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_221">It is extremely difficult to increase prices. You can see where the price of beef is going because of scarcity. It is not because farmers are driving up the price of beef. We are not driving it up at all.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_132">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_222">I accept that.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_223">If we impose more costs on farmers directly - there are costs imposed on farmers from low emission slurry spreading to extra storage and as there is state aid for some of those measures, farmers adjust their practices. However, something like feed additives would need substantial support to get it off the ground.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_134">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_224">On mitigation measures, has it been costed how much slurry additives would add to the costs of the average farm?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_225">I have not but Mr. Buckley might have.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Mr. Tadhg Buckley<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_226">Effectively, they have not been commercially launched yet so it is difficult. We do not have an exact estimate of the cost. If you take the feed additives, it was €100 per cow for dairy farmers. It was 2 cent a litre so it is not an insubstantial cost. The issue is then where does that return come from? The experience to date has been that is very difficult to recover sustainability measures from the marketplace.</p>
+          <p eId="para_227"> Consumers do not tend to pay extra for sustainability measures. They may want the product to have sustainability attributes but in terms of the marketplace, the trend up to now has been that it is very difficult to recover the costs from the marketplace. If it will not come from the marketplace, it has to be the State.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_137">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_228">There has been "guaranteed Irish" labelling and we spoke about organic farmers earlier on, could there be a market for sustainable beef or sustainable lamb that has used these particular additives, be it in the slurry but particularly with feed. Have the witnesses looked at a potential market for sustainable beef?</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Mr. Tadhg Buckley<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_229">I argue that we already have it through Origin Green.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_139">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_230">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. Tadhg Buckley<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_231">Bord Bia has the Origin Green logo. We have strong sustainability attributes at the moment. Our beef and dairy is among the lowest in terms of its carbon footprint per kg of output globally. Effectively, that is what Origin Green is based on.</p>
+          <p eId="para_232"> It is worth nothing that one of the challenges we need to be aware of is one of those feed additives mentioned is Bovaer. This is an additive that has been approved by the European Food Safety Authority. Approximately 12 months ago or maybe a little bit more recently, there was significant kickback about the use of Bovaer by some farmers, even though it is perfectly safe. It is one of our key mitigation measures. Yet, we saw what was probably a result of disinformation on social media and there was a lot of undue concern expressed about the use of it. That will be a big issue as well. There will be science-based measures that will help us mitigate and address emissions but we need to make sure they are also communicated correctly to consumers and they understand there is nothing to fear from these; far from it. These are sensible solutions that will allow us to achieve our emission reduction targets.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_141">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_233">I have a follow-up question but I will wait for the second round.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_142">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_234">I thank the witnesses for the opening remarks. I have a couple of questions, particularly on the point Mr. Murphy made about the market rewarding low cost over low carbon. It is something that is becoming pertinent of late because of rising food prices. Does the sector see that perhaps the value of food in this country has been undervalued in terms of the prices farmers, as price takers, are receiving and that it is not reflected in the actions that have to be taken, on climate in particular, over the next decade and beyond?</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:20:00+01:00"/></from>
+          <p eId="para_235">Yes. Mr. Buckley has done several studies on it and he has published work on it showing food inflation over the previous two or three decades. Food inflation has been very modest. We have had a spike in food inflation in the previous three to four years for a variety of reasons but it is still very modest in the 20-year or 25-year average. We all know and even we ourselves and our families know people were spending less on their food as a portion of their income as the years progressed in the previous two or three decades.</p>
+          <p eId="para_236"> In our opinion, food is not too expensive. We are not saying it is not expensive but we have to live in the same economy as everybody else. We are consumers and we have to go shopping and buy our food as well. We need to get a reasonable return from the market for our efforts. The traditional EU policy over the previous 30 years has shifted. We have shifted away from payments for production towards payments for a variety of other things like environmental factors, sustainability, extensification and organics.</p>
+          <p eId="para_237">That will have an impact, and the impact is probably being felt more in recent years because the real shift has only taken place in the last four or five years. Beef was mentioned a while ago. If you look at what has happened in Europe over the last 20 years, the beef and cattle herd in Europe has been ticking down by small percentages every year. It becomes cumulative and, suddenly, in other parts of the world, you get a big drought, like in Texas, and the livestock numbers fall, and we are where we are now. I do not think it is in anybody's interests to have this where we are now, because when you have these massive fluctuations, there will always be casualties and difficulties. We as farmers would like to see stable markets and reasonably stable prices over a period of time. Going back to sustainability and the issue of cost, we have issues like the Mercosur deal, where more stuff is coming in from countries that have less sustainability regulation, and we have to compete in that space. It is a balancing act to try to be fair to everybody.</p>
+          <p eId="para_238"> There are some initiatives we are using at farm level that are good for our businesses. Low-emission slurry spreading has been good for our businesses in the last four or five years. It has got more out of the nutrients we have in our tanks. We have succeeded in reducing the use of artificial fertiliser. We are converting to greater use of urea, using the inhibitors. That will have a big impact. In reality, if we want to reduce the methane kick, we have to embrace the additive technology. There was much talk, when we were listening in to the previous session, about livestock numbers and whether they should or will reduce. The reality is that it is difficult to ask people to reduce their output and take a cut in their living standards while they perceive everybody else in society moving on.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_144">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T14:30:00+01:00"/></from>
+          <p eId="para_239">Surely that goes back to the point that Mr. Murphy mentioned about the climate and nature fund. A significant portion of that, some €650 million, was to be set aside. This was the start of a rolling fund. It is a question I put to Department officials about moving out of projects with a short-term projects, such as LIFE and EIPs. They have been brilliant, but many farmers might make a lifestyle choice to reduce herd sizes if they were being paid full benefits for climate, nature and water, and if long-term certainty was built into those schemes such that they were not just five- or seven-year cycles but were actually embedded into the next CAP strategic plan. Does Mr. Murphy have a view on that?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:30:00+01:00"/></from>
+          <p eId="para_240">That is a huge issue for us because all these schemes, by their nature, have been short cycle. The special area of conservation designation of lands 20 years ago involved a number of initiatives to make payments, then the payments evaporated and disappeared and farmers were left with the consequences of it. It is a valid point that these payments should be on a more secure footing and we would entice landowners and farmers into it, since they would see a long-term future in it. The Senator is right about lifestyle choices. The point I would make is that, in years to come, there will be many landowners who will not be farmers, as the structure changes and we move on in the next ten, 20 or 30 years, and they might have different ambitions for that type of land and what they want to use it for. To incentivise people, long-term funding to make a return from it is needed. We were disappointed when we saw that a Government raided a heap of that money for the metro. How it can equate a metro with nature and sustainability is a difficult question. We have to keep our message out in front and work to get the best stake out of it. I take the Senator's point that it is important that the schemes have more long-term funding.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_146">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-01T14:30:00+01:00"/></from>
+          <p eId="para_241">The farm plan scheme, on designated land, has been fantastic. Such schemes need to be ramped up significantly.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_147">
+          <from>Senator Paraic Brady<recordedTime time="2025-10-01T14:30:00+01:00"/></from>
+          <p eId="para_242">As the witnesses rightly pointed out, we have seen a decline in the national herd. We are back at record levels, since we joined the EU in 1973. At this moment, we are at 6.9 million head. That is due to a decline in the farming industry, which has reduced our carbon emissions through stealth, as I call it. While we have done low-emission slurry spreading and seen the scientific facts at the National Ploughing Championships last week regarding feed, fertilisers and one thing or another, the only way farmers are going to buy into this, as the witnesses and Senator Noonan said, is to have a properly funded, long-term scheme. Unless we have it, this will never be solved. We are never going to meet our targets. It is hard, as a farmer, and I am one. We see Brazil looking to increase its herd by 3 million cattle. America, in the same sector, is trying to increase its herd by 8 million cattle, yet we are trying to tell farmers in this country that we need to reduce our herds. With Mercosur, we have to compete in the same markets as Brazilian beef, which does not have the same traceability or scientific evidence behind it, and the use of hormones is legal in that country.</p>
+          <p eId="para_243"> It is difficult, when representing farmers, to entice farmers to buy into all the schemes here. We talked about it all in Europe last weekend and about simplification, but there is less simplification and things are getting more complicated. We can talk out of both sides of our mouth here, but unless we sit down with the farming organisations andthe Department of agriculture and come up with a proper scheme that our farmers, especially our young farmers, will buy into regarding water quality, sustainable futures and energy supplies, which has to be included to support farmers, we can talk about all of this for the next 30 years and we will not have achieved our targets. That is where we are. I thank the witnesses for their time.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_148">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T14:30:00+01:00"/></from>
+          <p eId="para_244">A couple of things spring to mind. What Senator Brady said is quite correct. At the end of the day, farming is a long-term commitment for anyone who goes into it. What is put in place to support them, particularly if we are to go down the route of ensuring that the environment is protected and maintained, if we are asking them to do things in a particular way, has to be funded adequately and properly. The cut to the CAP budget is an example of the problem. Mercosur is another example of the problem. We see all these contradictions.</p>
+          <p eId="para_245"> We have a huge problem where we are importing so many of our proteins from other places around the world, which brings dangers with it. Many of the problems that we have had, in various sectors, whether hornets come in or whatever else, such as the beetle in the forestry sector, come from imported produce, particularly from agricultural bases in other climates. In this country, we have a clean environmental standard. We need to look at whether there is an opportunity for Irish farmers to produce more of their own proteins. I will talk about this later in the context of the tillage sector, whose represenstatives are to appear before the committee, because it is one of the options for this. We need to come to a situation where we recognise that if Irish agriculture is going to be the top-shelf product that it has been up to now and if we are going to maintain it in that place and get a good price for our product internationally, we have to be able to make sure that it is sustainable long term. The farmer may have to look at alternatives to do that and, in some cases, a farmer who has been cattle farming up until now may have opportunities in other places that will be better for the environment than cattle farming. If that is the case, that has to be incentivised properly.</p>
+          <p eId="para_246"> The big picture here is that the future of Irish agriculture, in my view, is positive. The Industrial Revolution changed the world. It changed agricultural more than anything else. So much is done by automation nowadays that what has happened is unbelievable, such as robots milking cows. It has changed everything. There are opportunities. Some of the innovations the witnesses talked about from a climate change perspective and mitigation, whether it includes feeds or whatever, are science that is only starting. Ten years ago, we were only thinking about looking at it. In another ten years, that will have come on a journey to be much better than it is now. If we can have the confidence to invest now, we can reap the benefits in the future, but that will require everyone being on board. Farmers in particular will have to be on board and will have to see that there will be other opportunities for them and that those opportunities will be ones that can pay well.</p>
+          <p eId="para_247">I would like to get the witnesses' comments on those points. </p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Tadhg Buckley<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_248">In fairness, I think the Deputy’s points are well made. He mentioned the CAP and that side of it. One of the key weaknesses in terms of the whole direction from an EU policy perspective, under the green deal and the farm-to-fork initiatives, particularly under the last European Commission, was the lack of funding put aside. Specifically on CAP, when we looked at the eco-schemes put in place, and Senator Noonan will be fully familiar with this area, that was existing funding that was reused in terms of an environmental perspective. There is no issue at all with putting funding into and awarding farmers for taking part in eco-schemes. The particular issue we had was that it was existing funding that was recycled. It was not new funding. It was funding taken from the old CAP and put aside for those eco-schemes.</p>
+          <p eId="para_249"> One of the key things we need to do from an environmental funding perspective is to get new funding on the table, like the portion of the Infrastructure, Climate and Nature Fund, as we said in our submission. Additionally, from a European perspective, when we look at the CAP, the proposed cut has not gone through yet but if the European Commission’s proposals came to pass, the new CAP funding would probably reduce funding to Ireland before the Government has the opportunity to fill the hole of over 20%. There is a huge issue there in terms of putting funding aside for that eventuality. One of the real concerns farmers have is when they hear they about need to reduce this aspect but are told they will be looked after and be given funding. The track record on that is very poor from a State perspective.</p>
+          <p eId="para_250"> Turning to the point made about the protein, it is also valid. If we were to take the example of average livestock in Ireland, more than 90% of their diet today comes from grass or forage. About 10%, or a small bit less, does not come from grass or forage. A chunk of that, then, comes from cereals, some of which are Irish and some imported. We then have a protein portion, which livestock require for part of their diet, especially when indoors during the spring. The non-ruminants, poultry and pigs, require it as well. The solutions here are often soya-based, and these are imported because soya beans cannot be grown in Europe. There are, though, opportunities there from a protein perspective. When we look at research and technology, we need to look at the likes of beans and these sorts of crops. We already have protein aid scheme funds going into it, but we need to do more on it and develop better ways to allow us to grow those crops in Ireland. We could then include them in feedstuffs to eliminate what the Deputy spoke about. This is a win-win situation because it can reward farmers in terms of alternative methods of crops they can grow and improve our overall sustainability credentials by reducing our dependence on imported feed. This is not as high as people think it is because the vast majority of livestock are actually grass-based or forage-based.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_150">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_251">One of the key things is the point made regarding the cut in the CAP. We were in Brussels last week and we put it to the Commissioner that there is a breakdown in trust between the agricultural sector and the European Union. That trust needs to be restored. If it continues to cut away at the CAP budget and to introduce trade deals like Mercosur, which undermine agriculture across all of Europe, then it will lose that trust. If we start to lose trust in the agricultural sector, and we have seen it happen in other countries, such as in Holland and with Brexit, that is very dangerous for the future. The European Union has a job to do to ensure it maintains that trust and the best way it can do that in an Irish context is to ensure it supports the agricultural sector, which is our biggest industry.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_151">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_252">I thank Deputy Kenny. I call Senator O'Donovan. </p>
+        </speech>
+        <speech by="#NoelODonovan" eId="spk_152">
+          <from>Senator Noel O'Donovan<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_253">I thank the Chair. I will try not to repeat anything Deputy Kenny and Senator Brady said, but I agree with their contributions. I met members of the IFA in west Cork some months ago at an environmental discussion with farmers. For the benefit of the other members of the committee, everything they are saying here today was explained to farmers. Oftentimes, there were tough questions in the room, but I saw in that room in Clonakilty the commitment the IFA has to reducing emissions and to meeting the climate targets. What request is being made of us as Government members or as legislators here today? What can we do to support the IFA and support farmers to reduce emissions further? What is the IFA asking for?</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Ms Geraldine O'Sullivan<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_254">I thank the Senator for his question. I suppose one of the biggest and the most pressing things at the moment and a key part of the policy is the replacement of the use of calcium ammonium nitrate, CAN, with protected urea and the impact it is going to have. The proposal is that the carbon border adjustment mechanism, CBAM, will come into effect on 1 January 2026. It is going to place a tariff on imported urea. Under the mechanism, there is no opportunity to look at anything else. It just looks at the urea, which has a carbon intensity, and does not take into account the fact that an inhibitor is used in Ireland to reduce the emissions. The mechanism just looks at the carbon intensity of urea and does not take account and has no ability to take account of the fact it is possible to add an inhibitor and significantly reduce the emissions. At a time when we see it as a key part of our climate strategy, we see a policy coming in at European level that will absolutely increase the cost for farmers to use protected urea, which is going to be a massive disincentive.</p>
+          <p eId="para_255"> It is these kinds of policies that drive farmers mad. We are trying to encourage the use of protected urea and there has been a massive uptake. Now, when farmers go to the market next year, they are going to see a higher cost for it compared with CAN. This is something that needs to be addressed within the Commission. The mechanism needs to have an ability to allow consideration of the use of an inhibitor to reduce carbon emissions and to account for that in the system. This is massive. As mentioned earlier by the representatives of Teagasc, we are hoping to increase the use of protected urea up to 95% of our straight fertilisers. It is a massive part of our climate strategy, and yet we have a policy coming from the European Commission that is well-intentioned and is about trying to deal with carbon leakage, but the issue is it is not allowing our use of inhibitors to be addressed within the mechanism.</p>
+          <p eId="para_256"> We see the huge potential here, and we have mentioned it in relation to feed and slurry additives. There are a number of demonstration projects but money will be needed. A plan will be required to get these ready to go to farm level and be adopted. We are closer with the slurry additive than with the feed additives. Some demonstrations are coming next year to explore this possibility and this will require putting in costly systems to start gathering the information. We need to see a defined project and a defined plan for doing that-----</p>
+        </speech>
+        <speech by="#NoelODonovan" eId="spk_154">
+          <from>Senator Noel O'Donovan<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_257">I am sorry to cut across Ms O’Sullivan, but I am just conscious of time. I want to go back to Deputy Ó Cearúil's points on the additives because we hear a lot about them and they seem to be the white smoke at the end of the tunnel that will reduce emissions. Is this initiative Department-led or private-sector led? I am referring to both these types of additives.</p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Ms Geraldine O'Sullivan<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_258">The innovations are private and then they have to go through approval systems. There are a number of different systems. There are different products, with some being market-ready, some not market-ready and some close to being market-ready. The one in relation to the feed additives is market-ready but there is a significant upfront cost. Others are advancing. It is about trying to get different systems as market ready as possible and to support them. A big issue for these, from a Government perspective, is that we need an ability to get the benefit of these innovations recorded and included in the inventory.</p>
+        </speech>
+        <speech by="#NoelODonovan" eId="spk_156">
+          <from>Senator Noel O'Donovan<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_259">Is any EU country currently using these additives? Is any government within the EU supporting the agricultural sector to use these technologies?</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Ms Geraldine O'Sullivan<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_260">They are using them and there are different kinds of mechanisms of support. Again, this comes back to the fact that we have a pasture-based system. We have a very different system, so the economics are different. If this approach is being used in an indoor feeding system, there will be much higher reductions in methane emissions than when animals are only housed for certain periods, which is the case here. If the animals are being fed at different times, the methane abatement is reduced, which creates a much higher cost difficulty. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_158">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:40:00+01:00"/></from>
+          <p eId="para_261">I will give a minute per member if anybody wants to ask any additional questions. Would anybody like to come back in? No. I return to what Senator O'Donovan mentioned regarding what is being asked of us, particularly when it comes to climate. We asked the representatives of the Department and Teagasc this question earlier.</p>
+          <p eId="para_262">Is there anything in particular which the IFA feels it is banging its head off a wall in respect of and which we could effectively and pragmatically support it in and advocate for on its behalf? We are having this discussion with a number of different sectors. The issue around CAN and protected urea, which is an obvious one, was mentioned, and the cost of feed additives is in the IFA report. These are the sorts of issues we are talking about. Is there anything else the witnesses want to flag now?</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_263">There is one other thing. For a number of years, we have been looking for some sort of help from the Government to reduce the age of slaughter quicker. There is a good case to be made for having some sort of stage payment on the animal to encourage farmers to have better weight gain earlier in its life. The reality with early slaughter is it cannot be achieved on an animal unless, in the first 12 to 18 months of the animal's life, particularly the first 12, there is good productivity gain to keep the animal moving. If you lose in the first 12 months, you rarely slaughter an animal at an early age.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_160">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_264">How is that tied into climate?</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_265">It is tied to climate. If the animal spends less time on the planet, there will be fewer emissions. It is a big one in the MACC. All the data is already there. We have a massive database from ICBF of all the livestock and all the factories. Everybody is recording the movement of all these animals through their lifetime. When they go to mart, they are weighed and it goes into the system. When they go to the factory for slaughter, it is in the system. We have genetics as well, which the boys in Teagasc talked about. There is a big case to be made for some sort of funded initiative to get farmers to concentrate more on the first 12 to 14 months of the animal's life. For a while, pre the booming prices for beef, it was felt that the people rearing those calves needed financial support to make ends meet in the context of their businesses. Of course, the price of beef has now circumvented that a bit in the short term, but that might be short-lived and some of it might revert. In the longer term, if we are to expedite this a bit faster, we suggest that Government funding will be needed.</p>
+          <p eId="para_266"> The obvious one with feed additives is we need some sort of mechanism to fund it to inspire us to do it. We also need the technology to come on another bit. The slurry one is probably there; it is just to try to implement it at farm level and incentivise farmers. It must be remembered we are asking fellas to spend maybe €2,000 or €3,000 on an average farm. The first question they will ask is what that is for. If we say it will reduce their carbon footprint, they will ask what that will that do for them. We could say, "We do not know. It will give you a licence to keep farming" or "We will take away two of your cows if you do not do it". We have to incentivise; we cannot coerce. If we do not incentivise, how will we get it across the line?</p>
+          <p eId="para_267"> In fairness to the co-ops, they have sustainability programmes and they make a modest effort, but the reality is it is still the same money. They are just pinning it to you at a slightly different level. We have proven technology for feeding additives in indoor systems. We have a large number of feedlots in the country. There is a good school of thought that maybe feedlots should be incentivised to use the additive for the last two months of the animal's life, which would lead to a reduction. The point Ms O'Sullivan made about getting it into the inventory is really important for us. If we do not get it into the inventory, we do not get a credit with it and we do not get the explanation.</p>
+          <p eId="para_268"> I will ask for one other thing. In general, there has been a lot of vilifying of farming over the past number of years, since this climate debate started back in 2019, 2020 and 2021, including talk of the national herd. We got a lot of bad press. Sometimes, we get a lot of bad press in respect of nitrates in water and the issue of pollution. In our opinion, some of it is a bit unfair. We do not ever deny that there are issues. We face up to the issues, but we need a fairer hand. A more balanced approach to the reporting or commentary on it would be of help. All the members can help on that.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_162">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_269">Thank you. There are 30 seconds left.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_163">
+          <from>Senator Paraic Brady<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_270">I will come back in on what Mr. Murphy said about smaller carcases. Kepak was at the National Ploughing Championships. It has carried out trials where schools were incentivised to raise calves from calf to beef and the animals could be killed at a certain carcase weight. I have reservations in this regard. It will certainly meet that demand for the produce of the dairy sector. However, the suckler calf has two markets. He either goes for export, where he is highly sought after with that muscle type, or he has to go into our beef sector. His finish date will certainly be ahead of that of the Angus.</p>
+          <p eId="para_271"> What has been said is correct, but we should have structure and markets, and certainty within that, as well as contracts. I say this in the best of way: this is the only industry where we produce a product where the producer does not know what the end sale price of that product is going to be. It is the only industry in the whole world that this like this. Who in their right mind would want to produce something when they do not know what they are going to get at the end of it? It is only a farmer who would do it. The reality is that we need to get certainty within the markets. Bord Bia, the IFA, the farming organisations and Meat Industry Ireland need to come to the table. We have seen beef already falling in price in the past number of days, even with a strong market demand in Europe.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_164">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_272">I am sure those organisation will be before the agriculture committee as well. The Senator went way over 30 seconds.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_165">
+          <from>Senator Paraic Brady<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_273">Sorry.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_166">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_274">I will now let in Deputy Whitmore for 15 seconds.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_167">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_275">I assume I get the 30 seconds. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_168">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_276">You get the 30 seconds.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_169">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_277">I will make a comment. I just listened to the closing statements. Obviously, I am one of the people who comes from an environmental perspective on many of these issues, but I do not see it as an either-or. Absolutely not. There is absolutely a way that we can get a sustainable and economically viable way of farming, which is fundamentally important because farmers are business people after all, that also stays within our environmental boundaries. Over years, we have had the farming sector, through policies, pushed onto an intensive road. I completely understand how frustrating it is for farmers to be told that they have been doing it wrong all these years and that they need to make changes. It will cost a huge amount of money, but has been pushed back to them. There should be supports for them to meet those targets and measures that we, as a country, and the environment need them to do. It is important that they, particularly smaller farmers, are supported in doing this. We need to protect those smaller farms because they are such a huge part of our country and heritage. That is very important. It is about getting the balance right in that.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_170">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T14:50:00+01:00"/></from>
+          <p eId="para_278">I thank the witnesses for attending. As we said at the previous meeting, the transcript will be published on the Oireachtas website. We will go into private session now.</p>
+        </speech>
+        <summary eId="sum_8"> The joint committee went into private session at 2.57 p.m. and adjourned at 4.27 p.m. until 12.30 p.m. on Thursday, 8 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

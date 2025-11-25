@@ -1,0 +1,1403 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-11-05/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-11-05/debate"/>
+          <FRBRdate date="2025-11-05" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_infrastructure_and_national_development_plan_delivery"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-11-05/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-11-05/debate/mul@"/>
+          <FRBRdate date="2025-11-05" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-11-05/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-11-05/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-12" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ConorSheehan" href="/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29" showAs="Conor Sheehan"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="LouisOHara" href="/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29" showAs="Louis O'Hara"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="PeadarToibin" href="/ie/oireachtas/member/id/Peadar-Tóibín.D.2011-03-09" showAs="Peadar Tóibín"/>
+        <TLCPerson eId="ReadaCronin" href="/ie/oireachtas/member/id/Réada-Cronin.D.2020-02-08" showAs="Réada Cronin"/>
+        <TLCPerson eId="SeanFleming" href="/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26" showAs="Seán Fleming"/>
+        <TLCPerson eId="TonyMcCormack" href="/ie/oireachtas/member/id/Tony-McCormack.D.2024-11-29" showAs="Tony McCormack"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM BONNEAGAR AGUS SEACHADADH AR AN BPLEAN FORBARTHA NÁISIÚNTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Infrastructure and National Development Plan Delivery</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-05">Dé Céadaoin, 05 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-05">Wednesday, 05 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#CathalByrne">Cathal Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#ReadaCronin">Réada Cronin</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#TonyMcCormack">Tony McCormack</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#LouisOHara">Louis O'Hara</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#ConorSheehan">Conor Sheehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#PeadarToibin">Peadar Tóibín.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#SeanFleming">Teachta / Deputy Sean Fleming sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-11-05T15:30:00+00:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:30:00+00:00"/></from>
+          <p eId="para_12">We have apologies from Deputy Sheehan. I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex to participate in public meetings. Members are also reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or engage in speech that may be regarded as damaging to the good name of a person or entity. Therefore, if members' statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_13"> The first item on the agenda is the minutes of the meeting of 8 October. Are they agreed? They are. I thank members.</p>
+          <p eId="para_14"> The next item is the plan for future meetings. I will outline what we are suggesting. Next week we are continuing with people on the construction side. We have invited the Construction Industry Federation and Murphy Ireland, which does work nationally and internationally. Today is more about house building. We have invited John Paul Construction, who we have heard of as well. It is a main contractor in building infrastructure with experience both in Ireland and abroad, which is good. Then we have the Dornan Group, which is a mechanical and electrical contractor, primarily in the data centre area. We have a good mix between the major infrastructure projects, data centres and housing. We will circulate this schedule after the meeting, once we have agreed it. On 19 November, we have invited the Society of Chartered of Chartered Surveyors, the Royal Institute of Architects and the Irish Planning Institute to get their views. On 26 November, we have invited EirGrid, the ESB and Gas Networks Ireland. On 3 and 10 December, we propose, depending on which date suits the different people, to have Bord na Móna and the Commission for the Regulation of Utilities together and for the other meeting we propose to invite Sean O'Driscoll, who members will know is the chairperson of the accelerating infrastructure task force. That report was issued during the summer and the Government has been considering it since. It will obviously be outlining its plans on that around the end of November and beginning of December. We have already suggested that Mr. O'Driscoll be available at the next meeting after the launch, which could be 3 and 10 December. We will swap those to scheduled meetings as required. As for 17 December, the Office of Public Works was scheduled and cancelled at short notice a while ago, so we will put it back on the list. We will continue our work in the new year. I had suggested we do a report on our work to date but we do not have enough done just yet.</p>
+          <p eId="para_15">I would prefer if we came back in January and produced a report on all the work we are talking about. If we produce a report in December we would have to be at it now and some of our latter meetings will not be included in it. I would like to get everything done and then work on a new report early in the new year, with a launch as early as practicable in the new year, having completed all of the work we will have done by then.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_2">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_16">At one stage I made a suggestion on having a procurement session. I do think this is something we have not covered and it really is essential for finding out what goes on in the procurement and tendering processes that have led to some of the major scandals we have had around procurement. Making sure we get things right from the start will be a big piece of infrastructure delivery. I made one suggestion of a professor-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_17">You did, yes.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_4">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_18">I cannot remember his name. I have also been in touch with someone else and I can email the secretariat on this. This is something that would be very good to have. Separately I made suggestion of having a disability group before the committee. It would be important to prioritise this. I appreciate there are not many sessions left before the end of December but we want to make sure we are really reflecting society as a whole, and reflecting the disability strategy in infrastructure planning would be important.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_19">We will do this. The last couple of meetings are a little bit fluid at present. We have suggested the OPW, perhaps on 17 December. This is only a suggestion made by me in the past five minutes. There is a bit of space and we will come back to it. We will take the gist of it to 3 or 10 December.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_6">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_20">Can I suggest that along with the CRU, Eir and ESB, we invite Bord na Móna?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_21">Yes, it is-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_8">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_22">It is already there.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_23">I mentioned it for the same day as the CRU. I mentioned Bord na Móna.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_10">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_24">I apologise. I did not realise it was on it.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_25">That is as good an outline as we can do. Before the break there may be an opportunity to deal with disability. It would be wrong to have a big report on housing without having even discussed the topic. There is also infrastructure in general and the procurement issue. We will do an interim report early in the new year. We will continue our meetings. The hard-working staff will be preparing the report behind the scenes for our consideration, and we will move on a bit further as well.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_12">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_26">I have another suggestion. We had the Courts Service before the committee giving its perspective on judicial review. Judicial review comes up time and time again in relation to the work of the committee. It might be good to have some groups in, perhaps environmental groups, that see it from a different perspective because we need to have a holistic response in what we are doing here. There was a time when we did not have much judicial review in Ireland. We now have more judicial review. Why is this happening? Is it something to do with the planning process itself? Are decisions being made that allow for judicial review because bad planning is leading to it? As we know, quite a high threshold is required to access a judicial review. Before we even get to that stage what is happening in the planning process that is leading to more judicial review cases?</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_13">
+          <from>Deputy Réada Cronin<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_27">That would be very good. We had An Coimisiún Pleanála in and we asked about the staffing. It more or less said it felt it was adequately staffed. We have to make sure the onus is not only on the environmental sector. We have climate laws and planning should be adherent to the climate Act. I do not think we should be letting people off the hook, or the Government off the hook, by blaming judicial reviews for delays in infrastructure so I would support that.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_14">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_28">I thank Deputy Cronin. Obviously we have judicial reviews as an access to justice element and there is the Aarhus Convention. To really strengthen the work and reporting we are doing, it would be important to reflect these two perspectives.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_29">I totally agree. And, in fact, because it is so much in my head I forgot to write it down. Can we agree this as the approximate framework? The judicial review meeting might not be held until January.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_16">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_30">Perhaps that might be for January.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_17">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_31">It might be the first week in January. The committee secretariat will be working on drafting a report and will incorporate these. I expect it will be February before we have a report.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_18">
+          <from>Deputy Réada Cronin<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_32">Let us make sure we do not allow people to apportion blame where it should not be.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_19">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_33">Yes, we want it to be holistic and we want to feel that we have got every perspective in it.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_34">It would be good to get differing views on it.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_21">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_35">The secretariat might have lots of names but if it is looking for names I am very happy to be emailed and I will put some suggestions forward.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_36">Okay, that is good.</p>
+          <p eId="para_37"> We will now move to correspondence. Members of the committee recently visited Ringsend and Poolbeg and we will have a draft report on this, which be on the agenda for the next meeting. I am informed that it is normal practice when a committee visits a location that there is a report. The report will contain the responses to a lot of the additional questions we asked on site on the day. They have just come in. We will circulate it before the weekend. It is very in line with what happened down there. It is just a report on the questions we asked, what we saw and the information we received subsequent to the meeting, with a view to clearing it for next week. It will be circulated well in advance of the next meeting.</p>
+          <p eId="para_38"> We have five items of correspondence. No. 58 is a suggestion to invite ESB Networks and Bord na Móna in with the Commission for the Regulation of Utilities. I think that is agreed.</p>
+          <p eId="para_39"> No. 59 is additional information from the Irish Academy of Engineering providing additional information following our meeting on 8 October. We note and publish this. This means people are free to use the information as they see fit. It has now been noted and published.</p>
+          <p eId="para_40"> No. 60 is from the Association of Consulting Engineers of Ireland with additional information following our meeting on 8 November. We can note and publish this.</p>
+          <p eId="para_41"> The next item is from the Royal Institute of the Architects of Ireland requesting a meeting with the joint committee. We have already suggested 19 November and it will come before the committee. We will note and publish this.</p>
+          <p eId="para_42"> Then there is a letter from Miroslav Plevný, chair of the national economy, agriculture and transport committee of the Senate of the Parliament of the Czech Republic. The correspondence was received from the embassy of the Czech Republic. It is a letter to the Chairman thanking him and members for meeting the delegation when they visited Ireland recently, and inviting the committee to visit Dukovany nuclear power plant and to continue the dialogue on land protection and electricity supply. A lot of the Czech Republic's energy is nuclear power. The invitation is to visit a nuclear power plant. We would not do anything like that just to see a nuclear power plant. We would have to look at solar, wind and whatever. Do members have any suggestion? Will we just note it and hold it over? I do not think we are of a mind to make a definitive decision on this here today.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_23">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_43">I do not think so.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_24">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_44">As a new TD, when a letter like this comes through is it an invitation whereby the senders would host us and pay?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_25">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_45">Every Oireachtas committee has a budget for travel, including this committee. All Oireachtas committees have it. The normal numbers that travel on a trip such as this from the committee membership is three. It can go to four for but we have to get special sanction for four to travel. The Oireachtas committee has a budget to cover flights and accommodation. We will hold off making a decision unless people want to accept or reject it immediately. Will we just hold it off?</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_26">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_46">Is it to go to see a nuclear plant? Is that on our horizon?</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_27">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_47">It is not something that we are looking at at the moment but it is certainly something we should be thinking about for the future. They have become an awful lot safer over the years. While people of our age and older think of Sellafield straight away, in fairness there are an awful lot of smaller units and other nuclear plants across the world which are completely different and an awful lot safer than they were in the past. It is an option for us as part of our infrastructure which provides for the country.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_28">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_48">I would like to say one thing. I am not sure if everyone was there on the day we met the Czech delegation. The reason the invitation is probably specifying the nuclear power plant is because we called it out as an interesting difference.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_29">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_49">Between-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_30">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_50">We called out nuclear because we do not have it and the Czech Republic does. When we were going through various infrastructure and spoke about energy we did allude to the fact it is something that is key which we are missing. This is just in case people are wondering about the context.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_31">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_51">You had a meeting with them.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_32">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_52">We met them here.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_53">There was a delegation here.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_34">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_54">There was delegation and we met them.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_55">The committee was invited.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_36">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_56">Nuclear came up. It was just an interesting difference between the two. This is the context of why they are asking, if people are wondering.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_37">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_57">I think it would be a brave TD who would suggest a nuclear power plant for their constituency. We should probably look at it but I am not in favour of nuclear power in Ireland. We should be available to research it, at least to be able to put a decision in a report to state we have looked at it. I would say not to agree with it yet.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_38">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:40:00+00:00"/></from>
+          <p eId="para_58">I am neutral on it as well. What I will say is that it came up in a conversation that the cost of electricity in Ireland is one of the highest in Europe.</p>
+          <p eId="para_59">One of the reasons for this is that most other countries have nuclear, which is cheaper, and that is a fact that comes into that debate. Second, when we plug in something in our houses, there is nuclear power there. Two interconnectors from England have nuclear power in them every time they are plugged in, and the interconnector with France will allow electricity to flow from the Continent, which will include nuclear power. I am just putting that on the record. I am not saying I am advocating it but we do use nuclear-powered electricity in this country. We do not generate it on the island but we are happy to use it when we need it. I just put that as part of the context, so maybe we will just chew on it for a while. </p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_39">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_60">I was not for one second advocating that we would put in nuclear power but what I was saying was that we should be looking at it as an option. Very small modular units that seem to be very safe have been piloted across Europe and are another way of looking at it. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_40">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_61">Would it work for the just transition?. </p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_41">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_62">I think it probably would. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_63">I remind members to speak through the Chair, as we are in public session. </p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_43">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_64">We should be an evidence-based committee, so while I would have a negative attitude towards this, I think it is no harm to research it. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_65">Yes, perhaps we can seek the help of the Oireachtas research facility. I would be shocked if it has not been looked at it somewhere before. An information paper on it would be useful. </p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_45">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_66">Nuclear is worth considering but it is a lot more than just a nuclear power plant. There need to be elements of academia and experience included. There a lot of comparisons and skill sets needed to make it happen. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_67">All I would say is that when the group from the Czech Republic was here, its members encouraged us to at least look at it. We will get a bit of research done on the topic and we will hold off on the discussion. We can see already that people have strong views on the matter, which is fine, so we will come back to the topic. Okay, so there has been no decision there. We will come back after some research. This concludes our correspondence. Before we move on to the next item on the agenda, we will suspend briefly while the witnesses take their seats. </p>
+        </speech>
+        <summary eId="sum_5">
+          <i>Sitting suspended at 3.52 p.m. and resumed at 3.55 p.m. </i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>The Role of Private Sector Construction in Delivering High-Quality Infrastructure: Discussion<recordedTime time="2025-11-05T15:50:00+00:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_47">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_68">The purpose of the meeting today is to discuss the role of the private sector construction industry in delivering high-quality infrastructure enabling housing delivery. I am pleased to welcome from the Construction Industry Federation, CIF, Mr. Andrew Brownlee, CEO; Mr. Conor O'Connell, director of housing, planning and development services; and Mr. Dominic Doheny, chair of the infrastructure committee. From Glenveagh Homes, I welcome Mr. David Kennedy, director of civils and infrastructure, and from the Irish Home Builders Association, IHBA, I welcome Mr. Michael Prenty, chair and director. </p>
+          <p eId="para_69"> One or two of the witnesses may have been here yesterday, so we will try not to repeat that meeting. This is specifically on housing and we want to concentrate on some of the infrastructure, such as water, gas and electricity, without which no building of houses can be done. At our next meeting, we will have some other contractors who are not in the housing sector but rather in the industrial building sector, be it data centres or other areas such as water services, and who have experience both in Ireland and in other countries. They will be appearing very shortly. </p>
+          <p eId="para_70"> Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him or it identifiable, or otherwise engage in a speech that might be regarded as damaging the good name of any person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction. </p>
+          <p eId="para_71"> I remind members that there will be a six-minute speaking slot for questions and answers, with a second round available for people if they want to come back in. I now invite Mr. Brownlee to make the opening statement on behalf of the groups here today. Afterwards, members can direct questions to whomever they like. </p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T15:50:00+00:00"/></from>
+          <p eId="para_72">The CIF is the representative body for the entire construction industry. It brings together key sectoral associations involved in the construction of housing and essential national infrastructure like water, energy, transport and health and education facilities. Ireland has a vibrant growing economy. Indeed, the IMD ranks it as the most competitive economy in Europe and seventh in the world. However, for basic infrastructure, we rank 44th out of 69. The construction industry has the capacity to deliver 50,000 homes per year and the scale of infrastructure required to address this major deficit in Ireland's competitiveness. This session focuses on housing delivery, but clarity and alignment of wider infrastructure development with housing plan needs and future opportunities is central to success. The real capacity constraints being experienced and reported by large construction firms are related to planning and legal issues, delays to enabling infrastructure, lack of multi-annual funding to support project pipelines and the unattractiveness of public procurement. This undermines industry confidence, business continuity and certainty. As a result, companies are shifting their focus towards private clients or redirecting their surplus capacity, including skilled workers, to international markets, simply because there is not enough domestic work to sustain them. </p>
+          <p eId="para_73"> Within the CIF, the Irish Home Builders Association represents hundreds of home builders of all sizes across Ireland. The association supports Irish home builders to deliver quality homes. Our membership is broad and nationwide and gives us a unique perspective on how we can deliver more homes for more people. IHBA members build across the spectrum of housing tenure and type, including social, affordable, cost rental and private housing. Irrespective of one's views on housing policy, if we want to deliver more housing of all types in Ireland, we need to supply more zoned land, more infrastructure, more planning permission and of course more funding for housing.</p>
+          <p eId="para_74"> Housing supply does not happen in isolation and many of the supply determinants are outside the control or resources of the house builder.</p>
+          <p eId="para_75">The house building and construction sector builds the necessary infrastructure for Ireland and relies on the State to resource adequately the planning system and in some cases the legal system to provide the planning permissions that will ultimately supply more homes. We welcome some of the many recent policy and legislative changes including the revised national planning framework and the associated implementation guidelines, the revised apartment design standards, the new planning and development legislation, the increased funding for many different housing affordability schemes, the increased allocation for infrastructure and the reduction in the VAT rate for apartment delivery to aid viability. However, the environment remains challenging to say the least and builders in different areas report different challenges. We are extremely concerned about the supply of housing going forward due to significant delays in many of the housing supply determinants.</p>
+          <p eId="para_76"> We need more zoned land. Some local authorities have yet to commence the process of varying their development plans and increasing the amount of land zoned for housing. Some are still using outdated population growth projections and adopting local area plans based on outdated data, ignoring the section 28 guidelines issued last July.</p>
+          <p eId="para_77"> Delivery of Infrastructure is simply too slow. The greater Dublin drainage project is a perfect example. For years it has been stuck in planning and legal limbo. Reform is essential across planning, the judicial review process, procurement and financial approval. Decision-making timeframes need to be quicker and the roles of various agencies need to align to delivery and implementation of infrastructure and housing. Multi-annual funding is vital to secure the pipeline needed for the construction industry.</p>
+          <p eId="para_78"> There should be an expansion in the scope of works exempted from planning such as the maintenance, repair, or improvement of existing infrastructure by utilities, ports and transport agencies. We note the Department of housing has issued a consultation paper on this, which the CIF welcomes. The Minister for housing should also use his power to create regulations exempting certain types of development from planning permission based on their size, nature, or limited impact. For example, create exemptions for larger water and wastewater infrastructure projects by classifying them as strategic infrastructure development. The Government should develop national policy statements or Acts of the Dáil specifically for public energy, water and transport infrastructure. These would set out the national need and priorities, potentially influencing planning decisions in favour of these projects. Unfortunately, many permissions for infrastructure and housing have been subject to judicial reviews and urgent reform of the process is required. Legal costs need to be examined and the ability of anyone at any stage to object, even if he or she is not materially affected by a project, needs to be changed. These delays in many instances are measured in years, increased costs and, from a housing perspective, reduced delivery. Ultimately, many people cannot access housing.</p>
+          <p eId="para_79"> There has been a significant reform of planning in recent years, which is very welcome including extra resources for An Coimisiún Pleanála, new planning legislation, revision of the national planning framework, new apartment design guidelines to mention a few. It is imperative now decision-making timeframes reduce, and there is a reform of the judicial review process. We are hopeful that many of the recent announcements will bring more confidence to national and international investors that we have a stable policy environment in Ireland that is focused on the delivery of housing. The annualised capital requirement for housing at an output level of 50,500 in Ireland is estimated by the Department of Finance to be in the region of €22 billion per annum. As this scale of investment cannot be delivered by the State alone, it is vital that we attract international investment.</p>
+          <p eId="para_80"> It is also important that the housing activation office plays a significant role in aligning the various agencies involved in housing supply. In many cases a significant role in the provision of enabling infrastructure for housing involves the local authority, Uisce Éireann, ESB Networks, EirGrid, the Environmental Protection Agency, the Commission for the Regulation of Utilities, Transport Infrastructure Ireland, the National Transport Authority and Irish Rail. Sometimes the interests and investment plans of these agencies is not aligned to the development plan. This means that while some infrastructure may be present, it is the experience of all house builders that at least one if not more of the necessary infrastructure is simply not available and has to be built or enabled before housing can commence or in some instances planning is applied for. The local authority and the development plan adopted at council level follows best practice in relation to forward planning and sequential development and the land is then zoned. However, there is an absence at this stage of planning of the infrastructural blockages that may arise on the lands. The local authority may not be aware of a capacity constraint at a local substation or wastewater treatment plant when it zoned the land for development. Over the course of the lifetime of the development plan, capacity constraints may also develop for many different reasons. These infrastructural constraints are present in all locations from brownfield to suburban residentially zoned land banks. We therefore cannot stress enough how vital it is that the provision of infrastructure is co-ordinated by a central body and rapid delivery of enabling infrastructure occurs in order that we can build housing. Examples of zoned residential lands with infrastructural deficiencies include: lands zoned with the potential to deliver 3,500 units in the development plan, which is located on a transport corridor with public access road and sewer connection required at an estimated cost of €20 million. Another is land zoned with the potential to deliver 5,000 units in the development plan with water, wastewater and road connection required at a cost of €40 million.</p>
+          <p eId="para_81"> At a macro level, the Dublin drainage scheme once completed could cater for 100,000 homes in north County Dublin and surrounding areas. It may be impossible to build housing in one of most populous areas of the country without this scheme proceeding. It is an critical project and needs to proceed urgently. </p>
+          <p eId="para_82"> We will address the committee further on 12 November in relation to the details surrounding procurement and approval processes but, in summary, reform is needed in the following areas: a clear pipeline of projects that the industry can invest and plan for; multi-annual funding and certainty for all the main utility and transport providers that is plan led; planning exemptions and the use of legislation and national planning statements; reform of the judicial review process and changes to the Planning and Development Act to reduce the objections to planning at any stage by anybody in any location; reform of public procurement and contracts; reform of the legal costs structure for judicial reviews, and quicker decision-making timeframes for approval and funding. </p>
+          <p eId="para_83"> House builders are especially concerned about the supply of zoned land and of course the provision of infrastructure to enable those lands to deliver more housing. Unless we zone and service more land housing supply will not increase, and the people of Ireland will continue to struggle to rent or own their own home. The members here today can give you some more detail on their own experiences with infrastructure delaying the delivery of housing.</p>
+          <p eId="para_84"> We have attached a range of statistics to our opening statement on residential completions, housing commencements and planning permissions. These show, in particular, an issue with the pipeline of planning permissions. Why are planning permission figures so low if we need to achieve 50,000 houses a year? This indicates significant challenges with the availability and servicing of land. Let us build more homes for more people by ensuring we can provide the necessary zoning, infrastructure, funding and planning permissions. We need a unified response to increase housing supply. I thank the members for their time.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_49">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:00:00+00:00"/></from>
+          <p eId="para_85">Before I call the first member, Deputy O'Hara, there is one issue I want to put to witnesses. The statement mentioned creating exemptions for larger water and wastewater infrastructure by classing them as strategic infrastructural development. I assume the witnesses are not suggesting the various reports and environmental issues should not be done. Some people agree with that and maybe some do not. I have been informed that the Shannon to Dublin water supply system has so many reports to be done, from so many counties, for so many issues that the planning application itself is going to be over 30,000 pages of documentation. God help whoever has to deal with that. I do not know why we are in that situation but that is what I am informed of so far.</p>
+          <p eId="para_86"> Wastewater was mentioned quite a bit in the opening statement, which is very important. I will let Deputy O'Hara in now, but witnesses might come back to my next question after Deputy O'Hara's, as he has to leave shortly. What can be done for the simplification of these wastewater treatment plants? I am informed that the Arklow wastewater treatment plant that is planned will require that the documentation, the information and the various reports needed for that application and to get the job done must be submitted in four different formats. That sometimes includes different information. So, there will be one set of documentation for that produced by the planning application. I am informed there then will be another set of information based on that required in a different format for the compulsory purchase order process.</p>
+          <p eId="para_87">Then, I am told, a separate series of documentation will be required for the discharge licence into the river. After that, there will be an application for a foreshore licence to discharge it to the sea. That will now require four separate processes. For most people, it would be common sense to have everything in one. That is an example of why we are where we are.</p>
+          <p eId="para_88"> I will ask the witnesses to respond later but Deputy O'Hara indicated he has to leave, so I will let him in now. I know everybody cannot be happy with the sequence but it is based on the hands that went up. The first speaker is Deputy O'Hara, followed by Deputies Neville, McCormack, Clendennen, Sheehan, Cronin and Tóibín and Senator Stephenson. Each member has six minutes which includes answers.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_50">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_89">I thank the witnesses for their time. Towards the end of the opening statement, Mr. Brownlee gave a very stark picture of the current levels of housing units commenced, completed and in the planning process. Yesterday, the Department of Finance published Future Forty - An Economic and Fiscal Outlook to 2065. That report is very concerning. It outlines that housing demand is not expected to peak until the early 2030s with increased demand not fully eliminated until at least 2040. What interested me was that the analysis is largely based on the current Government housing targets, including reaching 60,000 units per annum by 2030, which would be double the output in 2024. Given the issues and failures in housing to date, which are outlined in the data the witnesses presented, is the Department's analysis in this report realistic?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_90">In relation to the data published - we have yet to study that report - it indicates the severe difficulty of activation of sites at the moment. We outlined the issues regarding implementation of the section 28 guidelines in local authorities. Some have not even started the process of varying their development plans to cater for that increased housing target. Then, there is the issue with infrastructure, which has been outlined extensively, and we are all aware of it now in relation to delays in the provision of infrastructure and planning delays. The most critical project for housing in north County Dublin, one of our most populous areas and one where 100,000 homes can be catered for, is in judicial review again. I do not know for how many years that has been going on but it is probably the guts of a decade at this stage. The Department of Finance is reflecting the severe constraints in all the supply determinants for housing.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_91">One can see there is an acknowledgement we are in a national emergency. The accelerating infrastructure task force will report in the next two weeks and we have a national development plan that commits €275 million. There is, therefore, an acknowledgement that we need to fast-track and challenge those assumptions about where trends are going.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_53">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_92">One of the key constraints on housing delivery is obviously water and wastewater infrastructure. It is especially an issue in County Galway. We cannot have new housing in, I believe, 70% of the land zoned for housing in Galway because of those infrastructural challenges. In the building Ireland's future document, the case of delays in the delivery of wastewater treatments plants was raised. One was in Mountbellew in County Galway. It is a rural area. Do the witnesses have any particular views on the wider issue of wastewater treatment delivery in rural areas such as Mountbellew?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_93">I will defer to my chairman. He is very familiar with Galway.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_94">The compact units announced yesterday will help to get smaller villages and rural areas moving. I hope that will come in as quickly as possible. In the likes of the areas the Deputy spoke about, it is just the length of time to get planning and activate these plants. We have to be planning further ahead.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_56">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_95">Going back to the announcement around private developers being able to build the necessary water infrastructure, we do not have a lot of detail yet. Did the CIF or its members have discussions with the Minister around this specific proposal? What are their views on it?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_96">I do not think there has been any direct engagement in relation to that. The ability to deliver wastewater treatment plants is not a new concept for developers. It has been done in remote and isolated counties where development plans have allowed for such treatment facilities to be put in place. The benefit is it clearly outlines how Uisce Éireann will be responsible for ultimately owning and taking that particular asset in charge, albeit there is probably still some detail to be worked out in terms of the engagement between Uisce Éireann, the Environmental Protection Agency and the developer.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_58">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_97">In the building Ireland's future document, the issue of workforce capacity in the sector was raised. Cases were mentioned of Irish firms deciding to take up contracts in other countries instead of taking up work here. Do the witnesses have recommendations to ensure there is adequate workforce capacity?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_98">It is all around certainty of the pipeline. Our members need to know when projects are going to happen and where, and how much investment will be involved. That is how they plan their own capacity. That is how they make sure they have enough skilled workers on the ground. I think there are CSO statistics that up to 5,000 construction workers a month are going to work in the UK and other markets to ensure companies can maintain productivity and business growth. We know that the pipeline and certainty around future projects are not sufficient to allow us to plan for that capacity with confidence.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_99">This has been discussed in the media for some time in relation to questioning the industry and whether it has enough capacity. Going on Mr. Brownlee's point, of the top 50 contractors in Ireland, 30 currently export very sizeable turnover to other countries, ranging from the top one, at €1.5 billion, to the smallest, which is €18 million. Most are around the mid-stream of about €500 million. That is the current level of activity by Irish contractors active abroad, which are keen to return home if the pipeline is available to them. They have no visibility over that pipeline or to convince their key workers to return home. Our capacity is evidence based. We are ready once the tap is turned on.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_100">Deputy O'Hara will have an opportunity to come in again. I call Deputy Neville.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_62">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_101">I will direct some questions to Mr. Prenty and Mr. Kennedy considering where they are based. I welcome all the witnesses. I am conscious some of them were here yesterday. It is very good they are giving up their time. We are all trying to find solutions to the issues we face as a country. This may not be for Mr. Prenty and Mr. Kennedy but, in general, how many houses will be built in 2025? What is the latest number?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_102">I got it yesterday so I might as well be consistent. This year, while the exact number is hard to say, we believe it will be somewhere in the low 30,000s. Next year, from what we can see at the moment, it will be similar. We should be concerned about 2027 and 2028. With what we can see at the moment, based on the number of planning applications that have been put in place, we are worried about 2027 and 2028.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_64">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_103">How many of those are apartments? What is the percentage?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_104">Fewer than 8,000 apartments were built in Ireland last year, which was a decline from a figure of 11,000.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_66">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_105">That is 8,000 out of 30,000, so the guts of 25%.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:10:00+00:00"/></from>
+          <p eId="para_106">There has been a slight increase in apartment completions. The number is somewhere between 8,000 and 10,000.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_68">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_107">Does Mr. O'Connell believe the VAT change in the budget will impact or incentivise it?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_108">There is an amendment published this morning in the Finance Bill to allow for forward funding of the AHB sector and institutional investors to avail of the 9% VAT rate. That is huge. That will be a big factor in bringing more apartments and making them viable.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_70">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_109">I was aware of that issue. It came out of the initial budget and I discussed it with the Minister at the time. I know that it has been rectified, which is very positive because there was a question about the supply of apartments versus their sale.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_110">And the change in the guidelines.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_72">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_111">I knew that was an issue but that was always going to change once they became aware of it. It is solved. </p>
+          <p eId="para_112"> I am very conscious that Mr. Kennedy and Mr. Prenty are Kildare based in many ways. I am north Kildare based so I am only using it as an example. I know how difficult it is. Ballymore has had land zoned in Leixlip with a specific site for the last number of years so I know what they are talking about in relation to future planning. When a developer has sites like that, what is the biggest stumbling block from an infrastructural perspective? I presume it is an infrastructure issue. Say a developer has land, it might not be all theirs, zoned for 1,500 or 2,000 residences. </p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_113">That particular site needs a road -----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_74">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_114">Mr. Prenty can make it more general if he wants.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_115">It needs a road so there is the slow pace of getting the route selection and identifying where the road will go. It also needs a kilometre of water pipe to supply the site. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_76">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_116">That is Uisce Éireann.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_117">Uisce Éireann, yes. Uisce Éireann needs infrastructure. It is all those pieces of the jigsaw and the co-ordination of those and getting everybody to the table. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_78">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_118">That is what I really want to get at. That is the single biggest thing. Local authorities zone the land, obviously, but is there any way of bringing all those groups together or is it just the developers tearing their hair out in bunches?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_119">There was a time when the local authority chief executive would zone the land. He was the one who called in all the service providers and -----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_80">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_120">And he owned the water side.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_121">He owned the water service and he said, “Right lads, I want this activated”. That does not happen any more. There is TII and Irish Water and in our case in Leixlip there is Irish Rail. All those are independent of each other so there is no one sitting at the table and saying “Right lads, I need this site developed.” </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_82">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_122">Would the housing activation agency-----</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_123">It is only getting up and running now. We hope it will be a major change. That level of co-ordination is badly needed.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_84">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_124">Okay. Is Glenveagh seeing similar things? Not in individual sites but just in general. </p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_125">We are, very much so. There is a difficulty at the moment where much of the low-hanging fruit in terms of zoned land that was easily serviced is already developed at this stage. One is trying to focus on lands that require some element of works to bring water, waste water or power to a particular area. When people talk about the pipeline of housing, one of the things we are focusing on is having zoned lands that have all services available to them. That in itself, when it reaches a certain level, creates the pipeline by itself. In the north Kildare area, water and waste water are particular issues. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_86">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_126">There is one other thing. I am conscious I have 30 seconds left. I will totally change the subject to address the provision of childcare facilities. Childcare, or lack of accessibility to it, is a huge issue. On all those sites, the developers are tasked with developing such facilities. I am not talking about the sites developed by the witnesses here individually, but in their experience, do they find local authorities have worked with them to design what was required for the area? Have they had difficulties ensuring they get opened? That is something we find as politicians, and in north Kildare especially. Is there anything the witnesses believe the Government could do to help them increase the childcare opportunities? Obviously not running them but in relation to the build within the estates, is there anything the Government could do? That is a change of topic but I can come back on other questions after.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_127">In terms of viability and the cost of building childcare facilities, we have one example in Newbridge where we built a childcare facility that cost us €1 million to build. We had to sell it at a loss to get an operator to use it. We sold it for €600,000. That adds-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_88">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_128">The houses pay for that.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_129">Yes, but that is something you have to do. That was for a childcare facility that could accommodate over 100 children. When you have fewer than 100 children, when it is a smaller unit, it is very hard to find an operator to take them.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_130">If I can come in there, our company has done lots of studies around childcare. We found Offaly, Laois and Westmeath to be very facilitating when we offer alternative suggestions around childcare solutions. My personal view is that the legislation, the policy in respect of the provision of one childcare unit for every 75 residential units, is wrong when it comes to it. In my view it should be located beside an educational facility or the workplace facility. That means the demand is plateaued and constant. If childcare is provided inside a residential scheme, once that scheme matures up there is no demand there any more and people have to come from another residential area to use the childcare. What is constant is the place of employment or education and that should be looked at. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_131">I thank Mr. Doheny. Deputy McCormack has stepped out so we will move on to Deputy Clendennen. </p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_92">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_132">I thank everyone for coming in today. I will not go in any particular order with my questions. CIF introduced a report in November 2024 which I found quite interesting. I am conscious the VAT change in budget 2026 would not have been there at that point. Do the witnesses think it will make a material difference?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_133">Absolutely. I know a project at the moment that is waiting on the VAT rate to go through. In the past two or three weeks I have had a lot of nervous companies on to me inquiring if there will be an appropriate amendment made to the Finance Bill to ensure the VAT reduction captures all supply mechanisms because there are different mechanisms through which apartments are funded. Some of the forward-funding mechanisms used by the institutional investors and the AHB sector involve a purchase of the land and then stage payment via what some would term a building and development agreement that is paid in phases as the project proceeds. They did not qualify under the initial VAT reduction so it is really good, important news that this is going to make more apartments viable. The important point to make on that is the biggest beneficiary of that viability change is the State itself because the State itself, at the moment, is the largest purchaser of apartments via the AHB sector. </p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_94">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_134">That was my next question: will we see that balance go back to the private sector? </p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_135">Absolutely. One of the biggest issues we are facing is scale. We need to get scale in order to get productivity and greater viability. If we can get more scale and show the institutional investors that we are building apartments at scale in Ireland, admittedly at the moment for the AHB sector, they will be attracted back because of the apartment design standard changes, the changes to the rent pressure zones and now the changes to the VAT. It shows institutional investors internationally we are serious about bringing them back into Ireland. </p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_96">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_136">On page 9 of the CIF’s November 2024 report it outlined some of the main challenges experienced - low price, awards criteria, bureaucracy and cost of tendering. It all leads to viability, in a sense. We have addressed the apartments element now but does the CIF think more needs to be done from a housing perspective on a broader level whether that is cities, towns or down to smaller scale developments in villages, for instance, with four, eight, ten or 12 units? </p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:20:00+00:00"/></from>
+          <p eId="para_137">There absolutely is. If one looks at the wastewater network in north Dublin and the electricity network in various areas throughout the country, they are almost on their knees, for want of a better term. We have to look at how quickly we can deliver infrastructure. I am not talking about over the course of PR6 or the next five years with Uisce Éireann. We are talking about what we can deliver in the next one to two years. There are large solutions in regard to GDD and the drainage scheme for Dublin tied up with judicial review. We are probably headed on a similar road with the water pipeline from the Shannon. What is the short term answer in terms of delivery of infrastructure that is going to service zoned land?</p>
+          <p eId="para_138">In the absence of fully serviced zoned lands, we will see-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_98">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_139">Would Mr. Kennedy leave it at serviced zoned land or does it need to be a serviced site?</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_140">I would like to see a quick move from the local authorities in terms of zoning land to looking at lands that are already serviced, using section 28 and moving on that to zone for-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_100">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_141">Mr. Kennedy mentioned the different stakeholders working in silos. Does he think that local authorities should lead? Can they be the gel to bring cohesion in terms of delivery?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_142">Local authorities can be a massive part of it. Ultimately, they need to be given the remit if it is to be them. At the moment, they would have to take that upon themselves. At local level, we find an extraordinary lack of co-ordination between the utility companies and local authorities in that regard. Some local authorities are good, but many are not. I am not here to name names but there has to be an entity responsible for ensuring that those bodies talk to one another, regardless of whether that sits with local authorities or comes under the new housing activation office. It would seem that the latter lends itself to it. Ultimately, however, if it does not have powers and the teeth to effect change, it will become another Government quango.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_102">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_143">The Cathaoirleach already alluded to the bigger picture, namely a water pipeline and 30,000 pages in a planning application. I firmly believe that we need to develop some sort of fast-track planning process for larger infrastructure projects. Where would we draw the line in this regard? What would we define as being capable of being fast-tracked versus something that would still need to go through the conventional planning process? How would we differentiate?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_144">That is a very difficult question to answer. I am aware of one relatively small project involving an access road to one of Ireland's major employers that urgently needs to be built in order to secure that company's stability in Ireland. We also have the Shannon to Dublin pipeline and the Dublin drainage scheme. It is very hard to define-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_104">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_145">That is what I am trying to get at. We have a procurement and tendering process around how we evaluate and rank different criteria. Should we come up with some sort of similar matrix such that rather than just looking at the size or scale of the projects, their importance would be taken into account? Have the witnesses done any background work on a model like that? Have they any thoughts on it?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_146">It is certainly something we will take away.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_147">That is an excellent idea. The matrix is something we can have a look at. Regional infrastructure deficits hinder development in regional Ireland. The lads to my left are very large in the Dublin area and the greater Dublin area, but we all know that leaving the regions unable to counterbalance Dublin would straight away be an "X" against the national planning framework. There should be a focus on regional development.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_107">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_148">There should be an accelerated planning process, but we need to determine that where a €1 million road in a town is as important as an alternative project that might cost €100 million. Perhaps the witnesses could take that on board and consider it.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_108">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_149">I thank Mr. Brownlee, Mr. O'Connell, Mr. Doheny, Mr. Kennedy and Mr. Prenty for coming before us. They have a significant role to play in building the infrastructure this country requires to succeed. When I talk about infrastructure, I am talking about power and water. They are hugely important for the future progress of Ireland Inc. Dublin is the driver of most of the economic activity in the country. The project relating to the Shannon pipeline is earmarked to commence in 2028. What I am hearing from the IFA is that its members are keen and have not encountered any major issues regarding the temporary acquisition of land for the period during which work on the project will need to be done. Mr. Brownlee mentioned judicial reviews many times in his opening statement. That is the worry I have regarding the Shannon pipeline. I am concerned that we will get so far and it will then be held up. It is looking as though everything is going to plan and we will start putting pipes into the ground in 2028. It will take four to five years for the pipeline to be built.</p>
+          <p eId="para_150"> While we will be bringing water from Parteen Basin up to Peamount, from where it will be distributed across Dublin, there will also be two spurs and a connection into Nenagh, a spur into Tullamore and a spur into Mullingar. It is taking so long for this project to get off the ground that if we only do phase 1, which is the pipeline to Dublin, and do not put in phase 2, which involves the spurs, it could be between 20 and 40 years before they are done. Those spurs are vital for balanced growth and regional development outside Dublin. I am looking for the witnesses to put their shoulders to the wheel and advocate for that to happen.</p>
+          <p eId="para_151"> In the context of the wars in Gaza and Ukraine, people can see evidence of the destruction of buildings in both places. What are our chances of being able to access the equipment that is required to build infrastructure in Ireland on the open market, particularly as a lot of this stuff comes from different parts of the world? I am talking about power generation, and what the ESB and EirGrid would have to obtain. What are the issues when it comes to getting that equipment?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_152">The procurement channels and the supply chain are already pretty complicated across Europe. It is important to note that Ireland is not the only country in Europe that has issues with wastewater capacity and electricity capacity. There is already difficulty with supply chains around simple things like ordering NV and HV cables. Getting the delivery windows confirmed from manufacturers across Europe is quite difficult. When we factor in the possibility of the wars in Gaza and Ukraine ending and the rebuilding of those places, we can see things becoming infinitely more complicated.</p>
+          <p eId="para_153"> The electricity grid here is going through the PR6 review with the CRU. One would hope that this has a favourable conclusion very quickly and that the likes of EirGrid and ESB are allowed to aggressively pursue supply chains that will ensure we have the necessary materials to deliver PR6. It is hugely important for the country, not just for the next five years as part of the PR6 review but also out to 2035 and 2040, which PR6 is aimed at planning ahead for. It is that aggressiveness that is important here. If funds are approved and it is allowed to play out over a four- or five-year period, it may be too late. I know those bodies are working towards standardisation of substations to allow for an ability to have stock on shelf rather than everything being a bespoke piece of equipment ordered from manufacturers. That should allow them to get a look ahead to ensure that we have the materials needed to deliver capacity and housing. That is really important between the ESB, Uisce Éireann and EirGrid that once funds are moved to the next stage, there is an aggressiveness in how they are used because, as Mr. Prenty alluded to, 2027 and 2028 are critical years for the country, and work on that is important.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_110">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T16:30:00+00:00"/></from>
+          <p eId="para_154">We spoke earlier about how the money is coming from the Department to Uisce Éireann and EirGrid. We have to ensure that we have that pipeline.</p>
+          <p eId="para_155">With money going into it, we will ensure we have the pipeline going forward. The legislation that was introduced or talked about yesterday by the Minister for housing, Deputy James Browne, with regard to wastewater is going to be a game-changer for all the smaller towns and villages of the country that have an issue with that at the moment. Is there anything else the witnesses think could be a game-changer with regard to delivering housing?</p>
+          <p eId="para_156"> I have one other question. If we look at housing across Europe, it is a lot cheaper in other countries. I understand that the products might be there. Is there anything in the whole process of building that we can take out to reduce the price of those houses?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_157">In relation to blockages, we referred earlier to section 28 and councils bringing forward additional land for zoning, but it needs to be brought forward only where there are existing services. That does not mean there is a strategic residential reserve at the moment because a lot of land around the country is not serviceable. It might be land that is zoned for other uses, where the owner is willing to bring it forward for residential. That should be encouraged. It is an instant, low-hanging fruit win for everybody in the entire country.</p>
+          <p eId="para_158"> In relation to costs, I will give one example. When our company started building houses originally, we used to have two consultants - an architect and an engineer. Now, we have ten or 12 consultants. I think that is a case in point.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_112">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_159">Some of those consultants could be taken out of the equation and, all of a sudden, you would-----</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_160">I do not think that is going to happen. It is just an example of where costs have gone.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_114">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_161">At the end of the day, we need to be able to provide housing for our people. At the moment, in many cases, housing has become too expensive, so we have to look at other alternatives and other ways of doing it.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_162">If we look at other jurisdictions, with all respect, the first thing to look at would be VAT. It has been done for apartments, but for housing, if we look across the water, there is zero VAT, which would be 13.5% straight off.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_116">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_163">It is something that we will have to work on.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_164">The Deputy’s time is up. He will have an opportunity to come in again. I call Deputy Sheehan.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_118">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_165">I have a number of questions. First, in relation to large infrastructure projects, and I just want to put this out there, are they something we should be legislating for? I know this has been done in other jurisdictions. We only have to look at a large piece of critical infrastructure like the Shannon pipeline, or even the number of pages involved in the planning application. We know that rushed decision-making leads to bad decision-making. That is one of the reasons behind the increase in judicial reviews. In the view of the witnesses, is An Coimisiún Pleanála properly resourced now, given the additional resources that went into it, to make timely, good decisions?</p>
+          <p eId="para_166"> I want to ask about the pipeline from late 2026 into 2027 and the knock-on effect on housing figures. Are there three things we could do now to try to claw that back and make sure there is a pipeline? Do the witnesses think the Government should look at recalibrating the role of the LDA to get it more into the realm of land management and getting sites serviced, so developers, maybe in the private sector, could then go out and develop them?</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_167">The biggest issue that we are facing in relation to the pipeline from 2027 onwards is the decline in the number of planning permissions. They are now running at less than 8,000 per quarter. You do not have to be a mathematician to know that if they are running at some 8,000 units per quarter in recent years, the supply of planning permissions into the house building sector is reducing, not increasing. Why is it reducing? It is reducing because we do not have enough zoned land.</p>
+          <p eId="para_168"> We have already mentioned the section 28 guidelines. They were published in July, yet we still have some local authorities that have not commenced the variation process to zone more land. We zone the lands and then we service them. What is happening with servicing? The Deputy is right. In relation to some of the critical infrastructure projects, they need legislative backing in order to protect them from what we have, which is a judicial review industry at this stage. The Deputy is right. It does need legislation in relation to some of those projects because they are so critical for Ireland Inc.</p>
+          <p eId="para_169"> On the role of the LDA, while its original mandate was public lands, I believe that mandate is changing somewhat. We are house builders. A lot of our members are working with the LDA in relation to Project Tosaigh. Everyone needs to be building more. Every local authority needs to be procuring more social houses. We need to be building more private houses. However, it does not matter what policy we have. Unless we have the pipes in the ground and the electricity cables, we will not be in a position to build, and land is obviously part of that as well.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_170">The lack of planning applications at the moment is all down to the availability of zoned and serviced land. That is feeding through and we can see it coming through now. We are getting to the nub of it now. This is where the solution is. If we are going to act on section 28, we have to act now. There is a solution there. The land is there and the sites are there, so it makes sense to zone them. They have the services around them. The local authorities need to act now. The sites are there, with the connection to a train station and the sewers in place. One piece of the jigsaw might be missing but the others are there. If they act on them now, the land they act on now will feed into the numbers for 2027 and 2028. Any delay from now on will mean that in 2027 and 2028, the picture will be-----</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_121">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_171">What should the Government or the Minister be doing to get the local authorities to act under section 28? I know there are huge variances between what different local authorities are and are not doing. What is the reason for that?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_172">One of the problems with section 28 was that when they issued the letter, they issued numbers with it. I have heard back from different local authorities that if they did not have the numbers, they would zone more land. There seems to be a cap on the numbers issued under section 28. Other local authorities are looking at the land they already have, and they are just changing the density of the land to tick the box on numbers.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_173">I think those numbers were seen as a cap or a target as opposed to being a minimum.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_174">There should not be any numbers at all. Under section 28, it should be a case of “Lads, get on with it.” Let us zone more land. Let us zone land that can be activated straightaway, that we can apply for planning for and that has a backer who cannot get planning.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_175">All along, we have been told by certain local authorities that the Office of the Planning Regulator was enforcing the previous national planning framework and, therefore, they were restricted in their ability to zone more land. From July, they have the tools to zone according to those figures, plus 50%, so why are they not getting on with it in certain local authorities? It has to be a key question.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_176">There is also the fact that some local authorities are quite close to reviewing their development plan, so they are kicking the can down the road until that happens. In the meantime, if we go back to the issue my colleagues have stated, unless we get all of this right now, it is going to affect the numbers from 2028 onwards.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_127">
+          <from>Deputy Réada Cronin<recordedTime time="2025-11-05T16:40:00+00:00"/></from>
+          <p eId="para_177">I welcome the witnesses and thank them for their presentations. The opening statement suggested that the construction industry has the capacity to deliver 50,000 homes a year. We sometimes hear that we do not have the labour available in this country to deliver 50,000. Are the witnesses saying that we have the labour to deliver 50,000 homes?</p>
+          <p eId="para_178"> The reform of the judicial review process is brought up repeatedly and is something we hear all the time from different bodies. I think it is politically important with respect to housing delivery. When I see the homelessness figures going up all the time, I always think about when you go on holiday. No matter how lovely your holiday was, to get home and get into your own bed is lovely. The fact we now have more than 5,000 children without that right is an absolute disgrace. If the witnesses were to look at a review of the process, what would they suggest?</p>
+          <p eId="para_179">With regard to the judicial review process, people only have a case if the plans for homes are not adhering to the climate Act and all that. I know that environmental bodies are pretty upset about the fact that they are getting the blame for all these judicial reviews. How would a review of that process look, in the witnesses' eyes, if we were to provide assurances for house building in the future, making sure we had environmental safeguarding there as well?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_180">I will come in on reform to the judicial review process because we have been out publicly a lot over the past two weeks. The rate of judicial review in Ireland, per million of population, is approximately 26 judicial reviews per 1 million of population. In the UK, it is fewer than five.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_181">We have the same common law system.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_182">We have the same common law system. The Deputy mentioned going away on holidays. In countries like Spain, you have an administrative law function that is different to the common law system in Ireland. We have a Constitution and then we have EU directives. The layers of our legal system are far more complicated than that of any other legal jurisdiction and, therefore, the compliance with the environmental impact assessments and other environmental standards can be a lot more cumbersome in Ireland, given our legal system, than in other jurisdictions. It needs urgent reform. We cannot continue to have the situation that has arisen in recent times where land is zoned; the local authority makes a democratic decision that this land is going to cater for housing; the density guidelines are there so the builder does not build in isolation; you go into the local authority preplanning meeting and it tells you what is possible; you apply on that basis, and then you are subject to a judicial review. It was mentioned already by the Cathaoirleach how there will be 40,000 pages for one particular planning application. We had members of ours driving vans into local authority offices and it is not hard to find some administrative error within a vanload of documents going in for a large housing project. It is not an exaggeration to say to say minor - in our opinion - errors or absences resulted in planning grants being refused and overturned. It is utterly frustrating. It has to change in relation to administrative errors and it has-----</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_131">
+          <from>Deputy Réada Cronin<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_183">How many vans of documents would there be in Britain?</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_184">It depends on the scale. Mr. Kennedy and Mr. Prenty might be able to illustrate that better.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_133">
+          <from>Deputy Réada Cronin<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_185">We have similar law.</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_186">I do not know the answer to that or about vanloads in other jurisdictions. It is a lot different. In Ireland that is-----</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_135">
+          <from>Deputy Réada Cronin<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_187">That was the first I heard of this on the Shannon thing as well. We have had our public consultation in Kildare and all that.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_188">There were 30,000. That would take a forklift to trolley or to bring in that application.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_189">Then, in relation to judicial review, JR, we have an unusual situation in Ireland. There is no other country that I know of anywhere in the world where anyone at any stage of the process can launch an objection on a JR at different stages of the process. I also do not know of any other jurisdiction where the legal costs are paid by the State.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_190">Even if you lose.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_191">Even if you lose.</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_192">On the JR process, the strategic infrastructure element of that needs to be separated from the housing element of it. As developers, we obviously do not want our planning applications to be brought to An Coimisiún Pleanála and to JR. It is something we can work through. What is critical for the State is that our strategic infrastructure is removed from that risk. What has happened with the greater Dublin drainage, GDD, project being delayed over a six-year period or so is that the taxpayer has been left with an enormous increase in the cost of what it is going to take to build that particular asset. Are we headed down the same road with the Shannon pipeline or the strategic infrastructure that needs to be delivered under PR6? Judicial reviews do serve a purpose and we are not trying to dismiss the rights of people to enter into an appeals process but at a certain point, when you have appeals against a document that is 30,000 pages long, and it might be a few sentences on one page in a document that is ultimately used to appeal the entire project and bring it to judicial review, as has happened, that in itself cannot be allowed to proceed in the country. We must urgently bring reform to continue to deliver the strategic infrastructure.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_141">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_193">That topic was raised, I think, by Deputy Clendennen. The witnesses might send us their thoughts afterwards, inasmuch as they can, on how they would draw the line between what is national infrastructure with common good purpose versus the ones they are saying should run through the planning. If that matter is to be examined by the Oireachtas, it would be useful to have the views of organisations like the CIF.</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_194">We can but on some level, it has to be a policy and Government call. The members are the democratically elected representatives. We obviously have vested interests in what projects proceed and where they go but it is really important that the Government legislates when we are talking about these critical and strategically important projects that need to happen. Otherwise, Dublin will not have water to serve its population in five or ten years.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_195">I ask the witnesses to see what they can do. I accept that, in the light of here, there are different views. You cannot all be united on everything because there are different levels of activity. Could the witnesses outline the issues rather than-----</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_196">Or even the criteria.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_145">
+          <from>Deputy Réada Cronin<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_197">Not 5,000 pages.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_198">We are not asking you to make the recommendation but outline the issues so we have information to consider.</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_199">With the length of time it takes, you could be a year in court.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_148">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_200">Gabhaim buíochas leis na finnéithe as ucht teacht anseo inniu. This is one of the biggest discussions happening in the country at the moment. It is affecting every single element of life. It is absolutely shocking that we have a situation where there is no clear pipeline for construction companies here, even though we have a massive gap in infrastructure. It took me two hours to get in to Dublin today from Navan. The rail line was promised in 1994. It is going to be 42 years before it comes to fruition. It was built in the 1860s in three years with picks and shovels. It just shows that we have got ourselves into a bureaucratic nightmare in this country.</p>
+          <p eId="para_201"> There are two questions the witnesses spoke about. Viability and zoned, serviced land are big issues. Which is the bigger issue or is it different in different parts of the country?</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_202">It depends on where you are but at this stage, every house builder - and we represent house builders throughout Ireland - is reporting a shortage of land and services. The two are interlinked. I do not think you can separate them out.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_150">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_203">It was mentioned earlier that there is serviced land that is not necessarily zoned for residential. Is there a map where, per county, we can see lands that are serviced, let us say, that are not zoned for the residential, that is, the low-hanging fruit that was mentioned? Is that map available?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_204">That would be locally.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_152">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_205">We would have to go from authority to authority to-----</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_206">To each local authority, and the local authorities know what that is.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_154">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_207">It would be worth putting a question into the local authorities.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_155">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_208">Would they be kind of brownfield sites that-----</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_209">No.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_157">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_210">Not necessarily.</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_211">There are some greenfield sites but there are sites along train lines and bus corridors that tick the box for the green agenda, if you like.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_159">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_212">It might be worthwhile for our committee to send a letter to each of the local authorities and ask where that is so that we can build up a picture of the low-hanging fruit that is there. It was also mentioned-----</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_213">It is also important to state that there is residential zoned land with current planning permission that will not be built on in the short or medium term because of a lack of services. It is zoned, it has planning and will not be built on.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_161">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_214">It would be useful for this committee to get both of those pieces of information from local authorities.</p>
+          <p eId="para_215"> On the other question I had, it was mentioned that some local authorities are not zoning. They have had the power to change since July. Again, is there a list of local authorities we can go to and find out what is holding them up? I know lots of them are doing their plans this December and January but are there particular outliers we need to tackle?</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_216">I will answer that. We have just begun the process of monitoring it. We were waiting on the chief executive reports, which have to be issued in a number of key local authority areas within the next four weeks. That will determine a lot. In some of the most populous areas in the eastern part of the country, some local authorities have not yet commenced any variation process or any indication of a variation process. That is of significant concern to us.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_163">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_217">We have all got councillors on those so it would be very useful for us to know exactly who the laggards are.</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T16:50:00+00:00"/></from>
+          <p eId="para_218">We were in the housing committee yesterday and the same question was asked of us and we did commit as part of that process.</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_219">To answer the question, currently they are all outliers because not one square inch of land has been zoned as a result of that section 28 letter.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_166">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_220">Deputy Sheehan asked this question as well. Is it possible to specifically legislate for a project? With the Dublin water project potentially going to be tied up in judicial reviews for ten years, would it be possible for the State to put in place legislation to build this separately from the process?</p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_221">None of us on this panel is a legal expert but we have been told by others that it is possible. If it is possible, why not go ahead with it? At a minimum, legislation to back a critical infrastructural project by the State would be a very serious instrument to ensure the project's stability as it goes through any subsequent planning process.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_168">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_222">A figure of €22 billion for 50,000 houses was mentioned and private international investment is obviously necessary for that. How much international investment is going into the system?</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_223">As regards apartments, and this is where the figures are known for institutional investment from abroad, investment went from €2 billion in 2022 down to €124 million in 2024. These are published figures from the representative body for the institutional funds. They were largely real estate investment trusts and pension funds from abroad that were forward purchasing apartments, mainly for the rental sector. </p>
+          <p eId="para_224"> House builders generally secure finance from all types of sources. Generally speaking, those are currently the pillar banks, the likes of Activate Capital and Home Building Finance Ireland, HBFI, which is a State entity. There are multiple different sources, including private finance, and some of our members would also secure finance from abroad for scheme houses. It is very varied.</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_225">For most developments now, it is a blend of funding. There is no one funder funding entire schemes any more.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_171">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_226">The role of the housing activation office was mentioned in terms of co-ordinating all these aspects and we heard that the office does not yet have that role. Is it playing a role in co-ordination? For example, when we had Uisce Éireann in here a while ago, it said it would be 2050 before it has filled all the infrastructural that are holding up the building of homes. We spoke earlier about the necessity to co-ordinate infrastructure and the witnesses mentioned that the local authority CEO used to do this. Why is the housing activation office not doing this?</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_227">It has only just been formed. If you look at the remit and the people who are around the table, it should have the power to make the changes we need to see now. A bit like with the pipeline of projects, however, we need that to turn into real practical implementation. We need to see the projects commencing.</p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_228">The housing activation office has €200 million at its disposal to unblock wherever it can.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_174">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_229">Are the witnesses confident that the office has the ability to unblock and co-ordinate?</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_230">It has the right people around the table and the remit.</p>
+        </speech>
+        <speech by="#" eId="spk_176">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_231">The question is whether €200 million is enough.</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_232">It is important that it is regularly measured and it has KPIs it is answerable to. Otherwise, in 12 months' time, we will be asking why it has not been more successful.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_178">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_233">Sin é. I thank the witnesses and appreciate their answers.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_179">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_234">By way of information, our understanding, and this was mentioned at a previous meeting, is that the planning for Ardnacrusha was passed by the Oireachtas 100 years ago and then the Minister signed the relevant statutory order to commence it. Being from Portlaoise, I would know about this and it is my understanding that planning for prisons can go through the Oireachtas, rather than the planning process. If someone was to tell any town we were going to put a prison for 1,000 prisoners in their town, I would wish them the best of luck with it. </p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_235">That was in the Prisons Act 2007.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_181">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_236">There is provision in legislation for planning to be done through the Houses of the Oireachtas and for this House to be the planning authority. That takes it out of An Bord Pleanála and the planning authority. Of course, there can be judicial review but if the legislation is deemed constitutional, there are fewer opportunities for a review. I am just putting that on the record in case people miss that.</p>
+          <p eId="para_237"> Do members wish to come in on a second round?</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_182">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_238">The Vice-Chair may wish to go first.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_183">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_239">Yes, there is seniority here.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_184">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_240">As the Vice-Chair, I was paying attention but I have to go off and see someone else. Deputy Clendennen can go first.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_185">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_241">The Deputy is very good. Regarding local authorities, one issue that has come up quite a bit is what their role actually is. If we were to look at a league table of performance, would the witnesses have a concern that corners could be cut? What would they see on the local authorities' dashboard in terms of measuring their performance and ensuring they are effective?</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_242">From our perspective, the one key performance indicator we feel will indicate if some local authorities want more housing or not is how much extra land they will zone. It is that simple. Over the next six months, they need to do that and if they do not do it, all of us will be extremely concerned about the pipeline from 2027 onwards. The Deputy's question will then be answered by their actions.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_187">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_243">Based on his experience, does Mr. O'Connell believe that any pushback or reluctance will be more likely to come from members or the executive?</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_244">That is a difficult question to answer.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_189">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_245">Mr. O'Connell is claiming I am asking a lot of difficult questions.</p>
+        </speech>
+        <speech by="#" eId="spk_190">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_246">That is a particularly tricky one. I might defer to others on that.</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_247">I will answer it this way. Most of the members of the county councils I am talking to are supportive of zoning more land. They are hearing it from their constituents.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_192">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_248">Mr. Prenty has answered the question in the way I expected to be answered.</p>
+          <p eId="para_249"> We have an abundance of money in terms of financing and funding and we know we have a timeframe to deliver. Are the witnesses seeing a change in culture among the key stakeholders and an appetite to actually deliver or is the attitude the same as it was 12 months or 36 months ago in the sense of, "Can we do that"? Is there pushback or are the witnesses seeing a change in culture because we are in an emergency?</p>
+        </speech>
+        <speech by="#" eId="spk_193">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_250">In fairness, from what I am seeing, there is a change of attitude. The local authorities are looking for ways to support the industry. They have gone from a reactive frame of mind to forward planning. Until now, without naming names, with most of the infrastructure they were trying to keep up with us. They are now looking at forward planning and getting out in front of what they need to do. How active that is and how much resources are allocated to it are the questions.</p>
+        </speech>
+        <speech by="#" eId="spk_194">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_251">We have to be cognisant that a huge transition has taken place between where we were and where we are now, with all the new agencies, the increase in population and also an ageing infrastructure that is in a recovery and renewal stage now. We also need additional infrastructure. As my colleagues have said, the culture is changing positively. It has a long way to go yet but it is changing and we can feel that. However, it is not one organisation that holds all the trump cards here. Unfortunately, there are many players that have to be brought together to make one major piece of infrastructure happen.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_195">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_252">One area we did not cover in huge detail was the energy in respect of the capacity of the grid, whether that is for housing development or data centres and right through to renewables. Do the witnesses have any feedback or insights on that whole space?</p>
+        </speech>
+        <speech by="#" eId="spk_196">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_253">It is quite severe in specific areas. In the eastern part of the country, in particular north County Dublin and stretching into Meath and Kildare, there are significant issues with the grid and its capacity to cater for the extent of housing. We are being told there are projects under way to alleviate that but, realistically speaking, there needs to be serious investment in the electricity infrastructure to cater for the housing supply. Mr. Kennedy has direct experience on that.</p>
+        </speech>
+        <speech by="#" eId="spk_197">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T17:00:00+00:00"/></from>
+          <p eId="para_254">There are areas of the country that are extremely constrained from an energy perspective. There are plans in place to alleviate the pressures. However, there are still question marks over the next one to two years, the short-term solutions and what is going to provide capacity for housing but also for industry. If we are focused solely on building houses from a utilities perspective, and especially from an energy perspective given the level of data centres the country currently has and where we want to continue to grow as a country, it is important we build an infrastructure and grid that can cater for both housing and industry.</p>
+          <p eId="para_255">The next one to two years will be very telling. We would like to see a very strategic plan from the stakeholders involved and to have visibility on that.</p>
+        </speech>
+        <speech by="#" eId="spk_198">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_256">Some of the big interconnector projects will be in place by 2030. The problem will be bridging the gap to there.</p>
+        </speech>
+        <speech by="#" eId="spk_199">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_257">There is some low-hanging fruit here. Decarbonisation is coming in by 2030 and, as the Deputy is aware, all State assets have to meet an A3 level of energy by then. However, it is probably within the grasp of the committee that if the 2030 date was extended out, major energy users such as hospitals on the east coast would not transfer from oil to electricity in that period and therefore the capacity of the grid would be preserved for other uses such as residential, commercial or industrial. It is only a simple thing to push out the 2030 deadline.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_200">
+          <from>Deputy John Clendennen<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_258">My final question relates to modern methods of construction. We have a very good facility in Offaly. Dominic will be very familiar with it. The Laois &amp; Offaly Education and Training Board has been investing heavily in it. Where does he see us in terms of the European standard or pace in the delivery and roll-out of housing?</p>
+        </speech>
+        <speech by="#" eId="spk_201">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_259">I will respond very briefly and my colleagues might come in. On modern methods of construction, any builder building a house will choose the most efficient certified product that is available. Modern methods of construction are being used widely from the timber-frame ICF system to light-gauge steel. A construction site now is completely different. When a house is being constructed using the most modern timber frame or whatever it is in 24 weeks or 26 weeks, the construction is not the problem in terms of a blockage; it is everything else before that, which is measured in years.</p>
+        </speech>
+        <speech by="#" eId="spk_202">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_260">Yes, absolutely. The future is already here. Many of the people in this room and many builders are already adopting modern methods of construction. Mount Lucas is a brilliant facility. The MMC demonstration park should be open later this year. That will be a showhouse for all the new techniques and technologies that are being developed. We have an industry that is ready to roll them out as soon as they become available. Issues around NSAI and agrément certification are holding up certain technologies and methods but, by and large, we are very active in this space. I think we compare pretty well internationally also.</p>
+        </speech>
+        <speech by="#" eId="spk_203">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_261">Apartments are using the same precast pods and so on. The key to modern methods of construction is the pipeline. No factory is going to set up and employ 500 people and then after a year or two the numbers fall off a cliff and that is it. The pipeline will determine the extent to which we use modern methods of construction.</p>
+        </speech>
+        <speech by="#" eId="spk_204">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_262">Regardless of the method of construction, we need infrastructure.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_205">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_263">I must speak in the Seanad in 20 minutes so I will ask my questions and I will look back at the answers if that is okay. I know that is not the best way of doing it. I apologise for missing some of the context as I had another event to attend. Some of my questions might be a bit duplicative.</p>
+          <p eId="para_264"> Could we touch a little bit on judicial review? I know there has been lots of narrative about judicial review being a big challenge for the delivery of infrastructure and housing in general. What is the perspective of the witnesses on that and do they see it as being a big issue?</p>
+        </speech>
+        <speech by="#" eId="spk_206">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_265">When this came up earlier, we outlined that the rate of judicial review in Ireland is 26 per million of population whereas in the UK, the other common law jurisdiction that has judicial reviews, it is running at less than five per million of population. We would argue - we have been quoted in the newspapers as saying this - that it is out of control. We believe it is. The system of judicial review in Ireland means that anyone at any stage of the process can take a judicial review and object, which is unique also in terms of our comparison with other jurisdictions in regard to legal costs as well. We are the only country that I am aware of – I might be incorrect – where the cost, irrespective of whether you win, is paid for by the State.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_207">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_266">That is providing the judicial review is made on environmental grounds.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_208">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_267">Glenveagh currently has three judicial reviews in process. How does that relate to its stance on judicial review being a block to infrastructure and housing?</p>
+        </speech>
+        <speech by="#" eId="spk_209">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_268">Yes, there are exceptions. Judicial review is unfortunately being widely used in many different circumstances at the moment. I would argue that the rate of judicial review by builders is minuscule in comparison to some others.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_210">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_269">But increasing. We are seeing an increase in developers taking judicial reviews. It is important to have that on the record. From my perspective, the issue around judicial review is not so much having the access to justice, because we know that the threshold for taking a judicial review is quite high. I cannot turn around and say I am not happy with that. There has to be evidence and all of these things.</p>
+        </speech>
+        <speech by="#" eId="spk_211">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_270">I fundamentally disagree with a statement saying that the threshold for judicial review in Ireland is very high.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_212">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_271">Okay. I disagree with Mr. O'Connell's perspective on that as well. There are challenges to the planning decisions which are leading to judicial reviews being able to be taken.</p>
+        </speech>
+        <speech by="#" eId="spk_213">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_272">Yes, we went through this earlier. An awful lot of the judicial reviews that are successful are based on administrative and minor technical grounds. That is just a fact. They are not based on substantive issues.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_214">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_273">Yes, I suppose that is the point; they are being taken because there was a procedural issue at the planning level.</p>
+        </speech>
+        <speech by="#" eId="spk_215">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_274">For some housing projects in Ireland recently - we have a paper-based system – you would literally have to bring a van load of documents into the planning office. If a page is missing or there are errors in the administrative function surrounding the paperwork, the planning permission falls. Planning permissions are falling in these circumstances even though the local authority has zoned the land for development purposes.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_216">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_275">I think we are actually in agreement about the issue with the planning system. It is allowing the door to be open to judicial review in some instances, as opposed to legitimate judicial review and citizen accountability being a legitimate mechanism for access to justice, as outlined in the Aarhus Convention.</p>
+        </speech>
+        <speech by="#" eId="spk_217">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_276">No, it is the legal cost structure as well. There is no punitive element at all for what we and some of our members have experienced. <i>The Irish Times</i> put it very well in one of its editorials around this process. It said it is a cash cow for the legal profession.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_218">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_277">That is interesting, because the punitive element would be based on the fact that there is such a high bar. If I was an individual taking a review I would need to have a big lump sum to be able to access the lawyers. The punitive element is on the person choosing to take the review. They are obviously taking it for reasons they believe in or they have the grounds on which to take it. We might disagree, but we might have a different ideology behind that perspective.</p>
+        </speech>
+        <speech by="#" eId="spk_219">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_278">Probably, yes.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_220">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_279">That is really interesting because if we are identifying the same issue in the system from different perspectives, which I think we are, that points to the challenges around planning and how decisions are being made. Mr. O'Connell spoke about the paper-based system, which is obviously archaic, and how challenging that is. That is really interesting from my perspective.</p>
+          <p eId="para_280"> In the opening statement there was a reference to funding and viability. Do the witnesses see the funding and viability of development as an ongoing challenge or has that been solved with the VAT reduction and the croí cónaithe cities grant of €60,000 per apartment that developers can use for the building of apartments?</p>
+        </speech>
+        <speech by="#" eId="spk_221">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_281">Viability is always an issue from a regional perspective. There is a cloud hanging over every single development until certainty is brought to the business case. A developer will always have certainty in relation to costs to some degree with what happens inside his own boundary, but he has no control whatsoever over what happens outside his boundary, especially for services. The cost of delivering those services either makes that site viable or unviable.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_222">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_282">When it comes to the question of viability, what kind of profits were drawn down by investors last year in 2024?</p>
+        </speech>
+        <speech by="#" eId="spk_223">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_283">The way the cost structure works in the construction industry means that builders have very little control over the vast majority of costs. In a typical scenario, any builder or developer has to go and seek finance because of the risky nature of any development - the length of time it takes to get through the planning system in Ireland, the judicial review process and to get a utility connection. The vast majority of investors who fund a construction project look for a margin of between 10% and 15% for a development.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_224">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_284">So there is a 10% to 15% profit for development. Are developers making a profit on the developments they are doing?</p>
+        </speech>
+        <speech by="#" eId="spk_225">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:10:00+00:00"/></from>
+          <p eId="para_285">Absolutely. If you cannot illustrate a profit, you will not get funding.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_226">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_286">My question is this: if a profit is being made, then where is the viability gap in terms of the cost? The witnesses are requesting more funding. It is €120,000 per apartment for the cities scheme and then savings are being made of an estimated €60,000 because of the reduction in apartment sizes. Then there is the VAT measure. I think it is something like €200,000 per apartment that developers are saving, compared to prior to the initiatives. Is that now affordable? Is that the end of the subsidies needed for development to take place or is more money still required?</p>
+        </speech>
+        <speech by="#" eId="spk_227">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_287">Thankfully, a number of initiatives have come into play in recent months, including the revised apartment design standards, changes to rent pressure zones to attract international finance again and the reduced VAT rate for apartment viability. There has been a lot of talk about the viability gap and it has been publicly stated by the Department of housing and others that there is a viability gap for apartments of about €100,000. We believe those combined measures will fill the gap. However, the initial beneficiary of many changes will be the State because the State is the one purchasing apartments at the moment. It will be purchasing them cheaper.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_228">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_288">I am personally familiar with a case where the HSE wants to build a significant extension to a hospital. A person objected to it, as is their right. The council granted it. It went to An Bord Pleanála. An Bord Pleanála granted it. They have done a judicial review solely on the fact they believe the colour of the paint on the exterior wall is not in keeping with the character of the streetscape. That is simple fact.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_229">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_289">It was really interesting when we had a councillor group up from Kildare. They met Simon Harris to discuss issues. There were also councillors from Westmeath and Longford. The difference between the councillor groups was stunning. As I was a councillor only a year ago, in many ways I also am speaking as one of them.. The experience was there were lots of houses being built in County Kildare. I would nearly trip up over a new housing estate if I walked out my door in Leixlip. Some people might think that is strange but that is the reality. If I walk around Leixlip, Hereford Park is being built. If I walk over to Celbridge, I can see all around where there is building. If I walk over to Maynooth, there is tonnes. Clane, Naas, you name it but the lads in Longford had nothing. They said the only houses that could be built there were social houses. Is that the reality ye are seeing? I do not mean "ye", but I am just saying all across the board.</p>
+        </speech>
+        <speech by="#" eId="spk_230">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_290">I will come in from a regional perspective and then let my colleagues come in. At our national meetings when we have round-table discussions, it would not be unusual to state that west of the Shannon, the majority of houses currently being built are social houses.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_231">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_291">Is it a simple metric? The cost of building a three- or four-bedroom house might be €380,000. The cost in north Kildare and Longford is the same, yet you can get €550,000 for it in Leixlip but only €395,000 in Longford. Is it that simple?</p>
+        </speech>
+        <speech by="#" eId="spk_232">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_292">There is not huge variation in the cost of construction. The variation is in the cost of land.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_233">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_293">The sale price is the big variation between the two and that determines the economics.</p>
+        </speech>
+        <speech by="#" eId="spk_234">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_294">And the land comes in then, yes.</p>
+        </speech>
+        <speech by="#" eId="spk_235">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_295">In a lot of cases, the difference in the land is not huge. </p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_236">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_296">We can sometimes get a bit lost on the zoned-rezoned value but if you start dividing it out by the number of houses being built on it, it makes sense quick enough.</p>
+          <p eId="para_297"> If you go to places like Prosperous, Allenwood and Monasterevin, councillors want more houses and say they would love to have more housing estates to build up the areas. There is not a decline in population but there is slower growth than there could be. Local people cannot get houses there. They cannot get one-off houses there because we do not want one-off houses in Kildare, judging by the local area plan. Judging by that plan, we are trying to reduce those and put them in towns and villages. All the growth is going into Naas - 50,000 is the plan; Maynooth - 50,000 is the plan; and Leixlip-Celbridge. How do we get Rathcoffey, Prosperous and Allenwood to grow? What can we do there? I am using those as examples. You can swap them out for Meath or Wicklow.</p>
+        </speech>
+        <speech by="#" eId="spk_237">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_298">In a lot of the areas the Deputy mentioned, the infrastructure is not there to support-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_238">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_299">Is that Uisce Éireann?</p>
+        </speech>
+        <speech by="#" eId="spk_239">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_300">It could be roads or Uisce Éireann. It could be-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_240">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_301">As Mr. Prenty knows, were you to throw 150 houses up in Rathcoffey, the roads would be fine. It would be up by the GAA club. The GAA club is amazing. It looks great. There is a primary school there that would only love to have new kids.</p>
+        </speech>
+        <speech by="#" eId="spk_241">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_302">I have not looked at Prosperous but if the land was zoned and serviced then-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_242">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_303">Is it the service issue? Is it the fact it is not serviced from a Uisce Éireann perspective?</p>
+        </speech>
+        <speech by="#" eId="spk_243">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_304">It is probably both. We do not have the zoning map right in front of us showing the number of units you could physically build on zoned land. The next issue is servicing. From a water, wastewater and, potentially, an energy perspective, there may be difficulties there as to why the land is not zoned. It may be the case that the local authority is taking a view that it does not want to zone land there.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_244">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_305">I would get past that point on not wanting to zone land, because that is ultimately a different type of decision, or it is not possible. I am curious about where it is not possible to go there. Theoretically we could put infrastructure in place to allow that but it might not be financially viable for Uisce Éireann. There might be an element of that.</p>
+        </speech>
+        <speech by="#" eId="spk_245">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_306">I do not know the reason for that.</p>
+        </speech>
+        <speech by="#" eId="spk_246">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_307">If it was zoned, I am sure Mr. Kennedy and I would be chasing out there-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_247">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_308">That is true, too. There is one other point. This is where I am being slightly parochial. It is not about the witnesses. I feel they have good relations with the local authorities in north Kildare but we have probably been behind on infrastructure delivery. You look at Celbridge; there is only one bridge in Celbridge. You look at Maynooth; there is a relief road there looking to be built for the last ten or 15 years. The witnesses are probably crying their eyes out about why it has not been built, I am sure. They would only love that the light rail would go to Kilcock in the morning. That would solve all these problems for the witnesses so I am preaching to the converted in that sense.</p>
+          <p eId="para_309"> We as an infrastructure committee need to deliver those projects for the witnesses to be able to deliver houses. There are 2,000 houses waiting the other side of Celbridge to be built, in Simmonstown. I was councillor of the local area. I know there is another 1,500 at the back of me in Leixlip.</p>
+        </speech>
+        <speech by="#" eId="spk_248">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_310">The bridge is the stumbling block.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_249">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_311">The bridge is the issue there. They are living examples. Between them, the witnesses could deliver 4,000 houses with a couple of infrastructural projects but as a State we do not seem to be able to do that any more. That is the single biggest issue. In recent years we have shown we have not been able to deliver those.</p>
+        </speech>
+        <speech by="#" eId="spk_250">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_312">You know where we are. An investment of €40-odd million to get the thing going could open up 2,000 homes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_251">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_313">More importantly, I am always conscious that it is not just about delivery of houses but delivery of communities. That is not the witnesses' job. They pay their development contributions and levies but we do not necessarily see that investment being put back into those areas by Kildare County Council. We have not seen capital investment in communities by councils. That is a big issue. New estates are going in but we do not see any new swimming pools in north Kildare. In Leixlip, Celbridge and Maynooth, there are 53,000 people. There is not one swimming pool between them. There is not one proper community centre between them. There is a huge deficit. Okay, there are some sports facilities. We can talk about bridges and roads all we want but we cannot even provide basic social infrastructure for the people. That is where the local authorities need to step up. The witnesses will build houses and pay levies but the local authorities need to step up and deliver for those communities. As a Government, we need to start delivering the infrastructure that allows them to build. In fairness, we have failed to do that in recent years on those basic sites.</p>
+        </speech>
+        <speech by="#" eId="spk_252">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_314">There are some places that have soft infrastructure but not the zoned land on which to build additional houses.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_253">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_315">Give me an example.</p>
+        </speech>
+        <speech by="#" eId="spk_254">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_316">Many county towns west of Kildare have the soft infrastructure already there.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_255">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_317">The likes of Nenagh or Clonmel or something.</p>
+        </speech>
+        <speech by="#" eId="spk_256">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_318">Nenagh, Tullamore, Portlaoise, Mullingar, etc., but they do not have the required zoned land to build additional houses.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_257">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_319">Is it that they do not have the required zoned land or it is not financially viable, in my Longford example?</p>
+        </speech>
+        <speech by="#" eId="spk_258">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_320">In those towns mentioned, it would be viable-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_259">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_321">It would be financially viable but there is not the zoned land at this stage.</p>
+        </speech>
+        <speech by="#" eId="spk_260">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_322">Correct.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_261">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_323">In this day and age.</p>
+        </speech>
+        <speech by="#" eId="spk_262">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_324">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_263">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:20:00+00:00"/></from>
+          <p eId="para_325">Does Mr. Doheny see that issue in Kildare?</p>
+          <p eId="para_326">The witnesses can come down to Kildare all they want but I am just saying there is-----</p>
+        </speech>
+        <speech by="#" eId="spk_264">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_327">Here are the experts on Kildare.</p>
+        </speech>
+        <speech by="#" eId="spk_265">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_328">What is Deputy Neville's question?</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_266">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_329">My question relates to all the soft infrastructure that is in place in those locations. We are backed up against the wall a little in Kildare in this regard. In fairness, as was stated, the soft infrastructure is there in places like Tullamore, Portlaoise and Clonmel, including the swimming pools, ring roads, shopping centres and whatever.</p>
+        </speech>
+        <speech by="#" eId="spk_267">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_330">I agree with the Deputy that Leixlip needs a swimming pool and the-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_268">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_331">It needs a bridge and a road. Mr. Doheny said we do not have enough zoned land. Is there enough zoned land in Kildare?</p>
+        </speech>
+        <speech by="#" eId="spk_269">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_332">I referred to zoned serviced land.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_270">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_333">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_271">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_334">In Kildare, we have the zoned land; if we can get it serviced, we-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_272">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_335">Exactly. It is a different issue. There is zoned land but we do not have the services. The places being discussed, like Tullamore-----</p>
+        </speech>
+        <speech by="#" eId="spk_273">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_336">That is where the co-ordination aspect comes in.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_274">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_337">That seems to be a big issue for the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_275">
+          <from> Mr. David Kennedy<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_338">It is key to all of this. We could pick any place, and Nenagh is a good example. There may be reluctance at the moment to zone additional land because there are issues with the wastewater treatment in the town. Uisce Éireann recently announced that an upgrade to the wastewater treatment plant is scheduled to happen within the town. That is due to go to construction. Then there is the Shannon pipeline, which is due to go past the town, and the pipe extension that is due to go from the main pipeline into the town as part of phase 2. Should that be part of phase 1 to tie in with the wastewater treatment upgrade to ensure everything is co-ordinated together? These are the kinds of missing links in all of this. It is easy to zone land but if we do not have services, there is a problem. In some areas, services are being brought in but the land is not being zoned. Tying all that together will unlock land.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_276">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_339">I thank the witnesses. I really appreciate their engagement.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_277">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_340">The discussion has developed into a chat as opposed to anything else at this stage. I am delighted they have noticed there is an urgency within Government to provide housing and the infrastructure that goes with it. Irish Water seems to be doing what needs to be done to get to where we need to be to be able to build the houses, and the same with the ESB, EirGrid, etc. I spoke earlier about what the Government can do to cut costs out of building houses. Somebody mentioned reducing the number of consultants. Somebody else mentioned reducing VAT. How can we be sure, if we do all of that, that the witnesses' members will not just keep charging the same price to people who want to get on the property ladder? The history is that as grants increased in the past, the price of houses increased by nearly the same amount the next week. How can we be sure that if we do that work, the witnesses' members will not look for increased profits?</p>
+        </speech>
+        <speech by="#" eId="spk_278">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_341">First, because the apartments are-----</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_279">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_342">I am not talking about apartments; I am talking about houses. We were talking earlier about houses and I asked how we can reduce their price. Houses are more expensive in Ireland than across in Europe. What is wrong with us? Mr. Doheny said two consultants were needed to build a scheme 20 years ago and now ten are needed. There is a cost attached to that. Somebody else mentioned that reducing VAT on apartments would make it more viable to build them. Reducing the VAT on houses, likewise, would make them cheaper. How can we be sure, if we do something like that, that the witnesses' members will not keep the price of houses the same, such that there is no advantage to the end customer?</p>
+        </speech>
+        <speech by="#" eId="spk_280">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_343">As we outlined earlier in regard to finance, the pricing structure for housing is determined by an awful lot of factors outside our control. At the moment, we have a situation where we cannot build enough homes, and there are many different factors in that. Any builder would like to be building more at the moment. A huge cohort of the potential market is locked out at this time. Why would we build more homes and lock out that potentially huge market that is not being tapped into? "Tapped into" is the wrong phrase; I refer to the cohort that is not buying homes at the moment.</p>
+          <p eId="para_344"> We also must look at the other price control mechanisms that are in place at the moment. Any builder in the Dublin region will say that going above €500,000 in relation to the help to buy scheme brings a completely different market. Any builder will say that at different regional locations, going above the price caps under the first home scheme means the market utterly changes. Those price caps are determined by looking at the average sale prices of new homes and what it takes to build within that environment. It is a lot different from times in the past when there was a completely different funding mechanism, a different market and a different banking system in place. We also now have the macro potential rules, which is another mechanism. I will not say they controls the price, but they certainly put on the brakes in regard to what the banks can lend to people in terms of their income and the income thresholds. All of those factors combined mean the builder's ability to determine whatever price he wants is gone.</p>
+        </speech>
+        <speech by="#" eId="spk_281">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_345">Another point is that if more land is zoned and more competition is introduced into the marketplace, it will have an effect. Affordability is a big issue at the moment, so there already is a cohort of people who cannot afford to buy houses. Any sort of initiative that helps to reduce the price of houses would bring that cohort within the affordability range. Straight away, a new market is offered to the builder. Building is an industry with a production line. All builders want to do is produce and sell houses. They cannot afford to sit on the land or produce houses and not sell them. A good example is Moate, County Westmeath, where 20 affordable houses were recently brought onto the market, for which 180 people applied. Those 180 people cannot afford to pay the market price for those houses but they can afford to buy under the affordable incentive. Any incentive the Government might introduce to reduce the price of houses would bring more people into the market and would increase competition in the industry.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_282">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_346">Is Mr. Doheny saying the best route to go would be to have more Government schemes for affordable housing to look after that cohort?</p>
+        </speech>
+        <speech by="#" eId="spk_283">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_347">No, but if more zoned land is introduced and the numbers grow - say, increasing the load from 30,000 to 40,000 - more product would be brought onto the market. For any incentives to be competitive, the builder will have to bring those incentives to the bottom-line price for the houses.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_284">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_348">On that point, before the famous crash, the more houses we built, the more house prices went up. The correlation was exactly not what one would expect it to be.</p>
+        </speech>
+        <speech by="#" eId="spk_285">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_349">With all due respect-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_286">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_350">It got to the stage that people saw more houses and everyone had to have one. I would like that conundrum explained.</p>
+        </speech>
+        <speech by="#" eId="spk_287">
+          <from> Mr. Conor O'Connell<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_351">That happened at a particular time when the macro protection rules were not in place in the banking sector and we did not have the first home scheme or the help to buy scheme with thresholds in terms of what people could afford and avail of. It was a completely different environment.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_288">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_352">Why did prices go up when supply went up?</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_289">
+          <from>Deputy Tony McCormack<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_353">The limit under the help to buy scheme in Offaly is €375,000, yet there are no three-bedroom semi-detached houses to be bought for that price under any scheme. They are all above that, at €400,000.</p>
+        </speech>
+        <speech by="#" eId="spk_290">
+          <from> Mr. Michael Prenty<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_354">I am one of the oldest fellows in the room and I was in the eye of the storm when all of that was going on. The increase in the price of houses was more or less a function of interest rates and the fact money was so freely available. Everybody who was anybody - the postman and everyone else - was buying two or three houses. That created a false economy and the increased prices. We do not have that today. Money is not flying around like it was in those days.</p>
+        </speech>
+        <speech by="#" eId="spk_291">
+          <from> Mr. Dominic Doheny<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_355">We no longer have 120% mortgages.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_292">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T17:30:00+00:00"/></from>
+          <p eId="para_356">Some mortgages were higher and included the cost of the wedding and the new car. Let us not go there again. Those were different times and they should not be revisited.</p>
+          <p eId="para_357"> We have concluded our work for today. I thank the witnesses for assisting the committee. We might address one or two points to them through the secretariat that we did not get to address specifically today. They might get back to us with their thoughts on them within the next fortnight. Their information and insight is very important. Some of it was discussed yesterday. The nature of this committee is that we are cross-cutting every Department where infrastructure is relevant, be it housing, electricity, energy or whatever.</p>
+          <p eId="para_358">That is a good thing in its own right because until now everybody was in their own silo and it is no harm that some committee can see across all the different committees. We will cover similar ground and issues.</p>
+          <p eId="para_359"> We hope the Government will soon have a report from its infrastructure task force. When that comes out it will be helpful and will set a framework for the future. The revised national development plan that came out earlier in the year did not have specific details, whereas the earlier plan had a lot of detail. In the weeks ahead, we are expecting to get specifics and a list of projects. The Department now knows its allocation under the national development plan from here to 2030, or thereafter. It knows how many of the ten projects it can fit in and it will prioritise some of those. People will see a pipeline as a result. That is expected in the coming weeks as well. It will be important information to give confidence in order that people will invest and make a long-term commitment to the industry.</p>
+          <p eId="para_360"> We have covered the ground at this stage. I thank everyone.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 5.41 p.m. until 3.30 p.m. on Wednesday, 12 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

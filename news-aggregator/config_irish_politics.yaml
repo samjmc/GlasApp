@@ -1,0 +1,114 @@
+# Irish Political News Aggregator Configuration
+# Adapted for Glas Politics - TD tracking and Irish political news
+
+# RSS Feeds - Irish Political News Sources (Direct sources only - tested and working!)
+rss_feeds:
+  # Working Irish News Sources (verified 2025-10-25)
+  - url: "https://www.irishtimes.com/cmlink/news-1.1319192"
+    name: "Irish Times"
+  
+  - url: "https://www.rte.ie/rss/news.xml"
+    name: "RTE News"
+  
+  - url: "https://www.independent.ie/irish-news/rss/"
+    name: "Irish Independent"
+  
+  - url: "https://www.thejournal.ie/feed/"
+    name: "The Journal"
+  
+  - url: "https://www.irishmirror.ie/all-about/politics?service=rss"
+    name: "Irish Mirror Politics"
+
+# Content Filtering
+filtering:
+  max_age_days: 1  # Only last 24 hours - perfect for daily runs
+  min_content_length: 300  # Minimum article length
+  
+  # NO KEYWORD FILTERING - LLM handles all filtering for better context understanding
+  # The LLM (llm_article_filter.py) intelligently filters based on:
+  # - Understanding article context (not just keyword matching)
+  # - Irish political relevance (TDs, government, policy)
+  # - Nuanced detection (e.g., "hospital funding scandal" vs "hospital sports event")
+  # - Better accuracy with minimal additional cost (~$0.05/month)
+
+# AI Scoring Configuration
+scoring:
+  model: "gpt-4o-mini"  # 10x cheaper! $0.15/1M input vs $5/1M for GPT-4o
+  temperature: 0.2
+  max_tokens: 600
+  
+  # Custom scoring prompt for Irish politics
+  default_prompt: |
+    You are ranking political news articles for politically engaged Irish citizens who want to stay informed about Irish politics, TDs, and government actions.
+    
+    1) Write a comprehensive 4-5 sentence summary focusing on:
+       - Key political developments and context
+       - TD actions, statements, or positions
+       - Government decisions and policy implications
+       - Political controversies and reactions
+       - Electoral news and polling data
+       - Ireland's international relations
+       - Impact on citizens and constituencies
+    
+    2) Score the article on four dimensions (0-100 each):
+       - Political_Relevance: Is it about Irish politics, TDs, government, or elections? (weight 0.4)
+       - Impact: Does it affect citizens, policy, or Ireland's political landscape? (weight 0.3)
+       - Timeliness: Is it breaking news or current developments? (weight 0.15)
+       - Irish_Relevance: Is it directly about Ireland (not just international news)? (weight 0.15)
+    
+    Rules:
+    - If NOT about Irish politics/government/TDs, Political_Relevance ≤ 20
+    - If minor celebrity or sports news, Impact ≤ 30
+    - If international news without Irish connection, Irish_Relevance ≤ 20
+    - If older than 3 days, Timeliness ≤ 40
+    - Prioritize stories that mention specific TDs or have clear policy impact
+    
+    Format as JSON (no markdown):
+    {{
+      "summary": "2-3 sentence summary",
+      "scores": {{
+        "political_relevance": 85,
+        "impact": 70,
+        "timeliness": 90,
+        "irish_relevance": 95
+      }},
+      "overall_score": 82.5,
+      "mentions_td": true,
+      "td_name": "Name of TD mentioned (if applicable)",
+      "party": "Party name (if applicable)"
+    }}
+    
+    Calculate overall_score as: (political_relevance * 0.4) + (impact * 0.3) + (timeliness * 0.15) + (irish_relevance * 0.15)
+
+# Content Scraping
+scraping:
+  timeout: 15
+  max_retries: 3
+  delay_between_requests: 2  # Be respectful to Irish news sites
+  user_agent: "GlasPoliticsBot/1.0 (Irish Political News Aggregator; +https://glaspolitics.ie)"
+
+# Output Configuration
+output:
+  top_articles_count: 50  # Return all scored articles (up to 50 max) for homepage display
+  include_full_content: true
+  save_to_database: true
+  formats:
+    - json
+    - database
+
+# Database Configuration (Supabase)
+database:
+  table: "news_articles"
+  update_homepage: true
+  save_scraped_content: true
+
+# AI Image Generation (DALL-E)
+image_generation:
+  enabled: true
+  model: "dall-e-2"  # Cheaper at $0.02/image vs DALL-E 3's $0.04/image
+  size: "1024x1024"  # DALL-E 2 only supports square (will be cropped to fit cards)
+  quality: "standard"  # DALL-E 2 doesn't support quality/style params
+  style: "vivid"  # Only applies to DALL-E 3
+  save_locally: true  # Save images to output/images/ folder
+  fallback_to_scraped: true  # Use scraped image if AI generation fails
+

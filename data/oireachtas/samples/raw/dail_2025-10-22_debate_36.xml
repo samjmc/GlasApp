@@ -1,0 +1,825 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-22/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-22/debate"/>
+          <FRBRdate date="2025-10-22" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_climate_environment_and_energy"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-22/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-22/debate/mul@"/>
+          <FRBRdate date="2025-10-22" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-22/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_climate_environment_and_energy/2025-10-22/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-25" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="CiaranAhern" href="/ie/oireachtas/member/id/Ciarán-Ahern.D.2024-11-29" showAs="Ciarán Ahern"/>
+        <TLCPerson eId="DannyHealyRae" href="/ie/oireachtas/member/id/Danny-Healy-Rae.D.2016-10-03" showAs="Danny Healy-Rae"/>
+        <TLCPerson eId="MalcolmNoonan" href="/ie/oireachtas/member/id/Malcolm-Noonan.D.2020-02-08" showAs="Malcolm Noonan"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="PaDaly" href="/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08" showAs="Pa Daly"/>
+        <TLCPerson eId="ReadaCronin" href="/ie/oireachtas/member/id/Réada-Cronin.D.2020-02-08" showAs="Réada Cronin"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM AERÁID, COMHSHAOL AGUS FUINNEAMH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Climate, Environment and Energy</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-22">Dé Céadaoin, 22 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-22">Wednesday, 22 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CiaranAhern">Ciarán Ahern</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MarkDuffy">Mark Duffy</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#ReadaCronin">Réada Cronin</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PaDaly">Pa Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MalcolmNoonan">Malcolm Noonan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Danny Healy-Rae.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#NaoiseOMuiri">Teachta / Deputy Naoise Ó Muirí sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Climate Change Targets 2026-2030: Discussion (Resumed)<recordedTime time="2025-10-22T12:30:00+01:00"/></heading>
+        <speech by="#NaoiseOMuiri" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T12:30:00+01:00"/></from>
+          <p eId="para_10">We have received apologies from Deputy Jennifer Whitmore and an Seanadóir Noel O'Donovan.</p>
+          <p eId="para_11"> The first item on the clár today is engagement with the construction sector on climate change targets in the near term, from 2026 to 2030. The purpose of our meeting today is to continue our discussions with the goal for the committee of identifying the 15 to 20 barriers that would prevent Ireland from achieving its climate change targets for the period 2026 to 2030. We have been engaging on this topic sector by sector, and today we continue with witnesses from the construction sector. From the Irish Green Building Council, IGBC, we are joined by Mr. Pat Barry, CEO, and Mr. Lenny Antonelli, project manager. From the Construction Industry Federation, CIF, we are joined by Mr. Andrew Brownlee, CEO, Mr. P.J. Ryan, head of environment and social governance, and Mr. Eamonn Stapleton, vice president and also chair of the environment and social governance committee. From UCD, we are joined by Dr. Oliver Kinnane, head of the school of architecture, planning and environmental policy. They are all very welcome.</p>
+          <p eId="para_12"> I remind everybody in attendance to make sure their mobile phones are on silent mode or switched off.</p>
+          <p eId="para_13"> Before I invite the witnesses to deliver their opening statements, I wish to advise them of the following in relation to parliamentary privilege. Witnesses and members are reminded of the long-standing practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of that person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_14"> Regarding the format of this meeting, I will invite witnesses in turn to make an opening statement for a maximum of five minutes. Once those statements have been delivered, I will then call on the members of the committee in the order they indicate to me their wish to put their questions. We operate a rota system, which provides each member with an initial six minutes to engage with our witnesses. It is important to note that the six minutes are for both questions and answers. Therefore, it is essential for members to put their questions succinctly and for witnesses to be succinct in their responses. When all members who have indicated have had their initial engagement, time permitting, a second round will commence, where each member will have up to three minutes for both questions and answers. Please note that the duration of this meeting is limited. Therefore, the times must be adhered to strictly. I ask everybody to be focused in their contributions.</p>
+          <p eId="para_15"> I will now call on the witnesses from each organisation to deliver an opening statement, beginning with Mr. Pat Barry of the IGBC, followed by Mr. Andrew Brownlee of the CIF and Professor Oliver Kinnane from UCD.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T12:30:00+01:00"/></from>
+          <p eId="para_16">I thank the committee for the opportunity to present to it this afternoon. We recognise the vital importance of its work. Construction and the built environment are responsible for over a third of Ireland's emissions, which is more or less the same as in agriculture.</p>
+          <p eId="para_17">On the basis of figures from 2018 and 2019, two thirds of these emissions are operational in nature and one third are the embodied carbon emissions associated with construction, maintenance, and demolition. Despite recent progress, the built environment is the only sector where emissions increased in 2024 after falling in some previous years. With 300,000 homes and associated infrastructure to be built in the next decade, we need ambitious, co-ordinated policies to meet our targets.</p>
+          <p eId="para_18"> We group our recommendations under three key headings. We need to maximise what we have through the use of vacant and derelict buildings in our towns and cities. We welcome the recent progress, such as the introduction of the vacant home scheme and vacant homes officers, but we need far more urgent action to make a real difference in eliminating vacancy and dereliction.</p>
+          <p eId="para_19"> Renovating and adapting buildings has a quarter of the impact of a new build. Homes delivered from existing buildings are not as dependent on building new costly infrastructure, such as that relating to water, energy and transportation. This approach also represents an opportunity to speed up housing delivery. For this to happen at scale, we need to improve and expand upon those Government initiatives that are working and develop new schemes to tackle more complex vacancies. These include: amending the vacant homes grant to make it available for each home created from a building rather just per building; introducing feasibility study grants for more complex projects; making businesses eligible for support for the reuse of above-the-shop units; reviewing the building regulations and the technical guidance documents relating to them in order to support the adaptation of vacant buildings for residential use should be reviewed; and creating multidisciplinary teams should within local authorities to accelerate this. Even with grants, building owners still do not know where to start, what to do or how to navigate issues with planning and building regulations.</p>
+          <p eId="para_20"> The EU’s new energy performance of buildings directive is another opportunity as it requires the establishment of energy renovation information hubs by 2026. This will provide the Government with an opportunity to establish multidisciplinary teams and support the reuse of vacant and derelict buildings and high-quality renovation.</p>
+          <p eId="para_21"> A second key point on the transition to more resource-efficient buildings and infrastructure is that all new buildings must not only be energy efficient, they must also designed to reduce carbon emissions at all life stages, including embodied carbon. We need to ensure that the infrastructure serving them is also highly carbon and resource efficient. By focusing on the compact growth of our urban centres when it comes to new development, we can reduce transport emissions and leverage that existing infrastructure, hence reducing the quantity of infrastructure needed to deliver homes. This would speed up delivery and reduce both the cost the public purse and carbon emissions.</p>
+          <p eId="para_22"> There is an urgent need to review existing infrastructure standards for roads, pavements and drainage to support a reduction in carbon emissions. An example in this regard is that constructing a typical Uisce Éireann-compliant manhole can generate the same carbon emissions as heating a new home for an entire year.</p>
+          <p eId="para_23"> Other steps we can take in transitioning to more resource-efficient buildings include putting water-efficiency requirements for homes - such as water-efficient taps and showers - in the building regulations. This is cost neutral and will improve the capacity of our existing water infrastructure and help meet climate change targets. We suggest introducing embodied carbon limits ahead of the requirements of the energy performance of buildings directive because this will help build the capacity of the industry. It will also help us move faster. Where this has been done in other countries, it has accelerated the bringing to market of new, low-embodied carbon materials and systems. In simple terms, reducing embodied carbon emissions means being smarter about how we design buildings. It means making more efficient use of resources to deliver the same or greater quality for less cost and emissions.</p>
+          <p eId="para_24"> The other key area is getting new low carbon construction materials to the market quickly. In addition to the immediate implementation of the recommendations of the timber in construction steering group, Ireland has a large agriculture sector and is well placed to develop low-carbon, bio-based construction materials from agricultural byproducts, such as straw, grass, wool, and hemp. This is an opportunity to help farmers diversify and boost their incomes while supporting the sector to cut emissions.</p>
+          <p eId="para_25"> On support the supply side, we need to support the introduction of low-embodied carbon materials into the Irish market by removing regulatory barriers and streamlining the certification process for innovative materials. On the demand side, the development of a market for low-embodied carbon can be supported through public procurement policy. The model of the Department of Agriculture, Food and Marine’s timber in construction steering group must be replicated beyond timber to drive the development of a bio-based sector.</p>
+          <p eId="para_26"> We have made great progress since 2018, but with 300,000 homes and associated infrastructure to be delivered by 2030, addressing embodied carbon must be urgently prioritised. We need to maximise the use of vacant and derelict buildings in our towns and cities. We need to transition to much more resource-efficient buildings and infrastructure, including through the introduction of water-efficiency measures. We also need to support low-carbon construction materials getting to the market. We thank the members once again for the invitation to inform their work.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T12:40:00+01:00"/></from>
+          <p eId="para_27">The next speaker is Mr. Andrew Brownlee.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T12:40:00+01:00"/></from>
+          <p eId="para_28">I thank the members for the opportunity to speak on behalf of the Construction Industry Federation on the sector’s role in meeting Ireland’s 2026 to 2030 climate targets. The industry fully supports the national ambition and - building on a 21% fall in built environment emissions since 2018 and the wider adoption of greener practices - we will set out the key barriers, propose practical solutions, and work constructively with Government to secure a sustainable, low-carbon future.</p>
+          <p eId="para_29"> Ireland’s climate targets are highly ambitious. The scale and speed of change required this decade are clear and demand accelerated, deeper action. From the construction industry’s perspective, we have identified five key barriers that could hinder our progress toward these climate targets.</p>
+          <p eId="para_30"> Ireland’s infrastructure gap in energy, water and transport is constraining competitiveness and climate delivery. In the IMD 2025 competitiveness rankings, Ireland ranks 44th for basic infrastructure against seventh for overall competitiveness and first in Europe.</p>
+          <p eId="para_31"> Grid and planning bottlenecks are well documented, and public EV charging density remains well below the EU average. Until enabling pipes and wires, reinforced electricity networks for heat pumps and EVs, and adequate water and wastewater capacity are delivered at pace, decarbonisation will lag. CIF’s proposals for multi-annual investment in water and electricity networks align with this need.</p>
+          <p eId="para_32"> Ireland generated circa 9 million tonnes of construction and demolition waste in 2023, with 81% of this consisting of soils and stones. To deliver the necessary reductions at scale, we support regional soil hubs, targeted equipment support on screening, washing and soil stabilisation and a national construction materials testing laboratory to expedite approvals for secondary aggregates and modern methods of construction, MMC, systems.</p>
+          <p eId="para_33"> Some of the initiatives under the climate transition plan, like the retrofitting of domestic dwellings, present a skills challenge. This is a distinct subsection of the construction industry. It is very much a micro-industry and is difficult to scale due to business models and multiple domestic customers. To deliver 500,000 B2 retrofits and 400,000 heat pumps by 2030, we must broaden the talent pipeline as the Sustainable Energy Authority of Ireland, SEAI, deems the targets extremely challenging.</p>
+          <p eId="para_34"> CIF has asked for the reinstatement of the apprenticeship incentivisation scheme, the expansion of technical education, the acceleration of upskilling and international recruitment. Perhaps permitting air-to-air heat pumps to be installed alongside existing boilers could be a more pragmatic or hybrid approach and coupled with a steadier domestic project pipeline will help grow green skills quickly. Decarbonising construction also involves materials such as cement, concrete, and steel, which contribute to high emissions. Cement alone accounts for approximately 43% of industrial CO2 emissions and the climate action plan 2025 aims for a 30% reduction in embodied carbon by 2030. We support whole-life carbon, WLC, measurement and whole-life cycle costing, WLCC, embedded in design and digital workflows.</p>
+          <p eId="para_35">To achieve this, low-carbon cements, concretes, timber and recycled materials require quicker standards approval, testing and scale-up, as recommended by the Climate Change Advisory Council, CCAC.</p>
+          <p eId="para_36"> A practical gap remains in the context of decarbonising construction sites. Heavy plant and temporary power still rely on diesel, with inconsistent signals regarding near-term alternatives as EV tax measures taper off. To address this, we suggest: a national hydrotreated vegetable oil, HVO, hierarchy, with VAT parity for non-road mobile machinery, NRMM, and site generators; incentives for hybrid gensets with battery energy storage systems; and on-site EV charging, electric plant, sustainable site cabins, PV or a green NRMM support scheme. The transition requires a stable, practical policy environment and predictable pipelines with multi-annual funding, clear planning and building rules, steady carbon pricing and retrofit grants without sudden changes that can discourage investment. It also needs consistent EV support in respect of charging and grants and reform of punitive crew-cab VRT that unnecessarily adds to traffic.</p>
+          <p eId="para_37"> In a spirit of constructive dialogue, we ask whether today’s targets reflect real-world population and economic pressures. The population has been growing significantly year on year, including by 2% last year. While the CIF remains firmly committed to ambitious action, the sector is asked to reduce emissions quickly while delivering the housing and infrastructure that a growing Ireland needs. This is a true balancing act. If specific milestones prove unattainable despite best efforts, we should recalibrate transparently to preserve public support, avoid unintended economic impacts and continue to accelerate emissions reductions. Our industry is already progressing strongly on climate action. We want to work with the Government to overcome the barriers and ensure construction can help lead Ireland’s transition and create green jobs.</p>
+          <p eId="para_38"> I thank the members very much for their time. We look forward to discussing these matters further.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T12:50:00+01:00"/></from>
+          <p eId="para_39">I thank Mr. Brownlee and invite Dr. Oliver Kinnane from UCD to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T12:50:00+01:00"/></from>
+          <p eId="para_40">I thank the committee for inviting me to present today. The evidence I will give is based on findings from research projects funded by the Sustainable Energy Authority of Ireland, SEAI, Research Ireland and the European Commission and undertaken by an excellent team of researchers at UCD's school of architecture, planning and environmental policy. This includes industry relevant projects focused on conservation and reuse, concrete innovation, MMC, building performance analysis and compact urban growth.</p>
+          <p eId="para_41"> On the built environment and carbon budgets, Ireland is constructing while at the same time trying to reduce its carbon emissions to meet its ambitious carbon budgets. However, construction is inherently carbon intensive. More buildings will add carbon emissions in the short-term through the emissions embodied in the materials they are constructed with and in the longer term through a life cycle of operation. Ireland is projected to overshoot its carbon budgets. Although progress has been made in improving building efficiency, the operation of the built environment sector will slightly exceed its first carbon budget period of 2021 to 2025, but is forecast to overshoot its second carbon budget for the period 2025 to 2030 by 20% to 25%.</p>
+          <p eId="para_42"> The built environment category accounts only for operational emissions and is split between residential and commercial with public buildings subcategories. Quantifying all other carbon emissions associated with the built environment is a challenge. The varied categorisation of emissions is a barrier to achieving real progress. Additionally, in our system of accounting, only production-based emissions are reported, but in Ireland we import considerable quantities of metals and other materials for construction. To get a clearer picture of the real carbon impactors in construction, we propose a consumption-based accounting approach also be used. This would provide essential information about the most carbon-intensive materials, where they are coming from and what fuel was used in their production.</p>
+          <p eId="para_43"> In 2022, we undertook an accounting and modelling study of the Irish built environment and construction sector that included all these emissions, thereby presenting a holistic picture. We baselined carbon-related current activity and projected emissions out to 2030 and 2050 for different scenarios. One of the primary results of the forecasting study showed that carbon reductions due to operational efficiency gains, if achieved through retrofit and efficiency improvements, would be cancelled out by the carbon emissions associated with the construction of housing. Since that study was compiled, housing targets have increased from 33,000 per year to over 50,000 per year. This increase will bring considerable additional embodied carbon as a result of the use of current methods of construction.</p>
+          <p eId="para_44"> On materials and embodied carbon, a success story in the context of carbon emissions in the built environment is evident in a reduction in cement related emissions in the industrial process category, although this is primarily related to a reduction in production levels. More sustainable gains are achievable through cement innovation and replacement, as well as fuel switching in the production of clinker. In the longer run, moving towards a performance-based approach to green procurement and away from a fully prescriptive-based approach can bring considerable carbon savings. Restrictive carbon standards are currently a barrier to entry and usage of low-carbon cement alternatives. A revision of standards is required along with new systems that enable accelerated approval processes.</p>
+          <p eId="para_45"> Updates to existing regulations are also required to enable greater usage of timber particularly for mid-rise buildings. Although the increased use of timber in low-rise residential construction is welcome, the full potential of embodied carbon savings will not be achieved while substructure, cladding and roofing elements remain as heavy embodied carbon components. The climate action plan 2025 calls for a 30% reduction in embodied carbon of construction materials, but more detailed and measurable targets are required along with clear implementation pathways as has been called for by the CCAC.</p>
+          <p eId="para_46"> On the construction of housing, modern methods of construction can be part of the solution to increase housing output through improved construction sector productivity delivered by an expanded workforce. MMC enables a diversification of the workforce, drawing a wider range of workers ,including those from manufacturing industries, into construction. However, upskilling of a new MMC workforce in construction is required. Decisions to support and knowledge sharing platforms that enable access to key information about product viability, cost and sustainability are required for architects, engineers and specifiers. Recent research we have undertaken has questioned the often repeated sustainability credentials of MMC, showing wide variation between different systems of different materials.</p>
+          <p eId="para_47"> MMC schemes we have analysed in detail from a life-cycle analysis perspective highlight the reduced embodied carbon of MMC components in construction, but traditional build elements, such as the high-embodied carbon-brick cladding offset these gains. The planning preference for brick-clad buildings should be reconsidered, particularly as other cladding materials offer embodied carbon savings. A financial model to support MMC manufacturers that reduces the risk for product producers is required. Recasting of standards and regulations is key to enabling greater MMC innovation and market penetration. Enhancing capacity to support an efficient agrément certification process is required. Over 50% of the embodied carbon in any building is within the building structure, and there is an onus is on structural engineers to optimise their structural designs. An increased focus on embodied carbon metrics is needed in the engineering profession and in third level education.</p>
+          <p eId="para_48"> The housing programme is critically important to climate targets, not only in new housing construction but also because the design, form and location of new housing dictate new infrastructure demands, new transport demands, future operational costs and if poorly designed or built, future replacement costs. Sustainable communities need to be considered more broadly than the energy use in construction. Apartment construction embodies higher carbon per square metre of floor area than scheme housing, primarily due to greater concrete usage in the building structure, but represents a more sustainable construction type when evaluated in terms of land use and lifecycle carbon. This raises key questions about how we measure and interpret embodied carbon metrics, which from 2027 will become mandatorily reported when the new energy performance of buildings directive, EPBD, is transcribed into national regulations. There are growing calls to set embodied carbon targets per bed space, not per metre squared, house or apartment so that the optimum resources are used to house the most people most efficiently.</p>
+          <p eId="para_49"> On reuse over new build, the renovation and reuse of existing buildings carries a fraction of the embodied carbon cost of new build. Our modelling works shows that retrofitting 100,000 of our vacant homes could slice over 1 megatonne of CO2 emissions off the embodied carbon bill to 2030. The reuse of existing buildings in existing cities, towns and villages is an opportunity to add to the housing stock where existing structures, infrastructure and services are already provided, saving more than 30% additional embodied carbon. Regulatory barriers mean that the process to conversion and reuse is often cumbersome and inefficient. This includes separate processes for planning, conservation, fire safety, disability access, etc. These administrative systems need to be streamlined to support building owners and reduce costs. Uptake of grant support is low. The process needs to be revised to reduce administrative burden and upfront costs for building owners. Savings are also available in the commercial sector where the demolition of existing buildings and replacement with new claimed and more sustainable buildings is common.</p>
+          <p eId="para_50">Fifteen per cent of our commercial buildings nationally are estimated to be vacant. Those buildings should be reused as a priority.</p>
+          <p eId="para_51"> Care needs to be taken when retrofitting, particularly with traditional builds. The risk of long-term damage to buildings and the development of poor environmental quality is high due to moisture trapping, as we have highlighted through SEAI-funded research. Retrofit rates and heat pump installations are well below target. To maximise the benefit of moving homes to electrical power, a more rapid reduction in the carbon intensity of the electricity grid is essential through either renewables or other clean means of generation.</p>
+          <p eId="para_52"> Much work is required across the construction sector to achieve more sustainable practices that can set us on a path to meeting our carbon budgets. A holistic perspective of the built environment is necessary and faster evolution of regulatory frameworks are required to support innovation in concrete, MMC and bio-based alternatives.</p>
+          <p eId="para_53"> We need to save the buildings we have and retrofit first. We need to legislate to limit unnecessary demolition. Going beyond new regulations for embodied carbon reporting, nationally we should penalise demolition, perhaps through setting of carbon caps for new development that subtract any wasted embodied carbon of demolition.</p>
+          <p eId="para_54"> More and better data is required to get a clearer picture of the built environment's impact. This can benefit academic research which is essential to providing an evidence base and objective critical review of strategy and policy. Increasing research funding is critical to allow universities to work alongside industry and policymakers to achieve a more sustainable built environment for Ireland. I apologise for running so much over time.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_55">That is no problem. Thank you, Dr. Kinnane, and thanks to all witnesses for their opening statements. I have a list of speakers. Senator Noonan is first.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_8">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_56">My first question relates to something I recall from a 1999 waste management strategy around construction and development waste. We still have a huge problem with such waste. There were supposed to be mobile crushers for such waste, yet we seem to be sending huge volumes of it, particularly stone and mortar, to landfill. Can perhaps the CIF comment on that?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_57">The waste statistics are probably exaggerated. For example, the EPA has rolled out two national decisions over the past few years. One was on recycled aggregates, so that is an end-of-waste decision. It is probably not seen as much use because the limits that have been set are very stringent compared with those in other countries. Sometimes people do the testing and pay for it and do not achieve the leachate limits they need to achieve. That is one problem.</p>
+          <p eId="para_58"> On a broader level, the EU is looking at harmonising all the standards in that regard across member states. That would possibly help with recycled concrete. Out of the 9 million tonnes of construction and development waste, most of it, a huge chunk, if not 5 million tonnes, is greenfield soil and stone. That was deemed waste until last year. The new national decision for greenfield soil and stone came in at the end of August 2024. Already this year, we have seen 4.4 million cu. m of greenfield soil and stone being treated as Article 27 byproduct, that is, not waste.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_10">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_59">The CIF is calling for soil depots. Given the issue of contamination of soil, particularly the likes of Japanese knotweed on sites, is that not risking transporting contaminated soil to a centralised site and further dispersing soils-----</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_60">This would be greenfield soil and stone. To meet the definition of greenfield soil and stone, there cannot be any invasive species in it. That would have to be treated as brownfield and would have to go through a whole separate process. A lot of the issues of construction and moving soil and stone around relate to the fact that it is a timing issue for projects. These are very heavy materials to move so there is a good deal of expense involved. While you might know that there is a project coming up that might require greenfield soil and stone, you have to move it because your project is moving and there is a timing issue. The other point is that sometimes there are lots of aggregates in greenfield soil and stone, so you could actually screen it, wash it and get sand and other materials out of it, depending on the type. There is a huge opportunity there, potentially, to reuse materials more efficiently.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_12">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_61">I have just a general question for all three witnesses. There was quite a detailed discussion during the housing committee meeting yesterday on vacancy and dereliction and the notion, which seems to have come across in all three presentations here, of perhaps a one-stop-shop approach to dealing with issues of fire access in the renovation of older buildings in our towns and cities. Is that something all the witnesses would support?</p>
+          <p eId="para_62"> Second, there seems to be a deficit of skills. Some local authorities do not have architectural conservation officers. There is a deficit of skills in terms of conservation-grade architects and the skills to upgrade. In the context of our older, pre-1919 building stock, inappropriate interventions on many of those buildings, as Dr. Kinnane pointed out, could cause serious damage to their fabric. Dr. Kinnane might make a general comment on the one-stop-shop approach and, perhaps, the skills required to realise the potential of these older buildings.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_63">I agree on both points. The idea of a one-stop shop to resolve the vacancy issue is critical. The streamlining of all the administrative requirements that have been introduced is very much required. There is certainly a deficit of vacant property officers and conservation officers within local authorities and also a deficit of funding within those authorities to allow them to act in a masterplanning kind of situation where, rather than just dealing with this from individual building to building, we look at a collective of buildings within a town centre and the associated lands and lengthy gardens that many of these buildings have and consider them as a collective. Some mechanism to enable that is key.</p>
+          <p eId="para_64"> With regard to the works that are undertaken, the SEAI has been very generous in its research and support of research. We have two projects looking at moisture within traditional buildings and, generally, categorisation of buildings and the most appropriate retrofit measures. Internationally, that knowledge is still lacking. We are certainly leading it here in Ireland, and building up that knowledge requirement. We would say from the research we have done that in any traditional building where there is evidence of moisture, there is a high risk of moisture trapping if material is added to the building, so we need to be careful in our works. There is a pilot scheme around a one-stop shop for traditional buildings that had an opening event recently. We welcome that and wish it success.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_14">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_65">I have one quick final question about landscaping and the opportunity through the nature restoration plan that is being developed nationally. There is an urban aspect to that. We look at some of the challenges in London now in the context of the overheating of buildings and a lack of green space. It seems that there is often a significant underspend in respect of landscaping of new developments and the use of our native trees, shrubs and plants and incorporation of nature-based solutions in those developments. The UK uses a biodiversity net-gain approach. Will the Green Building Council comment on that as a more standardised approach across all new developments in Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_66">Quite a significant cost within developments relates to the infrastructure, and a large part of the carbon emissions relate to putting in that infrastructure. Our colleagues in UCD have done considerable research on the impact of the embodied carbon of all the infrastructure and of putting in attenuation risks when we could take a more nature-based solutions approach. Such an approach would be more cost-effective and would militate against flooding where there are natural flood defences and attenuation of water through surfaces and where plants and soil are used to slow down the movement of water and runoff. You can save costs through that approach as well.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_67">That deals with that. I call Deputy Daly. He will be followed by Deputy Cronin and Senator Higgins.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_17">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T13:00:00+01:00"/></from>
+          <p eId="para_68">I thank all the witnesses for their presentations. We heard from all them that the built environment is responsible for 37% of total emissions in Ireland. There is a challenge in the context of continuing to construct 300,000 homes while also meeting the climate targets that have been set.</p>
+          <p eId="para_69">With the increase in construction, dealing with the carbon emissions is always going to be a big challenge.</p>
+          <p eId="para_70"> I have heard from the witnesses about the need for faster approvals, the HVO hierarchy, the need for multi-annual funding - I presume that is to give clarity going forward - and the grants. To focus for the moment on retrofitting, it seems the Government has committed €558 million in capital funding, which does not represent an increase. There was supposed to be an increase in 2026 to €641 million under the 2022 national retrofit plan. Are the organisations disappointed with that and is it going to increase the challenges or difficulties for them? In fact, the entire capital allocation for subhead B on energy transformation is only €647 million. What impact is that shortfall in funding going to have on achieving targets for retrofitting?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_71">As we said in the statement, it is a careful balancing act. We are faced with a housing impairment. It is really important that we accompany that with significant infrastructure development, but that comes with an environmental footprint that we constantly have to manage and mitigate. Retrofitting is an important part of the jigsaw. In general terms, we are really happy with the multi-annual commitment in the national development plan, NDP, and the commitment to the industry in the budget. In terms to retrofitting plans, as we said in our statement, the challenge is take-up. The challenge is persuading people to retrofit their premises, engage in retrofitting activity and access the grants that are available. There is a skills challenge as well, to upskill the workforce so it can take on that retrofitting work. It is quite a micro-industry. It tends to be one- or two-person-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_19">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_72">What steps can be taken to narrow or address the skills gap?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_73">There are a couple of things. We have made a good start. My previous job was CEO of SOLAS, which is over apprenticeship, further education and upskilling. We set up a network of six retrofitting and zero emission building, ZEB, centres of excellence across the country. There is a great one at Mount Lucas as part of a wider modern methods of construction campus and there are other ones dotted around the country. Upskilling those smaller businesses to take on that workload is a really important part of that. I think Senator Noonan was involved in an initiative to try to improve our traditional building skills. We recognise the fact that modern methods of construction, MMC, is really important and new techniques are really important, but we have this brilliant heritage and buildings that are completely ready and available for renovation and being brought back to life. That is part of it as well. We need to look at new apprenticeships and new skills programmes that can deliver those skills as well. </p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_21">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_74">What about the decarbonisation of building sites? What steps can be taken there to accelerate that, if it was up to the witnesses?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_75">A lot of top-tier contractors are starting to use battery energy storage systems with generators. A lot of sites do not have access to electrical power on site, so they are using generators. Traditionally, there would be a generator running for pretty much the whole day. A lot of the time it would only be idling, because there is no actual load on it, but it would be still running to run the site offices and so on. With the battery energy storage systems, we are seeing developments like, for example, one of undertaken by one of our members with Dún Laoghaire-Rathdown County Council whereby they had the generator running for only two hours during the day and it charged the battery. It was running 100 kW cranes and everything on the site. That is really good because it is not only reducing emissions but also noise pollution and air pollution in the area. As we said in our budget submission, incentivising that type of equipment would be really helpful. When running that generator for those few hours is combined with hydrotreated vegetable oil, HVO, that is really dropping down the emissions. </p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_23">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_76">We heard a couple of weeks ago from, I think, representatives from the road haulage association about the carbon tax on diesel and hydrotreated vegetable oil. Something should be done about that. </p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_77">Yes. A lot of the top-tier contractors are saying to their subcontractors, for example on civil jobs that involve a lot of heavy earth-moving equipment, that they have to get to net zero because they are on their science-based targets and they have to reduce their emissions by 2030. That is a corporate ambition and they have to filter that down to their subcontractors. However, VAT on green diesel is different from that on HVO. HVO is already more expensive and the VAT is not helping. When those subcontractors are bidding for work, behaviourally they are very reluctant because they know their competitor will probably pick the lower price.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_25">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_78">What if the VAT was amended?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_79">I think that would help, yes. </p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_80">I will come in here. My contractors have done nearly everything we can do. We have electric vehicles and hybrid excavators in our range and we have solar panels on our sites. We are bringing in the batteries and the generators and so on. A good example is that we brought in electric bikes on one of our sites. Unfortunately, we had to charge them from a diesel generator because we could not get a power supply. All the things we are doing - today we are fitting closers on doors so the doors close when the guys leave the site office to avoid wasting heat - have achieved something for us that will be measurable in some way, but it is the tip of the iceberg. We do not like repeating ourselves, and I was aware that the transport people came in and spoke about HVO. I am aware of the background of HVO, which is a bit controversial in some respects as regards the provenance of it and so forth, but in my view, perfection is the enemy of the good. It is probably the best thing out there at the moment to make some progress on climate. It might not be the perfect solution. The perfect solution is probably through sustainable power generation for everything, but until we get there, we have to take those other opportunities. Our own company brought in HVO, but within a week or two the quantity surveyors were saying it was costing us too much money. When private enterprises, such as some of the pharmaceutical companies, are procuring work, they will ask what the extra cost is for using HVO and they will then make a decision themselves. Unfortunately, for public procurement that is not there yet. We are aware the Office of Government Procurement, OGP, are looking at various ways to incentivise contractors to be more sustainable when the procure a job, but it is just not there yet. It is taking time. </p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_28">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_81">Could there be more incentives?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_82">Of course there could, particularly for urban contracts. Much of that should be done by electrified vehicles, because it would cut emissions in urban locations. In greenfield sites, there is big machinery and big machinery is not at the point yet where it can be electrified but it can use HVO fuel. It still has the same emissions to some degree, but it is a much better way than what is currently being done. The incentives are either a reduction in the cost or paying it through the contracts and so on. In terms of what the industry itself can do, and both Professor Kinnane and Mr. Barry hinted at this, a lot of it is design based, which is not within our remit. We cannot decide what goes into the built environment. We can only do it as efficiently as we can. Through the environmental, social and governance, ESG, committee we have, which is a mixture of the top-tier contractors and operators with two or three guys, they are all making their best efforts through what is available, but it is only a small part of the jigsaw. Professor Kinnane's contribution told a big story about the challenges for it. We want more work, but the more work we get, the more carbon we are going to be generating. Data is important so we at least know where we are making some gains on it, but all the time on the bigger dial it might be moving in the wrong direction. The construction industry through the ESG committee is driving every single, little, minor thing we can. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_30">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:10:00+01:00"/></from>
+          <p eId="para_83">I thank the witnesses for their presentations. I am not at all an expert on this, but I have often listened to Deputy Eoin Ó Broin talking about carbon in the construction industry. On embodied carbon, Professor Kinnane stated that "a success story for carbon emissions in the built environment is evident in a reduction in cement related emissions in the industrial process category, although this is primarily related to a reduction in production levels." Is that to say there has been a reduction in the production of cement across the board or is it due to alternative methods being used? I think today is the first time I have ever heard the word "clinker" used; it is another school day for me. Is it that we are not building enough? Why has there been a reduction?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_84">Without having full knowledge of the situation, I believe there was a reduction in production. We export a lot of our cement and there was a reduction in production last year due to varying export costs of cement. It is one of the industries where we do a lot of research with industry. We see a lot of efforts towards innovation within the cement industry, although constrained by strict standards.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_32">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_85">I do not know if Dr. Kinnane knows this. I am thinking of when we decide on new methods of producing new types of cement. With the mica crisis in Donegal it was because stones came from a certain quarry. How long does it take to make sure this new type of cement passes regulations and is fit for purpose? </p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_86">What we would call for is greater investment in facilities for greater testing so we could move towards a more performance-based approach towards concrete approval. Essentially, there is a wide range of materials being used across Europe as cement replacement - calcined clays, limestone fines and things like that - that we have restrictions on here in Ireland. We are very innovative with the use of ground granulated blast-furnace slag, GGBS, which is a by-product of the steel industry, as a cement replacement but we are quite strictly confined otherwise. We would propose that a wider range of materials be allowed to replace high embodied carbon cement and there be greater investment in testing, particularly around durability and things like chloride ingress and freeze-thaw. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_34">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_87">The Irish Green Building Council referred to the use of straw, grass, wool and hemp from Irish agriculture as an alternative to build lower-carbon buildings. Are there any examples of these in Ireland or elsewhere? What kind of support is the council getting from the Government around the use of those as an alternative? </p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_88">There are a couple of examples of high quality modular timber and straw construction in Ireland. There are challenges due to the certification process but a number have been built. They are largely imported from Lithuania and Finland. There are barriers in the Irish agrément certification process. It is quite a slow process of getting certifications for new innovative materials. It can take up to two or three years and it can be quite expensive, so it is delaying the introduction of new low-carbon materials. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_36">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_89">I was contacted by a farmer about two years ago about hemp. Are we producing much of it in Ireland? </p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_90">No, we are only producing hemp for the equine industry or for export. It is not being used. There are no production plants to decorticise it, strip the fibres and turn it into fibres. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_38">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_91">My next question is for the CIF about the air-to-air heat pumps installed alongside existing boilers. Is it talking about retrofitting rather than new build there? </p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_92">That is retrofitting, yes.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_40">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_93">Can the CIF witnesses explain how the hybrid approach would work practically? </p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_94">I was looking into it since I wrote that. It is not the ideal solution. I modelled the links for years and you always reduce the demand first, so that means insulating the house and then you would add in the renewable. Looking at the figures and the targets one has to be realistic and ask if there is a transition we could do instead. I do not know how many gas boilers are replaced every year because they are end of life and people do not want to insulate their homes. It is just a huge inconvenience and expense to insulate their house in order to get the heat pump to work efficiently. You can replace a gas boiler and have a heat pump sitting alongside it in a hybrid system and it is all by the one manufacturer. It is all controlled. As we have such a mild climate, maybe for 50% of the time that heat pump would be running to generate hot water during the summer and maybe for the shoulder seasons of the year or depending on the temperature. It would be all programmed into it. You would programme in your electricity rates such that maybe when it gets to 7°C or lower, the boiler would come in. It is not perfect but rather than being absolutely heat pump or fossil fuel maybe there is an interim step. It is a little bit like the EVs with plug-in hybrids. For a lot of people it is behavioural. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_42">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_95">The hybrid cars got a bad report this week. </p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_96">Yes, and I disagree with that. I bought one and I did 10,000 km. I measured it all the time at the pump and it turned out to be less than 2 litres per 100 km, whereas it would have been 6 litres otherwise. I do not know - people will spin things whatever way they want. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_44">
+          <from>Deputy Réada Cronin<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_97">I know. We are always learning. I know with retrofitting older houses, some houses have to be able to breathe. Take the vents under the floor. When you buy an old house you can see the lines of the dust over the carpets. We are still learning a lot. </p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_98">I thank the Deputy and call Senator Higgins. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_46">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_99">We had some engagement in the previous climate committee on the report on circularity. A lot of that report on circularity ended up focusing on the construction sector. Has progress been made on some of the things that would have been recommendations from the committee at that time? </p>
+          <p eId="para_100"> A couple of the areas the witnesses have touched on point towards that. They spoke about shifts in re-examining the regulatory standards in the area of cement. I know ash biomass is one of the areas that is being looked at and there are a number of other areas in terms of cement. It is one area where the regulations need to be re-examined. Another area that was discussed was around regulations around recertification and the mechanisms for recertification and reuse of materials. That was discussed from a circularity perspective. Has there been progress around supporting mechanisms for the recertification of materials, their reuse and measures to catalogue and allow for that reuse to happen? We know a huge amount of embodied carbon is lost at demolition stage and in the early stages of construction.</p>
+          <p eId="para_101"> If, as a committee, we are looking at the legislative space, there are some really strong legislative suggestions coming from everybody here. I ask the Green Building Council to elaborate on the point about how the new EU directive is coming and by 2030 we need to have these new energy targets. If we are frontloading a huge amount of construction between now and 2030, should we not get ahead of it, rather than waiting for the point where we have to bring in the new energy performance of business directives and the rules, by trying to ensure we set national guidelines now before the EU required guidelines? It is really a question of how, as well as retrofitting, we can get ahead of it so that we get the energy right in buildings now rather than continuing with oil and gas still going into buildings now which we plan to retrofit in about five years' time. I ask the witnesses to comment on the question of getting ahead of that piece. </p>
+          <p eId="para_102"> What Dr. Kinnane said about demolition is very interesting. The idea that we need to be restricting demolition is something I have personally pushed for for a long time and that it should be the absolute exception rather than the rule. Will he comment on that? </p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T13:20:00+01:00"/></from>
+          <p eId="para_103">I will respond on what has worked since we last spoke. At that time the full waste management changes were not in. Currently we are on a large site which is a public housing site. There is quite a volume of material which, prior to the changes being made in respect of Article 27, would have been going on the back of diesel-powered trucks which would have been going down the road to some landfill somewhere to be disposed of and no value to anybody. With the changes in the Article 27 regulations, which allow you to make an informed decision on site - it is subject to review by the authorities but you can make a decision in a much shorter timeframe, and timeframes are important in construction for loads of reasons - to retain the material, reuse it in a recycled manner so that as well as avoiding taking material away we avoid importing material from a quarry. That is something that has happened and it was a big change. There is more progress is to be made on it in terms of the definition of materials, which is in some ways just retagging it, but it will improve the circumstances. That is a number of years. The EPA has a role in terms of monitoring it and so on to make sure that it is not being abused on the edges and so on. In general, in terms of earthworks and so on, that is quite a game-changer.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_104">With regard to limiting demolition, I feel quite strongly about this in that we are continually demolishing buildings of now-shorter service lives. There are sites in Dublin's inner city, not far from here, where three iterations of buildings have been constructed in a 60-year period. If we are to be at all serious about our carbon emissions, we need to stop that happening.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_49">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_105">I have heard a figure from the UK that it can sometimes take up to 80 years to replace the savings of the emissions that came from demolition.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_106">Absolutely. Increasingly, those buildings then become bigger buildings of higher embodied carbon materials with a bigger square footage. It is primarily driven by the commercial sector. We have a lot of young office buildings being demolished to be replaced with what are claimed to be LEED-certified sustainable buildings with all the bells and whistles but oftentimes they remain vacant themselves.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_51">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_107">There is 15% vacancy.</p>
+          <p eId="para_108"> I want to go to the Green Building Council on the question about the regulation now in terms of energy performance, and maybe a last one on procurement, if people want to comment more on public procurement driving the standards piece.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_109">The energy performance of buildings directive requires us to measure the embodied carbon of buildings by 2028 - just measure it - and then to introduce targets by 2030. We suggest we should accelerate that and get targets in place a little earlier because we need to signal to the industry there are targets and it can start planning to meet them, rather than just measurements. Once you measure, there is a tendency to reduce, and that is very helpful in 2028, but it would be very useful to introduce targets then also. We are required to set out a roadmap of targets by 2027 in any case, so it would be useful to incorporate those into the revised regulations in 2028.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_53">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_110">On public procurement, Dún Laoghaire was mentioned as a project that had a better energy approach. How important is it to use the lifecycle or a quality approach in procurement to drive standards for public procurement?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_111">That is a role for the OGP. It is working through it. It has to be linked to the commercial side of it. We do not have much of an input into it but we are aware because we are advised what is coming down the line and so on. Some TII projects include carbon emissions performance as part of the assessment of tenders, but in general with the larger projects it is not there yet. It is a complicated thing to associate carbon with euro when your main focus is the euro part of it, unfortunately.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_55">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_112">Does anyone else want to comment on procurement?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_113">Just to note that from 1 September public procurement is required to measure for buildings over €60 million. That came in in September and will be extended again next year for buildings over €10 million.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_57">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_114">I thank the witnesses for coming in to us this afternoon. Going back to Senator Higgins's point on restricting demolitions, I will give an example I am familiar with because I used to work there. A and L Goodbody has recently renovated its headquarters on North Wall Quay and I understand 75% of the original structure was retained. The concrete skeleton of the office block was kept and floors were added. I understand that is best in class when it comes to reducing the amount of embodied carbon that is lost. Is that happening elsewhere in Dublin or anywhere around the country? Is that a viable model or more of a once-off? I put that out there for all the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_115">We need to be careful we do not demonise demolition either. We have talked a lot about infrastructure emissions. There is a lot of research into it which UCD and the IGBC have done. Sometimes we focus very much on the building itself and forget about the infrastructure. When we are talking about city centres where we have all the infrastructure, we have to maximise what that site can deliver and sometimes that will involve demolition. If you do not build and maximise there, say with an apartment block, then inevitably you are going to be building out in a greenfield, which needs a lot more infrastructure. It is not black and white. It is not like demolition is evil and needs to be demonised. If best use is not being made of a site which has all the infrastructure and transport links and everything else near it, then demolition might be the best option. I just get the impression we are saying here demolition is almost banned. We have an issue with dereliction in the city and counterintuitively we might be driving development out to the greenfield sites if we are starting to say demolition is this bad thing. I worry about that. We should be careful not to end up with the wrong outcome at the end of this, in that we are building out in greenfield because it is way easier. I feel like city centre sites are not getting the full advantage of embodied carbon in their calculations so they are being punished slightly and greenfield sites are almost getting a free pass. We just need to be careful on that.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_59">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_116">That is a fair point.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_117">There are good opportunities for use intensification as well. In the right situation we can add storeys to buildings. Another good example is the Treasury Building, to which Google has recently added three or four storeys. There are opportunities there from changes to the regulations on mass timber construction because it can be lighter and it allows us to build additional floors onto existing buildings.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_118">Some kind of assessment is required of the building and when it was built. I think that building was from the early 2000s or the late 1990s. It is only 25 years old at most, so the idea you have to rip away 30% or 40% of the embodied carbon is already quite a loss. There are brownfield sites local to that building which are underutilised. I agree wholly we certainly should not be pushing development to greenfield sites as a result of this but we need to be very careful about what we demolish and have a proper assessment of it. In other countries, in cities like Brussels, much greater justification is required before demolition is allowed.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_62">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_119">That is very interesting.</p>
+          <p eId="para_120"> On retrofitting in general, the CIF mentioned this is still a micro industry and difficult to scale. I am a TD for the Labour Party and we have been pushing this idea of street-by-street retrofitting where this might be done at scale. A whole estate or street would get together and all try to retrofit their homes at the same time. We have been proposing the idea it might be co-ordinated by these energy renovation information hubs. Every house might be different or have different needs, finances and all that kind of stuff. Is that kind of idea something the witnesses see working? Have they any sense of when these energy renovation information hubs are going to come into being? Is that something that might help give more scale to the industry or more certainty to contractors or developers who might be interested in getting into that area? Again, that is for everyone.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Lenny Antonelli<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_121">There is a requirement in the EPBD to introduce these energy renovation information hubs in local areas. I think there has to be one per a certain population but I am not sure what it is. I do not know what the exact date is but they provide an opportunity to create on-the-ground offices or teams that can identify these areas for aggregation and go work with local communities directly.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_64">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_122">I am thinking of the basics of just explaining how the grant system works for individuals, which I would say is tricky.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T13:30:00+01:00"/></from>
+          <p eId="para_123">If you have a concrete investment proposal built around that, it is worth considering. At the moment it is demand-led, so if you are a householder you need to make the conscious decision to retrofit, avail of the grants, go through the process and commission someone to do the work.</p>
+          <p eId="para_124">It is all demand led. By its nature it is all bitty. If you are doing the street-by-street proposal, then investment is being put behind it, which I believe is the really critical aspect of it. That could then be an avenue to upscale things.</p>
+          <p eId="para_125"> The skills issue is a challenge at the moment but that is speeding up, with some 7,000 construction workers trained in retrofitting last year. That is definitely speeding up. We have the capacity to respond but it needs a bit more co-ordination and a bit more investment behind it.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_126">I would predict a better outcome as well for retrofits in that case because the knowledge is being developed and buildings that are similar to each other can be retrofitted similarly. Therefore, you can invest the time, energy and cost into coming up with the optimum solution for any given building of a build in a terrace of housing. It is really the only proper solution to retrofit nationally.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_67">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_127">I thank all the witnesses for being here this afternoon. I met Pat Barry at the Lidl site in Maynooth, a project that is nearly complete. It is a completely new project and it was my first exposure to modern methods of construction and the materials. It is to be hoped it is the kind of project that will be replicated by the likes of Lidl and other retailers in the future. We can take learnings from that. I commend the Irish Green Building Council on its work there in my home town.</p>
+          <p eId="para_128"> I have some specific questions for each of the groups, the first of which is for the Irish Green Building Council in relation to the guidelines. The council has proposed nature-based water attenuation systems over below-ground tanks. What regulatory barriers currently prevent wider adoption of sustainable drainage systems, SUDS, in housing schemes? That is the first question for the council.</p>
+          <p eId="para_129"> The second question is on the research by the council, which shows that pitched roofs account for 16% of dwellings' embodied carbon. Based on that should roof design be regulated to reduce carbon intensity and, if so, how?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_130">On the nature-based solutions, I do not think there are any real barriers to the adoption of nature-based solutions, apart from the guidelines from local authorities. We need to review the infrastructure guidelines and perhaps look at things such as whether we still require certain widths, for example 6 m wide access roads to housing estates and whether we need certain widths of paving. Could we create more optimal solutions? There is a very good example in Copenhagen where they have built a very dense extension to Copenhagen. They have minimised the use of hardstanding within the scheme. They have put the cars off to one side in separate car parking areas, which enables nature to be brought in right through the development. There are solutions we could look at to minimise the amount of concrete and hardstanding needed.</p>
+          <p eId="para_131"> On the research, I believe the Deputy referred to a study we did with UCD on the potential to reduce carbon and costs within new housing. There was one example with pitched roofs where perhaps the roofs could be designed to be convertible to extend into the roof. There are probably other solutions such as looking at the typology. If we build denser typologies, for example, terraces, we can reduce the embodied impacts over lots of detached or semi-detached housing. There are lots of typologies of housing that can have a lower embodied impact due to the design rather than the materials.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_69">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_132">I thank Mr. Barry. The CIF submission focuses a good bit on standards and on materials. On the slow standards approval as a constraint, what specific materials or technologies are currently delayed and what reforms would accelerate their certification?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_133">The timber in construction, the modern methods, all standards associated with those, and the fire standards. People are probably reluctant, especially in taller buildings, to use timber. It is about getting all that through. We are not the consulting design teams, but once it is into the design teams, the architects and engineers get the green light, and we know there are no consequences, then we can start using this material. One of our members is doing a timber building down in Wicklow. D/RES is doing the property and it is timber but they had to clad the timber columns in fire proofing. So, there is this low-carbon timber structure but it still has to be clad in something for a fire-proof reason. As I understand it, in reality, even if there was a fire, it might char on the outside but it would never completely burn.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_71">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_134">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_135">All those kinds of things are inhibiting us. That is why we have been saying that maybe, almost like the food industry, we need some sort of a-----</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_73">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_136">An FSAI type body?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_137">Yes, a national laboratory.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_75">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_138">What role would a natural materials testing laboratory play in enabling circular construction practices and low carbon innovation? Will it make these materials more readily available and more quickly available when we see them being used in the UK, in Europe or in the US so we can actually get in and get them approved as quickly as possible and test them as quickly as possible to get them out to market?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_139">I think so. It gives confidence, even on recycled materials. We want to recycle materials and a lot of the testing is <i>ad hoc</i>. Some of it even gets sent abroad to be tested and then is brought back. That takes time. It would give us more confidence in reusing materials. Our contractors will always be wary with all the issues we have had with materials just like the authorities are wary of letting things into foundations. We just need to have that oversight and having the testing laboratory would be good to give that confidence.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_77">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_140">Who would be responsible for that laboratory from the CIF perspective? Would it fall under a particular Government Department or would it be independent? Where does Mr. Ryan think it should sit?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_141">I do not have an opinion on that. I do not know.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_142">This highlights part of the problem. When you are contracting on a site and you come across an opportunity to reuse something the question is whose responsibility it is. There is very little motivation for the contractor to take responsibility for it. Designers are involved and there is a client involved. The laboratory is an idea it is all about the timeframe. It is all about time because you cannot stand there looking at it. Somebody has to take responsibility for it but it would have to be through a State body in order that it is certified and so on.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_80">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_143">If we can make construction greener, cleaner, quicker and cheaper, I think we need to leverage every lever that we can. I had one more question but I can wait until the second round. It was in relation to demolition. I believe Senator Higgins and Deputy Ahern dealt with a lot of it. Do I have time?</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_144">No. I will bring the Deputy back in. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_82">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_145">I am okay with that. I thank the Cathaoirleach.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_146">I ask Deputy Healy Rae to put his phone on silent, if he would not mind.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_84">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-22T13:40:00+01:00"/></from>
+          <p eId="para_147">Yes. I am sorry I was not here for the beginning of the meeting but there were other things I had to attend to. It is good to have the witnesses here today. I thank the Chairman for allowing me to talk because I am not a member of the committee.</p>
+          <p eId="para_148"> It has been brought to my attention by a respiratory consultant who is concerned. In the quest to reduce emissions and for construction to get the highest BER, it involves fitting heat pumps to houses. Are the witnesses aware of any health problems created, or developing, because of these heat pumps? Obviously, there is no chimney and no fresh air coming in. The same air is being circulated around all the time. This is what I am told. I have been told that one of the leading hospitals here in Dublin has never had more patients presenting with respiratory problems in relation to this. I had heard it before but this has come from someone eminent. I will not name the person now. How much has this been tried out in the construction sector to see? We always knew from common sense that the chimney was a vital part of the house. It took out the foul air and it draughted in the fresh air.</p>
+          <p eId="para_149">That no longer happens now with houses sealed up to the extent they currently are. We all strive to keep warm, but to the extent that many houses that are fitted out this way, they are now very warm. People practically do not have to wear many clothes at all. There was nothing wrong with pulling on a jumper before if you were not feeling as nice as you wanted to be. Are there any indications that there are problems with circulation pumps and keeping the houses so airtight?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_150">Any contemporary builds that include a heat pump should have a mechanical ventilation system, be it a mechanical heat recovery ventilation system or a standard extract ventilation system. That is required. There will be fresh air within the space. Deputy Healy-Rae raises a good point. It is important that we continue to monitor and invest more in monitoring the air quality within buildings as we change our construction types and increase the airtightness and energy efficiency of houses.</p>
+          <p eId="para_151"> The point about thermal comfort is also a good one. It is one of the major issues that carbon emissions related to the built environment have been creeping up for three or four decades because our thermal requirements or needs have increased quite dramatically. A study by the University of Cambridge a few years ago showed that, back in the 1970s, people were happy to live in homes heated to 14°C to 15°C, gather around a heat source in the evening and then retreat into cold bedrooms again, whereas now we heat big volumes of space within our ever-increasingly sized homes up to 22°C or 23°C. That is a major issue.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_152">We do not want to confuse two issues here. Heat pumps have nothing to do with the heating system, so that is nothing to do with ventilation. I think Deputy Healy-Rae is pointing to a ventilation issue. That is part of the building regulations. I renovated my 1970s home, insulated it and made it airtight. I actually got rid of the chimney, but I did put in an extract ventilation system that runs 24 hours a day and I have my wall vents, so it is constantly pulling in fresh air all the time. People can override systems and block vents.</p>
+          <p eId="para_153"> As for recirculation systems, this room here will have an air handling unit up on the roof and it will circulate fresh air, extract air and take the heat from the extract. That is what a heat recovery unit is. We are getting fresh air, it is just not cooled outside air. My wife has to open the windows and get that sense of fresh air. It is clean air but there is no reason we cannot have clean air with a heat recovery system. It is just temperate warm air. That is one aspect of it.</p>
+          <p eId="para_154"> I have worked in building services as an engineer. There are two things with fresh air: one part of it is for people to breathe. The other part of it is to dilute internal contaminants. All the things within a house - paints, varnishes and furniture, especially when they are new, give off gases. That is possibly more of a cause of respiratory issues rather than the ventilation system. It would be good if people were more aware of low VOC paints and using better materials in the house, perhaps those issues would not arise. Ventilation is critically important but we can still open windows in a house when it is overheating.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_87">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_155">In some windows there is no opening or latch at all.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_156">Sometimes, aesthetically, we have gone for big glazed areas with very little opening. That is possibly a problem.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_157">Does Mr. Barry want to say anything?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_158">Yes, the key issue there is that, working with the occupants, we have just published with Construct Innovate a home user manual this week, which is all about educating the homeowner because, if a house has a heat pump, it will always need to have a ventilation system as well. It is very much about educating the home occupant on how their newly renovated home works and how they need to operate it now. Once every homeowner gets the manual and understands how the home works, that will clear up a lot of those issues.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_91">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_159">I thank the witnesses for their response. I raised this because a specialist consultant raised the issue that she is receiving a lot more patients with respiratory problems and she was concerned that it was because of air circulation pumps.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_160">I have a couple of questions. This question is for Mr. Barry. No. 2.2 states that, "Renovating and adapting buildings almost always has a lower environmental impact than that of new builds." We had IBEC in here last week and it talked about the cost of the climate change plan and stated that there is an affordability issue with the transition. It said the affordability of the transition work may never have fully surfaced. That is fair enough. Is there a cost issue between a new build versus retrofitting, renovating and adapting? I presume it is probably more expensive to retrofit, purely in monetary terms but I know there are benefits in terms of emissions. What is your view?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_161">I am not sure whether there are necessarily additional costs to renovation over a new build. It would be very particular to the circumstances, but it should not cost more to renovate over a new build.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_162">So it should be equivalent. There is not an affordability issue there in terms of the transition.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_163">Possibly a greater issue is ensuring that the grants system is appropriate. There tends to be a cut-off for those in energy poverty. The warmer homes schemes have their renovation fully funded but then we have a complete cut-off and then there are grants. Perhaps we need to means-test some of the grants and give additional funding to people who are just on the threshold of receiving the warmer homes grant.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_164">You also raised the issue of certification and removing regulatory barriers to new materials, indigenous materials and sustainable materials. If I could pin you down, what is your ask in terms of a timeframe? I will put the same question to the CIF because it raised that as well. What is realistic for the certification of a new material that someone wants certified? Let us say they know in six months whether it cuts the mustard.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_165">At the moment, the Irish agrément certification process does not really have a timeline. It is quite complex. Information can be submitted but a person would not get a strict timeline. It could take a couple of years to get an Irish agrément certificate, and it can be quite expensive. We really need to streamline it so that we can give a fairly fixed short timeline. I am not going to say an exact timeline, but it does need to be defined because, quite often, if you are trying to get MMC through certification - possibly CIF can talk better to this - the timeline can be quite extended and it can become a very expensive process.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_98">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_166">Okay. I will put the question to CIF.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_167">A defined fixed timeline is really important because we have applications for agrément certs that our members are telling us drag on. I am sure the NSAI would come in here and say it is because it needs further information on this or that.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_100">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_168">What is the international experience? Do you know what it is?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_169">No, because it is a rapidly emerging area. I do not think we have the detailed evidence. Everyone is in the same boat. Everyone is trying to work this out by the day, the week and the year. It would be good to have fixed timelines and certainty. One thing that we see again and again is that certainty is really important when we talk about infrastructure in terms of knowing how long things are going to take before we can bring them on site and build the infrastructure or the housing that is required. If we know the timeline that it is going to take to bring these new materials, we can build that into our plans, pipeline and capacity. That is the key thing. If we are going to have the capacity, we need to know when these things are happening and how long these things are going to take.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T13:50:00+01:00"/></from>
+          <p eId="para_170">Okay. To come back to the issue of heat pumps, this comes up again and again: heat pumps being the Nirvana transition solution for heating in the residential sector.</p>
+          <p eId="para_171">What Mr. Ryan seems to be saying is that a more pragmatic or interim stage may be required. This probably brings in affordability, in terms of making the transitional stage affordable to residential houses in the main. Is this correct? Is this what Mr. Ryan is saying?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_172">That is it exactly. The idea definitely is to renovate the building fabric and get it insulated, and then put in renewables and photovoltaics. We definitely need to electrify our heat systems, especially for houses. There is no reason they cannot be electrified. This is definitely where we need to go by 2050 by all means. We have to be on electricity for all our heating as essentially the grid will be carbon neutral by then. I do not think people are ready to throw out all of their fossil fuels now and go straight to an electric heat pump. Different people are at different stages in life and they are just not going to be in a position to renovate the whole building in order to get the heat pump in. As with cars, is there is an interim step or a transition whereby people can keep their boiler and have a heat pump?</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_173">Dr. Kinnane also wants to speak on this.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_174">There is also a discussion on the heat loss indicator, HLI, index. It is quite tight and quite a high HLI index is required to get a heat pump or to qualify for a grant for a heat pump. The SEAI is speaking about relaxing this is somewhat so that more traditional leakier homes can also be allowed to access grants for heat pumps. At the moment we are well below our-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_175">It is the airtightness of the home.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_176">It is the airtightness and insulation value as well. It is the thermal resistance of the home. We are doing quite an involved in-use heat pump monitoring study for the SEAI and we are seeing very high coefficient performance for heating. Domestic hot water supply from the heat pump is what drops the coefficient of performance but we are still talking about coefficient of performance indices of 3 or 4, which is much better than a gas boiler will ever be, as it will remain at less than 1. There is still an awful lot of work to be done on heat pumps and finding the optimum strategy but having more heat pumps for a wider range of homes is important and more grant access is important also.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_177">To be clear on the ask from the CIF on HVO, consistent treatment of VAT on HVO would help in terms of adoption. Is this right?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_178">We just need it to be the same price as diesel.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_179">The actual market price needs to be the same.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_180">Yes, however it is achieved. There are carbon charges on diesel and there are various VAT rates. I am not sure how the figures work. In terms of us going to buy it they are the same, and at times they are mixed, and it is purely a figures exercise. We all want to use it.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_181">It is not just in VAT necessarily; it is equivalence.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. P.J. Ryan<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_182">There is also the renewable transport fuel obligation for NRMM, which is non-road mobile machinery. We get only 80% of the full credit for this. In the EU definition generators are considered NRMM but because it is a transport fuel it is only allowed to be used for self-propelled equipment on site. Could we get to 100% on this and then equalise the VAT? VAT is lower on green diesel than on HVO.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_183">Dr. Kinnane mentioned the use of timber for mid-rise buildings. This is the second time we have heard about this issue. What is the situation there? Obviously compact development is where we want to go, so we have to go up. We are saying that timber, although it is sustainable, is not acceptable under the standards at present. Is this what Dr. Kinnane is saying? Is it that we cannot do it?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_184">We cannot build above 10 m with timber, which is a problem. It is very strict.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_185">Are other jurisdictions doing it?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_186">Yes. Around Europe multistorey buildings are now being built in timber. In Scandinavia and Canada buildings of up to 30 or 40 storeys are being built in mass engineered timber. It is also an issue for low-rise buildings. Even the separation of two residences in a duplex requires a non-combustible intermediate floor between them. This generally means the lower residence will be concrete and the upper residence may be timber.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_187">The carbon implications of this are substantial.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_188">The issue is around certainty. People are unwilling to take a risk on timber because when it comes to fire assessment it could be rejected.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_189">I believe it is the insurance industry that has the biggest issue.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_190">The certifiers will not certify because they think the insurers may not insure. Is that it?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_191">Yes, that is where the biggest resistance is.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_123">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_192">The challenges with retrofitting and slower take-up than what we might expect have been mentioned. I find particularly that lower- and middle-income families do not have the money to pay the cost upfront before they get the grants. How do the witnesses think this could be addressed?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_193">Maybe this goes back to some of the ideas we spoke about earlier on. At present it is demand led so we need a household to decide it can afford it with the grant from SEAI and also have the time to apply for the grant. This is fine but it is down to individual choices. Deputy Daly is right that if people have to choose what to afford this month or in the next six months perhaps it does not make sense. If it were done on a street-by-street basis with public investment behind it, coming at it with the view of putting in place retrofitting infrastructure for a community, it would change the dynamic and the scale at which it could be done.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_125">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_194">More incentives and making it easier for people to take it up. Is that it?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_195">That is on the supply side. Effectively, the State would pay to retrofit the homes. This would be the-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_127">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_196">The State needs to get more involved. Is that what Mr. Brownlee is saying?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_197">The State needs to make a decision to put investment behind it on a co-ordinated business basis rather than leaving it to the demand side.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_129">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_198">That is the State getting involved more.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Andrew Brownlee<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_199">It is a policy decision.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_200">We do a lot of monitoring of retrofit homes and retrofit generally, and what we see is better social housing or very high-end housing being retrofitted. Often it is period houses being retrofitted by a retrofit nerd type of homeowner who will put in a heat pump with all the bells and whistles. There is a gap in the middle where people cannot access funding. We see this with the vacant homes refurbishment grant also. Essentially this grant is not paid until all of the works are done and there is a big administrative process. Many people apply for it. I believe 14,000 applied for it, 7,000 got approved and 1,500 got funded. Many people are lost on the journey. Many people do not have the money to pay upfront and then wait for it to be funded at the end or even take the risk it might not be funded at the end.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_132">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_201">There was a very successful public scheme in Tralee going back 12 or 13 years to heat an area with 200 houses with wood chip. It was one of the first schemes of its kind. As Dr. Kinnane is here, I will ask him about refurbishing public buildings. Have courthouses throughout the country been looked at? There has been tendency in recent years to move to greenfield sites and build new courthouses and then leave the old buildings abandoned. There is a proposal to do this with Tralee courthouse in Kerry. Does Dr. Kinnane have an opinion on this? If at all possible should the movement be towards refurbishing existing courthouse buildings and renovating them?</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_202">Absolutely, in my personal opinion. They are some of the nicest buildings in any town. It is the case in west Cork where I am from that many courthouses have been abandoned, leaving lovely old cut stone buildings abandoned.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_134">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_203">There was a big campaign in Skibbereen to maintain the courthouse there and it was kept. In Dr. Kinnane's experience, does it usually end up being cheaper to renovate than to build on the outside of towns?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_204">They will come with their challenges but they are buildings that are well built and can be renovated for sure. In general they are very high-quality cut stone buildings. We have done a lot of testing of the stone in these buildings for the conservation work we do. It would be challenging but it is for the public sector to lead on the conservation of such buildings.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_136">
+          <from>Deputy Pa Daly<recordedTime time="2025-10-22T14:00:00+01:00"/></from>
+          <p eId="para_205">That would be Dr. Kinnane's preference.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_206">Absolutely.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_138">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_207">I have a few questions. The first is for Professor Kinnane. Point 2.4 in his statement refers to the system of accounting for production-based emissions. Resource use is a driver of biodiversity loss. Is there a means or mechanism to measure the impact on biodiversity of resource and material use?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_208">Yes, there is. It is not an area I am particularly <i>au fait</i> with, to tell the truth. There has been a lot of work done on new biodiversity indexes. I should not say "a lot of work". I would say there has been initial work. The IGBC might be better placed to answer that question.</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_209">A little bit of work has been done on measuring the ecological impact of materials as well as the carbon impact. It is something we need to look at more because materials are responsible for something like 70% of biodiversity loss. Materials, including mined materials such as aggregates, represent probably one of the largest impacts on biodiversity. It is something we need to look at.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_141">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_210">My second question is on office space. One of the presentations mentioned 15% vacant office space. Are there exemplars of the adaptation of old office spaces for residential use?</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Mr. Lenny Antonelli<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_211">The main one that comes to mind is the job Tuath Housing did at Park West Plaza. It retrofitted an old office space into accommodation, which it now manages for some of its clients. It might have converted a second commercial premises to residential accommodation somewhere in Dublin but I am not sure where that is. Tuath has certainly led the way on this.</p>
+        </speech>
+        <speech by="#MalcolmNoonan" eId="spk_143">
+          <from>Senator Malcolm Noonan<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_212">I have a question on natural materials and hemp in particular. It is astonishing that we have not moved on the hemp issue. There was an article in the paper last week about a farmer working on marginal land in Castlegregory down in west Kerry. It really seems like an open goal. I have seen hemp being used as insulation material. It is particularly valuable for traditional buildings because it is breathable material but it can also be used to make hempcrete and hemp blocks. Can anyone shed light on why we are not moving the regulatory side of it over to the Department of agriculture? I know there were issues regarding the CBD content as the regulations here are different from those in mainland Europe. Is the sector advocating for this? It is a fantastic material and we should be using a hell of a lot more of it.</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. Pat Barry<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_213">We need an approach similar to that of the cross-government steering group on timber. We need to take that same approach for other biomaterials. All of government and industry should be working together to make recommendations as to how to develop this industry. In the Netherlands, which has a smaller agricultural sector than ours, the Dutch Government has invested €200 million into activating the biomaterials sector. It is looking at it from the grower side, the production side and the supply side. The three parts must be encouraged for it to work. If you do not have the growers, you cannot have the production. If you do not have the production, you cannot have the demand. You need to incentivise all three simultaneously. That does not happen accidentally. It requires a government strategy.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_145">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_214">There was discussion about the cost of retrofitting and the affordability gap as regards the warmer homes scheme and retrofitting. It is important to point out that, in the recent budget, €558 million was allocated to the SEAI. I hope we will see more of the various grants over the next year and over the coming years. I hope that industry will also play its part in bridging that affordability gap. We cannot rely on the State to always step in when there are issues with affordability. Whether it is in construction, healthcare or any other area of society, we cannot be reliant on the State, particularly when we want to reach particular targets for carbon, sustainability and so on. I just wanted to put that on the record.</p>
+          <p eId="para_215"> The question I had for Professor Kinnane earlier that I did not get to related to the area of demolition and the proposed carbon caps. Will he elaborate on how such a mechanism would work in practice? What enforcement challenges might it face? We have seen really good examples. I take his point that the lifespan of a building should be a lot longer than 60 years and that we should be building for the long term rather than the short term. I can think of some really good demolition jobs that have worked out well. I think of the ESB headquarters on Fitzwilliam Street. A really good job was done on that. I can also think of poor jobs but I will not mention them. How would it work in practice? In housing, if there is an apartment block that we want to reconfigure and retrofit to deal with the housing crisis we are in the middle of, how would we reconcile those two issues?</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_216">If I may speak on the ESB building first, that was the longest row of Georgian buildings in the world. It was torn down in the sixties, replaced with a pre-case concrete building in the eighties, torn down in the late 2010s and has now been replaced with a much larger faux-Georgian building. Nice as it is, it is an example of a site that has seen three buildings in a 60-year period.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_147">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_217">My point is that it looks better now than it did 20 years ago. In terms of the initial construction, I agree that the Georgian facade should have been kept.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_218">I always liked the Sam Stephenson building with the brass windows but that is a matter of personal opinion. It is a difficult question to answer. The reality is that, when built, commercial buildings do not lend themselves easily to transformation into residential buildings. They often have a long deep plan, circulation cores and such things that do not fit residential buildings well. We need to be creative and back our architects to find solutions to that. There may just not be enough incentive to transfer commercial buildings to residential use.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_149">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_219">What sorts of incentives are we speaking about? Are we talking about exemptions from taxes or levies?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Dr. Oliver Kinnane<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_220">It is not something I am massively qualified to speak on but I would say yes to both. The owners of these buildings should be given tax incentives to enable these buildings to be retrofitted for social housing, as in the Tuath Housing example. That should be happening widely in the city. We should be coming at it from a community and city living initiative perspective. It is like the courthouse example. It is not just about the individual buildings but about those being part of our communities and our cities. If we want vibrant active cities, we do not want a whole load of vacant commercial buildings. We need to find a solution to that. Other cities in other countries have given that a lot of attention. London has a much greater focus on circularisation now. I also use the example of Brussels. Again, the State has a big role to play. There are a lot of public buildings that remain unused which could and should be brought into more intensive usage.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_151">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_221">I thank everybody for their answers to the members' questions. We will be publishing all the opening statements.</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Eamonn Stapleton<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_222">May I make one comment? This is not so much on behalf of the CIF but more from a climate point of view. A number of times, I have heard people ask what this would cost. Without aiming to be diplomatic, in most instances, the real question is what is the cost of not doing it. Through the construction industry, we see that the reality is that correcting some of the impacts, including flood damage and storm damage to our infrastructure, will cost more in both resources and money than some of these things. The figures involved in putting these issues right at this point are not big figures.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_153">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T14:10:00+01:00"/></from>
+          <p eId="para_223">We will be putting all of the opening statements on the committee's website. Is that okay? Yes. On behalf of the committee, I thank all of the witnesses for taking part in our discussion on what is an important topic for this committee. We will now go into private session.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee went into private session at 2.19 p.m. and adjourned at 2.30 p.m. until 12.30 p.m. on Wednesday, 5 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,1011 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-11-06/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-11-06/debate"/>
+          <FRBRdate date="2025-11-06" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_education_and_youth"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-11-06/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-11-06/debate/mul@"/>
+          <FRBRdate date="2025-11-06" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-11-06/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-11-06/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-12" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="JoeConway" href="/ie/oireachtas/member/id/Joe-Conway.S.2025-01-29" showAs="Joe Conway"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="ShaneCurley" href="/ie/oireachtas/member/id/Shane-Curley.S.2025-01-29" showAs="Shane Curley"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM OIDEACHAS AGUS ÓIGE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Education and Youth</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-06">Déardaoin, 06 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-06">Thursday, 06 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JenCummins">Jen Cummins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoeConway">Joe Conway</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ShaneCurley">Shane Curley</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LindaNelsonMurray">Linda Nelson Murray</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarethScahill">Gareth Scahill</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Conor D. McGuinness.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#CathalCrowe">Teachta / Deputy Cathal Crowe sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Mental Health Supports in Schools: Discussion<recordedTime time="2025-11-06T09:30:00+00:00"/></heading>
+        <speech by="#CathalCrowe" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T09:30:00+00:00"/></from>
+          <p eId="para_14">We have received apologies from Deputy O'Meara. I ask anyone attending remotely to mute himself or herself when not contributing so that we do not pick up any background noise or feedback. I remind all those in attendance to ensure their mobile phones are either in silent mode or switched off entirely. Members attending remotely are reminded of the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the Leinster House complex.</p>
+          <p eId="para_15"> As witnesses are within the precincts of Leinster House, they are protected by absolute privilege in respect of the presentation they make to the committee. This means that they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege and it is my duty as Cathaoirleach to ensure this privilege is not abused. Therefore, if their statements are potentially defamatory with regard to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction. Members are reminded of the long-standing parliamentary practice that they should not comment on, criticise or make charges against any person or entity outside the Houses or an official of the Houses either by name or in such a way as to make him or her identifiable. </p>
+          <p eId="para_16"> On the agenda for today's meeting is an update on mental health supports in schools, specifically the counselling in primary schools pilot, CPSP, 2023 to 2025, and second, the role of the Neart programme to provide mental health supports in post-primary education. I welcome our witnesses. From the National Educational Psychological Service, NEPS, I welcome Ms Deirdre McHugh, assistant director of well-being and social Inclusion; and Ms Sharon Eustace, assistant director of the counselling in primary schools pilot and critical incident response. From Jigsaw, I welcome Ms Siobhán McGrory, director of mental health promotion; and Ms Tara Mulhern, Neart programme lead. The National Educational Psychological Service is part of the Department of Education and Youth and its officials are representing the Department today. The Jigsaw representatives are here to respond to questions on the Neart programme only. Jigsaw has been contracted by the Department of Education and Youth to deliver the programme in post-primary schools. I call on Ms McHugh to make her opening statement. She will have five minutes. The opening statement will be followed by questions from members and members will have six minutes apiece. </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:30:00+00:00"/></from>
+          <p eId="para_17">Can I clarify that? My understanding was that it was a ten-minute opening statement on behalf of Jigsaw and NEPS together. Is that okay? </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T09:30:00+00:00"/></from>
+          <p eId="para_18">We can accommodate that.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:30:00+00:00"/></from>
+          <p eId="para_19">I thank the Cathaoirleach and the committee for the invitation to attend and for the opportunity to outline the range of mental health supports available for children and young people in schools. I work in NEPS and have responsibility for the Department's well-being policy. I am joined by Ms Sharon Eustace, who is responsible for the primary pilot and from Jigsaw, Ms Siobhán McGrory, director, and Ms Tara Mulhern, who is Neart programme leader and who works very closely with me in the Department.</p>
+          <p eId="para_20"> The Department of Education and Youth plays an important role in supporting the well-being and mental health of our children and young people. The promotion of well-being is central to the Department’s mission to enable children and young people to achieve their full potential. The approach set out in the Department’s well-being policy and framework for practice is a whole-school and preventative approach with multiple components. The approach is founded on research and best international practice of how schools can best support the well-being and mental health of children and young people. Aligned with the policy, a number of supports and initiatives are offered to schools to support well-being and mental health, including the social personal health education, SPHE, curriculum, the establishment of student support teams and supports provided by Oide, NEPS and the National Council for Special Education, NCSE. In post-primary schools, support is also provided by guidance counsellors. A dedicated well-being portal can be accessed via "Wellbeing in Education" on <i>gov.ie</i> bringing together all the well-being and mental health supports and resources that have been developed by the Department and the Department’s support services. In addition, NEPS psychologists provide direct support for schools in the event of a critical incident, access to a support and development service for school staff and a casework service for individual children and young people. NEPS works closely with the Department of Health and the HSE to ensure an aligned approach across both health and education to supporting well-being and mental health. Policy implementation responsibility is co-ordinated by the Department’s well-being office, which is situated within NEPS. This office has initiated a review of the 2018 well-being policy, which will include broad stakeholder engagement, to plan for a revised well-being strategy for schools, building on the work that has been done to date. It will be introduced in 2026. </p>
+          <p eId="para_21"> The introduction of the counselling and mental health pilots in primary schools in 2023 and the Neart programme in providing mental health supports in post-primary education since the beginning of 2025 represent two recent and significant developments in the evolution of supports for children's well-being and mental health needs within the education system. To provide members with a brief overview of the primary pilot, in 2023, in the context of the post-Covid era, which saw increased need in schools and a greater focus on school-based well-being and mental health supports, the Department - supported by a report from this committee - established a pilot programme of counselling and mental health supports for primary schools. This pilot supplements the range of mental health and well-being supports already provided by the Department and the excellent work already happening in schools in relation to well-being. These supports also complement the mental health supports offered by the HSE throughout the country. The counselling and mental health pilots in primary schools consist of two strands informed by research evidence and innovative practice in other jurisdictions, particularly in England and Northern Ireland.</p>
+          <p eId="para_22"> Strand 1 is the provision of one-to-one counselling to support children in schools in a number of counties, namely, Cavan, Laois, Leitrim, Longford, Mayo, Monaghan, and Tipperary. The Department has created panels of pre-approved private counsellors to provide counselling and there are currently 46 counsellors available to work in these areas. In the 2023-24 school year, more than 2,800 counselling sessions took place in schools and 382 children availed of counselling. In the 2024-25 school year, more than 6,200 counselling sessions took place and at least 752 children have availed of counselling supports. In October 2024, the Department announced the extension of strand 1 of the counselling in primary schools pilot to 61 urban DEIS primary schools in Dublin north city and Dublin south west. These schools were identified by the Department as supporting children from areas with some of the highest levels of disadvantage in the State.</p>
+          <p eId="para_23">In the 2024-25 school year, over 400 counselling sessions have taken place in these schools, in addition to the broader pilot schools.</p>
+          <p eId="para_24"> Strand 2 of the counselling and mental health pilot provides support to primary schools in cluster areas in Cork, Carlow, Dublin 7 and Dublin 16 through the introduction of education well-being teams and a new type of support practitioner in the system. This is the education well-being practitioner. Supports in this strand are focused on strengthening whole-school preventative approaches, providing psycho-education support for school staff and parents, and providing early intervention to groups of children and individual children to address mild and emerging social and emotional needs. There are 20 education well-being practitioners working under the direction and supervision of lead psychologists in NEPS. An evaluation of both strands of this pilot has been commissioned by the Department, with a final report expected in the coming weeks. Preliminary findings are positive, suggesting that both strands have been highly valued by schools, parents, pupils and stakeholders</p>
+          <p eId="para_25"> In relation to post-primary schools, the Department recognised that a collective and collaborative approach with those offering supports to schools would increase impact and coherence and reduce potential duplication in supporting child and youth well-being and mental health. In April 2024, the Department, through a competitive public tendering process, invited suitable providers to develop and deliver additional supports over a three-year period to complement existing systems and structures in post-primary schools for well-being and mental health. Jigsaw, the National Centre for Youth Mental Health, was successful in this competitive process. Neart, the Irish word for strength, is a first-of-its-kind collaboration, being delivered through a partnership model between the NEPS and Jigsaw.</p>
+          <p eId="para_26"> The Minister for Education and Youth, Deputy McEntee, officially launched Neart at the beginning of April, following initial engagement with post-primary schools in January. The Neart team has developed and delivered a significant amount of accessible, evidence-based content for school staff and parents and guardians. Staff-related content has been reviewed and approved by NEPS to ensure alignment with other content already provided to schools by the Department. Jigsaw and NEPS collaborate on webinars and projects along with other stakeholders. </p>
+          <p eId="para_27"> Since its launch, Neart has delivered a suite of live webinars and e-learning courses for school staff, live masterclasses for student support teams, e-learning train the trainer courses for teacher-led classroom-based workshops for students, and live webinars and a new podcast series for parents and guardians. Monthly Neart newsletters, including resources and booking links, are circulated to all who have registered. Since September, Neart has introduced drop-in online interactive support meetings for teachers facilitating these programmes, launched a Neart well-being award for this academic year and, in October, launched Neart regional conferences for student support team members.</p>
+          <p eId="para_28"> Neart now has 1,915 school staff registered, representing 584 schools and over 75% of post-primary schools in Ireland. Of these, 54% are from DEIS schools, with the remaining 46% from non-DEIS schools. Schools in every county in Ireland are represented. The number of parents and guardians registered with Neart is 2,017. A comprehensive Neart evaluation plan was completed over the summer months to facilitate ongoing quality assurance and improvement, and to gather evidence of the effectiveness of the programme.</p>
+          <p eId="para_29"> We remain committed to working in child-centred and innovative ways through both of these new initiatives as well as through the other well-being supports provided to ensure that children and young people can learn more effectively and have better academic outcomes by being happy in school, believing in themselves and being acknowledged and supported in their schools. My colleagues and I look forward to engaging with committee members and providing more details on all aspects of the counselling and mental health in primary schools pilot and the work of Neart in post-primary schools.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_30">I thank Ms McHugh. We will now go to members, who will have six minutes each. I will allow a 30-second overrun on this. I remind members and witnesses that questions have to be answered within the period. Occasionally they might hear me indicating that I must move on to the next speaker. I hope that we will have additional time at the end to allow the witnesses to summarise and close out any issue that has arisen. I call on Deputy O'Rourke, who has six minutes.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_6">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_31">I thank the witnesses. I mainly want to give the time to them. My question is for all of them. What is the profile of the demand experienced on a daily basis? Covid was mentioned and we all understand this was a major shock. Is social media a big factor? Is there anxiety or depression? What do the witnesses see? Are there new or emerging trends in this?</p>
+          <p eId="para_32"> My next question is on capacity in the system with regard to colleges, counsellors, demand and profile. What is the unmet demand and unmet need that is there? Obviously, there are limited resources. What is the burden share? There seems to be responsibility not only on therapists and counsellors but also on teachers and perhaps on parents. There is also the relationship with the likes of CAMHS, primary care and CDNTs. I ask the witnesses to touch on these questions and perhaps there is enough in them, I would say.</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_33">I thank Deputy O'Rourke. I will start with the question on demand and I will ask my colleagues to come in on the other questions. It is a very interesting question and there is not one answer. It is quite a problematic area when looking at trends. A lot of focus has been on social media and the digital lives of our children and young people. The research evidence is not 100% clear because there are not enough longitudinal studies. This is the first issue. It is very difficult to disentangle phone use and social media use, and even to disentangle the educational impact of phone use. A lot of phone use, as we know, is often outside of the school environment. There is not a clear answer.</p>
+          <p eId="para_34"> A UNICEF report this year looked at particular trends up to 2025, and it pointed towards social media. There is also anxiety about climate change, war and conflict. Our young people are aware of what is happening in the wider world. Bullying in schools and bullying more broadly is a factor also. There are also family relationships. Thankfully, in the report on Ireland, family relationships were strong, with young people talking to their parents about these needs. It can be wide-ranging.</p>
+          <p eId="para_35"> Obviously, issues such as physical health are very important also, including exercise and sleep coming into play when we look at mental health. Part of the work of the Department is looking broadly at the SPHE curriculum, physical activity and PE, as well as these mental health initiatives we are running. We look at a whole-school approach as well as a targeted approach in our response. Targeted approaches, although important, have to work alongside whole-school approaches. This is what strand 2 is looking at, and Neart is looking at both universal-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_8">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_36">I might interrupt Ms McHugh in the interests of time. I have a fair sense of it from the Department's presentation. I want to ask about the capacity issue. It is an issue we hear about repeatedly.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_37">Ms Eustace will speak on this.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_38">Strand 1 of the counselling pilot involves one-to-one support for children in schools. At present we have 46 counsellors on the panel and they are available across the seven counties. We also have additional counsellors, with nine counsellors in the DEIS system. Strand 1 provides one-to-one counselling support for the first time in schools. Schools, in consultation with a NEPS psychologist, discuss children who are at risk of mental health issues or could do with some support. There is access immediately-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_11">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_39">Is there a plan to expand this to the other counties that do not have these services? What is the timeline for this, if there is one?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_40">We hope to expand it to other counties. We are evaluating it, and the centre for effective services has just completed the evaluation. We hope this will inform future policy direction in the area. We know there is a demand for it. We have difficulty at times recruiting counsellors. We put a lot of work into securing counsellors. We have a rolling application process. We have contact with the accrediting bodies and we asked them to-----</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_13">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_41">Is there a workforce plan for the sector? I know there is a major restriction with regard to NEPS psychologists. I know there are new courses and there are questions about standardised qualifications. Is there an overall plan for ensuring the workforce is there?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:40:00+00:00"/></from>
+          <p eId="para_42">Absolutely. We are making great progress compared with our numbers back in 2016.</p>
+          <p eId="para_43">We have grown and evolved since then. Our numbers are now up at 235 NEPS psychologists. We have a panel. We have bursary students. Over the next three years, we will have over 60 such students who will join NEPS to fill the vacancies, which is really positive. We are looking at education well-being practitioners as another way, and the Neart work, to build capacity in the system. We work closely with the HSE and our colleagues in the Department of Health on those pathways for the children with the most significant needs, whose needs cannot be met in the school system and who need to be referred on to CAMHS or primary care services. The work that we are doing is not a replacement for CAMHS or primary care, but we hope it will reduce waiting lists because we can actually try to reduce the demand on those services.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_15">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_44">Are those pathways well established? In the community, primary care and children's disability network teams, CDNTs, are not well established at all. Are they well established for NEPS or not?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_45">There is a new HSE child and youth mental health office, which is looking at the pathways for mental health provision through the single point of access. As members will know, that is progressing through Sláintecare and is coming to the fore. We are working closely with that office on trying to ensure there are pathways from schools, guidance counsellors, NEPS psychologists, and teachers and parents who have concerns about children in the school-based system into HSE services, where that is required. Our work is to try to make sure that while young people are on a waiting list, we can try to meet their needs in schools through student support plans, resources and teacher training and supports. There is a lot that we can do to reduce risks and promote good protective factors in schools that can build good well-being and resilience of young our people in the school system.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_46">The education well-being practitioners in strand 2 of the counselling and mental health pilot scheme form a new layer in the system. There are 20 of them at the moment and we hope that we see more of those into the future. They are providing another layer in the system in terms of early intervention and prevention. The idea is that we get in early, prevent children's issues escalating, and teach them skills to deal with low-level mental health issues. We teach them coping skills and resilience building. The hope is that this will reduce the need for counselling and onward referral.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_18">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_47">The witnesses are most welcome and I thank them for their very comprehensive statement. I listened to the statement and understand that the counties chosen for strand 1 include Cavan, Laois, Longford and Monaghan and their selection was based on what NEPS considered to be the highest level of disadvantage in the State. I take it that that was the right thing to do. What is the level of demand in other parts of the country? Obviously, this is a pilot programme and something told NEPS that these were the areas on which to focus first. What level of demand does NEPS anticipate, for example, in my own county of Galway?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_48">I will ask Ms Eustace to speak to that.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_49">There is a demand for support in all counties. We established strand 1 in the aftermath of Covid when we saw increases in anxiety. We selected pilot areas. It is a pilot scheme, so we needed to start somewhere to see whether there was a demand. We kind of knew there was a demand but not the type of demand or supports that were needed. When we were selecting the counties for strand 1, we looked at the waiting list for CAMHS and primary care services. We tried to get a geographical spread. We also did a survey with the accrediting bodies for counsellors. We looked to see where the capacity was and where counsellors were available to provide counselling for this very vulnerable cohort of children. There are a lot of counsellors in the system. They hold different qualifications and there is no national regulatory body. We were looking to get the best people in front of this vulnerable cohort, so we conducted a survey and 441 counsellors said that they had the qualifications and experience. Their availability was in these counties, which is partially why we chose these counties. We would have to go out farther to see whether there is availability of counsellors in other counties. We expect that there is going to be a demand. We know that there have been long waiting lists for services.</p>
+          <p eId="para_50"> We also know that, in the aftermath of Covid, the Ombudsman for Children, a previous Oireachtas committee, the Irish Primary Principals' Network, IPPN, and the Irish National Teachers Organisation, INTO, really wanted us to focus on supports for primary school children because at post-primary level we have services like those provided by Jigsaw and Turn2Me, guidance counsellors, etc. There was not that in primary education. I think that the evaluation will show that there is a demand in schools and that schools really welcome access in schools for these children. Their parents really value access on site in schools as well.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_21">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_51">I am anxious to understand something. If NEPs were to do an assessment or knew that there was a requirement, could it be certain that Galway - I will be parochial on this for the purposes of this question - would have the expertise and counselling staff to roll out that programme at a county level?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_52">I would not have the data to hand as to the number of counsellors who are qualified and have experience of working with children in Galway, for example. It is really important that we focus on lots of different interventions for young people. In strand 2 of the counselling and mental health pilot scheme, there is a huge reach. We have provided one-to-one skills-building sessions, which are low-level interventions for children presenting with issues. Since February, we have seen over 200 children for those low-level, six-week sessions. We also provide psycho-educational supports for parents, school staff and children. We are trying to get everybody speaking the same language. We are trying to have an holistic approach to supports available in the system. NEPS, as a psychological service, does that on an ongoing basis - we provide supports into the school system. Strands 1 and 2 and Neart are additional pilot schemes on top of what is already going into the system. If we can roll out those further, then places like Galway, Sligo, Leitrim and-----</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_23">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_53">Roscommon.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_54">Roscommon or wherever. There is one for everybody in the audience. We hope that the pilot scheme will show really strong learnings for future direction in this area.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_25">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_55">I ask NEPS and Jigsaw to please continue their great work because the demand is greater than ever before-----</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_56">Yes.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_27">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_57">-----due to homelessness and all the social issues. I applaud both organisations for what they do and I wish NEPS well with the national roll-out.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_58">I thank the Deputy.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_29">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_59">Like my colleague, I welcome the witnesses and thank them for the introductory statement.</p>
+          <p eId="para_60"> Since 2018, the current well-being policy has underpinned a lot of the Department's work on mental health and well-being. That policy is due to end at the end of this year. Is there a review being done at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_61">Yes.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_31">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_62">Where is that review? What has been learned from it? It has been mentioned that the new well-being policy is expected to be published. Has NEPS a date for that?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T09:50:00+00:00"/></from>
+          <p eId="para_63">The policy comes to an end at the end of 2025. Part of the policy meant that schools were asked to engage in a well-being promotion, review and development cycle using school self-evaluation in schools.</p>
+          <p eId="para_64">Schools have been doing that very successfully, with good feedback, as well as the other implementation elements of the plan. There were seven high-level actions and 32 sub-actions. We have already done an internal review in the Department, an audit really, as to how we have got on with many of the actions. Well-being belongs to everybody, not just the psychological service or the well-being office. The review really looks at the work of the other sections of the Departments. We have done the audit and brought a report together. We are now working with the ESRI which is objectively putting a literature review, a narrative review, together in relation to well-being promotion in the education system, what has been working well, how we have got on and where we go next. It also looks at what is happening in other countries internationally so that we can learn from that practice, particularly looking towards the likes of Denmark who are doing good work in relation to some elements there, and Canada and Australia. The report is due at the end of this month or the beginning of December. Some themes have been emerging about which we have been talking to the ESRI. The next step is setting up an advisory group with an independent chair and then consulting with our stakeholders in the new year, which will be children and young people. There will be a public survey also with our other stakeholders. We are hoping to receive feedback to inform us of the next steps. We hope to have that ready by the end of 2026 with a new cycle up to 2030. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_33">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_65">The last policy was dynamic. The counselling in primary school pilot came out of that. As was said, it was introduced after Covid when the need was identified there. Deputy Roche has gone through the question of regional balance and trying to address that. That is very important. The pilot has come so far. Additional strands have been introduced and the NEPS is introducing the urban areas but we have to be very conscious of the fact that it is a national issue and it does not just stop at the borders of a particular county. Is it manpower on the ground that the witnesses think will be the biggest inhibitor of that national roll-out, rather than anything NEPS is doing or planning for?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_66">It depends what the manpower is that we are looking for. We have 20 education well-being practitioners at the moment on strand 2 of the pilot. We are working with Cork ETB. It is our strategic partner in the pilot and has done tremendous work with us in employing education well-being practitioners. We know from running a number of competitions that there is huge interest in that role. These are roles that could very easily be put into the system. We take graduates of psychology, social science and education. They have to have a background there and they have experience of working with children. We then do a very comprehensive training programme with them. It is based on the model in the UK. A previous Oireachtas committee went to Dorset in the UK. Following that, we went to Dorset and West Sussex and looked at that role. That is capacity we could get into the system quite easily. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_35">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_67">I am just looking at the time. I thank Ms Eustace for that. Moving on, it is about engaging with young people and hearing their voices. It is positive to see that the Department is committed to student participation through its new implementation plan while still ensuring that young people, particularly those from marginalised backgrounds, have a real say in shaping mental health policy. If we can address the well-being, there is a preventative method there that will stop a lot of the mental health issues that we would see further along. I would be interested to see what ideas the young people have come up with. I had Roscommon Comhairle na nÓg up recently. It has a great initiative called Listen Link. It is a student-led approach and they have made two or three presentations in the Oireachtas already. It is preventative. It is intervention at a very early stage but it has a knock-on effect. Even in the last session we had in the committee, we had Sive O'Brien from Our Lady's Bower Secondary School in Athlone talking about dyslexia. She was on about the mental health impact on her of not having more time in every exam. Is NEPS taking in all of that information from those representative bodies? </p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_68">I will make one small point and then pass over to Ms Mulhern regarding the Neart programme. Neart is national as well and there is good engagement with our young people and we are getting feedback. There is also a new student participation unit in the Department where we are working hard to ensure young people are involved in those policies. One of the NEPS psychologists working for me is linked into the Comhairle na nÓg national group as well. I know mental health is also one of the comhairle's key themes this year. To give a concrete example, I will ask Ms Mulhern to speak very briefly about some of work and about student participation. </p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Tara Mulhern<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_69">I thank Senator Scahill. Engaging student voices is one of the three key overarching objectives of Neart. We do that in a number of ways. We actively consult with and collaborate with young people on a lot of our offerings. For example, we have an event on social media mental health this month and Jigsaw held a Youth Talk, We Listen event where we consulted young people about what they actually need. They are co-delivering that with us. We also have a lot of resources for upskilling schools. We have webinars and masterclasses. We were in Kilkenny on Tuesday with 70 student-support team members coming together and we had a workshop on how to engage students and to really hear their voices within schools. We also have a series of transition year programmes, which are specifically aimed at empowering teachers to hear those voices within the school because it is such an important factor of well-being. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_38">
+          <from>Senator Gareth Scahill<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_70">I might come back to it if we get another round. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_71">We may get more questions in later. I call Senator Tully. </p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_40">
+          <from>Senator Pauline Tully<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_72">Good morning. I come from Cavan, one of the counties that is part of the pilot at primary school. Do all primary schools in the county have access to the programme? How does that work? Is there a referral process or is there one counsellor who works with a group of schools in a particular area? I am interested in how it is working. I know the witnesses have said it is due to be reviewed. What criteria are used to measure the success of the programme? Everybody has mental health and some days you are good and some days you are bad. There are different levels of illness, just the same as with physical illness. How is the success measured? Is a lot of it based on referrals? Is it self-referral from students or referral from teachers or how do students get in contact with the counsellors? Is it the parents?</p>
+          <p eId="para_73"> I note some of the statistics given about the Neart programme and the engagement. Is that voluntary? There are 1,915 staff registered. Is that voluntary? Having been a teacher, I know most teachers are very interested in ensuring they support their students in every way they possibly can but the workload can be quite heavy as it is. Is there an extra workload on teachers engaging in this or how is that worked out? I have a couple of questions on NEPS which I will come back to in a moment. </p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_74">We will go to the last question first. I will go over to Ms Mulhern on the voluntary nature of the roles and then Ms Eustace will take the first two questions. </p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Tara Mulhern<recordedTime time="2025-11-06T10:00:00+00:00"/></from>
+          <p eId="para_75">I thank Senator Tully. Yes, it is voluntary in nature and an individual staff member registers as opposed to a school registering, so it is entirely up to the individual staff member. We are absolutely mindful of what the Senator said in that mental health and well-being is one of the priorities the staff members have. However, Jigsaw published an article last year, in 2024, looking at this. A huge range of student support teams and teachers across Ireland were interviewed and what they were telling us is that they want to be able to support student mental health and well-being but they do not feel equipped to do so. It is causing the school staff a lot of stress and they are asking for the support. We ask all these almost 2,000 staff members who register what type of support they want and then everything Neart offers is needs-led so is in direct response to that. We also take a lot of time to join the dots. For example, if we have a teacher-led classroom-based programme, we will link that in to SPHE. We will say to the schools that these are the other areas they need to do and this is how we can support the school to address them.</p>
+          <p eId="para_76">It goes back to the burden on teachers. They are asking for supports as well.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Ms Siobhán McGrory<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_77">To add to that, the role of school leaders is very important. What we are trying to do is work with and support school leaders to be the champions for well-being in the school. A lot of the engagement of school staff comes at the direction or with the support of school leaders. We also host a number of webinars for school leaders. We are working very closely with the National Association of Principals and Deputy Principals, NAPD, in that regard. The launch of our well-being award, which just happened in September, was endorsed by the NAPD. We are working very closely to support schools in the most flexible way possible to pursue that award, which means that leaders are championing the whole area of well-being, encouraging school staff and providing them with opportunities to participate in what we have to offer through Neart.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_78">I thank the Senator for the question. All primary schools in Cavan are included in the pilot. We have 11 counsellors in Cavan. The Senator asked about the referral process. The children are identified by the school staff in consultation with a NEPS psychologist. If they have an assigned psychologist or if NEPS makes a psychologist available to the schools to discuss the children they are most concerned about, that is part of the usual school planning meeting and NEPS’s usual work with schools.</p>
+          <p eId="para_79"> We would usually be referring out, but now we can say that counsellors are available. It is agreed by the school that two or three children are appropriate for this counselling support, and the school then contacts the counsellor and arranges with the counsellor to come to the school at a time that suits the student and the counsellor. They get a block of eight sessions. The first session is with the parent and the school staff, and the last session is with the parent, the school staff and the counsellor. The idea is that parents and school staff are key agents of change in the child's life, so it is important to bookend the intervention with those meetings. This is, first, so that consent is fully informed and the background information is gathered, but also so the learnings, suggestions and recommendations can be integrated into the child's life. It is ongoing support, we hope, not just once-off.</p>
+          <p eId="para_80"> There are 76 schools in Cavan included in the pilot. In 2024-25, 126 blocks were used. In the first year of the pilot, 55 blocks were used, so it has been increasing.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_45">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_81">I want to start with a fundamental, straightforward question. When was NEPS set up?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_82">The official year was 2000. There was a departmental psychological service prior to that. It has been there for 25 years.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_47">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_83">What was the budget voted for NEPS in that year?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_84">I would not have that information.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_49">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_85">That is fine. What was the voted budget for NEPS in 2025?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_86">My apologies. Again, I do not have that information. We can look at that for the Senator.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_51">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_87">I was going to ask about how the budget broke down between salaries and services but, obviously, that question is redundant.</p>
+          <p eId="para_88"> One of the witnesses spoke about low-level mental health issues and anxiety. How would Ms McHugh define those?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_89">I might also bring in my colleagues on that. “Low-level” would mean emerging needs. It might be friendship difficulties in school, or difficulties going out to play in the yard or engage in sports where it is starting to interfere with everyday activities that would be normal for children to be able to engage in. In classroom situations, it may be not being able to raise their hand and answer a question, or anxiety about reading aloud in class. They are the type of presentations within a school-----</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_53">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_90">Okay. I am getting the picture. Fundamentally, who would be the first interface in recognising these?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_91">The teacher.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_55">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_92">From my experience of teachers, it ranges somewhere between an attitude of “Get a grip, snowflake” and “Sure, the poor little wean, he never stood a chance from day one.” The point I am making is that recognising these anxieties or, as the witnesses call them, low-level mental health issues depends on the perspective of the teacher in the classroom. How do we deal with that great vagary?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_93">It is a really important point. The work we are doing is all about trying to build teacher capacity, knowledge and understanding of well-being, what well-being means and what the signs and symptoms are.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_57">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_94">In the absence of that, if NEPS is just in the process of building this, it may well be that because of teacher outlook or teacher perspective, a lot of children who are in the lacuna of anxiety or low-level mental health issues could be going by unrecognised.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_95">Parents are often critical in this space and they would bring issues to the attention of the teacher in school. We have special educational needs teachers and guidance counsellors in post-primary who would be critical in this space. They are part of the support teams that ensure teachers are supported internally through the provision within the school to identify those emerging concerns.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_59">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_96">Okay. It is parents and teachers.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_97">If there is a concern, they may bring it to their allocated NEPS psychologist for consultation. It may not need the direct involvement of a psychologist but it would be discussion, consultation and information gathering, and ensuring the school puts a student support plan in place through the provision of its SET allocation.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_61">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_98">Thank you. I want to move on. The SPHE programme was tutored in national schools in 2002-03 and was brought into the curriculum live in 2004, as far as I can recall. Has a review of it ever been done?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_99">It has, most definitely. The review has just happened at primary with the-----</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_63">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_100">It has just happened now, after a quarter of a century.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_101">I am not aware of the outdated reviews before that, but it has definitely happened now at junior cycle and senior cycle.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_65">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_102">Have there been reviews between 2004 and the most recent one?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_103">I would have to get information from our curriculum and policy unit in relation to the dates of that. I can only refer to the most recent reviews.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_67">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_104">Surely if there were intervening reviews, there would have been modifications or alterations, or things would have been dropped or introduced. Does Ms McHugh have any evidence of that?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_68">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_105">I am sorry to cut across the Senator. I will give him extra time. I just want to interject. Some of those questions are more appropriate to the inspectorate and some are more appropriate to NEPS. We have people here today with a very specific remit and the questioning has to be within that remit insofar as possible. I will give the Senator extra time in lieu of my interjection. Some of the questions are for the inspectorate.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_69">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_106">I have to say, Chair, that I disagree with you. I think these questions are very relevant. However, if you rule that, that is fine. I will move on to a couple of other things.</p>
+          <p eId="para_107"> What was the rationale for picking predominantly Border counties for the seven counties in the pilot project? We are obviously not including Tipperary as a Border county.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_108">The counties were chosen for a few different reasons. First, we looked at the availability of counsellors for the counties. We went out to the national accrediting bodies for counsellors in Ireland in the summer of 2023. We asked them to survey their members to see whether they were qualified to provide counselling for children and whether they were interested in providing counselling for children as part of this pilot and in what area.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_71">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_109">It got 79 in Cavan alone.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_110">We got 441 responses to the survey nationally.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_73">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:10:00+00:00"/></from>
+          <p eId="para_111">What could be the possible change or differentiation in eligibility between Longford and Leitrim, which were mentioned on the list, and Cavan? How would NEPS distinguish between those two and Roscommon and Westmeath?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_112">There were other criteria as well. We looked at the waiting list. We contacted the HSE and it provided us with information on the waiting list for CAMHS and for the HSE primary care psychologist. They would be the two services. </p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_75">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_113">Okay. The witnesses mentioned in the first year of operation there was 75 blocks. What is meant by that?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_114">That was in a particular county. What we do is allocate blocks of counselling to the schools. The block is eight sessions, so it is six sessions with the individual child and the first session and the last session are with parents and teachers. </p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_77">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_115">One final question. After a lifetime spent in education, I am a bit like Hermann Göring, in that I feel I might reach for my Luger when I hear the expression "holistic approach". What would Ms Eustace define as a holistic approach to this from her perspective? </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_116">I would not ever compare the Senator to that man. Those are the Senator’s words.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_117">We would encourage all schools to have a holistic approach to well-being promotion. That is looking at a whole-school level in relation to the culture and environment, the relationships within the school-----</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_80">
+          <from>Senator Joe Conway<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_118">I know, I spent-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_119">We are out of time, Senator. We might get a second round in. I am next on the speaking roster myself. I thank the witnesses for coming in. I really buy into this and the sooner we get it rolled out nationwide the better. </p>
+          <p eId="para_120"> There are many current and former teachers in the room. I think one quarter of politicians in Ireland have come through the teaching route. Any teacher standing at the classroom door or the school gate in the morning would know the mood of a child as they come in. It is like triaging. You would know that they had had a bad evening the day before, the homework did not go well, maybe mom and dad had an argument. Some children may have deeper emotional issues going on. Therefore, I would say the teacher is the point of triage. I heard the witnesses say several times that if a child is to avail of these counselling supports it is through the NEPS route. Are there direct teacher referrals or does this have to be the teacher triaging up to NEPS and NEPS deciding this child needs a counselling intervention?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_121">As NEPS is in schools on a weekly basis, we have direct contact with the school staff. It is supposedly a support for the school staff. It is not to negate their professionalism in identifying these children. NEPS works collaboratively with principals and relevant school staff all the time in a kind of collaborative way. We have certain expertise being psychologists but we would see that people in the school know the children and are with the children every day of the week, so we would really be co-supporting them. Our role is in establishing whether counselling in schools would be the right support for a child at this particular time. The Department of education implements a continuum of support. That means that we try to do in-class support and then additional support in the school before we escalate that to externals.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_122">To interject and bearing in mind that the teachers in here are now policymakers, I have not seen the efficiency of this happening in the classroom, going down the corridor and getting counselling support. I have not seen that happen in practical term. However, wearing my teacher hat, it would concern me that this additional layer of NEPS may be a bit excessive. Some children need psychological interventions or might need referral on to CAMHS or there could be a cognitive limitation but if a child is having persistent emotional issues, the intervention of a teacher who has four years of training and possibly postgraduate and master's qualifications beyond that and as an adult also has the intuition should be enough. It bothers me because I was in a school that was not DEIS. We did not have this pilot scheme. We had a wonderful NEPS co-ordinator but it was nearly impossible to get him as often as we wanted. What I am now hearing, if I heard Ms Eustace correctly, is schools in this pilot scheme will have very regular direct access to NEPS and other schools that are not in the pilot, are not DEIS and are not on this support lane at all, will find it more difficult to get NEPS. I bow to Ms Eustace’s knowledge but were I to design this, I would say this should be an intervention where, in the case of a child having a pretty rough time, there is someone down the corridor they can go to. They can go out for 40 or 50 minutes and come back into class. It also bothers me because, and this was a problem for the Government, the whole idea of being referred on to CAMHS meant you were joining a long waiting list and were being seen by a stranger who was relying only on what adults thought of you. Those adults were not observing you in the playground, or, from the corner of their eye observing your social interactions with peers. I felt the beauty of this was that there would be someone down the corridor who had eyes on you during the day and who could be a mentor or could support a counselling intervention. However, this to me still sounds very external and still a bit remote from where the child is day to day. Is NEPS looking at or has it recommended within the Department that some teachers would be upskilled and go off to train to be counsellors on top of their educational qualification? </p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_123">Teachers, as the Chair says, are very experienced and well placed to identify the children. It is not an extra job for the NEPS psychologist in terms of taking the capacity out of NEPS to identify these children because they do it in their school planning meetings with the school at the start of the year. That is part of what we do on an ongoing basis. I might pass over to Ms McHugh.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_124">They are now more pulled to those schools than to all the other schools. This is only a small slice of their workload. It is so important – do not get me wrong – but it is taking up a lot of time. I would prefer to see this being more simple whereby a child has emotional problems, the school has detected it, consent is secured from the parent and the child gets some counselling support. I do not believe we need this additional cog in the system. </p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_125">To give the wider context, we have special education teachers, SETs, in school who operate on the continued support. They meet children with social and emotional difficulties as well. We have dynamic planning meetings. Depending on the size of the school, we will have dynamic meetings or once-a-term meetings for planning purposes to decide who might need direct NEPS involvement, who needs indirect involvement, who might need a referral on to the HSE or who might need the school counsellor, for instance. It is in that vein that Ms Eustace is describing the wider context and that is not an additional piece of work but is part of the work we are doing anyway. We would always make sure and we do not want for us to be directly involved with the same child who might go out to a counsellor, which might sometimes happen. It is about trying to use our resources efficiently and effectively in that dynamic planning process. It should not interfere or be unduly burdensome for the teachers. It is about making sure that we identify the right children for the right support and that we are there to consult, help and support them to do that while respecting their professionalism, judgment and knowledge of the child. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_126">I thank Ms McHugh. On the continuum and spectrum of mental health issues, there is cognitive impairment, low-level emotional issues and behavioural stuff and children in need of psychological supports. To use the witnesses’ parlance, if it is low-level emotional behavioural stuff, I would like to think that as this programme evolves - it is a great programme - that we could remove some of the education psychological stuff and just allow teachers to be, as I said, the people who triage and who refer with a little bit of parental consent and that it simply be kept low level. It seems we have NEPS, CAMHS and other agencies that already are quite choked up. The more of this we can have in-house, as intended, and low level, the better. Thank you. </p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_127">If I may add to that, the evaluation-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_128">I am out of time. I have to follow my own rules, as I say here every week. We will probably have an additional few seconds for everyone. Deputy Jen Cummins is next. </p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_90">
+          <from>Deputy Jen Cummins<recordedTime time="2025-11-06T10:20:00+00:00"/></from>
+          <p eId="para_129">Everyone is very welcome. It is great to see Ms McGrory in particular. I know her from a long time ago. It is great to see her here. As somebody who has worked in schools for a long time in the school completion programme, and I was a youth worker before that, I am really happy to see this come into schools. It is great that Jigsaw is there. It is the expert in this area. Of course I have concerns. When one is doing pilots, there are things which do not bed in really well. I have to say, however, having been part of student support teams in schools for a long time, in their new iteration it is great that the NEPS psychologist is there because such people give a depth of knowledge and support to teachers and principals working with students to problem solve an approach that they might not know.</p>
+          <p eId="para_130">Although teachers identify that there is a difficulty, they do not necessarily know, because of their training, what exactly the best approach to it would be. It is excellent, therefore, that the psychologist is there on that student support team.</p>
+          <p eId="para_131"> I do see some difficulties, though. I will go through them and then I will stop talking so the witnesses have a chance to answer. I am a little concerned that private counsellors are on panels. I know it is a pilot, but I would much rather see us having psychologists and counsellors employed directly by the Department. This is where we would see permanency and longevity in a programme. The school completion programme has held this area for such a long time in the absence of it being elsewhere. It has run well-being programmes and given support. One of the things set regarding the online supports and training in school is when there is school refusal and school-based avoidance. The school completion programme is expert in that, but I do not see it mentioned here. From being a co-ordinator, I know we are not consulted in this context. I urge that this happens. This is something I see that needs to come in. In terms of the evaluation of pilots, I think that needs to be there.</p>
+          <p eId="para_132"> Turning to moving strands 1 and 2 beyond the phase, I would love to know what is needed to do this. My area in Dublin South Central, particularly the south-west inner city, is extremely disadvantaged. There is intergenerational trauma, generational poverty and so much going on in this regard. It is very similar to the north-east inner city, as is Ballymun, where I used to work. I would love to know if there is a north-east inner-city type of approach for those areas. Could this be a part of the plan?</p>
+          <p eId="para_133"> On Neart, it is excellent. I love that there are podcasts for parents. As a parent, though, I have never heard of them and I am on the education committee. Is there a way to publicise it more? I might put this information out on my own socials to tell people to go and look for it. It is so important. So many parents have contacted me in this and in my previous role asking what they can do, so it is important to get this out there. The great work being done just needs to be advertised a bit more.</p>
+          <p eId="para_134"> On the regional conferences for student support teams, because of the shortage of teachers in schools, is it being found that it is a challenge to get them to be able to attend due to them not being released from schools? I wish everyone the very best of luck in everything they do. I thank them all very much.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_135">I thank the Deputy. There is a lot there. I might just talk briefly to the school completion aspect, while Ms Eustace will talk about strand 1 and 2 in relation to the counselling aspect and I will then ask Ms Mulhern and Ms McGrory to speak on elements of the podcast etc. I will try to keep it brief because of time. I am watching the clock now.</p>
+          <p eId="para_136"> I am on the Tusla steering committee, so I am keen to link in with TESS through its EWS education welfare officers, the school completion programme and its initiatives. The attendance campaign at the moment is really important to us, particularly in relation to school reluctance. There is a new Anseo subcommittee looking at school reluctance and there are six pilot sites. We are working closely with the NEPS. Ms Mulhern and I have been looking at the school reluctance issue. We are hosting national seminars on NEPS, and there is high attendance. We have got guidance documents issued. Neart is building on that. We are doing work in that space as well because it is a really important area.</p>
+          <p eId="para_137"> I agree with the Deputy that we need to do more and I am very keen to work with our school completion staff as well. It was great to hear that feedback about the school support teams. Neart has really used the student support teams as a foundation to the work we are doing. We were full yesterday in Kilkenny, where we had 70 student support team teachers. They are getting substitution cover to attend those in-person events. Everything else is online, after school and voluntary. That was an event, however, where we are paying, and there is subbed cover and travel and subsistence for those coming out to those events as well. They are critical. We are doing eight events this year to see how it goes, and, hopefully, it will be the same next year.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Ms Tara Mulhern<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_138">We have linked in Neart with TESS and collaborated on a number of issues, including school reluctance and avoidance. On transitioning into post-primary school, we felt it has a huge amount of knowledge about how to smoothen it. Much of the work Neart does, therefore, is collaborative. It is about joining the dots because there can be lots of different service providers and this can be confusing. We are not finding the regional conferences challenging. We were significantly oversubscribed for Kilkenny. Out of the six left, three are significantly oversubscribed, while three do have some spaces. The ones that have spaces are those in more rural areas, so there is some challenge when there are not a lot of schools in areas.</p>
+          <p eId="para_139"> The Deputy asked what we need and also talked about embedding. These aspects are very closely linked. Neart is a very new programme. We have a lot of evaluation in progress now, so we really want to evaluate it. We are producing a lot of content now, but the next step is supporting schools to embed it. It is about how we upskill the staff there and support them to put these elements into place within the context of the challenges every school has.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_93">
+          <from>Deputy Jen Cummins<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_140">I would love to get a chance to come back in, if possible.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_141">I would say we will have a bit of extra time given the way we are going. I call Senator Curley.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_95">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_142">To start with a positive, the teacher-led classroom-based initiatives are a real positive. The main reason I say this is because it is a step forward in normalising discussions around mental health in the classroom, which is the mainstream setting. It destigmatises, in my opinion, an awful lot of the kinds of taboos that still exist around mental health. I am a former secondary school teacher, so I have seen this at first hand.</p>
+          <p eId="para_143"> My colleague, Senator Scahill, mentioned prevention being better than cure in a lot of cases. I talk regularly with the Institute of Guidance Counsellors and its president, Ms Catríona Rogers. I have two questions here in the context of NEPS. Would a higher provision of guidance hours and a lower ratio of students to guidance counsellors prevent the prevalence of poor mental health that NEPS ends up dealing with? Would it also complement the Neart programme?</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_144">NEPS works very closely with guidance counsellors. In my role as a psychologist, when I was out in schools, they were critical in relation to the role I played. They were really important in the solution-focused approaches and support in schools, which was really critical. They are a key part of the student support teams, as the Senator probably well knows. They will also be going to these in-person conferences. I have used them and I will continue to use them. I think the national-----</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_97">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_145">There is a continuing professional development, CPD, element there too as well as everything else.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_146">Yes.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_99">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_147">The answer then is "Yes".</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_148">The strategic framework for guidance counselling has been issued and those allocations and the need to review them are being looked at. I am not sure of the exact numbers in the system, but it is approximately 900, and they are well used and an important resource for us. </p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_101">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_149">The main reason I ask is because one of the biggest pieces of feedback I get is that there is a conflict between the career side of being a guidance counsellor and the actual counselling, which sometimes gets eroded or overlooked in some cases where there is a higher prevalence of a high ratio of students, teachers and guidance counsellors. From the 2023 and 2024 feedback from the first year of the pilots in the seven counties, what were the tangible pieces of evidence looked at to assess their success? What were the key performance indicators, KPIs, if we want to call them that? Was better school attendance on the list? Was there feedback from students themselves? Was feedback received from teachers to show an increase in better behaviour or was there evidence of better mental health from the students, school communities and school managements? How did that work?</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_150">The pilot has only been running such a short time it is hard to see the longer term impacts of school attendance, etc.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_103">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_151">I am sorry. I might cut across Ms Eustace. As a person who has used Compass and all the different attendance records, it is not actually that hard to assess. It is possible to go straight to a school and get a report in about seven seconds online about whether a student's attendance has increased. We will say the average was seven to eight hours of one-to-one counselling for the students who took part in this. It is actually really quick to get that feedback. Has it been got yet?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_152">No. The Centre for Effective Services won the tender to do the evaluation of the pilot. The report on it is hopefully coming out in the next few weeks. It will look at the impacts of the pilot from the perspectives of teachers, pupils and parents. Both strands have been looked at to see what kind of feedback has come from principals, parents and individual children who engaged with either strand 1 or strand 2.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_105">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_153">Okay. It is coming out in the next few weeks anyway.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_154">It is.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_107">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_155">I will leave it at that. One of the main reasons it is important is that society is a holistic thing. It is not just schools, although they obviously are a central part of it.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_156">Sure.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_109">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:30:00+00:00"/></from>
+          <p eId="para_157">As a society, though, and as politicians in this room, if we want to tackle the issues causing poor mental health for students, we need that feedback.</p>
+          <p eId="para_158">We need to know what is improving based on which intervention, and what we can do to tackle the most prevalent issues presenting to the counsellors. If someone wants to study to be a guidance counsellor, one of the first things they have to do is engage in a huge amount of counselling themselves. I signed up to the course years ago and had to withdraw when I became a politician but that is another day's work. If they want to be effective even at classroom level as guidance counsellors, or as teachers in general, they need to have good mental health themselves and have the mindfulness, presence of mind and ability to see problems when they first arise. Are toolkits provided to all teachers who are dealing with this at base level in the classroom, to manage their own mental health? They have such outside influences, their own family lives and everything like that impacting on the mental health of a teacher. They will be less effective if they do not have the right toolkit to go in with their own mental health in check. What is being done in that space?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_159">I will start and will hand over to Ms Mulhern on some of the work of Neart. The Deputy is absolutely right that teachers' own well-being and mental health are critical to the students' well-being. We are very mindful of that. Spectrum Life is the EAP provided by the Department and it is available to all teachers, primary and post-primary----</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_111">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_160">I know it is a 24-7 counselling service but it is seen by teachers as an emergency intervention.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_161">It also does digital gyms and there is a whole range of new developments recently in what it is offering outside of the counselling. In Neart we are doing some workshops on teacher well-being too. I will hand over to Ms Mulhern to explain what they are.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Tara Mulhern<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_162">Some of the approaches we have taken overall are compassion-focused approaches within Neart for students as well, but we started with the staff. In year 1, we did workshops on self-compassion as a tool for staff members' own mental health. Only after we rolled that out did we move on to how to create self-compassionate schools. Again, with trauma-informed practice, we have brought in how to create trauma-informed places to work for staff as well. The Senator is absolutely right that it is crucial.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_114">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_163">I have more questions and will try to get in at the end. I thank all the witnesses for all they are doing and for the presentations.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_164">I think we should have more time for everyone in a little while.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_116">
+          <from>Deputy Emer Currie<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_165">This is one of the most important initiatives happening in education. It is really positive and we need to see more of it. It is vital that students have early intervention. This is also normalising looking after our mental health, which will benefit these children from when they are small for the rest of their lives. I am really keen that we see the results of the work so far and then that we grow this. What are the barriers to growing it? On workforce development, we are limited with the number of psychologists we are producing. Rightly, the training is intensive and takes a long time. It is really expensive for people to invest in it. Do our guests have any thoughts on how to improve the pipeline of psychologists? They might speak to the qualifications of the direct counsellors who are involved in the programme, or the education and well-being practitioner role. I am really keen to hear about the barriers and what can support the growth of this programme.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_166">I will start with the psychologists and the growth there. We have 235 psychologists in NEPS now, which is 228 whole-time equivalents. Back in 2016, we had 164. We are really an evolving service and there have been a lot of positive developments. There are three courses at the moment. A new course just opened in Maynooth that the Deputy might be aware of. We have UCD and MIC also. In UCD, NEPS is now providing bursaries for the 20 psychologists on that training course. There are 22 bursaried psychologists waiting to come into NEPS, that is, 22 just employed from being bursaried. We have about 61 who are in first, second or third year and who are due to come into our organisation over the next three years. It is really a positive development to be able to grow the workforce and ensure we can fill our vacancies and do the work we really want to do. We hope those positive developments will continue. We are looking at other areas of workforce planning. Ms Eustace in particular can talk about the educational well-being practitioners that we mentioned earlier. There is great potential in growth there. They work under the direction of a psychologist and we create well-being teams to promote mental health and well-being within the school. Neart in partnership with NEPS is that new development to increase our capacity. We are going to have a greater reach working with Jigsaw. Because of our current vacancies in staffing, 20% of our work is support and development work and 80% is casework. By working with Jigsaw we can increase the 20% of S and D work we are doing in that partnership, which is really critical. I will ask Ms Eustace to speak about the workforce planning on her side.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_167">The educational well-being practitioners are graduates of psychology, social science and education. We are partnering with Cork ETB on recruitment. We have run three competitions to date and there is a huge amount of interest. I would not foresee any difficulty in getting that extra layer into the system. On the counsellors, this came up earlier in respect of having a panel of private counsellors. We are very conscious that there is no national regulation for counsellors in Ireland. We have been very careful about what counsellors we put on the panel. We have a selection committee, which NEPS and the HSE lead, for the national counselling service in the HSE. We look at all the applications carefully. We have certain criteria. They need a qualification in human science but they also need to be experienced and qualified to work with children and to be part of an accrediting body. That is really important in terms of having oversight and governance of their work when they are not directly employed by the Department. We liaise on an ongoing basis with the accrediting bodies and we are very satisfied that the six accrediting bodies we have included have really tight governance and oversight of their members. We are very satisfied on that.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_119">
+          <from>Deputy Emer Currie<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_168">It still needs to be regulated. Do the psychologists who NEPS is hiring stay?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_169">The majority of psychologists do stay. There are natural attrition rates - I am not sure of the exact percentage - through retirements and through moving into other posts, with some of them moving on to good things that will support the service growth through the colleges. I think it was about 11 this year but that would be natural enough. What we were getting in the past through UCD and MIC was about 11 graduates, which is why the Maynooth training course was opened. We needed more to be able to build and grow with our natural attrition rates as they are.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_121">
+          <from>Deputy Emer Currie<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_170">I believe that we do need more, and we need more avenues to get to psychologist level. Hopefully NEPS will have some commentary on that in its report as well to help us as politicians push that on its behalf.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_122">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-11-06T10:40:00+00:00"/></from>
+          <p eId="para_171">I thank the witnesses for their opening statement and all the information they have given us so far. The programme Neart was new to me, so I was really interested to hear about its benefits. It is something that will help me in my constituency office with a lot of queries that we get from parents and teachers. Anything more the witnesses can give us on that would be great. The fact that I had not heard about it from teachers did surprise me, in that every time there is a subject change or anything like that, we have very concerned teachers in the office saying they have not been engaged with or trained. The witnesses spoke to that earlier, describing how they have really integrated these programmes. It is a testament to the work they have done. Unfortunately, I have to say something on the negative side as well.</p>
+          <p eId="para_172">I know upcoming Neart supports will focus on neurodivergent young people. While I really welcome that, it is probably fair enough to say the Department might not have the best background in doing so. I want to read the feedback from Neurodiversity Navan on the report on special classes for autistic pupils in primary schools that was issued recently. I have just taken this from her Facebook page. The post reads "Missing: autistic voices, authentic inclusion and real systematic change. If found, please return to Ireland's education system." Her second point is a quote from that report "Thank you to all the teachers, school leaders, children and young people and their parents who shared their views...". Her response to that is:</p>
+          <p class="indent_1" eId="para_173">The autistic community is not consulted. Not thanked. Not represented.</p>
+          <p class="indent_1" eId="para_174">History repeats. About us, without us.</p>
+          <p eId="para_175"> I wanted to give that feedback and ask what are the plans to engage not just with parents but with the full autistic community?</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_176">I will start and pass over to Ms Mulhern. We are at a really important juncture with the well-being policy review. We will be engaging with all stakeholders, all minority groups and all those with special educational needs. They are really important and are a critical group for us to engage with. We will look at equality, diversity and inclusion, going forward, in our new, revised plan. It will be really critical to listen to those voices. The new student participation unit in the Department works with all sections to ensure we engage with vulnerable young people and that their voices are heard in all policy decisions within the Department.</p>
+          <p eId="para_177"> On the Neart programme specifically, we are receiving feedback from students and young people to inform what is needed, as well as from teachers. I will bring Ms Mulhern in to talk about some of that and our minority workstream work in particular, such as working with NEPS, Neart, Jigsaw and others in that space.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Tara Mulhern<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_178">We have a workstream within Neart that has members from Jigsaw and NEPS and which is looking at embracing diversity and supporting minoritised groups in general. The Deputy has asked specifically about neurodivergent young people. From our registration, when either a parent or staff member registers, we ask about what needs they have, as I mentioned earlier. The top presenting need in terms of minoritised groups is in respect of neurodivergency. There is a huge ask there. Our focus from March will be around providing content to both schools and parents. We have already linked in with young people. For example, we have an autistic young person who speaks on the podcast. To increase the reach of voices, we will use the knowledge from reports like the Same Chance survey from AsIAm. There are other ways to hear lived experience voices as well without always consulting new ones. We can use things like the Same Chance survey, which came out again recently.</p>
+          <p eId="para_179"> Jigsaw has a neurodiversity working group of staff as well. Some have neurodivergencies and are neurodivergent themselves. We see that a huge number of young people who come into the Jigsaw services are neurodivergent. There is a lot of learning for our clinicians from their experiences as well.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_180">I might just comment that it is a pity that perhaps some of the Deputy's constituents do not know about Neart yet. We are only 11 months old so we are making good strides in our communication with all our stakeholders, presenting at conferences and through the support services in the Department. We are really raising awareness through leader webinars. We have done a huge amount but we have more to do. If anyone has any ideas about how we get the communication out, it will hopefully build over time. We are really keen to build our registrations and our linking with schools.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_126">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_181">My eldest child is nearly nine and is in third class. He comes home with his anti-bullying pictures and colours and the "be kind" motto. Obviously, I always love to see it and it is great for them. I am not sure if other parents have had this experience but this year, it was like a switch was flicked and they are no longer babies. I did not really expect that to happen until he went to secondary school. He has become very aware of issues around him very quickly. This year alone and through children close to him, he has dealt with body image issues, grief and family breakdown. I understand the well-being programme is about general skills and early intervention but are any of those issues specifically dealt with in general or is that dealt with through one-to-one counselling in primary schools?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_182">They are dealt with generally. They are handled more specifically with adolescents who are post-primary, such as issues like body image, in particular, and self-harm. We know self-harm is on the rise, particularly with the younger age group. We have self-harm guidance we have issued to schools and training we can offer in support. With Neart, we have plans for building on that going forward and plans for webinars directly related to some of the topics the Deputy mentioned.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_128">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_183">I thank everyone for coming in and for all the information they have given us on what is very badly needed in schools. I hope some of the questions are not coming across negatively. We are here listening to schools, people and parents. The well-being of students is of the utmost importance. Like my lovely colleague from County Meath, Deputy Dempsey, I am a mom myself of two girls who are aged nine and ten. I know how important it is in this busy and sometimes hard world that their little minds and how they feel are looked after, both at home and in school. Today, I want to give examples of two schools I have dealt with recently.</p>
+          <p eId="para_184"> The first example concerns the well-being of teachers, like my colleague here beside me, Senator Curley, said, particularly in special schools. A few weeks ago, I was made aware of an incident in a special school that has children up to the age of 19. It was a very tragic and serious incident. I met the principal and the vice principal of the school. This incident had a huge effect on the teacher in that classroom, the other teachers, the SNAs, the vice principal and the principal. I am not exaggerating when I say it absolutely will have a lasting effect. Suffice to say, when this happened, they felt completely lost in terms of support. I see NEPS is available for schools. In fact, it says all schools have access to a psychologist in the event of a critical incident. All schools have access to NEPS national and regional support and development service for school staff but I can tell you that this school had nobody.</p>
+          <p eId="para_185"> They felt in desperate need and they feel that a guidance counsellor, a psychologist or somebody to help them get through the days is needed for both the students and teachers, such is the severity of some of the issues the children have and that they are dealing with. I am sure the parents could also do with a lot of support. In this instance, I can assure the witnesses that the system failed. I would like to be able to go back to that school and tell them that if an incident as severe as this happened again, the support would be there for them. For special schools, what is our plan to support the teachers when a very serious incident happens within the school? They do not have a psychologist or a guidance counsellor. Calling somebody on a support line in NEPS definitely was not the adequate support they needed.</p>
+          <p eId="para_186"> We will go next to another school that said well-being is woven into all strands of their DEIS plan. They found attendance incentives to work very well in having a positive impact among the pupils. Their home school community liaison co-ordinator works very well and their involvement with the school completion programme also has had a positive impact on their pupils' mental health. However, this school remains very concerned about children's unsupervised access to the Internet outside of school hours. It is undoubtedly having a very negative impact on their mental health and the school has had no appointed NEPS psychologist since the previous May. They know, as we all do, that the waiting list for CAMHS is too long.</p>
+          <p eId="para_187"> For this school, what assurances can be given on having psychologist support and on having support when it comes to the Internet? They are not in the counties that were mentioned. Do we say in schools that if online bullying is happening to primary school children outside of school that it is the parents' fault for letting them go online? The peer pressure from their fellow students to interact outside of school online is huge. I see it myself. Is there a situation where schools are saying "When it is happening outside of school, it is not our problem" or is there a plan for a unified approach to this? Is there a plan for when your child is being harassed online while at home or having difficulties with their friends who they see in school everyday but it is happening online at home? Is it something the parents should be responsible for, is it the school's responsibility or is it a combination of both? What will be done to support the students, teachers and schools in this?</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_188">I might just come in on the critical incident response. I am very sorry to hear about that school and I do not know the particular details but I would be happy to follow up because NEPS-----</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_130">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_189">I would appreciate if Ms Eustace did because they also had the death of a student in the school and nobody came. They rang and nobody came. They were given some paper which said this is what you should do in the school. That is not good enough.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T10:50:00+00:00"/></from>
+          <p eId="para_190">I am very sorry to hear that because NEPS does provide a response. I lead on critical incident response for NEPS and we have it on all of our information. As far as I am aware, we provide a response to all schools, even schools that do not have an assigned psychologist. I would be very happy to follow up on that.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_132">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_191">They were advised to contact employment assistance. When they rang, that is what they were told to do. Nobody came out.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_192">Okay. Again, I do not know the details. I would be very happy to follow up on that. </p>
+          <p eId="para_193"> Ms McHugh will speak more to our services to special schools. On strands 1 and 2 of the counselling and mental health pilots, there are 12 special schools in strand 1 and seven special schools in strand 2. We are very aware of the specific support that special schools need. We are trying to learn from the pilot about what worked well and where the gaps were. Some of the programmes in the strand 2 interventions in special schools have been specifically tailored to meet the needs of their population. We have a well-being ambassador programme, which is a lovely peer-led voice of the young person programme. They become well-being promoters within schools. That has been well received by special schools because it gives them a sense of being involved with well-being promotion in their schools. It is a programme that we hope to tailor to special schools specifically because it worked very well in special schools in the UK.</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_194">There are 120 special schools in the country and our services to them are a priority because of the complexity of the needs these schools are dealing with. Unfortunately, many schools deal with children who are very sick and die and that can be extremely stressful for school staff. Our curriculum and policy, CAP, unit deals with guidance. I asked questions about actions recently. There is a national strategic framework for lifelong guidance and there are actions within that to ensure the provision of guidance, support and delivery by trained professionals in special schools. It is something the unit is examining and developing at the moment. It will provide more support and guidance to special schools in that regard. It is a major priority for the Department overall and we can bring those issues back.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_135">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_195">I am a mammy of four young children. I taught in primary school for 18 years. With my children and all of those I have taught in mind, the pilot scheme is a great initiative and I welcome its roll-out to DEIS schools. I give credit to the witnesses for that and look forward to reading the full review.</p>
+          <p eId="para_196"> On the feedback so far, I would love to know what aspects of the programme have been appreciated. The witnesses touched on what help these kids usually need, but I would love to hear about the feedback. What criteria will determine the terms of the pilot being made permanent and expanded?</p>
+          <p eId="para_197"> I am learning a lot today. I want to know about the requisite qualifications for the role. Am I correct in saying that there is an educational role and therapeutic role?</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_198">I take it the Deputy is referring to the primary pilot. Is that correct?</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_137">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_199">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_200">An external evaluation of strands 1 and 2 of the pilot is being carried out by the Centre for Effective Services. The idea is that the pilot will run to June 2026 while the evaluation is being considered. Although we cannot pre-empt the final outcome of the evaluation, it will inform the next steps. We would, of course, love to see this rolled out to other schools.</p>
+          <p eId="para_201"> As I said, the evaluation is continuing and we do not have the final results or outcome. However, we know that there is positive feedback from schools and parents and many have called for the continuation of the pilot. Schools are seen as a safe and appropriate place for counselling.</p>
+          <p eId="para_202"> The Deputy asked about qualifications. There is no national regulatory body for counsellors in Ireland. Bearing that in mind, we went to the main accrediting bodies for counsellors and liaised with the HSE, which has run a national counselling service for over 20 years. Its representative is on the selection committee for counsellors. They have to be suitably qualified and have experience of working with children. They also have to be an accredited member with one of six organisations. That gives us oversight and governance of counsellors.</p>
+          <p eId="para_203"> On strand 2, the education and well-being practitioners' role is based on a UK model which has mental health support teams in schools. We are recruiting psychology, education and social science graduates. We have some people who were psychologists and also teachers in strand 2. They come with a wealth of experience, as well as a qualification. We give them extensive training. Our psychologists have developed an induction programme, but we also get external experts in to give them some interventions.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_139">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_204">We have retention and recruitment problems across many sectors in the State. Does that affect NEPS?</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_205">We have run three or four competitions for the education and well-being practitioner, EWP, role. Psychology graduates often go on to further education. Many have bursaries to come back to NEPS. They will hit the ground running when they come back to us because they have had such experience. It is seen as a stepping stone. The UK experiences the same. However, the UK has a particular qualification. It has partnered with universities to train EWPs. Graduates get accredited qualifications and there is a career pathway in the UK. We have examined that model. If this was to go forward, it would be very interesting for people to have a career path as an EWP rather than it being seen as a stepping stone to another career.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_141">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_206">That is great. I was a teacher for over 20 years and many of my friends are still teachers. A major worry for me is the recruitment and retention problem in the sector. Our teachers are overburdened and we are losing a lot of them. Young teachers who have qualified face an excessive workload. A lot of teachers are retiring early. Will this put extra pressure on teachers? Teachers are always getting extra jobs put on them. Will this be another issue for our teachers? What is in place for the well-being of our teachers so that we can keep them?</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_207">If anything, strands 1 and 2 of the NEART programme take the pressure off teachers in that they build on capacity in the system and there is extra provision with an add-on to be able to support them in their work in terms of training and their understanding of mental health. That is provided through the in-school support of counsellors and EWPs for capacity building and universal supports through the NEART programme. In-training person should support teams. Ms Mulhern mentioned that we are focusing on teacher well-being as part of the NEART work because we understand and know the demands on them. We are acutely aware of the pressure and need in the school system.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_143">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_208">NEPS is not worried that this will add additional pressure to our-----</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_209">We hope we are trying to support them by doing the work we are doing as opposed to adding pressure.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_145">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_210">That concludes our main body of questioning. We will now go back to members, who can each have two minutes, and then to witnesses. Another Deputy has joined us. Deputy Conor D. McGuinness is very welcome. He is not ordinarily a member of the committee, but he is interested in participating. We will get a question from him.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_146">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_211">I did not have time to delve into this in huge detail during the first round of questions. I refer to the review of the first pilot in 2023 and 2024. The witnesses said it was sent out to tender. How much did that tender cost? What was the name of the company?</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:00:00+00:00"/></from>
+          <p eId="para_212">The name of the company is the Centre for Effective Services.</p>
+          <p eId="para_213">The exact cost of the tender was €80,000.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_148">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_214">I have an issue in that this is time-sensitive data. This changes with the years but a nine-month pilot project has taken almost two years to review, collect data and report back on the effectiveness of the pilot. Are the officials satisfied with the current timeframe of the review? It was May 2024 when the schools broke for the summer and we are heading into 2026 and we still do not have the report gathered and the feedback collated because we do not have the data back from the review company.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_215">The pilot began in 2023, so it is still running. It is running until June 2026. It was initially a one-year pilot but it was extended.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_150">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_216">I know, but Ms Eustace said the data from the first year of the pilot will be available in the next few weeks, more than 18 months on from when that pilot school year of 2023-24 ended.</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_217">CES gathered the data this summer, so it will be looking at the last two years.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_152">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_218">Is it good practice to leave it until the summer just gone, 12 months after the pilot ended for the first year, to start gathering data when it is, as I said, time-sensitive? I am going to run over time, but it is important to have this in a current format.</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_219">I understand that. In the initial stages of the pilot we found it difficult to recruit counsellors. We were also engaged with recruiting education well-being practitioners, which took time. The pilot rolled on to another year so we could see the effect of it.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_154">
+          <from>Senator Shane Curley<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_220">I get that, but there were 782 students in the first year, according to the data here. Out of that, why did it take 18 months to be anywhere near having the data back? Will the witnesses give me a yes-no answer on whether they think it is good practice for them to leave it that long to get the data back from a project that took place?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_155">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_221">I thank the Senator. It is a yes-no answer.</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_222">I suppose we were waiting to see the implementation of it over a two-year period.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_157">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_223">Okay. Our next member is Deputy Roche.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_158">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_224">I thank the Chair. My question is based on the evidence and outcomes from Neart. Beyond registration numbers, what concrete indicators demonstrate improved student well-being or attendance?</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Ms Tara Mulhern<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_225">I will take that. As was said, it is a very new programme. It only really started delivering content in March of this year so it is early days. We have a really thorough evaluation plan that covers every single aspect of it. For example, as soon as a webinar, masterclass or any event is completed, we get live feedback and review that within a day of it ending. That allows us to take ongoing quality improvement measures. We also have live feedback from students, where in the teacher-led, classroom-based courses the last slide of the course has a QR code and a link so that students can give us feedback. That comes directly to us. We are not depending on the schools to have to gather and deliver that. We have also developed a partnership with the school of psychology in the University of Limerick. We are working with it to do a much more thorough evaluation, specifically for student support team members who have that additional level of responsibility for student mental health and well-being, so we have a three-phase project with them. We have only started gathering data, so I cannot report back on it, but it is very thorough. It is looking at what they feel is the appropriateness and feasibility of implementing the content and looking at what implementation is happening on the ground. We have focused on that to date but we are starting to develop a parent evaluation plan as well, so again we are getting live feedback from parents all the time. We are very conscious the current Neart cycle ends in summer 2027 and we are very focused on that.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_160">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_226">We never got to go through the second part of my submission at the start, which related to whether there is going to be a unified response to children being harassed or bullied online by people they are in school with. I have seen a school advise the parents that if it is happening online, even though it is students in the class, it is nothing to do with the school. We saw earlier in the year with a boxing club that when somebody took matters outside the club, they were expelled from it, which was the right thing to do. If children are being bullied online by people from their class, do we have an approach to that?</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_227">It is very likely that will come into the classroom and into the school. As the Senator is probably aware, there is a lot of work being done with the Cineáltas action plan for schools. New procedures have issued to schools and there is training for schools on how to deal with bullying incidents. Bullying record-keeping has been updated and improved. There is a lot happening in that space and it is being monitored very closely. Schools can consult their allocated psychologist depending on what happens, if it seriously impacts the child in any particular way. Often it is an issue for the school's code of behaviour as to how it might manage that, depending on the case, the issue and the emerging needs.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_162">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_228">But right now should the school be handling that?</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_229">Yes, there are various policies in schools. They have to have a bullying policy, which is monitored-----</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_164">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_230">Even though it is happening online outside school, but with students from the school.</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_231">It is very likely that comes into the classroom-----</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_166">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_232">Absolutely. It does.</p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_233">-----because it is about the relationship between young people. It does not just stay online. There will be the non-verbals and things happening, so it can very much impact on the learning and the relationships within the school setting. It would be very unusual for that to be only in the online space.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_168">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_234">Ba mhaith liom ceist a chur ar na finnéithe maidir le seirbhísí atá acu trí mheán na Gaeilge do Ghaelscoileanna agus don Ghaeltacht. I would like to ask the witnesses about what services are available for Gaelscoileanna and an Ghaeltacht. An bhfuil breis deacrachtaí? Are there additional challenges to offering these supports, because of the language, for students and teachers?</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_235">In strand 1 and strand 2, we have Gaelscoileanna and we have two counsellors on the panel who are able to deliver the service through Irish. A number of the EWPs are Gaeilgeoirí, so we have developed a number of inputs for specifically for our Gaelscoileanna. We in the NEPS also translate all our documentation. Part of strand 2 is a lot of resources for schools and parents to support their children. They are one-pagers. We have those translated into Irish as well.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_170">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_236">Do these all become available at the same time? Usually we have to wait longer. Has it had any effect? When the schools were being chosen, were we limited in how many Gaelscoileanna we could choose because of staffing?</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_237">No. For strand 1, all the schools in the seven counties are included in the pilot. For strand 2, we had clusters of schools in particular areas, including Dublin 16, Dublin 7, Cork and Carlow. We located them in particular areas but we included Gaelscoileanna. Those were the selection criteria.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_172">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-11-06T11:10:00+00:00"/></from>
+          <p eId="para_238">The handiest thing is probably for me to throw out all my questions at once. Especially with the NEPS, I am delighted to hear the service is provided as Gaeilge and that schools in the Gaeltacht are not left waiting an additional amount of time, although I understand there is often waiting time involved. Is it possible to get some sense of where things are at with Irish Sign Language? Is there a service available for deaf people and people who use Irish Sign Language? Another question that comes up is related to co-ordination with local suicide prevention officers and the national office for suicide prevention. It is tragic, but sometimes we see a suicide or even a cluster of suicides in a community – not necessarily in the school community – which can have a deep impact on children as they attend school. That can create ripples in the schools community as part of the overall community.</p>
+          <p eId="para_239">Is there a level of co-ordination there in terms of responding and a co-ordinated response in a given geographic area or a given community?</p>
+          <p eId="para_240"> Another issue that constantly arises - I am sure the witnesses hear it an awful lot - is the allocation of NEPS hours for individual schools where there may be extended waiting lists that are particularly pronounced and creating a particular difficulty for that school and for children attending it.</p>
+          <p eId="para_241"> I have some questions for Jigsaw. I represent Waterford. No doubt the representatives know there is a long-running demand and campaign to have a physical Jigsaw service, notwithstanding the fact that some of the national services are available online and through other media, to people in Waterford as well. Will this support the roll-out, and do those physical Jigsaw presences support the roll-out in geographical areas of the Neart programme and that engagement Jigsaw has with NEPS in the school system in general? I just wish to get a sense of some of Jigsaw's partnership work with local organisations. There is a fantastic mental health organisation in Waterford called Laochas and it has a programme called inside out for secondary schools. Is there a level of co-ordination or communication in that regard?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_173">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_242">Deputy, you have used up your time. The witnesses can have a wrap-up statement at the end where they can deal with some of those questions.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_174">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_243">Perfect.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_175">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_244">I call Deputy Jen Cummins.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_176">
+          <from>Deputy Jen Cummins<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_245">I will go back to two things we did not get to cover the last time. One was the resources the witnesses will need for strands 1 and 2 to be expanded. Second, is there a possibility of rolling out north-east inner city-type supports, which are there already from the point of view of psychological and emotional support, to Ballymun and the south-west inner city?</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_246">Where to start? Ms McGrory will speak to Jigsaw in Waterford first.</p>
+        </speech>
+        <speech by="#" eId="spk_178">
+          <from> Ms Siobhán McGrory<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_247">I will. Deputy McGuinness will be aware that just in this year's budget additional resources have been provided to Jigsaw to provide a Jigsaw hub service in Waterford and south Kilkenny and south Wexford. We are absolutely delighted about that. That work is beginning now and we are looking at all the collaborations we can build in terms of getting that service up off the ground. There will be an outreach service to Clare from our Limerick Jigsaw service as well. I hope that answers the Deputy's question. Obviously, as we do with all our other service locations, we work with all partners in whatever way we can to ensure that all young people have access to the service when they need it.</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_248">Ms Eustace will speak to the suicide prevention officer, CI and the north-east inner city.</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_249">Deputy Cummins asked what resources we need for strand 1 and strand 2 to roll out. We would need additional counsellors and additional education well-being practitioners. The evaluation report is being finalised. We hope that will outline what is needed into the system and will advise us on future policy and expansion. As I said earlier, we would welcome any expansion of these really positive resources.</p>
+          <p eId="para_250"> In relation to the north-east inner city, I was involved in that pilot. It continues to roll out where they have speech and language therapists, OTs and psychology supports. We know that NEPS psychologists are given extra time to work in our DEIS schools.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_181">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_251">We will have time for the witnesses to summarise. I am conscious that the times keep moving. I have just two brief questions. I want to ask Jigsaw, is a lot of your Neart programme currently virtually based, and do you plan on moving it more into a face-to-face realm? Also, it was a recommendation of the former Oireachtas committee on education that a high-level steering group would be established as a priority. This was key recommendation No. 7 in our report. Has progress been made on that?</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Ms Siobhán McGrory<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_252">I will take your first question. Yes, at the moment, quite a lot of the offerings for schools are virtual. We are offering our programme of work to all post-primary schools across the country. There are 750 post-primary schools. Essentially, we have a very small team. We have only four people on the team in Jigsaw, so we are doing our very best to try to maximise the reach in the best ways we possibly can. When we do provide virtual webinars and so on, we provide them repeatedly so they are at different times of the day and in the evening in order that as many school staff as possible can engage with us. It is a matter of trying to be as flexible as possible. Of course, we would love to have further resources to be able to do a lot more in person. Our student support team regional conferences are a really good example of that, where there is really significant engagement in all eight of those and numbers registered and oversubscribed, as Ms Mulhern mentioned earlier. We would love to be able to do much more in person and engage with schools in that way much more, but, for the moment, the resources allow for us only to be mainly virtual.</p>
+        </speech>
+        <speech by="#" eId="spk_183">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_253">May I just check the question about the high-level steering group? Was that referring to Jigsaw or the Department of education? I was not clear.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_184">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_254">The Department of education.</p>
+        </speech>
+        <speech by="#" eId="spk_185">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_255">We have a well-being steering group in the Department chaired by our assistant secretary, Martina Mannion. That brings all the sections of the Department together and we meet regularly because well-being is everybody's responsibility. Neart feeds into that steering group, the counselling pilot feeds into that steering group, and we have an interagency group as well that we feed into.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_186">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_256">Sorry, but I have to follow the rules on times as well. We have concluded with members' questions. I know there are a lot of loose ends you may need to tidy up in four minutes, if you could maybe apportion it between yourselves and wrap up some of that.</p>
+        </speech>
+        <speech by="#" eId="spk_187">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_257">Ms Eustace can speak to NOSP, I will deal with NEPS for Deputy McGuinness, and then we will conclude with Neart.</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Ms Sharon Eustace<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_258">I will speak about NOSP. We liaise on an ongoing basis with the National Office for Suicide Prevention and the resource officers for suicide prevention. We met with them nationally in June, and now, in each of our regions, our regional psychologists are meeting with them at local level. I am also on the Connecting for Life steering committee and on the expert advisory group for the new national suicide prevention strategy, the revision of Connecting for Life. They are really important for linkage with us in relation to suicide clusters, etc., and we work very well with them.</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_259">In relation to the NEPS time in schools, it is through days. We allocate the time depending on the size and the needs of the school. Our issue is our staffing levels, which we are growing at the moment. As mentioned earlier, we have a lot of psychologists coming through in training, thankfully. Up to 60 could be coming on board over the next three years as well as the ongoing recruitment competition. The more staff we have the more time we can allocate to our schools. We want to be in schools more and we want to grow our staffing.</p>
+          <p eId="para_260"> Finally, on Neart, I work really closely with Ms Mulhern and Ms McGrory here leading out on the programme. It is really a new collaboration and new for our Department working with Jigsaw in this way. It has been a really positive first nine months and we want to grow the work we are doing here. It has been a real pleasure to work with Jigsaw. We have learnt a lot from each other and it is a really good collaboration, with learning and sharing that we hope will continue further.</p>
+          <p eId="para_261"> I will pass to Ms McGrory to have the last word.</p>
+        </speech>
+        <speech by="#" eId="spk_190">
+          <from> Ms Siobhán McGrory<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_262">I am stuck by the real interest in the parent components of Neart and with all the parents who have engaged, as members have said. We are trying to find as many ways as possible to get the information about Neart out to parents. Even already we have over 1,800 parents who are registered with us, and there is really significant participation in our webinars. We can track the number of listens to the podcast, etc. All that information is there, all the back catalogue is there and we send a monthly newsletter. If there is any way we can provide members with information in order that they can circulate that to their constituents, we would love to be able to do that in order that the information gets out to parents as well as the schools in their constituencies. Anything we can provide, we would love to do that.</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Ms Deirdre McHugh<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_263">We have one minute left. We really welcome the opportunity to answer the questions today. It has been quite an experience, one that none of us have had before, and it is great to showcase some of the innovative practice. We know we have a lot more to do. We really look forward to the well-being policy review to be able to get feedback from our stakeholders to continue to grow this work in the system that we know it is very much needed.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_192">
+          <from> An Cathaoirleach<recordedTime time="2025-11-06T11:20:00+00:00"/></from>
+          <p eId="para_264">On behalf of our members, I sincerely thank you. You are pioneering something here that we are all very supportive of. No doubt we will have to have you back here again because hopefully more money will be put behind this and there will be more resourcing. In particular, I did not realise Jigsaw had only four people. It is a matter of trying to roll this out nationally. A lot more can be done. I think you will have a lot of support from within this room. I sincerely thank you all for your engagement this morning at the committee.</p>
+          <p eId="para_265">It has been very beneficial and informative.</p>
+          <p eId="para_266"> As always, I thank the secretariat, our technical team and everyone else who has made the meeting possible.</p>
+          <p eId="para_267"> Our committee now stands adjourned until Wednesday, 12 November 2025, at 12.30 p.m., in private session, to be followed immediately by a meeting in public session.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 11.30 a.m. until 12.30 p.m. on Wednesday, 12 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

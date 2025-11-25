@@ -1,0 +1,84 @@
+Registration failed: 
+Error {}
+message: "400: {"success":false,"message":"Validation error","errors":[{"code":"invalid_type","expected":"string","received":"number","path":["latitude"],"message":"Expected string, received number"},{"code":"invalid_type","expected":"string","received":"number","path":["longitude"],"message":"Expected string, received number"},{"code":"invalid_type","expected":"string","received":"undefined","path":["confirmPassword"],"message":"Required"}]}"
+stack: "Error: 400: {"success":false,"message":"Validation error","errors":[{"code":"invalid_type","expected":"string","received":"number","path":["latitude"],"message":"Expected string, received number"},{"code":"invalid_type","expected":"string","received":"number","path":["longitude"],"message":"Expected string, received number"},{"code":"invalid_type","expected":"string","received":"undefined","path":["confirmPassword"],"message":"Required"}]}↵ at throwIfResNotOk (https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/src/lib/queryClient.ts:5:11)↵ at async apiRequest (https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/src/lib/queryClient.ts:19:3)↵ at async register (https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/src/contexts/AuthContext.tsx:75:24)↵ at async onSubmit (https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/src/pages/RegisterPage.tsx:99:22)↵ at async https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-YGCRICWC.js?v=51cff3cb:1465:9"
+get stack: ƒ ()
+length: 0
+name: ""
+[[Prototype]]: ƒ ()
+set stack: ƒ ()
+length: 1
+name: ""
+[[Prototype]]: ƒ ()
+apply: ƒ apply()
+arguments: "'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them"
+get arguments: ƒ ()
+set arguments: ƒ ()
+bind: ƒ bind()
+call: ƒ call()
+caller: "'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them"
+get caller: ƒ ()
+set caller: ƒ ()
+constructor: ƒ Function()
+length: 0
+name: ""
+toString: ƒ toString()
+length: 0
+name: "toString"
+[[Prototype]]: ƒ ()
+apply: ƒ apply()
+arguments: "'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them"
+get arguments: ƒ ()
+set arguments: ƒ ()
+bind: ƒ bind()
+call: ƒ call()
+caller: "'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them"
+get caller: ƒ ()
+set caller: ƒ ()
+constructor: ƒ Function()
+length: 0
+name: ""
+toString: ƒ toString()
+Symbol(Symbol.hasInstance): undefined
+[[Prototype]]: Object
+constructor: ƒ Function()
+hasOwnProperty: ƒ hasOwnProperty()
+isPrototypeOf: ƒ isPrototypeOf()
+propertyIsEnumerable: ƒ propertyIsEnumerable()
+toLocaleString: ƒ toLocaleString()
+toString: ƒ toString()
+valueOf: ƒ valueOf()
+__defineGetter__: ƒ __defineGetter__()
+__defineSetter__: ƒ __defineSetter__()
+__lookupGetter__: ƒ __lookupGetter__()
+__lookupSetter__: ƒ __lookupSetter__()
+__proto__: ƒ ()
+get __proto__: ƒ get __proto__()
+set __proto__: ƒ set __proto__()
+Symbol(Symbol.hasInstance): undefined
+[[Prototype]]: Object
+constructor: ƒ Function()
+hasOwnProperty: ƒ hasOwnProperty()
+isPrototypeOf: ƒ isPrototypeOf()
+propertyIsEnumerable: ƒ propertyIsEnumerable()
+toLocaleString: ƒ toLocaleString()
+toString: ƒ toString()
+valueOf: ƒ valueOf()
+__defineGetter__: ƒ __defineGetter__()
+__defineSetter__: ƒ __defineSetter__()
+__lookupGetter__: ƒ __lookupGetter__()
+__lookupSetter__: ƒ __lookupSetter__()
+__proto__: ƒ ()
+get __proto__: ƒ get __proto__()
+set __proto__: ƒ set __proto__()
+[[Prototype]]: Object
+constructor: ƒ Error()
+message: "400: {"success":false,"message":"Validation error","errors":[{"code":"invalid_type","expected":"string","received":"number","path":["latitude"],"message":"Expected string, received number"},{"code":"invalid_type","expected":"string","received":"number","path":["longitude"],"message":"Expected string, received number"},{"code":"invalid_type","expected":"string","received":"undefined","path":["confirmPassword"],"message":"Required"}]}"
+name: "Error"
+toString: ƒ toString()
+[[Prototype]]: Object
+
+at t.value (https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://131e4914-4b10-4ce1-aa1f-bcb5bca7b6ee-00-1p5qx0nj73b46.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400

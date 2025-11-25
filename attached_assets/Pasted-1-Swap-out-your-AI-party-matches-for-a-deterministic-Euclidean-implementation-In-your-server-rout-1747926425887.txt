@@ -1,0 +1,85 @@
+1) Swap out your AI “party-matches” for a deterministic Euclidean implementation
+In your server/routes/enhanced-profile.ts, replace the entire /party-matches handler with something like this:
+
+ts
+Copy
+Edit
+import { Router } from "express";
+import { db } from "../db";
+import { IdeologicalDimensions } from "@shared/quizTypes";
+
+// reuse the exact weighted Euclidean we vetted earlier
+function calculateMatchPercentage(
+  user: IdeologicalDimensions,
+  party: any,
+  weights: Record<keyof IdeologicalDimensions, number> = {
+    economic:1,social:1,cultural:1,globalism:1,
+    environmental:1,authority:1,welfare:1, governance:1
+  }
+): number {
+  const axes: Array<keyof IdeologicalDimensions> = [
+    "economic","social","cultural",
+    "globalism","environmental","authority",
+    "welfare","technocratic"  // or “governance” if that’s your field
+  ];
+
+  let sumSq = 0;
+  axes.forEach(axis => {
+    const u = Number(user[axis]);
+    const pKey = axis === "technocratic" ? "governanceScore" : axis + "Score";
+    const p = Number((party as any)[pKey] ?? 0);
+    const diff = u - p;
+    sumSq += weights[axis] * diff * diff;
+  });
+
+  const distance = Math.sqrt(sumSq);
+  const maxDistance = Math.sqrt(axes.length * 4 * 4);  // Δ = 4 on −2…+2
+  const raw = (1 - distance / maxDistance) * 100;
+  return Math.round(Math.max(0, Math.min(100, raw)) * 10) / 10;
+}
+
+const router = Router();
+
+router.post("/party-matches", async (req, res) => {
+  try {
+    const { dimensions, weights } = req.body as {
+      dimensions: IdeologicalDimensions,
+      weights?: Partial<Record<keyof IdeologicalDimensions, number>>
+    };
+
+    // fetch your party definitions (with economicScore, socialScore…)
+    const parties = await db.query.parties.findMany();
+    if (!parties.length) {
+      return res.status(404).json({ success:false, error:"No parties" });
+    }
+
+    // normalize missing weights to 1
+    const fullWeights = {
+      economic:1,social:1,cultural:1,globalism:1,
+      environmental:1,authority:1,welfare:1,governance:1,
+      ...weights
+    };
+
+    const results = parties.map(p => {
+      const matchPercentage = calculateMatchPercentage(dimensions, p, fullWeights);
+      // you can keep your old generateMatchReason if you like:
+      const matchReason = `${p.name} aligns with your…`; 
+      return {
+        party: p.name,
+        abbreviation: p.abbreviation,
+        color: p.color,
+        matchPercentage,
+        matchReason
+      };
+    }).sort((a,b) => b.matchPercentage - a.matchPercentage);
+
+    return res.json({ success:true, data: results });
+  } catch(err:any) {
+    console.error(err);
+    res.status(500).json({ success:false, error:err.message });
+  }
+});
+
+export default router;
+Why this fixes your narrow variance:
+By anchoring the math to Δ=4 on a −2…+2 scale and not doing any post-hoc “50% + x” boosts, you’ll now see true 0→100 spreads.

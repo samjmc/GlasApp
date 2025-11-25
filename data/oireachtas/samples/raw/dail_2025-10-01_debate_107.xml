@@ -1,0 +1,1258 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-10-01/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-10-01/debate"/>
+          <FRBRdate date="2025-10-01" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_agriculture_and_food"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-10-01/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-10-01/debate/mul@"/>
+          <FRBRdate date="2025-10-01" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-10-01/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-10-01/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-08" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AindriasMoynihan" href="/ie/oireachtas/member/id/Aindrias-Moynihan.D.2016-10-03" showAs="Aindrias Moynihan"/>
+        <TLCPerson eId="DannyHealyRae" href="/ie/oireachtas/member/id/Danny-Healy-Rae.D.2016-10-03" showAs="Danny Healy-Rae"/>
+        <TLCPerson eId="EileenLynch" href="/ie/oireachtas/member/id/Eileen-Lynch.S.2025-01-29" showAs="Eileen Lynch"/>
+        <TLCPerson eId="JoeCooney" href="/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29" showAs="Joe Cooney"/>
+        <TLCPerson eId="MartinKenny" href="/ie/oireachtas/member/id/Martin-Kenny.D.2016-10-03" showAs="Martin Kenny"/>
+        <TLCPerson eId="MichaelFitzmaurice" href="/ie/oireachtas/member/id/Michael-Fitzmaurice.D.2014-10-10" showAs="Michael Fitzmaurice"/>
+        <TLCPerson eId="NatashaNewsomeDrennan" href="/ie/oireachtas/member/id/Natasha-Newsome-Drennan.D.2024-11-29" showAs="Natasha Newsome Drennan"/>
+        <TLCPerson eId="ParaicBrady" href="/ie/oireachtas/member/id/Paraic-Brady.S.2025-01-29" showAs="Paraic Brady"/>
+        <TLCPerson eId="PaulDaly" href="/ie/oireachtas/member/id/Paul-Daly.S.2016-04-25" showAs="Paul Daly"/>
+        <TLCPerson eId="PaulLawless" href="/ie/oireachtas/member/id/Paul-Lawless.D.2024-11-29" showAs="Paul Lawless"/>
+        <TLCPerson eId="PeterChapCleere" href="/ie/oireachtas/member/id/Peter-'Chap'-Cleere.D.2024-11-29" showAs="Peter 'Chap' Cleere"/>
+        <TLCPerson eId="VictorBoyhan" href="/ie/oireachtas/member/id/Victor-Boyhan.S.2016-04-25" showAs="Victor Boyhan"/>
+        <TLCPerson eId="WilliamAird" href="/ie/oireachtas/member/id/William-Aird.D.2024-11-29" showAs="William Aird"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM THALMHAÍOCHT AGUS BIA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Agriculture and Food</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-01">Dé Céadaoin, 01 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-01">Wednesday, 01 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#WilliamAird">William Aird</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#VictorBoyhan">Victor Boyhan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PeterChapCleere">Peter 'Chap' Cleere</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ParaicBrady">Paraic Brady</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PaulDaly">Paul Daly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#MichaelFitzmaurice">Michael Fitzmaurice</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#EileenLynch">Eileen Lynch.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#DannyHealyRae">Danny Healy-Rae</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#MartinKenny">Martin Kenny</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PaulLawless">Paul Lawless</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#NatashaNewsomeDrennan">Natasha Newsome Drennan.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#AindriasMoynihan">Teachta / Deputy Aindrias Moynihan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Challenges Facing the Tillage Industry: Discussion<recordedTime time="2025-10-01T15:30:00+01:00"/></heading>
+        <speech by="#AindriasMoynihan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T15:30:00+01:00"/></from>
+          <p eId="para_15">No apologies have been received. I bring to attendees' attention that witnesses giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence they give to the committee. This means that a witness has a full defence on any defamation action for anything said at the committee meeting. However, witnesses are expected not to abuse this privilege, and may be directed to cease giving evidence on an issue at the Chair's direction. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precincts are asked to note that they may not benefit from the same level of immunity from legal proceedings as a witness giving evidence from within the parliamentary precincts and may consider it appropriate to take legal advice on the matter. Privilege against defamation does not apply to the publication by witnesses outside of the proceedings held in the meeting of any matters arising from the proceedings.</p>
+          <p eId="para_16"> Members are reminded of the long-standing parliamentary practice to the effect that members should not comment on, criticise or make charges against either a person outside the Houses or an official, either by name or in such a way as to make him or her identifiable. Parliamentary privilege is considered to apply to the utterances of members participating online in the committee meeting where their participation is from within the parliamentary precincts. Members may not participate online in a public meeting from outside the parliamentary precincts and any attempt to do so will result in the member having their online access removed.</p>
+          <p eId="para_17"> The agenda for our first session today is the current challenges facing the tillage industry. The committee will hear from a number of representative groups. I welcome from the Irish Grain Growers Group: Mr. James Kelly, president; Mr. Clive Carter, co-secretary; and Mr. Bobby Miller, co-secretary; from the Irish Farmers Association: Mr. Kieran McEvoy, chair of the grain committee; Mr. John Murphy, vice-chair of the grain committee; and Mr. Max Potterton, policy executive of the grain committee; and from Tillage Industry Ireland: Mr. Andy Doyle, chair, Mr. Matt Dempsey, president; and Dr. Richard Hackett, secretary. They are all very welcome. Fáilte romhaibh.</p>
+          <p eId="para_18"> The opening statements have been circulated to the members, who had the opportunity to read them earlier. I will allow a short two-minute introduction of each of those opening statements before we go on to a question and answer session.</p>
+          <p eId="para_19"> We will start with the Irish Grain Growers Group. I call Mr. Carter.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Clive Carter<recordedTime time="2025-10-01T15:40:00+01:00"/></from>
+          <p eId="para_20">I will give a brief rundown. The tillage sector in Ireland is a fantastic sector, with many positives for food security, including its carbon footprint and its environmental credentials, but it is currently in a massive crisis. We have had three bad years in a row. The area under tillage has fallen 40% in 40 years. The key ask in our budget submission was for €92.5 million per year over the next five years, given that a certain level of promises were made by all the Government parties pre-election. That would entail a €350 per hectare payment over the next five years. This investment might seem a tall ask to some, but let us remember it is coming from a very low base of investment compared to other agricultural sectors.</p>
+          <p eId="para_21"> Poor policy support has led to a long-term decline in the past 30-odd years. Regarding the importation of feedstuffs, we have often heard of Mercosur but, as Irish tillage farmers, we have been dealing with imports from Mercosur countries for 30 years. There is unbalanced competition. We are importing GM crops but are unable to access GM technology here, and we have a much higher cost of production here in Ireland. One of the current crises is the land rental market. A vast proportion of the arable area used by tillage farmers, probably 50%, was on rental land but this has dropped to just over 30% in the past couple of years. Tillage farmers are priced out of the market and cannot compete with other sectors, such as the dairy industry. There are also rising production costs, such as for machinery, fertiliser, diesel and other fuels.</p>
+          <p eId="para_22"> The policy actions required include taxation support for low-carbon tillage crops and a reward for biodiversity. Every acre under tillage has a biodiversity value. There is also the issue of marketing. Irish grain has a gold standard under IGAS, the Irish grain assurance scheme, that many other countries have not yet achieved. However, there is no promotion budget under either Bord Bia or Origin Green. We do not have any such body promoting Irish grain.</p>
+          <p eId="para_23"> With regard to the drinks industry, the technical files have to be revisited to consider the inclusion of Irish grain or the maximisation of Irish grain in the drinks industry.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T15:40:00+01:00"/></from>
+          <p eId="para_24">Thank you. I need to give the next speaker an opportunity. The members will have an opportunity to ask questions afterwards. I call Mr. McEvoy of the Irish Farmers Association.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T15:40:00+01:00"/></from>
+          <p eId="para_25">I am grateful for the invitation to the IFA. The challenges facing the Irish tillage sector at the present time are numerous, systemic and complex. The area devoted to tillage as a percentage of the utilisable agricultural area has been in significant decline in the post-war period due to fundamental changes in the Irish agricultural system. From the beginning of this century, the area devoted to tillage had largely appeared to stabilise between 350,000 ha and 400,000 ha. However, since 2012, the sector has shrunk further to sit between 300,000 ha and 335,000 ha.</p>
+          <p eId="para_26"> The recent decline in area can be principally attributed to a reduction in cereal production, which has dropped by 50,000 ha since 2012. Ireland now has one of the lowest percentages of land devoted to arable cropping in the EU-27 at about 6.5% of the utilisable agricultural area. This is despite 36% of Irish soils, or approximately 2.5 million ha, being classified as highly to moderately suitable for tillage production in the Irish soil information system.</p>
+          <p eId="para_27"> Government policy has, to some extent, recognised the decline in our tillage area, with the inclusion of a target under the climate action plan to increase the tillage area to 350,000 ha in 2025 and 400,000 ha by 2030. This was in recognition of the tillage sector’s favourable carbon emissions profile relative to other agricultural sectors, and the potential reduction in agricultural emissions that a greater tillage area could bring about.</p>
+          <p eId="para_28"> The tillage sector has faced deepening income pressure since 2023, and without co-ordinated action, the 400,000 ha target is but a pipedream at the present time. Incomes dropped by nearly 70% in 2023 and made only a modest recovery in 2024. The sector is in crisis at the present and farmer morale is at an all-time low.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T15:40:00+01:00"/></from>
+          <p eId="para_29">Thank you. I must move to the next speaker. The statement is already read into the record. We move to Tillage Industry Ireland. I call Mr. Doyle.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T15:40:00+01:00"/></from>
+          <p eId="para_30">I again thank the committee for the invitation. I wish to reinforce some of the things that have been said. We believe the tillage sector has been discriminated against over decades because of the way policy is formed in Ireland. We were glad to be a participant in the Food Vision 2030 tillage group report, which outlines a number of possible courses of action to correct some of the problems in the future.</p>
+          <p eId="para_31"> As has been said, we suffer from an issue with high input prices in Europe caused by a myriad of different things. Against that, we also suffer from a scenario where we have high costs that are sometimes, or mostly, outside our control as they are driven by European policy and other policies. As a matter of form, I was told the other day that one of our nitrogen fertilisers, urea, might cost €150 a tonne extra for the coming season because of a combination of a ban on standard urea and the introduction of the CBAM tax. These are the issues that are facing us, and they are real issues for the future.</p>
+          <p eId="para_32"> The background is that we have supply and demand issues. We produce roughly 1.8 million tonnes of feed grains and import just under 5 million tonnes, yet we have to get rid of some of our own in order to make room in the stores. There is something wrong when that happens.</p>
+          <p eId="para_33"> I will finish there. That is the essence of where the whole thing is pointing and the problems in the tillage industry.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T15:40:00+01:00"/></from>
+          <p eId="para_34">Before I go to the members, I would point out that the statements have been made available and were circulated. I am very conscious, from dealing with a number of grain growers locally in the last while, of the huge pressure the sector is under. The pressure in recent years has been building year on year, whether it is due to the influence of price internationally or the cost of inputs, as the witnesses said. We have a great sector that is producing quality crops and is carbon neutral, and there is definitely a demand for the product. We want to tease out with the witnesses where they would see ways of advancing things. We will be meeting in the next session with the Department and Teagasc, and we will want to put together a proposal from there.</p>
+          <p eId="para_35"> I will open the meeting to the floor. There will be six minutes per speaker. I call Deputy Cleere.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_8">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T15:40:00+01:00"/></from>
+          <p eId="para_36">I welcome the witnesses. Strengthening farm income for our 130,000 family farms is a priority for the Government. There is a recommendation in the programme for government to invest significantly in the tillage sector in order to maintain and grow the sector, so there is a specific measure in that. Fresh funding will be required. We acknowledge that and can talk about it shortly.</p>
+          <p eId="para_37">Also, we absolutely need to see continued and expanded supports for our tillage farmers. It is important to acknowledge that over recent years a few schemes have come out, including the protein scheme, the hay scheme, the straw incorporation measure and the tillage incentive scheme. Therefore, measures have been put in place to help but I understand more needs to be done.</p>
+          <p eId="para_38"> My first question is very much in relation to the area under tillage. It has fallen by 40% in 40 years. Can anybody give me a reason?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_39">It is because of the lack of profitability and because of other sectors moving onward. It is as simple as that. We are dealing with 1980s prices for the commodity and 2025 production costs, and we are competing against grain coming in from poorer countries.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_10">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_40">The tillage sector contributes €1.3 billion annually to the Irish economy, and we know that the area under tillage has fallen. The <i>Irish Farmers' Journal</i> stated in an article a couple of months ago that 1,400 tillage farmers have exited tillage. Can the witnesses talk a little about what they are hearing on the ground, what their experience is and why this is happening?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. James Kelly<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_41">The latest figures from the IGGG suggest one tillage farm per week leaves the sector. There are probably more at this stage.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_12">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_42">So viability is the primary reason the witnesses are hearing on the ground. </p>
+          <p eId="para_43"> I was really interested in the comments on a marketing and promotional aspect around tillage and grain. If you go into a shop and buy a rasher or sausage, it is guaranteed 100% Irish and you know you are buying an Irish product. What are the plans to the get the Irish stamp on our grain?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_44">The industry has been working for some time, through research, to get a handle on the carbon footprint of the Irish grain sector. We have never known what it is was. We expected it was reasonable and we have actually found out, through work done by Teagasc, that it is very good. We hope that if we can stamp-verify any tonne of grain entering the feed sector for the livestock sector, it will add to its authenticity as an Irish product. As we stand, we have just under 2 million tonnes and it is mixed with 5 million tonnes of imported feed. We are a little bit suspect in terms of authenticity if push comes to shove.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_14">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_45">On food security related to tillage and grain, how are the witnesses finding things in terms of their supply chain? Mr. Doyle mentioned that for every 2 million tonnes of Irish product, we are importing 5 million tonnes. How is he finding the Irish sector’s competitiveness on the geopolitical spectrum?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_46">It is very hard to maintain. We had one major advantage, which was high yields at a reasonable cost. The high yields are still being achieved, more or less, but the costs just keep on escalating. The price any farmer in Ireland receives is set pretty much by the price at port, and that price is coming from wherever is the cheapest source in the world, which will have much cheaper fertiliser, much cheaper inputs and technologies we cannot use. That gap has been increasing in magnitude over time and it is making us less competitive. Our incomes are being eroded as a consequence.</p>
+          <p eId="para_47"> That is ultimately where it is going. The only defence we have, aside from direct support, which the vast majority of tillage farmers do not want to depend on if it can be avoided, is to recognise the value that Irish grain can bring to the feed systems, and indeed the food systems, which we already have in respect of malting barley, oats, etc.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Clive Carter<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_48">I want to refer to food security. A few years ago, at the time of Storm Emma, I believe, one of the jokes going around was that you could not get a loaf of bread. The irony, related to food security, was that almost none of the bread was Irish. It was imported or made with imported flour. We have lost milling wheat for the most part, other than for a few small niche markets. That is something that really needs to be addressed because we do not have food security. At a meeting of the CAP consultation committee, we were told we were a calorie-deficit country. We export beef and dairy, but for almost everything else we import to a certain level.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_17">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_49">What is the import percentage for the grain we use? We export beef and have enough to use ourselves, but we import a lot of grain.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Clive Carter<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_50">We import 5 million tonnes, by comparison with 2 million tonnes of home-produced grain, give or take.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_19">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_51">On the costs, bearing in mind the standards we have here in Ireland, what would be the difference between producing grain in Ireland compared with, say, our cheapest competitor abroad?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_52">We probably have one of the highest costs of doing business in the European Union. I believe we are the second highest on the cost scale. We also have the constraints on the amount of land available for tillage, due to land pressures in the market. That is a significant burden on Irish tillage farmers. We do not want to lose sight of the fact that we have some of the best tillage farmers in the world in this country but their hands are a bit tied. We are dealing with countries that have different standards, particularly on the imported grain coming in. The cost of doing business is so much higher here than anywhere else.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_21">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_53">We are fully supportive of the tillage survival package. We understand and recognise the importance and significance that tillage has to Ireland from food-security and economic perspectives. While I am aware that budget negotiations are ongoing, you can be assured from our side of the House that we will do everything we can to get as good a deal as possible for the tillage sector in the upcoming budget. </p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_22">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_54">The guests are all very welcome. I am aware that they were here a while ago. I attended a meeting at Killashee Hotel at which there were nearly 1,000 people. It was the biggest gathering I had seen in years. Years ago, I went to a beet meeting, but do you know what happened with the beet? It was all sold out of this country. This prompted me to raise it here at our last meeting. I am delighted that I got the support from my fellow members to invite the guests in today because I think this is a very important day. Our budget is next Tuesday, so the timing is right. That is why I wanted the witnesses here.</p>
+          <p eId="para_55"> I very much felt I was not bringing members on board but I feel I have them on board now in regard to supporting me to get the money. This matter is important. We need to be crystal clear that both Fine Gael and Fianna Fáil, in their election manifestos, committed €60 million per year to the grain industry for five years. I acknowledge that one party, according to its manifesto, was going to give €85 million. Fair play to it. The problem we have, about which we should be clear today, is that the money was to be extra money that was to be put into the agriculture budget. I ask colleagues in Fianna Fáil who are here today to talk to the Minister for public expenditure, Deputy Jack Chambers, in the interest of the grain industry and to ensure a separate budget.</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> A Deputy<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_56">And talk to the Minister for agriculture, Deputy Martin Heydon, as well</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_24">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_57">Absolutely.</p>
+        </speech>
+        <summary eId="sum_5">(Interruptions).</summary>
+        <speech by="#WilliamAird" eId="spk_25">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_58">The members are taking up my time. I did not interfere with others and never do. My point is that we-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_59">The Deputy should question the witnesses.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_27">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T15:50:00+01:00"/></from>
+          <p eId="para_60">I am; I am telling them. I am not questioning anybody. We know where they are coming from. These lads do not need to be questioned; these lads want to hear we are supporting them. That is what they want, and I am supporting them 110%. The bottom line is that I want to make sure the money promised by Fine Gael and Fianna Fáil is now given as extra money. I do not want to see TAMS or other supports within the farming sector taking money from the tillage sector. This was a fund that was committed. Why was it committed? We have heard from Mr. McEvoy today that the tillage sector is going down. Is the fate of the tillage sector going to be the very same as that of the beet sector if we do not support it now?</p>
+          <p eId="para_61"> More important, we had to step in. I was a county councillor for over 40 years, and I submitted motions to Laois County Council. If the Government had stepped in and given a proper subsidy for suckler cows, we would not have 200,000 cows out of the market today, nor would the beef industry be in the situation it is in today. We need common sense to prevail, and that is why I urge that we do not lose the grain industry. I have seen the finest of grain people. I am a farmer but I put my hand up that I could not plough an acre of land. The greatest of grain people are all now in dairy because those coming behind them could not get a week’s wages from grain.</p>
+          <p eId="para_62"> Let us be fair about it. The whole tillage industry became imbalanced when we took beet out of it.</p>
+          <p eId="para_63">The whole agricultural sphere of this country will be totally unbalanced if we take the grain out of it. Let us stop and see what happened from the point of view of history. That is what I am pleading for here today. Funding of €60 million over five years has to be in addition to current funding and incorporated into the agricultural budget. We cannot afford to take it out of the budget that is there at the moment. That is why I ask the committee to speak to the Minister, Deputy Chambers, and ask him to include this.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_28">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_64">He is not the Minister for agriculture. Jesus Christ. The Deputy should talk to his own-----</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_29">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_65">Do not do not play politics with something that is as serious as this.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_66">Deputies-----</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_31">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_67">The Deputy knows that if a sector wants extra money, it gets it from the Minister, Deputy Chambers.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_68">Deputies, we need to focus on talking-----</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_33">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_69">That is what I am asking.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_70">Witnesses have travelled a long journey and are here to contribute.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_35">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_71">I thought I had Deputy Cleere on board, but I obviously did not. There is a lot of grain in Kilkenny.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_36">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_72">I know there is a lot of grain in Kilkenny.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_73">Out of respect to the witnesses, they have travelled a long distance to participate.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_38">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_74">I go to the mart in Cillin Hill. A lot of grain farmers have gone out of business.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_75">They are interested in giving us their take on things.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_40">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_76">They have gone into grain and the Deputy knows that.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_77">Out of respect for the witnesses, it is important to give them the opportunity to have their say.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_42">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_78">Of course. I have my six minutes. I make the point that we want to be very clear here today. I do not have to ask the witnesses questions. I asked questions a fortnight ago and I know all of the answers. We want to ensure that, as politicians elected by the people, we adhere to the election manifestoes that both Deputy Cleere and I bought in to. Deputy Cleere bought in to a manifesto that promised €60 million and would provide €6 million. It is important to remember that point here today. I outlined the history before I was interrupted. Had we supported the suckler industry in this country, we would not have had 100,000 cows slaughtered. I spoke to the Deputy about Mohill and Carrigallen and going to the marts today. There is not a quarter of the cattle in them that there was in years gone by. The proof of the pudding is in the eating. It is a terrible pity that all of that happened in this country. We were proud of the cattle and the products we produced and the grass system we have. I thank the witnesses. I wanted to say that. I will certainly not be found wanting. I have the support of people.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_43">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_79">I thank the Chair. How does one follow that? I thank the witnesses for their opening statements, which we have read. We are all conscious that the grain industry in the country is in crisis and has been for quite some time. There is a need for the Government to put in place a package to support the grain industry. We also need to ensure that we can develop that industry and make it sustainable. We need to examine how innovation and other things can help. I have a few questions around that.</p>
+          <p eId="para_80"> The witnesses mentioned that 5 million tonnes of feed grain are being imported and 1.5 million tonnes are produced in Ireland. That brings me to a question related to what Deputy Cleere said. We have Irish whiskey, beers and other produce, yet a major portion of the raw materials going into those products is imported grain. Is there a need for some kind of system to be put in place whereby in order to label something as an Irish product it has to have a minimum input of a certain amount of Irish raw material? Would that assist in bringing us closer to ensuring that we get a better price into the future? That is one major issue.</p>
+          <p eId="para_81"> I know there are contracts in place. That is another element. In many areas of farming, people ask whether contracts are one solution. Contracts are in place for grain farmers in many cases, but they do not seem to be a solution. I would like to hear the comments of the witnesses in respect of that.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_82">I thank the Deputy for his question. We feel it is vitally important that the premium products in the drinks industry the Deputy mentioned are supplied with native Irish raw materials. There has been some work done in that area and some companies use only Irish products. However, there is a certain proportion which do not use Irish products and are selling Irish whiskey which is just Irish water. Work has to be done on the whiskey profile of this country with the Irish Whiskey Association to ensure that native grain has to be part of the whiskey-making process in this country. That would help in the malt and barley market.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_45">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_83">Can that be done quickly? I take it there is a time lag in respect of doing that. Increasing production will take time. The keen competition for land, in particular with the dairy sector, is a major issue that needs to be addressed. What level of profitability does a company need to be at in order to be able to compete in that market?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_84">On the land market competing against other sectors, we have to be competitive. At the moment we are not in the races. We receive phone calls from auctioneers on a regular basis because most grain is on rented land. We do not even bother watering those lands because they were out of reach at the start. I am not in a position to expand and retain land.</p>
+          <p eId="para_85"> Our document refers to a proposal for a five-year support. That would provide me with some certainty that I would have financial assistance to make me somewhat more competitive. Sometimes that is enough to keep people on existing land or renew leases and stop things from slipping further.</p>
+          <p eId="para_86"> Certain people are in long-term arrangements and landowners would be quite happy to stay with tillage farmers. They see a huge gap between the market and what they are getting in land rents. If we were somewhere in between, we might be able to stay in business. That is a key point.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Clive Carter<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_87">On whiskey, there is a contradiction in the whiskey technical files which I am led to believe are being reopened or revisited soon enough. A cream liqueur has to be made with Irish cream or milk, but there is absolutely nothing stating that Irish grain has to be used in the production of beer or spirits, including whiskey. That needs to be revisited. Fantastic work has been done by Teagasc and SETU Carlow on the use of Irish wheat to replace some of the imported maize and achieve as good a volume of alcohol. That is one area which could get give rise to tillage demand.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_88">On contracts, they apply within the industry, but mainly, as Mr. McEvoy said, for premium products, in particular barley. I do not think they apply as much to porridge oats. There are contracts with some of the co-ops, but they are somewhat looser. It is difficult to have contracts. Once we move to a contract system, it quickly appears as if we are pushing something on somebody. History has told us that we do not succeed commercially by pushing something on somebody. We have to try to get the market to want it, as Mr. Carter said. If the market needs to use Irish products for whatever good reasons – bad reasons should not apply – that is where we need to look going forward. It should be reflected in the labelling.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_49">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_89">Price is obviously the key factor. I met Mr. Carter at the ploughing a couple of years ago and said if a penny went on the pint and the grain grower got it, it would make a difference. A small margin to the consumer would make a difference down the line. That is something a lot of people do not understand. We see the price of our food and commodities in shops doubling and trebling. Milk or grain producers do not get that, and that is the problem we have, namely that price increases do not go back to the primary producer who takes the risk.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_90">Before I go to Deputy Cooney, I wish to ask the witnesses what kind of tonnages are involved in the drinks industry.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_91">About 300,000 tonnes.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_52">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_92">There would be an extra 306,000 tonnes.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_53">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T16:00:00+01:00"/></from>
+          <p eId="para_93">I thank the witnesses for coming before the committee today. Their hearts are in the right place, fighting for farmers who are under severe pressure. I ask them to comment on a line in the opening presentation in order to address how we got into this crisis. The opening statement said the sector is in a crisis at the present time and farmers' morale is at an all-time low. It is awful tough to see that. We all know farmers are working and fighting hard to survive. We know costs are unbelievable and farmers have to run families, pay bills and whatever else.</p>
+          <p eId="para_94">Can someone explain how it got to this situation? There is more dairying and beef farming than tillage farming down my side of the side country. Can someone explain that?:</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_95">We have got to where we are through no fault of the Irish tillage farmer. It is through the rising cost of doing business in this country. Fertiliser, chemicals and farm machinery prices have doubled. Inputs on crops have gone up 106% alone. The best case scenario this year is that tillage farmers will break even on their own land and some people on rented land could lose up to €600 a hectare. That is how morale has gone so low. </p>
+          <p eId="para_96"> How did we get here? The world has got reliant on cheap grain and other parts of the world have moved on with technology, such as genetically modified grains. They also have access to cheaper chemicals and fertilisers as well as labour. To answer the Deputy's question, nothing has probably gone wrong with the tillage farmer in this country. They are still some of the best in the world but we have been left behind. We are pitched against a very different world stage. As the national grain chairman of IFA, I have never seen the morale so low in an industry that is producing a fantastic product for this country and doing a service for our drinks, feed and grain industries. We are the lowest carbon sector in Ireland, which will be proved, and probably in the world at growing grain, so it is a really pity.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Matt Dempsey<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_97">The fundamental issue is the change in EU policy away from a policy that facilitated the production of grain within Europe. If world market prices were low, a levy was applied to imports into the community. If they were high, they came in more freely. The removal of that kind of protective food security regime has clearly been a serious mistake that has happened over the past 20 years. </p>
+          <p eId="para_98"> I respectfully suggest that this committee, given how representative it is, should propose to the EU that a significant look at the appropriateness of its tillage regime for modern conditions be undertaken and the original concept of a food secure Europe, insulated to some extent from the huge swings that occur in world market prices, be re-examined.</p>
+          <p eId="para_99"> The other major issue that has happened is that in our youth Russia was by far the main importer. Now, with the privatisation and new technology across all of the eastern Europe and central Asia, Europe has become the major wheat exporter of the world. This has totally upset the balance. We do not have same constraints on the use of chemicals. There are very cheap fertilisers and enormous scale. We are not saying that Europe and Ireland are not competitive; what we are saying is that we are prevented from being competitive by the discriminatory regulations that apply against European farmers, which at the same time allow unrestricted access of grain imports from all over the world into the European market.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Bobby Miller<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_100">To put numbers on what Mr. Dempsey said, 20 years ago global grain production was roughly 1.7 billion tonnes; today it is expected to be 2.4 billion tonnes. A chunk of that is coming to us because people are literally trying to get rid of it and push it into whatever market will take it. That is our pressure.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_57">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_101">What do we need to do here today to see what we can do for the tillage farmers going forward?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Matt Dempsey<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_102">There are three elements. The first is emergency Exchequer support in recognition of the problems that have arisen in a restricted industry. Second, will the committee - with its reputation - recommend to the Bord Bia that the Irish label for quality assurance be confined to products with a certain percentage of Irish grain used in them? The third element has to be a really thought-out submission to Brussels calling for a dramatic reform or re-examination of the appropriateness of the tillage industry for today's market.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. James Kelly<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_103">We need strong policy coming from our Government. We also need financial support, as Deputy Aird alluded to, but policy has to get stronger. The grain that I produce is currently thrown into the same bucket of feed as grain from all over the world. There is no distinction between the two. That is the first thing that needs to happen. We can prove the quality of grain that we produce and its low carbon footprint. In biodiversity terms, there is a real value on having grain in this country. We need to push that from a policy point of view. We have to distinguish and financially reward native Irish grain in this climate change world. I stood in my field of gluten-free oats and did the Teagasc AgNav last week. My crop is a carbon sink in this day and age. We hear about how we get support for the likes of solar panels and investments in financial support for the bio-economy, but there is currently very little financial support for tillage farmers. It is a product that ticks all of the boxes that this Government wants. We need strong policy and financial support.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_60">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_104">It is a sad day when someone has to go out to work at a loss in this present day.</p>
+        </speech>
+        <speech by="#VictorBoyhan" eId="spk_61">
+          <from>Senator Victor Boyhan<recordedTime time="2025-10-01T16:10:00+01:00"/></from>
+          <p eId="para_105">I welcome all of the witnesses. I acknowledge the IFA's budget submission 2026. It is very professional. It is important for getting its messages across. I also acknowledge the Irish Grain Growers Group. It has got it right. Its presentation was focused, there was attention to detail and its key asks are clear. We do not need chapter and verse about what is required for this sector. We know it is suffering and there are huge financial and yield losses, which is particularly pertinent for those who have to lease land. Mr. McEvoy mentioned the cost of machinery, which I appreciate and acknowledge. Deputy Aird made a very robust interjection and I hear what he is saying. Before the election, all of the political parties committed to supporting the tillage sector. We have only another week to wait. I look forward to having the same meeting in a week and seeing how robust the people around this table are about the actions in the budget.</p>
+          <p eId="para_106"> In Tánaiste Simon Harris's small piece on <i>agriland.ie </i>during the week he made a public commitment to doing something in the budget. That has to be encouraged. Deputy Heydon is the Minister for agriculture. Whatever deal they carve out is a matter for them and I wish them all well. </p>
+          <p eId="para_107"> I am very supportive of the sector. It is really important but I want to tease out some of the questions. The witnesses came in here and made submissions. The Irish Grain Growers Group said that a financial package is its key ask. I want to hear more about the tillage expansion and sustainability scheme. We do not need verse and chapter on policies. The ask is for €92 million per annum over five years. The core element is a €350 per hectare payment. This is somewhat different to the IFA, which is campaigning for a €65 million tillage survival plan to be introduced by this Government. There is a variance between the two organisations, which is particularly interesting as well.</p>
+          <p eId="para_108"> The witnesses made it clear that morale is low. I know farmers. We all know farmers. We saw that it is at an all-time low when we talked to farmers on the ground at the national ploughing championships in Tullamore. We know about cost inputs in detail. We do not need to go into them. We know about the particular exposure experienced by people who rent land. They need to rent additional land; that is part of the nature of it. I am not here to make any excuses for the Government. I am not party to any Government. I am an Independent. While I do not doubt the Government's support, there are many challenges on expenditure. There are many sectors within agriculture that need funding. That is an important point. </p>
+          <p eId="para_109"> Will the witnesses touch on the greater tax relief needed on tillage?</p>
+          <p eId="para_110">Taxation is an important aspect of the income and in the past Irish grain growers have worked for long-term leasing tax break incentives for land rental in the tillage sector. They are on record as being involved in that in the past. Everyone in this room hears what the witnesses are saying. Everyone feels their pain and we have to wait to see what happens. In simple terms, will each of the groups give the committee three of the most important requests of their organisations that they want us to take from this meeting?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_111">Who will start in the brief time remaining?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_112">I ask that we get the €65 million in support for five years. It is important it is not a band-aid, not a one year thing and that it gives security to tillage. If it turns out to be €93 million I will not say "No" to it either.</p>
+        </speech>
+        <speech by="#VictorBoyhan" eId="spk_64">
+          <from>Senator Victor Boyhan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_113">Or €92 million.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_114">The second thing we need is the serious implementation of the 28 recommendations for the tillage sector of the Food Vision 2030 group. Good work is being done by the Department of agriculture on that, but some of those recommendation need to be rolled out and moved forward to support tillage.</p>
+          <p eId="para_115"> Third, we need to get support from the Government on the drinks industry where people are not using native grains.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Bobby Miller<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_116">One of key requests of grain growers is that we need to differentiate between Irish grain and imports. Every other sector has a differentiation. It is done for milk, beef, lamb and pork; they all have distinctions. We to differentiate between native Irish grain and imports. The reality is that two thirds of the feed used in the country is imported, 70% of which is imported from outside Europe.</p>
+          <p eId="para_117"> Our second key request is a marketing budget to promote what we have, which is gold standard grain. Practically no one knows about it and no feed mill is prepared to use it unless it is at the right price.</p>
+          <p eId="para_118"> Our third request is for investment in adding value. Such organisations as Teagasc and UCD have done a lot of research on beans, the milling industry and rapeseed oil industry. We ask for investment beyond the research. We need companies to get on board now and start investing in Irish product. Unfortunately, 70% or 80% of our grain goes straight into a feed heap. We are competing with imported byproduct that already has added value.</p>
+        </speech>
+        <speech by="#VictorBoyhan" eId="spk_67">
+          <from>Senator Victor Boyhan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_119">Can we go to Tillage Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_120">We are in a sense ploughing the same furrow. The Food Vision 2030 report contains most of what everyone here is asking anyway. Recognition of Irish grain, wherever it is in a food or feed chain is critical. My third request is even more important in the long term. It is to bring the current impasse onto the European agenda. If that does not happen we will keep having to look for band aids. We need fundamental reform.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_69">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_121">It is stark to read that the Irish grain assurance scheme, IGAS, recently pointed out that one tillage farmer will be gone every week and we have 11,000 full-time equivalent jobs in the market. Is most of the 5 million tonnes of grain that is imported coming from Europe?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_122">No.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_71">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_123">Does it all come from outside Europe?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_124">Most of it, yes.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_73">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_125">What sector is it going into here? Is it animal feed porridge? Of those 5 million tonnes, what grains are we importing? Is more of it feed, oats or what is the breakdown?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_126">The breakdown of the 5 million tonnes of product that was imported in the past 12 months is probably between 2.1 million and 2.2 million tonnes of what we call normal grains, that is maize, wheat, barley, oats and soya. As for the rest, some of the products are wheat expeller, soya expeller, palm kernels, products from molasses and beet pulp and those kinds of products. They are fillers, proteins and such. That is my understanding.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_75">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_127">There was an income drop of 70% in 2023. The cost of diesel and of everything is going up. We live on an island and we need food security. The Government is wonderful at announcing it will support people and so on. What do the witnesses think?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_128">The Deputy said we rely on them. We need food security, but we do not need to import inferior products and drop the price of our own grain because of it. That is a ridiculous thing to do.</p>
+          <p eId="para_129"> We need to use our grain in the best way we can, whether that be beans, barley, beet, oats or whatever can be grown on the island. That should be used first. Let us be productive here. I know from feeding livestock that they can be fed on Irish grain only. Perhaps at times of year a small bit of soya is needed, but other than that Irish grain can be used for most of the year and we can grow the majority on this island. We will never get to full production, but we should at least use our own before we import anything inferior. Soya and maize are probably the best grains to import, but palm kernel, citrus pulp, soya hulls and so on are not good for feed. They are only fillers for oat.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_77">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_130">With Government support, where could the industry get to? Of the 5 million tonnes we are importing, how much could we produce so we are not importing as much?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. John Murphy<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_131">That is a hard question to answer.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_132">The Government targets are 350,000 ha by 2025 and 400,000 ha by 2030. We would love to see that happen but we do not believe it will be possible unless there is a fundamental change in the sector and in policy.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_80">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_133">I absolutely agree. With any of our food, such as the beef sector and imports under Mercosur, which let us face it they are just trying to plough through, we cannot compete. People will go into shops and pick up the cheapest item because they have to feed their families. That is just how life has gone. Our beef will be beside other beef and will be swallowed up by the market purely because people cannot afford to buy Irish beef. That is why we need the Government to step in and we need proper supports for all sectors of farming, not only tillage. We need to be feeding our children the best beef because we have the best land and equally feeding our animals grain grown on our land. I have horses at home. We produce the best bone in horses purely because of our ground and that is why we are the best, or at least well up there. I would rather buy an Irish product. It is the same with feeding cattle or horses. However, when we do not know what is in the bag of feed or in the whiskey, we do not know. Where it has come from needs to be written on the label.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Bobby Miller<recordedTime time="2025-10-01T16:20:00+01:00"/></from>
+          <p eId="para_134">The Deputy mentioned the Mercosur countries. We imported almost 1 million tonnes of feedstuffs from Mercosur countries in 2024. It was roughly the same figure in 2023. We are hearing a huge argument from the beef sector about this Mercosur deal. Tillage farmers have been dealing with Mercosur countries for the past 40 years. We hear about a 40% drop in tillage area. There is one reason it is dropping. Currently the beef sector is rightly challenging the Mercosur deal.</p>
+          <p eId="para_135">It is nearly 1 million tonnes. Of the maize that is imported, 80% is genetically modified. It is the same with soya. It is genetically modified. I am banned, as a tillage farmer, from growing that here. I will get fined for growing that here, yet that is my competition. There is no difference. When a farmer goes in to buy a bag of meal or a tonne of meal, there is no distinction between the two. The consumer does not know that either.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_82">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_136">No, they do not.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_83">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_137">I thank the witnesses for coming in. This is an important topic to discuss, and not just for grain growers. It has such a significant impact for the farming sector right across the country. In my own constituency of Mayo, for example, there is very little tillage, but I know how reliant they are in terms of foodstuff and bedding. It is an issue that is fundamentally important for the entire agri sector in the country.</p>
+          <p eId="para_138"> A significant point was made on the differences in the unfair trading practices in homegrown, indigenous grain versus what we are importing. We spoke about the Mercosur deal last week. It appears there is a significant drive within the European Union and the Commission to import inferior foodstuff, such as grain, beef and so on, and have our own farmers compete against that. I refer, for example, to the level of environmental protection our farmers are under and the buffer zone for the tillage sector in respect of taxation through the CBAM tax and so on. The message needs to go out very clearly that we cannot have such an unequal playing field for our farmers. I have a sports background. It would be like asking Manchester United to go out and play with five players against Arsenal with 11. That is what farmers have been asked to engage in here.</p>
+          <p eId="para_139"> In relation to imports, I am interested in the genetically modified. Obviously, GM food is much easier and cheaper to produce. It grows more quickly and has fewer inputs, etc. What percentage of our imported foods are genetically modified?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. James Kelly<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_140">It is over 50%.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_85">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_141">There is no distinction whatsoever in the marketplace between how our own product is sold and genetically modified product. That needs to change. We as a committee need to write to the Minister and the European Commission to change that. It would not happen in any other industry or sector. Consumers need to know what they are buying.</p>
+          <p eId="para_142"> What is the carbon border adjustment mechanism tax to a farmer in terms of cost per hectacre?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_143">We do not know yet in regard to carbon. The industry would say it will probably put €50 per tonne onto fertiliser at a minimum. Maybe other witnesses know better than me. The tillage sector uses its fair share of fertiliser because of scale. It will put an extra cost on me. It is as simple as that.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Clive Carter<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_144">If there is CBAM on fertiliser of €50 per tonne, should there be a similar carbon adjustment on imported grain? It is grown to a higher carbon footprint standard than our own. Again, there seems to be an unlevel playing field on that one.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_145">Only yesterday, somebody said to me that because they thought the CBAM tax is going to be calculated one year after the purchase and use of products, the industry is going to have to put a cost in there that is going to cover them to pay the tax a year later. That is, in a sense, exacerbating the problem. A guy said to me yesterday that CBAM alone could mean something in the order of €100 if the trade is going to protect itself in doing it. That is on top of the additional cost that tillage farmers will have to pay because they cannot use ordinary urea now. They must use protected urea, which is another €50 or €60 per tonne. That is another direct tax predominantly but not exclusively on tillage farmers.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_89">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_146">Has any element of the changes to urea, CBAM tax and buffer zones been introduced in the Mercosur countries? Is there any parity whatsoever in terms of environmental or food standards for the grain we are importing?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_147">Not that I am aware of. In fairness, they are doing more things than they used to in order to try to get a traceability trail in parts of South America, but that is not necessarily a sustainability or environmental trail they are chasing.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_148">In some of those countries the Deputy talked about, the chemicals that have had their authorisation removed in Europe and Ireland, which is quite a large list, are still freely available to be used. Some of the chemicals that have been gone here for 20 years are still freely available to be used in these countries. The equivalence of standard is not there. That is why I said we are still some of the best tillage farmers in the world. It is just that our hands are tied.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_92">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_149">It is very clear. We need to work with our colleagues across Europe to ensure there must be equivalence of standard in any trade deals. It is totally unfair that our farmers are competing against farmers across the world who are not subject to the same standards whatsoever. That is the issue here. I have made this point before. Farmers, in general, do not necessarily want subsidies; they want an equal playing field and a market in which they can earn a living for their product.</p>
+          <p eId="para_150"> Can I ask very quickly about land pressures-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_151">No. I need to move on to Senator Daly.</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_94">
+          <from>Senator Paul Daly<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_152">I thank the witnesses and apologise for the fact that we had votes at the start in case I repeat anything. I have a couple of things to say and maybe everybody will comment and give me their opinions. I know grain is, far and away, the biggest tillage product but there is a tillage crisis. Are there options for diversification in other crops? I hear people saying we should be growing more oilseed rape or whatever. Is there a potential diversification away from grain, not wholly but partially? There has been a lot of talk here about Exchequer funding. I would like to hear exactly where and how the witnesses would target it.</p>
+          <p eId="para_153"> Where I am from, it is still a mixed farming model. We grow a bit of barley for a bit of straw, feed our own grain and have sucklers or whatever. We are inputting into the tillage output, even at a very small scale. I do not know what kind of support those kinds of farmers would need. It needs to be <i>pro rata</i>. There is the same pressure on land up our way. There was talk about whiskey. It is totally farcical. There is a review of the PGI of whiskey and submissions need to be put in. We have a PGI for Irish grass-feed beef, which are fed grain in winter. Is GM grain going into Irish grass-fed beef, Irish whiskey or Irish bread?</p>
+          <p eId="para_154"> During Covid, there was a lot of talk about Irish wheat not being up to milling quality. Is that true or false? How can it be? There is a lot of talk about GM. I am totally opposed to it, but I am a fan of gene editing. Where are the witnesses on gene editing? We need to bring our crops up to speed. The witnesses would save money on sprays, maybe even fertilisers, if we could gene-edit some more varieties of crops. Where are the witnesses on that? I know discussion is happening in Europe.</p>
+          <p eId="para_155"> The Department and Teagasc come before this committee. If the witnesses were in my chair when they come in, what would they say? We will also have a Private Members' Bill in the Seanad and the Minister will be in. If they were taking that on my behalf, what would they say to him?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Clive Carter<recordedTime time="2025-10-01T16:30:00+01:00"/></from>
+          <p eId="para_156">I will come in on the bread question. We can produce the milling wheat for bread. That is no problem. We have done it for centuries. We have been told over the years that we cannot produce the standard for standard white loaves, but research in Teagasc said we do not have any issue with that.</p>
+          <p eId="para_157">A lot of that is used with soy as well. Funnily enough, we produce perfect wheat for the healthy breads, such as sourdoughs and pizza bases. We produce incredible wheat for all those things. That is often forgotten about. It is because of the standard white batch loaf that we are told we cannot produce the right milling, but if you talk to anyone in the industry, they will say we can produce perfect wheat for it all.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Matt Dempsey<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_158">I will make just one point, if I may. Senator Daly asked, if the committee had Teagasc in here, what we would ask them. I would ask them to quantify the cost disadvantage that Irish farmers are under <i>vis-à-vis</i> the new large-scale competitors in the world market. If that cost disadvantage were quantified, at least it would give a base for the discussion both internally and at Europe.</p>
+          <p eId="para_159"> Incidentally, I do not think I have ever heard such a positive, well-intentioned, informed questioning at a committee as we have seen here today. The goodwill is palpable and hugely appreciated.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. James Kelly<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_160">Senator Daly mentioned the Minister appearing before the Seanad and asked what we would ask him. I would ask him for targeted policy changes to encourage the use of native Irish grain. The industry is in crisis at the moment. I do not think people realise the enormity of it at present. We lost the sugar beet industry. We remember that too well in the area where I am from and in many other areas in the country. We simply cannot see that happen to the tillage industry in Ireland. We are very much part of the agriculture sector and, whether other sectors like to admit it or not, we are all reliant in some way or other on one another. That is why sufficient support must be given to the tillage sector.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_161">If I may take up three of Senator Daly's points of questioning, a Chathaoirligh, there are not so many diversification options. Yes, you hear about oilseed rape. It has become a more consistent crop over time. More people will have some of it but it will not replace huge swaths of barley land. Many diversification options hundreds of hectares rather than thousands of hectares. We are limited. We have lots of bad experience in the past.</p>
+          <p eId="para_162"> On the issue of GM feed into Irish beef, it is inevitable because GM feedstuffs are coming in either as the primary grain or as the byproduct of primary grain. It is going into the feed chain, so the answer is that it has to be there.</p>
+          <p eId="para_163"> With regard to bread, it is possible to a small degree but quite unlikely because wheat will still be the major ingredient for most flours and we do not have GM wheat globally, so that one is less likely, but there are other products going into bread. Mr. Carter mentioned soya. We have peas and other stuff going in. Many crops are not GM. Bits of GM soya could well be going in there.</p>
+          <p eId="para_164"> The last point I will take up is gene editing. We would be absolutely in favour of gene editing but, unfortunately, it just keeps being pushed down the road on us. It has the potential to offer alternative solutions to a total dependence on chemistry, which could be very useful. Unfortunately, such solutions are seen to be quite a while away because the crops that will be gene-edited first are the ones that are currently genetically modified, and they do not include the bulk of the crops we are growing.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_165">I need to move on to Deputy Healy-Rae.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_100">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_166">I am glad to get this opportunity and I welcome each and every one of the witnesses. It has been a really informative process and event for me because I have learned a lot of things. My eyes are open to things that the witnesses are after highlighting that are going on. They will appreciate that where I come from, specifically south Kerry, hardly any grain is grown, but we have a lot of good tillage farmers in north Kerry. One of the things I am very proud of when I drive up here every day and drive back down whenever is to see the golden grain growing, starting in east Cork and all the ways up along. It is great, and we should never visualise that that will not be a part of Ireland.</p>
+          <p eId="para_167"> The first speaker, Deputy William Aird, mentioned the €65 million that has been promised by Fianna Fáil and Fine Gael. For me, as an Independent, there is no difference between the two of them. They are the one party to all intents and purposes now because they are in government together and in their policies they are joined at the hip day by day.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_101">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_168">So is the Deputy's brother.</p>
+        </speech>
+        <summary eId="sum_6">(Interruptions).</summary>
+        <speech by="#DannyHealyRae" eId="spk_102">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_169">Deputy Aird will have to talk to my brother. I am here myself.</p>
+        </speech>
+        <summary eId="sum_7">(Interruptions).</summary>
+        <speech by="#WilliamAird" eId="spk_103">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_170">Do they come up in the same car?</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_104">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_171">I have never come up in the same car and I have to fight my own battles at the doors. If the Government parties promised €65 million or it is promised to the grain growers, I will be watching and insisting that they honour the commitment that was given. The other part of it is, though, that I do not want it to be taken out of the budget that the sheep farmers or any other farming sector has. That is not the way to do it. The parties have promised it as extra money. I am upset because I heard a rumour today that sheep farmers may face cuts. I do not know where the parties are thinking of going with that money but that will hurt me very much, as much as it will hurt me that the witnesses do not get their money. They are well entitled to it, but when we hear that there is a different policy demanded or a different regime they have to follow in relation to fertilisers and all that and that the other ones from whom we are importing do not have to, that upsets me a lot.</p>
+          <p eId="para_172"> I have a question about that. How much grain do we import from Ukraine, does anyone know?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Bobby Miller<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_173">I do not have the figure in front of me. It was 70,000 tonnes last year, I think, but that figure is available from the Department of agriculture. I will remind everyone here that one of the first loads of grain to leave Ukraine landed in Ireland after the war. It was supposed to be destined for the Horn of Africa and those countries and our politicians clapped in the grain at the port.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_106">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_174">I am asking the witnesses that question because we are paying more to Ukrainian grain growers than we are to Irish grain growers. That hurts me because we have subsidised Ukraine in a very big way and are still doing it.</p>
+          <p eId="para_175"> I see the trouble the witnesses are in with the rented land. Our Government and our Administration should be supporting Irish farmers. As regards insisting now that we can only have unprotected urea and what I would call something that would grow a lot costing more, my honest belief is that unprotected urea would grow nothing. We are being forced to use that now and pay more for it, and the people who are exporting grain here and whom we are importing grain from are not obliged to adhere to the same regulations. Is that right? Maybe one of the witnesses could explain that a bit more to me.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i>Deputy William Aird took the Chair.</i>
+        </summary>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Andy Doyle<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_176">If I may, Vice Chair, on the Deputy's first question on Ukraine, in terms of the numbers we have in front of us, it would appear that last year we took in about 57,000 tonnes of wheat from Ukraine. It is important to say, however, that the source of imported grains is always dependent on where the cheapest supply is. It is not necessarily a regular trading pattern that is there all the time. It is wherever importers can get it cheapest. Sometimes that will just be a boatload of exported product that went onto the high seas to one place and all of a sudden was turned around and had to find a market somewhere else. That can often be the origin of the low-cost imports.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_108">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T16:40:00+01:00"/></from>
+          <p eId="para_177">I thank Mr. Doyle.</p>
+          <p eId="para_178"> As regards Mr. Matt Dempsey and the policy changes he is asking for, I am very interested in that and will be ensuring that at every opportunity I will be looking for that and raising it because we must have a level playing pitch at all times.</p>
+          <p eId="para_179">That does not seem to be the case now. I may not be a grain farmer but I understand grain. We appreciate the attention given here today and the number of people who came. I can see they have support behind them. We are enthused by their presentation and are now better informed. I appreciate that and thank them. We are conciliatory. We do not want what happened with the beet industry to happen here. I often think the beet industry could be revitalised and reopened. Every bit of the industry, including the sugar beet factory, was blown out of Mallow. The same plant is now operating in Belgium. We are under the same sky, in the same European market, so I cannot understand that. I thank the Chair and the witnesses.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_109">
+          <from>Senator Paraic Brady<recordedTime time="2025-10-01T16:50:00+01:00"/></from>
+          <p eId="para_180">I am sorry I missed the presentation. Our product in Ireland has always been known as Irish and green. We are known to have a clean, environmental way of farming. I am a suckler sheep farmer. We depend on grain to feed weanlings and feed cows and sheep during the winter. In regard to grain growers, how much of the product is forward bought by processors here? Can I have some comments on three-crop rotation? When we were in Europe last week, three-crop rotation seemed to be the pillar on which European farmers model themselves. Another issue relates to straw chopping and putting straw back into the ground. Straw is a commodity that suckler and sheep farmers depend on for bedding. Last year, suckler farmers were paying €50 a bale for round bales of straw. It was absolutely crazy, especially when we knew that straw was being chopped into the ground. Grain growers received money for chopping straw into the ground. There has to be a better way. Some joined-up thinking must be put into the process regarding this. There has to be a valued amount in straw per year. This year, straw is probably of lesser value - maybe half of what it was - but it is still going to be used up, if not this year then certainly next year. What are the witnesses’ thoughts on crop rotation, forward buying and what percentage of Irish-grown grain goes into the pig, poultry and agriculture industries here? As has been touched on by others, we know that processors import a lot of grain. Soya is an important part of the grain industry here and is a big import. Is there a byproduct here that can fill in for soya so that we can support grain growers? If there is, will the witnesses give us some insights on that? I apologise again for missing the presentation earlier.</p>
+        </speech>
+        <summary eId="sum_9">
+          <i> Deputy Aindrias Moynihan resumed the Chair.</i>
+        </summary>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:50:00+01:00"/></from>
+          <p eId="para_181">In regard to the forward buying of grain, in most merchants and in many co-operatives there is an option to forward sell at different times of the year. However, by and large most of the grain is traded at harvest time in green grain which is at 20% moisture. That is the standard. I would say that more than 90% of the grain is traded directly at harvest time.</p>
+          <p eId="para_182"> On the three-crop rule, our opinion is that the bottom brackets probably need to be brought upward. Crop rotation is key to good farm practice and it has got us through GAEC. It would be popular for me to say today that we should get rid of it. However, to be fair, if we increase the bottom hectares it would take a lot of people out of the three-crop rule who do not need to be in a crop rotation situation on their farms. That has had an impact on some of the smaller growers. My answer is to bring up the bottom hectares and rule certain people out and then have most of the larger growers stay in three-crop rotation because most of the larger growers are doing three-crop rotation and more anyway.</p>
+          <p eId="para_183"> I disagree with the Senator completely on straw chopping. There was a plentiful supply of straw last harvest, as it turned out. Again this year, plenty of straw is available for anybody who wants straw. The aim of the straw incorporation measure is to build carbon in soil. Carbon in soil on many worn tillage farms has been quite depleted over a number of years because of the extraction of grain and straw going out the gate. It was one of the best schemes that the Department of agriculture brought into the tillage sector. Along with the IFA and Irish Grain Growers, we have fiercely defended it over recent years. If there are people exploiting the straw market, that is a different scenario but there has been a plentiful supply of straw, even with the straw incorporation measure. If we increase our targets and we get to the 400,000 ha target, we will be looking for the straw incorporation measure to be increased.</p>
+          <p eId="para_184"> On protein and soya-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_111">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:50:00+01:00"/></from>
+          <p eId="para_185">Sorry, time is up.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Kieran McEvoy<recordedTime time="2025-10-01T16:50:00+01:00"/></from>
+          <p eId="para_186">Just quickly on protein, the Senator mentioned soya. There is a European strategy to grow proteins which we avail of through peas and beans. There is a subsidy to do that at the moment. However, there is a problem with the end use of those products. There is not enough buy-in from people who could use them as a replacement because soya is so easily obtained with just a phone call. Work needs to be done in that area.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Clive Carter<recordedTime time="2025-10-01T16:50:00+01:00"/></from>
+          <p eId="para_187">I will be very brief. I echo Mr. McEvoy’s points on the three-crop rule. When it came in, the three-crop rule brought benefits such as more diversity of crops. However, I would like to see the minimum areas doubled. The straw incorporation measure got tillage farmers thinking about the organic matter in their soils and the value of chopping straw in. That still has a value to the tillage farmers and it is part of the programme for CAP, so it is in for the foreseeable future.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T16:50:00+01:00"/></from>
+          <p eId="para_188">I thank everybody for the contributions, questions and answers. I thank the witnesses for travelling to this meeting. I need to move onto the next session. On behalf of the committee, I thank the witnesses for taking part.</p>
+        </speech>
+        <summary eId="sum_10">
+          <i> Sitting suspended at 4.58 p.m. and resumed at 5.05 p.m.</i>
+        </summary>
+        <speech by="#AindriasMoynihan" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:00:00+01:00"/></from>
+          <p eId="para_189">We are now back in public session to continue our discussion on the current challenges facing the tillage industry. I advise the witnesses that if they are giving evidence from within the parliamentary precincts, they are protected by absolute privilege in respect of the evidence they give to the committee. This means that they have a full defence in any defamation action for anything said at a committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at the Chair's discretion. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precincts are asked to note that they may not benefit from the same level of immunity from legal proceedings as witnesses giving evidence from within the parliamentary precincts. They may consider it appropriate to take legal advice on the matter. Privilege against defamation does not apply to publication by witnesses outside of the proceedings held by the committee of any matters arising from the proceedings. </p>
+          <p eId="para_190"> During this session, we will hear from officials from the Department of Agriculture, Food and the Marine and from Teagasc. From the Department I welcome Ms Louise Byrne, deputy chief inspector; Dr. Barry O'Reilly, senior inspector; Mr. Joseph McNamara, agricultural inspector. From Teagasc I welcome Mr. John Spink, head of crops, environment and land use; and Mr. Shay Phelan, tillage crops and potato specialist. The opening statements have already been circulated to members. I invite our guests to spend two minutes highlighting elements of their statements and then we will go to members for questions.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:00:00+01:00"/></from>
+          <p eId="para_191">I thank the Chairman for the invitation to discuss the current challenges facing the tillage sector. The 2025 harvest was excellent in terms of weather conditions for getting work completed. Yields this year fared well in general, particularly for winter crops, with reports for spring crop yields being more variable. However, there are pressures facing the sector, not least the challenging market outlook and downward price pressure this season. The Minister, Deputy Heydon, has engaged directly with farming organisations to hear their concerns.</p>
+          <p eId="para_192"> The tillage sector is an integral part of Irish farming, producing high-quality animal feed and bedding for the livestock sector and ingredients for the food and drink industry. The sector makes a significant contribution to the Irish economy and is estimated to support over 11,000 full-time equivalent jobs. In recognition of the importance of the sector, significant direct supports have been provided to tillage farmers in recent years. Schemes specific to the tillage sector include the straw incorporation measure, the tillage incentive scheme, the protein aid scheme and the tillage capital investment scheme, all of which have proved hugely popular among tillage farmers. It is widely acknowledged that these schemes have made a significant contribution to the tillage sector in recent years, as well as contributing to meeting Ireland's environmental objectives through positively altering practices at farm level. In February of this year, the Minister announced €32.4 million of payments under the tillage and horticulture support scheme which was the Government's response to a difficult year in 2024 for tillage and horticultural farmers. The farming for water EIP has a budget of €60 million to support targeted on-farm additional measures to improve water quality, including the establishment of cover crops. This year almost 1,400 tillage farmers have expressed an interest in establishing such crops under the EIP. </p>
+          <p eId="para_193"> It is Irish Government policy to grow the area of tillage in the years ahead. The climate action plan sets a target to increase the area of tillage to 400,000 ha by 2030. This is well founded, given that the sector is one of the most carbon efficient in Irish agriculture. It is for this reason that the food vision tillage group was established in May 2023 to set out a roadmap for the sector.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. John Spink<recordedTime time="2025-10-01T17:00:00+01:00"/></from>
+          <p eId="para_194">I thank the committee for the opportunity to present on behalf of Teagasc today. The current situation in the sector has been well covered so I will look to the future and outline some of the things we are doing in Teagasc to try to improve the situation in the sector. </p>
+          <p eId="para_195">Our predictions for 2026 are as follows. The beans and oilseed rape, which traditionally are break crops between the profitable cereal crops, are predicted to be the most profitable crops for the coming season. In the case of beans, that is due almost entirely to the protein aid scheme, which Ms Byrne just mentioned. In terms of oilseed rape, because of the reduced production of oilseed rape in the UK due to flea beetle and the need to feed, I think, three large oilseed rape presses there, the UK is sourcing a lot of the crop grown in Ireland, or what it can. Barley and wheat are the most widely grown crops and they are predicted to deliver the lowest profitability available to farmers.</p>
+          <p eId="para_196"> I will move on to discussing what Teagasc has been doing. From a research perspective, and with a lot of support from the Department of Agriculture, Food and the Marine, Teagasc has been looking to develop higher value markets for Irish tillage crops, for example, the drinks industry. We have established, with capital support from the Department, the national centre for brewing and distilling, which was mentioned briefly earlier. We have been trying to demonstrate the value of Irish wheat in whiskey production and to get more Irish grains utilised in the drinks industry.</p>
+          <p eId="para_197"> Teagasc has also had a number of products looking at fractionation, particularly of protein crops, to develop human food ingredients and get some of the pulses and peas that we can crow into those higher markets.</p>
+          <p eId="para_198"> As mentioned briefly earlier, about 18 months ago, we developed a life cycle assessment tool for Irish combinable crops. Earlier this year, that was incorporated into AgNav, and early results indicate that Irish grain has a very low carbon footprint in comparison with international competitors. We hope that will support the use of Irish grain in future.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_199">Before I go to members, I had intended to follow the same rota we had earlier but I am conscious there are members on the rota who did not get an opportunity to speak earlier.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_119">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_200">I propose that the members who did not get an opportunity to contribute [last time be given the opportunity to speak first.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_201">Is that agreed? Agreed. We will open with Senator Lynch.</p>
+        </speech>
+        <speech by="#EileenLynch" eId="spk_121">
+          <from>Senator Eileen Lynch<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_202">I thank Teagasc and the Department for their presentations. As we are all aware, the Irish tillage industry is facing massive challenges. While the industry inevitably needs aid, it needs more than that to make it sustainable. On the vision for the future of tillage, the witnesses pointed out different issues. How are we going to put that plan into action?</p>
+          <p eId="para_203"> Aid has been predicted and increased. It is important to target that aid at tillage farmers to ensure that genuine tillage farmers access it, as opposed to dairy farmers who take out extra land for derogation purposes. We must ensure the aid goes directly to tillage farmers. In saying that, I am conscious that I come from a dairy background rather than a tillage background. We have to respect the fact that the tillage industry is in crisis. Three weeks ago, I attended an IFA meeting in the Killashee Hotel at which there were about 1,000 people in attendance. We are aware of the difficulties and I want to know how we will fix them. Will any aid granted be targeted directly at tillage farmers? Will the witnesses ensure that will be the case?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_204">There are very targeted supports already in place for the tillage sector. The straw incorporation measure, SIM, and protein aid scheme have been mentioned. Already this year, the Minister, Deputy Heydon, paid out €32.4 million in supports for the tillage and horticulture sector. The budget negotiations are ongoing and we have to await the outcome.</p>
+          <p eId="para_205"> We have a Food Vision tillage report that clearly sets out an ambition to grow the sector to 400,000 ha by 2030. Within that there is an ask from the stakeholders in the sector for supports to be provided directly to the tillage sector. Obviously, the Department is bound by the budgetary allocations we receive. Within the CAP strategic plan, the money is locked in for the SIM and protein aid scheme. It is our intention that any supports we get - if we get them - will be targeted. We are trying to support the tillage sector on the back of what has been a difficult year given the downward pressure on prices. That has been on the back of a few very difficult years as well. Our intention is to support the tillage sector and we feel we have done that. For instance, another support this year is the farming for water European Innovation Partnership, EIP. We all have a commitment to improve water quality but within that scheme, there are some very targeted supports for tillage farmers to grow catch crops. There has been a significant expression of interest from growers for that measure. There are specific supports for the tillage sector. The Government, in the programme for Government, is committed to supporting and growing the tillage sector.</p>
+        </speech>
+        <speech by="#EileenLynch" eId="spk_123">
+          <from>Senator Eileen Lynch<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_206">I appreciate where Ms Byrne is coming from but I am seeking a strategy. I am aware that the budget will be next week and everything has yet to be finalised.</p>
+          <p eId="para_207"> On support for the processing industry, insofar as there has been a lot of investment in storage, can the Department guarantee funding for that? I ask because for the past ten years there has been incredibly little investment in that kind of storage and processing.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_208">Will the Senator clarify her question?</p>
+        </speech>
+        <speech by="#EileenLynch" eId="spk_125">
+          <from>Senator Eileen Lynch<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_209">I am asking about further financial support for the grain processing industry, for drying and storage.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_210">Is the Senator referring to farmers who are drying grain?</p>
+        </speech>
+        <speech by="#EileenLynch" eId="spk_127">
+          <from>Senator Eileen Lynch<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_211">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_212">We do not have supports for farmers who are drying grain at the moment. There is no support that I am aware of. We have the tillage capital investment scheme under the targeted agricultural modernisation scheme, TAMS, which provides specific supports for tillage farmers.</p>
+        </speech>
+        <speech by="#EileenLynch" eId="spk_129">
+          <from>Senator Eileen Lynch<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_213">Yes, but it is not targeted at storage. There has been underinvestment in the storage of grain. There is also the fact that people have to pay a commercial rate on drying storage but not for general agriculture and buildings. That is another massive cost for tillage farmers who are drying and storing grain.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_214">I will have to take that away.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_215">Under the TAMS tillage capital investment scheme, there are specific categories of support, one of which is for grain storage and treatment. That scheme covers that. There is an investment ceiling of €90,000 for the tillage capital investment scheme and a grant rate of 40%. It is a very popular scheme. To date, under TAMS 3, €8.5 million has been paid out under the tillage capital investment scheme. That does not include support for tillage equipment under other schemes like the young farmer and organic schemes.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_132">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_216">I thank the witnesses for coming in. My first question is for Teagasc. Mr. Spink mentioned new markets. What is the value of the market last year, this year and the year before that? How much value, in additional millions of euro, has Teagasc created for tillage farmers through distilleries and so on through higher prices?</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. John Spink<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_217">As yet, we have not done that because we are only----- </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_134">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_218">What is the point in the usual palaver of talking about markets? It is pounds, shillings and pence that farmers need in their pockets, not talk about new markets that is not delivering. Where are the markets if Teagasc has said it has done the work on them and got them?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. John Spink<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_219">No, we are just starting. It is going to take a while to shift some of those processes.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_136">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_220">Does Mr. Spink realise that at the moment-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_221">Deputy, please give the witness a chance to answer. </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_138">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:10:00+01:00"/></from>
+          <p eId="para_222">-----the dairymen are not coming in knocking on the door? The beef man is not coming in because, thankfully, the price is good. Farmers are busy and they only look for a fair price when they are in trouble. Let no one cod themselves about the fact that the tillage sector is in trouble at the moment. We are going to lose tillage farmers.</p>
+          <p eId="para_223"> I have questions for the Department. Under the climate action plan, when one looks at the funding needed is it not a no-brainer to help the tillage sector more, rather than bringing in stuff from, say, Ukraine and other third countries such as the Mercosur countries?</p>
+          <p eId="para_224">Is it not a no-brainer to do that even with all the palaver I hear about the climate?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_225">From our point of view, the reality is there is a dependence on imported feed for our livestock. Obviously, we want to grow the tillage area and to increase the amount of grain, but we are not going to be able to replace imports. The reality is that we have livestock to feed and we are dependent on imports. There were a lot of questions in the last session about the volume of the imports of feed. We have the data and we can happily provide it to the committee. It is very much our intention that we want to do that. We feel that there are opportunities to increase the area under tillage. At the moment, we are building the foundations to increase the attractiveness of tillage. We believe that Irish tillage has significant opportunities in terms of its carbon footprint. We have supported ICBF, Bord Bia and Teagasc through the development of the AgNav platform and the tillage module in that specifically to try to capture the carbon footprint of Irish grain. We are working collaboratively with the Cereals Association of Ireland, Bord Bia and players within the market to try to create those value-added opportunities that will differentiate and command a premium for Irish grain, whether that is in food or drink. We are at the stage where we are putting in place the building blocks for that. We will get the proof points and when we have them, we hope there will be a return from the marketplace for Irish grain.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_140">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_226">I draw Ms Byrne's attention to the clock.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_227">The reality is that the majority of grain coming in is being used for animal feed purposes.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_142">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_228">Yes, I know that. Ms Byrne talks about opportunities for farmers. Unless I heard it wrong, we are losing a farmer every week out of tillage. Is that correct? That is not an opportunity, it is a loss. I say that just so Ms Byrne understands it.</p>
+          <p eId="para_229"> I understand that grain must come in because we do not have enough in this country. At the moment, she is talking about increasing tillage at a time when the dairy sector can give €400 a hectare, and with the advent of solar farms. Where does she see the expansion coming when we are losing farmers? She mentioned Bord Bia. We listened to the various organisations that came in earlier. At the moment, if I used angel dust, I would be locked up in with an animal, but the guys in America can use it and they can send their stuff in. As was said by the groups earlier, why is genetically modified grain not clearly marked to distinguish it from the grain grown in Ireland? First, why is that not done as a minimum requisite? Second, let us call a spade a spade, the budget must deliver for grain farmers. The derogation is pressing on one side, which means dairy farmers are looking for more land. There is no point in saying they are not. Forestry investors, investment companies and solar farms are coming in trying to buy land. There is pressure on land. I did not see any more of it made in the last few years so the pressure that is on it is ferocious. The Department needs to provide a budget to make sure that those farmers are kept going. If it does not, everyone will lose if they are gone and out of it. Does Ms Byrne not agree?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_230">There is time for only a very brief answer.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_144">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_231">Could someone answer the Bord Bia one on genetically modified products?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_232">First, there is a very strict regime regarding the rules and requirements on imports of feed into the European Union. GM feed is allowed to be imported but there are specific rules around the labelling of feed.</p>
+          <p eId="para_233"> On where the increase for tillage is going to come from, there is no doubt that access to land was identified as a significant challenge to increasing the area under tillage crops. Ultimately, the decision to invest in tillage rests with the farmers themselves. What we need to do is give confidence to the sector. We need people to think there is an opportunity and a future in the sector. Of course supports will form a strategic plank of that, but there are also other things that we are doing. One of the things we tried to do was to consider the supports for nutrient importation schemes in August 2024 and enhanced nutrient storage for dairy farmers and other farmers, basically so that they could store slurry rather than having to rent more land.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_234">I thank Ms Byrne. I need to move on to Deputy Cleere.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_147">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_235">What I have just heard is unbelievable regarding the viability of tillage. Would anyone invest in a business or sector that is not viable? That is a yes-no answer because I am conscious of the time. If a business was not viable, would Ms Byrne invest in it?</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_236">The reality-----</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_149">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_237">I am sorry but I am really conscious of the time. Could she just say “Yes” or “No”?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_238">The tillage sector has peaks and troughs. That is the reality-----</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_151">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_239">But if a sector or business was not viable, would Ms Byrne invest in it? I would not. Would Ms Byrne?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_240">While there has been a reduction in the number-----</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_153">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_241">I am really conscious of the time. Could she say "Yes" or "No"?</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_242">This is not about what I would do as an investment.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_155">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_243">Okay, we will move on. We heard from the previous speakers that about 1,500 farmers have exited tillage farming since 2022. By the time we sit here next week, there will be another farmer not doing tillage any more. That is not just a hit on the agriculture side; it hits every community right across rural Ireland, especially where I represent, Carlow-Kilkenny. What is the Department going to do to support these people? More importantly, what is the Department doing to support new farmers entering the tillage sector? If we have 1,500 people leaving, how in the name of God are we going to attract people into the sector?</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_244">Yes, the number of farmers has declined. In the main, the figures we have show that it is the smaller farmers who are leaving and the bigger farmers are getting bigger. The area under tillage has increased since 2020. There is more tillage now.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_157">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_245">What is the current area under tillage at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_246">The current area is 335,000 ha. That is excluding potatoes.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_159">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_247">Am I right in saying we want to get to 400,000 ha by 2030?</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_248">That is the target.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_161">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_249">Based on current trends and projections, does Dr. O'Reilly think the target will be met?</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_250">A lot of work is being done to try to reach that target. We have a Food Vision tillage group at the moment. The group was set up in 2023 to set out a roadmap for the growth and development of the sector to 400,000 ha. That is a very detailed report. It covers more than 70 different recommendations across a range of different themes.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_163">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_251">In fairness, I acknowledge that a lot of work has been done behind the scenes. Does Dr. O'Reilly think we will hit the target of 400,000 ha in 2030? It is very ambitious given where everything is. Is Dr. O'Reilly confident we will get to that figure?</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_252">Yes, if we continue to work on the Food Vision tillage group and to implement the recommendations in the report, along with targeted supports.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_165">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_253">Will we hit it in five years' time, based on the trends over the past five years?</p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_254">It is going to be challenging but back in 2018, the overall tillage area was down around 300,000 ha. That area increased to 340,000 ha between 2018 and 2022. We are after experiencing three of the most challenging years for tillage farmers – 2023, 2024 and 2025 – and the area has remained stable. A lot of the supports that were put in place in recent years have been widely acknowledged-----</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_167">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_255">Just on the maths, from 2018 to 2025, we went from 300,000 ha to 340,000 ha and the ambition is to go to 400,000 in 2030. I will move on.</p>
+          <p eId="para_256"> What is the Department doing to promote the use of technology and data in the tillage sector to improve efficiency and sustainability?</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:20:00+01:00"/></from>
+          <p eId="para_257">Tillage farmers have been very good adopters of<b>
+						</b>new innovation and new technology. They were early adopters. Under the TAMS scheme, for example, a lot of new innovation and new technology is being supported. The objective is to try to increase the efficiency of farms and also to have a more precise approach that delivers an environmental benefit.</p>
+          <p eId="para_258">There is a lot of innovation happening in crop breeding. The Department has a comprehensive variety trialling programme in place at present and we have seen a lot of new varieties coming through the system with good sustainability traits. For example, we have winter barley varieties coming through with barley yellow dwarf virus resistance. Crop breeding is undergoing a lot of development, particularly in the area of new genomic techniques. This is an area the Department of agriculture is leading on at European level. It is something of which we are very supportive. It has great potential in terms of breeding new and better varieties that can result in benefits for consumers, farmers and the environment. That is progressing and we are very supportive of it.</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Mr. Shay Phelan<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_259">GPS technology is a key benefit farmers can avail of when they apply for TAMS. It generates a lot of live data for tillage farmers. As Dr. O'Reilly has rightly said, tillage farmers are probably the most forward-thinking farmers in the use of data and technology for sustainability. A project we are starting up is to use slurry from the dairy and pig sectors on tillage crops in the spring. This takes a lot of technology. It ticks a lot of boxes for sustainability and fertiliser requirements.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_170">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_260">I welcome the witnesses. Earlier a group was before the committee pleading with us for ring-fenced money for five years for the tillage sector. They were looking for that in advance of the budget and they were here because they are in a very serious situation. I do not think the witnesses have answered the question given that they say the area will be increased to 400,000 ha but I guarantee we will be sitting here in five years' time and the sector will have dropped below what we have today. I guarantee it. I do not know anybody who is going into tillage. I know people who are exiting tillage and it is very wrong that they are doing so. I am around long enough to remember when people could make a living with 30, 40 or 50 cows. The number required has doubled, trebled and quadrupled. Tillage is the same. That is why small people are being taken out of tillage. What do we call a small person? There is absolutely no way someone could make an income with 100 acres of tillage, not a notion of it. Those with an average-sized farm have to come out of it because that is no longer viable.</p>
+          <p eId="para_261"> The Department is saying all of the schemes already support the sector. If this has happened, why are so many people walking away? Why have so many people in this country who were very good tillage farmers gone into milking cows? They have changed their farms to milk cows. Why is this? It is because of profit level that is there as well as the projected incomes over the next ten years. Even if the price per litre drops by A, B, C or D, they will still be in a profitable situation. I cannot understand it. I was never a grain grower but I could never understand how barley would be cut and sent to the malt house but the farmers would not get the price of it for six or eight weeks. Would we ask dairy farmers to produce milk, not know what they will get for it when it is being taken away in the lorry, and be told two months later what they get for it? This is crazy stuff.</p>
+          <p eId="para_262"> When did the Department last meet on Food Vision? That is a direct question and I would like an answer.</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_263">In February.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_172">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_264">This year?</p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_265">Yes.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_174">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_266">It is now October. Does Ms Byrne think that is progress?</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_267">We met and provided an update on progress. It does not mean that work has not been ongoing. Significant work has been ongoing on the actions in the Food Vision tillage report. The Food Vision tillage report is for all stakeholders. It is not just directed at the Department or Teagasc. All stakeholders have a role in trying to increase the area. I accept that hitting 400,000 ha will be very challenging. The reason people have moved into dairy is that dairy is more profitable.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_176">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_268">How is the Department going to stop people going out of tillage? I know three people leaving tillage. They are finished after this year. Does the Department realise the reality? The witnesses have said that the bigger person is getting bigger. The only way I know this is because when farms come up for sale, if they are not bought by dairy farmers, they are bought by the likes of Coolmore and they are all going into tillage. I certainly do not know any young person, male or female, who is opting out of what they are at and going into tillage. There is not a bank manager who would give someone a €20 note to do it in the morning. We know that when we go into the bank, the first thing we are asked is whether we are in cows. I am asking the Department to please listen. We have lost 200,000 suckler cows from the country. Whoever was here ten years ago should have insisted that the witnesses' predecessors would back the farmers to keep those cows. They are gone and they will not be back. The really good stockmen are gone and they have diversified. The same is happening in tillage. It is there before our eyes.</p>
+          <p eId="para_269"> I thank the Department for all of the schemes it has put in place but the bottom line is that they are not enough. I would prefer if everybody who is here today sat down with the Ministers for agriculture and finance. I would also include the Minister, Deputy Chambers, because, whether people like it or not, he is the person to give enough money to the Department. If the Department does not give that money, there will be fewer people in the sector this time next year.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_177">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_270">Thank you, Deputy Aird. We need to move on to Deputy Kenny.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_178">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_271">I am not blaming the witnesses individually. I am just giving them the facts. Please read the history of agriculture.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_179">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_272">I thank the witnesses for their presentation and their work. I have two very small questions. Often, looking for quick answers does not work but these are questions that could have them. Does the Department produce policy? Is it that it does not produce policy but that it implements it?</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_273">I would argue that the Food Vision tillage report is a strategy for the sector. It is a policy. Obviously, EU policy and the CAP proposal comes from Brussels and Ireland will feed into the negotiations. Absolutely we are producers of policy, there is no doubt about it.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_181">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:30:00+01:00"/></from>
+          <p eId="para_274">The Department is a producer of policy and that policy is to try to advance all of the various sectors. Pressure was put on a few minutes ago regarding whether the Department would invest in something that was not viable. It was quite an unfair question because what we really need to do here is to try to make the sector viable and work together to develop and support a sector to become viable. That is what we need to see happen.</p>
+          <p eId="para_275"> We are speaking about support and decisions the Minister will make on what support will be put in place for the sector. That is the Minister's decision. I often hear politicians being very quick to blame Europe for things that go wrong here. Sometimes at this committee, people are very quick to blame the Department and everyone else for things that go wrong. The person who is responsible primarily for putting the supports in place and doing the policy is the Minister. It is the people who are elected and not, in fairness, the people from the Department or Teagasc. It is unfair to come in here putting pressure on them. They are not the people who are responsible for this. Yes, they collaborate and work together to try to produce a vision for moving forward, which is what Food Vision is, but, in fairness, it is the Minister and the people who are elected who do the policy. The people who elect them need to look at what policy there has been in the past and what failures there have been in the past. If they keep electing them, they can expect the same failings. That is my political speech over.</p>
+          <p eId="para_276"> I was taken by what Teagasc said about profitability and the most profitable crops being protein crops, yet they are the ones for which there does not seem to be as high a market.</p>
+          <p eId="para_277">I would like to tease that out a little, consider the what and why of it, and ask how we can develop that a little more. One of the things we see is that many of the proteins are being imported for feed, etc., from other countries. I take it that is because they are cheaper for the farmer to purchase and use.</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Shay Phelan<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_278">There are two ends to that story. On whether it is cheaper, soya sets the price internationally. The price of native Irish proteins is based on soya.</p>
+          <p eId="para_279"> On the use of beans, for example, in feed, there is an upper limit of how much can be included in the diet, after which there are problems with inclusion rates, tannins, feed quality and all those types of things. Peas are an alternative which have a higher inclusion rate. There are opportunities there, for sure. The big problem is that the merchants and co-operatives do not have the infrastructure to take in all the extra beans. That is especially so in the smaller mills that do not have the capacity because they were built to take the likes of cereal grains.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_183">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_280">Is there a need to develop that sector?</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Mr. Shay Phelan<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_281">Potentially, yes.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_185">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_282">We should invest to develop that sector. For its long-term profitability or viability, the tillage sector requires a little more investment.</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Mr. Shay Phelan<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_283">Yes, that is true at farm level, for sure. The protein aid scheme has been of considerable help. We have seen native Irish proteins grow exponentially in recent years primarily because of the support that is there. Those supports are there. It is at compound and feed level that more supports need to be included.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_187">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_284">Mr. Phelan also mentioned the possibility of developing more processing opportunities in proteins, etc. Two weeks ago, the committee took a trip to Denmark. A co-operative there was set up in the early 1930s to produce potato starch. They were the largest producers of potato starch in Europe. In protein ingredients and certain other ingredients, are there opportunities from an Irish perspective? I am conscious that if we want to build new sectors, we need the State to invest. If we leave it to the market to invest, the market will look elsewhere because it is cheaper somewhere else in the world. The State has the deep pockets and the commitment to investment. Is there an opportunity we need to be considering for State investment?</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. John Spink<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_285">There are opportunities to add value. We have an immediate problem driven by low prices and high input costs for grain in the world. We cannot do anything about the world's grain prices but we can advise farmers how to use inputs as efficiently as possible and get the biggest bang for their buck. Longer term, we need to add value so that the market returns a viable income to tillage farmers. We are not going to do it overnight but we need to do what the dairy sector did, however many decades ago it was, by adding value to the milk. One might argue that we should have started 20 or 30 years ago.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_189">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_286">We are here now.</p>
+        </speech>
+        <speech by="#" eId="spk_190">
+          <from> Mr. John Spink<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_287">It is a bit like noting that the best time to plant a tree was 30 years ago but failing that, it is today. A big part of the Food Vision 2030 tillage report and the work being done is to try to ensure that in the future, the market provides a profitable return to tillage farmers.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_191">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_288">The peas and beans sector that Mr. Phelan talked about is a part of that. Is there a big opportunity there?</p>
+        </speech>
+        <speech by="#" eId="spk_192">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_289">There is. We are engaging with some commercial players in that space. There are some ongoing discussions with other Government Departments about how we can support those opportunities. We are working on that.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_193">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_290">We talked about rotation crops. Sugar beet has been mentioned. Is there still opportunity in its use as a feed for animals?</p>
+        </speech>
+        <speech by="#" eId="spk_194">
+          <from> Mr. Shay Phelan<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_291">There is a grower in the audience who grows fodder beet for animal feed. It is a limited market because the technology you need to feed that crop to animals is different from that required to feed grains.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_195">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_292">I thank the witnesses for coming in. As far as I can tell from listening today, we seem to have a crisis in tillage farming. Under the climate action plan, the intention was to increase the tillage area to 350,000 ha by 2025. Has that been achieved?</p>
+        </speech>
+        <speech by="#" eId="spk_196">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_293">We have reached 335,000 ha, but that excludes potatoes. If we include potatoes, there are probably another 9,000 ha on top of that. We have reached over 340,000 ha.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_197">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_294">We are still behind the target. We are hoping to increase it to 400,000 ha by 2030.</p>
+        </speech>
+        <speech by="#" eId="spk_198">
+          <from> Dr. Barry O'Reilly<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_295">Yes.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_199">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_296">Mr. Carter of the Irish Grain Growers Group earlier told the committee that "poor policy support has led to long-term decline" in tillage farming. Is that true or false?</p>
+        </speech>
+        <speech by="#" eId="spk_200">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_297">I do not think that is necessarily fair. The reality is that the tillage sector has received significant supports through the years. This Government committed in the programme for Government to supporting the tillage sector. The reality is that the tillage sector is very much exposed to world commodity prices. Grain is traded according to world commodity prices and the vast majority of the grain is going into animal feed. That is a challenge. Tillage has good years and bad years. Unfortunately, we are now on the back of three particularly bad years. Are we optimistic for the future? We are. Do the stakeholders believe there are opportunities for the sector? They do. They have put down what we collectively believe is the pathway to maximising the opportunities for the tillage sector. My glass is always half full. It is clear that supports will be important in meeting our climate targets but there are other things we can do and are doing. We have mentioned a few of them here today.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_201">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_298">It is a concern. The issue of costs was also raised. Costs are crazy. Unfortunately, tillage farmers are not able to make a living from their tillage farms because of the costs and, of course, the criteria. Could anything be simplified to try to encourage people to stay in tillage farming rather than getting out of it?</p>
+        </speech>
+        <speech by="#" eId="spk_202">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_299">Does Mr. Phelan want to speak about the costs?</p>
+        </speech>
+        <speech by="#" eId="spk_203">
+          <from> Mr. Shay Phelan<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_300">The issue of costs probably comes to me. The Deputy is right that the costs have increased substantially. I presented figures at the crisis meeting in Killashee a couple of weeks ago. One of the things that is hurting tillage farmers at the moment is the cost of land rental. There are no two ways about that. The figures I shared on the night showed that on your own land, you can make a profit, albeit a modest profit compared with what it would have been even two or three years ago. Where you take rented land into the mix, the profitability goes. You are eating into your single farm payment. Perhaps there is something to be done in terms of policy. Perhaps there could be tax incentives around leasing land for tillage farming or something like that. Perhaps that could be considered. That is just a suggestion.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_204">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_301">More than 5 million tonnes of grain were imported in 2024. That is an awful amount of grain to be importing. We could only provide 1.5 million or 2 million tonnes ourselves in 2024. Could something be included there to get a balance and allow us to provide more in our country rather than importing? Would that be possible or would it be far cheaper to export than to provide funding to grow more in our country?</p>
+        </speech>
+        <speech by="#" eId="spk_205">
+          <from> Mr. Shay Phelan<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_302">I will take that question. It was mentioned in a previous session that we are actively starting the process of putting a carbon figure on Irish-produced grain. That is an opportunity available to us. We can determine how carbon efficient our grain is compared with importing the grain. We could look at making that a premium product, as it would be if it were going into whiskey or into Diageo products, such as Guinness or whatever else. That is an opportunity of which we can avail.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_206">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_303">It is important to try to encourage farmers to stay in tillage farming if at all possible. If not, tillage farming will die in this country. I thank the witnesses for their time.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_207">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_304">I welcome each of the witnesses. We have a serious problem. Have the Department officials heard anything about the promise of €65 million for green farmers from the two main parties in the Government? They made an announcement in their pre-election manifestos. Have the officials heard anything about that?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_208">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_305">That is a policy question. It would not be for civil servants to be answering policy questions.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_209">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_306">I only asked if they have heard anything about it.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_210">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:40:00+01:00"/></from>
+          <p eId="para_307">They heard about it from Deputy Aird earlier.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_211">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_308">It would not be for them to answer.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_212">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_309">He is in government too.</p>
+        </speech>
+        <speech by="#" eId="spk_213">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_310">The negotiations are ongoing. </p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_214">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_311">Listen here, now, ye told the people of Ireland not to vote for independence.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_215">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_312">The Deputy and his brother are part of the Government.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_216">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_313">One voice, please.</p>
+        </speech>
+        <speech by="#" eId="spk_217">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_314">The Minister is engaging with the Ministers for finance and public expenditure on our budgetary allocation for 2026. I think the Minister has been clear that tillage has been included as one of his priorities for budget 2026.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_218">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_315">I hope they deliver. I also hope they do not take it from the sheep farmers. Anyway, I was amazed to hear Mr. Dempsey in relation to the differential between what is demanded of Irish farmers and farmers exporting into Ireland. We do not know what they are putting into the land to grow the grain. Do we do any checks on what is in the grain, what is driving the grain or how they grow it? We are being told we can only use protected urea next year.</p>
+        </speech>
+        <speech by="#" eId="spk_219">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_316">We have a very comprehensive animal feed safety programme where we conduct official controls on feed imported into the country. There is a commitment from the Commission in its vision for agriculture to seek to have a stronger alignment on production standards applied to imported products, with regard to pesticides for example. We are well aware of concerns around the import tolerance set for pesticides from time to time. This matter has been raised with the Commission. The Commission has also had a recent call for a simplification process around feed and food safety rules, and that includes in pesticides. We are expecting an impact assessment at the back end of this year from the Commission, so things are happening to try to address some of that area.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_220">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_317">Has any assessment been done up until now?</p>
+        </speech>
+        <speech by="#" eId="spk_221">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_318">No. We are awaiting the Commission’s assessment in relation to those production standards and that may lead to regulatory proposals. It is something we are aware of and engaging on and it is well understood.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_222">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_319">The word “may” will have to be taken out of it. It should be a regulatory proposal and the same standards will have to be insisted on from the people exporting in here as from these poor fellows behind my back who already have the standards demanded of them. There is an unfairness there that has to be sorted out. I am very concerned about it. We also have a serious health issue here with cancer. We do not know what is in the imported grain if we are not assessing it, but we do know what is in the Irish grain produced here. That is not fair. We want this highlighted right away to the Minister to make him understand. Now is the time to back these fellows and give them the €65 million, and to insist on the same standards with the grain coming in and that people buying it can only buy that grain. They could be hurting and damaging our population, our youngsters and our older people, and it is a very serious matter. How soon will this assessment take place?</p>
+        </speech>
+        <speech by="#" eId="spk_223">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_320">In relation to the import tolerances with regard to pesticides, I want to be very clear that the EU regulations allow for those import tolerances to be set to facilitate trade provided that the use is authorised in a third country and there is no risk to the health of EU consumers as determined by the European Food Safety Authority, EFSA. I want to be very clear on that. There is no health risk. I thank the Deputy.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_224">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_321">The last thing-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_225">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_322">Very briefly.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_226">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_323">There is a lot of talk about the carbon footprint and sequestering carbon, and these fellows are doing it automatically. They need to be compensated for that. If there is no other reason they should get help, that is a reason. We seem to be spending any amount of money on climate action and stopping fellows going here and going there and doing this and doing that, but these fellows are helping the carbon footprint and they deserve to be compensated for it or reimbursed for it.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_227">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_324">I will follow up briefly on one of the points Deputy Healy-Rae raised about the standards of production elsewhere compared to the standards Irish tillage farmers have to meet to produce their grain. Is any measure made of this to see how much of a disadvantage Irish tillage farmers are at per tonne as opposed to the same tonne of product coming in from elsewhere? Is there any kind of measure of what kind of disadvantage they would be at? What would be the difference between a tonne from South America or North America to one here in the Republic?</p>
+        </speech>
+        <speech by="#" eId="spk_228">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_325">Not that I am aware of. I think the impact assessment the Commission is doing will potentially provide some of that data.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_229">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_326">If the Chair has a second, can I ask one question very quickly? It is not even a question.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_230">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_327">We are finishing at 6 p.m.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_231">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_328">Yes. I will only be one second, that is all. The Department must have been taken by surprise when the previous Minister for agriculture had to announce €30 million at such short notice to encourage people to put seeds in the ground, as he said himself. That was the crisis situation. If he did not do that, there was going to be maybe hundreds of acres of land left idle. It was just not going to pay farmers to do it. That is the crisis situation we came from.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_232">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_329">I have just one question. It is probably not the Department’s area but Europe’s. How in God’s name can someone know in a third country whether somebody spread X, Y and Z on the grain when it is landing in on a boat here three or four months later?</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_233">
+          <from>Deputy William Aird<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_330">That is what I am saying. </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_234">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_331">There are many things people are not supposed to do in some of those countries, no more than with tagging cattle, traceability and all of that. Sure, it is loolah what goes on in some of those countries, but Europe is closing its eyes to it. Yes, they will sign up to an agreement. I think what the Mercosur agreement said is that the only way a country can be thrown out of it is if it gets out of the COP climate agreement. The Department cannot be looking at this, and I understand this fully. It makes no sense for someone to go saying that if some fella sprayed whatever on a crop abroad in Brazil or wherever that we are going to know that when it lands in Europe three or four months later when it has been combined and gone in. Europe must think farmers are purely in a world of their own and do not understand, if that is what it believes is going on. We know this. The likes of the <i>Irish Farmers' Journal </i>and other crowds and the farming organisations have gone out and proved what has gone on in cattle.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_235">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_332">Quickly, Deputy. </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_236">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_333">Let no one say it is any different in any other thing they are growing.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_237">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_334">One of the issues that came up several times during the conversation was in regard to Irish food and Irish labelling of Irish food. The whiskeys, the beers and all of that sector is obviously one of them where we have a lot of grain going in. There is also, obviously, the feed we have going into our animals producing our milk and beef. In regard to all that, is any work being done on what amount of input should be Irish going into something if it is going to be called Irish? That is a question that I think is key to all this. If we do not get to that aspect, then we are going to let everything down.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_238">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_335">Finally, we will have a quick question from Deputy Danny Healy-Rae.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_239">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_336">If we do not have grain in Ireland, one thing I know for sure is that we will not have straw to bed the cattle down below in Kilgarvan, County Kerry or anywhere else because if we do not have grain, we will not have straw. I do not see us importing it.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_240">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_337">A number of points were made there. Would anybody like to respond?</p>
+        </speech>
+        <speech by="#" eId="spk_241">
+          <from> Ms Louise Byrne<recordedTime time="2025-10-01T17:50:00+01:00"/></from>
+          <p eId="para_338">Just to be very clear, going back to Deputy Fitzmaurice, in relation to what was sprayed or not sprayed on crops, we test imports for pesticides and residues of pesticides. We capture that as part of our feed safety control programme. I will turn next to whether work is being done on setting a minimum threshold or requirement for native grain in dairy or beef rations.</p>
+          <p eId="para_339">As regards industry itself, there are some initiatives with some of the co-ops, and some merchants are producing native grain. There is no specific minimum set down. I think there would be concerns from a legal point of view if one were to basically impose a quantitative restriction on other grains going into feed. That would be a breach of the Treaty on the Functioning of the European Union.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_242">
+          <from> An Cathaoirleach<recordedTime time="2025-10-01T18:00:00+01:00"/></from>
+          <p eId="para_340">I really appreciate the input. There was a lot of information there. On behalf of the committee, I thank you all for your contributions.</p>
+          <p eId="para_341"> The next meeting of the joint committee will be on Wednesday, 8 October, when social farming will be on the agenda. As there are no further matters for discussion at today's meeting, it stands adjourned.</p>
+        </speech>
+        <summary eId="sum_11"> The joint committee adjourned at 6.01 p.m. until 3.30 p.m. on Wednesday, 8 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,96 @@
+You’ve essentially got the right idea, but there are three big issues driving your results into that spurious 35–42 % sweet spot:
+
+Wrong “max distance”
+You’ve hard-coded every axis from –5……+5 (so max Δ = 10) when your quiz axes actually run –2……+2 (max Δ = 4).
+
+Artificial boosts
+That whole 50 + …*0.5 plus “if >85 then ×3” funnel collapses your spread into a narrow band.
+
+Axis name mismatch
+You call the last axis technocratic in code, but your DB probably has it as governanceScore, so it’s always NaN and ruins the normalization.
+
+✂️ A clean, un-boosted, weighted Euclidean version
+ts
+Copy
+Edit
+type Dimensions = {
+  economic:   number;
+  social:     number;
+  cultural:   number;
+  globalism:  number;
+  environmental: number;
+  authority:  number;
+  welfare:    number;
+  governance: number;
+};
+
+// Optional: if you want to weight some axes more heavily
+const DEFAULT_WEIGHTS: Record<keyof Dimensions, number> = {
+  economic:      1,
+  social:        1,
+  cultural:      1,
+  globalism:     1,
+  environmental: 1,
+  authority:     1,
+  welfare:       1,
+  governance:    1,
+};
+
+function calculateMatchPercentage(
+  user: Dimensions,
+  party: { [K in keyof Dimensions as `${string & K}Score`]: number },
+  weights: Partial<Record<keyof Dimensions, number>> = {}
+): number {
+  const w = { ...DEFAULT_WEIGHTS, ...weights };
+  const AXES: (keyof Dimensions)[] = [
+    "economic","social","cultural","globalism",
+    "environmental","authority","welfare","governance"
+  ];
+
+  // 1) sum of weighted squared diffs
+  let sumSq = 0;
+  for (const axis of AXES) {
+    const ud = user[axis];
+    const pd = party[`${axis}Score` as const];
+    const diff = ud - pd;
+    sumSq += w[axis] * diff * diff;
+  }
+
+  // 2) Euclidean distance
+  const distance = Math.sqrt(sumSq);
+
+  // 3) correct maxDistance for [-2…+2] axes
+  //    each axis max Δ = 4, so maxDistance = sqrt(8 * 4²) = sqrt(128)
+  const maxDistance = Math.sqrt(AXES.length * 4 * 4);
+
+  // 4) raw match percent
+  const rawMatch = (1 - (distance / maxDistance)) * 100;
+
+  // 5) clamp to [0, 100]
+  return Math.max(0, Math.min(100, Math.round(rawMatch * 10) / 10));
+}
+📈 What changed?
+Max Δ = 4 (–2→+2), not 10 (–5→+5).
+
+No arbitrary half-boost or 3× stretch — that was squashing everyone into a narrow band.
+
+Fixed axis name (governance instead of technocratic).
+
+Optional weights so you can emphasize (say) “authority” twice as much as “social.”
+
+🚀 Next steps
+Plug this function into your router — replace the old calculateMatchPercentage.
+
+Tweak the weights object if you want certain axes to count for more.
+
+Re-run your queries: you should now see matches spanning 0→100 % and, in practice, a much wider spread.
+
+Let me know if you want a worked example with real numbers (or a quick chart) to prove it out!
+
+
+
+
+
+
+
+

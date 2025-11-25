@@ -1,0 +1,45 @@
+.constituency-story-popup .leaflet-popup-content-wrapper {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.constituency-story-popup .leaflet-popup-content {
+  margin: 8px;
+  width: 200px !important;
+}
+
+.constituency-story-popup .leaflet-popup-tip {
+  background-color: white;
+}
+
+.dark .constituency-story-popup .leaflet-popup-content-wrapper {
+  background-color: rgba(45, 55, 72, 0.95);
+  color: white;
+}
+
+.dark .constituency-story-popup .leaflet-popup-tip {
+  background-color: rgb(45, 55, 72);
+}
+
+.constituency-story-popup h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.constituency-story-popup p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.constituency-story-popup ul {
+  margin: 4px 0;
+  padding-left: 20px;
+}
+
+.constituency-story-popup li {
+  margin: 2px 0;
+}

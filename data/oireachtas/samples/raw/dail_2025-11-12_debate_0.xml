@@ -1,0 +1,1595 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/dail/2025-11-12/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/dail/2025-11-12/debate"/>
+          <FRBRdate date="2025-11-12" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/house/dail/34"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/dail/2025-11-12/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/dail/2025-11-12/debate/mul@"/>
+          <FRBRdate date="2025-11-12" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/dail/2025-11-12/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/dail/2025-11-12/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-12" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <analysis source="#source">
+        <parliamentary>
+          <voting eId="vote_160" href="#sum_8" outcome="#carried" refersTo="#sum_7">
+            <count eId="vote_160-count_1" href="#qty_1" refersTo="#ta" value="80"/>
+            <count eId="vote_160-count_2" href="#qty_2" refersTo="#nil" value="61"/>
+            <count eId="vote_160-count_3" href="#qty_3" refersTo="#staon" value="0"/>
+          </voting>
+        </parliamentary>
+      </analysis>
+      <references source="#debates">
+        <TLCConcept eId="#lost" href="/ie/oireachtas/ontology#DeclaredLost" showAs="Declared Lost"/>
+        <TLCConcept eId="#carried" href="/ie/oireachtas/ontology#DeclaredCarried" showAs="Declared Carried"/>
+        <TLCConcept eId="#staon" href="/ie/oireachtas/ontology#StaonVote" showAs="Staon Vote"/>
+        <TLCConcept eId="#nil" href="/ie/oireachtas/ontology#NílVote" showAs="Níl Vote"/>
+        <TLCConcept eId="#ta" href="/ie/oireachtas/ontology#TáVote" showAs="Tá Vote"/>
+        <TLCPerson eId="AidanFarrelly" href="/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29" showAs="Aidan Farrelly"/>
+        <TLCPerson eId="AindriasMoynihan" href="/ie/oireachtas/member/id/Aindrias-Moynihan.D.2016-10-03" showAs="Aindrias Moynihan"/>
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="AlanDillon" href="/ie/oireachtas/member/id/Alan-Dillon.D.2020-02-08" showAs="Alan Dillon"/>
+        <TLCPerson eId="AlanKelly" href="/ie/oireachtas/member/id/Alan-Kelly.S.2007-07-23" showAs="Alan Kelly"/>
+        <TLCPerson eId="AlbertDolan" href="/ie/oireachtas/member/id/Albert-Dolan.D.2024-11-29" showAs="Albert Dolan"/>
+        <TLCPerson eId="AnnGraves" href="/ie/oireachtas/member/id/Ann-Graves.D.2024-11-29" showAs="Ann Graves"/>
+        <TLCPerson eId="BarryHeneghan" href="/ie/oireachtas/member/id/Barry-Heneghan.D.2024-11-29" showAs="Barry Heneghan"/>
+        <TLCPerson eId="BarryWard" href="/ie/oireachtas/member/id/Barry-Ward.S.2020-03-30" showAs="Barry Ward"/>
+        <TLCPerson eId="BrendanSmith" href="/ie/oireachtas/member/id/Brendan-Smith.D.1992-12-14" showAs="Brendan Smith"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="BrianStanley" href="/ie/oireachtas/member/id/Brian-Stanley.D.2011-03-09" showAs="Brian Stanley"/>
+        <TLCPerson eId="CarolNolan" href="/ie/oireachtas/member/id/Carol-Nolan.D.2016-10-03" showAs="Carol Nolan"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="CatherineArdagh" href="/ie/oireachtas/member/id/Catherine-Ardagh.S.2016-04-25" showAs="Catherine Ardagh"/>
+        <TLCPerson eId="CatherineCallaghan" href="/ie/oireachtas/member/id/Catherine-Callaghan.D.2024-11-29" showAs="Catherine Callaghan"/>
+        <TLCPerson eId="CathyBennett" href="/ie/oireachtas/member/id/Cathy-Bennett.D.2024-11-29" showAs="Cathy Bennett"/>
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="CiaranAhern" href="/ie/oireachtas/member/id/Ciarán-Ahern.D.2024-11-29" showAs="Ciarán Ahern"/>
+        <TLCPerson eId="ClaireKerrane" href="/ie/oireachtas/member/id/Claire-Kerrane.D.2020-02-08" showAs="Claire Kerrane"/>
+        <TLCPerson eId="ColmBrophy" href="/ie/oireachtas/member/id/Colm-Brophy.D.2016-10-03" showAs="Colm Brophy"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="ConorSheehan" href="/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29" showAs="Conor Sheehan"/>
+        <TLCPerson eId="CormacDevlin" href="/ie/oireachtas/member/id/Cormac-Devlin.D.2020-02-08" showAs="Cormac Devlin"/>
+        <TLCPerson eId="DannyHealyRae" href="/ie/oireachtas/member/id/Danny-Healy-Rae.D.2016-10-03" showAs="Danny Healy-Rae"/>
+        <TLCPerson eId="DaraCalleary" href="/ie/oireachtas/member/id/Dara-Calleary.D.2007-06-14" showAs="Dara Calleary"/>
+        <TLCPerson eId="DarraghOBrien" href="/ie/oireachtas/member/id/Darragh-O'Brien.D.2007-06-14" showAs="Darragh O'Brien"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="DavidMaxwell" href="/ie/oireachtas/member/id/David-Maxwell.D.2024-11-29" showAs="David Maxwell"/>
+        <TLCPerson eId="DeniseMitchell" href="/ie/oireachtas/member/id/Denise-Mitchell.D.2016-10-03" showAs="Denise Mitchell"/>
+        <TLCPerson eId="DessieEllis" href="/ie/oireachtas/member/id/Dessie-Ellis.D.2011-03-09" showAs="Dessie Ellis"/>
+        <TLCPerson eId="DonnaMcGettigan" href="/ie/oireachtas/member/id/Donna-McGettigan.D.2024-11-29" showAs="Donna McGettigan"/>
+        <TLCPerson eId="DuncanSmith" href="/ie/oireachtas/member/id/Duncan-Smith.D.2020-02-08" showAs="Duncan Smith"/>
+        <TLCPerson eId="EamonScanlon" href="/ie/oireachtas/member/id/Eamon-Scanlon.S.2002-09-12" showAs="Eamon Scanlon"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="EmerHiggins" href="/ie/oireachtas/member/id/Emer-Higgins.D.2020-02-08" showAs="Emer Higgins"/>
+        <TLCPerson eId="EoghanKenny" href="/ie/oireachtas/member/id/Eoghan-Kenny.D.2024-11-29" showAs="Eoghan Kenny"/>
+        <TLCPerson eId="EoinHayes" href="/ie/oireachtas/member/id/Eoin-Hayes.D.2024-11-29" showAs="Eoin Hayes"/>
+        <TLCPerson eId="EoinOBroin" href="/ie/oireachtas/member/id/Eoin-Ó-Broin.D.2016-10-03" showAs="Eoin Ó Broin"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="FionntanOSuilleabhain" href="/ie/oireachtas/member/id/Fionntán-Ó-Súilleabháin.D.2024-11-29" showAs="Fionntán Ó Súilleabháin"/>
+        <TLCPerson eId="FrankFeighan" href="/ie/oireachtas/member/id/Frank-Feighan.S.2002-09-12" showAs="Frankie Feighan"/>
+        <TLCPerson eId="GaryGannon" href="/ie/oireachtas/member/id/Gary-Gannon.D.2020-02-08" showAs="Gary Gannon"/>
+        <TLCPerson eId="GeraldNash" href="/ie/oireachtas/member/id/Gerald-Nash.D.2011-03-09" showAs="Ged Nash"/>
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="HelenMcEntee" href="/ie/oireachtas/member/id/Helen-McEntee.D.2013-03-27" showAs="Helen McEntee"/>
+        <TLCPerson eId="HildegardeNaughton" href="/ie/oireachtas/member/id/Hildegarde-Naughton.S.2013-07-19" showAs="Hildegarde Naughton"/>
+        <TLCPerson eId="HollyCairns" href="/ie/oireachtas/member/id/Holly-Cairns.D.2020-02-08" showAs="Holly Cairns"/>
+        <TLCPerson eId="IvanaBacik" href="/ie/oireachtas/member/id/Ivana-Bacik.S.2007-07-23" showAs="Ivana Bacik"/>
+        <TLCPerson eId="JackChambers" href="/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03" showAs="Jack Chambers"/>
+        <TLCPerson eId="JamesBrowne" href="/ie/oireachtas/member/id/James-Browne.D.2016-10-03" showAs="James Browne"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JamesOConnor" href="/ie/oireachtas/member/id/James-O'Connor.D.2020-02-08" showAs="James O'Connor"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="JenniferCarrollMacNeill" href="/ie/oireachtas/member/id/Jennifer-Carroll-MacNeill.D.2020-02-08" showAs="Jennifer Carroll MacNeill"/>
+        <TLCPerson eId="JenniferMurnaneOConnor" href="/ie/oireachtas/member/id/Jennifer-Murnane-O'Connor.S.2016-04-25" showAs="Jennifer Murnane O'Connor"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="JerryButtimer" href="/ie/oireachtas/member/id/Jerry-Buttimer.S.2007-07-23" showAs="Jerry Buttimer"/>
+        <TLCPerson eId="JoeCooney" href="/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29" showAs="Joe Cooney"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="JohnBrady" href="/ie/oireachtas/member/id/John-Brady.D.2016-10-03" showAs="John Brady"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="JohnCummins" href="/ie/oireachtas/member/id/John-Cummins.S.2020-03-30" showAs="John Cummins"/>
+        <TLCPerson eId="JohnLahart" href="/ie/oireachtas/member/id/John-Lahart.D.2016-10-03" showAs="John Lahart"/>
+        <TLCPerson eId="JohnMcGuinness" href="/ie/oireachtas/member/id/John-McGuinness.D.1997-06-26" showAs="John McGuinness"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="JohnPaulOShea" href="/ie/oireachtas/member/id/John-Paul-O'Shea.D.2024-11-29" showAs="John Paul O'Shea"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="KevinBoxerMoran" href="/ie/oireachtas/member/id/Kevin-Boxer-Moran.D.2016-10-03" showAs="Kevin Boxer Moran"/>
+        <TLCPerson eId="KieranODonnell" href="/ie/oireachtas/member/id/Kieran-O'Donnell.D.2007-06-14" showAs="Kieran O'Donnell"/>
+        <TLCPerson eId="LiamQuaide" href="/ie/oireachtas/member/id/Liam-Quaide.D.2024-11-29" showAs="Liam Quaide"/>
+        <TLCPerson eId="LouiseOReilly" href="/ie/oireachtas/member/id/Louise-O'Reilly.D.2016-10-03" showAs="Louise O'Reilly"/>
+        <TLCPerson eId="LouisOHara" href="/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29" showAs="Louis O'Hara"/>
+        <TLCPerson eId="MaeveOConnell" href="/ie/oireachtas/member/id/Maeve-O'Connell.D.2024-11-29" showAs="Maeve O'Connell"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="MarianHarkinIND" href="/ie/oireachtas/member/id/Marian-Harkin.D.2002-06-06" showAs="Marian Harkin"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MarkWall" href="/ie/oireachtas/member/id/Mark-Wall.S.2020-03-30" showAs="Mark Wall"/>
+        <TLCPerson eId="MarkWard" href="/ie/oireachtas/member/id/Mark-Ward.D.2019-11-29" showAs="Mark Ward"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MartinHeydon" href="/ie/oireachtas/member/id/Martin-Heydon.D.2011-03-09" showAs="Martin Heydon"/>
+        <TLCPerson eId="MartinKenny" href="/ie/oireachtas/member/id/Martin-Kenny.D.2016-10-03" showAs="Martin Kenny"/>
+        <TLCPerson eId="MaryButler" href="/ie/oireachtas/member/id/Mary-Butler.D.2016-10-03" showAs="Mary Butler"/>
+        <TLCPerson eId="MaryLouMcDonald" href="/ie/oireachtas/member/id/Mary-Lou-McDonald.D.2011-03-09" showAs="Mary Lou McDonald"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="MichaelCollins2016" href="/ie/oireachtas/member/id/Michael-Collins.D.2016-10-03" showAs="Michael Collins"/>
+        <TLCPerson eId="MichaelHealyRae" href="/ie/oireachtas/member/id/Michael-Healy-Rae.D.2011-03-09" showAs="Michael Healy-Rae"/>
+        <TLCPerson eId="MichaelLowry" href="/ie/oireachtas/member/id/Michael-Lowry.D.1987-03-10" showAs="Michael Lowry"/>
+        <TLCPerson eId="MichaelMartin" href="/ie/oireachtas/member/id/Micheál-Martin.D.1989-06-29" showAs="Micheál Martin"/>
+        <TLCPerson eId="MichaelMoynihan" href="/ie/oireachtas/member/id/Michael-Moynihan.D.1997-06-26" showAs="Michael Moynihan"/>
+        <TLCPerson eId="MichaelMurphy" href="/ie/oireachtas/member/id/Michael-Murphy.D.2024-11-29" showAs="Michael Murphy"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="NatashaNewsomeDrennan" href="/ie/oireachtas/member/id/Natasha-Newsome-Drennan.D.2024-11-29" showAs="Natasha Newsome Drennan"/>
+        <TLCPerson eId="NiamhSmyth" href="/ie/oireachtas/member/id/Niamh-Smyth.D.2016-10-03" showAs="Niamh Smyth"/>
+        <TLCPerson eId="NoelGrealishPD" href="/ie/oireachtas/member/id/Noel-Grealish.D.2002-06-06" showAs="Noel Grealish"/>
+        <TLCPerson eId="NoelMcCarthy" href="/ie/oireachtas/member/id/Noel-McCarthy.D.2024-11-29" showAs="Noel McCarthy"/>
+        <TLCPerson eId="NormaFoley" href="/ie/oireachtas/member/id/Norma-Foley.D.2020-02-08" showAs="Norma Foley"/>
+        <TLCPerson eId="PadraigMacLochlainn" href="/ie/oireachtas/member/id/Pádraig-MacLochlainn.D.2011-03-09" showAs="Pádraig Mac Lochlainn"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PaDaly" href="/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08" showAs="Pa Daly"/>
+        <TLCPerson eId="PatTheCopeGallagher" href="/ie/oireachtas/member/id/Pat-the-Cope-Gallagher.D.1981-06-30" showAs="Pat the Cope Gallagher"/>
+        <TLCPerson eId="PaulaButterly" href="/ie/oireachtas/member/id/Paula-Butterly.D.2024-11-29" showAs="Paula Butterly"/>
+        <TLCPerson eId="PaulDonnelly" href="/ie/oireachtas/member/id/Paul-Donnelly.D.2020-02-08" showAs="Paul Donnelly"/>
+        <TLCPerson eId="PaulLawless" href="/ie/oireachtas/member/id/Paul-Lawless.D.2024-11-29" showAs="Paul Lawless"/>
+        <TLCPerson eId="PaulMcAuliffe" href="/ie/oireachtas/member/id/Paul-McAuliffe.D.2020-02-08" showAs="Paul McAuliffe"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="PeadarToibin" href="/ie/oireachtas/member/id/Peadar-Tóibín.D.2011-03-09" showAs="Peadar Tóibín"/>
+        <TLCPerson eId="PearseDoherty" href="/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23" showAs="Pearse Doherty"/>
+        <TLCPerson eId="PeterChapCleere" href="/ie/oireachtas/member/id/Peter-'Chap'-Cleere.D.2024-11-29" showAs="Peter 'Chap' Cleere"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="ReadaCronin" href="/ie/oireachtas/member/id/Réada-Cronin.D.2020-02-08" showAs="Réada Cronin"/>
+        <TLCPerson eId="RichardBoydBarrett" href="/ie/oireachtas/member/id/Richard-Boyd-Barrett.D.2011-03-09" showAs="Richard Boyd Barrett"/>
+        <TLCPerson eId="RichardODonoghue" href="/ie/oireachtas/member/id/Richard-O'Donoghue.D.2020-02-08" showAs="Richard O'Donoghue"/>
+        <TLCPerson eId="RobertODonoghue" href="/ie/oireachtas/member/id/Robert-O'Donoghue.D.2024-11-29" showAs="Robert O'Donoghue"/>
+        <TLCPerson eId="RobertTroy" href="/ie/oireachtas/member/id/Robert-Troy.D.2011-03-09" showAs="Robert Troy"/>
+        <TLCPerson eId="RodericOGorman" href="/ie/oireachtas/member/id/Roderic-O'Gorman.D.2020-02-08" showAs="Roderic O'Gorman"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="RyanOMeara" href="/ie/oireachtas/member/id/Ryan-O'Meara.D.2024-11-29" showAs="Ryan O'Meara"/>
+        <TLCPerson eId="SeamusHealy" href="/ie/oireachtas/member/id/Seamus-Healy.D.2000-06-22" showAs="Seamus Healy"/>
+        <TLCPerson eId="SeamusMcGrath" href="/ie/oireachtas/member/id/Séamus-McGrath.D.2024-11-29" showAs="Séamus McGrath"/>
+        <TLCPerson eId="SeanCanney" href="/ie/oireachtas/member/id/Seán-Canney.D.2016-10-03" showAs="Seán Canney"/>
+        <TLCPerson eId="SeanCroweSF" href="/ie/oireachtas/member/id/Seán-Crowe.D.2002-06-06" showAs="Seán Crowe"/>
+        <TLCPerson eId="SeanFleming" href="/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26" showAs="Seán Fleming"/>
+        <TLCPerson eId="SeanOFearghaillFF" href="/ie/oireachtas/member/id/Seán-Ó-Fearghaíl.S.2000-06-09" showAs="Seán Ó Fearghaíl"/>
+        <TLCPerson eId="ShaneMoynihan" href="/ie/oireachtas/member/id/Shane-Moynihan.D.2024-11-29" showAs="Shane Moynihan"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCPerson eId="TimDooley" href="/ie/oireachtas/member/id/Timmy-Dooley.S.2002-09-12" showAs="Timmy Dooley"/>
+        <TLCPerson eId="TomBrabazon" href="/ie/oireachtas/member/id/Tom-Brabazon.D.2024-11-29" showAs="Tom Brabazon"/>
+        <TLCPerson eId="TonyMcCormack" href="/ie/oireachtas/member/id/Tony-McCormack.D.2024-11-29" showAs="Tony McCormack"/>
+        <TLCPerson eId="VeronaMurphy" href="/ie/oireachtas/member/id/Verona-Murphy.D.2020-02-08" showAs="Verona Murphy"/>
+        <TLCPerson eId="WilliamAird" href="/ie/oireachtas/member/id/William-Aird.D.2024-11-29" showAs="William Aird"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_the_Taoiseach" href="/ie/oireachtas/role/minister_state/taoiseach" showAs="Minister of State at the Department of the Taoiseach"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>DÁIL ÉIREANN</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>DÁIL ÉIREANN</docProponent>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-12">Dé Céadaoin, 12 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-12">Wednesday, 12 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Chuaigh an Ceann Comhairle i gceannas ar 14:00</summary>
+        <summary class="Center" eId="sum_2">Paidir agus Machnamh.</summary>
+        <summary class="Center" eId="sum_3">Prayer and Reflection.</summary>
+      </debateSection>
+      <debateSection name="questions" eId="dbsect_2">
+        <heading>Ceisteanna ó Cheannairí - Leaders' Questions<recordedTime time="2025-11-12T14:00:00+00:00"/></heading>
+        <speech by="#VeronaMurphy" eId="spk_1">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_1">As it is International Men's Day, I wish everyone a very happy day. I call Deputy McDonald.</p>
+        </speech>
+        <summary eId="sum_4">(Interruptions).</summary>
+        <speech by="#MichaelMartin" eId="spk_2">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_2">Be nice now.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_3">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_3">Every day is men's day.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> A Deputy<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_4">Every day should be men's day.</p>
+        </speech>
+        <summary eId="sum_5">(Interruptions).</summary>
+        <speech by="#MaryLouMcDonald" eId="spk_5">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_5">Right, on that note-----</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_6">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_6">Under Standing Order 38, I call Deputy McDonald.</p>
+        </speech>
+        <summary eId="sum_6">(Interruptions).</summary>
+        <speech by="#NoelGrealishPD" eId="spk_7">
+          <from>Deputy Noel Grealish<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_7">We should well know, Deputy McDonald.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_8">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_8">You took me aback there, a Cheann Comhairle.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_9">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_9">It was the first thing we agreed on this year.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_10">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_10">Now, please.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_11">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:00:00+00:00"/></from>
+          <p eId="para_11">The case of Harvey Morrison Sherratt, a child in need of spinal surgery who was left to wait for years in agony and who died on 29 July this year, has been raised many times on the floor of the Dáil, and I raise his name again with the Taoiseach today. In the summer of 2024, Harvey was removed from the spinal surgery waiting list by Children's Health Ireland, CHI. In August of 2024, his parents found out, quite by accident, that he had been removed from the list without their knowledge or consent. They fought really hard to get him back on the list to finally get him the surgery he needed. He had been left to wait for so long that his spinal curve had reached 130 degrees. Harvey suffered, his parents Gillian and Stephen suffered, and now they suffer the worst pain of all, having lost him. He was only nine years old.</p>
+          <p eId="para_12"> Gillian and Stephen have consistently asked how, why and when Harvey was removed from the list and why his agony was extended and his treatment delayed. They got no answers, only spin, lies and deception, until a whistleblower from within CHI came forward with the truth. The answer to Stephen and Gillian's question was sent to the Minister for Health in a protected disclosure on 31 August and to the HSE on 12 September, but it had been known to many senior managers within CHI long before that. The truth is that Harvey was deemed fit for surgery, following an assessment made by an outside consultant from Great Ormond Street Hospital on 17 May 2024. A decision was then taken, just weeks later, by CHI to remove him from the list and describe his future care as palliative. The whistleblower has identified each step of this scandal, which left a small, vulnerable child to suffer and deteriorate. This is just the latest, and I think the most devastating, episode in the failure of children with scoliosis and spina bifida who needed spinal surgery. Successive Ministers for Health, including Simon Harris and the current Minister, have failed these children. Now is the time for accountability.</p>
+          <p eId="para_13"> The Government has failed at every level to get to grips with this scandal, from its failure to keep the first promise that no child would wait longer than four months for surgery, to its failure to deliver care and treatment to these children and its failure to give frank and transparent information. It was widely known that Harvey was deliberately moved from the waiting list despite being fit for surgery. His parents did not know, though. Nobody told them. They were left in the dark despite their pleas and protestations and despite meeting with the Tánaiste and the Minister for Health.</p>
+          <p eId="para_14">They found out in a Sunday newspaper why Harvey was removed from the list. How can they or any other parent now have any trust in the Taoiseach or anybody else entrusted with the care and treatment of their children? Harvey was wrongly and deliberately removed from the list. Did this happen to other children? Is there now a commitment to deliver a full statutory inquiry to get to the bottom of this case and others? What does the Taoiseach say to the parents of Mikey Henry Benson, a child in Mayo, who were told by CHI that there was no treatment for their child and to simply take him home and make special memories with him?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_12">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:05:00+00:00"/></from>
+          <p eId="para_15">I thank the Deputy for raising this very serious issue. I have offered my condolences to Harvey Morrison Sherratt's family, to Gillian and Stephen, on previous occasions, as has Deputy McDonald. I respect the Deputy's commitment to the issue. As I have said in this House before, no words of condolence or consolation to Harvey's parents are enough. It is an enormous trauma for any parent to go through but, in these circumstances, it is even more traumatic in terms of the experiences the family and Harvey have had with hospitals and the clinical world. It is unacceptable. The Government is anxious to help the family to find the answers to the questions they have about Harvey's care. The Minister for Health asked for a multidisciplinary report on the chronology from CHI regarding its involvement in Harvey's care and the key milestones, as recorded on CHI hospital records. The HSE CEO received this draft report on 19 August and shared it with Harvey's parents. The HSE CEO and the Minister have made it clear they view this report as a draft until such time as the family have the opportunity to comment on and feed into the chronology and ensure any additional information they have is reflected in the final report.</p>
+          <p eId="para_16"> The Tánaiste and Minister for Health met Harvey's parents on 29 September. At that meeting, there was agreement that there would be an inquiry and that the detail of it would be determined in partnership. Following the meeting, as agreed, the Minister for Health wrote to the parents on 13 October setting out the range of types of inquiries available. The Minister subsequently attended the audiovisual room briefing, which many Members of this House also attended, to listen to the requests being made. There will be a meeting today between the Minister and the Tánaiste following up on this. The objective is to make progress on the nature and format of an inquiry which will be commissioned.</p>
+          <p eId="para_17"> With regard to <i>The Sunday Times</i> report on a protected disclosure being made to the Department of Health, I want to make absolutely clear - I do not think it should be conflated wrongly - that neither I, the Tánaiste nor the Minister for Health had any awareness of this.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_13">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:05:00+00:00"/></from>
+          <p eId="para_18">That is astonishing.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_14">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:05:00+00:00"/></from>
+          <p eId="para_19">This is the factual position. It is not right or proper, in my view, that any other construction should be put on it. As we now know, any protected disclosure is investigated by an independent person, not by the Minister or anyone else. The allegations, as the Deputy, outlined are very serious and warrant investigation. That is currently under way in the manner set out in law by the protected disclosure process. There is clear legislation outlining how protected disclosures are dealt with now. I accept and understand fully the serious distress to the family who have been wanting to know for some time why Harvey was removed from the waiting list without any notice or discussion. Indeed, in this House I have said - I think when it was alerted to me by the Deputy next to Deputy McDonald - that it is unacceptable. Every parent should be informed. The Deputy made a point that Harvey was deliberately removed. I do not know the circumstances or why someone would be motivated to deliberately remove the child from a surgical waiting list without telling the parents.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_15">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:05:00+00:00"/></from>
+          <p eId="para_20">That is what happened.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_16">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:05:00+00:00"/></from>
+          <p eId="para_21">That is something I cannot comprehend. That needs to be the subject matter of an inquiry.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_17">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_22">One of the fundamental problems here is that there has been a strategy or an approach of delay, delay and deceive adopted with these parents in the case of Harvey. He was removed deliberately from the waitlist. That decision was taken despite the fact he had been judged fit for surgery by an outside consultant. That happened. The Minister knows this because the protected disclosure arrived on her desk on 31 August and arrived to the HSE on 12 September.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_18">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_23">That is not true.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_19">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_24">There is nothing legally to prohibit the Minister or anybody else in receipt of it to study and absorb that protected disclosure.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_20">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_25">Yes, there is.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_21">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_26">I am very glad there will be a statutory inquiry. I hope the Government gets the terms of reference right but I am deeply troubled by the fact the system can act to deceive and delay, to leave parents entirely in the dark-----</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_22">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_27">Thank you, Deputy McDonald. I call the Taoiseach to respond. </p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_23">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_28">-----and to leave small children to suffer. There is never accountability for this. As a matter of fact, the great irony is that the only person who has suffered within the system as a result of this is the whistleblower herself.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Deputies<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_29">Hear, hear.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_25">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_30">You are way over time, Deputy. I ask the Taoiseach to respond.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_26">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_31">I will raise that again on another occasion on the floor of the Dáil.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_27">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_32">The Deputy made a comment in respect of the Minister receiving this, which is not correct in the sense that there is a dedicated channel, a secure, dedicated mailbox, set up to receive protected disclosures via the ministerial channel. The Minister does not engage with that. The legislation is very clear on that.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_28">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_33">What is very clear on that?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_29">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_34">The legislation was passed in the House.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_30">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_35">It is not.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_31">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_36">The protected disclosure was received in the mailbox on 31 August.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_32">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_37">It was addressed to the Minister.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_33">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_38">First, the notification was sent from the Department to the reporting person informing them that in accordance with section 8-----</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_34">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_39">I am aware of all of that.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_35">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_40">You are not because you gave an opposite perspective.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_36">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_41">No, I am aware of that.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_37">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_42">I did not interrupt you. Please.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_38">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_43">Please, go ahead.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_39">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_44">The commissioner for protected disclosures, who is responsible, acknowledged receipt on 2 September. Once transmitted, the commissioner independently determines the appropriate prescribed person or public body to follow up on the disclosure. The HSE has issued a statement, as the Deputy is aware. Ministers are required to establish dedicated channels to receive protected disclosures and to publish information on how to access and use the reporting channel. A secure dedicated mailbox was set up to receive protected disclosures via the ministerial channels.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_40">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_45">Yes, it was addressed to the Minister.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_41">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_46">Access to records is strictly limited to ensure the identities of the----- </p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_42">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_47">There was nothing stopping her.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_43">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_48">It is the law.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_44">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_49">Please do not interrupt, Deputy.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_45">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_50">-----reporting person and any persons named in the report are kept confidential to the greatest extent possible.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_46">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_51">No, the law does not stop you.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_47">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_52">The Taoiseach is over time. Please do not interrupt, Deputy McDonald.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_48">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_53">There is an alarming lack of curiosity at a minimum.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_49">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_54">All disclosures received by a Minister or Minister of State must be transmitted to the protected disclosures commissioner within ten calendar days of receipt. That is a statutory requirement under the Act.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_50">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_55">It does not stop them from breaking it first. </p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_51">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_56">The Taoiseach is well over time.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_52">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_57">I am but Deputy McDonald was too. It is not good enough that misleading presentations are being made by the Deputy.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_53">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_58">You are misrepresenting the legislative process.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_54">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_59">Let us not play politics.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_55">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-11-12T14:10:00+00:00"/></from>
+          <p eId="para_60">The fate of hundreds of thousands of young people, workers, families and those with a disability relies on what the Government will publish in its new plan for housing tomorrow. It is not a dramatic statement to say that young people are leaving our shores, workers with good jobs and decent incomes have zero hope of being able to buy, workers of all ages are condemned to a rental market with exorbitant rents, and thousands of families are facing a very uncertain winter and new year because of the Government's heartless changes to rent protections earlier this year.</p>
+          <p eId="para_61"> For too many, our country has become one of luck, when you were born, if you have a partner and if your parents were able to help you with a deposit to be able to access a secure, safe and affordable home. Tomorrow, I have no doubt the Government will try to dazzle the public with announcements of new schemes, funds and extra billions of euro. However, it is not a case of what you spend but how you spend it. The Government has spent enormous amounts of money on the purchase of turn-key apartments that were originally designed to be sold on the open market. Not only is this a massive transfer to developers, but it also squeezes out home buyers desperate to purchase a home.</p>
+          <p eId="para_62"> Last year, councils and approved housing bodies, AHBs, directly built a paltry 335 new social homes, yet the public sector spent over €2 billion purchasing over 4,700 new units.</p>
+          <p eId="para_63">It spent an average of €431,000 per unit, which is a whopping 24% increase on the previous year. Somebody somewhere is laughing, and it is not ordinary people out there, desperately looking for a home. The Department of public expenditure and reform admitted in 2023 that turnkey acquisitions were 21% more expensive than a direct build. Yet, Government reliance on private developers to bail it out of the social and affordable housing crisis has gone up, not down.</p>
+          <p eId="para_64"> In budget 2026 the Government spent €270 million in tax cuts to developers in its latest wing-and-a-prayer attempt to get apartments built. These are all massive transfers to developers. It makes a complete laughing stock of any claim to be value for money and, devastatingly, it squeezes the existing availability of homes for purchase that should be within workers' reach. All the while, the Land Development Agency, the State agency set up to get houses built, is moving at a snail's pace, with just 281 directly-built homes to the end of last year.</p>
+          <p eId="para_65"> My question to the Taoiseach regarding the Government's housing plan is: will it reverse course and prioritise direct building on the lands the State owns? Will the Taoiseach ensure that, for the over 4,700 people who are facing notice of termination coming into the winter, the Government will put in place an eviction ban? We know from the Daft report today that the number of rental properties is at an all-time low and people have nowhere to go. Will the Taoiseach ensure that with regard to construction labour supply, particularly apprentices, the Government makes good on the promise to pay them the national minimum wage as promised by the Tánaiste three years ago?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_56">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:15:00+00:00"/></from>
+          <p eId="para_66">First of all, I fundamentally disagree with the positioning of the Deputy in respect of the housing issue, which is the number one priority facing our country, particularly young people. Progress was made under Housing for All and the targets outlined in it were achieved, despite commentary to the contrary. Over 137,000 houses have been built since Housing for All was published, with €14 billion in terms of capital Exchequer funding allocated. Some 59,000 households have purchased their first home through the help to buy scheme. That is people out there in the private market. Another 8,400 have done so through the first home scheme, which I understand the Deputy opposed. These are real people out there who were able to buy their home because of access to the help to buy scheme and the first home scheme. The percentage of drawdown of first-time mortgages has risen significantly, to about 35%, from about 23% in 2015. There has been real activity in terms of enabling people to purchase homes but it simply is not enough and we have a lot more to do. There is no question about that.</p>
+          <p eId="para_67"> We need to get from 33,000 to 35,000 homes to 50,000 to 60,000 homes per annum. That is the bottom line. We need both the public sector and the private sector. We also need unprecedented investment in infrastructure. If you look at what we have allocated through the public capital investment programme and the off-balance sheet procurement of finance by the State agencies on the energy side, you are looking at an investment of about €54 billion in transport, energy and water. All of that investment will enable more housing. A very structured, fundamental and strategic approach has been adopted by the Government. An unprecedented amount of public money is going into housing in terms of the unprecedented amount of money going into the infrastructure that will enable more housing. We also want to bring on board significant activity from the private sector to complement the work of the public sector. All of those strands are required to deal with the housing crisis.</p>
+          <p eId="para_68"> An eviction ban will not deal with the housing crisis. Measures the Deputy has advocated in the past would seek to undermine any potential of any private sector investment coming into the market and we need private sector investment. It is estimated by the Department of Finance that we need about €20 billion per year to meet the required number of houses. The State on its own cannot provide that €20 billion. We need additionality to the public sector spend from the private sector as well.</p>
+          <p eId="para_69"> I know the Deputy disagrees with that but I see no proposals from her that would in any way reach the €20 billion to enable us to get to 60,000 houses per annum.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_57">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_70">What I am hearing from the Taoiseach is that Housing for All was a success, yet we have over 16,000 people registered as homeless. By any measure, the Government's housing policies have been an abject failure. There are unprecedented amounts going into housing, but where are they going? They are going to developers on foot of the policy of this Government in respect of turnkey acquisitions as opposed to building directly.</p>
+          <p eId="para_71"> In the context of ideas, we have said many things with regard to housing. We have talked about expanding the Land Development Agency's powers in order that it would not have to go agency by agency but could instead use compulsory purchase orders on a bigger scale. We have also talked about the construction labour supply. We never hear any answers from the Government about how to expand construction labour supply. We have talked about a State construction company and about apprenticeships. I have heard nothing from the Government in that regard. Instead, all too often, the Government throws its hands in the air and says we cannot get the workers. We have brought forward proposals-----</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_58">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_72">I have never said that.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_59">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_73">-----with regard to workers and how to secure apprentices and bring them into the system. The Government has failed in that regard.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_60">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_74">We have over 190,000 workers in the construction sector. That is up by about 45,000 since 2019, so there has been huge work done in terms of the human resources requirement for house construction. I was on a housing site last week in Ballyvolane in Cork. They are now building the houses within a nine-week timeframe because of the infrastructure work that went in there about two years ago. Up to 800 houses will be delivered on that site, through timber frame and modern methods of construction, utilising the Enterprise Ireland framework and programme.</p>
+          <p eId="para_75"> There is huge progress being made, but it is not enough. The population has grown exponentially. We acknowledge that. We need to remove barriers and bottlenecks to infrastructural development, which we will do. We need the support of those opposite in that regard. What happens when we want to amend Department guidelines? Those opposite seek judicial reviews.</p>
+        </speech>
+        <speech by="#JohnCummins" eId="spk_61">
+          <from>Deputy John Cummins<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_76">Yes.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_62">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_77">We need houses of different types and size and different approaches to solve this issue.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_63">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_78">Thank you, Taoiseach.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_64">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_79">Everywhere you go, the Opposition opposes almost all of the measures.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_65">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_80">Absolutely not.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_66">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_81">What Deputy Sherlock offered there is of no real substance-----</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_67">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_82">That is not true. It is factually incorrect.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_68">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_83">Thank you, Taoiseach. That is it. The time is up.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_69">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_84">-----in terms of talking about a new agency. The LDA will now have €8.5 billion for direct build.</p>
+        </speech>
+        <speech by="#HollyCairns" eId="spk_70">
+          <from>Deputy Holly Cairns<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_85">Very briefly, I welcome my mum, Madeleine, to the Gallery. It is extra special that she is here because she is joined by some of her oldest friends, her childhood friends, who are all very welcome.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_71">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_86">I am sure the Deputy did not mean oldest. They are some of her best friends. They are very welcome.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_72">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_87">Well done, a Cheann Comhairle.</p>
+        </speech>
+        <speech by="#JerryButtimer" eId="spk_73">
+          <from>Deputy Jerry Buttimer<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_88">Longest.</p>
+        </speech>
+        <speech by="#HollyCairns" eId="spk_74">
+          <from>Deputy Holly Cairns<recordedTime time="2025-11-12T14:20:00+00:00"/></from>
+          <p eId="para_89">Longest term friends.</p>
+          <p eId="para_90"> In her inauguration speech yesterday, Catherine Connolly said climate change is one of the greatest challenges of her time. President Connolly intends to make this a key focus of her Presidency, and I really welcome that. This is especially important given that climate change has fallen way down the Government's agenda. I am sure the Taoiseach will deny that but the facts are the facts. This Government is on course to spectacularly miss its climate targets. I read the speech the Taoiseach delivered at COP30. I agreed with much of it, but I found it hard to square his climate rhetoric with his climate inaction. He implored world leaders to "tell it as it is" and told delegates "we have to go further", but failed to admit we have no hope of meeting our own climate targets. The pervious Government committed to a reduction of 51%, but then it made a plan that would at best give rise to a reduction of 23%. On what planet is that in line with what he said at COP?</p>
+          <p eId="para_91"> Separately, in a recent discussion with John Collison, the Taoiseach suggested that some climate projects will have to be shelved because they risk polarising society. However, he failed to outline which projects are going to be scrapped. I want to give him an opportunity to clarify those comments and tell us which projects are not going to go ahead. Will it be public transport projects, renewable energy projects or those involving investment in native forestry? What exactly is the Government going to scrap? Climate inaction represents a missed opportunity for Ireland. We are a small country but we could be a world leader in this area. Instead of scrapping projects and missing targets, we could be developing new technologies and championing green industries.</p>
+          <p eId="para_92">We could turbocharge investment in offshore wind and protect our waterways. We could become the gold standard in sustainable agriculture. This Government is failing at all of that. We see a lot of short-termism in politics but this is the area in which it is most irreversible and, therefore, most unforgivable. Failing to take real climate action is a betrayal of future generations who will ultimately end up paying the price.</p>
+          <p eId="para_93"> There will be a climate protest this Saturday, starting at 1 p.m. in the Garden of Remembrance. I ask everybody who cares about this issue to come out and make their voices heard because this Government is not listening and we are hurtling towards climate chaos. In advance of the protest, will the Taoiseach tell us how he is going to get to 51%? What climate projects is he going to scrap?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_75">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:25:00+00:00"/></from>
+          <p eId="para_94">I thank the Deputy for raising what is an existential issue facing humankind. I also welcome her mother, Madeline, and her good friends to the Chamber. I hope they have a very enjoyable day. I will also take this opportunity to wish President Connolly the very best of success in her role as President of Ireland, as we did yesterday.</p>
+          <p eId="para_95"> I fully concur with the objective of addressing the issue of climate change. I have no issue with being overly critical. The last Government actually did engineer a step change in terms of the Government response to climate change. We provided a legislative template. That is very challenging and I do not doubt that. We also undertook a range of initiatives in areas such as offshore renewables, electric vehicles, retrofitting, better environmental practices in farming and utilising carbon tax revenue. We also put carbon tax into legislation and have utilised it to address fuel poverty, to help develop better sustainable farming methods for the farming community and for the retrofitting programme, which has been quite extensive.</p>
+          <p eId="para_96"> To give an example, onshore wind energy provided 48% of Ireland's power last February. Last January, Ireland reached the important milestone of hitting 5 GW of installed onshore wind capacity. In 2023, Ireland was ranked second in the world for onshore wind generation. You will never hear the Opposition acknowledge that. It is as if we are doing nothing. Huge strides are being made. A revolution has happened in terms of onshore wind. The Deputy is correct that we need more new technologies and innovation but we are seen as one of the best in terms of integrating renewables into the grid. That is a good thing.</p>
+          <p eId="para_97"> The next big step change has to be offshore wind generation. We are pushing as fast and as best we can. I will come back to that in a moment. I have established a clearing house. This means bringing industry in to meet with Government Departments in a committee structure to make sure we can remove barriers and accelerate the development of offshore wind in line with the designated maritime area plans, DMAPs, proper procedures and so forth.</p>
+          <p eId="para_98"> Wastewater is very important in terms of a clean environment, water quality and so on, and yet a great many people are opposing wastewater treatment plants, including some from the environmental sector. It beggars belief when you think about it. The objective is to clean the water before it goes into our rivers and seas and yet there are interminable delays because of judicial reviews. That is a factor. I hope that when it comes to the offshore wind agenda, we do not see objections to it because it is vital to the climate change agenda in this country, emissions reductions and reducing reliance on imported fossil fuels, which is driving up costs and causing real challenges for us.</p>
+        </speech>
+        <speech by="#HollyCairns" eId="spk_76">
+          <from>Deputy Holly Cairns<recordedTime time="2025-11-12T14:25:00+00:00"/></from>
+          <p eId="para_99">There is so much spin in the Taoiseach's reply that it is difficult to know where to start. We have less offshore wind production than we did 20 years ago. That is the reality. I recognise that the climate Act was good but it is about delivery. The target was 51%. The Government made a plan to reach 23% and even that did not happen. The reality is that the Taoiseach's Government's record is one of abject failure. When the Social Democrats try to point that out, his approach is to misrepresent our position. That is especially true when it comes to the nitrates derogation, for example.</p>
+          <p eId="para_100">The fact is - we all know it - that applying huge amounts of nitrogen to the land is damaging our water quality. That is not my opinion, that is what the Environmental Protection Agency has said time again. That is why it is going to be so difficult to retain the derogation. Pointing that out was sabotage according to one of the Taoiseach's party's MEPs. That is the way they bizarrely put it, when it is actually just a fact.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_77">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_101">I thank the Deputy.</p>
+        </speech>
+        <speech by="#HollyCairns" eId="spk_78">
+          <from>Deputy Holly Cairns<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_102">What is also a fact is that this Government is leading farmers to a cliff edge. If the derogation is not renewed or is further cut, what is the Government going to do?</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_79">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_103">The time is up.</p>
+        </speech>
+        <speech by="#HollyCairns" eId="spk_80">
+          <from>Deputy Holly Cairns<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_104">The Taoiseach did not answer my question about whether we are going to reach the 51%, and how we will get there. Maybe he can answer this question.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_81">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_105">I call on the Taoiseach to respond.</p>
+        </speech>
+        <speech by="#HollyCairns" eId="spk_82">
+          <from>Deputy Holly Cairns<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_106">What is the plan B for farmers when the derogation is inevitably cut?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_83">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_107">I have never said we would be shelving any climate projects, but I did say we should not attempt to litigate our way out of climate change because we would divide society. We will develop a counter-reaction to the changes that are required to meet our climate change targets. Maybe I was picked up wrong, but I have been saying this for quite some time. The legal route will be the ruination of the consensus that we have created in society around the need to tackle climate change. That is the view I have. There are certain people out there who feel that it is all in the courts and that we should drag people kicking and screaming through the court system. I can guarantee the Deputy that will not work. It will not work in farming. We have to bring the farming community with us. They have a lifetime of involvement in the food production system. We have one of the most carbon-efficient food production systems in Europe and, indeed, the world.</p>
+        </speech>
+        <speech by="#HollyCairns" eId="spk_84">
+          <from>Deputy Holly Cairns<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_108">Could the Taoiseach answer the question?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_85">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_109">The challenge on the nitrates directive is to give us space and time to get it right, but not to undermine and ruin what is a very important industry to the country-----</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_86">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_110">The derogation has been in place for 20 years.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_87">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_111">This is Leaders' Questions.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_88">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_112">----but also to do it in a proper, effective way. That is the objective, and that is what I have been doing-----</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_89">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_113">I thank the Taoiseach. The time is up.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_90">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_114">-----in my discussions with the present Commissioner. I know the Minister, Deputy Heydon, has also been doing so in his discussions.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_91">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_115">I call Deputy Healy.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_92">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_116">I am sorry.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_93">
+          <from>Deputy Seamus Healy<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_117">I want to raise with the Taoiseach again the re-establishment of borough and town councils. As he knows, local government is the heartbeat of democracy. The heart was torn out of democracy with the abolition of town and borough councils in 2014 by the Fine Gael-Labour Party coalition. These councils were replaced by committees with no powers, functions or funding. Effectively, the are talking shops. This has done serious damage to towns right across the country. It is widely accepted and acknowledged, even by the former leader of the Labour Party, Brendan Howlin, that this was a very bad decision. Clonmel, one of the five original boroughs in the country, with a mayor and a form of local democracy dating back to the 1400s, is a town very badly affected by that decision.</p>
+          <p eId="para_118"> I acknowledge the programme for Government commitment to establish a local democracy task force. However, there are widespread concerns about the terms of reference of the task force. There is no mention of the re-establishment of borough or town councils. The composition of the task force is heavily loaded in favour of existing individuals and bodies connected to local government and local government management. There are no representatives, for instance, of community, tenants' or residents' organisations. There are also no trade union or chamber of commerce representatives. The task force has limited its consultation process to requests for submissions from designated organisations. There is effectively no public consultation process.</p>
+          <p eId="para_119"> If there is to be a re-establishment of town and borough councils and real local government reform, this task force must be open, transparent and accountable and must involve real public consultation. If this does not happen, the Government's statement that local government is the heartbeat of democracy will mean nothing. Will the Taoiseach make sure that real local government and democracy are put in place by means of the re-establishment of borough and town councils and the setting up of new councils for towns that have grown and expanded in recent years?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_94">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:30:00+00:00"/></from>
+          <p eId="para_120">I thank the Deputy very much for raising an important issue that is close to my heart. At the time, I opposed the abolition of town and borough councils. As a democrat, I believe in fundamental layers of democracy. Town councils played a very effective and impactful role in their day. In the first instance, they were a channel for people to get involved in communities and politics and to outline plans and visions for their towns. As Deputy Healy says, in Clonmel and all across the country we have very good examples, including in Clonakilty, Kinsale and Dungarvan. They were all effective.</p>
+          <p eId="para_121">The problem is that when the system gets rid of something, the system them has to be dragged kicking and screaming to re-establish it. We have set up the task force because in the intervening period what replaced the town councils were the area-----</p>
+        </speech>
+        <speech by="#JenniferMurnaneOConnor" eId="spk_95">
+          <from>Deputy Jennifer Murnane O'Connor<recordedTime time="2025-11-12T14:35:00+00:00"/></from>
+          <p eId="para_122">Municipal districts.</p>
+        </speech>
+        <speech by="#NormaFoley" eId="spk_96">
+          <from>Deputy Norma Foley<recordedTime time="2025-11-12T14:35:00+00:00"/></from>
+          <p eId="para_123">Municipal districts.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_97">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:35:00+00:00"/></from>
+          <p eId="para_124">-----municipal districts. That is an issue that has to be factored into whatever we do.</p>
+          <p eId="para_125"> I do favour at least establishing a pilot programme whereby we look at certain areas of population of a certain scale where we could reintroduce councils. We talk about connection to people and we talk about democracy. The town councils were that connection. I was in some places recently where flooding had taken place. The absence of a town council and a basic administrative capacity was sorely felt over the past number of years in terms of resources being readily available in a given town if flooding occurred. More importantly, these councils are a way of bringing people into politics at a particular level. People can graduate to county councils or the Dáil subsequently. It is about civic participation in society and in our communities.</p>
+          <p eId="para_126"> I could never understand the negativity in some quarters towards councils. I was a bit frustrated at the decision by my good colleague - and I have great respect for him - former Deputy and Minister Brendan Howlin. As soon as he left the Department, he had regrets about the decision. That said, it is important that he has said that he thinks it was not a great idea. The latter is important because he is somebody who has been through both sides of it.</p>
+          <p eId="para_127"> The task force will be reporting in the first quarter of next year. There has been stakeholder consultation. I take the Deputy’s point about public consultation. We might ask the task force to have a look at that. It is examining structures, functions and the financing of local government. I take on board the Deputy's bona fides in the context of what he is saying. The report will come back to us and we will take it from there.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_98">
+          <from>Deputy Seamus Healy<recordedTime time="2025-11-12T14:35:00+00:00"/></from>
+          <p eId="para_128">I appreciate the response. I acknowledge and fully accept the Taoiseach’s personal support for the re-establishment of town and borough councils. He has outlined that to me previously in response to a parliamentary question. He also expanded on that in a feature in the <i>Irish Examiner </i>shortly afterwards. However, there are very serious concern that the whole task force process is being controlled by insiders in the Department and in local government and that we will end up with a proposal that will tinker around the edges and that will involve no real reform and no re-establishment of the borough and town councils. I am asking the Taoiseach to intervene with the task force to ensure that we see the re-establishment of borough and town councils and, indeed, the creation of new councils for towns that have grown and expanded in the past number of years.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_99">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:35:00+00:00"/></from>
+          <p eId="para_129">It probably would be an unfair characterisation to say the task force is full of insiders. The Minister of State has just informed me that about five councillors are on the task force. They were nominated by the representative bodies of councillors. There will be a serious, genuine and substantive look at the issue. It will then fall to the Government to act on the report. As I have said, I would like to see this happen in new areas where there has been significant growth in population and in historic areas where people were very aggrieved by the removal of the borough councils. As I say, whatever happens will have to be integrated into the area council format or will have to take cognisance of that. The latter is something I am sure the task force is looking at as well.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="questions" eId="dbsect_3">
+        <heading>Ceisteanna ó na Comhaltaí Eile - Other Members’ Questions<recordedTime time="2025-11-12T14:35:00+00:00"/></heading>
+        <speech by="#MaeveOConnell" eId="spk_100">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-11-12T14:35:00+00:00"/></from>
+          <p eId="para_130">I take this opportunity to raise the issue of the cost of further and higher education. Is the Department planning to publish a roadmap to address the cost of education at higher and further level? As a fellow graduate of UCC, no doubt the Taoiseach will remember the days in the Kampus Kitchen or the main restaurant when he would have counted his change before buying a warming bowl of soup or cup of Barry's tea.</p>
+          <p eId="para_131">Students today are similarly capable of making the most of every euro, but spending a couple of years in college is very expensive, even if supplemented with summer or part-time work. We have to ensure that such work is supplemental. Our students are poorly served by a Government if they have to sacrifice classes and study time working full-time to pay for college. This will not maximise their potential or support our knowledge economy. Those currently at second level are now looking to their third level education choices, discussing options with their families. Cost is a big part of that discussion because we know cost is a barrier to continuing with education.</p>
+          <p eId="para_132"> From a student and parent’s view, third level fees have increased this year versus what they paid in 2025. I hear the impact of this from students and parents in my Dublin Rathdown constituency. As I also have UCD in my constituency, I hear it from the students living in my constituency who are from all parts of Ireland. These students and parents tell me they know they have been supported over the last few years. They have saved €2,500 in the three years of their degrees, a saving they did not budget for, through the reductions in fees. This is compared to what they expected to pay when they accepted their college places in 2022 or 2023. They are also well informed. They understand that this budget was the first of five over the course of this Government and a college journey takes place over a number of years, but those in their early years are also asking how exactly we will honour the commitments that we made in the programme for Government - our commitment to reducing the student contribution fee and expanding the SUSI maintenance grant.</p>
+          <p eId="para_133"> Now is the time to give students and families clarity on how this will happen and for the Department to provide people with the right assurances and a plan of action. For every family that has a child in further or higher education, or who may be starting third level in two, three, four or even five years’ time, I ask the Taoiseach to ensure that the Minister for further and higher education develops and publishes a roadmap on how to reduce the cost of education as a matter of priority.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_101">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:40:00+00:00"/></from>
+          <p eId="para_134">I thank the Deputy for raising the question. I do remember my days in the Kampus Kitchen. Actually in the students union, we led a protest when there was an increase in the price of coffee, even though I did not drink coffee, but it did not stop us having a great time having a protest.</p>
+        </speech>
+        <speech by="#NoelGrealishPD" eId="spk_102">
+          <from>Deputy Noel Grealish<recordedTime time="2025-11-12T14:40:00+00:00"/></from>
+          <p eId="para_135">Something to protest about.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_103">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:40:00+00:00"/></from>
+          <p eId="para_136">We set up our own coffee operation and we realised that there were very high margins in coffee - that was a take-away - and tea. I do not want to be promoting any more of this kind of activity but, anyway, the company was not too impressed. I can see Richard is nodding in agreement. </p>
+        </speech>
+        <speech by="#RichardBoydBarrett" eId="spk_104">
+          <from>Deputy Richard Boyd Barrett<recordedTime time="2025-11-12T14:40:00+00:00"/></from>
+          <p eId="para_137">We will join with the Taoiseach's fight.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_105">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:40:00+00:00"/></from>
+          <p eId="para_138">If we had had Deputy Boyd Barrett at the time, we probably would have had a more effective protest. Welcome back.</p>
+          <p eId="para_139"> In any event, I think the third level education situation has a broad range of issues. First of all, we have to have really sufficient funding and core funding so that the quality of third level education is high and that it rates internationally. That is very important. There has been, to be fair on the last Government and this Government, sustained increases in the core funding of higher education over three budgets now, a total of €164 million. In addition, additional Exchequer employer contributions have been secured, a further €100 million per annum committed to by 2030. That came out of that report some years ago. </p>
+          <p eId="para_140"> The other key area is in terms of research. I am very keen that we would step-change our investment in research, which is key for students themselves, but also for society and for the economy in terms of having really high-level, quality research activities in our universities that provide solutions to world problems but also then act as a very significant catalyst for new industries, new products and services. We did this before in the late 1990s and early 2000s. We are determined to do it again. Already as a result of this budget, there is about €425 million in research and innovation in the 2026 budget. That is part of a €2.3 billion NDP allocation. We have to do it, given what is happening in America, tariffs and everything, and threats to established ways of working. We simply have to really double down and reinforce our own capacity to develop our own indigenous industries and also to attract investment in respect of life sciences, renewable energy, technology and AI more generally. Then we have to invest in apprenticeships and skills. Really significant progress has been made over the last number of years. Combining that with the R and D tax credit, that is effective.</p>
+          <p eId="para_141"> In terms of supports for students and families, there was a €500 real cut this year. The cost of living measure was just a two-year provision right across the board, but we have embedded €500 of that cut to the student contribution fee. That is permanent. There is a higher SUSI income threshold as well now. It is now €120,000, the highest ever, extending support to thousands more families. There are 30,000 students living 30 km from campus. They receive higher non-adjacent SUSI payments as well. That is up.</p>
+          <p eId="para_142">Then we have to look at the postgraduate students-----</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_106">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_143">Time is up. You will be back in, Taoiseach. I call Deputy O'Connell.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_107">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_144">-----and make sure the cost for them is reduced significantly.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_108">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_145">I thank the Taoiseach. I am delighted to hear that he was a fellow tea-drinker as well. As a Corkman, I have to assume that is good old Barry's Tea too. I welcome that.</p>
+          <p eId="para_146"> I also support our investment in research but I do not see that it is a trade-off. We need to invest in our students, but the cost of education can encourage students to work more hours and damage their education.</p>
+          <p eId="para_147"> There is another opportunity that I would like to ask about relating to the whole area of student accommodation. We have extended the 9% construction rate VAT to student accommodation but there is another opportunity we have in that regard. Recently, I visited TU Dublin, my former employer, to discuss the challenges it and other technological universities are facing. The team there identified two potential locations for building student accommodation. One is in Grangegorman, which is quite a small site overall, and a major site in Blanchardstown. However, they are lacking borrowing capacities and without this have no chance of being able to develop these sites. What is the timeline for the establishment of this borrowing framework, which is a commitment in the programme for Government, to enable the technological universities to get on with building accommodation for students and apprentices?</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_109">
+          <from> The Taoiseach<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_148">The publication of a strategic student accommodation approach or strategy is imminent. The Minister took it to the Cabinet subcommittee recently. It involves looking at the specific issue of how we can give capacity to the technological universities in particular to facilitate the development of student accommodation, either on the site that they may have, adjacent or wherever. The Minister has quite innovative approaches, which will draw on the need for the private sector to be involved. The scale of what is required will need private sector engagement and involvement. Again, we acknowledge that there has been a historic challenge to technological universities because they never had borrowing capacity. Mechanisms are being looked at between the Minister for higher education and the Minister for Finance in respect of that and good progress is being made. Along with the housing strategy in due course, and very quickly thereafter, there will a strategy in terms of student accommodation also.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="orderofBusiness" eId="dbsect_4">
+        <heading>An tOrd Gnó - Order of Business<recordedTime time="2025-11-12T14:45:00+00:00"/></heading>
+        <speech by="#MaryButler" as="#Minister_of_State_at_the_Department_of_the_Taoiseach" eId="spk_110">
+          <from>Minister of State at the Department of the Taoiseach (Deputy Mary Butler)<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_149">I move: </p>
+          <p class="indent_1" eId="para_150">Today's business shall be:</p>
+          <p class="indent_2" eId="para_151">- Motion <i>re</i> referral to joint committee of proposed approval by Dáil Éireann of Horse and Greyhound Racing Fund Regulations 2025 <i>(without debate) (any division claimed to be taken immediately) </i></p>
+          <p class="indent_2" eId="para_152">- Motion <i>re</i> leave to introduce Supplementary Estimates for Public Services 2025 [Votes 2, 6, 7, 9, 11, 13, 14, 17, 18, 20, 21, 22, 24, 26, 28, 30, 31, 36, 37, 38, 40, 42 and 45] <i>(without debate) (any division claimed to be taken immediately) </i></p>
+          <p class="indent_2" eId="para_153">- Social Welfare and Automatic Enrolment Retirement Savings System (Amendment) Bill 2025 (Second Stage) <i>(to conclude within 3 hours and 34 minutes; any division claimed to be taken no earlier than 7 p.m.) </i></p>
+          <p class="indent_1" eId="para_154">Wednesday's private members' business shall be the motion re cost of motoring, selected by Sinn Féin.</p>
+          <p class="indent_1" eId="para_155">Thursday's business shall be:</p>
+          <p class="indent_2" eId="para_156">- Statements on Science Week <i>(not to exceed 2 hours and 25 minutes) </i></p>
+          <p class="indent_1" eId="para_157">Thursday's Private Members' business shall be the Second Stage of the Forty-first Amendment of the Constitution (Reduction of Voting Age to Sixteen Years) Bill 2025, selected by Social Democrats.</p>
+          <p class="indent_1" eId="para_158">Proposed Arrangements for this week’s business:</p>
+          <p class="indent_1" eId="para_159">In relation to Wednesday's business, it is proposed that:</p>
+          <p class="indent_2" eId="para_160">1. the ordinary routine of business as contained in Schedule 3 to Standing Orders shall be modified to the extent that, notwithstanding the provisions of Standing Order 34(1)— </p>
+          <p class="indent_3" eId="para_161">(<i>a</i>) the Dáil shall sit later than 10.48 p.m. and shall adjourn on the conclusion of topical issues;</p>
+          <p class="indent_3" eId="para_162">(<i>b</i>) Other Members’ Questions pursuant to Standing Order 38A shall be taken immediately following Leaders’ Questions pursuant to Standing Order 38, with consequential effect on the commencement times for the items following in the ordinary routine of business and on the time for the adjournment of the Dáil; and</p>
+          <p class="indent_3" eId="para_163">(<i>c</i>) in the event that Second Stage of the Social Welfare and Automatic Enrolment Retirement Savings System (Amendment) Bill 2025 concludes before 7 p.m., and a division is claimed on the proceedings thereon, the sitting shall stand suspended until 7 p.m., and any division claimed on the proceedings on Second Stage of the Bill shall be taken on the resumption of the sitting: Provided that any division claimed on the Second Stage proceedings after 7 p.m. shall be taken immediately;</p>
+          <p class="indent_2" eId="para_164">2. the proceedings on the motion <i>re</i> referral to joint committee of proposed approval by Dáil Éireann of Horse and Greyhound Racing Fund Regulations 2025 shall be taken without debate and any division claimed thereon shall be taken immediately;</p>
+          <p class="indent_2" eId="para_165">3. the proceedings on the motion <i>re</i> leave to introduce Supplementary Estimates for Public Services 2025 [Votes 2, 6, 7, 9, 11, 13, 14, 17, 18, 20, 21, 22, 24, 26, 28, 30, 31, 36, 37, 38, 40, 42 and 45] shall be taken without debate and any division claimed thereon shall be taken immediately; and</p>
+          <p class="indent_2" eId="para_166">4. the proceedings on Second Stage of the Social Welfare and Automatic Enrolment Retirement Savings System (Amendment) Bill 2025 shall be brought to a conclusion after 3 hours and 34 minutes and the following arrangements shall apply:</p>
+          <p class="indent_3" eId="para_167">(<i>a</i>) the arrangements for the first speaking round shall be in accordance with those contained in the table immediately below (to be read across, not down);</p>
+          <p class="indent_3" eId="para_168">(<i>b</i>) on the conclusion of the first speaking round or where speeches conclude before the 3 hours and 24 minutes have elapsed and no other Member is offering, a Minister or Minister of State shall be called upon to make a speech in reply which shall not exceed ten minutes, whereupon proceedings shall be brought to a conclusion; and</p>
+          <p class="indent_3" eId="para_169">(<i>c</i>) Members may share time.</p>
+          <table>
+            <tr>
+              <td>
+                <p eId="para_170">
+									</p>
+              </td>
+              <td>
+                <p eId="para_171">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_172">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_173">
+                  <b>Lab</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_174">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_175">
+                  <b>SF</b>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_176">Mins</p>
+              </td>
+              <td>
+                <p eId="para_177">20</p>
+              </td>
+              <td>
+                <p eId="para_178">20</p>
+              </td>
+              <td>
+                <p eId="para_179">20</p>
+              </td>
+              <td>
+                <p eId="para_180">12</p>
+              </td>
+              <td>
+                <p eId="para_181">4</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_182">
+									</p>
+              </td>
+              <td>
+                <p eId="para_183">
+                  <b>SD</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_184">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_185">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_186">
+                  <b>IPTG</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_187">
+                  <b>Gov</b>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_188">Mins</p>
+              </td>
+              <td>
+                <p eId="para_189">20</p>
+              </td>
+              <td>
+                <p eId="para_190">12</p>
+              </td>
+              <td>
+                <p eId="para_191">4</p>
+              </td>
+              <td>
+                <p eId="para_192">20</p>
+              </td>
+              <td>
+                <p eId="para_193">12</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_194">
+									</p>
+              </td>
+              <td>
+                <p eId="para_195">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_196">
+                  <b>ITG</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_197">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_198">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_199">
+                  <b>OM</b>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_200">Mins</p>
+              </td>
+              <td>
+                <p eId="para_201">4</p>
+              </td>
+              <td>
+                <p eId="para_202">20</p>
+              </td>
+              <td>
+                <p eId="para_203">12</p>
+              </td>
+              <td>
+                <p eId="para_204">4</p>
+              </td>
+              <td>
+                <p eId="para_205">20</p>
+              </td>
+            </tr>
+          </table>
+          <p class="indent_2" eId="para_206"/>
+          <p class="indent_1" eId="para_207">In relation to Thursday's business, it is proposed that:</p>
+          <p class="indent_2" eId="para_208">1. the ordinary routine of business as contained in Schedule 3 to Standing Orders shall be modified to the following extent:</p>
+          <p class="indent_3" eId="para_209">(<i>a</i>) no motion for a Committee report pursuant to Standing Order 111 or Private Members' Bill pursuant to Standing Order 169 shall be taken;</p>
+          <p class="indent_3" eId="para_210">(<i>b</i>) private members' business pursuant to Standing Order 168(1) and Standing Order 176 shall be taken for 2 hours on the conclusion of the statements on Science Week; and</p>
+          <p class="indent_3" eId="para_211">(<i>c</i>) topical issues shall be taken on the conclusion of private members' business, and the Dáil shall adjourn on the conclusion of topical issues;</p>
+          <p class="indent_2" eId="para_212">2. the statements on Science Week shall not exceed 2 hours and 25 minutes and the order of speaking and allocation of time shall be as follows:</p>
+          <p class="indent_3" eId="para_213">(<i>a</i>) the arrangements for the statements, not including the Ministerial response, shall be in accordance with the arrangements contained in the table immediately below (to be read across, not down);</p>
+          <p class="indent_3" eId="para_214">(<i>b</i>) following the statements, a Minister or Minister of State shall be called upon to make a statement in reply which shall not exceed 10 minutes; and</p>
+          <p class="indent_3" eId="para_215">(<i>c</i> )members may share time; and</p>
+          <table>
+            <tr>
+              <td>
+                <p eId="para_216">
+									</p>
+              </td>
+              <td>
+                <p eId="para_217">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_218">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_219">
+                  <b>Lab</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_220">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_221">
+                  <b>SF</b>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_222">Mins</p>
+              </td>
+              <td>
+                <p eId="para_223">25</p>
+              </td>
+              <td>
+                <p eId="para_224">15</p>
+              </td>
+              <td>
+                <p eId="para_225">10</p>
+              </td>
+              <td>
+                <p eId="para_226">10</p>
+              </td>
+              <td>
+                <p eId="para_227">3</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_228">
+									</p>
+              </td>
+              <td>
+                <p eId="para_229">
+                  <b>SD</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_230">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_231">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_232">
+                  <b>IPTG</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_233">
+                  <b>Gov</b>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_234">Mins</p>
+              </td>
+              <td>
+                <p eId="para_235">10</p>
+              </td>
+              <td>
+                <p eId="para_236">10</p>
+              </td>
+              <td>
+                <p eId="para_237">3</p>
+              </td>
+              <td>
+                <p eId="para_238">9</p>
+              </td>
+              <td>
+                <p eId="para_239">10</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_240">
+									</p>
+              </td>
+              <td>
+                <p eId="para_241">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_242">
+                  <b>ITG</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_243">
+                  <b>Gov</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_244">
+                  <b>SF</b>
+                </p>
+              </td>
+              <td>
+                <p eId="para_245">
+                  <b>OM</b>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_246">Mins</p>
+              </td>
+              <td>
+                <p eId="para_247">3</p>
+              </td>
+              <td>
+                <p eId="para_248">9</p>
+              </td>
+              <td>
+                <p eId="para_249">10</p>
+              </td>
+              <td>
+                <p eId="para_250">3</p>
+              </td>
+              <td>
+                <p eId="para_251">5</p>
+              </td>
+            </tr>
+          </table>
+          <p class="indent_2" eId="para_252"/>
+          <p class="indent_2" eId="para_253">3. notwithstanding anything in Standing Order 177(2), the proceedings on Second Stage of the Forty-first Amendment of the Constitution (Reduction of Voting Age to Sixteen Years) Bill 2025 shall, if not previously concluded, be brought to a conclusion after 2 hours.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_111">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_254">Are the proposed arrangements for the week's business agreed?</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_112">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_255">Not agreed.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_113">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_256">I call Deputy McDonald.</p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_114">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_257">Under Standing Order 35(3), I propose an amendment to the Order of Business, that the Minister for Health come before the Dáil to make a comprehensive statement and take questions on the case of nine-year-old Harvey Morrison Sherratt, who died last July and who was in need of and belatedly received surgery but whom we now know was removed from the surgical wait list despite having being deemed fit for surgery.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_115">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_258">Thank you, Deputy. </p>
+        </speech>
+        <speech by="#MaryLouMcDonald" eId="spk_116">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_259">We need answers and accountability from the Minister and from the Government on this matter. </p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_117">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_260">I endorse the proposal from Sinn Féin.</p>
+          <p eId="para_261"> I wish to raise the issue of the occupied territories Bill because it was a key commitment in the election of both Government parties a year ago now, yet all we have seen since then is prevarication, delay and a weakening of the proposed alternative. Just six weeks ago, the Tánaiste said in this Chamber that it would be back in the Dáil to be passed before the end of November. My question is simple: where is it?</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_118">
+          <from>Deputy Paul Murphy<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_262">The revelations at the weekend from a CHI whistleblower about why Harvey Morrison Sherratt was removed from a waiting list were truly shocking and scary. Apparently - allegedly, but wrongly - it was because he was deemed to be palliative. It underscores the need for a full public inquiry as the parents have been campaigning for-----</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_119">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_263">Thank you, Deputy. Your 30 seconds are up. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_120">
+          <from>Deputy Paul Murphy<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_264">-----and the need for a debate this week with the Minister to come and answer questions on this issue. </p>
+        </speech>
+        <speech by="#MichaelCollins2016" eId="spk_121">
+          <from>Deputy Michael Collins<recordedTime time="2025-11-12T14:45:00+00:00"/></from>
+          <p eId="para_265">We would like statements in the House regarding the moving of the writ for the Galway West by-election. It is a huge important issue for the constituency. I also ask for statements in relation to Uisce Éireann. There are serious problems in respect of public representatives getting straight answer from Uisce Éireann about serious issues, whether in their constituencies or nationally.</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_122" as="#Minister_of_State_at_the_Department_of_the_Taoiseach">
+          <from>Deputy Mary Butler<recordedTime time="2025-11-12T14:50:00+00:00"/></from>
+          <p eId="para_266">In response to Deputy McDonald, under Standing Order 35(3) and as the Taoiseach said earlier, the Minister met Harvey's parents this afternoon with the Tánaiste, Simon Harris. I will speak to the Minister about Deputy McDonald's request and try to table that for next week.</p>
+          <p eId="para_267"> In response to Deputy Gibney, the occupied territories Bill is receiving priority publication by the Office of the Parliamentary Counsel.</p>
+          <p eId="para_268"> In response to Deputy Murphy, I would give a similar answer in relation to the CHI.</p>
+          <p eId="para_269"> In response to Deputy Collins, it does not come within my remit as Chief Whip or the Business Committee's to move any writ, but I am sure the Taoiseach has heard the Deputy. We can discuss Uisce Éireann at tomorrow morning's Business Committee meeting.</p>
+          <p eId="para_270"> The Order of Business stands.</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_123">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:50:00+00:00"/></from>
+          <p eId="para_271">I thank the Chief Whip. Are the proposed arrangements for this week's business agreed to and the proposed amendment negatived?</p>
+        </speech>
+        <speech by="#RichardBoydBarrett" eId="spk_124">
+          <from>Deputy Richard Boyd Barrett<recordedTime time="2025-11-12T14:50:00+00:00"/></from>
+          <p eId="para_272">A Cheann Comhairle?</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_125">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:50:00+00:00"/></from>
+          <p eId="para_273">Sorry, Deputy, you have had your chance.</p>
+        </speech>
+        <speech by="#RichardBoydBarrett" eId="spk_126">
+          <from>Deputy Richard Boyd Barrett<recordedTime time="2025-11-12T14:50:00+00:00"/></from>
+          <p eId="para_274">May I propose an amendment?</p>
+        </speech>
+        <speech by="#VeronaMurphy" eId="spk_127">
+          <from> An Ceann Comhairle<recordedTime time="2025-11-12T14:50:00+00:00"/></from>
+          <p eId="para_275">Are the arrangements agreed to and the amendment negatived?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Deputies<recordedTime time="2025-11-12T14:50:00+00:00"/></from>
+          <p eId="para_276">Not agreed.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_5">
+          <summary eId="sum_7">Question put: "That the amendment proposed to the arrangements on the Order of Business is hereby negatived and the proposed arrangements for the week's business are hereby agreed to."</summary>
+          <summary title="division" eId="sum_8">The Dáil divided: Tá, <quantity refersTo="#ta" normalized="80" eId="qty_1">80</quantity>; Níl, <quantity refersTo="#nil" normalized="61" eId="qty_2">61</quantity>; Staon, <quantity refersTo="#staon" normalized="0" eId="qty_3">0</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_6">
+            <p eId="para_277">Tá</p>
+            <p eId="para_278">
+              <person refersTo="#WilliamAird">Aird, William.</person>
+            </p>
+            <p eId="para_279">
+              <person refersTo="#CatherineArdagh">Ardagh, Catherine.</person>
+            </p>
+            <p eId="para_280">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_281">
+              <person refersTo="#TomBrabazon">Brabazon, Tom.</person>
+            </p>
+            <p eId="para_282">
+              <person refersTo="#BrianBrennan">Brennan, Brian.</person>
+            </p>
+            <p eId="para_283">
+              <person refersTo="#ColmBrophy">Brophy, Colm.</person>
+            </p>
+            <p eId="para_284">
+              <person refersTo="#JamesBrowne">Browne, James.</person>
+            </p>
+            <p eId="para_285">
+              <person refersTo="#MaryButler">Butler, Mary.</person>
+            </p>
+            <p eId="para_286">
+              <person refersTo="#PaulaButterly">Butterly, Paula.</person>
+            </p>
+            <p eId="para_287">
+              <person refersTo="#JerryButtimer">Buttimer, Jerry.</person>
+            </p>
+            <p eId="para_288">
+              <person refersTo="#MalcolmByrne">Byrne, Malcolm.</person>
+            </p>
+            <p eId="para_289">
+              <person refersTo="#MichaelCahill">Cahill, Michael.</person>
+            </p>
+            <p eId="para_290">
+              <person refersTo="#CatherineCallaghan">Callaghan, Catherine.</person>
+            </p>
+            <p eId="para_291">
+              <person refersTo="#DaraCalleary">Calleary, Dara.</person>
+            </p>
+            <p eId="para_292">
+              <person refersTo="#SeanCanney">Canney, Seán.</person>
+            </p>
+            <p eId="para_293">
+              <person refersTo="#MichealCarrigy">Carrigy, Micheál.</person>
+            </p>
+            <p eId="para_294">
+              <person refersTo="#JenniferCarrollMacNeill">Carroll MacNeill, Jennifer.</person>
+            </p>
+            <p eId="para_295">
+              <person refersTo="#JackChambers">Chambers, Jack.</person>
+            </p>
+            <p eId="para_296">
+              <person refersTo="#PeterChapCleere">Cleere, Peter 'Chap'.</person>
+            </p>
+            <p eId="para_297">
+              <person refersTo="#JohnConnolly">Connolly, John.</person>
+            </p>
+            <p eId="para_298">
+              <person refersTo="#JoeCooney">Cooney, Joe.</person>
+            </p>
+            <p eId="para_299">
+              <person refersTo="#CathalCrowe">Crowe, Cathal.</person>
+            </p>
+            <p eId="para_300">
+              <person refersTo="#JohnCummins">Cummins, John.</person>
+            </p>
+            <p eId="para_301">
+              <person refersTo="#EmerCurrie">Currie, Emer.</person>
+            </p>
+            <p eId="para_302">
+              <person refersTo="#MartinDaly">Daly, Martin.</person>
+            </p>
+            <p eId="para_303">
+              <person refersTo="#AislingDempsey">Dempsey, Aisling.</person>
+            </p>
+            <p eId="para_304">
+              <person refersTo="#CormacDevlin">Devlin, Cormac.</person>
+            </p>
+            <p eId="para_305">
+              <person refersTo="#AlanDillon">Dillon, Alan.</person>
+            </p>
+            <p eId="para_306">
+              <person refersTo="#AlbertDolan">Dolan, Albert.</person>
+            </p>
+            <p eId="para_307">
+              <person refersTo="#TimDooley">Dooley, Timmy.</person>
+            </p>
+            <p eId="para_308">
+              <person refersTo="#FrankFeighan">Feighan, Frankie.</person>
+            </p>
+            <p eId="para_309">
+              <person refersTo="#SeanFleming">Fleming, Sean.</person>
+            </p>
+            <p eId="para_310">
+              <person refersTo="#NormaFoley">Foley, Norma.</person>
+            </p>
+            <p eId="para_311">
+              <person refersTo="#PatTheCopeGallagher">Gallagher, Pat the Cope.</person>
+            </p>
+            <p eId="para_312">
+              <person refersTo="#JamesGeogheganFG">Geoghegan, James.</person>
+            </p>
+            <p eId="para_313">
+              <person refersTo="#NoelGrealishPD">Grealish, Noel.</person>
+            </p>
+            <p eId="para_314">
+              <person refersTo="#MarianHarkinIND">Harkin, Marian.</person>
+            </p>
+            <p eId="para_315">
+              <person refersTo="#DannyHealyRae">Healy-Rae, Danny.</person>
+            </p>
+            <p eId="para_316">
+              <person refersTo="#MichaelHealyRae">Healy-Rae, Michael.</person>
+            </p>
+            <p eId="para_317">
+              <person refersTo="#BarryHeneghan">Heneghan, Barry.</person>
+            </p>
+            <p eId="para_318">
+              <person refersTo="#MartinHeydon">Heydon, Martin.</person>
+            </p>
+            <p eId="para_319">
+              <person refersTo="#EmerHiggins">Higgins, Emer.</person>
+            </p>
+            <p eId="para_320">
+              <person refersTo="#KeiraKeogh">Keogh, Keira.</person>
+            </p>
+            <p eId="para_321">
+              <person refersTo="#JohnLahart">Lahart, John.</person>
+            </p>
+            <p eId="para_322">
+              <person refersTo="#MichaelLowry">Lowry, Michael.</person>
+            </p>
+            <p eId="para_323">
+              <person refersTo="#MichaelMartin">Martin, Micheál.</person>
+            </p>
+            <p eId="para_324">
+              <person refersTo="#DavidMaxwell">Maxwell, David.</person>
+            </p>
+            <p eId="para_325">
+              <person refersTo="#PaulMcAuliffe">McAuliffe, Paul.</person>
+            </p>
+            <p eId="para_326">
+              <person refersTo="#NoelMcCarthy">McCarthy, Noel.</person>
+            </p>
+            <p eId="para_327">
+              <person refersTo="#TonyMcCormack">McCormack, Tony.</person>
+            </p>
+            <p eId="para_328">
+              <person refersTo="#HelenMcEntee">McEntee, Helen.</person>
+            </p>
+            <p eId="para_329">
+              <person refersTo="#SeamusMcGrath">McGrath, Séamus.</person>
+            </p>
+            <p eId="para_330">
+              <person refersTo="#ErinMcGreehan">McGreehan, Erin.</person>
+            </p>
+            <p eId="para_331">
+              <person refersTo="#JohnMcGuinness">McGuinness, John.</person>
+            </p>
+            <p eId="para_332">
+              <person refersTo="#KevinBoxerMoran">Moran, Kevin Boxer.</person>
+            </p>
+            <p eId="para_333">
+              <person refersTo="#AindriasMoynihan">Moynihan, Aindrias.</person>
+            </p>
+            <p eId="para_334">
+              <person refersTo="#MichaelMoynihan">Moynihan, Michael.</person>
+            </p>
+            <p eId="para_335">
+              <person refersTo="#ShaneMoynihan">Moynihan, Shane.</person>
+            </p>
+            <p eId="para_336">
+              <person refersTo="#JenniferMurnaneOConnor">Murnane O'Connor, Jennifer.</person>
+            </p>
+            <p eId="para_337">
+              <person refersTo="#MichaelMurphy">Murphy, Michael.</person>
+            </p>
+            <p eId="para_338">
+              <person refersTo="#HildegardeNaughton">Naughton, Hildegarde.</person>
+            </p>
+            <p eId="para_339">
+              <person refersTo="#JoeNeville">Neville, Joe.</person>
+            </p>
+            <p eId="para_340">
+              <person refersTo="#DarraghOBrien">O'Brien, Darragh.</person>
+            </p>
+            <p eId="para_341">
+              <person refersTo="#MaeveOConnell">O'Connell, Maeve.</person>
+            </p>
+            <p eId="para_342">
+              <person refersTo="#JamesOConnor">O'Connor, James.</person>
+            </p>
+            <p eId="para_343">
+              <person refersTo="#KieranODonnell">O'Donnell, Kieran.</person>
+            </p>
+            <p eId="para_344">
+              <person refersTo="#RyanOMeara">O'Meara, Ryan.</person>
+            </p>
+            <p eId="para_345">
+              <person refersTo="#JohnPaulOShea">O'Shea, John Paul.</person>
+            </p>
+            <p eId="para_346">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+            <p eId="para_347">
+              <person refersTo="#NaoiseOCearuil">Ó Cearúil, Naoise.</person>
+            </p>
+            <p eId="para_348">
+              <person refersTo="#SeanOFearghaillFF">Ó Fearghaíl, Seán.</person>
+            </p>
+            <p eId="para_349">
+              <person refersTo="#NaoiseOMuiri">Ó Muirí, Naoise.</person>
+            </p>
+            <p eId="para_350">
+              <person refersTo="#PeterRoche">Roche, Peter.</person>
+            </p>
+            <p eId="para_351">
+              <person refersTo="#EamonScanlon">Scanlon, Eamon.</person>
+            </p>
+            <p eId="para_352">
+              <person refersTo="#BrendanSmith">Smith, Brendan.</person>
+            </p>
+            <p eId="para_353">
+              <person refersTo="#NiamhSmyth">Smyth, Niamh.</person>
+            </p>
+            <p eId="para_354">
+              <person refersTo="#EdwardTimmins">Timmins, Edward.</person>
+            </p>
+            <p eId="para_355">
+              <person refersTo="#GillianToole">Toole, Gillian.</person>
+            </p>
+            <p eId="para_356">
+              <person refersTo="#RobertTroy">Troy, Robert.</person>
+            </p>
+            <p eId="para_357">
+              <person refersTo="#BarryWard">Ward, Barry.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_7">
+            <p eId="para_358">Níl</p>
+            <p eId="para_359">
+              <person refersTo="#CiaranAhern">Ahern, Ciarán.</person>
+            </p>
+            <p eId="para_360">
+              <person refersTo="#IvanaBacik">Bacik, Ivana.</person>
+            </p>
+            <p eId="para_361">
+              <person refersTo="#CathyBennett">Bennett, Cathy.</person>
+            </p>
+            <p eId="para_362">
+              <person refersTo="#RichardBoydBarrett">Boyd Barrett, Richard.</person>
+            </p>
+            <p eId="para_363">
+              <person refersTo="#JohnBrady">Brady, John.</person>
+            </p>
+            <p eId="para_364">
+              <person refersTo="#SorcaClarke">Clarke, Sorca.</person>
+            </p>
+            <p eId="para_365">
+              <person refersTo="#MichaelCollins2016">Collins, Michael.</person>
+            </p>
+            <p eId="para_366">
+              <person refersTo="#RoseConwayWalsh">Conway-Walsh, Rose.</person>
+            </p>
+            <p eId="para_367">
+              <person refersTo="#ReadaCronin">Cronin, Réada.</person>
+            </p>
+            <p eId="para_368">
+              <person refersTo="#SeanCroweSF">Crowe, Seán.</person>
+            </p>
+            <p eId="para_369">
+              <person refersTo="#DavidCullinane">Cullinane, David.</person>
+            </p>
+            <p eId="para_370">
+              <person refersTo="#JenCummins">Cummins, Jen.</person>
+            </p>
+            <p eId="para_371">
+              <person refersTo="#PaDaly">Daly, Pa.</person>
+            </p>
+            <p eId="para_372">
+              <person refersTo="#PearseDoherty">Doherty, Pearse.</person>
+            </p>
+            <p eId="para_373">
+              <person refersTo="#PaulDonnelly">Donnelly, Paul.</person>
+            </p>
+            <p eId="para_374">
+              <person refersTo="#DessieEllis">Ellis, Dessie.</person>
+            </p>
+            <p eId="para_375">
+              <person refersTo="#AidanFarrelly">Farrelly, Aidan.</person>
+            </p>
+            <p eId="para_376">
+              <person refersTo="#MaireadFarrell">Farrell, Mairéad.</person>
+            </p>
+            <p eId="para_377">
+              <person refersTo="#GaryGannon">Gannon, Gary.</person>
+            </p>
+            <p eId="para_378">
+              <person refersTo="#SineadGibney">Gibney, Sinéad.</person>
+            </p>
+            <p eId="para_379">
+              <person refersTo="#AnnGraves">Graves, Ann.</person>
+            </p>
+            <p eId="para_380">
+              <person refersTo="#EoinHayes">Hayes, Eoin.</person>
+            </p>
+            <p eId="para_381">
+              <person refersTo="#SeamusHealy">Healy, Seamus.</person>
+            </p>
+            <p eId="para_382">
+              <person refersTo="#AlanKelly">Kelly, Alan.</person>
+            </p>
+            <p eId="para_383">
+              <person refersTo="#EoghanKenny">Kenny, Eoghan.</person>
+            </p>
+            <p eId="para_384">
+              <person refersTo="#MartinKenny">Kenny, Martin.</person>
+            </p>
+            <p eId="para_385">
+              <person refersTo="#ClaireKerrane">Kerrane, Claire.</person>
+            </p>
+            <p eId="para_386">
+              <person refersTo="#PaulLawless">Lawless, Paul.</person>
+            </p>
+            <p eId="para_387">
+              <person refersTo="#PadraigMacLochlainn">Mac Lochlainn, Pádraig.</person>
+            </p>
+            <p eId="para_388">
+              <person refersTo="#MaryLouMcDonald">McDonald, Mary Lou.</person>
+            </p>
+            <p eId="para_389">
+              <person refersTo="#DonnaMcGettigan">McGettigan, Donna.</person>
+            </p>
+            <p eId="para_390">
+              <person refersTo="#ConorDMcGuinness">McGuinness, Conor D.</person>
+            </p>
+            <p eId="para_391">
+              <person refersTo="#DeniseMitchell">Mitchell, Denise.</person>
+            </p>
+            <p eId="para_392">
+              <person refersTo="#PaulMurphy">Murphy, Paul.</person>
+            </p>
+            <p eId="para_393">
+              <person refersTo="#JohnnyMythen">Mythen, Johnny.</person>
+            </p>
+            <p eId="para_394">
+              <person refersTo="#GeraldNash">Nash, Ged.</person>
+            </p>
+            <p eId="para_395">
+              <person refersTo="#NatashaNewsomeDrennan">Newsome Drennan, Natasha.</person>
+            </p>
+            <p eId="para_396">
+              <person refersTo="#ShonaghNiRaghallaigh">Ní Raghallaigh, Shónagh.</person>
+            </p>
+            <p eId="para_397">
+              <person refersTo="#CarolNolan">Nolan, Carol.</person>
+            </p>
+            <p eId="para_398">
+              <person refersTo="#CianOCallaghan">O'Callaghan, Cian.</person>
+            </p>
+            <p eId="para_399">
+              <person refersTo="#RichardODonoghue">O'Donoghue, Richard.</person>
+            </p>
+            <p eId="para_400">
+              <person refersTo="#RobertODonoghue">O'Donoghue, Robert.</person>
+            </p>
+            <p eId="para_401">
+              <person refersTo="#RodericOGorman">O'Gorman, Roderic.</person>
+            </p>
+            <p eId="para_402">
+              <person refersTo="#LouisOHara">O'Hara, Louis.</person>
+            </p>
+            <p eId="para_403">
+              <person refersTo="#LouiseOReilly">O'Reilly, Louise.</person>
+            </p>
+            <p eId="para_404">
+              <person refersTo="#DarrenORourke">O'Rourke, Darren.</person>
+            </p>
+            <p eId="para_405">
+              <person refersTo="#EoinOBroin">Ó Broin, Eoin.</person>
+            </p>
+            <p eId="para_406">
+              <person refersTo="#RuairiOmurchu">Ó Murchú, Ruairí.</person>
+            </p>
+            <p eId="para_407">
+              <person refersTo="#FionntanOSuilleabhain">Ó Súilleabháin, Fionntán.</person>
+            </p>
+            <p eId="para_408">
+              <person refersTo="#LiamQuaide">Quaide, Liam.</person>
+            </p>
+            <p eId="para_409">
+              <person refersTo="#MauriceQuinlivan">Quinlivan, Maurice.</person>
+            </p>
+            <p eId="para_410">
+              <person refersTo="#PadraigRice">Rice, Pádraig.</person>
+            </p>
+            <p eId="para_411">
+              <person refersTo="#ConorSheehan">Sheehan, Conor.</person>
+            </p>
+            <p eId="para_412">
+              <person refersTo="#MarieSherlock">Sherlock, Marie.</person>
+            </p>
+            <p eId="para_413">
+              <person refersTo="#DuncanSmith">Smith, Duncan.</person>
+            </p>
+            <p eId="para_414">
+              <person refersTo="#BrianStanley">Stanley, Brian.</person>
+            </p>
+            <p eId="para_415">
+              <person refersTo="#PeadarToibin">Tóibín, Peadar.</person>
+            </p>
+            <p eId="para_416">
+              <person refersTo="#MarkWall">Wall, Mark.</person>
+            </p>
+            <p eId="para_417">
+              <person refersTo="#CharlesWard">Ward, Charles.</person>
+            </p>
+            <p eId="para_418">
+              <person refersTo="#MarkWard">Ward, Mark.</person>
+            </p>
+            <p eId="para_419">
+              <person refersTo="#JenniferWhitmore">Whitmore, Jennifer.</person>
+            </p>
+          </debateSection>
+          <debateSection name="staon" eId="dbsect_8">
+            <p eId="para_420">Staon</p>
+            <p eId="para_421">
+              <person refersTo="#"/>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_9">Tellers: Tá, Deputies Mary Butler and Emer Currie; Níl, Deputies Pádraig Mac Lochlainn and Sinéad Gibney.</summary>
+          <summary title="decision" refersTo="#carried" eId="sum_10">Question declared carried.</summary>
+        </debateSection>
+        <speech by="#MaryLouMcDonald" eId="spk_129">
+          <from>Deputy Mary Lou McDonald<recordedTime time="2025-11-12T15:05:00+00:00"/></from>
+          <p eId="para_422">Rip-off rents continue to spiral out of control on the watch of Fianna Fáil and Fine Gael. The latest <i>daft.ie</i> report shows new rents increased by 4% across the State in the past year. They are up by 6% in Galway and Limerick, 9% in the Taoiseach's city of Cork and 11% in Waterford. The Government sat back and allowed average new rents to hit a staggering €2,080 per month or €25,000 per year. While renters are fleeced, the Government provided no increase in the renter's tax credit in the budget. It is now pushing ahead with a Bill that will remove the one very limited protection afforded to renters and enable landlords to increase rip-off rents even more. If the Government cared at all about the pressure renters are under, it could not and would not go ahead with this disastrous plan.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_130">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-11-12T15:05:00+00:00"/></from>
+          <p eId="para_423">Hear, hear.</p>
+        </speech>
+        <speech by="#MichaelMartin" eId="spk_131">
+          <from> The Taoiseach<recordedTime time="2025-11-12T15:05:00+00:00"/></from>
+          <p eId="para_424">The key to this is housing supply. Our initiatives since the beginning of the year have been designed to get more houses built more quickly. The rate of increase is in decline, but that is not enough. We need far more supply to deal with the rental issue. Some positive news is that the percentage of first-time buyers has been steadily increasing, as I said, from about 23% of all household buyers in 2015 to 35% in August of this year. We want to continue that momentum. If we look at the situation internationally, right across Europe and the globe, there are housing crises more generally. That is the case in any of the major cities across Europe. We would probably rank in the top three European countries in terms of investment in construction. That is the key. We have to build more houses faster.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_132">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-11-12T15:05:00+00:00"/></from>
+          <p eId="para_425">Primary care psychology waiting lists are now up to a staggering 28,000. The figure for those waiting over a year is up to 16,000. In some parts of Dublin, children are waiting 13 years to be seen. That is not a waiting list; it is a non-existent service. My question is on recruitment. When we raise this issue, the Government throws its hands in the air and says the health service cannot get staff. That is not factually correct. There are applications in the Department of Health from those who have practised and trained in the UK and then moved home to Ireland. They are waiting months for a response from the Department. There are issues with regard to the 60-day training period that those who trained abroad are required to complete here. Will that 60-day period be waived or the practice of the person concerned restricted? We need to ensure that psychologists who want to practise in this country can be allowed to train. There have been reductions in child and adolescent mental health services, CAMHS, and primary care.</p>
+        </speech>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

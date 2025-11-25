@@ -1,0 +1,792 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-14/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-14/debate"/>
+          <FRBRdate date="2025-10-14" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-14/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-14/debate/mul@"/>
+          <FRBRdate date="2025-10-14" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-14/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-14/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-15" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="LynnRuane" href="/ie/oireachtas/member/id/Lynn-Ruane.S.2016-04-25" showAs="Lynn Ruane"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-14">Dé Máirt, 14 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-14">Tuesday, 14 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#NoelODonovan">Noel O'Donovan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LynnRuane">Lynn Ruane</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarethScahill">Gareth Scahill.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Artificial Intelligence in the Public Sector: Discussion<recordedTime time="2025-10-14T11:00:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:00:00+01:00"/></from>
+          <p eId="para_12">I welcome everyone to this morning's meeting of the Joint Committee on Artificial Intelligence. This committee looks at the issue of artificial intelligence in modular form. We are now moving into the area of AI and the State, the delivery of public services using AI, the safeguards that need to be in place and the opportunities. The agenda for today's meeting is to discuss the Government's guidelines for the responsible use of artificial intelligence within the public service and, thereafter, govtech and AI. More broadly, the theme is where AI can be used by the Government and the State.</p>
+          <p eId="para_13">I am happy to welcome the following officials from the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation: Mr. Barry Lowry, Government chief information officer; Ms Marianne Cassidy, assistant secretary, public service transformation division; and Mr. Patrick Moran, principal officer, public service transformation division. I now invite Ms Cassidy to deliver her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:05:00+01:00"/></from>
+          <p eId="para_14">Good morning Chair, Deputies and Senators. We welcome the opportunity to brief the committee on the Guidelines for the Responsible Use of AI in the Public Service, which our Department published in May of this year. The Government's public service transformation strategy, Better Public Services, commits to delivering digitally enabled services and functions, using technology to drive change and achieve seamless and inclusive user experiences while supporting digital inclusion. Pillar 1 of Better Public Services focuses on digital and innovation at scale. The AI guidelines form part of the Government's broader commitment under that pillar to harness digital and data to deliver better outcomes for people. They represent the first deliverable under three key policies arising under the new digitalisation mandate of the Department, namely, the AI guidelines, the soon-to-be published digital public service plan 2030 and the public service data strategy 2030. Together, these three policies will underpin the public service effort towards digitalisation as part of the overall national digital and AI strategy, which is currently under development and is being led by the Department of the Taoiseach. </p>
+          <p eId="para_15"> The guidelines are designed as an empowering framework that encourages innovation while ensuring that the deployment of AI in the public service is safe, transparent and aligned with public values. The guidelines are the successor to the interim guidelines on the use of AI, which were published in early 2024. The interim version focused primarily on awareness and risk management at a time when AI capability was evolving rapidly. The new guidelines move from principle to practice, supporting Departments and agencies to responsibly scale the use of AI where it can have real impact. They are closely aligned with the European Union's AI Act, ensuring that Ireland's public administration operates within the same risk-based framework that now underpins AI governance across the EU. This alignment gives assurance that public service bodies in Ireland are developing and deploying AI systems in a responsible manner. </p>
+          <p eId="para_16"> At the core of the guidelines is a responsible AI canvas. This serves as a practical tool that helps public service bodies to consider, at every stage, how an AI system affects the public in the context of fairness, accountability and data quality. It is complemented by detailed guidance on the AI life cycle from problem identification and data curation through to deployment, monitoring, evaluation, decommissioning and refresh. The guidelines also introduce a decision framework to support public servants in determining whether AI is an appropriate and proportionate solution to a given challenge. This ensures that AI is used only where it adds demonstrable public value and that human oversight remains central. To bring these principles to life, the guidelines include use cases from Ireland and abroad across four broad domains. These include internal operations, such as using AI to screen documents; service delivery, where AI can help to tailor interaction with citizens and reduce waiting times; internal and external oversight, including fraud detection, compliance and audit application; and policy making, where AI can support evidence-based analysis and simulation of policy options. </p>
+          <p eId="para_17"> Transformation is not only about the technology but also about equipping the workforce of the future. It is about driving upskilling and building leadership capabilities to deliver better public services. In collaboration with the Institute of Public Administration, IPA, we have introduced a bespoke e-learning module on the guidelines for all staff, an essentials of AI course to build foundational literacy across all grades and a masterclass for decision makers and senior leaders focused on governance, ethics and organisational readiness.</p>
+          <p eId="para_18">Together, these interventions are building a shared understanding of how AI can be used safely, ethically and responsibly in the Irish public service. The publication of these guidelines represents an important step in Ireland’s approach to responsible public service digital transformation. The guidelines provide the foundation for innovation at scale in a way that strengthens public trust and ensures that technologies serve the public interest. </p>
+          <p eId="para_19"> I thank the committee. I will pass over to my colleague, Mr. Barry Lowry, who will speak about the practical technological support in the public service to further help the scaling of AI. </p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:10:00+01:00"/></from>
+          <p eId="para_20">I thank the Joint Committee on Artificial Intelligence for the opportunity to speak to it today about govtech and AI. My colleague, Ms Marianne Cassidy, has explained the purpose and values of the guidelines for the responsible use of AI in public service and how these guidelines can actively empower public servants to use AI in the delivery of services. The role of the guidelines is to be a further support to existing organisational governance relating to the adoption of technology, robust added governance, value for money and innovative ways of working. They do not, nor could they, set out the technical detail of how a public service body might best use AI in the development or improvement of its services. In other words, they provide the guardrails for those doing the service transformation work, rather than the step-by-step advice and instruction of how to combine the technical components together to complete the work. </p>
+          <p eId="para_21"> In the Office of the Government Chief Information Officer, OGCIO, which, as the committee knows, is a division of the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation, we see two specific areas where support might be needed in the proposed use of AI. The first area relates to the findings that have emerged from three large language model, LLM, proofs of concept that we completed in 2024, with the learnings report published in January 2025. To summarise the key learnings quickly, they include the importance of planning a project carefully and being clear about the resources needed and the planned outcomes before jumping into the technology. The report also emphasised the importance of business input, strong governance and implementation support. The findings also highlighted the criticality of well-managed and carefully curated data to drive the right outcomes; emphasised the importance of considering, designing and building a good user experience; outlined the value of resourcing LLM projects with multidisciplinary teams, including business knowledge, data curation, user experience and technical know-how; and emphasised that as successful implementations will not be cheap, serious thought should be given to business justification, implementation, governance and benefits realisation. The report also highlighted that the product landscape was complex and rapidly evolving. It is, therefore, important for a public service body to appoint an AI partner that can help to source and use toolsets that best meet the requirements of the organisation which can be switched out or upgraded easily. These could include cloud hosting solutions. </p>
+          <p eId="para_22"> The type of approach set out above might be described as govtech in that it broadly aligns with the World Bank’s definition which describes govtech as a whole-of-government approach to public sector modernisation that provides simple, efficient and transparent government through the use of digital technologies. In the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation, we are also interested in a second, slightly different definition which is based on insights from the OECD govtech policy framework. According to the OECD, govtech offers a mechanism to experiment with and adopt digital technologies in a way that is agile, innovative and cost effective. It helps improve the effectiveness and efficiency of the public sector and fosters the participation of start-ups and newer providers in the government market. </p>
+          <p eId="para_23"> To that end, we are working on an outline plan which involves collaborating with public service bodies to develop a set of challenges that could conceivably be met by innovative solutions that are not currently available in the marketplace. Obviously, these include new technologies such as AI and next-generation mobile phone applications. The idea is that the most appropriate and strongest of these solutions will be selected via a panel and taken forward using the EU partnership procurement method. The benefits of this approach are that they will allow the public service to support several start-ups through solution, business mentoring and funding to deliver products that could be used and scaled in Ireland but also farther afield, effectively creating exportable intellectual property. </p>
+          <p eId="para_24">The concept is exciting. I emphasise, however, that this will be the first application of the method, namely our first use of the EU innovation partnership model. Obviously, it will be the first adoption of several new technologies and partnerships. It will clearly require careful thought and planning going forward. I am happy to take on board the views of the members of the committee and return at a future date to advise them on progress.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_25">We now move to members for questions. They have seven minutes for questions and answers.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_5">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_26">I thank the witnesses for their presentations. Has the Department of public expenditure and reform or another arm of the State conducted a fundamental rights impact assessment on the use of AI?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_27">As part of the guidelines, some of the key principles are diversity, non-discrimination and fairness. As part of the AI Act, respect for fundamental rights is key. Some AI practice is prohibited if there is an impact on fundamental rights. A number of competent authorities have been designated by our colleagues in the Department of enterprise, which is looking after the implementation of the AI Act, to specifically look at the impact of AI on fundamental rights. The Ombudsman will be one of those authorities.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_7">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_28">I am sorry, but I am not clear whether the answer is "Yes" or "No". Has a fundamental rights impact assessment been conducted?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_29">No, not as part of these guidelines.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_9">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_30">Has any arm of the State that is using AI conducted a fundamental rights impact assessment?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_31">Part of the principle is that they will have to comply with the EU AI Act and will have to make sure that the fundamental rights of people impacted by AI are not affected.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_11">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_32">Ms Cassidy is saying that our usage is closely aligned with the European Union's AI Act. However, the latter states that in advance of using high-risk AI systems - some of what we are discussing would qualify as such - fundamental rights impact assessments have to be carried out. Ms Cassidy is not telling me that they have been carried out.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_33">They would have to look at the seven principles of responsible AI, which include diversity, non-discrimination, fairness and social and environmental well-being. A number of questions will look at compliance with the EU Act. Everybody will have to comply with the EU AI Act. Any high-risk AI, a heading that a lot of the public service falls under, will have to ensure that the fundamental rights of people potentially affected are correct. Those assessments will have to be carried out as part of implementing AI.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_13">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_34">Reference was made to a notable example in the Department of agriculture, which processes between 30,000 and 40,000 grant applications. AI is being used in that regard. Has a fundamental rights impact assessment been conducted by the Department of agriculture before using that AI?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_35">I do not think that would be seen as a high-risk issue.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_15">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_36">The argument is that it is not required because this does not fall under the definition of "high risk". Are there plans to use it in the public service in ways the witnesses would see as high risk?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_37">We are aligning the use of AI and any technologies at all with our life events programme. The life events programme is based on understanding every user journey in using government services. That will include the most vulnerable people. For example, one of the life events is the birth of a child. The birth of children happens to people regardless of social status, ethnicity, religion or any of those things. It is about understanding the specific needs of people and the journey they have to go on to get their government entitlements and be supported through particular life events.</p>
+          <p eId="para_38">That process takes account of every element of social need. It meets exactly the same principles as the fundamental human rights legislation it was set up to meet. It achieves the same outcomes but in a different way. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_17">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_39">I will read to Mr. Lowry the definition of the classification of high risk from Annex III of the EU Artificial Intelligence Act: </p>
+          <p class="indent_1" eId="para_40">AI systems intended to be used by public authorities or on behalf of public authorities to evaluate the eligibility of natural persons for essential public assistance benefits and services, including healthcare services, as well as to grant, reduce, revoke, or reclaim such benefits and services. </p>
+          <p eId="para_41"> Mr. Lowry is effectively saying that grant applications to the Department of agriculture would not qualify for that. I presume he would not make the argument that, for example, eligibility for some sort of social welfare benefit would not qualify as being high risk. Would he accept that it would? </p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_42">I do not believe that AI is currently being used in that process. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_19">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_43">Would Mr. Lowry agree that before it could be used in that process, a fundamental rights impact assessment would have to be carried out? </p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_44">We follow set procedures regardless of that as well. That would fall into that category but we also follow best-practice procedures for any particular use of technology where it impacts on the public. For example, we look at the data sharing element and would carry out a data protection impact assessment. All of those things are done by process and a business case would not be accepted if those things were not done. In that particular case, if any major investment was to be made, it would go to the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation for approval. In our approval process we check that the right checks and balances are gone through before the business case could be approved and the system developed. </p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_21">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_45">I thank Mr. Lowry. Reference is also made to the use of chatbots in the public service. What is the public feedback to that? </p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_46">I can only talk about the particular experiment we did, which was a proof of concept sponsored by the Department of enterprise. It was looking at whether a chatbot could help in the process of advising people who wanted to set up a business. That was extensively tested with various volunteers and finally tested with people in Dublin City University who were interested in setting up a business. All the feedback was collated from that and that will inform the decisions the Department makes going forward. It was a very useful experiment because one the things we talk about in designing a chatbot-type LLM solution is that the user journey is understood. People will approach accessing Government information or services with different needs and the system has to take account of those needs. In this particular case, they thought they had taken account of everything. When the system was tested with students who were serious about setting up their own business, one of the feedbacks was that they thought it was quite patronising and it went too far in being too helpful. It is those sorts of learnings that we need to take on board as we use these actively in the future.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_23">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_47">I thank Deputy Murphy and call Deputy Mythen.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_24">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_48">I thank the witnesses for coming in. The perspective we are coming from is that we have to have a balance between people's human rights and the use of AI. One observation I will make is that there was no mention of human rights anywhere in the opening statements. It was mentioned that no community was being left behind. Last week, we had Age Action Ireland, ALONE, and the Irish Senior Citizens Parliament before the committee. What safeguards are in place to prevent bias and to protect citizens' data?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_49">I will perhaps talk about the two layers of this. The first layer relates to the data itself. My division, the Office of the Government Chief Information Officer in the Department of public expenditure, runs it. It set up, under the Data Sharing and Governance Act 2019, the data governance board.</p>
+          <p eId="para_50">That data governance board represents all facets of society, not just public service but also business and the needs of the public. Dr. Aideen Hartney, for example, who has given evidence to this committee, was an active member of our data governance board. The reason Ministers specifically invite people like that onto the board is because they provide checks and balances on whether the Government's plans regarding sharing and use of data meet the needs of all society, including the most vulnerable. Because of her particular skill set, she might pick up things that, for example, I might not pick up. That is how we do the data governance part. </p>
+          <p eId="para_51"> As I said, what we want to do is build digital processes around life events and life events, by their very nature, require you to speak to all communities to understand the user journeys people go through when accessing Government services. I can only give a personal example. We are also responsible for the <i>gov.ie</i> website and one of the things we have driven is the reading age required for <i>gov.ie</i> is now 12. We got it down to 14 and it is now 12 That is informed by working with groups like the National Adult Literacy Agency, NALA, the National Disability Authority, NDA, and so on.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_26">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_52">Do the witnesses think vendors should be compelled to show environmental footprints of AI tools?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_53">Yes. While that is not necessarily part of the legislation my Department is responsible for, it is very much addressed through our procurement procedures, for which my Department is responsible. For any public service body to engage a vendor, it has to meet certain criteria and part of that is its respective energy efficiency climate footprint and so on.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_28">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_54">What protocols are in place to vet foreign AI vendors for cybersecurity and data protection risks? </p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_55">We follow the EU guidelines around cybersecurity. Any vendor who wants to bid through our Office of Government Procurement procurements or frameworks would have to be eligible under the terms of the EU legislation and that includes cybersecurity. We would have evaluations by the National Cyber Security Centre, which would give advice as to whether a vendor could be used or should not be used. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_30">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_56">Could the witnesses give a quick definition of the Department's AI canvas? Is it internal or external? </p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_57">It is for use by public servants. It is really to get a number of people - across function and across background - to look at the various aspects in service delivery to make sure there is a principle of universal design, our approach, not to deploy at all costs but that it is deployed to deliver better public services, as well as a set of questions on what are the considerations in terms of human agency oversight, technical robustness and safety, privacy and data governance, transparency, diversity, social impact and accountability. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_32">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_58">What is the State's responsibility on intellectual property?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_59">It depends on how that intellectual property is created. In some cases, for example, with the govtech examples we are looking to develop, the intellectual property would belong to the company or SME that provides the service. However, AI itself is very complex and the intellectual property in some of those AI cases will be co-owned by the Government because the actual curation of the data which enables the system to run will be owned effectively by the public but the Government administrates it on its behalf. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_34">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_60">Do the witnesses think there should be a built-in disclosure clause or built-in whistleblowers' protection mechanisms in the codes?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_61">There is a requirement for transparency as part of the AI canvas and as part of the AI Act whereby in the case of any output created through AI, it is clear to people that it was involved.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_36">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_62">How many pilot schemes has the Department run so far in the sandbox or has it done any? </p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_63">There were upward of 30 or 40 pilots across the public sector when we did a survey at the end of last year. </p>
+          <p eId="para_64">I will ask my colleague Dr. Moran to come in on that.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Dr. Patrick Moran<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_65">I thank Ms Cassidy.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_39">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_66">Were there positives and negatives in that? Can Ms Cassidy give us both?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_67">In terms of learning, the need for good data curation was a common theme across the pilots. In other words, data needs to be in good order before an AI is deployed.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_41">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_68">Was there a negative aspect?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_69">The output was not very good if the data was not in good order. That was one of the learnings. There is a lot of work to be done around data preparation and curation and making sure that there is no bias and that the data is complete and accessible.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Dr. Patrick Moran<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_70">The message we were getting back from people after we published the guidelines was there was a big appetite within Departments was to get guidance and steer on how they should be using it. There was a lot of interest in getting it up and running. The feedback we got was that the guidelines were very useful in that regard. However, each case involving the use of AI across the various sectors is different. They are not the same; it is not a case of one size fits all. The canvas and the decision framework are all about getting people thinking about the particular sector they are in, whether it is agriculture, social protection or whatever, and the complexities and risks involved. Organisations need to think about how can they add AI in the best way to add value in the context of what they are doing rather than just using it for the sake of it or to do what those in other sectors are doing. Having a space where people from different Departments can share that knowledge and build their own AI-use cases and deploy them shows the strength of having the central guidance.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_44">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_71">Ms Cassidy stated that the guidelines are fully aligned with the EU AI Act and reflect the risk-based classification system. Will she common on that system? Does it take account of information on human rights, data protection and environmental impact? What is the nature of the risk-based framework?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_72">Deputy O’Rourke will be familiar with the EU AI Act as one of the parameter of risk from prohibited use to high-risk use. The requirements relating to each of these are much aligned to the risk. There is an acceptance in the EU that there is no risk-free AI. The guidelines state that the risks involved have to be considered. There is a need to help public servants to weigh the risks relating to data governance and ensuring that there is human oversight in making the decision on whether to deploy AI in the first instance or to do something else in the context of service provision. There is already quite a bit of use of lower level AI and what would be classified in the EU AI Act as minimal risk in the context of robotic automation. The latter is generally unregulated. As it moves up to limited risk, there are some transparency obligations. That is reflected in the guidelines across the canvas for the user to identify whether they are a deployer or a provider and what kind of risk level their system falls under.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_46">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_73">In terms of the role of the guidelines to provide guidance to the public sector, is there a mandatory requirement that everybody should use them? Is there a central repository, for example, of every AI-related project happening in the public sector? Is that what happens on the back of the guidelines?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_74">The guidelines are not mandatory and do not replace the normal corporate governance that any public sector body or Department has to do in respect of due diligence around data, how money is spent or how services are delivered effectively. They are there to help public service bodies and Departments to make good decisions around this new technology and the opportunity it offers.</p>
+          <p eId="para_75">We always intended it to be a living document because AI is evolving so quickly. We will update the document and guidelines. We are looking at agentic AI and what it means in terms of public sector governance. We will develop as the technology develops.</p>
+          <p eId="para_76"> In terms of the repository, we have done a survey and some of the examples are currently at the back of the guidelines. We will update. We are encouraging public service bodies and Departments to share examples of good practice or where things do not work out to help others to learn from that. We intend to keep that updated on the <i>gov.ie</i> website. The IPA seminar is also an opportunity for people to learn from one another and keep track of what is happening in the sector.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_48">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_77">One of the areas is enhancing the delivery of public services by improving responsiveness. There are a number of examples in the guidelines, including heart ultrasound scans in St. Vincent's hospital and the use of large language models for taxpayers' queries in Revenue. The Department of justice launched a digital contact centre using chatbots and Copilot. As those projects are put together, is Ms Cassidy's Department involved in oversight of that or is it all within individual Departments' governing structures? Going back to the earlier point, is there a central repository? How is that information shared in terms of good practice and successful outcomes?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_78">Oversight is within each individual Department's own governance. Departments have to stand up to the fact the system is robust and deployed in compliance with GDPR and other regulations. We do not have a central repository in the sense of a regulation register but we are updating our pilots that are coming on stream and encouraging public service bodies to share with others through our website or our imaging tech network that meets regularly across the public sector. It is about empowering and supporting the deployment of responsible AI, rather than overseeing centrally what is happening across the board.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_79">In OGCIO, we deploy the data governance oversight unit. Any IT project with a value of over €1 million comes to us for approval. If it is over €5 million, we arrange a peer-review process. That involves bringing in external people with experience of public service to mentor the project through certain stages of its life. That enables us in OGCIO to learn what is happening out there. We do not keep a formal register but we have a good understanding of what is happening in various places. We might be approached, for example, by a small public service body with a specific requirement. We will know where that is used successfully in another public service body and can set up a network.</p>
+          <p eId="para_80"> Another thing we organise is a network of all the IT leaders across the public service. We get expert speakers to speak to them and engage them in conversation. Sometimes they come from the private sector but very often they come from within the government system. It is to try to share knowledge and experiences for the better.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_51">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_81">I thank the witnesses for the presentations and information so far. My question intersects the discussions on human rights impact assessments and on procurement. I hope procurement acts as a barrier to bad practice in terms of what could and could not be introduced.</p>
+          <p eId="para_82">I read an article in <i>The Guardian</i> a couple of weeks ago about ministers in the Labour government in the UK meeting with Google, Palantir, Amazon and Microsoft to create what they called a "prison outside a prison". It was quite concerning because it looked for tech responses to the prison system. Going beyond the conversations about ankle tagging that have been ongoing for years, they actually suggested putting things under people's skin and using robots for prison management. Looking at those conversations across the water, I hope the EU AI Act might protect us from bonkers stuff like that but it is a concern. It is that kind of stuff that concerns me when we look at some of the most marginalised communities and the resources they may have to be able to push back against such awful proposals.</p>
+          <p eId="para_83"> That brings me to my next question, which concerns the Department of Justice, Home Affairs and Migration, with which we will, hopefully, have a discussion at some stage. It concerns a chatbot called Tara that is used by the Department. I saw in a reply to a freedom of information request on the small business innovation research programme, SBIR, which was co-funded by the Office of the Government Chief Information Officer and Enterprise Ireland, that it developed the Tara chatbot. This is now being used by the Department of justice. The chatbot was termed a pre-commercial initiative so it was probably not fully tested. I do not know what is involved in it. Hopefully, Mr. Lowry can speak more to that. This chatbot was taken by the Department of justice. Did the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation have a procurement process with regard to the Department of justice using that chatbot? Was it decided that there would be no tender process for that because that is the type of thing that would concern me? I would be concerned that something that was used elsewhere is transferred to another Department without having gone through a procurement process or any of the same kinds of processes that it should go through with regard to a Department using something that another Department has tried out in a pre-commercial stage.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_84">I am not fully aware of how the Department of justice procured this but I can tell her about how the OGCIO uses the SBIR. The SBIR was developed by Enterprise Ireland and is very much a predecessor of the some of the govtech stuff we are looking at now. The idea was about identifying a requirement of the needs better met by start-ups or very small companies that have a passion in this area. If I remember rightly, we were looking at how we could develop a chatbot for <i>gov.ie</i> that met the needs of the most vulnerable. This was the actual expertise of the company we got involved in. How it ended up in the Department of justice could have been through a partnership with another company that had a contract with the Department. I am not sure about the details. I would rather it explained that.</p>
+          <p eId="para_85"> In some respects, that story is exactly why we are doing govtech. One of the weaknesses of the SBIR process was that once the pilot was finished, it had to stop and go to procurement. What the EU innovative procurement partnership allows us to do is invest quite substantial amounts of money in that company to build something that can be worked and used in real services. It gives a lot more mentoring and investment to the company and makes it very viable for it to continue to invest in the product. That is the desire in that type of relationship but I cannot explain to the Senator the detail of that particular one. I am not sufficiently aware of it.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_53">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_86">Mr. Lowry is saying that start-ups can have the energy to create something. I am not saying that any of them are not efficient in terms of the chatbot.</p>
+          <p eId="para_87">What I am concerned about, however, is a process in which a start-up may involve the right person but that it then skips a tender process and is used elsewhere. Under, say, the govtech situation, even if there is an identified start-up that meets this requirement, do the witnesses agree that there still should be a tender process if Departments decide to start using specific software?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_88">Yes, that is exactly how it would work. Even as regards the EU innovative procurement partnership, let us say it was used in a particular hospital for a particular service, it was extremely successful and the HSE wanted to roll out something like that at a national level. It would have to go straight to procurement because there would not be the headroom in that procurement initiative to allow a national use of the product. Hopefully, however, the position would be that the company involved would have learned enough during the pilot - the innovative procurement process - that it would be very well placed to put in a strong bid, which is what we want. Obviously, we procure by means of the EU procurement guidelines. However, we want Irish companies to be competitive and successful.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_55">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_89">I have only a couple of seconds left. Briefly, I go back to agriculture and the €30,000 and €40,000 grant applications and how AI seems relatively harmless in the processing of applications. I have asked this question a few times and have never felt satisfied with the answer. I do not know whether that is because I do not understand what is being said or whether it is the fact that it is unknown. For me, application processes are extremely important because we basically have people who are professional application makers. They know the language of the systems or the people or those in power, and they know what it takes to get a grant. There are people who know what to say and how to say it. That does not mean that this does not ostracise a whole community of people who do not have the same level of not only literacy but also the language of power or the language of the relevant sector or business. How does AI protect those people? It is not just applications; it is also the language we use on applications.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_90">The important thing is to get the process right. I have been developing systems for many years. The very first systems I developed worked in a very similar way to the AI ones now. What I mean by that is that, first, you work with the internal experts and develop processes and then you bring in external views on your processes. I worked in agriculture back in the day. I worked with farmers' unions and so on and they fed into whether those processes were right. In other words, once you had a very clear, understandable and agreed process for applying for a grant and for that grant to be met, partially met or turned down and once everybody understood the process, I could computerise that. AI is no different. You are simply taking the process and, once it is agreed, using AI to help build out the technology to enable it to work as seamlessly as possible. You have gone through the process of creating a data protection impact assessment and other documentation which shows that you have consulted on the process and that you are very clear that it meets the needs of the system, and that should include the most vulnerable. A key and important part of the life events programme is that it is about listening not just to people like us when we are designing systems but also to everybody who can possibly use a system.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_57">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_91">I thank Senator Ruane. I get her point, but very few farmers I know do not know how to go about getting a grant.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_58">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_92">It is a wider point. I am just using farmers as an example.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_59">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_93">I agree. They are pretty expert at finding out how to get grants. In four weeks, we will be having a session specifically dedicated to the state of play in justice and so on.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_60">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_94">Brilliant.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_95">I call Senator Scahill.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_62">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_96">I thank the witnesses for coming in. The discussion has been very interesting. It is extremely important that we hear from them on where the guidelines are going. The guidelines that were launched in April or May contain seven principles, which are: responsible AI; human agency and oversight; technical robustness and safety; privacy and data governance; transparency; diversity, non-discrimination and fairness; societal and environmental well-being; and accountability. The witnesses have been questioned on many of those this morning. Ms Cassidy mentioned the guidelines for a responsible AI canvas, internal operations and service delivery. Service delivery is very important.</p>
+          <p eId="para_97">It will be about how we embrace the evolution of technology, streamline things, make them easier and speed up the processes we in government and across all agencies do. It is about helping to tailor interactions and reduce waiting times. That is the end goal of all of this. </p>
+          <p eId="para_98"> I am particularly interested in internal and external oversight, fraud detection and compliance. Senator Ruane mentioned the expertise of certain groups at filling out applications and getting the outcome they want. That raises a lot of questions when it comes to AI because there is algorithmic bias based on the information going into it. What measures are being put in place to guarantee transparency in the public sector algorithms across Departments in such areas as welfare decisions, education, agriculture and policing? I am happy for anyone to answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T11:50:00+01:00"/></from>
+          <p eId="para_99">It is great to see the seven principles so well reflected. How we approach digitalisation, as Mr. Lowry explained, is from a human-centred, user-journey point of view. We ensure services meet the end users where they are and redesign the process across Government through that life-event approach based on what is happening to them at any given time. A lot of the work before implementing the AI is about the process of re-engineering that we are supporting Departments to do and the external stakeholders coming in and outlining how to do that.</p>
+          <p eId="para_100"> In terms of transparency and external oversight, part of the canvas throughout the life cycle of deploying AI is to make sure GDPR requirements are abided by and data curation is done correctly. It is about making sure that when public servants deploy AI, they look at the transparency requirements that apply at every step - at the design, planning, deployment and commissioning of the AI.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:50:00+01:00"/></from>
+          <p eId="para_101">It is important when making assessments about algorithms to row back and look at the data. I have worked for several Ministers and have not met one who does not take extremely seriously the privilege of holding public data and the importance of looking after it well. In the Department of public expenditure, one of the reasons we created the Data Sharing and Governance Act was an instruction from my then Minister that not only should Ireland be seen as one of the best Governments in Europe for digital governance, but it should also be an exemplar across Europe in data governance itself. That Act was created to bring in independent oversight advising the Minister on use of data by Departments.</p>
+          <p eId="para_102"> I mentioned the data governance board, which is representative of society, industry and so on. Every data sharing agreement it sees is agreed by the two data protection officers. It then goes out to public consultation and they have to tell representative groups. If it is an agriculture one, they tell the farmers unions it is going out and they get feedback from them. They have to show they have addressed the results of the public consultation. It then goes through an advisory committee and then the data governance board itself, which makes a recommendation to the Minister. Then it is published in full. Every data sharing agreement is available for perusal.</p>
+          <p eId="para_103"> The objective was to make Ireland one of the best at data governance across Europe. We are the most trusted country in the OECD with the use of people's data. That is because of the transparency of the process. As AI moves along, I have no doubt algorithms and so on will be managed with exactly the same degree of prudence because of the importance of that reputation.</p>
+          <p eId="para_104">As they say, trust is hard earned and easily lost. It is so important that we get that.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_65">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-14T11:55:00+01:00"/></from>
+          <p eId="para_105">My next question is about the algorithmic bias. On this committee, I feel like we are moving at a slow pace because of the information we are trying to take in from all the representative bodies coming in and the questions we are asking. Given that 90% of investment in AI projects fails, what advice do the witnesses have for this committee? Should we try to get the representatives of big tech in earlier to explain to us where they see things going in the next two to three years, in order to better inform our questioning of the witnesses and other bodies that come in? I ask all the witnesses to answer that question if they get the chance.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T11:55:00+01:00"/></from>
+          <p eId="para_106">It does no harm to take evidence from all the stakeholders in any ecosystem. I refer not only to big tech but also representatives of our SMEs, where some of the most innovative ideas are coming from. AI is a very broad church. For example, robotic process automation is seen to be part of the AI family. There are numerous examples across government where that is being used successfully. For example, the National Shared Services Office, NSSO, is using it. That avoids the need for people to literally read stuff from one screen and type it into another. That is very successful.</p>
+          <p eId="para_107"> We are seeing successful use of AI in areas such as training it to identify tumours, health risks and so on. Unlike the clinician, AI does not get tired. Therefore, it will provide a tremendous source of advice to the clinician that someone could be at risk in a particular area. AI is only part of what a clinician does. The clinician will still do the physical operations, ask questions, take bloods and so on. AI is valuable here and the track record is good.</p>
+          <p eId="para_108"> The reason the overall percentage is so high is due to GenAI or large language models - the ChatGPTs of this world and so on. Unlike IT systems, where we will talk about agile and minimum viable product, the investor is spending all the money upfront on AI and it might not be used. Building a chatbot requires training that chatbot in every single process it is going to answer a question on. However, if the public do not like it or use it, then the investor will have spent all that money and will not get a return on the investment. In that case, if the original plan was to divert a large number of people to the chatbot so that the telephone support could be used by the most vulnerable or the people who cannot follow chatbots so well, they are not going to achieve that objective. That is why we have given the advice on the due care and testing that are required. Are you building something people want as opposed to something you think is going to be a good idea?</p>
+          <p eId="para_109"> There is a lot of marketing around the LLMs at the moment, but they will find their homes. For example, I mentioned three proofs of concept that we carried out in OGCIO as part of informing our advice node. The first was a chatbot. The second was about how to curate structured information, such as existing reports, to make it easier for people to do research. The third, which was related to that, was on structured information, such as emails and Word documents. We have addressed those two requirements with Copilot and reduced the costs dramatically because someone using Copilot will be curating that data there and then. For example, there was an OECD report on AI, which was 145 pages long. I put it into Copilot, asked it some questions and it pointed out the bits I should focus my reading on. It is areas like that where we will not hear of dramatic failures, but there are huge successes even in our department where we are using this. We are not using it for public services. We are using it as our own research assistant, if you like. It is highly beneficial.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_67">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T11:55:00+01:00"/></from>
+          <p eId="para_110">I thank the witnesses. This has been an interesting discussion. Understandably, a lot of the questions have focused on risk. Something that perhaps goes missing in the narrative in Ireland is that within Europe we are operating within an AI regulatory framework.</p>
+          <p eId="para_111">That framework is not the same as those in China or the United States. We have a real opportunity in Europe when it comes to providing certainty on how AI is being regulated and benefiting the most from innovation. The uncertainty in the United States is damaging and hampering innovation. Ireland has a real role to play in leading the debate in that regard. Mr. Lowry referred to how respected Ireland is in the data-sharing space. That is a clear area where we have shown leadership, retained investment and seen the development of technology companies at home and abroad</p>
+          <p eId="para_112"> When it comes to the public sector, the Chair and I recently attended the Digital Summit in Tallinn in Estonia. We discovered that in comparison with Estonia, Ireland is in the digital stone age. That is the reality. To be fair to Ireland's public sector, however, a lot of the public sectors in other EU countries are also in the digital stone age in comparison with Estonia in the context of what it has done regarding its digitalisation agenda. In Ms Cassidy's opinion, are the guidelines ambitious enough to drive Departments to adapt to AI?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_113">Yes, I think so. As Mr. Moran mentioned, the response has been very positive because there is a huge appetite to deploy AI in the public sector. There is also a bit of caution, which is justified considering that we are dealing with people's lives and their data. They are ambitious and are giving permission to the public sector to deploy all of the technologies available as long as it is for the purpose of making the service better.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_69">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_114">Is Ms Cassidy driving the implementation of AI in Departments forward? Is she keeping tabs on each Department? Are Departments reporting up to her on how they are implementing the guidelines? Does she know what is going on in every Department in terms of use of the guidelines?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_115">The guidelines are more about learning and empowering. With our colleagues in the OGCIO, we are driving the digital transformation. We will be bringing forward a digital public service plan relating to life events. That is what we will be tracking. We will not be tracking the use of the technology but the improvement in services.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_71">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_116">Ms Cassidy is not is not picking up the phone to her counterparts in Departments to discuss the guidelines and find out what kind of direction they are giving to principal officers and others down the line. She does not know, for example, if the Department of agriculture is doing one thing and the Department of justice is doing another. Is her division doing any of that kind of work?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_117">We do not pick the phone, but people pick up the phone to us in terms of saying that they want to-----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_73">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_118">How does Ms Cassidy know that the guidelines that the Department published are being used if she is waiting for other Departments to phone her, as opposed to the other way around?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_119">The guidelines are one of the most downloaded documents on <i>www.gov.ie.</i></p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_75">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_120">No disrespect, but that is hardly a metric which shows that people have read the guidelines. One would hope that it is the bare minimum.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_121">I appreciate that.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_77">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_122">I will put the question another way. Which Department right now does Ms Cassidy think is leading in the implementation or use of the guidelines?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_123">We have had Revenue and the Department of agriculture telling their stories. They were probably at the forefront of deploying AI at scale. While we do not ring individual Departments to ask them if they are using the guidelines, we are running events, organising seminars and co-operating with the IPA to help people. We have been proactive in supporting others to use-----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_79">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_124">If Ms Cassidy's division is not responsible for all Departments adapting to AI, who is responsible for that? </p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_125">Each Department is responsible for delivering the services-----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_81">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_126">Who are they accountable to in the context of the particular question of adapting to AI? Are they accountable to any one on that particular question?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_127">It is more a matter of the normal corporate governance process. Every accounting officer is responsible to deliver the services as effectively-----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_83">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_128">Does Ms Cassidy think that is problematic in terms of the roll-out of AI?</p>
+          <p eId="para_129">Has the Department looked at the public sectors in other European countries and benchmarked that against Ireland? Is it problematic that the Department does not have a function to wield a stick and ask what people are piloting here? Revenue is doing some things and the Department of agriculture is doing other things. Where is the risk appetite here? We have the guidelines. What are they doing in terms adoption of AI? Is it not concerning that nobody is wielding that stick?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_130">When we look at the example in the OECD or the World Bank, it is very much still at the stage where other governments are looking at how to use data and digital to deliver better public services. In countries like Estonia that has always been the case. It is not about the development, deployment or having a stick to deploy particular technologies. It is much more about making sure that the Departments are equipped to deliver the best possible services. The governance for this is the well-established governance of individual Departments. We now have a tool that can do a lot for Departments. We have the support to help Departments use those services and the rest is about making sure that, as part of their governance, those things are being done better than-----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_85">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_131">I thank Ms Cassidy. I only have 20 seconds left.</p>
+          <p eId="para_132"> Mr. Lowry mentioned the use of Microsoft Copilot, which is the software platform the State has contracted. How do we deal with public procurement in an AI age? That is a big question and I do not know how he will be able to answer in 13 seconds. Estonia is currently operating an education system, working with ChatGPT and Gemini. It is run through some sort of science foundation in terms of the implementation of the curricula. Are bodies under the aegis of the State hamstrung in having to use Microsoft when it comes to AI? How do we deal with this challenge where perhaps some other LLM provider may provide better technological solutions to ensure that we stay at the cutting edge of this? Is that a hindrance to innovation?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_133">It would be a hindrance to innovation and that is why, along with our colleagues in OGP, we are looking at a framework. I mentioned in my opening remarks that possibly the best way to do this is through a partnership approach, meaning that we would engage with a company that has expertise and could switch the AI products in and out. Those in the industry will all make a case for their own particular large language model but some large language models are much better in scientific-type experiments. Some are much better in Civil Service and admin areas. I would probably put Microsoft in that area, which is why it is being used.</p>
+          <p eId="para_134"> I ask the Chair to indulge me if I go back on the other question as well. It is really important that we do not get infatuated with AI as a technology. We need to remember ultimately we should only be using it if it allows us to better serve the people of Ireland or to build companies that can grow the economy faster or whatever it happens to be. Particularly in our discipline, which is public services, one of the things we have been working with the Departments on is life events, where we have identified 193 services that are most used and most valuable to the public. We are working with the Departments on constantly improving those services and following OECD guidelines where Government is proactive. In other words, if Government knows someone has entitlement, why should they fill in a form? We should be getting people's permission to provide the service to them. When we talk about life events, that is what we mean - a more reactive and proactive government that understands people's entitlements when a baby is born and starts to activate those processes on their behalf. I imagine that AI will be part of the technical solution in many cases, but it will not be the be-all and end-all. Some of those are just good improvements to services, such as better content on the website and better forms design. We still have some services across public services where people download a PDF, print it, fill it in by hand and post it in. We need to move away from that as well as adopting exciting new disruptive technologies in the future.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_87">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_135">I might get a supplementary question in later.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_136">I thank the witnesses for their testimony and for their work more generally. We are here to serve citizens.</p>
+          <p eId="para_137">How can we use not just AI but other technologies to deliver services more effectively? I am conscious that when we, as public representatives, deal with people, we help to guide them through bureaucracies. When groups representing older people and those with disabilities were before this committee, they raised the number of means tests and complicated forms there are in this State, which Mr. Lowry also outlined. It should be fairly simple. The State knows who I am. It has my PPSN and date of birth. I have given the State those data and trusted it to be able to manage those responsibly. When can we in Ireland, by using AI and other technologies, achieve the delivery of State services to the same level as, say, Estonia so that I, as a citizen, will know it is pretty simple and at the press of button to access health records, grant applications to the Department of agriculture, Revenue entitlements and tax obligations? When are we going to get to that stage and what role will AI play in it? </p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_138">The plan that I talked about previously is a plan that moves towards 2030. The idea is not that we must wait until 2030 for all these things to appear. Rather, it is staggered with different services of those 193 coming live earlier. Of course, the other thing we have to factor in is that people prefer to consume all their services by phone rather than by desktop PC. Providing some of those services in the form of an application is just as important as simply doing it through the normal computer service. I am hopeful that we will be constantly making announcements about new changes to services and so on. We all look on with envy at the Scandinavian countries because Denmark, Estonia, Sweden and Finland are absolutely superb. </p>
+          <p eId="para_139"> I attend EU chief information officers, CIO, meetings. Ireland is in the position where we are hoping to beta launch our digital Government wallet this year. We are further ahead than any of those countries in that particular space. That is because we have taken the work forward with us, a combination of life events, which is very much based on the OECD principles about fairness, equality and meeting the needs of the human. It is human driven, as it would call it, while also trying to take the best from technology.</p>
+          <p eId="para_140"> On the technology side, we are working with Irish companies that have been successful worldwide on the back of what they have done with us in government, which is very much based on the principles of govtech. I am very optimistic that when we speak to the committee again, we will be on a path where real progress in this area will be seen.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_141">A lot of those life events obviously involve health. One of my biggest frustrations has been the failure to digitise health records for a long time. At the same time, as Mr. Lowry mentioned, we are seeing AI being used to identify tumours and illnesses. It is transformational. To be blunt, given that the HSE and the Department of Health have failed so far to properly digitalise health records, can Mr. Lowry give me confidence that we will see the effective deployment of AI for improved health outcomes within our health system?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_142">Unfortunately, on the health side, Ireland and the way its health system was set up was always going to be a handicap to making the scale of progress that the likes of Denmark and Sweden have done. The legislation is obviously in place to fix that. The legislation will put people in control of their health data rather than hospitals, which previously believed it was their data. That is very positive and it will create the basis. Actually there are three-related initiatives in this regard. First, there is the HSE app, which is already live and very popular. The second initiative, for which the contract has just been awarded, is the shared care record. It allows for people to carry basic health information on their phones, which means that if they were to become ill in France, for example, this information would be portable because they are carrying it themselves.</p>
+          <p eId="para_143">That will be introduced in the coming two to three years. The third, which I suppose is the jewel in the crown, is the electronic health record. That business case is currently going through the approval process. That will hopefully finish by the end of the year, and we will be into the start of the project. That will be a long project but it is worth doing well because it is so important that it works well and effectively.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_144">I agree with Mr. Lowry, but I am cautious about the speed at which the technology is changing on one side, and we have a creaking bureaucracy, particularly in health, which is not keeping pace with it.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_145">There have been encouraging changes in the HSE over the past two years. One of the things I get to do in my job is sit on the strategy and reform committee of the HSE board. I think everybody on that committee would say they see a much more mature HSE in the area of strategy, planning and delivery than there would have been even two or three years ago. That is encouraging, so I am hopeful.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_146">Were Mr. Lowry prepared to stake his reputation on it, when would we see fully digitalised health records? That AI identification technology obviously will help for improved health outcomes.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_147">I am hopeful, by the end of 2030, which is the end of the EU digital decade, that there will be electronic health records in Ireland. I do not think they will be in every person's hand at that point.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_148">It would be accessible if I wanted it.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_149">I believe so. I believe we will meet the EU target of everyone being able to see their health record. The shared care record and the app will deliver that. I believe the electronic health record will be in use. It is in use in certain hospitals at present but it is not in use at national level. The first outputs of the national programme will be this side of 2030.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_98">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_150">We have time for another round, so I will allow four minutes for members.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_99">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_151">That was interesting to hear. I wonder about our data sovereignty. How much do we depend on AI systems hosted abroad at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_152">We do not. If I can, I will explain where Ireland is in terms of data sovereignty.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_101">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_153">I will add to that. Are Irish developers’ AI alternatives being considered? We had a group here last week called AI for Ireland. In the context of our country, would it be beneficial for us to develop something like that?</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_154">There are some countries in Europe that are looking at developing their own national product. France is most ahead. Sweden is also working in this area. There are advantages and disadvantages to that. The overall business case for examining that would have to be done in the wider sphere. A lot of the companies we are talking about as large language model AI providers are companies that are heavily invested in Ireland, in the context of job creation, the tax they pay and the corporate and social responsibility activities they do. That is not unnecessarily an unhealthy thing. It is about getting the balance and understanding what is in the best interests of the country.</p>
+          <p eId="para_155"> On data sovereignty Ireland, possibly more than any other European country, has restrictions in place, which relate very much to data sovereignty and protecting the data of the people. One of the big initiatives we implemented this year was the State data centre at Backweston, County Kildare. The EU liked what Ireland was doing so much that it co-funded it, which was positive. The idea was that we would be moving into our journey on greater use of the cloud from a strong position, which was that we could do this ourselves. There is a Government cloud but I do not think the Government cloud is right for every solution. That is why we are starting to see experimentation with the Azure cloud, the AWS cloud and so on but where they are used, they are strictly governed.</p>
+          <p eId="para_156">The data remains in the EU-EEA and it is encrypted at source and in transit. There are very strong rules about the governance of that. The EU has come up with a new definition of sovereignty, which is the state is in control of its data assets. I would say definitely, in all our data sharing and all our use of the cloud, the State is very much in control of its data assets. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_103">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-14T12:20:00+01:00"/></from>
+          <p eId="para_157">I have just one more question which has to be asked: they reckon up to 40% of public service jobs could be affected and could be automated. Has the Department done anything to re-skill the workers or what is its position on that? This is serious, especially with public services. For instance, the lads spoke about Estonia but recently in Albania, the president made a full AI minister - and I think it was mostly concerned about what we were talking about with procurement contracts - called Diella. It actually has a name and everything else.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:20:00+01:00"/></from>
+          <p eId="para_158">It is best at answering parliamentary questions. </p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:20:00+01:00"/></from>
+          <p eId="para_159">I will maybe start on this. Many public service jobs will change going forward. Public service workers are naturally very adaptable and just like they started using computer systems, they will take to AI and use it where required. We are starting to see it in our own Department with the use of Copilot. That is a fairly low level overall but it shows the aptitude and the willingness is there to learn.</p>
+          <p eId="para_160"> One of the things our Department is responsible for is digital inclusion as well as digital. The message we have asked our Ministers to give out is on the importance of Ireland excelling in the digital government targets. We want to go further than Europe. It is available online: we go into how we want 90% consumption online. What that is aimed to do is free up public servants to help the most vulnerable because the reality is, and Denmark and Sweden have all been on this journey, you will always end up with a figure around 10% of people who cannot, will not or do not want to follow the digital journey. What you want to do is still give them the best possible service by freeing up resources to give them more face-to-face support. </p>
+          <p eId="para_161"> We carried out a public consultation before we started our digital strategy and there was a large rump of people who wanted help to do the digital journey. It was not that they did not want to go on it but that they needed help. Obviously, some of the investment in libraries and so on is to help them do that and people are able to get support in using some of the technology. That will need to be a focus going forward as well as part of inclusion, in order that people can exercise their choice to use AI and technology as a consumer as well. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:20:00+01:00"/></from>
+          <p eId="para_162">I thank Deputy Mythen. I am conscious Deputy Ó Cearúil was chairing the committee on Gaeilge so I am going to ask Senator Scahill and Deputy Geoghegan for their second round four minutes and then I will give Deputy Ó Cearúil the full seven minutes for his time. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_107">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-14T12:20:00+01:00"/></from>
+          <p eId="para_163">I will be quick. Looking forward, is there a provision to publish annual reports to use for the outcomes of AI in the public service going forward? Mr. Lowry highlighted successes no one knows about and that is internal. It would also be to learn from issues, potentially bias issues, that have come up within certain departments so that other departments can learn from that.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:20:00+01:00"/></from>
+          <p eId="para_164">I think that will happen. One of the things Ms Cassidy and I are both involved in is the new national digital and AI strategy. It was previously the national digital strategy, which had an annual report. I suspect once the national digital and AI strategy is signed off, there will be an annual report on progress for that as well. However, that does not mean Departments cannot write up their successes and post them. Our data governance board also has an annual report in which it talks generally about what it is seeing in terms of improving. Its emphasis in the past two years was on ethics and has done a lot of work in ethics and its promotion. I think we will see feedback coming from Departments on what they are doing and the success they are having as well. </p>
+          <p eId="para_165">Of course, Departments have their normal reporting process, just as our own does.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_166">There will be annual reporting on the digital plan that Mr. Lowry mentioned. Life events will be included, depending on whether AI is deployed or what is underneath it.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_110">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_167">Looking at best practice and being dynamic on this, are there any plans to eventually involve academia in future reviewing or updating of the guidelines?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_168">Academia was involved in developing the guidelines. It was not quite academia; we worked particularly with the CeADAR centre. That is supported through Enterprise Ireland and the Department of enterprise. The AI advisory council also reviews the guidelines. We are very conscious that there is a lot of knowledge in academia around the AI space, but also in governance, risk and legalities. We have been consulting academia and will continue to do so.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_112">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_169">As I said, this has been a really useful engagement. On the 193 life events, I am unfamiliar with those. Could those life events identified be shared with the committee?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_170">Once----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_114">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_171">Not right now. After the committee-----</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_172">Yes, absolutely. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_173">In four minutes.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_117">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_174">I should have clarified that. I just meant to ask whether the witnesses could share whatever documentation there is around that.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_175">It is actually 193 services and 17 life events.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_119">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_176">It is 17 life events and 193 services. It could be helpful to our work if Mr. Lowry could share that with us. Of the 17 life events, or 193 services, which of these, so far, are adapting AI into public services?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_177">It is not being done cohesively, but that will happen and it will certainly be the subject of some experimentation. I think the Chair asked a question about agentic AI. Life events is an area where agentic AI could be very successfully used. I might just explain how I define agentic AI. Where there are a lot of AI-related services, agentic AI is almost like the orchestrator of those services. A good explanation would be to imagine going to see Tottenham Hotspur. I would buy a ticket and then book a hotel, travel and so on. Agentic AI would ask the virtual assistant Alexa to get everything I need to go to the Tottenham Hotspur game on the given date and it would do all those bookings for me. In other words, it is liaising with other AI to build out the services. We can see how that could be deployed in terms of a life event. On being informed of the birth of a child, for example people would know four specific things need to happen immediately. That might be a simple as sending an email or SMS to get that to function and get the service to proactively kick off. It might link with another AI device or process and make that service happen straight away.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_121">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_178">The 17 life events and 193 services obviously cut across a lot of Government Departments. How does that work? The Department has done this work and identified the life events and services, but how will it drive forward or inquire into how these services or life events could be digitalised or benefit from AI? Is that a process it drives?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_179">Yes, we drive it in the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation. There are probably three layers to that. The top layer is the governance. We have an overall governance board, which is chaired by the Secretary General of the Department of Social Protection. That has senior representation from most of the Departments. Then, with every life event there is going to be a governance committee set up. They will be chaired by the public service body most involved in that life event, for example, the Department of Social Protection in a birth scenario. That is the first layer of governance. The second layer is we are developing a cohesive programme plan so we can report back on the progress made right across the 193 services and life events. The third is that we are engaging in various stages of public consultation. The reason is it is not enough to say we have delivered them. We want to say we have feedback from people saying it is making their lives easier. Otherwise, it would be a pointless journey.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_123">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_180">What is the timeline for the roll-out for all of the things Mr. Lowry has just talked about, namely, the public understanding, engaging Departments and so on? </p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_181">The communications will start as soon as we have Government approval to go ahead. We have a communications plan around that and we have two Ministers who are very keen to get involved in the communications of it and have been very supportive of it.</p>
+          <p eId="para_182"> Regarding the plan itself, the reason we picked 193 services is that we believe we can do those collectively by 2030. Everything is geared around 2030 and the end of the digital decade. We have a very strong focus on the second half of next year because Ireland has the Presidency of the Council of the EU. One of the Presidency meetings is where the CIOs from the various countries get together. Obviously, we want to write the Minister a speech which shows that Ireland is actually at the forefront of the digital decade progress plan and not one of the laggards. There is a strong focus on having a really good story to tell.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_125">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_183">Mr. Lowry mentioned future skills in the public sector and that he feels the public sector will be able to adapt, just as it has in other instances. That is obviously going to be true across every sector in terms of how it is going to adapt. Estonia have taken a view, rightly or wrongly, that AI is everywhere and we need to prepare our students for the future. Estonia has taken a very strong view on curriculums and how teachers are trained and taught within secondary schools. How important is that specific area of secondary school teaching, its adaptation to AI, how we use AI and how we teach children in terms of developing the future skills needs of this country?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_184">I think it is critically important on two fronts. One is to make people comfortable with the technology itself and make them aware of the risks, obviously, as well. The other one is to build the workforce of tomorrow. One of the reasons Ireland is the hub of the European headquarters of most of the leading tech companies is the talent base we have here. We need to maintain that. In our Department we are very aware that if people go to the wrong school or have the wrong careers advice, they can sometimes make the wrong choices for third level and perhaps drop out. For this reason, we started the ICT apprenticeship scheme to try to provide opportunities to give those people jobs in the public service. The scheme is a partnership with the various Departments. We are now in the third iteration of the scheme, with an intake of, I think, 70 ICT apprentices. That is just a little extra thing that we can do. It is really important that AI and technology become an opportunity for everyone. That is the work in the area. Ireland, at the moment-----</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_127">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_185">Is the Department of Education and Youth buying into that theory? </p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_186">Yes, it has been very supportive, as has been the Department of further and higher education. </p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_129">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_187">My apologies for being late. I had to chair another meeting and I was excited about being at this one. If I was using agentic, I would be organising to go to an Arsenal match rather than a Spurs match, but how and ever. In a previous life, I worked in the tech industry for quite a long period. The meetings with chief information officers and chief information security officers were always fairly tense and fraught because we always had to prove the security and safety of a particular piece of software and go through due diligence, which is always a difficult experience with CIOs and CISOs. I appreciate the added difficulty of dealing with it from a Government and State perspective.</p>
+          <p eId="para_188"> The guidelines for the response of the use of AI in public services were published in May or June, if memory serves me. That document was extremely welcome. I thought it was a little bit risk averse and I understand why. Planning a project carefully was mentioned and I completely appreciate that. Has the Department looked at a way to allow a shift and pivot, particularly when new technologies arise, that can prove they can deliver efficiency or particular benefits to Departments and the Government as a whole?</p>
+          <p eId="para_189">Has there been a review or study as to whether, if ChatGPT were created tomorrow, for example, and the Department were happy with its security protocols, etc., there would be a way to allow technology, AI technology in particular, to be used rather than the lengthy process we have at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_190">We try to have accelerated processes, but one of the things we are always aware of, in the context of government, is that we are custodians of the public purse. People will say things like, "How much is it okay to invest in an experimental project in respect of which you do not get a return on the investment?" In some respects, the answer is "Zero" because it is taxpayers' hard-earned money we are spending. We therefore try to put checks and balances in place.</p>
+          <p eId="para_191"> If I may give an illustration I touched on earlier, before the Deputy came in, we did two proofs of concept in OGCIO on how we could use AI to better manage our knowledge management systems. That included not only what we call structured data, that is, reports that were published and in the public domain, but also just things like emails, Word documents and so on that we have ourselves. The technology had moved on so much by the time we had written the report that we realised we could use Copilot and not go to the cost of curating a place and an AI tool that would be accessed. People just use Copilot on their desktop. They choose the documents they want to use to get the advice on and they drop them into Copilot and it works seamlessly. That is an example of a degree of fairly cheap experimentation leading to an active use of Copilot. Before Copilot was introduced in our Department, we developed a policy for the use of AI. That policy set out the rules and guidelines about what it can and cannot be used for. It is in a secure part of the cloud which we rent and procure. It is deleted after a certain amount of time and so on. All those checks and balances are in place, but it is sort of a decision cycle whereby you try to be innovative and try to put the technology in people's hands but where you also try to put guardrails and safety mechanisms in place.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_131">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_192">Both the POC and knowledge management excite me. I am not sure what Mr. Lowry was touching on with agentic AI when replying to Deputy Geoghegan. If we take knowledge base on the HSE's website and Revenue's knowledge base as examples and look at the various Departments of State, and if there were a State LLM or even if the State were using Copilot in some way, perhaps people could go onto <i>gov.ie</i>, ask about a runny nose with a high temperature and be directed to an article on the HSE website. Likewise, if they ask about their P60 on Revenue's website, they would be directed to the relevant article there. Was that part of the POC or is that completely separate?</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_193">That was the third project in the POC. We looked at how we could use a chatbot to front up <i>gov.ie</i>. One of the risks that came out of that was the need to curate the data upfront before the chatbot was switched on. That made it a very high-cost project, but we are looking at how we might be able to accelerate that because the technology has moved on so much even in 12 months. As to where we are seeing good use of AI, the Deputy mentioned Revenue. It is using AI in its back office. It wanted to prove it there first. Obviously, there are very complex rules around the payment of tax. Revenue was using AI with those rule sets to help its agents answer queries on the phone. It is so confident that it has this right to such a degree that it is looking at a public-facing service whereby people can get that information themselves.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_133">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_194">That would be excellent. It is something the public see value for money in a lot of the time. Obviously, it depends on who perceives what as valuable, but a public-facing service would be very beneficial.</p>
+          <p eId="para_195"> I am conscious of the time. The Department of enterprise announced that the national AI office will be established, something I have been advocating for quite some time. Has the Department engaged with the Department of public expenditure and reform, and specifically with Mr. Lowry, as CIO, on this yet?</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_196">It has. It has engaged with all Departments. There is a senior officials group that looks specifically at all matters digital and regulatory around that. It has been very transparent in its discussions with them about the national implementation of the EU AI Act and the role of the office.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_135">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_197">Has that Department discussed a regulatory sandbox as part of the national AI office with Mr. Lowry, and whether it or the Department of public expenditure will have responsibility for it?</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_198">We have discussed it. The Department of enterprise is going to be responsible for it, but it is for a very specific use with SMEs. We have sandbox technology as well and we use in a slightly different way. There are obviously various definitions of what a sandbox is. The Deputy gave a definition at one of these meeting when he talked about synonymized or synthetic data. We set up a sandbox for testing our EU compatible digital Government wallet, and that was using real data with a group of volunteers. Obviously we wanted to test the user experience and we needed to use real data for that. With their permission, we downloaded electronic ID, proofs of age and driving licences and they were able to give us feedback on the look of the credential on the phone and so on. We used that to build a second pilot which was with more than 550 people. The first pilot was 70 people. We believe we have got it at the stage where we can launch it this year in beta format and get more feedback from it. Our volunteers were public servants and partners.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_137">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_199">That is brilliant. I thank Mr. Lowry.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_200">As Deputy Ó Cearúil was asking around that, I was thinking that, if the Department was happy and our committee was happy, that we as members could engage with the technology. If we could set it up we could trial it as a pilot if Mr. Lowry is agreeable.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_201">Members would have to sign a consent form.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_202">Absolutely, we would fully expect that to be the case. It could be useful for the committee in terms of seeing how this is going to be rolled out in practice. We might look at arranging a suitable time to do that. I find Ms Cassidy's point about how we use Copilot valid. What is Government policy in this area? I normally try to feed in three to five strategies to summarise it. It does not always make sense but it is useful. To refer to Deputy Geoghegan's point, while we have guidelines for the responsible use of AI in the public service, we need guidelines for the responsible us of AI in education. That is being sought very quickly.</p>
+          <p eId="para_203"> I have two final questions. One relates to agentic AI and its use in procurement. One of our big complaints is often how long the procurement process takes across the public service. Agentic AI could speed that up. Is it being trialled anywhere at present or do our witnesses see it being used? Dr. Moran mentioned there have been 30 or 40 pilots trialled. In order to end things on a positive note, will he identify one or two that were particularly innovative and successful and impressed, but more importantly delivered improved public services? One of our witnesses might address the procurement side first.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Barry Lowry<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_204">Our colleagues in procurement use technology quite a bit and eTenders is well known. I do not think that has an AI component. One of the things the EU is committed to doing in the next year is looking at all of the processes around procurement with a view to seeing how the whole process could be sped up. The process is disadvantageous to smaller companies that have less money to spend on the process itself. It is very important that this is addressed. Technical solutions will then start to play into that space.</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Ms Marianne Cassidy<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_205">There is a low-level framework for AI procurement for robotic process automation, RPA, and low-level AI as well as discussion about trying to see if it would be suitable for other types of AI. </p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Dr. Patrick Moran<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_206">We are hearing from a lot of different Departments that they are looking at what is working in other places so they can put it into practice. A lot of the first use cases people are going for involve the collating and curating of information for people. Revenue's examples about how one can take a really complex area, distil the piece of information someone is looking for and present it in really understandable terms are some of the best that people come in contact with first. </p>
+          <p eId="para_207"> As Mr. Lowry mentioned earlier, it is about examining that back office piece and how one can drive improvements in efficiency and effectiveness for services. The medium-term expenditure framework published before the budget showed that public spending on public services is increasing a lot. AI and digitalisation is a key driver of efficiencies and is really important from a value perspective. At the same time, maintaining and improving the quality of services has applications across the board. We talked about the Department of agriculture's AI use case earlier. Those sorts of high volume, labour intensive services that can be made a lot more efficient and effective are where we are seeing some of the best examples to date.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_208">I thank the witnesses for coming in and sharing their time and expertise. It was a very useful session. For anyone who is observing, we are always keen to get feedback. We invite people to send submissions by email to <i>ai@oireachtas.ie</i>. We hope to continue to work with the witnesses as the committee continues with its deliberations. We now stand adjourned until 11 a.m. next Tuesday, 21 October.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee adjourned at 12.47 p.m. until 11 a.m. on Tuesday, 21 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

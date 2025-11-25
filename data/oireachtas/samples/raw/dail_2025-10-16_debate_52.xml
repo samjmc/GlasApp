@@ -1,0 +1,991 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-10-16/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-10-16/debate"/>
+          <FRBRdate date="2025-10-16" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_children_and_equality"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-10-16/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-10-16/debate/mul@"/>
+          <FRBRdate date="2025-10-16" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-10-16/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-10-16/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-22" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AidanFarrelly" href="/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29" showAs="Aidan Farrelly"/>
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="NessaCosgrove" href="/ie/oireachtas/member/id/Nessa-Cosgrove.S.2025-01-29" showAs="Nessa Cosgrove"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="SharonKeogan" href="/ie/oireachtas/member/id/Sharon-Keogan.S.2020-03-30" showAs="Sharon Keogan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM LEANAÍ AGUS COMHIONANNAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Children and Equality</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-16">Déardaoin, 16 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-16">Thursday, 16 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#NessaCosgrove">Nessa Cosgrove</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MikeKennelly">Mike Kennelly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SharonKeogan">Sharon Keogan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AidanFarrelly">Aidan Farrelly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#CharlesWard">Charles Ward.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#KeiraKeogh">Teachta / Deputy Keira Keogh sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Child Poverty and Deprivation: Discussion (Resumed)<recordedTime time="2025-10-16T09:30:00+01:00"/></heading>
+        <speech by="#KeiraKeogh" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:30:00+01:00"/></from>
+          <p eId="para_13">Apologies have been received from Deputy Kerrane and Senator Bradley. The agenda is the resumption of our consideration of child poverty and deprivation. We have many witnesses before us and they are all welcome. I thank them for being with us.</p>
+          <p eId="para_14"> I welcome Mr. Kevin McCarthy, Secretary General; Ms Lara Hynes, assistant secretary, child policy and Tusla governance division; and Dr. Anne-Marie Brooks, assistant secretary, early learning care and school-age childcare division, Department of Children, Disability and Equality; Ms Mary Hurley, Secretary General, and Ms Deirdre Kenny, principal officer, social inclusion and communities unit, Department of Rural and Community Development and the Gaeltacht; Mr. Niall Egan, assistant secretary general, corporate, and Mr. John O'Toole, principal officer, labour market policy and social inclusion unit, Department of Social Protection; Ms Elizabeth Canavan, assistant secretary, social policy and public sector reform division, and Ms Anna Visser, head of the child poverty and well-being programme office, Department of the Taoiseach; Mr. Paul Morrin, assistant director general, statistical system co-ordination; and Ms Fiona O'Riordan, assistant director general, social statistics, Central Statistics Office, CSO; and Professor Helen Russell, head of social research, and Professor Karina Doorley, co-ordinator of tax and welfare research, Economic and Social Research Institute, ESRI.</p>
+          <p eId="para_15"> The purpose of the meeting is to discuss with stakeholders the challenges facing children living in poverty. I also wish to acknowledge and read into the public record that the United Nations International Day for the Eradication of Poverty is tomorrow, 17 October.</p>
+          <p eId="para_16"> Before we begin, I have a number of housekeeping matters to go through. I advise all participants that the chat function on MS Teams should only be used to make the team on site aware of any technical issues or urgent matters that may arise and should not be used to make general comments or statements during the meeting.</p>
+          <p eId="para_17"> I remind members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where he or she is not adhering to that constitutional requirement. Any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member participating via MS Teams to confirm prior to making a contribution to the meeting that he or she is on the grounds of the Leinster House campus. </p>
+          <p eId="para_18"> In advance of inviting our witnesses to deliver their opening statements, I advise them of the following in relation to parliamentary privilege. Witnesses and members are protected by absolute privilege in respect of the presentation they make to the committee. This means they have an absolute defence against any defamation action for anything said at the meeting. However, they are expected not to abuse this privilege and it is my duty as Cathaoirleach to ensure it is not abused. Therefore, if a participant's statements are potentially defamatory in relation to an identifiable person or entity, the participant will be directed to discontinue his or her remarks. It is imperative that participants comply with any such direction.</p>
+          <p eId="para_19"> Witnesses will each be allocated three minutes speaking time to deliver an opening statement. The clock should be working just underneath the screens. There will be follow-up questions from our members. I invite the witnesses to deliver their opening statements, starting with Mr. McCarthy.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T09:30:00+01:00"/></from>
+          <p eId="para_20">I thank the Chair and thank the committee for the invitation to discuss this important topic. I am accompanied by my colleagues Ms Lara Hynes, assistant secretary general, child policy and Tusla governance division; and Dr. Anne-Marie Brooks, assistant secretary general, early years division.</p>
+          <p eId="para_21"> Addressing child poverty is a whole-of-government priority, spotlighted in Young Ireland, the National Policy Framework for Children and Young People 2023-2028. This is also reflected in the establishment of the child poverty and well-being programme office in the Department of An Taoiseach. The Department of Children, Disability and Equality contributes to and strongly supports cross-government efforts to reduce child poverty. We also lead on a number of key initiatives to ensure that the experience of childhood in Ireland is a positive one for all and that children’s future prospects are not limited by where they start in life.</p>
+          <p eId="para_22"> I will briefly mention some specific programmes and initiatives that have a direct impact in this regard. In early learning and care and school-age childcare, the Department provides a range of national funding schemes that help families experiencing disadvantage to access affordable and high-quality early learning and childcare. This is critical to addressing risks of early developmental disadvantage. The early childhood care and education, ECCE, programme, which provides two years of free preschool to all age-eligible children, has a 96% participation rate. In a recent review of ECCE, over 70% of families on low income reported that they would not be able to send their child to preschool without this programme.</p>
+          <p eId="para_23"> The national childcare scheme provides universal subsidies towards early learning and childcare costs with an income-assessed subsidy ensuring that the greatest support goes to families that need it most. The equal start programme supports access and participation for children who experience disadvantage and their families. It gives priority to the most vulnerable groups in our society and has since September 2024 been supporting 787 services throughout the country that are operating in the context of concentrated disadvantage. It is expected that 820 services will be designated as priority services during 2026, catering for 37,000 children. Key supports include funding for additional staff and access to the new bia blasta preschool nutrition programme. Budget 2026 provides a 30% increase in funding for equal start, rising from €17.2 million to €22.3 million.</p>
+          <p eId="para_24"> Tusla, the Child and Family Agency, provides a range of early intervention supports to children, young people and families, which can be a vital means of helping to address adversity and poverty in childhood. Parenting support services and the expanding network of family resource centres provide a comprehensive range of universal and targeted services, with a particular concentration on the needs of disadvantaged communities.</p>
+          <p eId="para_25"> Supporting the needs of children in care, supporting foster carers and promoting foster caring are also significant policy priorities. A new alternative care policy framework is in development. </p>
+          <p eId="para_26"> The development and expansion of home visiting services, the promotion and support of play and recreation opportunities for all children, targeted measures to support Traveller and Roma communities and local area child poverty action plan pilots are other important development supports within the Department’s remit.</p>
+          <p eId="para_27"> Finally, the Department has published a number of reports as part of the research partnership on children and youth with the ESRI. These reports are on housing adequacy, lone parenthood and deprived children who are not income poor. There is also an upcoming project on educational outcomes.</p>
+          <p eId="para_28"> The Department will continue to engage collaboratively with colleagues across government to support the achievement of the Government’s child poverty target. I again thank the Chair and committee for the opportunity to discuss these issues.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:30:00+01:00"/></from>
+          <p eId="para_29">I thank Mr. McCarthy. I invite Ms Hurley to deliver her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Mary Hurley<recordedTime time="2025-10-16T09:30:00+01:00"/></from>
+          <p eId="para_30">Thank you, Chair, and good morning, everybody. I am Secretary General of the Department of Rural and Community Development and the Gaeltacht and am joined by my colleague Ms Deirdre Kelly, who heads our social inclusion and communities unit.</p>
+          <p eId="para_31">I thank the committee for the invitation here today to talk about the work of my Department. My Department primarily works towards tackling poverty and deprivation through the delivery of the social inclusion and community activation programme, SICAP, our country’s primary social inclusion intervention. Managed locally by 33 local community development committees, SICAP is delivered on the ground by local development companies. SICAP aims to reduce poverty and promote social inclusion and equality through supporting communities and individuals using community development approaches, engagement, and collaboration. There is considerable overlap between the six priority areas identified by the child poverty and well-being unit in the Department of the Taoiseach and the primary target groups for SICAP. SICAP works to give people a step-up in life by integrating the most marginalised and deprived into their local communities and linking individuals and groups with relevant services. The programme provides supports to children and families both through community engagement activities such as family event days, and through services provided directly to target groups such as heads of one-parent families and people experiencing educational disadvantage, people living in jobless or low-paid households. To give a flavour of the work ongoing under the programme, in 2024 SICAP supported 32,490 individuals, including 10,273 experiencing educational disadvantage; 10,539 experiencing long-term unemployment, of which 5,133 completed a lifelong learning course; 772 individuals secured employment; 3,768 heads of one-parent families also received support through SICAP in 2024. Of those, 1,771 completed a lifelong learning course, 193 progressed into employment and 158 progressed into self-employment; 516 people were also referred to other relevant services through SICAP. The programme also delivered over 854 children and family activities, attended by 53,133 participants. Typical activities include after-school support, homework clubs, programmes for parents as well as cultural and recreational activities. SICAP also provides supports to social enterprises, including social enterprises categorised into early learning, care and school aged children. In 2024, 21 social enterprises working in this sector received SICAP supports. In addition to SICAP, my Department provides multi-annual core funding to several national, community and voluntary organisations that have a specified focus on addressing child poverty. The funding is provided through the scheme to support national organisations to Barnardos, the Children's Rights Alliance and the National Youth Council of Ireland. It should also be noted that the Department is very active in ensuring that our libraries are safe and supportive spaces for everyone in our communities including children of all ages. My Department, along with the Department of Children, Disability and Equality has supported the little library book bag initiative available to all children just before they enter primary school. Libraries have become important hubs within their communities with many services, while providing safe learning spaces for all.</p>
+          <p eId="para_32"> The community services programme, delivered by my Department, supports 427 community-based organisations providing facilities and services, primarily in disadvantaged areas. A new funding model introduced in 2023 targets higher levels of support to organisations with the greatest funding needs. The programme provides a contribution to the wages of 2,908 employees and 352 managers, some on a part-time basis. Twenty-four of the organisations supported provide childcare-related services.</p>
+          <p eId="para_33"> In summation, the Department of Rural and Community Development and the Gaeltacht supports communities up and down this country, both urban and rural. One of its core objectives is to build sustainable, inclusive, and thriving communities across Ireland. This includes supporting children and young people living in our most disadvantaged communities. I thank the committee again for the invitation here today and for the opportunity today to give a quick outline of what my Department support.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:40:00+01:00"/></from>
+          <p eId="para_34">I thank Ms Hurley. I had the pleasure of meeting my own SICAP group this week. They are doing great work on the ground. I invite Mr. Egan to deliver his opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T09:40:00+01:00"/></from>
+          <p eId="para_35">Good morning. I am assistant secretary general in the Department of Social Protection with responsibility for the corporate division including social inclusion. I am joined by my colleague Mr. John O’Toole, who is the principal officer with responsibility for social inclusion in the Department. I thank the Cathaoirleach and members of the joint committee for inviting us here today to discuss child poverty.</p>
+          <p eId="para_36"> In September, the Government announced a new ambitious child poverty target. This new target is 3% or less consistent poverty, which measures children both at risk of poverty and experiencing deprivation, to be achieved by the end of 2030. This target is ambitious, reflecting a reduction of 5.5% from the current child consistent poverty rate of 8.5%, as reported by the CSO. When announcing the target, the Minister for Social Protection made clear that no level of child poverty is acceptable but that the Government is working towards the achievement of this ambitious new target.</p>
+          <p eId="para_37"> Tackling child poverty will require sustained investment and commitment across government for the remainder of the decade. Budget 2026 contained a social welfare package that consisted of a comprehensive range of measures targeted at reducing child poverty. These measures amounted to a total investment of €320 million next year and included: the largest child support payment increase in the history of the State, which will benefit approximately 330,000 children whose parents are in receipt of a social welfare payment; a €5 increase in fuel allowance from €33 to €38 per week from January 2026; a €60 increase in weekly income thresholds for the working family payment for all family sizes. The back-to-school clothing and footwear allowance will be extended to children aged two and three, if eligible for the allowance. We are extending the back to work family dividend scheme to people in receipt of disability allowance and the blind pension.</p>
+          <p eId="para_38"> Guiding the work of Departments in tackling poverty is the cross-government anti-poverty strategy, the roadmap for social inclusion. The Department of Social Protection is currently developing a successor to this successor strategy, which was the subject of a public consultation earlier this year. The Department received over 500 submissions, which are being carefully considered. The new roadmap for social inclusion will be published in the first half of 2026 and will for the first time include a focus on reducing child poverty in line with the Government’s new child poverty target.</p>
+          <p eId="para_39"> Tackling child poverty requires a concerted focus across Departments, with measures required to increase income for vulnerable families, through social protection measures, supporting more parents into employment and to increase the provision of quality services across a range of areas that will be of benefit to all children. I look forward to the discussion today on this important issue and hearing the views of the members of this committee on child poverty. My colleague and I are happy to answer any questions the committee may have this morning.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:40:00+01:00"/></from>
+          <p eId="para_40">I thank Mr. Egan. I invite Ms Canavan to deliver her opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T09:40:00+01:00"/></from>
+          <p eId="para_41">I thank committee members for the invitation to discuss the topic of child poverty and deprivation with them today.</p>
+          <p eId="para_42"> I am the assistant secretary with responsibility for social policy and public sector reform in the Department of the Taoiseach. I am joined by my colleague Anna Visser, who leads the child poverty and well-being programme office in the Department. The role of the programme office is to monitor and support the implementation of existing and future government strategies relevant to child poverty and child well-being. The first programme plan of the office, published in August 2023, sought to prioritise action in the areas that are likely to have the greatest impact on children’s lives. The six priorities in the first plan are: income support and joblessness; early learning and childcare; the cost of education; family homelessness; service integration, and participation in arts, culture and sport. In addition to co-ordinating the implementation of policies and programmes across government that support children, young people and families experiencing poverty, the first plan also identified a number of strategic initiatives that require a more robust and integrated cross-government response. Children are more likely to experience poverty than any other group, a pattern that is not unique to Ireland. Research from the ESRI and the Growing Up in Ireland survey shows that growing up in poverty leads to poorer outcomes across nearly every aspect of life. Poverty also affects children unequally, with higher rates among certain family types, ethnic groups, housing situations, and local areas. The Taoiseach and the Minister for Social Protection recently published a new child poverty target of 3% consistent poverty by 2030. It is an ambitious goal that would place Ireland among Europe’s best performers. While no level of child poverty is acceptable, the target offers a clear pathway for progress, especially important given the recent rise in child poverty highlighted by CSO data. This target will be supported by a dashboard of indicators that brings together a multidimensional, outcomes-focused view of children’s well-being. We developed this dashboard with colleagues across government, and the dashboard will be hosted by the CSO.</p>
+          <p eId="para_43">A key initiative of the programme office is to monitor the focus on child poverty in the budget. In 2024 and 2025, we produced a comprehensive analysis of new and enhanced budget measures and we will produce a similar report for budget 2026 in the coming weeks.</p>
+          <p eId="para_44"> Change is driven by people, especially those on the front line supporting vulnerable children and families. That is why the programme office has worked to strengthen connections across the public service. We have established a cross-government network on child poverty and well-being, which has met six times and resulted in greater co-operation among Departments, agencies and service providers. We have also hosted two high-profile annual summits, creating space for reflection, shared learning and forward planning. Earlier this year, the programme office published its first progress report, outlining key developments across its six priority areas and reviewing its impact. Even at this early stage, the report found that the office has strengthened cross-government collaboration, improved policy coherence and sharpened focus on the six priorities.</p>
+          <p eId="para_45"> I thank the committee again for the invitation to speak today. We will be happy to take questions and we look forward to the discussion.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_46">I thank Ms Canavan. I call on Mr. Morrin. </p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Paul Morrin<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_47">I thank the committee for the invitation to this meeting to consider child poverty and deprivation. I pass on the apologies of our director general, Jennifer Banim, who could not attend today because of a pre-existing work commitment. I am the assistant director general of the CSO's statistical system co-ordination division and I am joined by my colleague Fiona O'Riordan, assistant director general for social statistics.</p>
+          <p eId="para_48"> In the context of child poverty and deprivation, I would like to identify three main points from a CSO perspective. First, our annual longitudinal household survey of income and living conditions, SILC, provides several relevant indicators that capture distinct aspects of child poverty. However, like all household surveys, SILC has inherent sample limitations, which we continually review to ensure the collection of quality data. Second, it is important, therefore, to look at poverty indicators as trends over several years, rather than relying on single-point estimates. Finally, in this challenging topic area, it is important to utilise all available data sources to provide deeper insights into the lived experiences of children in Ireland. This is in line with the future direction laid out by the child poverty and well-being programme office under the Department of the Taoiseach.</p>
+          <p eId="para_49"> I mentioned that SILC enables us to assess different dimensions of child poverty. These are at risk of poverty, enforced deprivation, consistent poverty, and at risk of poverty or social exclusion. We provide detailed information on these metrics in our accompanying technical note but it is important to explain the two headline indicators, consistent poverty and at risk of poverty or social exclusion, AROPE, and how they are calculated.</p>
+          <p eId="para_50"> The first measure, consistent poverty, captures those simultaneously at risk of poverty and experiencing enforced deprivation. More details on the methodology are in our submission. The consistent poverty rate for children ranged from 10.9% in 2015 to 4.8% in 2023 and 8.5% in 2024. The ten-year trend for consistent poverty is set out in figure 1 in our technical note.</p>
+          <p eId="para_51"> The second measure, AROPE, is the primary poverty target measure at EU level. This is a broader measure as it includes an indicator for living in a household with low work intensity. The AROPE rate for children in Ireland ranged from 29.2% in 2015 to 24.3% in 2023 and 20.9% in 2024. The challenge, therefore, is understanding the contrasting trends between these indicators and others, much of which can be explained by differences in their underlying methodology for compilation.</p>
+          <p eId="para_52"> Interaction with householders has become more challenging since Covid times and the CSO is continually reviewing data collection methods to suit respondents' needs. SILC has a relatively small achieved sample, with between 4,000 and 5,000 households being surveyed annually. The implication of the small sample size is that point estimates for any single year can fluctuate and be considered statistically volatile, especially for smaller subgroups of the population. It is important, therefore, to view any poverty indicator in terms of its overall trend across the years.</p>
+          <p eId="para_53"> On data maximisation, our understanding of an issue such as child poverty can only be strengthened by utilising all the data sources at our disposal. As well as utilising the primary data collection from SILC, the co-ordinating role of the CSO within the wider Irish statistical system makes us uniquely placed to maximise the maturation of the Irish data system. The increased use of unique identifiers - PPSN and eircode - allows for the creation of integrated data and the use of multiple data sources and information products, including secondary data, to provide a more nuanced picture about the lives of poorer children. To this end we have recently launched, with support from the Department of Children, Disability and Equality and the Department of the Taoiseach, the children and young persons data hub to serve as an accessible source for key information on children and young people in Ireland using the latest data from all public service bodies across the State.</p>
+          <p eId="para_54"> The CSO is also working across government and the public sector to review outcome measures for children, including with the Department of education and the Department of the Taoiseach. This work has a particular focus on students in the context of the DEIS programme and the educational outcomes of children in care. Taken together, the trends from new and established sources can help provide detailed insights into key trends in this important policy area.</p>
+          <p eId="para_55"> We are happy to take any questions the committee may have. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_56">I thank Mr. Morrin. I invite Dr. Russell to deliver her opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Dr. Helen Russell<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_57">I thank the Chair for the invitation to the ESRI to appear before the committee. I am the head of the social research division of the ESRI and I am joined by my colleague Karina Doorley, who heads up the tax, welfare and pensions team. We are grateful for the opportunity to discuss the insights from the ESRI research on child poverty and deprivation.</p>
+          <p eId="para_58"> Child poverty is a key concern in Ireland and internationally and there is a growing body of evidence on the detrimental effects of childhood poverty in both the short and long term. Our latest research outlines the lasting link between childhood poverty and poverty, poor health and employment status in adulthood. Our research based on the Growing Up in Ireland study has highlighted the wide range of ways poverty impacts on the lives of children and young people, including cognitive and socioemotional development, mental and physical health, and educational outcomes and opportunities.</p>
+          <p eId="para_59"> Currently, rates of income poverty and material deprivation are significantly higher for children than for adults under 65 and for the older population. The most recent monitoring poverty report we did with colleagues in Trinity College Dublin found that when housing costs are accounted for, one in five children is found to be below the poverty line. This amounts to 225,000 children. Ireland was found to rank 16th out of the 27 EU countries on this metric.</p>
+          <p eId="para_60"> The report also found that those who experienced poverty during childhood are three times more likely to be materially deprived and twice as likely to be income poor in adulthood compared with those who grew up in good or very good financial circumstances. We found that differences in educational attainment and employment are key mechanisms behind these patterns, with higher rates of disability and family factors also playing a role. The ESRI's research has consistently shown that certain groups of children face a much higher risk of poverty, including those in lone-parent households, those living with someone with a disability and those in larger families. We also found that parental educational and social class backgrounds are strong predictors of child poverty, highlighting the role of structural inequalities. Qualitative research has also highlighted other groups not included in sufficient numbers in datasets. These include Traveller children and those living in direct provision or emergency accommodation, who are also among those most exposed to poverty. Using the SWITCH tax-benefit model, my colleagues have investigated the impact of Ireland’s current system of child-related benefits on child poverty and deprivation, looking at cash and in-kind benefits. The research found that these benefits significantly reduce child poverty rates. For example, without those benefits, the child consistent poverty rate would rise from 5.6% to 13.6%.</p>
+          <p eId="para_61"> There are a number of ways policy can reduce those figures further. One such way is by increasing the earnings of families with children by reducing barriers to work. Another is the provision of more free services or in-kind benefits. A third is to increase targeted welfare payments to low-income families with children. Our research focused on the third channel, and colleagues looked at several reforms to the tax-benefit system that could further reduce child poverty. These include increases to the child benefit, the child support payment and the working families payment, as well as the introduction of a means-tested second tier of child benefit. </p>
+          <p eId="para_62"> Among these, we found the second tier of child benefit to be the most cost-effective option. This reform would integrate child support payments with a modified working family payment, allowing all households with children to receive an amount determined by their means. For an annual cost of €773 million, it would reduce the child at-risk-of-poverty rate by 4.6 percentage points, the child deprivation rate by 0.7 percentage points and the child consistent poverty rate by 2.1 percentage points.</p>
+          <p eId="para_63">Our analysis suggests that such reforms should be designed carefully to avoid income losses for some households and the impacts on work incentives would also need to be investigated. A multifaceted and cross-departmental approach is necessary to address the intergenerational persistence of poverty. Among these, narrowing the gap in educational attainment between those growing up in financially advantaged and disadvantaged households is crucial.</p>
+          <p eId="para_64"> I thank the committee for its attention and we are happy to answer any questions. My colleague Professor Doorley is also happy to answer questions about the analysis of the recent budget, of which the figures were released on Friday. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_65">I thank Professor Russell and all of the witnesses. It is proposed to publish the opening statements on the Oireachtas website. It that agreed? Agreed. I will now call members. I remind them they will have seven minutes of speaking time each but this will also include responses from the witnesses. If time permits at the end, we will have a second round and I will ask the members to indicate to me if they wish to ask additional questions. Also, there are a lot of witnesses here today, so if members are a little bit directional with their questions, that will be helpful to everybody. I also ask that, when members are putting their questions, they strictly adhere to the agenda topic under consideration at this meeting.</p>
+          <p eId="para_66"> I now call members in accordance with the speaking rota we have circulated. One member is joining via MS Teams, so I ask them to confirm they are on the campus of Leinster House before they put their questions.</p>
+          <p eId="para_67"> I will call the first four members in the following order: Deputies Boland, Currie, Dempsey and Ó Murchú.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_14">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_68">In terms of child poverty, it is good to hear the witnesses are all speaking about having a cross-departmental approach. It is absolutely essential that there be a cross-departmental approach but also that there be good working relationships between the various agencies such as Tusla, the educational bodies, etc., and I hope we see that because it is a necessity for tackling child poverty. In regard to the roadmap for social inclusion, will Mr. Egan give an update on how that worked? Did that plan work and how can we make sure its successor plan works better in tackling child poverty?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_69">I thank the Deputy. The roadmap for social inclusion was launched in 2020, just before Covid hit. We were preparing as a Department in 2019. We had not envisaged the impact of Covid would have. The roadmap has a national target to achieve a consistent poverty level of 2% by the end of this year and we are not on track to achieve that, to be upfront and honest. The latest statistics from the CSO published earlier this year, which are based on 2023 income levels, show consistent poverty levels of 5%. I would flag that they are not-----</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_16">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_70">Was that for 2025? </p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_71">That was published-----</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_18">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_72">The national poverty level for 2024 was 8.5%.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_73">The national level? For the entire population, it is 5%. The 8.5% figure relates to consistent poverty levels for children.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_20">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_74">The consistent poverty rate for children ranged from 10.9% in 2015 to 4.8% in 2023 and to 8.5% in 2024.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_75">Yes, those figures are correct and they relate to children. The figure of 5% relates to the population as a whole and that is the target in the roadmap for social inclusion at the moment. It s a national, whole-of-population target. We have a new child poverty target as of last month.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_22">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_76">I am conscious of my time. How will we make sure the successor plan is better and that we do actually deliver on the targets we hope to achieve?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_77">There were a lot of actions contained within the roadmap for social inclusion. It is very difficult to differentiate their impact but they have made a positive impact. What we do know, and as Professor Russell indicated, is we are very clear on what measures within the social welfare system work; the targeted measures. They are the measures we introduced as part of budget 2026, such as increases in the child support payment and working family payment. These are measures that are targeted at families and lone parents in particular, as the Deputy will have heard in the opening statements. We have to increase the employment participation rates of parents and we have seen a very significant increase in female participation rates since we have come out of Covid, which has been very positive and will have a positive impact. It is about building those supports and enabling parents.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_24">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_78">I thank Mr. Egan. In terms of the female participation in the workforce, I represent Fingal, which is one of the youngest areas in the country. Balbriggan is the largest, youngest and most culturally diverse town in the country. It has one community-funded, community childcare setting. That is simply not enough in terms of the socioeconomic demographic of the town of Balbriggan. I would be suggesting that a town like Balbriggan absolutely needs to be targeted for supports. Will Ms Canavan tell me how the use of the indicators and the dashboard will ensure those areas actually get the supports they need? </p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_79">What the dashboard is intended to do is to capture the in-kind and it will look in global terms at some particular measures around the kinds of thing that support families who are living in poverty. It will not be at a granular level. We are very interested in the participation rates of children in particular groupings, areas and cohorts that are maybe not participating in some of the early years services. In terms of the targeting of specific supports and the build-up of places, my colleagues in the Department of children are probably best placed to comment on that.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_26">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_80">It is really important that we be able to target particular areas. Will Mr. McCarthy tell me how we will do that, please?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_81">We know from a supply perspective. We have established a forward planning unit within the Department to look specifically at areas of need in terms of supply and demand for childcare places. The approach to the roll-out of public provision, for example, will take account of the assessment of that forward planning unit placed on GSI data, the Pobal deprivation index data and CSO data in respect of childbirths, etc., to identify those areas of specific need. In respect of Balbriggan, given what the Deputy has said and what we know, it is likely to be identified in that context. </p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_28">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_82">I am very interested in the work of the forward planning unit for all the reasons I have outlined. When does Mr. McCarthy think we will see some output and delivery in terms of it?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_83">The work of the unit is up and running. It is engaging-----</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_30">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_84">How long has it been up and running?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_85">Since last year, January 2024.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_32">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_86">I repeatedly ask during parliamentary questions when we will see the outputs of the forward planning unit. Considering it has been up and running for a year now, when does Mr. McCarthy think we will actually see outputs?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_87">The forward planning unit is feeding into the design of the building blocks capital programme. We have a new national development plan, NDP, envelope agreed by the Government in respect of the next five years, which gives us greater capacity now to plan for additional provision. The work of the unit will feed into the thinking around that.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_34">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_88">Will we actually get data on that? Will we be able to assess the work of the unit?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_89">We will be happy to share data.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_36">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_90">When should I next ask when I can see outputs?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_91">The Deputy can ask as often as she likes.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_38">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_92">I have repeatedly asked.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_93">We are continuing to build our capacity on this front. The Deputy is probably familiar with the forward planning unit in the Department of education, on which we have modelled our capacity thinking. It is really a question of being able to take all of the data sources across government and being able to use them to the best effect in terms of being able to project demand into the future and being able to plan accordingly. It is a dynamic process and we will continue to build our capacity on that front. </p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_40">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_94">Okay, so will I submit a parliamentary question in a month and then submit them monthly?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_95">As I said, that is a matter for the Deputy.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_42">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_96">I keep receiving the same response and I am very focused on making sure this unit is actually working. Considering I keep receiving the same response, it does lead me to believe what is happening-----</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_97">We have seconded expertise in terms of statisticians and all of the skill sets that are required to build that dataset, but it is continuing work.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_44">
+          <from>Deputy Grace Boland<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_98">It is essential that the unit work, for everyone and for all Departments.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_99">Yes.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_100">I thank Deputy Boland and now move to Deputy Currie.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_47">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_101">I thank the Chair for arranging such a comprehensive collection of stakeholders. It is great and I thank them all for being here. I want to ask about community crèches. Am I correct in saying a community crèche has a higher number of sponsored places? This question is for the Department.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_102">Some children who are sponsored through the NCS are across all services. There possibly would be a higher percentage of sponsored children through community crèches. I do not have that data to hand but we can follow up on that. </p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_49">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_103">From anecdotal feedback from community crèches, I think there should be data to show that they do have a higher number of sponsored places.</p>
+          <p eId="para_104">Yes, all crèches do take sponsored places.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_105">There is certainly data that we will share. The equal start model identifies services that operate in the context of concentrated disadvantage and shows that 427 are community services and 360 are private. Obviously, an NCS sponsorship is one of the categories we use to identify services and there are other categories, including the Pobal deprivation index. There is quite a share of private services that operate in the context of concentrated disadvantage.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_51">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_106">Yes, but community crèches are different in that a lot of them have a close relationship with additional community services. Does Dr. Brooks agree?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_107">I think community services and private services would engage with our local communities, including the Tusla offices and the children and young people’s services committees, CYPSCs. There is evidence of that across all services.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_53">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_108">So Dr. Brooks does not see any additional benefits to community crèches?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_109">There are benefits to community crèches. They are established by their communities, are very ingrained in communities and serve a very disadvantaged group of children. My point is private services also operate in these areas.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_55">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_110">Yes, all crèches play their part in supporting families and addressing disadvantage but I am making the point that community crèches might have more sponsored places.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_111">I think that is fair.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_57">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_112">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_113">It is probably worth saying that the equal start model allows us to profile all providers in respect of the profile of service users using Pobal deprivation index data and other data sources available to us in terms of the target cohorts that are in any crèche. We have that model available to us. The equal start designation is based on that. It is not based on whether it is a community crèche or a private provider. It is based on the profile of service users within.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_59">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_114">Only 5% of services are community crèches in the area of Fingal County Council. The figures show there has only been a net increase of one community crèche provider across the whole country, in five years. Why is that happening?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_115">Is the Deputy asking why is there a lower percentage?</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_61">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_116">Why are fewer community crèches opening and why only 5% in Fingal County Council? </p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_117">I cannot explain why that would be. Fingal certainly has the lowest percentage across all city and county childcare areas. I suppose more private services are moving into operate services in the area.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_118">There is an historical dimension. A lot of community crèches would have had a history of community providers going back quite a period of time. In a fast-growing area, where there is not the same community infrastructure built up, the likelihood is that as growth occurs, there will be more reliance on the private market. That goes back to the point Deputy Boland made about the need for particular intervention in some of those communities. </p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_64">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_119">It is worth examining why there is a variance across county councils and what areas are doing differently to support community crèches. It is important to know that, because community crèches play a valuable role in the overall sector. Dublin West is an area of undersupply. Does the Department foresee that Dublin West will be included in its scoping exercise for additional supply by the forward planning unit? </p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_120">All areas will be in the scope, obviously. I suppose the Deputy's question is what we expect to see emerging in terms of the areas of greatest need. </p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_66">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_121">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_122">It is fairly evident from population growth data what those areas are likely to be, including Dublin West and Fingal.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_68">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_123">Will the Department take account of increases in overall enrolment figures? I have noticed that our enrolment figures are increasing but I feel that is not a true picture of what is happening on the ground. The number of baby rooms, for instance, is down 35% in Dublin West. Overall nationally, school age places seem to be increasing but what about sessional services and all the types of services that parents need? Will the scoping exercise examine those details not just from a geographical perspective but also the nature of supply?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_124">That is the intention, yes.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_70">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_125">Will it step into provision in those areas? Will it directly address that undersupply? </p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_126">As the Deputy will know, the programme for Government does commit to growing public provision. The intention is that where the State does intervene, where there is market failure or market gaps in meeting the demand, those are the areas that we will concentrate on in terms of any State provision.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_72">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_127">Will we see that information in the action plan?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_128">We will certainly see a laying-out of the approach to additional public provision. </p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_129">We are very aware of the very significant growth in school-age childcare provision and we have seen quite a number of new services opening. The priority, as we see through the data, is for places for one- to three-year-olds, which is why that was given priority in the building blocks programme 2025. We are now in the process of designing the scope of a new building blocks call for 2026. Again, that will be informed by the evidence that we have, the data available to us. </p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_75">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_130">I thank everyone for joining us today and for their opening statements. My first questions are for Ms Canavan, who represents the Department of the Taoiseach. I am sure we all agree that the child poverty figures are heartbreaking and one child in poverty is too many. I understand that when the last data was collated, both the free schoolbooks scheme and the free school meals programme were not included. Why was that and will that data be included in the next round? As we have said here, child poverty is a cross-departmental issue to resolve. All measures need to be considered. How will the child poverty and well-being programme office ensure that they are?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_131">The measurement of child poverty is a very specific and technical exercise and other colleagues would be far better at describing the mechanism involved. This matter has exercised us in terms of how we capture the range of measures that are needed to improve children's lives, which are not just income based. In our discussions with all of our colleagues who are here today, we have tried to capture better the other measures that are really important in reducing the costs for families and how that can then impact on children's progression and their outcomes. This is why we have developed a dashboard approach, which is to try to capture those other measures, including things like free school meals and free schoolbooks. They are the kind of things that are reducing the cost of education but you will not necessarily see all of those coming through in a live way in some of the other data. We have quite a range of measures that we are going to examine over the next period, including income, which are the measures we referred to around the consistent and at risk of poverty categories. We are also looking at early learning, care, education, housing and homelessness, health, participation and how they affect different cohorts, particularly those living in poverty, and what the comparisons with the national population are. We are going to try to capture those. This is our first attempt and we hope to see how that works. We have a few measures that we have yet to develop and do not collect on a regular basis so they will have to be further developed. Over time we may add to that dashboard. That is partly how we are trying to collect that.</p>
+          <p eId="para_132"> The other point worth mentioning is the budget report that we do each year, where we try to capture a little bit more of not just the income supports but also all of the other range of measures I have mentioned, such as school meals and schoolbooks. We do also try to make a distinction between those things that are directly going to help families on a day-to-day basis and those that are more indirect, such as the social inclusion and community activation programme, SICAP, or other things that ease people's lives and support them to get back into employment or whatever that might be. The budget report will try to capture all of that.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_77">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_133">This next couple of questions are for Mr. Egan. Are families of children with disabilities more prone to poverty? Linked with that is the fact that the one-off disability payment was removed this year in the budget. What effect does Mr. Egan see that having?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_134">Yes. Families with disabilities and the children who reside in those families are very prone to poverty. In an EU context we see that this is largely derived from the fact that Irish employment rates of people with disabilities are very low. From the Department of Social Protection's perspective the focus is not just the income support for those families, as several people have said here and which alludes to the Deputy's second question, it is also about putting in supports for those families to be able to access employment and reduce the cost of accessing employment.</p>
+          <p eId="para_135"> I just might add to the previous question to the Department of the Taoiseach that the Department calculated for the hot school meals for each primary school child that it works out at a contribution of about €576 over the academic year. Obviously, that is an important input into reducing costs of children going to education.</p>
+          <p eId="para_136"> On the Deputy's second question, obviously the Government made it very clear in advance of the budget there were not going to be any one-off payments in the budget. The consequence of that is no one-off payments as part of the social welfare package. This included people with disabilities. The Department is setting up a new strategic task force to look at this issue. The Minister has invited a series of representatives from the disability groups to attend to discuss what a cost of disability should be, to build their views and their perspectives into that, and to give strong consideration for future budgets.</p>
+          <p eId="para_137"> I would add that this is the first budget of five from the Government. Essentially, the priority this year was very much focusing on tackling child poverty. I think the social welfare package reflects that.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_79">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_138">I am afraid I am back to Ms Canavan. How does the 3% child poverty target compare across Europe? What are other countries' targets or where are they at?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_139">I will have to hand back to my colleague on that.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Paul Morrin<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_140">The at-risk-of-poverty or exclusion, AROPE, measure is used across Europe as the measure of poverty. It is on a different basis to ourselves. We have a long history of measuring poverty in Ireland which predates that measure. We have been using the consistent poverty measure for a long time here. Based on the AROPE measure, Ireland is mid-table. We can provide more details to the committee separately.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_82">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_141">Great. I thank Mr. Morrin.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_142">As to the question on the targets set by other countries, I do not know if we have the data on that.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_84">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_143">I will quickly follow on from that. On the poverty targets, will the witnesses go into some sort of detail on how they are actually calculated and how we can compare methods here versus the AROPE methodology?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Fiona O'Riordan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_144">We use the measure of consistent poverty, which is two indicators. There is the enforced deprivation rate, which is where we ask respondents to indicate if they have been unable to meet certain indicators. There are 11 of them, and if they are unable to afford two of them, they are deemed to have the enforced deprivation rate. The other indicator is the at-risk-of-poverty income-based indicator. If the household median is below 60%, then it is deemed to be at risk of poverty. If you are combining two of these, there is consistent poverty. We said in our opening statement that you have to take the trend for this because it is quite a complex way of measuring consistent poverty. The European model, which my colleague Mr. Morrin just mentioned, is the at-risk-of-poverty or exclusion model, which includes at risk of poverty, the enforced deprivation model, and what is called the intensity of work. Intensity of work is employment in the household. This is an "are, are, are" indicator. If you are at risk of poverty, are having forced deprivation, and are having low intensity of work, that is how the at-risk-of-poverty or exclusion is calculated. In the graph we provided in our opening statement, the at-risk-of-poverty moves from about 29.2 in 2015 to 20.9 in 2024. In the European table, because we use the survey on income and living conditions, SILC, which is a regulatory survey, so it is compared across Europe, we are about mid-table. It is quite complex how they are both calculated.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_86">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_145">Is it fair to say that we are not where we would like to be in relation to this particular issue? In fairness, Deputy Dempsey spoke about and got a reply on the lack of a cost of disability payment right now. The witnesses have made a statement on the promise of a task force. I would say there is a particular issue there that at the minute.</p>
+          <p eId="para_146"> I have about 14 questions and will probably struggle to get two through at the minute. If I could even just put a question to the Department of Children, Disability and Equality, it is almost my single transferable question, which is on child deprivation. We know the issue we have with child protection and that very vital part. We had a number of speakers from multiple organisations and all the rest of it. It is about the framework we have for catching those who fall into poverty but also those who fall into some of the intergenerational trauma, and those other issues that persist, particularly at the minute. It is that idea of a screening scenario, whether it is specialist public health nurses or whatever. Does the Department of the Taoiseach have any follow-up information on where that is at?</p>
+          <p eId="para_147"> Beyond that, it is about actually making sure we have the adequate supports at an early childcare level but also within schools and that the supports can be put around families when screening happens. This is about ensuring they can continue as best they can and to make sure the kids get all the educational opportunities so they can make their way into further education and into employment, which might not be the case when screening happens. I put this to the Department of Children, Disability and Equality first.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_148">In identifying at-risk children or children who are at risk of poverty or deprivation and the supports in place for those children, a huge part of Tusla's work at community level is in the provision of family support services, parenting support services, and the new home visiting service that has been established and supported over the last couple of years. There is a lot of emphasis on early intervention and support work in identifying and supporting those vulnerable families and ensuring that all of those additional supports available at a community level are made available to those families. When you move into the early childhood setting, the equal start programme, which was established in 2024, is the main policy vehicle now to ensure we are providing additional supports in early childhood and care settings to those children who need it most. A big part of it is ensuring that under-represented cohorts in early years are being targeted, are being met where they are and are being encouraged to come into services. For example, with Traveller and Roma children or children in international protection settings, and those children who are at risk of intergenerational poverty, there is huge emphasis on identifying those families, reaching out to them and supporting them.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_88">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_149">I am going to state that there is an insufficient amount of any of that happening. Anyone who works in the field will also state that. We are failing, therefore, and have failed multiple generations of children. We have seen successes but they have generally been pilot schemes that we have not expanded sufficiently and whatever else. On the issue that was brought up about specialist public health nurses and ensuring there is a steady supply of them from a screening point of view, am I right in thinking that, on some level, an element of this fell within the Department of the Taoiseach?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_150">There are a couple of things worth mentioning. We have a strong focus on the pipeline of people to work with children and families. We have been involved with a piece of work on the child health workforce, which has been led by the Department of Health. That report is nearly complete. It looks specifically at how we drive a pipeline and structure the child health workforce. It derives from the Department of children's first five strategy. It was an action in that strategy. While the report is not yet published, the work of the first phase is complete, which includes looking across the whole of the public service at the kinds of supports for families, such as public health nursing and other services.</p>
+          <p eId="para_151"> The home visiting service is an important adjunct to that child health workforce piece. The Government has approved a home visiting programme, which Tusla is rolling out. It began in 2024. That is another important aspect. That is trying to bring those pilot-type projects the Deputy mentioned together into a sort of framework of home visiting services. It is about bringing those particular pilot initiatives that have been operating together right across the board. That is another important piece to mention.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_90">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_152">I thank all the witnesses for attending today and providing an opening statement. I also thank them for the work they do. I know they all work extremely hard. We have a lot of groups present and I am limited with my time. Unfortunately, I will not be here for the second round because An Taoiseach is coming to Seanad Éireann, so I will have to be there. I will target my questions and I ask the witnesses to be brief in their responses. I will get through as many as I can.</p>
+          <p eId="para_153"> I will start with Ms Canavan and Ms Visser from the Department of the Taoiseach. How will the child poverty and well-being dashboard be used to influence policy decisions and resource allocations across Departments?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_154">Part of our work is to try to highlight the impact of child poverty. As we work our way through the dashboard, we will be making comparisons between children at risk of poverty and how they are doing compared with those who are not. Those comparisons will be carried out across all of the outcomes, such as health, education or otherwise. Part of what we have tried to do over the past three budgets is to work in the interim period with our colleagues to identify those areas where children in poverty are falling behind and determine the kinds of measures that can have an impact and be brought forward to ultimately be prioritised in the budget process. There is ongoing engagement with our colleagues right across government in the lead-up to the Estimates process to try to inform that process. We work with Departments and their Ministers through our senior officials group and Cabinet committees to identify where those gaps are and the kinds of measures that are most likely to have an impact.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_92">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_155">My next question is to Ms Hurley or Ms Kelly from the Department of Rural and Community Development and the Gaeltacht. Libraries and community hubs play a big role in bridging service gaps for children in poverty. Will they expand further on what they think of those services?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Mary Hurley<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_156">I totally agree with the Senator; our libraries are such a valuable resource in the community. To focus on this area, I mentioned in my opening statement about an initiative we have, My Little Library, where children are introduced to the library to encourage them to read and see the library as theirs. That introduction to the library starts with a book.</p>
+          <p eId="para_157"> With regard to our library capital programme, we are looking at providing the community-type services the Senator talked about and building libraries into the future that can provide those services. We see our libraries as live active places where there are meetings, support groups and activities for children. That is now a target in our capital programme.</p>
+          <p eId="para_158"> We have been working with schools and children to encourage reading at an early age so that children can become familiar and comfortable with reading and support their education. We see libraries as an important area and we are investing strongly in them. We see libraries as a strong, supportive community space.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_94">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_159">That is good to hear. My next question is for Mr. Morrin or Ms O'Riordan from the CSO. How does the CSO plan to further integrate administrative data sources to enhance the accuracy and depth of the indicators of child poverty?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Paul Morrin<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_160">Our main objective with using administrative data is to provide more detail on a lot of the issues that have been raised so far in this committee meeting, such as more detail on communities and what is happening to people in households over time. Administrative data gives us a rich opportunity because it generally covers all of the different population groups. We can do things with administrative data that we cannot do with our sample surveys, which necessarily only capture a small portion of the population.</p>
+          <p eId="para_161"> What we are proposing to do with the Department of the Taoiseach and other Departments is to mine that data to produce the rich community insights and insights on what is happening to people over time, such as whether their situation is improving or not. We aim to look at the rich data resources we have in a different way so that we can provide the insights to the issues that are certainly coming up today.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_96">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_162">I thank Mr. Morrin. To Mr. McCarthy or Ms Hynes from the Department of Children, Disability and Equality, what mechanisms are in place to evaluate the long-term impact of programmes like equal start and ECCE on reducing intergenerational poverty?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_163">There is a review of ECCE planned. That is obviously one of the issues we will look at. I cited in my opening statement that, in the most recent review of ECCE, 70% of low-income parents said that, without the support of ECCE, they would not have been in a position to send their children to early years education. That is a significant finding in terms of the impact of ECCE. We know this ourselves from looking at the participation rates in ECCE. It has been a significant game-changer in participation in early education and a huge leveller in terms of life opportunity for children before they come to school. Prior to the existence of the ECCE programme, children from particular socioeconomic cohorts were starting junior infants at a significant disadvantage. That is no longer the case to the extent that it was. It is not to say that those problems do not still exist, however.</p>
+          <p eId="para_164"> The further research work I mentioned with the ESRI looking at educational outcomes for children will look at some of the impact of what we have been doing. We have also designed evaluation as part of the programme design in equal start to ensure that the scheme is meeting the objectives it sets out to meet with regard to participation, particularly in those cohorts who are at risk of lower participation.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i>Deputy Aisling Dempsey took the Chair. </i>
+        </summary>
+        <speech by="#" eId="spk_98">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_165">We concluded a review of the national childcare scheme in 2021, which demonstrated how the national childcare scheme supported children in low-income families and supported parents return to work or helped them to work longer hours. Obviously, it reduced their out-of-pocket cost for early learning and childcare. We are in the process of commissioning an evaluation of the national childcare scheme to see any further improvements that might be brought to the scheme to address the needs of families, especially those who experience disadvantage.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_99">
+          <from>Senator Sharon Keogan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_166">I thank the witnesses for their statements and attending this committee meeting today. Before I start, as this is the children's committee, I wish to say how deeply saddened and horrified I was regarding the death of the child in residential care yesterday. Residential care is not the way forward for Tusla. I am asking and begging Tusla to just-----</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_100">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_167">I ask Senator Keogan to keep to the topic of the discussion.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_101">
+          <from>Senator Sharon Keogan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_168">It is not the way forward. Children are coming to this country and our own children-----</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_102">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_169">Please, Senator.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_103">
+          <from>Senator Sharon Keogan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_170">I am sorry.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_104">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_171">Can the Senator please focus on the topic we are discussing today?</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_105">
+          <from>Senator Sharon Keogan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_172">I ask Tusla to do better for these children. It is just awful what is happening. My first question is to Ms Canavan. Last week, I talked about in-kind services to combat child poverty. A research paper was carried out in 2019, which looked at 22 European-founded in-kind benefits. It determined such benefits to be more efficient than cash in curbing child poverty, particularly during austerity periods.</p>
+          <p eId="para_173">We are going through a cost-of-living crisis at the moment. An OECD research paper had similar results. I believe it makes sense that in-kind services are more effective in the case of developed nations such as ours. With that in mind, has the programme office's policies considered in-kind welfare policies for children? If so, will Ms Canavan outline some of the models it considered and what its conclusions were? Second, what does she believe our State capability is for delivery of such in-kind supports for child welfare?</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_174">As the Senator will see in our programme plan, we have our six priorities. We will review that, but our six priorities at the moment are largely focused on in-kind. We have income support and joblessness but we also have early learning and childcare, reducing the cost of education, family homelessness, consolidating and integrating family and parental support and encouraging participation. What we have been trying to look at is how those reduce the impact of poverty or remove out-of-pocket expenses for parents of children living in poverty. These are policy areas for individual Departments. In early learning and childcare, an important measure last year was the introduction of equal start, which is a targeted measure, a sort of DEIS for preschools. That is just being rolled out. It is a really important measure to try to give that additional boost and to take away some of the pressures on families to access early years and childcare generally, as Dr. Brooks mentioned, to allow families to get into employment and to take up other opportunities.</p>
+          <p eId="para_175"> In terms of the cost of education, since the beginning of the programme office, free school meals and free schoolbooks have been extended. They are very important in-kind measures that are important to the cost of education for families. The extension this year of the back-to-school clothing and footwear allowance for children aged two to three is also an important measure. These are all things we would have seen as part of the cost of education.</p>
+          <p eId="para_176"> Family homelessness is a really challenging and complex area. One of the most important pieces there is capital infrastructure and building more houses in the first instance. We are also looking at what other types of measures can support the families who are in emergency or homeless scenarios in other ways to reduce the impact. We know that the impact on families living in homelessness and children themselves is quite persistent and that even for children who have spent a short time in homelessness that persists in terms of their outcomes. We are looking at the kind of supports that wrap around, whether they have to travel to school and whether they are getting travel supports, particularly in Dublin, which they are, like getting their Leap cards. We are also looking at other types of measures to reach into those services for those families.</p>
+          <p eId="para_177"> In terms of consolidating and integrating family and parental support, health and well-being, part of our work there has been to work with colleagues across both the Civil Service and the public service to look at the kinds of things we can do better together. We have a good piece of work going on in relation to integrated services and we are engaging with a lot of people who are involved in smaller scale interventions such as the Lynn Clinic in Dublin. That is a sort of specialist social inclusion unit that looks at trying to support parents to access the services that are available to them but that they might struggle to access. There are moves to have some of that type of a model at a regional level as well.</p>
+          <p eId="para_178"> Finally, in terms of participation in culture, arts and sports, we are very mindful that for many families and for children participation is a cost. What are the ways in which they can be encouraged and supported to engage in those services? For example, there are creative youth partnerships. Last year we saw an extension of creative youth partnerships around the country to support in particular children in deprived areas to engage with culture and sports. We have also seen things like the additional Gaeltacht grants last year in the budget. Those are additional grants for children who might not otherwise get the opportunity to go to the Gaeltacht. They are the kinds of things we have been focusing on.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_107">
+          <from>Senator Sharon Keogan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_179">What about food poverty?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_180">In terms of food poverty, my colleagues in the Department of Social Protection are doing the school meals programme-----</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_109">
+          <from>Senator Sharon Keogan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_181">In-kind services.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_182">The school meals programme is a really important part of that. In addition, one measure that was brought forward this year was the extension of the school meals into the summer programme for children from disadvantaged families. During the summer months children got access to that. In addition, there is an initiative the Department of children has been involved in with the youth sector to see how, again, during the summer months in particular, youth services could bridge that gap in terms of food supports for families and children living in poverty. That was last summer.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_111">
+          <from>Senator Sharon Keogan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_183">Some countries provide an-kind credit card service to parents who are struggling and it can be used only for food.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_112">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_184">I thank all the Deputies for letting me go ahead of them. An Taoiseach is coming into the Seanad. I thank the witnesses for coming in. I am sorry I missed their opening addresses but I thank them for all their briefing documents. I have only one short question. The child poverty and well-being programme was established in the Department of An Taoiseach. Is there any move to create something like the Combat Poverty Agency? It was established in 1986. It was really successful because it maintained independence while also being critical of the Government. It was shut down in 2008. It predicted even at that stage that people who are most at risk of poverty were lone parents and their children and that long-term homelessness was not going to be addressed. There was an aspiration that consistent poverty would be eliminated by 2016 and we have seen it only get worse. It is great that all the witnesses are working together. I know that was the whole point of setting up this new office within the Department of An Taoiseach in order that people are not working in silos, but is there a model to provide something like that again? It was proven to work. When the Combat Poverty Agency was shut down, it was detrimental. It was able to be critical of the Government because of its statutorily independent function. It shone a light and gave public knowledge to people about the detrimental effects of poverty and the extent of poverty. There was a lot of investment in education and in using research on the ground to drive national policy. Is there any kind of move to establish an independent agency working on behalf of the State but maintaining that independent critical voice instead of the child poverty and well-being programme office? I am sorry for the long question.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_185">My colleague Mr. Egan might say a little about what happened to the agency because it did not just go. Does he want to start and then maybe I will add to his response?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_186">The Senator is correct. The staff of Combat Poverty Agency essentially merged into the Department of Social Protection. They have subsequently gone on to so many of the Departments that are here represented today, including the Department of Health. As for that knowledge, the passion and the commitment our colleagues had, they now have the levers to develop and implement the policy. We have seen that to great effect in my Department, particularly on the child income side of the Department. There are colleagues on the social inclusion side who started back when they first came into the Department, when the Combat Poverty Agency was subsumed into the Department. We also are required to undertake one of the agency's key actions, the annual publication of a social impact monitor, and we do that to this day. I know what the Senator is saying in terms of-----</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_115">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_187">It is wonderful that that knowledge has gone into Departments, but it did lose its independent, autonomous voice.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_188">I will acknowledge that point but the Senator will find there is huge coverage, rightly so, of poverty and what needs to be done. It is not just the child poverty and well-being unit, which has brought us all together and better co-ordinated it.</p>
+          <p eId="para_189">The ESRI is to the forefront of it. I know this committee has met several community and voluntary representative groups recently. The Department of Social Protection consistently engages, as do other Departments around the table here, so there are plenty of voices and expertise. The expertise has become far more extensive and is not limited to one body any more. </p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_117">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_190">Does that voice sometimes get lost? The independent nature of the Combat Poverty Agency involved dealing a lot with the public. There was a lot of engagement and there was one voice. Different people are talking, even here today, about different areas that affect children and their long-term impacts on living in poverty. I have no doubt about the expertise of those involved. I agree with that but having an independent voice outside Government is always a good idea. </p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_191">I might add to what Mr. Egan said. What is probably worth reflecting is that the landscape has changed dramatically. That is some of what Mr. Egan spoke about both in terms of the capacity within Departments but also the role of other agencies such as the ESRI. There is also a lot more transparency in terms of how we report across government on these measures. Part of the initiative around establishing the child poverty unit in the Department of the Taoiseach was to rise above the departmental interests, bring that whole-of-government view and stand apart from what is happening and comment on it. Obviously, we are part of Government - we are not independent of Government - but our mandate is to stand apart and above to some degree and probe and interrogate what is happening on a cross-government basis. We have reviewed the impact of the role of the unit. These are the kind of things where people have said that we have helped to highlight that political commitment and that is coming through across the way in which Departments think. It is creating space and context for new and innovative responses to emerge. We are enhancing the visibility of the impact of child poverty and the complexity of need and some Departments would certainly say that it has helped them to push those issues up the agenda and prioritise them in the context of budget processes. </p>
+          <p eId="para_192"> The other thing that is really important about that wider world is the opportunity for cross-government learning. We have the cross-government network that includes all of the civil and public service organisations but in running those network events, we have also invited in a lot of the community and voluntary players to talk about issues that are of concern or some of the work they are doing that they think can contribute to changing our models of practice or work or creating new ones. We have also had the two child summits, which are very open and broad and where we have a really interactive long day event with participation from all of civil society and all the groups that can comment and critique. It is a very open environment where we have to listen to what everyone has to say and the critique that comes with it. We had very good interaction this year with a number of Ministers as well as with the Taoiseach participating in a panel with direct questions. </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_119">
+          <from>Deputy Charles Ward<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_193">I am coming at this from a different angle. Reading this report, I find it disgraceful that housing is causing child poverty. The north west has the lowest disposable income. In respect of the defective concrete blocks crisis, Inishowen is the most affected area and has the lowest disposable income so it has been hit with a double whammy. We have done a survey of children who are affected by mental health issues relating to defective concrete blocks. I would like to send the findings to all the witnesses so they can see what is happening on the ground there. There are an estimated 6,000 children who are affected by defective concrete blocks to varying levels. This is a very kind estimate. A total of 25,000 homes are involved, most of which have a Mum and a Dad and children. The long-term results of this will be catastrophic mentally for them. My first question is for the ESRI. Why are rates of poverty and deprivation significantly higher for children than adults under 65 and the older population? What is the ESRI's opinion on this? </p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Dr. Karina Doorley<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_194">Ireland is not alone in this pattern where we have a higher rate of poverty for children than we do for the adult population or the elderly population. Part of it is mechanical in that in households with children, there tends to be more than one child. If a household is at risk of poverty, often there are more than one or two children in that household. Part of it is driven by underlying factors like the make-up of our labour force and the policy targeting various cohorts of our society. There was a very sustained campaign during the 1990s and early noughties to reduce elderly poverty that was very effective. In relatively recent years, we have had a very low rate of elderly poverty so it is clear that such a policy initiative can have a significant effect on poverty rates in certain cohorts. With child poverty, the policy solutions will have to be multifaceted. For elderly poverty, it was quite straightforward to target pension payments. If we increase the pension rate enough, we will lift a significant proportion of the population over the poverty line. For children, we have to think about the number of adults in that household who are working, who are capable of work and if they are working enough hours to actually escape poverty. For certain categories of households where there is no possibility of working due to whatever kinds of barriers that exist, the welfare system needs to be mobilised. </p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Dr. Helen Russell<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_195">I would add that families with children tend to have the highest housing costs. Many of them are newly created households so they are facing high costs, particularly in the rental market. A much higher proportion of families with children are living in the private rental sector compared with other cohorts so that contributes to their material deprivation. </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_122">
+          <from>Deputy Charles Ward<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_196">My next question is for the Department of Children, Disability and Equality. The Department considered monitoring levels of deprivation among children affected by the defective concrete blocks crisis. I have seen at first hand the negative impact of this crisis on children. It is essential that the impact on children is monitored so that we can see what is coming down the line. The survey by Karen Kirby and her team has indicated that the children are suffering from levels of depression that would be similar to being displaced or in a war zone. </p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_123">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_197">I appreciate the point the Deputy is trying to make but could he relate it to the issue of child poverty? </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_124">
+          <from>Deputy Charles Ward<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_198">This is part of it. I can rephrase that. Is the Department engaging with families affected by defective concrete blocks who are suffering child poverty? </p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_199">Again, I go back to the role of on-the-ground services in supporting families in need in every community. Tusla has family support services available within communities. If there are families that have particular needs, they should be referred to Tusla services. I cannot say specifically what engagement Tusla has with the families referred to by the Deputy but it is the role and responsibility of those community-based services to identify need within their communities and engage with those families. I would be confident that those families who need support have access to it. </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_126">
+          <from>Deputy Charles Ward<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_200">I can tell Mr. McCarthy that those on the ground in Donegal do not. We have social housing, there are families living in shocking conditions and there are no supports on the ground for them to do with child poverty. I am highlighting it because this is coming down the line.</p>
+          <p eId="para_201">We are trying to highlight this now because we want it to be addressed. We have 6,000 children minimum who are living in poverty, in homes that are structurally unsound. This is why I am making the officials aware of it. Hopefully something can come from it.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Deputy Keira Keogh resumed the Chair.</i>
+        </summary>
+        <speech by="#AidanFarrelly" eId="spk_127">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_202">I welcome the officials and apologise for missing some of the opening statements. It is a privilege to be here this morning, given the breadth of experience and knowledge in the room on an issue that is of such grave importance. We all have different responsibilities with regard to children and child poverty. I do not doubt the credence that everyone in this room gives to it. The opening statement of Professors Russell and Doorley should be framed and put in every office in this complex, not only for the stark statistical contribution on the reality facing a generation of children, but also for the influence of hope that is present. There are solutions, possibilities, tangible ways in which we can reduce the levels of child poverty. My concern is that we are not being ambitious enough to eradicate it. Much like when we spoke about how the homelessness and housing crisis developed over the years, my genuine fear is that a level of acceptance will creep in and that the 3% target might blend out to 4%, 5% or 6%. Suddenly there is a subconscious acceptance that in Ireland there will always be 5% to 7% of children who will experience poverty. The concern is that this does not just affect young people and children when they are young; the impact of it stays with them through their life. Are Dr. Russell and Dr. Doorley confident that the 3% target is achievable by 2030 as things stand today?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Dr. Karina Doorley<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_203">Let us say hopeful. It is a really ambitious target. In order to get there, we need to know how to bring down the two measures that create that composite target. The ways to reduce material deprivation and the income poverty risk are different. We need to be very conscious of that and to target both measures to get to the 3% consistent poverty rate. It is doable but it is very ambitious as well. I did say earlier that the approach would need to be multifaceted. We would need to think about in-kind benefit, improving labour market participation and cash transfers, all together, to get there.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_129">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_204">That opening statement identifies the most cost-effective way the ESRI has considered as that second tier of child benefit. I am the furthest from being an expert in this area. How complicated does Dr. Doorley believe it is to roll out a system like that?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Dr. Karina Doorley<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_205">Administratively, I am sure it is quite complicated. However, we saw how fast everything moved during the pandemic. I am sure the capabilities are there within the Department. If I can be perfectly frank, the easiest and most efficient way to reduce the number of children at risk of poverty is simply to make cash transfers. That is what this second tier of child benefit will do. It does not come without complications. We would need to be wary of work incentives. Are we damaging work incentives to the extent that it would increase child poverty at source or reduce the number of parents in work or reduce their income, so that we actually ended up with more work to do? That is a serious concern. If we make this one benefit out of a number of different kinds of benefits that are in place, are we going to end up with some households that actually lose out as a result? Those are two very big complications and considerations for the second tier of child benefit. While it is eminently possible, we would have to make sure that it achieves our targets on all fronts.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_131">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_206">For Mr. Egan and Mr. O'Toole, the Taoiseach and the Minister over this year have spoken about the work undertaken by the Department in respect of a second tier of child benefit. Could the officials outline what some of that work has looked at to date?</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_207">We have had plenty of engagement with the ESRI on this issue to better understand the programme and to see what is involved, as Dr. Doorley has described, and who would be impacted. It is not a simple implementation. Let us put it a little bit in context. We have 1.2 million children in receipt of child benefit and 330,000 in receipt of the child support payment. We have 100,000 children on behalf of whom we are paying working family payment. They are the three essential programmes we would be talking about changing, and how they interact. As Professor Doorley has very astutely observed, the way to tackle child poverty is multifaceted. It is about income transfers but it is also about employment participation. We want to ensure that whatever model we create here is effective at both. One of the issues we have looked at with our colleagues in the ESRI is those children who will lose out under a two-tier child payment system. We understand it is around 100,000 children. We would have to figure out exactly who those children are, what the income deciles are and what are their circumstances. That would be very politically difficult and it would be hard to design a system that would make some children financially worse off whose families are already struggling. Second, as has been alluded to, on work incentives, the long-term approach here is to improve pathways into employment. We do not want to create a situation inadvertently, and I acknowledge this is not the intent, where for some families it would make things far harder to potentially move into employment. That would make our job very difficult in terms of a public employment service. Over the medium term, it would also cause longer-term consequences.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_133">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_208">I may be putting words in Mr. Egan's mouth and I do not want to do so. I am not trying to critique policy, but it is fair to say there is acceptance that the one-off and short-term payments do not really leave a legacy in terms of impact on child poverty. In the absence of accepting those as a way, I am not getting confidence here that in budget 2027, when more time has been allowed to develop the framework, there will be acceptance of the second tier of child benefit as a way in which we can progress the reduction and ultimately the eradication of child poverty. Is there optimism? Is it possible or is it something the Department probably will not pursue? </p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_209">I am sorry; the Deputy can take it as an absolute priority that we are committed to tackling child poverty. We are committed to doing it in the best way we can that is effective, timely and that makes sense in terms of the people who are impacted. That involves getting really under the bonnet of the second tier proposal and seeing the merits and otherwise of it and whether we can implement it. I would not rule anything out now. We are also conscious of time here. If we want to make an impact on child poverty, there is also an element using what currently have as we have done in budget 2026. That is the largest package of measures targeted at reducing child poverty that the Department has ever introduced. I am very conscious of what the Deputy said about the cost-of-living packages. I acknowledge that. Just for relevance, since 2018, the child support payment for over-12s has gone up by 162%. Core social welfare, weekly social welfare rates have gone up by about 33%. The Deputy can see the merit in how much we have moved because of research colleagues in the ESRI have done. Children who are aged 12 and over are much more costly. I am sorry; that is a terrible expression but members know what I mean. We have to target resources at them. We increased the payment this year by €16 to €78 per week, a 26% increase. That shows the commitment that the Government, Taoiseach and Minister for Social Protection identified in advance of the budget. The importance of doing it that way is it is money in people's pockets from the first week in January.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_210">I thank Deputy Farrelly. I am flexible with time when it allows.</p>
+          <p eId="para_211">It is great we had a full committee earlier. People have oral questions and different things they are attending to, so I hope we will have some members back for a second round.</p>
+          <p eId="para_212"> I am next on the rota for questions. I will direct the first question at the Department of Social Protection, but anybody can come in if they want. My constituency is Mayo and my office is in Westport. In the last three to four months especially I have seen a new emerging cohort of people who are so surprised to find themselves at risk of homelessness. I am thinking of a girl who had been renting from her mum for eight years. There was a falling-out in the household and all of a sudden she realised she was completely priced out of the rental market and there was no availability of rental accommodation. She is not on any list in relation to social housing. She has not engaged with Tusla, has never needed any support and literally in the space of a few weeks found herself homeless. She had to go into homeless accommodation for a number of months and fortunately she has successfully almost been housed through Co-operative Housing Ireland, which is a fantastic turnaround. I am thinking of another lady who has been renting for 25 years. She has an adult son who has gone to college. Her landlord passed away and she has suddenly realised her rent was very fair, should we say. Again, there is no rental accommodation and she is not earning enough to get to the threshold for affordable housing and there is none available, but she is earning too much to get the housing assistance payment or get on the social housing list.</p>
+          <p eId="para_213"> I am seeing people who seem to be falling into the middle there week in, week out. Have we plans to increase the threshold for social housing or have the officials any opinion on this new emerging cohort of homelessness we would not have traditionally seen in the past? We obviously saw the risk factors of people's economic advantage or disadvantage going up and issues with alcohol or drug addiction, whereas we are now seeing this completely squeezed middle who never imagined themselves as homeless. I put that to the Department of Social Protection but I would love to hear everyone's opinions on it as I see a difference in the last four or five months compared with the previous period.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_214">I thank the Cathaoirleach. The two situations she has described are very difficult to hear. She has articulated very well that there are limits in the respective systems and where people fall between the two stools. The thresholds for the housing assistance payment are for the Department of housing so I cannot really comment on that, unfortunately. They are also for the local authority. Each local authority has, under the housing assistance payment, different thresholds. From the Department of Social Protection's perspective, we have recourse in certain circumstances. The two individuals the Cathaoirleach identified may not be eligible for this but just so she is aware the exceptional needs payment is there. It might help with getting an upfront payment for a landlord, but it depends entirely on the circumstances. If a person is in a well-paid job it is unlikely to help. Other than that, the issue the Cathaoirleach has identified is fundamentally about the supply of housing, the lack of it and the difficultly we are seeing throughout the country. It is an issue that is obviously no longer just in certain urban areas but throughout the country. I am afraid that is not very helpful as a response to the Cathaoirleach's question.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_215">It is definitely a new cohort. They would not be flagged as at risk of poverty or at risk of deprivation, but overnight there is this wave coming. We have taken huge measures in this budget to try to tackle housing, but with the best of intentions and the best minds working to do this as fast as possible this wave is happening. We can see somebody be very comfortable one day and the next they are in an at-risk population very quickly. Are there any other thoughts on that cohort from anybody?</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_216">We have been working with colleagues across government and the Department of housing on family homelessness in particular. Part of the focus has been not only on the exit but why people are coming in. There has been a lot of work done on how we prevent this and support people who are at risk. There are a number of measures the Department of housing is looking at in that space, including through the capital programme and some of the other measures around private rental that are being looked at. There is also the tenant in situ scheme and a capital allocation this year around a housing acquisition scheme but, as the Cathaoirleach points out, these people may not necessarily be eligible for social housing. That is something that is coming through a bit and one of the challenges and a lot of the measures they are trying to put in place are to bring a bit more stability to private rental in particular, because that is where a lot of these families are coming through from. They also want to look more at the profile overall of families and the reasons they are coming in. We have some data on the reasons. We know what some of the reasons are, and they are varied.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Dr. Anna Visser<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_217">The most detailed data is coming from Dublin, in a sense, because it is the biggest issue but there are commonalities across the country. Notices to quit in the private rented sector are the dominant reason and then there are a variety of other factors which are more traditional, if you will, like family breakdown and other complexities. As Ms Canavan said, we are increasingly getting reports about that issue as well, that there is a particular difficulty local authorities are facing when people are coming to them who would not qualify for social housing assistance.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_218">Perhaps it is a conversation that would be better at the committee for housing. That cohort of people are not necessarily facing child poverty but you can see from a child welfare, protection and mental health perspective it is going to be very relevant here.</p>
+          <p eId="para_219"> I have about a minute left, even though we are not too stressed for time at the moment. This one might be for Dr. Brooks. It was great to see extra funding for the building blocks scheme, but there was a line on budget day about play groups in schools and it has caused a little fear about building blocks not being available for the private playschools, as it was. Will it be available for buildings that we might be able to identify? Deputy Currie was talking about community creches earlier. It would be great if we could encourage more community groups to set up and use the building blocks scheme. Does Dr. Brooks know what the building blocks scheme might look like this year?</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_220">Yes. To return to the question about community, we gave priority to community services in the context of the building blocks scheme last year. Out of the 50 applications that were successful, 43 of them were for community services, either extension or a new build. We are designing the new building blocks application which will go live next year. We are agreeing the details of that but I expect there will continue to be a priority attached to communities where we know there are areas of undersupply, especially for children aged between one and three years, which is where we see the greatest difficulties. The Cathaoirleach referenced State-led provision in the context of the budget. The Minister announced plans for 2,200 places next year, with 1,500 of them being from the building blocks programme and 700 for new State services.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_221">That is coming from the scoping exercise.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Dr. Anne-Marie Brooks<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_222">Exactly.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_223">Fantastic. I will keep myself to time because Deputy Ó Murchú is back.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_145">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_224">Feel free. I allow a lot of flexibility.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_225">He missed a conversation when he was gone. We are now moving to a second round, so will Deputies indicate if they would like to come in again? Deputy Farrelly can go ahead, followed by Deputy Ó Murchú.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_147">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_226">I will keep it very brief. There was just one more I would love to pick on. It came from the opening statement from the Department of the Taoiseach, if I am right, with regard to the six characteristics or the priorities. One that probably does not get as much coverage or maybe is seen often as an optional extra is the idea of participation in sport, art and culture. Having been a youth worker for 20 years I have seen the benefit of that at first hand. We all have different hats. As a soccer coach I have also seen a concerning trend when we stop to think about who is not here, who is not on the pitch and who does not have access.</p>
+          <p eId="para_227">It is not the responsibility of the sports clubs because insurance and other costs are rising. However, I think we are freezing out a demographic of our child and youth population due to the costs of sports membership or picking up an instrument. Is consideration being given, or was it given, to something like a membership card or voucher system that would universally entitle all children and young people so the State could guarantee everyone would have access to one sporting club or one year's worth of music lessons? That would give all children an opportunity and provide that option to participate in civic society that bit more.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_228">It is part of our dashboard to look at some of the indicators relating to physical activity and involvement in sport or another leisure activity. We want to look at that and compare it between children at risk of poverty and the general population. It is definitely within our sights. On the different kinds of measures, it is fair to say that in some areas, some of the programmes are targeted. Creative Ireland's local creative youth partnerships are very focused on disadvantaged groups and areas. It is similar on the sporting side with participation. Sports officers in the local authorities are very focused on how to engage with the groups who are least likely to access the programmes. How to pull out a little bit more on that is an ongoing concern of ours.</p>
+          <p eId="para_229"> We have looked at what has happened in some other countries on participation. It is one of the things that some countries do. We have not really bottomed out how that works in the Irish scenario. In certain countries, you do not have the same free access to things like museums and galleries. We actually have quite a lot of free access here. It is not necessarily the price or cost, it is about the confidence to go, it is about the parents bringing the children and those types of things. We have not bottomed out what is the kind of measure that could support that or whether it is better to do it on a more specific basis. That could be saying that every child should learn to swim, for example. These are policy decisions for the Department of arts and sport but these are the kinds of things we have been trying to tease with it as to how we can raise that game. There is a reasonable amount of targeted support there already and it is about trying to ramp that up.</p>
+          <p eId="para_230"> Youth work is also extremely important here. There is additional funding for youth services in the budget. They are an incredibly important bridge for kids into sports and arts activities through their work.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_149">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_231">I fully agree. The breadth of work youth services do or initiatives like the sports partnerships and music generation are really phenomenal at introducing people to the concepts. My concern is about the long-term legacy of those. Say there is a wonderful initiative and a child takes part in a six-week programme with a sports partnership and they have fallen in love with football or basketball. What do they do then? There are costs associated with that, whether it is football boots, membership or whatever. Is there a way we can take that next step towards embedding that in a more long-term piece? I fully acknowledge the merits of many of those programmes. They are fantastic.</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_232">We had a marvellous young man who participated in music generation and he performed for us at the summit. We saw some of that first-hand from some of the children and young people who participated that day.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_151">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_233">I agree with what Deputy Farrelly said. I get that sport is not the be all and end all for everybody but once you have that notion of greater community engagement, it removes the isolation. It is absolutely necessary for people from what are sometimes termed hard-to-reach communities. Unfortunately, we do not have enough of that.</p>
+          <p eId="para_234"> There was commentary earlier about budget analysis and how this is gauged. I imagine it takes a period of time before you discover the outworkings of it. That is probably for the ESRI and the CSO.</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Dr. Karina Doorley<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_235">I can come in on that. We did our post-budget analysis last Friday. We took all of the direct tax and welfare measures and indirect tax measures announced as part of budget 2026 and measured their impact on a range of outcomes such as the distribution of income, income inequality and the at risk of poverty rate for various groups. Our conclusion from the analysis was the child-specific measures in budget 2026 were quite well targeted. Mr. Egan has already spoken about some of these such as the increase in the child support payment, the increase in the working family payment levels and the extension of the fuel allowance, among others. Unfortunately, we did not see a large decrease in predicted child at risk of poverty rates for 2026 as a result of these measures but that is because they were accompanied by the withdrawal of the large package of supports for cost of living measures that have been a feature of budgets over the past couple of years.</p>
+          <p eId="para_236"> Taking these targeted child measures in conjunction with the fact that one-off payments are being withdrawn, we estimated that, overall, budget 2026 would lift 2,000 children out of poverty. If you ignore the fact that the one-off measures were withdrawn, that figure would have risen to 8,000 children but, because the two things are linked, our overall assessment is 2,000 children. It is not a large number but it is a good start. The measures were targeted, so it was clear there was a focus on children above other groups in this budget. We would say we need many more budgets in that vein to see a large decrease in child at risk of poverty rates, which feed into the consistent poverty target.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_153">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_237">How granular is the analysis? There is the specific issue of the lack of a cost of disability payment at this point in time and there was the removal of one-off payments that were specific to disability?</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Dr. Karina Doorley<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_238">We were able to account for all of those and the withdrawal of all of the cost of living payments. The impact of their withdrawal was visible. While we predicted child poverty rates will come down next year, we predicted elderly poverty rates and poverty rates of people with disabilities would go up directly as a result of the withdrawal of those measures.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_155">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_239">Okay. We are talking about the Department of the Taoiseach leading out but this is cross-departmental too. How exactly will that work out? I know there will be an attempt to utilise the likes of DEIS and promises were made about RAPID. Could Ms Canavan tell me how that entire framework works and what will be done to reach the 3% target?</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_240">Part of what we have been doing as part of the implementation of the programme plan is monitoring what other Departments are doing in making their policies. We are working with them as they look at their policy options and prepare for their Estimate bids, year on year. That is a really important part of the dialogue. We do that at official level but also through the Cabinet committee where the Taoiseach can give his very clear signal on the prioritisation of child poverty.</p>
+          <p eId="para_241"> We have a number of principles we have set out as part of how the budget should be looked at. That is about how universal measures are an important safety net but they cannot be to the detriment of targeting the most in need. It focuses on a principle of prevention and early intervention. It also talks about the principle that it is not just about income but we have to broader supports and services.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_157">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_242">Integrated services were mentioned earlier and there is a lack of them.</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_243">Yes. Given our ambition to eliminate child poverty and where we are at the moment, the income of low-income families has to increase more than that of the general population. Dr. Doorley has referred to the fact that is what the Government has decided to do in this budget. Finally, it looks at what are the gaps that exist, regardless of existing programmes. We think there is something about it being greater than the sum of the parts and we are very focused on that integration piece.</p>
+          <p eId="para_244"> We talk to people who are dealing with families at the hardest end. We have engaged with people like the Deep End GPs. It is a group that comes together who are dealing with children and families in the most deprived areas. There is a lot of complexity and intersection with disability as well as poverty.</p>
+          <p eId="para_245">We are engaging with those types of groups to understand what that looks like at the really sharp end. It is clear to us that having more integrated responses, single points of access and the right kind of fabric is very important at a local level. The roles of groups like family resource centres are really critical in ensuring that families not only have access to, but also have the capacity and support required to access, the services and supports that are available to them.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_159">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_246">That is absolutely vital. Beyond the initial screening piece, we need an infrastructure and framework that can provide. In the disability committee, it was suggested that schools could combine with psychology, occupational therapy and speech and language therapy services, with all of it working together. If that can happen earlier, it would be worthwhile.</p>
+          <p eId="para_247"> We are mid-table at the minute. Who is top of the table as regards dealing with child poverty? What lessons can we learn from what they do and bring to what we do? The answer might be very similar to Ms Canavan's previous answer.</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_248">My colleagues tell me that Slovenia is at the top at the moment. It has a very different infrastructure in terms of both the taxation and social welfare systems, and how services are devised at a local level. While we can look at a top-level figure, what is underneath that is incredibly complex. I do not know if my colleague wants to add anything.</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_249">Ms Canavan has summarised it. The top three countries are Slovenia, Cyprus and Czechia. I hope I have pronounced "Czechia" correctly; I do not want an international incident. I am not very familiar with how the social welfare and taxation systems are integrated in those countries, but I can say from an Irish context that without social transfers we would be one of the most unequal societies. The social transfer system of tax and social welfare mitigates poverty. Typically, we are the best at mitigating poverty within Europe, with a rate somewhere in the region of 62% or 63%. It is very targeted. Looking at these countries - I have to clarify that I am taking a punt - I would be very surprised if their income distribution is as wide as ours. That is probably a key factor in why their poverty levels are significantly lower.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_162">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_250">I assume that as part of our engagements and operations as we seek to deal with the most complex of cases, we look at best practice in countries where things are being done particularly well. While there may be statistical issues, are we looking to learn from other countries and then to employ their methods?</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_251">I do not think it is possible to say there is a direct read-across between the countries that are at the top in terms of how they structure their tax or welfare systems or their supports. It is too complex to say that there is a direct read-across or that these are the best-practice countries. People will talk about-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_164">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_252">I accept that, but I am asking whether we look at this from the point of view that there is best practice in particular fields. The Department is dealing with those who work at the coal face of complex family issues and the supports that are necessary.</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_253">Absolutely. We have a very strong focus on evidence. We are participating in an OECD project that is looking at the impact of the role of the centre of government. We are always looking at what is happening internationally. In terms of evidence, all Departments do that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_166">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_254">I thank the Deputy. If I give him extra time, he takes three minutes.</p>
+          <p eId="para_255"> I am going to ask a final question before inviting a representative of each Department or organisation to make a final closing remark in case there is something they wanted to contribute but were not asked about. I will give each of them a minute or two. They can have a think about that.</p>
+          <p eId="para_256"> For my last question, I am going to go back to the ESRI. Dr. Russell spoke about "the provision of more free services or in-kind benefits". Is she referring to the likes of the national childcare scheme and the free schoolbooks and hot school meals initiatives? Was she thinking more of what Deputy Farrelly had in mind when he spoke about wraparound services in areas like socialisation, leisure, music and sport? Could she elaborate on that?</p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Dr. Helen Russell<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_257">In general, it would encompass all of that. When we talk about what the State can do to intervene in child poverty, we focus on all of those in-kind services. Some of the impacts are more difficult to measure than others. The ones that we tend to include in our analysis are those that are a bit closer to income, such as childcare supports or free school meals. We tend to attach a monetary value to those, which means we can include them in the analysis. Obviously, that does not capture the full impact of those services. In the case of something like school meals, the monetary value is not the total value; that has to be measured by reference to things like children's health, participation in school and concentration as well. In an ideal world, we would encompass all types of services that the State can provide. Things like free healthcare can reduce out-of-pocket expenses for families. To go back to the previous conversation, they differ hugely across countries as well, so it is very difficult to capture them in international comparisons.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_168">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_258">As I listen to Dr. Russell, I am thinking of a lady I met who was in homeless accommodation. She was very happy with the accommodation she had, although she was not happy that she was in that situation. The part that was causing her the most stress was that her child's first holy communion was around the corner. It is quite unique to particular countries that a child is expected to be alongside their peers with a new suit and new shoes and a meal out, or whatever it is. Maybe that is not something we factor in. The Society of St. Vincent de Paul was very helpful in that case. The point is that we could do many in-kind things to cater for factors that are unique to our country or to different parts of our country.</p>
+          <p eId="para_259"> I will call speakers again in the order in which I called them for their opening statements. I will begin with the Department of Children, Disability and Equality.</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Mr. Kevin McCarthy<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_260">I thank all of the members for their engagement on this subject. I will mention a couple of things that we did not get to touch on in the discussion.</p>
+          <p eId="para_261"> Deputy Farrelly asked about participation in sport. As a Department, we have a play and recreation strategy. We support local-based play and recreation plans in each local authority area. We recognise the importance of play and recreation in the lives of young people. The opportunity for meaningful participation in play and recreation is really important developmentally. Deputy Farrelly is right to touch on that. Equity of access is an important issue. The more we can do by providing public infrastructure, supporting local authorities and developing play and recreation plans, the more it helps to address some of the components of deprivation at a local level.</p>
+          <p eId="para_262"> It is also worth mentioning local area child poverty action plans. We are supporting four pilots which will be of interest more widely across the system.</p>
+          <p eId="para_263"> Finally, I wish to mention the national human rights strategy for disabled people, which was published by the Government last month. It recognises some of the challenges that disabled people specifically have in terms of income deprivation. It sets ambitious objectives for the Government in trying to address those challenges over the lifetime of the Government and beyond.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_170">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_264">I thank Mr. McCarthy. We will go to the Department of Rural and Community Development and the Gaeltacht.</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Mary Hurley<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_265">Our Department is very much part of the cross-government landscape in terms of service provision and tackling child poverty. It is interesting, from our Department's perspective, that a lot of the work we do is bottom-up and very much community-led. It involves people who identify issues at local level among the target groups we have spoken about this morning and who work with people experiencing homelessness and people from the Traveller and Roma communities. Our schemes provide supports to those people. We have seen a lot of really positive outcomes coming through that. We feel we get really good value for the money we spend on our SICAP programme and our other social inclusion programmes.</p>
+          <p eId="para_266"> The issue of youth and engagement is an interesting area we have focused on over recent years. It was interesting to listen to Mr. McCarthy.</p>
+          <p eId="para_267">We try to hear what children and young people have to say about what is bothering them or what they need in terms of services. That is a big piece for us.</p>
+          <p eId="para_268"> My Department recently got responsibility for the Gaeltacht. On that piece about the Gaeltacht, rural issues and language issues, about which Ms Canavan spoke, as a big part of our remit is to encourage the Irish language, the scheme facilitating children with a scholarship to go to the Gaeltacht is really important. It allows them to develop. We will continue our work. This is an area of huge challenge but one where a lot can be done. We will build on what we have been doing to date.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_172">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_269">I thank Ms Hurley. I call on the Department of Social Protection.</p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Mr. Niall Egan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_270">It has been a very useful and, I hope, fruitful discussion for committee members. Something I should have said to Deputy Dempsey about people with disabilities is that there are measures within the social welfare budget package for 2026 I should have alluded to and that might be of interest to the committee. In particular, we are allowing people in receipt of disability allowance or the blind pension to retain the fuel allowance payment for five years when they exit those payments and go into employment. We got a lot of feedback from stakeholders and people with disability to the effect that the loss of supplementary or secondary income support measures is hugely concerning for them and can be a barrier to making the leap into employment as they feel they would lose the safety net that is there. If the employment does not work out, people can come back. We have to do a piece of work on that. Measures such as retaining the fuel allowance for a five-year period are important. We need to work with our colleagues to promote that, which we will do.</p>
+          <p eId="para_271"> We also enhanced the wage subsidy scheme to encourage more employers to recruit people with disabilities to try to increase those employment participation rates. I thank the committee.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_174">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_272">I thank Mr. Egan. I call on the Department of the Taoiseach.</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Ms Elizabeth Canavan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_273">In reflecting on today's discussion and our general reflections, tackling this challenge is not a quick fix. We are really clear on that. We think building momentum is key. We hope we have contributed to building that momentum. We believe we can see that in some of the measures we have seen this year. Departments and Ministers make the policy decisions but what we are trying to do is create a platform and a space to think about what the current models are, what the new models might be, and the ways of working.</p>
+          <p eId="para_274"> One thing that has really come through to us when we look at children and families in the most difficult of circumstances is that it is those people they meet on the front line who are really critical. There are two issues in that regard. The first is ensuring the pipeline for those types of professionals is right and right-sized for the challenges and demographics, which it is in some areas but not in others. It is also about the practice of those professionals and how we support them to work across professional practice, services and sectors. Our assessment is that while a lot of the key building blocks are there, there is a lot of complexity for the children and families at the toughest end and the system has to respond to that complexity in a more sophisticated way. That is what we are doing.</p>
+          <p eId="para_275"> Part of our job is to make child poverty everybody's issue. As the committee has heard from our colleagues today, we have managed to do that. We must highlight and prize those measures that we think have the most impact and bring rigour to the evidence as to whether the things we are doing are having the intended impact.</p>
+          <p eId="para_276"> It is also fair to say that we have observed over time that things that were good, important or central five to ten years ago or the kinds of people who were hitting the issues we are talking about change all the time and we have to be dynamic in responding to that.</p>
+          <p eId="para_277"> A part of our work is to bring greater transparency to the complexity of the issues around child poverty and to deepen that debate. We are very solutions-oriented and we do not really care where those ideas come from. Our key partners that are not here today but that are very important for us are the Departments of housing and health, the HSE, Tusla, the local authorities and the community and voluntary sector. They are very much part of the conversation with us.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_176">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_278">Absolutely. I thank Ms Canavan very much. An all hands on deck, very focused approach is needed. We now move to the Central Statistics Office.</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Mr. Paul Morrin<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_279">It was a very interesting discussion. Following it, we have a much clearer idea of what we need to do to support all the activities in this area. Our traditional contribution to this subject was through the national survey, mainly the SILC survey, in which we measure consistently what is happening in poverty from year to year. It allows for international comparisons as well, which we had a few questions on. That remains very important but a lot of today's discussion was on community issues, which we cannot measure through those surveys. We need to look into the administrative data across the Government, which is now of very high quality. We must do an awful lot more using that resource.</p>
+          <p eId="para_280"> We must also focus on multidimensional issues. It is not just about income, as housing, education, sport and in-kind supports all came up. We have some data on a lot of those subjects as well. We need to harness all of that very detailed data. We also have a network of seconded statisticians working across most of the relevant Departments as well so we can certainly do a lot more to support the type of issues that have come up today. I again thank the committee for inviting us.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_178">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_281">It is great to hear that Mr. Egan got something out of the conversation, as well as giving us the great input. We will finish with the ESRI.</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Dr. Karina Doorley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_282">I will flag one item we are currently working on that was not finished, so it did not make it into our opening statement. We have been working with a network of partners across the EU on a European Commission survey to identify the drivers of child poverty across the EU 27. That work will identify the best performers that we touched on briefly here and suggest some reasons for that. It is a deep dive into the various instruments available in every country and how well they are doing to reduce child at-risk of poverty rates, child deprivation and other measures of poverty. I expect that will be published before Christmas. I am more than happy to forward that to the committee if it is of interest.</p>
+          <p eId="para_283"> That is it from us, except to thank the committee for the invitation and to say that we are very willing to continue engaging with it and our departmental colleagues as they try to get us to that consistent poverty target.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_180">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_284">That is fantastic. Gabhaim buíochas leo go léir. It is fantastic to see how on top of their brief all the witnesses are and how laser-focused they are on tackling the issue of child poverty. That brings our discussion to an end. Before I close the meeting, I extend my sympathies on the death of the child who passed away yesterday and wish a speedy recovery to the support worker who is in hospital. The meeting now stands adjourned until the committee meets in private session at 9.30 a.m. on Thursday, 6 November at 9.30 a.m.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 11.48 a.m. until 9.30 a.m. on Thursday, 13 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>
