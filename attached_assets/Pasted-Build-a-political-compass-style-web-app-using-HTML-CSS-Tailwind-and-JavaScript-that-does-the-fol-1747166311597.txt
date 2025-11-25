@@ -1,0 +1,55 @@
+Build a political compass-style web app using HTML, CSS (Tailwind), and JavaScript that does the following:
+
+---
+
+### 1. QUIZ STRUCTURE
+- Ask 12–15 political/philosophical questions.
+- For each question:
+  - Offer 4 multiple choice answers (A–D), each with predefined values on:
+    - Economic axis (-10 = far left, +10 = far right)
+    - Social axis (-10 = libertarian, +10 = authoritarian)
+  - Allow the user to enter a **custom free-text answer** instead.
+    - For now, simulate GPT scoring of the input (e.g., via simple keyword logic or dummy weighting).
+    - Plan to connect to OpenAI GPT API later.
+
+---
+
+### 2. RESULT PAGE
+After the quiz, show the user:
+
+- A 2D compass plot (X = economic, Y = social)
+- A GPT-style ideology summary
+- 3–5 **historical or famous political figures** who have similar coordinates (from a JSON list)
+- A “Your Unique Combo” section that highlights ideological contradictions or rare combinations
+- **A country dropdown filter** to view closest **political parties by nation**
+  - Default to **Ireland**
+  - Show list of parties per country with coordinates and a short description
+  - Support Ireland, France, US, UK (add more later)
+
+---
+
+### 3. BONUS FEATURE: POLITICAL ASSISTANT
+- A text box at the end saying:  
+  **“Where should I stand on [topic] based on my political views?”**
+- Use pre-written logic to return suggestions like:  
+  “As a socially liberal economic moderate, you may support carbon taxation with rebates.”
+
+---
+
+### 4. EXTRA FEATURES
+- Share results via link or image
+- “Compare with a friend” via URL or code
+- Light/dark mode toggle
+- Responsive design (mobile-first)
+- Fun loading animation before showing results
+
+---
+
+### 5. TECHNICAL NOTES
+- Use dummy data (JSON or JS object) for:
+  - Questions and answer weights
+  - Historical figures
+  - Party profiles per country (start with Ireland)
+- Score user answers, average scores, and plot them.
+- Store country filters in a dropdown.
+- Make app AI-ready for integration with GPT-4 later.

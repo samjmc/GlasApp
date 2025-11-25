@@ -1,0 +1,957 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-10-16/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-10-16/debate"/>
+          <FRBRdate date="2025-10-16" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_education_and_youth"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-10-16/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-10-16/debate/mul@"/>
+          <FRBRdate date="2025-10-16" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-10-16/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-10-16/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-25" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="RuthCoppinger" href="/ie/oireachtas/member/id/Ruth-Coppinger.D.2014-05-23" showAs="Ruth Coppinger"/>
+        <TLCPerson eId="ShaneCurley" href="/ie/oireachtas/member/id/Shane-Curley.S.2025-01-29" showAs="Shane Curley"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM OIDEACHAS AGUS ÓIGE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Education and Youth</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-16">Déardaoin, 16 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-16">Thursday, 16 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RuthCoppinger">Ruth Coppinger</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ShaneCurley">Shane Curley</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JenCummins">Jen Cummins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LindaNelsonMurray">Linda Nelson Murray</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GarethScahill">Gareth Scahill</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#CathalCrowe">Teachta / Deputy Cathal Crowe sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Curriculum Reform at Senior Cycle: Discussion<recordedTime time="2025-10-16T09:30:00+01:00"/></heading>
+        <speech by="#CathalCrowe" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:30:00+01:00"/></from>
+          <p eId="para_14">Good morning everyone. We have received apologies from Deputy O'Meara. You are all very welcome. I ask anyone attending remotely to mute himself or herself when not contributing so that we do not pick up any background noise or feedback. I remind all those in attendance to ensure their mobile phones are in silent mode or switched off. Members attending remotely are reminded of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex.</p>
+          <p eId="para_15"> Witnesses within the precincts of the Leinster House are protected by absolute privilege in respect of the presentations they make to this committee. This means that they have an absolute defence against any defamation action for anything they may say in the meeting. However, they are expected not to abuse this privilege and it is my duty as Cathaoirleach to ensure that this privilege is not abused. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such direction. Members are reminded of the long-standing parliamentary practice that they should not comment on, criticise or make charges against a person or entity outside the Houses of the Oireachtas or an official by name or in such a way as to make him, her or it identifiable.</p>
+          <p eId="para_16"> On the agenda for today's meeting are the current and future plans for curriculum reform at senior cycle. I welcome from the Department of Education and Youth Mr. Dalton Tattan, assistant secretary general, and Mr. Neville Kenny, principal officer; from the National Council for Curriculum and Assessment, NCCA, Ms Arlene Forster, chief executive, and Mr. Barry Slattery, deputy CEO of the post-primary unit; and from the State Examinations Commission, SEC, Ms Andrea Feeney, chief executive officer, and Ms Deirdre Phelan, acting head of the examinations and assessment division. I call the officials to make their opening statements in the following order: Mr. Tattan, Ms Forster and Ms Feeney. You have five minutes each. The opening statements will be followed by questions from committee members. Members will have six minutes each. I ask that, as per previous meetings, members give sufficient time for a response.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T09:30:00+01:00"/></from>
+          <p eId="para_17">Good morning, members. I am the assistant secretary general in the Department of Education and Youth with responsibility for curriculum and assessment policy and teacher professional learning. I am joined by my colleague, Mr. Kenny, principal officer in the senior cycle redevelopment programme management office. We are very happy to attend this morning and for the opportunity to outline progress made and planned future work regarding senior cycle redevelopment.</p>
+          <p eId="para_18"> The origins of this work are in the review of senior cycle commenced by the NCCA in 2016. That work, informed by significant research and engagement, culminated in the publication by the NCCA of its advisory report on the review of senior cycle in March 2022. The Minister accepted the advisory report and made a set of announcements at the time of its publication. The redevelopment programme builds on the advisory report but also takes into account the impact of the Covid-19 pandemic on the educational experience of students. It also reflects calls from students and all stakeholders for change and lessons from previous reform programmes such as at junior cycle.</p>
+          <p eId="para_19"> Significant progress has been made on the senior cycle redevelopment programme since the previous Minister’s announcement, including some subsequent revisions announced in September 2023. Highlights of the work to date include publication of a total of 16 new and revised specifications in each case a year before they would be taught in schools; the introduction of additional assessment components for every subject worth a minimum of 40% of the marks available together with the publication of guidelines and sample briefs; the introduction of two new subjects of drama, film and theatre studies, and climate action and sustainable development in almost 100 phase 1 schools; publication by the SEC of sample examination papers in the nine tranche 1 subjects earlier this year, much earlier than previous cases where revised specifications were introduced; relaxing eligibility rules around access to the leaving certificate vocational programme and ensuring access to leaving certificate established maths and modern foreign languages for leaving certificate applied students, including the provision by the State Examinations Commission of an integrated certificate; and a new transition year programme statement and engagement with schools to help make transition year available to any student who wants to avail of it. Participation rates have been climbing steadily and now almost all schools offer transition year and 80% of students participate in it.</p>
+          <p eId="para_20"> There is now a full programme of modules available to support students with special educational needs taking the level 1 and level 2 learning programmes in senior cycle.</p>
+          <p eId="para_21"> Assessment guidelines will be published by December and the State Examinations Commission will provide the first cohort of students with results in 2026. The programme is an ambitious one and challenges are inevitable. During the summer, for example, the Minister decided that the enactment of English and accounting should be delayed so that we could work with schools and teachers to prepare for their implementation.</p>
+          <p eId="para_22">Both subjects contain real innovations in how they will be assessed in particular, and so we need to get it right. This is one example of how we are listening to stakeholders and seek to respond to concerns when they arise. </p>
+          <p eId="para_23"> This engagement is supported by the senior cycle redevelopment partners’ forum, chaired by former chief inspector Dr. Harold Hislop, and where the stakeholders have opportunities to raise issues and discuss key aspects of the senior cycle. There is also a programme delivery board, also chaired by Dr. Hislop, which provides important oversight on the work and reports on progress at regular intervals to the Minister.</p>
+          <p eId="para_24"> Committee members will also be aware that, following calls by the post-primary teacher unions last year for a pause to the programme, the Minister asked her officials to engage with both unions and, through that engagement, a package of supports was offered, on which both unions balloted. The Teachers Union of Ireland, TUI, membership accepted that package while Association of Secondary Teachers Ireland, ASTI, members rejected it. That rejection does not stop the delivery of senior cycle redevelopment, as the ASTI has acknowledged. We are actively engaged with the TUI and school management bodies on implementing the support package, while we are engaging with the ASTI through the dispute resolution mechanisms of the public sector agreement, which that union invoked at the end of June.</p>
+          <p eId="para_25"> The Department is committed to providing appropriate supports for schools as the development programme advances. Provision of equipment, money and other supports, including camera equipment to support film work, a grant for the establishment of the climate action subject and provision of grants for science equipment and consumables are recent examples of this. There has been significant investment in Oide, the national teacher professional learning service, and teachers have been provided with time to engage with this. Plans in 2026 to introduce additional middle management posts and to enhance and expand the annual science grant moneys are also well advanced.</p>
+          <p eId="para_26"> There is a lot happening but, critically, there is delivery for students. That delivery is only possible through the commitment and dedication of everyone involved. The funding secured in last week’s budget to support curricular reform, combined with the package of supports published earlier this year, will allow us to implement those supports and to maintain the momentum that is in the programme.</p>
+          <p eId="para_27"> I am happy to answer any questions committee members may wish to raise.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T09:40:00+01:00"/></from>
+          <p eId="para_28">I thank the Chair and committee members for the opportunity to speak to them today. I am the chief executive of the National Council for Curriculum and Assessment, NCCA. I am joined by Barry Slattery, deputy chief executive. </p>
+          <p eId="para_29"> The NCCA advises the Minister for Education and Youth on the curriculum for early childhood education, primary and post-primary schools and the assessment procedures employed in schools and examinations on subjects that are part of the curriculum. The council’s work places a strong emphasis on research, close work with schools, public consultation and deliberation. In recent years, the council has overseen an unprecedented level of curriculum review and redevelopment. I will briefly describe the review that has informed the ongoing work on senior cycle and highlight progress to date in the NCCA's work. </p>
+          <p eId="para_30"> The NCCA’s review of senior cycle took place between 2016 and 2019, involving extensive consultation and deliberation. This review led to the 2022 senior cycle review advisory report, which set out the NCCA’s advice to the Minister about how senior cycle should evolve in the years ahead. That report emphasised a shared, renewed purpose and vision for senior cycle education enabled through a curriculum that genuinely meets the needs of all learners. In particular, the report called for a greater mix of subjects and modules to meet the needs of all students, broader assessment and reporting arrangements and more flexible and integrated pathways for all students.</p>
+          <p eId="para_31"> In terms of progress, beginning with subjects and modules, in March 2022, the Minister tasked the NCCA with a comprehensive programme of work. In preparation for redeveloping close to 100 subjects and modules, we began with the curriculum’s technical form, which in essence is the template used for curriculum specifications. This work involved extensive research on curriculum theory and design, analysis of international practice and teachers’ feedback in Ireland, and an exploration of key competencies in curriculum design. The new template now offers greater detail to support teachers’ work. Feedback to date is positive.</p>
+          <p eId="para_32"> In early 2023, the NCCA published a schedule for reviewing subjects. This schedule provides clarity on the timing of the redevelopment and introduction of subjects in schools. To date, 14 subjects have been updated, with two new subjects developed, and nine of these were introduced in schools last month. Work continues for us on 26 further subjects for introduction between 2027 and 2029. At that point, all leaving certificate subjects will have been redeveloped within the same decade, which is a departure from previous and current provision.</p>
+          <p eId="para_33"> In the case of assessment, the NCCA’s advisory report highlighted the importance of assessment aligning closely with the intended learning and supporting students to demonstrate the full range of their learning. Since the Minister’s announcement in September 2023, our work has involved each subject having an additional assessment component worth at least 40% of the total marks, as well as a written examination. Work on assessment is aimed at supporting students’ development of key competencies and reducing the emphasis on written exams in June. </p>
+          <p eId="para_34"> In terms of more flexible and integrated pathways, as has been outlined, the NCCA has developed a new transition-year programme statement and a range of supports. In the case of the leaving certificate vocational programme, LCVP, we have redeveloped the link modules for introduction in schools next year. We have also developed a new social, personal and health education, SPHE, specification to support all students' learning in senior cycle. </p>
+          <p eId="para_35"> Perhaps the most significant aspect to date of our work on pathways is the development of level 1 and level 2 learning programmes. These provide for students progressing from level 1 and level 2 programmes in junior cycle with students’ learning soon to be certified by the State Examinations Commission, SEC, on foot of these new programmes. We have commenced work with schools to develop proposals to improve the curricular pathways available to all students in the senior cycle. This work is supported by the OECD and the European Commission.</p>
+          <p eId="para_36"> As for the approach to the redevelopment work, leading this work has involved the NCCA convening 33 development groups, most of whose 500 members are nominated by education partners. The scale and nature of this direct involvement by education partners, 50% to 70% of whom are teachers, is a strong, unique feature of Ireland’s approach to curriculum development. Another distinct feature is the level of public consultation and the consultation activity in schools, including the student voice. To date, the NCCA has visited more than one third of all post-primary schools to learn about the strengths of the current curriculum and areas for improvement. This development work presents a unique opportunity to achieve curriculum coherence across the senior cycle. It also enables the NCCA to continue to evolve and improve how we develop the curriculum, with enhancements already made to our processes. </p>
+          <p eId="para_37"> There are many strengths in our current provision for the senior cycle. The redevelopment work I have outlined builds on these strengths and aims to develop students’ capacity to cope with change and with what the future brings. Again, I thank the committee for the opportunity to join it today. We are happy to respond to members' questions.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T09:40:00+01:00"/></from>
+          <p eId="para_38">I thank the Cathaoirleach and members of the committee for the invitation to discuss current and future plans for curriculum reform at the senior cycle. I am the chief executive officer of the State Examinations Commission, SEC. I am joined today by Deirdre Phelan, acting head of examinations and assessment. </p>
+          <p eId="para_39"> The SEC’s primary objective is the provision of high-quality national examinations, delivered to the highest standards of security and integrity, that are fair, inclusive and responsive to the needs of learners and society. The purpose of the leaving certificate is to measure attainment at the end of second level education. The examination is an important event in the lives of young people, especially as the results are used for other purposes including by employers and as a tool of progression to further and higher education, making it a high-stakes examination. </p>
+          <p eId="para_40"> The SEC has a central role in the redevelopment process, integrating the programme of senior cycle redevelopment with our ongoing service delivery, advancing one without taking our focus off the other. We are working collaboratively with the Department, the NCCA and Oide at central level and SEC personnel are actively engaged in the subject development work on four of the five subject tranches. </p>
+          <p eId="para_41"> I will now set out briefly some of the main areas of focus by the SEC at this time. In relation to the design of additional components, the use of alternative forms of assessment provides candidates with opportunities to demonstrate their creativity, knowledge and skills within and across disciplines and to engage in inquiry and analysis. The design of the new additional assessment components, AACs, includes innovative approaches that appropriately test students’ skills, competencies and knowledge, can be integrated into teaching and learning and seek to balance issues of validity and reliability, alongside manageability for all stakeholders, including candidates.</p>
+          <p eId="para_42"> On sample assessment materials, in April 2025, to provide clarity about what assessment looks like in the redeveloped subjects, we provided two sets of sample papers for tranche 1 subjects. That was a total of 72 papers, including higher and ordinary levels and both English and Irish versions. This is double the number of sample papers normally provided, and18 months earlier than would have been our normal practice. We provided sample briefs in each subject in mid-September and in January 2026 the live coursework briefs will issue. We have collaborated with Oide on teacher professional learning on assessment as part of its work programme. At this time, we are developing the sample papers and sample briefs for the tranche 2 subjects.</p>
+          <p eId="para_43">When issuing the sample briefs, we provided a provisional schedule for the 2026-27 school year, which seeks to spread the load of assessment throughout the school year to the greatest possible degree.</p>
+          <p eId="para_44"> On examinations integrity, the focus on generative AI has raised the profile of another AI, academic integrity, and concerns about fairness and equity. With additional assessment components worth at least 40% in all subjects, questions have been raised about the increased risks but course work has long been a feature of the examinations. The SEC has long-standing rules on course work, which must be the candidate’s own individual and authentic work, overseen by the teacher and authorised by the school principal. The SEC has undertaken extensive work to consolidate the rules underpinning the completion of course work and to clearly set out the roles and responsibilities of candidates, teachers and school leaders. Consolidated course work rules and procedures, which incorporate rules for the use of AI, are expected to be in schools after the mid-term break, following stakeholder engagement.</p>
+          <p eId="para_45"> In the decision to proceed with the redevelopment programme under a fully externally assessed model, the SEC was asked to “commission research on the potential role and impact of generative artificial intelligence (GenAI) in teacher-based assessment in particular”. Following a procurement process, the University of Limerick is undertaking research looking at both teacher-based and external assessment at second level to identify opportunities and challenges and how these can be managed. </p>
+          <p eId="para_46"> The SEC expects to process an additional 75,000 digital components in 2027 alone, rising to an additional 250,000 by 2031. The SEC has invested in a number of key information technology tools. We must continue to have robust systems so that school authorities can operationalise the changes expected of them. We have undertaken a review of our core schools portal system to gather feedback from schools about their experience. Arising from this, we will be implementing changes and adding additional services. </p>
+          <p eId="para_47"> On equity and inclusion, the committee has recently heard from the SEC about the review of the RACE scheme, which is a core pillar in ensuring equity and inclusion in the certificate examinations. Worth mentioning in this context is the SEC’s role in the assessment of candidates participating in the level 1 and level 2 learning programmes. In a new departure for the SEC, our role here is to validate assessment for certification. We are actively involved is a cross-agency working group so that all of the arrangements will be in place for the first cohort of these students, who have very particular needs, to complete this programme in 2026 with their results issuing alongside the results of all other leaving certificate candidates. Since 2024, we have been providing integrated results to leaving certificate applied candidates taking subjects in the established leaving certificate, an arrangement that opens up greater pathways and opportunities. </p>
+          <p eId="para_48"> The system is engaged in an ambitious programme of senior cycle redevelopment following a review process that demonstrated consensus on the need for change. The review also recognised the high level of public support and trust attached to the existing leaving certificate qualification. In the redevelopment programme, there has been a particular focus on upholding the integrity of the leaving certificate and maintaining public trust and confidence in the qualification. However, we have also been mindful of the advice of the OECD that “A dependable and trustworthy assessment system …. involves an optimal trade-off between validity, reliability and manageability.” We look forward to continued engagement with the Department, with its agencies and with all of the stakeholders on this necessary reform at senior cycle to the benefit of students and wider society. My colleague and I are very happy to respond to questions the committee may have.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_49">We will now proceed to questions and answers. Members have six minutes each. I ask them to remember to give adequate time for responses to issue. I do not know if we will have time for a second round. For now, we will have six minutes per member.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_6">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_50">Gabhaim buíochas leis na finnéithe ar fad for being here today, for their comprehensive contributions and for all of the work they have done. I especially note the work undertaken in relation to the introduction of the level 1 and level 2 learning programmes, which should facilitate the mainstreaming of participation of our young people with additional needs.</p>
+          <p eId="para_51"> I raise the concerns of the ASTI, whose membership took a stand against the implementation of the senior cycle redevelopment implementation support measures document in June of this year. The association has serious concerns about the new programme exacerbating inequalities for students, the lack of infrastructure, human resources and staffing in schools, and the potential for AI to interfere with fairness and authenticity verification when it comes to the newly elevated project work component. That is a huge contingent of teachers who are very unhappy with the way this is being pushed through and forced on them too quickly and without robust consultation.</p>
+          <p eId="para_52"> I have a few questions on the back of that. What engagement is happening with the ASTI at the moment? Along with the ASTI, I am very concerned about AI. We know it is already widely used among post-primary students. The risk of students passing off AI work as their own will be much greater under the new system. We do not yet have evidence of how AI will affect young people's learning. Ms Feeney mentioned a piece of work the SEC has commissioned from UL. Why not heed the advice of teachers and hold off on this until we better understand what the consequences might be? Why not pause until we have that evidence back? Will the witnesses also outline in more detail the safeguards that will be in place to manage the use of AI under the new programme?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_53">I thank the Deputy for those questions. I will start off but I may hand over to Ms Feeney to address some of the specifics regarding the AI piece the Deputy raised. In terms of our engagement with the unions, as I mentioned in the opening statement, we are currently in two separate engagements. The TUI voted in favour of the package of measures we put to it. We have now established our post-primary implementation group and have met the TUI on four occasions to engage on taking that package forward. There are quite a number of supports involved. We can talk about those in a bit more detail if the Deputy wishes. We are also engaging with the ASTI. In fact, we are meeting again on Monday. We had a number of engagements with it over the summer. The association has chosen to invoke the dispute resolution procedure, which is a procedure under the public sector agreement. We are in direct bilateral engagement with the ASTI at the moment. We are having good discussions and, I have said, we are meeting again on Monday. That is probably enough on the union bit for the moment. Perhaps Ms Feeney would like to say something on AI and the safeguards.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_54">I will try to deal with the Deputy's questions. I mentioned that we have long-standing rules and procedures. The introduction of AACs worth 40% in every subject under senior cycle redevelopment is new but course work in the leaving certificate is not new. There are currently 41 curricular subjects. Of those, 14 are assessed by written examination only, 11 are assessed by written examination and course work, 11 are assessed by a written, an oral and an aural examination and five have written examination, course work and practical components. As can be seen, course work is not new and there are long-standing and long-understood arrangements as to how it is to be completed and under what conditions to ensure it is fair and equitable. In general, it is to be completed in the school under the oversight and supervision of the class teacher. At the end of the process, it can be authenticated by the teacher with the process authorised by the school principal. We are building on those rules and procedures and consolidating the guidance provided to school authorities to assist them in this process. We are not adding anything new into the process, however. </p>
+          <p eId="para_55"> Since 2023, when generative AI became an issue, we have updated our guidance to build in guidance to school authorities as to how students can and cannot use AI in the completion of their course work. AI is something new for us. When we are trying to ensure the work being submitted for assessment is fair, what we are actually trying to ensure is that it is the students' own work. Whether students used AI, got help from a parent, took material from a book, used Google and downloaded the stuff from Wikipedia, or plagiarised, the source of the unfairness does not really matter to us. What we are trying to ensure is that the work is the students' own authentic work. That is where our rules and procedures come into play. I am sure some of the same issues being discussed now in relation to AI were discussed when the Internet came into being, when the Google search engine became more powerful or when calculators were introduced to maths examinations and people were saying it was going to be in some way unfair. However, that does not take away from the basic teaching and learning element and the oversight that is needed in the classroom.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_9">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_56">Does this put additional work on the teachers?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T09:50:00+01:00"/></from>
+          <p eId="para_57">It might in subjects that have not involved course work before but it is still a specification that is designed to be taught in a particular number of hours. At the end of that, the students will have a written examination that is worth less than it was before and a piece of course work that is worth more.</p>
+          <p eId="para_58">The new piece is the learning and the engagement with that new specification, and the learning for the teachers on how to engage with subjects that did not traditionally have coursework. The teachers concerned are in the staffroom every day with teachers of other subjects who have had coursework in those subjects for years. Some of that coursework is worth 50%, not just 40%, as we have within senior cycle.</p>
+          <p eId="para_59"> On the research in relation to generative AI, the question of why we should not pause is asked. In the case of subjects that currently have coursework, what are we pausing for? The SEC commissioned research into generative AI in the context of teacher-based assessment. It was an inflection point within the senior cycle redevelopment process, which was moving from having a school-based assessment model to an external assessment model, and we were asked at the time to undertake research in the context of AI and teacher-based assessment. We broadened the research to include external assessment.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_11">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_60">I thank the delegates for the presentations. I learned quite a lot from them and there are positives. The more flexible and integrated pathways, particularly in the leaving certificate vocational programme, are really welcome.</p>
+          <p eId="para_61"> In my opinion as someone who spent 11 years in the secondary school classroom, moving from high-stakes examinations to a more human way of doing things is very welcome in general. I very much welcome the modules for level 1 and level 2 learning programmes for students with special needs.</p>
+          <p eId="para_62"> Ms Feeney or maybe Ms Forster mentioned the consolidated coursework rules and procedures to safeguard against AI. These are very good. I have been contacted by both the ASTI and TUI, my nominating bodies for the Seanad, and they are extremely concerned about what is almost a space-race-style competition to see who has the most up-to-date high-tech AI. It will be a technology competition as opposed to an actual intelligence or ability competition to get points in the leaving certificate. I acknowledge that the safeguarding procedures are very positive.</p>
+          <p eId="para_63"> Ms Forster mentioned in her opening remarks that the NCCA’s work places a strong emphasis on close work with schools, public consultation and deliberation. When exactly did the subject development groups for the leaving certificate Irish specification receive and review the public submissions made during the consultation?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_64">Is the Senator referring to the consultation on Irish in 2021?</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_13">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_65">Yes. I made a submission. I am just wondering how long the subject development groups had for reviewing before they drafted the specification.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_66">The consultation submissions, the survey feedback all the data we gathered were analysed by the executive of the NCCA. That is a long-standing practice in the organisation. It has changed, but at the time-----</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_15">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_67">Did the subject development group see it?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_68">No, it did not see it at that time, but all of that fed into a consultation report that was published in 2023.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_17">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_69">Into a report. I sat with students in TY classes, where there is a little more flexibility and not as much exam pressure, and really encouraged them to make submissions in relation to Irish. The general feedback from the students was that they loved the language but hated the subject. How do we fix that? The students, who were going into fifth year the following year, made submissions. My understanding, on which I am to be corrected if I am wrong, is that the groups tasked with developing the curriculum specification never saw the submissions that were made before they published the actual draft leaving certificate subject curriculum. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_70">No. Perhaps I misunderstood the question. I understood the Senator was asking me about a consultation on the draft T1 and T2 Irish specifications in 2021.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_19">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_71">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_72">On foot of all the feedback we received, all of which we published in the report, the council took a decision to pause that work. The subject development group has been reconvened only recently because the work is only now commencing on the redevelopment of the Irish specification.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_21">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_73">Brilliant. That is perfect. That clarifies that. That is very positive. The draft specification is still on the council’s website and students still believe they are going to do an exam that includes a 35% oral component, which is a reduction by comparison with what previously existed. I am happy with the answer.</p>
+          <p eId="para_74"> In the mid-1990s, a neighbour of mine headed up a subject development group that developed an architectural technology syllabus. A lot of money was spent by the NCCA to develop it. I am just wondering if that is still in the pipeline. It was one of the T4 subjects from the nineties into the early noughties. Is it still in the pipeline? Does that syllabus still exist and how much was spent on it? Does the NCCA still have the intellectual property or syllabus that was developed?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_75">All of the specifications for leaving certificate subjects are being redeveloped as part of the work we have outlined today. There are a number of technology subjects. Those are spread across what we refer to as tranches 3 and 4. All the specifications are currently being reviewed and updated and will be implemented in the coming years. Mr. Slattery has the specific details of the years.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_23">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_76">No, I appreciate that but I will leave it for now. I would exercise caution when putting subject development groups together. There is money involved. I do not know whether the Irish one is going back to square one. Is it any wonder that students grow to dislike Irish when we send a message out that we are going to reduce the marks for the oral exam, increase the marks for the written component and basically put more stress on them? I am aware that a continuous assessment element is being introduced for subjects; however, for a student who struggles with the likes of dyslexia, which we discussed with Ms Feeney last week, the message that their oral examination or ability to speak a language is now going to be valued less than it was previously is horrible. In my view as a teacher who was in the classroom really trying to get students to love the language, it almost devalues the exam structure. I have a love of the language. I am focusing on Irish very specifically.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_77">Could I clarify a couple of things?</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_25">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_78">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_79">Regarding what I outlined in terms of the consultation that took place in 2021 and the report in 2023, we paused the development work and we are now resuming that work. That is a very good example of the NCCA listening to what it heard in consultation.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_27">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_80">I know.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_81">There are assessment parameters set out to guide the work of the development group currently working on the specification.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_29">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_82">I appreciate that. That is perfect.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_83">A minimum of 40% of marks will be accorded to the oral examination.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_31">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_84">That is brilliant. I appreciate that now, but I am saying the subject development groups did not see the submissions my students and I made. They had a preconceived examination made available publicly before they actually saw my submission as a teacher. I valued my opinion and those of my students but these were not taken into account before the initial T1 and T2 specifications reached the public ether. It was a missed opportunity in one sense.</p>
+          <p eId="para_85"> I have one more question, for Mr. Tattan.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_86">There is an overrun of 30 or 40 seconds, so I ask the Senator to start concluding.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_33">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_87">Yes. We heard last week from Ms Feeney that the SEC is engaging in a pilot project to increase, or potentially increase, the time given for students with dyslexia in the examination process. I agree that is a positive step forward. My problem with it is that there have been recommendations that have not been acted upon since 2009. I am aware that the former Minister, Micheál Martin, introduced extra time back in 1999. Does Mr. Tattan stand over the fact that money is going to be spent on a review? That is my last question.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_88">We are well and truly out of time. The Senator has to ask questions within the time. He is in the red when asking questions. We will probably have a second round, so the Senator might have to put that question again, in fairness to everyone.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_35">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_89">That is fine.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_90">I will allow a little overrun, but as Ms Feeney will know from when she was here a week ago, the timekeeping has to be strict. While I allow some overrun, I have to rein things in. We will probably have a second round of contributions. Mr. Slattery wants to comment but I have to move on. Maybe he can respond in due course. I call Deputy Darren O’Rourke, who has sé nóiméad.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_37">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_91">I thank the witnesses. There is some concern that the minimum of 40% on the additional assessment components, AACs, is high and a suggestion that, at that level, there is a greater incentive to cheat. I will put it as bluntly as that. Whose decision was it to set the minimum at 40%, and what is the evidence base for it? What about the suggestions on the impulse to cheat?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:00:00+01:00"/></from>
+          <p eId="para_92">I will start and maybe Mr. Kenny will want to add to what I have to say.</p>
+          <p eId="para_93"> The then Minister, Deputy Foley, made the decision on the minimum of 40%. Before the announcement about senior cycle redevelopment, 28 subjects out of the 40 subjects already had some form of additional component. Some of the proportions are 40% or above it already. There was a sense that in order to make it meaningful, the bar needed to be set at a reasonably high level. This is because we wanted to broaden the assessment experience and spread the assessment load for students. However, we also wanted integration into teaching and learning. There is a lot of evidence internationally that if an assessment does not align appropriately with the teaching and learning process, the kind of curriculum reform and change desired do not come through. The view was that if we did not move sufficiently away from traditional pen-and-paper examinations, the skills, competencies and attributes we wanted to see from students would not come through in the way we wanted.</p>
+          <p eId="para_94">Does Mr. Kenny want to add to that?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_95">Looking at the subjects that already have those additional components - Ms Feeney gave an outline of how many of those subjects there are - when we look at the weighting they have, they tend towards a 40% or even higher percentage. It feeds into that sense of the value and the meaningfulness of the weighting that the component attracts. We appreciate that there is a nexus between curriculum and assessment. In terms of how students experience senior cycle, assessment is a huge part of that. We will all be familiar with terms like teaching to the exam and the pressure that brings. To really bring the change into how assessment is integrated into the teaching and learning experience, students need to feel the value that is there. When we look at the subjects we already have those components in, there is a norm, if you like, towards 40%, or existing percentages are at that sort of level. Some are a bit higher but, admittedly, some are below it at the moment. We also see a variety in those components. Ms Feeney outlined that sense of variety, whether it is orals, practicals, course work or other elements.</p>
+          <p eId="para_96"> When we look at the subject development groups and the work they have done in tranche 1 and tranche 2 subjects, we can see real innovation in a number of the subjects in terms of the opportunity that is there because it is of that kind of value. We have seen in tranches 1 and 2 that 40% to 50% is where the groups want to go.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_40">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_97">I thank Mr. Kenny for his response.</p>
+          <p eId="para_98"> I want to pick up on the AI and AAC piece again with Ms Feeney. I take her point about the Internet and calculators. It feels to me as if generative AI is a different animal. The Internet is like an encyclopaedia, if you like, but generative AI has the ability to synthesise information and to present it. If I tell it to sound like a leaving cert student, it will sound like a leaving cert student. Is there a sense that it is different and that we need a different response to it?</p>
+          <p eId="para_99"> I agree entirely with what has been said. The sense I get about the concerns from parents and teachers is that work will be presented that is not the child's own, and potentially very quickly. I have two quick questions. Is it a different animal and does it need a different response? Specifically on the consolidated course work rules and procedures, what will it be? It sounds like it will be ready pretty quickly.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_100">On the first one, putting something into AI and asking it to produce an additional assessment component based on the brief issued by the SEC might produce a piece of work that sounds like a leaving certificate student, but a very generic one. No characteristics of the student would be produced in the work that the teacher would not be able to identify. While generative AI might have charged up some of the issues that we see in relation to inappropriate use of other tools for the completion of course work, for us it is not new. It is a new piece of technology but it is not new in terms of how it could be used inappropriately.</p>
+          <p eId="para_101"> Going back to the Deputy's previous question on whether the 40% increases the incentive, we have no evidence of that in any other subjects that have more than 40% currently. The basic premise for us is that the work is integrated into teaching and learning completed in the classroom and that there are enough points at which the teacher is engaging with the student on the completion of their work for them to be able to identify whether or not it is the student's own work. They know their students. They know what the student is capable of in terms of the work they are producing.</p>
+          <p eId="para_102"> Generative AI can be quite derivative in terms of the quality of what is produced. It does not do numbers particularly well. There are lots of points in there that can be detected. This is something we obviously have to work through. Generative AI is changing constantly as well. There is nothing there that gives us cause for concern to say we should not move because we just do not know what is happening with generative AI. We know enough, and we are confident about the process that we have in place and in the professionalism of teachers and the knowledge of their students to proceed with it. The course work rules and procedures-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_103">I thank Ms Feeney. What we have done in other meetings is give additional time at the end to the witnesses. There may have been questions or charges by the bodies they represent that they may not have had time to fully answer, so we will give them time at the end to wrap up their testimonies.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_43">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_104">I thank the witnesses for their words this morning. It is good to see some of them returning to the committee. They are welcome back. The reform is welcome, similar to the reform of the junior cycle and the primary sector earlier. This review has been in place since 2016 and has taken a substantial time. Do the witnesses feel that they have built a sufficiently dynamic structure that they are able to adapt the curriculum in future so that we do not have to go through another eight or nine year process?</p>
+          <p eId="para_105"> In the Seanad we have been fairly vocal about the lack of manual trades and the skill set for trades and how that sector is crying out for more people with trades. The TUI passed a motion looking for a second additional assessment component in day machining and bench skills. The ASTI fully supported that additional component. The Precision Tooling and Machining Association presented more than 600 Irish precision-tool making companies. They felt that having the additional element was needed. Would any of the witnesses care to comment on whether they are prepared to adapt and look at those things as the needs arise in future?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_106">I will take the first question and other speakers can come in as well on a couple of points, in particular the one on engineering. Senator Scahill's point is well made about the work starting in 2016 given that we are practically in 2026 now. While the work of the redevelopment is under way, there is still a number of years to go to see it all fully come through. We are very conscious of that.</p>
+          <p eId="para_107"> As Ms Forster has said, every leaving certificate subject is being updated in this five-year period. The hope is that as we complete this piece of work that we will then be looking at them and asking the NCCA to look at them on a more regular basis. As part of the implementation support measures document, we have committed to have rapid reviews on each of the tranches, so as the first cohort goes through we can immediately look to see what the experience of the student is and if we need to adapt and change and be as dynamic as the Senator suggests, we can do that. Some of the recent subjects like PE and computer science are in that mix already in terms of changing and being updated. That is an example of subjects that are relatively recent are in the early tranches too.</p>
+          <p eId="para_108"> I will say one thing about the engineering point and then I will hand over to my NCCA colleagues. We trust the NCCA process. There was talk about the consultation, research and engagement that goes on as part of that. Subject development groups are very much the engine of that in terms of the consideration of what should be in the specification. We wanted to keep the number of additional assessment components within reason because one of our key considerations is student load and not over-burdening students. Every subject teacher might like there to be a number of assessment components but there must be limits in terms of what a student who typically does seven subjects can manage.</p>
+          <p eId="para_109"> There is a facility in place, which has been used a couple of times, where subject development groups felt that there were compelling or overriding reasons why they needed to have a second additional assessment component. We helped out with those in particular situations in a couple of subject areas. In engineering, mostly, the call was made differently. Ms Forster might want to add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:10:00+01:00"/></from>
+          <p eId="para_110">In the case specifically of the engineering development group, as Mr. Tattan has outlined, there is a process there and the development group can put forward a very strong case to argue for an additional assessment component. The engineering development group did not avail of that facility. More importantly, I will clarify the position for the Senator. The AAC that is part of the engineering specification - the design and manufacture project - has been designed in a way to ensure that students can demonstrate both the technical skills that they will develop through the specification as well as manufacturing processes, and that they will be able to demonstrate all of that through a single AAC, as opposed to having an additional assessment component in the mix.</p>
+          <p eId="para_111"> The Senator asked if our processes are agile and flexible enough. We have many examples of the work we do with teachers, school leaders and our development groups and bringing that consultation feedback into really detailed discussion and debate around the development group table. There are lots of opportunities there to incorporate what we are hearing into the work and we do that through a process of consensus building. One of the pieces of work the council is looking at and will be looking at over the next couple of years is around our whole process to review and redevelop curriculum - not specifically to senior cycle but right across the board. One of the questions we are asking is: how do we need to continue to evolve our processes to ensure the curriculum remains up to date, relevant and meaningful for young people.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_46">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_112">Will the council keep the committee updated on this process and how it is going?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_113">Yes.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_48">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_114">I had a different question but I am going to jump to this one because of who is here. We discussed additional time for students with dyslexia and dyspraxia last week. Has work already taken place to take into consideration students requiring reasonable accommodation for the additional assessment components, AAC?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_115">The additional assessment components are completed in the classroom. It is a process, not a product. It is not about what is completed at the end, it is about the ongoing work. Our scheme of reasonable accommodations is driven by students' normal ways of working and because the work of the AACs is completed in the classroom, they will be following their normal ways of working. However, in the design there has been regard given to principles of universal design for learning in the development of the specifications and also consideration of reasonable accommodations in the subject choices of students built into the specification as well.</p>
+          <p eId="para_116"> There is no need for particular race accommodations to be provided for the completion of the AACs because that will follow the students' ways of working and how they are engaging in learning in the classroom day-to-day.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_50">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_117">I had a look at the witnesses' opening statements. My question is a lot simpler and goes back to my time at school. The NCCA's review took place between 2016 and 2019 and my colleagues are bringing up all of the differences. Ever so much has changed since then with the increase in population, more awareness of abilities and the introduction of AI. My ten-year-old daughter told me two nights ago that some of her friends in the class were using ChatGPT to get some of their answers. She was struggling with that because she really likes to work it out.</p>
+          <p eId="para_118"> I did my leaving certificate 32 years ago. The day of the results is literally carved in my brain so clearly and not for the right reasons. I still have the dreaded leaving certificate nightmare that a lot of people have of sitting the exam or receiving results, whether before or after it. </p>
+          <p eId="para_119"> For people like me who went through that, I would like to know a few things based on this reform. Does the reform of the leaving certificate include the provision for more guidance counsellors who can give more than one session in leaving certificate preparation? That is what we got in my day. It is one of the most important roles in secondary school. A good guidance counsellor supports students' well-being, helps with their academic planning, offers career guidance, assists with decision-making, promotes inclusion, collaborates with teachers and parents and provides crisis intervention if needs be.</p>
+          <p eId="para_120"> I remember feeling completely lost when the results came out. I have not forgotten it. Are we putting resources into guidance counsellors in this reform? They are a huge part of getting students through the leaving certificate by being there before and after their results, which is critical. I note that the Minister, Deputy McEntee, launched a part-time course for teachers who wish to specialise in guidance counselling to help with the shortage. I understand there is a shortage. Is this enough?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_121">In terms of guidance, I agree with the Senator. It is a critical role that schools play and it has become increasingly complex. It is a great thing that there are so many potential pathways for students, but it is a huge challenge for guidance counsellors to keep up with all of that.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_52">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_122">Sure.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_123">We have a national framework for guidance. In recent years the Department recruited an expert in guidance - a former guidance counsellor - who works within our curriculum assessment policy area. She is leading on that. Part of the work she is doing at the moment is looking at the allocation system in relation to guidance counselling. It is very much on our agenda. During the financial crisis years, we cut back and guidance was one of the areas that was hit. We have restored those posts over the past number of years. It is very much a priority for us.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_54">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_124">We lost some during the crisis times and now we are back, but there is still a shortage of guidance counsellors in schools. Am I right in saying that? Are we not training-----</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_125">I do not know if I agree there is a shortage. However, the Senator is right, we are providing supports to a couple of universities to offer part-time training for teachers to become guidance counsellors.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_56">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_126">Does it need to be a teacher who performs that role in a school?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_127">It is an interesting thing and we have talked about it a bit in the Department. Overall, the sense is that it ought to be a teacher and has traditionally always been a teacher. There are other schools of thought that ask if other people could perform the role. The role has broadened a little bit over the years. Careers is a key aspect of it. There are broader aspects to it such as well-being and mental health.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_58">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_128">On average, how many guidance counsellors are there in a school? In my day, there was one for a school of 700 or 800 students.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_129">I can find out for the Senator and come back to her.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_60">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_130">I would not mind finding out. My sisters-in-law are paying privately for guidance counsellors for my nieces. Between the ages of 17 and 18, you are trying to decide what you are going to do when you come out of school. It is really important. I appreciate any information the Department can send me on.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_131">I will come back to the Senator on that.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_62">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_132">I am working with the Rotary organisation in County Meath. It is doing an excellent project on road safety. It is bringing transition year and leaving certificate students into big places. We are doing a couple of events in the Solstice Arts Centre in Navan. We have so many road deaths among young people and so many issues with road safety. Traffic calming is the single biggest thing that I deal with every week. I am sure other TDs and Senators agree with me that it is one of the big issues. People are afraid of the roads. </p>
+          <p eId="para_133"> Is there anything in this about bringing in those types of subjects? Educating people young is so important. I brought up blood donors yesterday and how the average age of a blood donor is 46 years. How do we educate people on these other things relating to life as opposed to subjects?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_134">We have done some work with the Road Safety Authority, RSA, in the context of transition year students. Mr. Kenny will give the Senator some more information on it.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_135">We have done some work with the RSA. In October of last year, the then Minister, Deputy Foley, launched a specific module aimed at transition year students. It was developed with transition year students through focus groups and is very much evidence and research-based. There has been a lot of professional learning delivered to teachers so they can deliver that module. There is a recognition that road safety is not just the responsibility of a school or a teacher.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_65">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_136">It is community.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_137">It is community, exactly. There are other agencies there as well, including An Garda Síochána, local authorities and others. In fact, the Irish Public Bodies Mutual Insurance Company has worked as part of that programme as well because it is the insurers to the local authority. There has been work done and we can build on it in terms of the new road safety strategy. There is a commitment in there to expand the educational offerings. </p>
+          <p eId="para_138"> Working with the RSA, it is very clear that it is not about a single intervention or a short programme, it is about reinforcing those messages over time. That is very much what the transition year module is designed to do. It is designed to empower the young people to see themselves in the area of road safety. For example, there are optional elements around tractor safety because it was something that came through from focus groups. I live in relatively rural area-----</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_67">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_139">So do I.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_140">-----and I can see that tractors are an important part. More urban students looked at scooters and said there were particular issues around them. It is very much something that we and our current and previous Ministers have been working with the RSA on.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_69">
+          <from>Senator Pauline Tully<recordedTime time="2025-10-16T10:20:00+01:00"/></from>
+          <p eId="para_141">I thank the witnesses for their contributions. It is always welcome that the leaving certificate's curriculum and methods of assessment are reviewed and updated on a regular basis. As one of the witnesses said, the leaving certificate has been a trusted exam for many years, but at the same time it does not suit every student. For the most part, it is dependent on a student's performance on one day. It is welcome that a fairer way to assess students - one that suits everybody's method of learning - has been found.</p>
+          <p eId="para_142">I am a former secondary school teacher. I taught maths and history. I know they are in tranche 3. I am just interested because there was a project component to history already. Is that changing much? Will there be an additional assessment component in maths?</p>
+          <p eId="para_143"> Some schools, such as newer schools and schools with new extensions, will have better facilities and resources than older schools that may be waiting for an uplift. There might only be one science lab or so forth. Does that not put them at a disadvantage? What can be done to ensure that it is fair and that all students have access to the proper resources and supports that they require, including modern equipment and so forth?</p>
+          <p eId="para_144"> While I have both the Department and the NCCA here, I am aware that a number of new subjects have been introduced, which is welcome. How is it decided when a new subject is going to be introduced? The reason I ask is because I have previously written to the then Minister, Deputy Norma Foley, and to the NCCA inquiring about ISL as a subject at school level. It has been a national language since 2017, and there is a component of students who are deaf or hard of hearing. It is proven that they do not perform as well because they do not get the supports but there is also a fierce shortage of interpreters. It is a subject that we should be looking to introduce. I am aware it is a subject at leaving certificate applied level but it is also a module that is optional. Is that something that has been considered or will be considered?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_145">I thank the Senator for those questions. I will take some but will hand the maths and history question over to my NCCA colleagues. I know it was not a question, but I note the Senator's comment about the trusted exam but trying to break out of it all happening on the one day in June. That has been a key driver for us in thinking about it. I have touched on this a little bit earlier, but what we are trying to do is broaden the range of competencies in order that different students can demonstrate knowledge and skills in different ways. It gives them more opportunities to do that than if it was all done through the prism of a traditional written exam. It also means they have a lot of stuff banked before the exam rolls around. Every student is different and there are different learners in terms of how they experience the leaving certificate. A lot of students in their representative body will say to us that the real pressure they feel is in the first few days of the written exams in June. Other things tend to spread it out.</p>
+          <p eId="para_146"> On facilities, it is a fair point. Obviously, schools are built at different times. They get developed or redeveloped at different times. There is strong support of any school that is going through a rebuild or a new build that a certain number of science labs and facilities are provided to them. There is a summer works scheme. In fact, there was an application for the summer works scheme for the summer just gone. The announcement and decisions related to that will be coming in the next few weeks. Schools were able to prioritise different things. One of the areas was if they wanted to refurbish their science lab that they could focus on that. There are science moneys. We provided about €12 million toward the end of last year in moneys for science. We have also increased the recurrent science grant. We have almost doubled that as well. We are trying to find lots of ways to provide supports for schools, recognising that they need to be able to be properly supported on that.</p>
+          <p eId="para_147"> The NCCA might come in on the maths and history question.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_148">In the case of maths and history, as the Senator mentioned, they are both in tranche 3. Currently both development groups are working on the details of the additional assessment components. There will be a component for the first time in the case of maths. Currently those draft specifications should be completed and in the public domain for consultation in February 2026, with a view to them being finalised by summer 2026.</p>
+          <p eId="para_149"> In the case of ISL, we have actually started work on a curriculum for Irish Sign Language. This is in response to a ministerial request. The then Minister asked us to begin work on a curriculum for primary and post-primary. That work has started. To give a sense of some of the milestones, we are currently working with schools. This is a really key part of how we begin specification development. We are working with schools to gather the experiences of teachers, the young people and parents. That will all help us develop what we refer to as a background paper. We will put that out for public consultation in February of next year. That will essentially give us the blueprint for how we go about developing the curriculum itself. This might be a point where I will pass to Mr. Slattery because, as the Senator mentioned, one of the modules in leaving certificate applied is actually on Irish Sign Language. All of those modules will be reviewed and redeveloped. I might pass to Mr. Slattery on that particular piece of work.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Barry Slattery<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_150">Broadly speaking, any new subject that has been introduced has come as a request from the Departments. That includes computer science, physical education and, most recently, climate action and sustainable development and drama, film and theatre studies. It comes to us as a request. In the context of leaving certificate applied, the modules have been <i>in situ</i> since 1995 and have not been updated, with the exception of four or five of them. We are doing a really important piece of work that is very exciting on pathways through senior cycle. We are working directly with 14 schools. Schools are currently looking at their students' needs, strengths and interests. They will come together in about six weeks' time and share their learnings with one another. The second phase of that work is that they are going to take a look at the modules that currently exist in the leaving certificate applied programme and see which modules could possibly be discontinued, redeveloped or renewed and which new modules could potentially be introduced. At that point, we would offer advice to the Department as to what the findings were. We may be asked to make those changes.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_73">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_151">I thank the witnesses for coming today. This is a very important topic. Everybody has their leaving certificate stories. We all agree that the stress has to be lifted off students. A huge amount of the stress is not just from exams; it is from the high-stakes nature of the leaving certificate. That is not sufficiently discussed. I am completely open to the idea that we do not have the leaving certificate as a prerequisite for getting to third level and that there is a more open-access situation like they do in other countries. That is something that we should discuss, rather than just trying to reform something that is so incredibly important. People who come to this country cannot understand. They see the huge furore around the leaving certificate every year.</p>
+          <p eId="para_152"> I have been a leaving certificate teacher and parent and want to ask about the consultation. The biggest change to the leaving certificate in years is being brought in. There will be 40% for assessment against the background of AI, a massive teacher shortage with a huge number of unqualified people in the subjects they are teaching, particularly in urban areas, and so many other pressures. Mr. Tattan said in his statement that the Minister decided that English and accounting should be delayed in order that the Department can work with schools and teachers. Why was there no proper with consultation with teachers in the first place to bring in such a change in the leaving certificate? I spoke to teachers before this meeting. Back in June, they knew nothing about what the AAC was going to involve in their subject. Planning was to be implemented in August or September when schools returned. Would the witnesses agree that this was completely inadequate consultation? Would Mr. Tattan call that sufficient consultation with teachers?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_153">If that were the totality, I would not, but it is not the totality. There has been a long consultation from the time the Minister asked the NCCA to undertake the work, through all work that they undertook in coming up with the advisory report. The AAC guidelines for tranche 1 subjects were produced last December for each of the subjects. Subject teachers have had access to that from last December. Teacher professional learning has been provided over the course of the last year and is continuing this year. They were released from school for that.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_75">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T10:30:00+01:00"/></from>
+          <p eId="para_154">The ASTI, of which I was a member, voted by two thirds to reject this. It was not even a leadership recommendation.</p>
+          <p eId="para_155">It was a grassroots revolt by teachers on the ground. The executive did not put a position. The TUI had already voted for it. Teachers come out in those numbers and need to be listened to because the ASTI ultimately is the biggest union and represents teachers from the most schools. The teachers raised issues. Many of the AAC options relate to journals. Students are asked to write or produce journals. Those might not necessarily be the student's own work. No practical examinations are mentioned, including, for example, home economics. How can cookery and knowledge of food be assessed from a journal?</p>
+          <p eId="para_156"> I taught in a very disadvantaged area and I know that you break your back to try to get students through these assessments. They do not have help or cultural capital at home. They do not have parents with the time, wherewithal or ability to help them with those projects, as other students do. I know that having loads of assessments sounds great but it probably makes things more unequal for students. At least with examinations, you get the students into the examination hall and they are faced with a question. Yes, there is inequality but at least they can try to interpret the examination. With increased assessment, other students have weeks and weeks to produce a great journal for assessment or whatever else. There is a problem in that regard.</p>
+          <p eId="para_157"> I want to ask about AI. I was an English teacher and I am so glad I am not teaching now. I was a bit shocked to hear Ms Feeney say that AI and the Internet are the same. That is not the case. The Internet has been around for 30 years. It is a huge encyclopaedia and involves the opening up of information. AI, on the other hand, can practically put together concepts. I do not think they are the same. I saw an essay on Twitter the other day that claimed to have been written by a teacher who was retiring from education and it was apparently written by AI and was not genuine.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_158">I ask the Deputy to please leave time for a response.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_77">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_159">There have been all these studies at third level. People cannot differentiate between AI and non-AI work. Perhaps Ms Feeney can but teachers on the ground cannot.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_160">I will come in on whether the Internet and AI are the same. I think they are in terms of academic integrity. They both represent a form of cheating within the examinations. It certainly amplifies those issues but does not take away the basic premise that the work can be completed in the classroom under the supervision and oversight of the teacher. It is a process. If a student comes in with a ready-cooked bird and the teacher has not seen any of the work leading up to that, there is potential for a problem. If the teacher has been checking in routinely and regularly with the student, which does not happen at third level, and understands that student's abilities and what he or she is capable of, that is the process we are currently overseeing.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_79">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_161">Will the teacher be marking all that?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_162">The teacher is not marking.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_81">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_163">An outsider comes in.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_164">It comes in then. It is submitted to the SEC for assessment and we mark the work.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_83">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_165">The SEC sees the finished product but does not know what this student did, in reality.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_166">The teacher authenticates.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_167">We hope to have a second round of questions. It looks like we will have additional time. I am next. I have some specific questions. First, I will take up from where Senator Nelson Murray left off. Last night, I was interviewed in a Zoom meeting by a journalism student who was talking about the cliff edge that children with disabilities face in senior cycle. I am not going to talk about State examinations because that was, to a large degree, covered last week. Since Covid, everything has been geared around leaving certificate reform, destressing the whole environment and not having a cliff edge examination but spreading it out a little and reapportioning how some of the grading is done. The student made a point that made me think. We are seeing more students with disabilities going through mainstream schooling, which is the right route if it can cater for their needs. There is little transitioning involved at senior cycle so they too are brought through the funnel of State examinations. There is no module of transitioning done on what their options may be thereafter. Some of them may be going straight into the workplace. Some may have an apprenticeship pathway ahead of them. Some may go on to college. Some may be unable to work and will have to go onto a disability payment, to a day service or whatever else. There is no module catering for any of that. From what I can see, there is no module within career guidance or elsewhere to gear people in that respect. We are still gearing people towards careers, college and apprenticeships, and there is very little for someone who does not have all of that fully pieced together.</p>
+          <p eId="para_168"> The same is true for parents. I have dealt with parents of 17- and 18-year-olds with disabilities who do not realise the supports available to their children when they leave the secondary school system. Could the representatives of the Department of Education and Youth comment on that? It is more of a Department question.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_169">I thank the Cathaoirleach. I have a couple of responses. The point the Cathaoirleach is making is important. There is a focus, and traditionally has been a strong focus, on higher education and transitioning from school into higher education. In a way, it is a cultural strength in Ireland that there is a focus and emphasis on education. Obviously, things like the level 1 and level 2 programmes are important in the context of special educational needs students. Those two levels are present in the junior cycle and will now continue through into the senior cycle. That is an important piece.</p>
+          <p eId="para_170"> There is some work going on within the Department with our colleagues on the special educational side, working on transition programmes and trying to find different ways to support students when they are getting ready to leave school and move to whichever next stage they wish to move to. There are some good examples. I have talked to principals, particularly principals in schools in the further education space, who have been real ambassadors and leaders in working out ways to support students beyond school and to find supports for them into the workplace or into other forms of education and training. We need to systemise that further across the country. The Trinity Centre for People with Intellectual Disabilities is a good example. It is about trying to systemise that so it is available more generally. That is what we need to think about.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_171">I thank Mr. Tattan. I am aware of good work going on. However, it is not a uniform body of work being undertaken by schools. As a committee with all these witnesses before it, we are again going down the funnel of State examinations being the ultimate. We have this two-and-a-half-week period at the end of June when at the end of formal education, you do these big examinations. For many people, that is not reality. I have a family member who went through a very supported educational environment, with resource teachers, SNAs and other incredible supports. When you clear out your locker and walk out of school, where is life taking you? Are you going up to your local day service? Are you going to spend your days watching DVDs and Netflix, as happens in some centres? Are you going into the employment field? I do not think people are adequately supported. It is a little left of field compared with other questions that have been asked. Perhaps I have my numbers wrong, but I think 160,000 students with additional needs are going to complete their final State examinations in 2026. For them, there is not as clear a pathway as the route through the CAO or into apprenticeships.</p>
+          <p eId="para_172"> With all of this reform happening, some teachers have contacted me to say that the junior cycle management resource hours are not formally recognised in a leadership capacity. Teachers invest time, day and night. Has the Department of Education and Youth considered bundling these hours together and classifying them as assistant principal 2, AP 2, posts? It seems wrong in the context of the curriculum, the Department and the examinations that we are loading responsibility. We are doing so for the right reasons, and there is a lot of good stuff coming, but it all falls back on the teachers. They are expected to take on a major leadership and reforming role without it being formally recognised by the Department. Those teachers are acting up without a payroll contribution to recognise it.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:40:00+01:00"/></from>
+          <p eId="para_173">The junior cycle management resource hours were put in place when the junior cycle came in initially. In truth, they are temporary and roll over each year, but we roll them over as a matter of course each year. We have a junior cycle implementation group with the two post-primary teacher unions and one of them made that very point to us about looking at it in a different way. Our colleagues at the NCCA have been undertaking work on the junior cycle. Various studies have been done by the University of Limerick to consider and evaluate the experience at junior cycle.</p>
+          <p eId="para_174">A piece of work will be happening most likely in the next period which will look at different aspects of this. We intend to look at this as part of it.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_89">
+          <from>Deputy Jen Cummins<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_175">I am sorry I was late. I was in the Chamber. I am happy to see there is a number of new subjects particularly drama, film and theatre studies and climate action and sustainable development. That will broaden out the curriculum in a very positive way. I note that the leaving certification vocational programme will potentially lead to more access. How will that happen? It is such a fantastic programme but not enough schools are doing it. </p>
+          <p eId="para_176"> I see that transition year will also be made available to students who want to do it and there is increased intake because they are such fantastic programmes. How will that be facilitated?</p>
+          <p eId="para_177"> We talked extensively last week about special education. Under this new system, how will extra time be facilitated? We talked about it extensively last week, so how will that be done? </p>
+          <p eId="para_178"> I want to echo what previous speakers have said about a fear among teachers who are going to be delivering this in classrooms that they do not know what is going to happen. The witnesses are saying there has been huge consultation and I accept that there was. However, I do not know whether that has filtered down to teachers in the classrooms. As a previous speaker said, when they do not know before the summer holidays what is going to happen in August, that is really not a way to start out in running programmes. How will we ensure that schools have the resources, particularly in such subjects as science? When I worked on the school completion programme or as chair of Educate Together, some of the schools were starting up and others had not been renovated for a long time. How will those resources go in?</p>
+          <p eId="para_179"> On the plan for DEIS students who do not have support at home or do not have the resources or access to all the things that children in non-DEIS schools would have, how are we going to support DEIS schools in order to support those students and make sure they are not at a disadvantage?</p>
+          <p eId="para_180"> I really would love to see this exam being totally separate from access to third level because it puts too much pressure on. That leads into my final point that the love of learning has disappeared in the leaving certificate we currently have. Students are only learning for the exam and teachers have to teach to that. With these new subjects coming in and the way they will be assessed, perhaps the love of learning can come back in. </p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_181">I thank the Deputy for those questions. I will try to cover them. There are a quite a few. On the new subjects, we are obviously really pleased to have the new subjects. About 100 schools are participating, between drama, film and theatre studies and climate action and sustainable development. We have put in place a number of bespoke supports for those schools. We will be working closely with them. Over time, we hope those will grow and that other schools will participate.</p>
+          <p eId="para_182"> On transition year, we are pleased to see that transition year participation rates have gone up year on year. We are now at about 80% participation. Practically every school in the country offers transition year to at least some of their students. Many offer it to all of the students.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_91">
+          <from>Deputy Jen Cummins<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_183">Is there a mechanism by which schools have to offer it to everybody? There are students who apply for it but do not get it. That is not fair. If a school is going to offer it, it should be resourced to be able to offer it to everybody. I understand in cases where half the students do not want to do it, that is a difficulty but some schools<i>
+						</i>make it compulsory. It is a year where students can take a break from the pressures of the academic world and explore other things. That is such a positive thing going into senior cycle, when maybe they do not know what they want to do yet. </p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_184">In terms of the compulsory issue,<i>
+						</i>we made a decision at a national level around the time of the announcement not to make it compulsory because not everybody loves school or loves all the experiences that schools offer.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_93">
+          <from>Deputy Jen Cummins<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_185">I was one of them. </p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_186">The Deputy is not alone in that. However, we want any student who wants to avail of it to be able to do so. We do not expect ever to hit 100% but we want to do more than we are at the moment. The section that Mr. Kenny leads is actually looking at some analysis as to why that is. Sometimes the reasons are obvious. There might be capacity issues and a school might not have the space to offer it to an additional class within the school. Sometimes it is about a smaller issue, such as a smaller resource issue. The TUI has said to us that at times it is about small computer equipment pieces or other things that they would like to offer a particular project or course but it needs an extra bit of resourcing in the area and that might make the difference. We are committed to looking at that and are going to try to find ways to resource it in the years ahead. It is very valuable. When representatives from other countries come to Ireland and ask about the Irish education system, they often get off the plane and ask immediately about transition year. It is not unique but it certainly seems quite unusual.</p>
+          <p eId="para_187"> I will leave the question on extra time in exams to Ms Feeney. </p>
+          <p eId="para_188"> On the information, we put a lot of effort into the communications piece. We run an annual conference in Croke Park and we put out regular information notes to schools. Maybe they do not always reach everybody we want them to reach. We will have to redouble our efforts there to ensure that happens. However, we are really trying. One of the most obvious ways to reach teachers is through continuing professional development, CPD. We know they are going to show up for CPD. If there are other issues that we can put into the mix in terms of providing them with other information beyond what they are there specifically for, we should try to do that. </p>
+          <p eId="para_189"> On the DEIS piece, obviously there was a recent announcement in the budget that there is going to be a significant additional investment in DEIS, with €48 million in a full year for additional support around DEIS and DEIS plus. The Minister, Deputy McEntee, is strongly committed to this particular area. We seek to provide additional supports as well. For example, when we issue grants to schools we often provide an uplift to DEIS schools in recognition of the fact that they may not have all the resources that non-DEIS schools might have. </p>
+          <p eId="para_190"> In regard to access to third level and whether it is too much pressure, the people sitting on this side of the table do not have responsibility for entry into third level. Obviously, the higher education institutions seem to like using the leaving certificate. There are advantages to it, in that there is a convenience to it as a one-stop shop in terms of students not having to apply to individual institutions. While there may be some flaws in the CAO, our colleagues in the Department of further and higher education would say close to 85% or 90% of students get a top-three choice. As a way to filter, it can work.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_191">Before our next speaker begins, I advise members we are going to get a second round in. There will be three minutes per member. We will keep strictly to that time. There will then be three minutes for each witness to deal with aspects that may not have been covered during the meeting. </p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_96">
+          <from>Deputy Peter Roche<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_192">I thank the witnesses for the comprehensive statements. In order that nobody feels left out, I have three questions to put. My first one is for Mr. Tattan and it relates to stakeholder buy-in. Given the mixed response from unions, with the TUI accepting and the ASTI rejecting the support package, how is the Department ensuring teacher confidence and classroom readiness in the roll-out of senior cycle?</p>
+          <p eId="para_193"> My question for Ms Forster is on coherence across reform. She mentioned redeveloping close to 100 subjects and modules by 2029. How is the NCCA ensuring coherence and avoiding overload for teachers and students during that transition period?</p>
+          <p eId="para_194"> Finally, for Ms Feeney, my question is on digital infrastructure. The NCCA expects to process 75,000 additional digital components in 2027. Are schools in the west of Ireland, particularly Galway, adequately equipped with broadband and IT facilities to meet those requirements?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T10:50:00+01:00"/></from>
+          <p eId="para_195">On the stakeholder buy-in piece, this goes back to the point Deputy Cummins made about trying to address the fear of the unknown and fear of change, which are natural, of course. In trying to address teacher confidence or readiness, it is the bread-and-butter issues that teachers are going to look for, particularly a teacher of a leaving certificate subject. That means such matters as producing the additional assessment component guidance in a timely way, which we did last year for the first tranche.</p>
+          <p eId="para_196">We have talked about all of the sample exam papers that have been produced, far more and far earlier than before. The sample AAC briefs for the first tranche of subjects were published recently and live briefs will become available early in the new year. Those are all key building blocks that provide confidence. Now teachers can see what the exam paper is likely to look like, what an AAC brief is likely to be, what is going to be expected of the students and so on. We have combined that with considerable investment in CPD, a lot of additional resources for our national support service for teachers and the provision of time for teachers, whether that is through school closure or substitution, to engage with the new material. Finally, we have to think about resources. We have to think about the bread and butter things that schools need. I have mentioned the new science grants that we have introduced as well as increases to existing grants. We have also broadened the subjects to which those grants apply. We are committed to having posts of responsibility. Every school will have a post of responsibility to support senior cycle from next September. We are also going to have dedicated co-ordinator posts for level 1 and level 2 schools that offer level 1 and level 2 subjects. A combination of all of those things will really go a long way towards meeting the teacher confidence issue.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_197">On the question about coherence and avoiding overload, this really sits at the heart of everything we do. One of the very first pieces of work, which I touched very briefly on in my opening statement, was around the template that we use to develop the curriculum specifications, whether that is a subject, module, programme or otherwise. That template essentially sets out the overall structure of a curriculum specification but, in particular, it is guided by an agreed vision and purpose for the redevelopment of senior cycle. There are eight guiding principles and they are part of every single curriculum specification that we work with. That is one piece in terms of coherence, both within and across curriculum specifications. A second piece that is really relevant here is the structures. We have a couple of internal structures that play a really key role. We obviously have development groups working on the individual curriculum specifications, and their work is guided by the template that I mentioned, but we also have a board for senior cycle. That board essentially co-ordinates and oversees all of the work in the redevelopment of senior cycle. Again, that is another way in which we can ensure coherence across all of our work.</p>
+          <p eId="para_198"> Consultation with teachers is a really big part of this as well, both from the perspective of coherence but also from the perspective of curriculum overload, which the Deputy asked about. To give a recent example, in tranche 1, we have three science specifications and when those specifications were published in their draft form, we received a huge amount of feedback. Some of that was about the volume of teaching and learning within the specifications. The development groups worked with that feedback and actually made significant changes, reducing the overall teaching and learning load. That is another example of how we listen very carefully and try to ensure that we are able to take that feedback on board and address issues like potential overload.</p>
+          <p eId="para_199"> Even beyond the specification being finalised, there is another piece that I would draw attention to, namely, the early enactment reviews that we have been carrying out over recent years. That enables us to check back in with teachers, school leaders and students after two or three years of actually working with the curriculum specification. Again, we take that feedback on board and make adjustments where they are necessary. Going back to an earlier conversation when we were asked about support measures and Mr. Tattan was responding to it, one of the commitments in the support measures is to introduce rapid reviews. Those rapid reviews also carry commitment to look at or audit the time that is actually required to teach the specifications. That is another very practical way that we can keep a very close eye on coherence and overload.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_99">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_200">I am delighted to have a couple of minutes here. A 16-year-old constituent of mine in Kildare town has been in touch twice maidir leis an Gaeilge sa meánscoil. We see L1 for students studying through meán na Gaeilge or the medium of Irish and L2 for those studying through English. However, it is not clear whether there will be any points incentive to encourage L1 students. She thinks this is extremely unfair considering that we are still allowing bonus points for matamaitic. Are we creating even more barriers for people studying trí Ghaeilge? Perhaps the witnesses could speak to that and give their opinion on bonus points for those ag staidir trí mheán na Gaeilge.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_201">I might start by clarifying the specifications themselves. In 2021, the NCCA published draft T1 and T2 specifications leaving certificate Gaeilge which I would imagine is the source of the queries that the Deputy has received. On foot of the consultation feedback, as I mentioned earlier, we paused the development of those specifications. In terms of the work that is happening now on leaving certificate Gaeilge, and it is in tranche 4 of the subject reviews, which work has literally just commenced, on foot of what we heard in the consultation, the advice the NCCA gave, which has now been approved by the Minister and the Department, is to continue with the current model of provision, which is not T1, T2 but a single specification which is then assessed at higher level and at ordinary level. That is the model of provision that is being used to review and update the specification for leaving certificate Gaeilge. As part of that work, we will begin the process of alignment with the Common European Framework of Reference for Languages, CEFR. That is the work in which the development group in NCCA is currently involved. I am not sure if Mr. Tattan wants to add anything.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_202">As Ms Foster has said, tranche 4 and the work on leaving certificate Irish is now starting. An important point to mention is bonus marks. There is a scheme operated through the SEC under which students who undertake at least certain elements of their leaving certificate examination as Gaeilge effectively get a bonus for that. A decision was made over the course of the summer to apply that bonus across the board, both for the new subjects coming in as well as for existing subjects. That is an additional support to those students who are choosing to study and take their examinations in Irish.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_102">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_203">In the time remaining I will refer back to Deputy Cummins's point about additional time, which Ms Feeney did not get a chance to respond to earlier.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_204">One thing that senior cycle redevelopment might do in relation to additional time is create some ease in the timetable because, with the refocus away from the written exams, the final examinations will be shorter. We are looking, typically, at a two and a half hour examination whereas we currently have some exams that are three hours and 20 minutes long. In terms of manageability, we talked at the previous engagement about the load on individual students as a result of having additional time in which to complete exams but also rest breaks. It can make their time in the exam hall quite long, so senior cycle, certainly with that redeveloped timetable starting to kick in from 2027, will mean shorter exams in some of the subjects.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_104">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_205">Will there be additional time for all students?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_206">We might get the answer to that later. Deputy O'Rourke is next.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_106">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_207">I would make the point to the NCCA that the feedback I am getting from teachers, having attended some of the teacher conferences, is that participants in the SDGs feel like their contribution is not reflected. I know the witnesses have given examples of where the NCCA has listened and responded, but I would suggest it would be a worthwhile exercise to talk to previous and current members of the SDGs to get a sense of their experience. Publicly and privately, they will articulate a frustration. Maybe there are reasons for that but it is certainly something that I feel I need to raise here.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T11:00:00+01:00"/></from>
+          <p eId="para_208">I thank Deputy O'Rourke for raising it. He makes an interesting suggestion and we did that very thing in the last 12 months. We engaged the services of an independent analyst to work with us. She essentially worked with members of 19 development groups, most of whom were actually development groups working on the redevelopment of senior cycle.</p>
+          <p eId="para_209">Up to 200 people responded as part of that work, both through surveys and focus groups, where they were able to share in detail their experiences of being part of our development groups. Overall, she reported to us that 80% to 90% of the members she had spoken to - we have no idea who those members are because they worked directly with her - had positive experiences working with our structures. Between 10% and 20% had less positive experiences and we have taken that feedback on board. We have already incorporated some of that feedback into our processes and how we work. For example, one of the practical suggestions that came out of that work was to put more time and energy into induction and support the establishment of the development groups. We have been able to do that with the recent development groups that have been convened. That is just one example of some of the practical suggestions that came forward. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_108">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_210">The nature of those things is that they are dynamic and so on. I would encourage that to be an ongoing process. It is in everyone's interest. </p>
+          <p eId="para_211"> While we will hear from a number of different stakeholders next week, I have heard clearly from science teachers – I have a background in science myself – about the need to continue a strong output of well-qualified scientists. There is a need for continuing investment at pace and scale in our laboratory infrastructure, particularly given the number of alternative assessments, such as AACs, that we are going to have at different levels throughout the secondary school experience.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_109">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_212">I am glad there has been mention of the course for students with additional needs. Maybe it is something we could look at in more detail at an upcoming committee meeting. I was in touch with parents whose children passed through the entire education system with no curriculum or anything. There were left sitting there in secondary school. It is an issue about which I have asked and submitted questions. When will that course be up and running in schools? </p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_213">The level 1 and level 2 programmes, the first suite of modules, were live in schools in the past school year, that is, the 2024-25 school year. The Minister approved, based on the work of the NCCA, a further suite of 13 modules earlier in the summer, which are now live in schools as well. Work is ongoing where we will see some further modules coming through for consultation shortly. The modules and programmes at senior cycle level are live. We took a conscious decision last year to introduce the first suite of modules before the full range was available because we were conscious of that need in the system for particular students. </p>
+          <p eId="para_214"> We recognise, in the support measures package that was published, that we will be putting a post of responsibility into schools to support the level 1 and 2 programmes because we recognise they are different from the other programmes and will need support. As the Chair mentioned, there will be a need to engage with parents and students themselves. There is a personalised nature to how those modules will be enacted and experienced by students. We are conscious of that particular group. We seek to ensure they have a curriculum that meets their skills, aptitudes and abilities. To go back to what was touched on earlier, it is why it is so important that our colleagues in the State Examinations Commission were able to say they will be able to produce results for those students so that they can feel and share the same experience as their peers. </p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_111">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_215">Those modules are in the schools now. When will the NCCA introduce the post of responsibility in schools?</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_216">From the next school year. </p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_113">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_217">Who runs the programmes in the schools right now? </p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_218">They are being run in the schools. While we do not have this year’s data yet, in the past school year, 98 schools were offering the level 1 and level 2 programmes, with several hundred students availing of them. It is about building on teams that are already in schools but recognising that we need to put-----</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_115">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_219">The programmes are in 98 schools out of-----</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_220">In the past school year. </p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_117">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_221">-----thousands of schools that have students with additional needs. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_222">Mr. Kenny might provide a figure for how many secondary schools are in question.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_223">The programmes are in 98 schools out of 722 post-primary schools. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_224">These responses can be elaborated on in a few moments. I am up next. I will revert to a point I made earlier about how people with additional needs, when undertaking State examinations, face not just an academic cliff edge but in some instances a lifestyle one as well, where they may not know what pathway they are going to go down. I formally propose, as Cathaoirleach, that the committee do a body of work on this issue. Maybe the NCCA could come back in for that discussion. The HSE needs to be present as well. There needs to be a bit more plugging-in between the different agencies so that when someone with additional needs is facing into fifth and sixth year, if they are not going down the pathway of third level, an apprenticeship or whatever, there is some sort of co-ordinated module of support for them. Our country has said that we will support these people right through primary and secondary school, but they drift away after that. That certainly seems to be where things are at. </p>
+          <p eId="para_225"> I have a question for the witnesses from the NCCA. It is a bit of a left-of-field question. A few months before I was first elected to the Dáil, while I was working as a primary school teacher, I completed a coaching course with the IRFU. Often, different modules are offered to teach. We were offered courses to upskill in GAA and different things. I will speak about sports for a minute. The term "physical literacy" was mentioned in that course. I never heard that when I was training at Mary Immaculate College. "Physical literacy" and "fundamental movements" were terms mentioned. They were never part of my teacher training at Mary Immaculate College. The point I wish to make, and I ask the witnesses to indulge me while I articulate it, is that if a person has a language difficulty, such as dyslexia, there are arguably many supports and it is well elaborated on in terms of policy and how things plug in to support that person. It is quite the same for those with dyscalculia. For people with dyspraxia, a lot of physical therapy and interventions have been identified. The terms “physical literacy” or “fundamental movements” are mentioned nowhere in the primary curriculum. I have double-checked with the search function where you can search for particular words within a document. We expect children to be able to read and write and if they are not reaching certain benchmarks, we intervene. We do standardised testing and diagnostic testing and we send them off on a remediation pathway, which is often very successful. There is no remediation pathway or way of tracking physical literary that I can see, however. </p>
+          <p eId="para_226"> We do not have any interventions for basic things for a five-year old, like holding a pencil in the classroom, throwing the ball in the yard and being able to hop or stand on one leg. We are straight into the ball game again. That child, probably with dyspraxia, is forgotten about. There should be teaching and support interventions. Our entire curriculum at the moment seems to be totally blind to that fact. Those terms are not mentioned once in that 90-page document. Yet, our language and maths curriculums speak of children who have disabilities and the limitations in that regard. Will the NCCA representatives comment on the fact that we have fundamentally failed to address this in the current curriculum? </p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T11:10:00+01:00"/></from>
+          <p eId="para_227">I might go back a step to how we arrived at the specification. One of the key pieces that inform all of our work is extensive literature reviews. In the case of the well-being specification, which I think is the specification to which the Cathaoirleach is referring, we had an extensive literature review that took in the latest findings and what we know about how children develop physically, including fundamental movement skills. That research was core in informing the specification. The essence of the two pieces the Cathaoirleach referenced, physical literacy and fundamental movement skills, is in the learning outcomes in the specification. </p>
+          <p eId="para_228"> One of the pieces that we are now working on, which always happens after the specifications are published, is the suite of support materials that we provide to teachers. These are focused on the how of teaching and learning that is captured in the specification. Physical literacy and fundamental movement skills are very much part and parcel of the suite of support materials that we will be developing. </p>
+          <p eId="para_229"> In addition, when specifications are published, we begin to work with schools to gather examples of these core concepts that sit in a specification and we publish those to support teachers in their work with the specification.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_230">I am sorry for cutting Ms Forster short but I have to apply the rule and blow the whistle on myself as well. I thank her. It is good to hear that some changes are on the way. I ask her to engage with the teachers as well because I would say these are terms most teachers have not yet encountered unless they have gone off and done some training or CPD on it.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_123">
+          <from>Deputy Jen Cummins<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_231">There were two questions we did not get to the last time and I have a third one now. Will the exams for students now be shortened because there is a 40% component? Will there therefore be able to be an extended period of time for those exams? The second question we did not get to the last time was on the resourcing of schools, particularly for science. The third question is: when will all the reforms the NCCA talked about be fully implemented in schools? When will we be fully done until we have to do it all again?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_232">I will pick up on the question on time. Some subjects currently have long exams. We have some exams that are three hours and 20 minutes, 3 hours and 10 minutes and two hours 50 minutes. Those should become two and a half hour exams. Within senior cycle once all the subjects are implemented, the maximum length of an examination should be two and a half hours. We need to think about what that means in subjects like English, maths and Irish, which currently have two examination papers, as to what the length of those examinations should be. However, ultimately it should create more ease and flexibility within the existing timetable.</p>
+          <p eId="para_233"> In some respects it is separate from the question of additional time and reasonable accommodations. It just means that the process of providing additional time in exams that are shorter is a little bit more straightforward than in examinations that are longer. Certainly, when we look at the junior cycle timetable, we can see logistically that it would be more convenient to provide additional time in those examinations. However, it is not the determinant of providing additional time. It just creates that ease and flexibility.</p>
+          <p eId="para_234"> I know the Deputy's question about DEIS was about resourcing but I think there was one aspect that I might just pick up on. Earlier, we talked about the conditions under which students would complete coursework. In addition to having fairness for all students so that the coursework is completed under similar conditions, it also respects that students are completing their exams in different contexts and have access to different levels of support at home - occasionally none at home. Therefore, bringing the work as much as possible into the school and having it completed over a period within the school environment can level that equity issue. I know the Deputy raised a different question, but I just wanted to make that point.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_125">
+          <from>Deputy Jen Cummins<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_235">A school has to be super-resourced when the same resourcing is not coming from home. I appreciate that. I am happy to see that there will be more resources. Will schools be fully resourced before the implementation of the leaving certificate reforms in those areas, particularly science?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_236">The approach we are trying to take with science is to do it on a rolling basis. The Deputy asked when we would be done. In truth, and going back to an earlier question about it being more dynamic, we will probably never be completely done because as we get these through, we will be going to the rapid reviews as well. The five tranches-----</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_127">
+          <from>Deputy Jen Cummins<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_237">For those students who will be doing the 40% AACs, when will that be implemented? When will we see the leaving certificate changed in the sense that this is what is being taught, studied for and examined? When will that be fully implemented? I know the reviews and all that will happen, but-----</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_238">The students in fifth year now are the first cohort for the tranche 1 subjects. They will be doing their additional assessment component in, for example, the science subjects in early 2027 and will be sitting their leaving certificate in June 2027. That will be the first cohort, but it is five tranches over five years. The last group will be sitting their leaving certificate exams in 2031.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_129">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_239">I apologise to the witnesses. I have a committee clash on Thursday morning and I was chairing another committee. I read their opening statements with interest. I apologise if I am repeating any questions that were asked already.</p>
+          <p eId="para_240"> My first question for the Department relates to transition. I am probably showing my age by saying mine was the first year in my secondary school that did transition year. It was hugely beneficial and positive. We did the trip abroad, the mini company and the Young Scientist Exhibition. That was it but it was hugely positive. There were only about 25 of us who did it and it was all based on our age. We were just going to be too young leaving school and so we did transition year. In the years that have followed, we have seen how many other benefits there are to transition year. LCA as modules is a very definite outcome. Is this transition year programme statement like that or is it really left to the school to shape the transition year programme? It is important to have a set structure for it.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_241">I am showing my age by saying that transition year was not even available in my school when I was there. Transition year is a very valuable programme and we discussed it earlier. It is done by about 80% of students and has been increasing year on year, which is great. We are trying to unlock challenges where there are challenges for schools that want to offer more. Practically every school offers transition year to at least some of their students but they cannot always offer it to all of their students. We are trying to find ways to support them to unlock that bit.</p>
+          <p eId="para_242"> In response to the Deputy's question, it remains a school-based programme. The NCCA published a transition year programme statement in 2024. There was a renewal of that and my colleagues can talk in more detail about certain aspects of that, but essentially it is still a school-based programme. In a way, there is a huge richness and value in that because not all schools are the same and the students in those schools are not all the same. They want a range of things offered to students allowing them to choose to emphasise and focus on different things.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_131">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_243">My second question relates to communication. It is a tale as old as time when something is changing in any workplace, employees can be upset and not too keen for change. We have seen it in the education system time and time again where changes are being made and what we hear is that teachers are not being communicated with and they are not being trained. I am not surprised to see English and accounting being delayed. Mr. Tattan spoke about provision of equipment and money, but what about provision of that early engagement with the principals, teachers and unions to avoid the kinds of scenarios we are having now? It is not English and accountancy that our offices are being contacted about and I imagine it is the same for everyone. I do not know what those changes are and so I am saying that people should wait and see. If we are announcing changes, they should be clear to parents and teachers.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_244">I might start and then Mr. Kenny might come in. I take the Deputy's point that it is probably not English and accounting that she is being contacted on. However, those are examples of where we have listened. There are some implementation aspects on both those subjects that need a bit more thinking through. We have talked about how it can take quite some time for curriculum change to happen, but we want to advance it. We are receptive to people making arguments as to why something needs more time and consideration. The structures we have, including our partners forum chaired by our former chief inspector, allow some of those issues to bubble up and be discussed so we do not get caught by something by surprise.</p>
+          <p eId="para_245"> I ask Mr. Kenny to deal with the communication aspect.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Neville Kenny<recordedTime time="2025-10-16T11:20:00+01:00"/></from>
+          <p eId="para_246">Over the course of the 2024-25 school year, the previous school year, we responded to what we were hearing from teacher unions in particular but also other stakeholders including school leaders and parents. When we look at the full cycle, the NCCA developed the specification. It came to the Minister, who approved those specifications in the summer of 2024. They were published before schools returned last year. That was for subjects that were not going to be enacted and taught until just last month. That gave us the opportunity across the last school year to really engage on professional learning. As we heard earlier, our colleagues in the SEC produced assessment materials much earlier than was the case previously. Producing those materials was a direct response to what we were hearing from teachers through their representatives and from school leaders.</p>
+          <p eId="para_247"> We recognise that people could have asked why some of those subjects were in tranche 1 as opposed to later.</p>
+          <p eId="para_248">Part of the motivation regarding the tranche 1 subjects was that there had already been a lot of work done in NCCA structures about redeveloping those specifications before the announcement of senior cycle redevelopment, but they were there because they were not subjects with additional components. They met both of those criteria. With those subjects, we were conscious that when we looked at the full cycle, we produced the specifications in the first instance. We then took time to plan and prepare with schools and teachers before introducing them into the schools. It is not that we put them live last month and ended or cut loose and do not provide support. Our colleagues in Oide in particular are focusing this year, in terms of some those tranche 1 subjects, on ensuring that teachers are more comfortable with the changed assessment arrangements, but not just on those aspects. It is a continuum. Deputy Cummins asked when we will be done. It is a continuum of support that has to be there. She mentioned that it is not necessarily English and accounting she is getting the most contact on. I suggest that is because we were able to reflect and look at the innovation coming through there. If you look at how accounting and English will be assessed, there is real innovation. We recognise we have to plan, work with schools and ensure teachers and school leaders are ready so students have the improved experience we have spoken about.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_249">That concludes questions from members. We first go to the Department of education for an additional three minutes if they wish to provide any answers or make any comments in conclusion.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_250">We thank the Cathaoirleach and committee members for their engagement today. We, too, find these meetings beneficial. There was a specific thing on guidance allocation to follow up. We will do that. In summary, and to reflect on the conversation, some of the key takeaways for me was that there was a strong welcome for the level 1 and level 2 programme, which we have been keen on. It is great that the SEC is doing the certification. We felt that was an important aspect of it. I also thought I heard a welcome for the intent to move away from what may have been a disproportionate emphasis on the traditional exams as we all remember them and know them. There is also the importance of being more dynamic in the curriculum change. That has come through in different ways during the course of the morning. There is also the value of transition year. We are continuing to do analysis work on transition year to try to ensure we facilitate all schools in offering transition year to as many students as they possibly can.</p>
+          <p eId="para_251"> We spoke about why the 40% is there on the AACs and the importance of facilities to support that, which we accept, and we are seeking to find ways to do that through the capital programme we have, but also through current funding. Naturally, there are concerns about AI. The SEC are talked a bit about that and the course work rules it is working on to consolidate at the moment.</p>
+          <p eId="para_252"> I should have touched on ISL a bit more, but I know my NCCA colleagues talked about it. There is a programme for Government commitment on ISL. It is great to see the work on that advancing.</p>
+          <p eId="para_253"> I touched on the guidance as it came up in a couple of different ways. I will follow up the Senator's question about that, and the importance of inclusiveness. The Cathaoirleach made that point about the leaving certificate and the senior cycle being for all. That was a cornerstone when the announcement was made by the then Minister, Deputy Foley.</p>
+          <p eId="para_254"> The amount of resource hours at junior cycle was also mentioned. We will reflect on and think about that in the context of the junior cycle work we have.</p>
+          <p eId="para_255"> Another point was on access to third level, which came up from a number of committee members. We do not have responsibility for access to third level. That is a choice higher education institutions make in how they organise themselves. There are some advantages associated with it but there are disadvantages too and there is undoubtedly stress for students in what is a high-stakes event.</p>
+          <p eId="para_256"> A point came through toward the end of the conversation about buy-in. We are making a lot of strides and efforts in the area of communication and about engaging. We engage through various representative groups and the structures we have in different ways. We also seek to engage directly with teachers. We can never do enough of that, particularly in a change management programme like this. We will continue to reflect on that and seek to do more.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_257">I will not repeat the points made by Mr. Tattan. I will pick up on a few other points and provide clarifications. We earlier had a discussion with Senator Curley on Gaeilge, consultation and feedback. In addition to the points I made earlier, the development group did not consider the feedback from the consultation because the development group never met until now. It has been reconvened. That is just a point of clarification.</p>
+          <p eId="para_258"> I have another point, and I maybe should have referenced this earlier. Deputy O'Rourke asked me about listening to teachers and development group members in particular. I omitted to say that we have a formative evaluation under way. This is the second school year in which it is taking place. We essentially have three experts in the field of curriculum development. We have one from the Netherlands, one from Scotland and one from here. They are observing and reflecting on the entire curriculum development process from the beginning of the establishment of a development group to the conclusion of the work of a development group. Their findings, analysis and observations are already shaping how we work with development groups. That is important to note in the context of the points made earlier.</p>
+          <p eId="para_259"> I will touch on another point, which is an overall reflection. Deputy Cummins mentioned that at the end of the day this is about students, a love of learning and instilling and nurturing and encouraging that. That certainly speaks to the shared vision and purpose that came out of the review of senior cycle. First, the thousands of people who took part in that review spoke about the important of a redeveloped senior cycle supporting the development of the whole person. That obviously includes the academic but is much more than that. That is central to our work. I spoke about the template being guided by that vision.</p>
+          <p eId="para_260"> Before I pass to Mr. Slattery, who will add some figures to this, I reiterate my earlier point. We work really closely with teachers, school leaders and students in every part of the redevelopment of senior cycle. Mr. Slattery has some statistics to share as well as picking up on the pathways work that we mentioned, which speaks to a lot of the overarching points made this morning.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Barry Slattery<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_261">Approximately half of the budget we allocate to the curriculum development process goes to directly engaging with teachers at different stages of the process. Since March 2022 we have visited over one third of the schools to hear their insights on the curriculum and get their perspective on draft curriculum specifications. In 2024, we met directly with 700 teachers, but we also received feedback through other means through 200 different output submissions to online surveys. We also redeveloped the website so every subject has a page to which teachers can go to be updated on everything that happened at the previous development group meeting, and through to all the documentation on consultation material, etc. That is all in response to keep people informed and involved as much as possible.</p>
+          <p eId="para_262"> I mentioned pathways earlier and I will illustrate how that engagement with schools works. We are working directly with 14 schools, and we are working directly with them from the beginning. It is not to bring ideas to the schools, but to generate the ideas for how students’ pathways can be structured in senior cycle. We hope that whatever policy advice emerges from this work, which will hopefully be something we can bring to public consultation next year, will be grounded in the realities of what is happening in the schools. There are pathways teams in schools now, comprising teachers, students, career guidance counsellors, school leaders and managers developing the ideas that will inform the policy advice we will generate at the end of that.</p>
+          <p eId="para_263"> If I can have one second on the CAO-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:30:00+01:00"/></from>
+          <p eId="para_264">I know what it is like for leaving cert students looking at the clock ticking down.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Barry Slattery<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_265">I have applied for additional time. We could pilot that here. The influence of the CAO was referenced many times in the review. There are various perspectives to it, some good and some bad. However, one third of students who undertake the leaving certificate do not use it. Some 5% of students cannot even avail of it. That feedback also has to be considered. It is also worth bearing in mind that, in countries where there are not external exams, there tends to be separate entry exams for higher education. That can lead to a lot of challenges and inequality as well. I can share with the group OECD studies from 2018 and 2024 that illustrate the negative impact this has. In these countries, families have to pay extra tuition fees to prepare students for those entry exams. On the surface, it seems there is an issue with the CAO but decoupling from it would create a whole list of other issues that we do not have to deal with right now because of the system that is in place. I am not defending the system but there are two sides to the argument.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_266">I thank Mr. Slattery for that explanation.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Ms Andrea Feeney<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_267">Senior cycle redevelopment is the core strategic pillar for the State Examinations Commission. We have been working collaboratively with colleagues here and with Oide, the teaching professional learning service, to provide information in relation to assessment in the training they are providing to teachers. Communication was focused on very heavily in the engagement with the committee today. We are doing things we have not done previously. We are bringing forward the timeline for the issue of sample papers, increasing the number of sample papers we are providing and issuing sample briefs at a much earlier point in time. </p>
+          <p eId="para_268"> I will pick up on Deputy Coppinger's statement that these are just booklets. That does not cover the totality of what we are trying to assess, which are the fundamental skills and learning outcomes within the specification. They are not just booklets. They are booklets that contain the work of students, work that they have completed over a period in the classroom as they engage in rich learning and provide their work against the brief they have been asked to fulfil. They are not just booklets. A lot of innovative approaches to assessment are contained within them. Some of them include videos or still images as well as written text. They are grounded in research. To take the three science subjects for example, the AACs in these subjects are practice investigations. It is biology, chemistry or physics in practice and requires students to undertake research and provide feedback on that process. It is not just about booklets.</p>
+          <p eId="para_269"> I will also pick up on the issue of manageability. We have used the expression "manageability" because we are conscious of trading one cause of stress at the end, which is the examinations in June, for a more protracted approach to assessment over the course of the year. We have looked at that very intensively. We have looked at the timetable to see if assessment events can punctuate the course of the school year insofar as possible to spread the assessment load not only for students, but for the school authorities that have to manage the assessments and the State Examinations Commission with regard to this material being returned. </p>
+          <p eId="para_270"> There is no doubt that the focus on AI has amplified issues of academic integrity. To respond to Deputy O'Rourke's question on course work rules and procedures, we are heading into a period of engagement with stakeholders and are planning to issue the consolidated course work rules and procedures after the mid-term break, when schools return from holidays. </p>
+          <p eId="para_271"> We are playing our part. The committee has heard a very comprehensive overview of the process of senior cycle redevelopment from the SEC, the NCCA and the Department. It is a hugely resource-intensive exercise but it is hugely rewarding for all who have been involved and it will ultimately be to the benefit of young people coming through the education system. We would all really like to see the outcome of that change sooner rather than later. I thank members for their time and attention today.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_272">Senator Curley missed his second contribution but I will let him in. It is now strictly three minutes because we need to get everyone wrapped up.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_143">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_273">I really appreciate the extra time. I am sorry that I missed my chance. I was dashing between the Taoiseach's engagement in the Seanad Chamber and this meeting. In Ms Feeney's opening statement, she mentioned that an assessment system "involves an optimal trade-off between validity, reliability and manageability". At a high level, I do not necessarily disagree with that. My question is mainly directed to Mr. Tattan. Where is the humanity? We are told that since 2009, there have been initial investigations, requests and pleas from the students, teachers and parents involved to bring extra time for students with dyslexia into the exam system. I am concerned that the SEC could pay a considerable sum for the review process only to be told what we already know. As a teacher, I have taught students with dyslexia. At our previous meeting, we heard from Ms Sive O'Brien from Our Lady’s Bower Secondary School in Athlone. The dogs in the street know that students with dyslexia need extra time. The example I would give is the standard practice at third level where the research takes place. It is standard in exams at third level for students with dyslexia to be given an extra ten minutes per hour. I have one quick and very simple question. Do Mr. Tattan and the Department of Education and Youth stand over what the SEC is about to undertake, that is, a review process that has been sent out to tender and that could cost the taxpayer a considerable amount?</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_274">If the question is whether I stand over what the SEC is doing, yes, I do.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_145">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_275">Mr. Tattan stands over that.</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_276">I do.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_147">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_277">I think there is a major problem with decision-making processes in this country. In a lot of cases, considerable amounts are thrown at questions when we already have the answers. We have the answers when third level colleges give an extra ten minutes per hour or part of an hour to students with dyslexia in exams as standard practice. That happens across the board. It does not matter whether the student has a scribe or not. In the second level education system, if students have a scribe, they may, as Ms Feeney said, get extra time in an exam but not all second level students in 2026 will. I will make one final point.</p>
+          <p eId="para_278"> A pilot programme is to be undertaken this year. If I was a parent of a student with dyslexia whose school was not in the pilot, I would question the credibility of the exam because my son or daughter did not get extra time in an exam while other students did. That is just an overall comment. We need to revisit this and have a look at the decision the SEC may be about to take. I urge that for the credibility of exams and because of my overall care for taxpayers' money and the fact that I can tell Mr. Tattan straight out that these students do need extra time to reduce their stress. It has also been mentioned to me that they need a reduced number of questions. The question of extra time for exams is just a no-brainer, however. I really wonder where the money for these reviews and reports comes from. It is taxpayers' money.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_279">I do not know whether Ms Feeney wants to come in on the pilot. As the Deputy knows, the SEC provides a huge range of supports through the RACE scheme. The commission also has a national responsibility to certify examinations. These are high-stakes examinations. We have talked about the fact that two thirds of students use them to-----</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_149">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_280">Will Mr. Tattan comment on where the humanity comes into it, if he does not mind?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_281">I see humanity in the SEC's system. Ms Feeney will correct me if I am wrong but about 1 million assessment components are run through the State examinations system. A national organisation like that-----</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_151">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_282">Is it optimally humane to provide students with less time than advised by experts?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_283">The State Examinations Commission has been responding to things. Deferred examinations have been introduced in recent years. There are schemes for the visually impaired. We cannot say that the SEC has not been responsive to needs that have arisen. It is engaging on this issue. It is intended to introduce further change in 2026. To be fair, this is a very big system and everybody relies on it.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_153">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_284">As a final point-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_154">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_285">No, I am sorry.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_155">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_286">Mr. Tattan said that the SEC responds.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_156">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_287">We are out of time.</p>
+        </speech>
+        <speech by="#ShaneCurley" eId="spk_157">
+          <from>Senator Shane Curley<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_288">It has taken 17 years to review this.</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_289">That is not a fair comment.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_159">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_290">I thank the Cathaoirleach for accommodating me. I had another committee meeting and another meeting so I have not heard any of the discussion. I apologise if I go back over ground that has been covered. I only have two minutes and 45 seconds. I will ask about teachers' feedback on the reform, the consultation that has taken place and the amount of classroom time provided for individual science subjects. It has been estimated to be 20 hours of work but, in reality, teachers are saying it could be three or four times that. Where is that at present in relation to consultation with teachers and reform?</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Dalton Tattan<recordedTime time="2025-10-16T11:40:00+01:00"/></from>
+          <p eId="para_291">My colleagues from the NCCA may want to talk about the 20 hours because that can cause some confusion.</p>
+          <p eId="para_292">The specifications for the science subjects are approved. It is in tranche 1. For physics, chemistry and biology, they started in September. The additional assessment component, AAC, guidance in relation to those subjects was published late last year. A sample brief on the AACs in relation to those subjects was published just recently. The live briefs will show in early 2026. There will be first admission some time in early 2027. In terms of the 20-hours piece, the NCCA might be best placed to answer.</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Ms Arlene Forster<recordedTime time="2025-10-16T11:50:00+01:00"/></from>
+          <p eId="para_293">The 20 hours that are referenced in the specification is in terms of the time it is estimated for a young person to complete the additional assessment component. That number of hours would have been arrived at through discussion within the development group itself, which includes a number of teachers. The draft specification would also have been out for public consultation and a considerable amount of feedback was gathered through public consultation. That, in turn, was incorporated into the finalisation of the specification. As Mr. Tattan has said, the specification is finalised and approved. It is out and teachers are actively working with it.</p>
+          <p eId="para_294"> One of the pieces of work that follows after a new specification is introduced has to do with how the NCCA has a practice of carrying out early enactment reviews, where we essentially check back in with teachers, school leaders and students on their experience of the new specification. We will be doing that. As part of the support measures that the Department developed in consultation with the teacher unions earlier this year, one of those commitments in the support measures, which have been accepted by TUI, is to carry out rapid reviews. There is a commitment in the case of the science specifications to complete those rapid reviews by quarter 2, or June 2028. No doubt, we will probably hear about things. There will be feedback on time. We will consider that feedback and look to see what adjustments, if any, need to be made to the specification. There is a commitment to include a time audit as part of those rapid reviews as well.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_162">
+          <from>Deputy Emer Currie<recordedTime time="2025-10-16T11:50:00+01:00"/></from>
+          <p eId="para_295">There is space for adjustment and review.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_163">
+          <from> An Cathaoirleach<recordedTime time="2025-10-16T11:50:00+01:00"/></from>
+          <p eId="para_296">On behalf of the committee, I thank the Department of education, the NCCA and the SEC for being here this morning and for their testimony. I thank members for their contributions. I thank the secretariat, as always, for piecing this whole meeting together. I also thank the technical team that supported the room with audiovisual support throughout this meeting.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee adjourned at 11.53 a.m. until 12.30 p.m. on Wednesday, 22 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

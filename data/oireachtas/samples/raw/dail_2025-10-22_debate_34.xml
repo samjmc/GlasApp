@@ -1,0 +1,775 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-22/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-22/debate"/>
+          <FRBRdate date="2025-10-22" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_disability_matters"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-22/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-22/debate/mul@"/>
+          <FRBRdate date="2025-10-22" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-22/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-22/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-25" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM NITHE A BHAINEANN LE MÍCHUMAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Disability Matters</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-22">Dé Céadaoin, 22 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-22">Wednesday, 22 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichealCarrigy">Micheál Carrigy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MartinConway">Martin Conway,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#GillianToole">Gillian Toole.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Senator Maria Byrne.</summary>
+          <summary eId="sum_5">I láthair / In attendance: Deputy Michael Cahill.</summary>
+          <summary eId="sum_6">
+            <person as="#Chair" refersTo="#MauriceQuinlivan">Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Participation in Community Life for Persons with Disabilities: Discussion<recordedTime time="2025-10-22T09:30:00+01:00"/></heading>
+        <speech by="#MauriceQuinlivan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T09:30:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Deputies Seamus Healy and Liam Quaide and Senators Nikki Bradley and Maria Byrne. The purpose of today's meeting is to discuss participation in community life for persons with disabilities. On behalf of the committee, I extend a warm welcome to: Mr. Paul McDermott, director for high performance and national governing bodies, and Ms Geraldine McTavish, disability in sport lead, of Sport Ireland; Mr. Kevin O'Brien, head of operations, of Variety - the Children's Charity of Ireland; and Mr. Jimmy D'Arcy, community and health manager, and Louise Keane, national equity, diversity and inclusion officer, of the GAA.</p>
+          <p eId="para_13"> Before we begin, as is always the case, I will read out the note on privilege and parliamentary housekeeping matters. All witnesses present are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction that may be given. The evidence of witnesses physically present or who give evidence from within the parliamentary precincts is protected pursuant to both the Constitution and statute by absolute privilege.</p>
+          <p eId="para_14"> I remind Members of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. Members attending remotely must do so from within the precincts of Leinster House.</p>
+          <p eId="para_15"> I call on Ms McTavish to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T09:30:00+01:00"/></from>
+          <p eId="para_16">Gabhaim buíochas leis an gCathaoirleach agus le baill den choiste as an deis labhairt leo inniu. Is mór an phribhléid dom a bheith anseo chun plé a dhéanamh ar an obair a bhfuil Spórt Éireann ag tabhairt faoi ó thaobh rochtain do dhaoine faoi mhíchumas. On behalf of Sport Ireland, I thank the committee for having me here today to discuss our work on participation in community life for persons with disabilities.</p>
+          <p eId="para_17"> Sport Ireland is the non-regulatory statutory body with responsibility for the development of sport in Ireland. Under the Sport Ireland Act 2015, we are tasked with: developing participation in sport and high-performance sport; eliminating doping in sport; developing coaching; developing guidelines on the protection of children in sport; and developing the Sport Ireland campus. Sport Ireland's vision is an active Ireland where everyone can enjoy the lifelong benefits of sport and physical activity. Disability is a key pillar of our strategy, with disability inclusion at the forefront of initiatives.</p>
+          <p eId="para_18"> On that point, in November 2024, Sport Ireland published Disability Inclusion in Sport: Statement of Commitment and Action. The latter highlights five clear statements of commitment to change, namely communications, access, capacity and leadership across the key areas of funding, representation, education and facilities. My role as disability in sport lead for the organisation emerged from this plan and was developed to deliver upon the actions set out. There are more than 39 actions in the policy.</p>
+          <p eId="para_19"> By way of example as to how this role is progressing the area of disability in sport, since my appointment last February, we have engaged extensively with Departments, national governing bodies, NGBs, local sports partnerships, LSPs, and funded bodies to progress all areas of disability in sport. We have advanced accessibility audits through Active Disability Ireland, training on an e-learning portal and workshops and policy development, through the European Accessibility Act, the Irish Sign Language Act 2017 and the Irish language Act. We have supported major projects such as the vision impaired sports hub in Portlaoise, grassroots transitions with Paralympics Ireland and board development with Deaf Sport Ireland. We have also initiated disability research collaborations with the CP-Life Research Centre and the Council of Europe and co-designed disability education and training updates with Sport Ireland Coaching and Active Disability Ireland. This is just one way of demonstrating how Sport Ireland is acting on its commitment to people with disabilities in sport.</p>
+          <p eId="para_20"> Sport Ireland provides direct, regular financial support to over 100 sports organisations, including 65 NGBs, ten other funded bodies and 29 local sports partnerships. It is our ambition that LSPs and NGBs work collaboratively and with an integrated approach to service the whole community. This is delivered through multiple funding streams, including core, dormant accounts and European funding.</p>
+          <p eId="para_21"> Our work is led by research and data, and identifies the positive impact sport can have and where further work is required. In 2024, the Irish Sports Monitor found that 49% of the adult population regularly participated in sport. This represented more than a 2% increase since 2023.</p>
+          <p eId="para_22">However, active sports participation for people with disabilities is not growing at the same rate as that for people without disabilities, which is a concern for us. The disability gradient has increased to 22 percentage points, up from 20 percentage points in 2023. Despite significant investment in sport for people with disabilities, the disability gradient is increasing due to the growing number of older people with disabilities. There is a need for extensive partnerships and investment beyond the capacity of sport alone to address this issue.</p>
+          <p eId="para_23"> In collaboration with NGBs, local sports partnerships and other funded organisations, Sport Ireland has developed a range of programmes aimed at promoting accessibility and participation for individuals with disabilities. These initiatives provide meaningful opportunities for individuals and their families to engage in sports and physical activities, fostering social inclusion, personal development and community engagement. There are many examples across the sport sector of programmes and opportunities that have been adapted and designed to specifically support and enable participation by people with disabilities. If members are seeking further information about programmes available in their constituencies that are not covered in the briefing document shared with the committee and in the opening statement, please reach out and we will be happy to engage further on any questions. I am joined by my colleague Paul McDermott. We look forward to members' questions. Ultimately, Sport Ireland works to empower the sector to deliver targeted initiatives aimed at increasing participation across all cohorts of society, including those with disabilities.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T09:40:00+01:00"/></from>
+          <p eId="para_24">I invite Mr. O'Brien to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T09:40:00+01:00"/></from>
+          <p eId="para_25">Variety - the Children’s Charity of Ireland is an all-Ireland children’s charity established in Ireland in 1951. Our charity specialises in providing research-driven mobility and well-being programmes for children and young adults from across the disability spectrum.</p>
+          <p eId="para_26"> Mobility and well-being are essential for people with disabilities to live fulfilling, independent lives. Access to mobility aids, inclusive transportation and accessible environments empowers individuals to participate fully in education, employment and social activities. Enhancing mobility reduces isolation, promotes mental and physical health and fosters dignity and self-confidence. Well-being encompasses more than physical health. There are also emotional, social and psychological aspects involved. Supporting mobility and well-being through inclusive policies, community support and innovation creates equal opportunities for all. A society that prioritises accessibility ensures that people with disabilities can thrive, contribute meaningfully and enjoy the same rights and freedoms as others.</p>
+          <p eId="para_27"> One of the programmes we operate at Variety Ireland is our recycle mobility programme. This is an initiative set up by Variety Ireland in the summer of 2021 with the support of the then Minister of State, Anne Rabbitte, the Department of Children, Disability and Equality, the HSE and the then Minister for Transport, Eamon Ryan. The programme provides financial assistance for specially adapted mobility trikes to children with disabilities who cannot use conventional bicycles. In addition, there is an upcycling element that makes the programme fully sustainable because nothing goes to waste. Once a child has outgrown his or her adapted trike, the item is returned, refurbished or adapted and passed on to a school in order that even more people with mobility issues can enjoy equal access to cycling. It is important to recognise and thank the Minister for Children, Disability and Equality and the Minister of State, Deputy Naughton, the Minister for Transport and the Minister of State, Deputy Canney, and the HSE for their continued support for such a vital programme that changes the lives of people with mobility issues and their families. The recycle mobility programme supports inclusion and equal access to cycling for people with mobility issues. A report conducted by the Royal College of Surgeons in 2024 Ireland shows that our programme improved the mental and physical well-being of both the child or young adult and other family members by up to 87.5%. The programme brings families together for outdoor cycling activities.</p>
+          <p eId="para_28"> In 2024, with the support of the Department of Foreign Affairs, Variety Ireland launched our first our all-island disability cycling partnership. This initiative brought children from 12 special schools from both the North of Ireland and southern Ireland together in the peace park in Omagh where bikes were presented to each school. This allows students from each school to visit each other for cross-Border cycling activities. Not only do their special mobility trikes support inclusion and equal access to cycling for children with disabilities, which is good for their physical and mental well-being, they also create a new network for these groups to interact and develop long-term relationships as well as promoting peace, reconciliation, healing and understanding for children with disabilities in areas that have experienced division.</p>
+          <p eId="para_29"> In November, we will be launching Ireland’s first inclusion cycling centre of excellence in conjunction with Dublin and Dún Laoghaire Education and Training Board, South Dublin County Council, the HSE and the Departments of Transport and Children, Disability and Equality. This will support joint cycling and learning for both children and young adults with mobility issues. This centre, which is situated at Collinstown Park Sports Complex in Clondalkin, Dublin 22, will allow children and young adults with and without disabilities to learn and participate in safe cycling together. This supports inclusion and equal access to cycling. The charity is already planning a roll-out of this across other venues across Ireland in 2026 and 2027.</p>
+          <p eId="para_30"> Earlier this month, Variety partnered with Dublin GAA to roll out our very first All Stars Féile, which took place in Whitehall Colmcille GAA Club in north Dublin. As part of this event, we brought together children and young members with additional needs from 30 GAA clubs in Dublin for an afternoon of fun, sport and inclusion. This ensured that people from across the disability spectrum could be included in a range of activities and that no one was excluded. This is something Variety Ireland hopes to roll out with GAA clubs across the rest of Ireland in 2026.</p>
+          <p eId="para_31"> The Variety bee kind programme is a community-led initiative launched in January 2025 in Castlebar, County Mayo, under which over 60 community groups joined forces to plant 100 heritage apple trees in total. The project pivots around four guiding principles, namely "Bee kind to yourself", "Bee kind to others", "Bee kind to your community" and "Bee kind to nature". It engages groups across ages and abilities - including disability organisations, sports clubs, schools and cultural groups - bringing people together to embed social inclusion, connection and well-being through hands-on environmental action. Beyond the social dimension, the orchards provide food for wildlife and pollinators, create lasting community assets in the form of trees for local residents and inspire ongoing stewardship of nature. Our first cross-Border bee kind initiative will take place next month and will see community groups from Louth, County Down and County Armagh plant native Irish fruit trees.</p>
+          <p eId="para_32"> Variety holds triple lock charity status. It is one of the few registered charities in Ireland to operate under the supervision of a non-paid CEO or board members, who dedicate their time to the charity for free and without expense. This ensures that we maximise all funding to create programmes that support, inclusion, equal access, family, community and well-being for people across the disability spectrum . We at Variety Ireland have a saying, "It's not that people with additional needs are entitled to equality, it's that they actually deserve it." I thank the Cathaoirleach and members for allowing us to explain what we do.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T09:40:00+01:00"/></from>
+          <p eId="para_33">I now invite Mr. D'Arcy to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T09:40:00+01:00"/></from>
+          <p eId="para_34">I thank the committee for the invitation to speak on behalf of the GAA. It is a privilege to contribute to this important discussion on participation in community life for persons with disabilities. My name is Jimmy D'Arcy and I am community and health manager. I am joined by Ms. Louise Keane, GAA national equity, diversity and inclusion officer.</p>
+          <p eId="para_35"> At its core, the GAA is a community organisation. Every one of our clubs is embedded in local life providing a social hub, a sense of belonging and a platform for well-being. Whether through sport, cultural activity or volunteerism, our purpose remains the same, namely to strengthen communities and ensure that everyone has the opportunity to belong.</p>
+          <p eId="para_36">This commitment is captured in our manifesto, Where We All Belong, and our ongoing work to make Gaelic games accessible to all, regardless of background, age, gender, ability or any other characteristic or circumstance.</p>
+          <p eId="para_37"> One of the GAA’s most significant developments in recent years has been the growth of our GAA for All initiatives. GAA for All is the umbrella term under which our games-based inclusion programmes fall. These programmes create opportunities for persons with disabilities to participate fully in Gaelic games, whether through playing, coaching, volunteering or simply being part of their club community. A cornerstone of this work is our all-stars programme, which provides adapted, fun versions of Gaelic games for children and adults with disabilities. What began as a grassroots effort by parents has now grown into a national movement, with over 150 clubs having actively participated in the programme.</p>
+          <p eId="para_38"> In parallel, wheelchair hurling and camogie remain our principal competitive inclusive codes, with teams representing all provinces in the annual M Donnelly all-Ireland series as well as representing Ireland internationally in the upcoming international para floorball tournament in the Netherlands later this week.</p>
+          <p eId="para_39"> The M Donnelly GAA football for all programme, delivered in partnership with the Irish Special Schools Sports Council also supports inclusive participation for young people with mild to moderate learning difficulties to experience Gaelic games. Training and blitz days are organised regionally, culminating in an activity day of games in Croke Park each year for approximately 150-200 pupils from this network. </p>
+          <p eId="para_40"> GAA Cúl Camps remain one of the largest child sport promotion activities, with well over 100,000 children between the ages of six and 13 years participating annually. To make Cúl Camps as inclusive as possible, parents and guardians are asked to note whether their child requires any additional supports. As a result, many of our camps now facilitate involvement by participants with additional needs. More recently we have developed stand-alone inclusive Cúl Camps. These camps are designed to remove barriers, ensuring every child can experience the benefits of sport and community engagement.</p>
+          <p eId="para_41"> Despite significant progress, we recognise that barriers remain, particularly for people with disabilities and other seldom heard groups. A recurring challenge is that some individuals and communities may feel uncertain or hesitant about engaging, particularly if they have not previously seen themselves represented in GAA spaces. Our clubs are run entirely by volunteers and, although their commitment is extraordinary, they need support, training, and resources to make inclusion sustainable. To help address this, the GAA, alongside our sister organisations, has run a disability inclusion programme scheme to the value of €70,000 in 2025, with the support of dormant accounts funding. This has supported clubs to provide opportunities for persons within their communities to engage in Gaelic games. </p>
+          <p eId="para_42"> At national level, we have launched an accessibility audit pilot across county grounds in partnership with Age-Friendly Ireland. This is aimed at helping to identify gaps and plan improvements to physical infrastructure. A collaborative research effort evaluating the all-stars programme by Ulster University and the sport industry research centre has led to the development of a new all-stars programme coaching award. This qualification will guide volunteers through every stage of establishing and sustaining an inclusive all-stars programme. Our Irish Life GAA healthy club programme, now involving around one third of GAA clubs, provides a powerful framework for promoting inclusion, health and well-being in local communities. Many of the clubs delivering all-stars and other inclusive programmes began their inclusion journey through the healthy club programme initiative.</p>
+          <p eId="para_43"> The GAA will imminently launch its green club climate inclusion toolkit, designed to support clubs in engaging hard-to-reach groups through responses to climate change and developing community resilience. The toolkit provides practical guidance for breaking down barriers and ensuring that all members can contribute to the development and implementation of local sustainability and club strategies.</p>
+          <p eId="para_44"> Looking forward, the GAA is currently developing a national equity, diversity and inclusion strategy which will set a clear roadmap for embedding inclusion, including disability inclusion, across all areas of the association. A central goal of the strategy is to embed equity, diversity and inclusion as a responsibility shared by everyone across the organisation. Education is a key pillar of that work. This year we are developing two new e-learning courses on inclusion and respectful participation, one designed for all members and volunteers, and another specifically for players who have breached inclusion-related rules. Alongside this, our new All Stars coaching resource and certificate will ensure that every club can access consistent, quality training to confidently deliver inclusive activities for persons with disabilities.</p>
+          <p eId="para_45"> Beyond the playing field, the GAA continues to play a vital role in promoting health, social inclusion and well-being. Programmes such as Ireland lights up have brought tens of thousands of people of all ages and abilities together for safe and inclusive community walks. Croke Park’s designation as an age-friendly stadium by the World Health Organization, WHO, and Age-Friendly Ireland demonstrates our commitment to accessibility and universal design, and this learning is now informing our broader facilities planning.</p>
+          <p eId="para_46"> The GAA is proud of the progress we have made, but we also acknowledge the scale of the work still to do. We are determined to make our clubs, our games and our communities truly accessible to all, not as a side project but as a central expression of who we are. We welcome the opportunity to collaborate with government and our partners across the sporting sector to remove barriers, share learning and strengthen the participation of persons with disabilities in all aspects of community life.</p>
+        </speech>
+        <summary eId="sum_7"><b> An Cathaoirleach: </b>I thank Mr. D'Arcy and invite members to ask their questions. I remind members to speak to the agenda items. </summary>
+        <speech by="#TomClonan" eId="spk_7">
+          <from>Senator Tom Clonan<recordedTime time="2025-10-22T09:50:00+01:00"/></from>
+          <p eId="para_47">Go raibh maith agat, Chair. I thank the witnesses for coming in and for the presentations. When my son was diagnosed with a neuromuscular disease he was 18 months old and the prognosis put to us was that he would be a wheelchair user. Obviously, that was very shocking and completely alters your sense of what will happen next. I was walking down Grafton Street afterwards and saw a guy in his 30s in a wheelchair and, as part of trying to adjust to the new reality, I asked if I could have a chat with him and told him about my son's diagnosis. I asked if he had any advice for me. He said one thing he found was that organisations that provide services for disabled citizens are fine but you are just another disabled person. He did not mean that disrespectfully. He said that if we could get our son involved in mainstream organisations, for want of a better word - this was 23 years ago - such as the boy scouts or whatever, they would wrap themselves around him and really support and scaffold him. What you do in terms of the variety, inclusion and equity - I am delighted to see Ms Keane uses that word in her title - is consistent with what that man told me 23 years ago. What the witnesses are doing is really invaluable.</p>
+          <p eId="para_48"> In Ireland, when we think about disability and sport it is a narrative that is dominated by things like the Special Olympics and Paralympians. Like the rest of us, the vast majority of disabled citizens do not compete. What is the access or gateway to physical culture for them, notwithstanding all the challenges they face? When I think of my adult kids, they participated in rugby and football at school and as they got older they moved away from that due to injury, work demands or study commitments and find themselves participating by going to the gym or whatever. We do not have the system of leisure centres like they do in Northern Ireland. Do gyms have any code or regulation around trying to get disabled citizens involved and make their facilities accessible? Disabled citizens do not necessarily want to exercise on their own or with each other; they would like to participate with everybody else. Is there something we could do there, in the witnesses' capacity?</p>
+          <p eId="para_49"> I think Ms McTavish said the participation rate for disabled citizens in sport was not increasing.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T09:50:00+01:00"/></from>
+          <p eId="para_50">It was increasing.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_9">
+          <from>Senator Tom Clonan<recordedTime time="2025-10-22T09:50:00+01:00"/></from>
+          <p eId="para_51">It was increasing; that is good. What are the principal barriers to participation for disabled citizens? What can we do, as public representatives, to help Ms McTavish in her mission for inclusivity, diversity and equity?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T09:50:00+01:00"/></from>
+          <p eId="para_52">I thank Senator Clonan for his question. When we look at participation for persons with disabilities in sport and physical activity, we look at where they began. As the Senator suggested, it is physical activity in gyms. Gyms have increased the number of people with disabilities in their membership. We have worked very closely with Active Disability Ireland, which has designed facility resources and guidelines for outdoor as well as indoor gyms. Active Disability Ireland has those toolkits for all facilities.</p>
+          <p eId="para_53">It also works very closely with local sports partnerships. We would see the first gateway for anyone with a disability is to begin at their local grassroots club. That could also be their local sports partnership initiative or participation.</p>
+          <p eId="para_54"> We have over 29 local sports partnerships who engage with community services, occupational therapists and physiotherapists. They engage with the local gym and are looking at adaptive equipment to put into the local gym. That is what active disability we are supporting. It is the training and education framework around the personnel in the gym to participate and it is also looking at how we can engage more services for people with disabilities coming into not only the local sports partnership clubs, but also to reach out to the Irish special schools. There is a cohort specifically looking at the Irish Special Schools Sports Council, which we work very closely with and give resources and training. We also give it funding to support programmes in the special schools. People can see the activities not only in their schools, but in their clubs and local gyms as well.</p>
+          <p eId="para_55"> We have seen those programmes grow. We are currently starting to work with CP-Life Research Centre, which does a lot of work in specific gym programmes and will be getting a pilot programme in the coming years to look at how we can encourage more people with disabilities to go to their local gym and to buddy up with a member in the gym, or we can recruit volunteers to support them while they are in the gym. These are projects we are currently working on.</p>
+          <p eId="para_56"> Through the local sports partnership we have seen many specific initiatives in gyms, clubs and other areas that we can work closely with. My colleague, Mr. McDermott, might have more to add.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Paul McDermott<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_57">I thank the committee for the questions. I think we agree that there are challenges in getting the number higher. The shared ambition of everybody is to increase the participation rates among people with disabilities. There are many barriers, including physical barriers in terms of transportation, equipment, the technical ability of coaches in sports and so on. It is a complex problem that requires complex interventions, and Ms McTavish and all our colleagues here are involved in different strands of trying to address it. We acknowledge it, we are working on it and investing it, and we understand the scale of the challenge.</p>
+          <p eId="para_58"> The Senator referenced our excellent colleagues in Paralympics Ireland and Special Olympics Ireland. I acknowledge the point he is making that not everyone-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_12">
+          <from>Senator Tom Clonan<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_59">It is not a criticism.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Paul McDermott<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_60">No, it is not a criticism and it is very important to note that is our work. We work on every part of the spectrum in sport, from high performance down to participation in grassroots. It is important to acknowledge the excellent work those organisations have done to represent people with disabilities in sport. They show leadership and provide role models and pathways for people with disabilities who have that ambition to compete at international level.</p>
+          <p eId="para_61"> Paralympics Ireland was central to the development of the high-performance system in Ireland and has been an excellent agency. It has done brilliant work in representing Ireland internationally and providing not only opportunities for the individual athletes, but for the role models, and to demonstrate excellence in that world. That changes people. It not only creates opportunities for people with disabilities and creates role models but it changes the mind of the wider community about what sport for people with disabilities is. We all agree on the excellence of what Special Olympics Ireland has done for that community. It is a real leader and role model for how a Government body should deliver services, behave and act.</p>
+          <p eId="para_62"> There is room for all of these interventions. These are very complex problems and the barriers are many and complex. We have to have a variety of interventions to ensure we can remove those barriers. We are delighted to be here today to assure the committee that we are aware of the scale of the problem and we are trying to do it in a very inclusive way, working with partners. However, I acknowledge what the Senator said. It is not just for those people who choose to be competitive athletes. It is for every person with a disability.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_14">
+          <from>Senator Tom Clonan<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_63">I just want to say that, as a family, we have had very positive experiences with the GAA and Croke Park and, locally, our clubs are great. It is the community wrapping itself around people. Qualitatively, when things in disability can be quite challenging and bleak in many cases, what the witnesses' organisations provide is hugely positive.</p>
+          <p eId="para_64"> I have to go into the health committee, so forgive me for leaving in a little while, but I thank the witnesses.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_65">We will move on to Fine Gael's Deputy Keogh.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_16">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_66">Good morning and I thank everyone for being here. I join Senator Clonan in saying that, 20 years ago when I started out in this field - I worked mainly with neurodiverse students in early intervention, but also with many students with additional needs - there were not many places to look around. Even for some of my kids, it was difficult to access the groups engaging with Special Olympics Ireland. It is fantastic to see how far we have come and to see huge organisations like those of the witnesses' here today. </p>
+          <p eId="para_67"> I commend Variety Ireland. I was with the organisation in Manulla Football Club with Mayo Autism Camp when it got its most recent trike down there, and Castlebar where the bee kind project was rolled out, which would be in my constituency. It is really doing amazing work.</p>
+          <p eId="para_68"> I might start with a question for all the witnesses. Acknowledging there has been huge improvement, we are at a stage where we need to start moving away from how, in some places, it is still seen as "nice to do" or "nice to have" an inclusive programme for people with additional needs within your club or facility, or there are many adapted areas or adapted camps. We need to try to get to a stage where it becomes a mainstream responsibility for all clubs to not think of disability as an afterthought.</p>
+          <p eId="para_69"> I had a guy in my constituency clinic last week who was involved in road bowling and had been for his whole life. Like that, the club used to do road bowling and then it started to do a side day for people with disabilities. To fully integrate, the club then started running competitions where the teams were completely adapted. You have able and disabled people on the same team, both performing to the best of their ability, which is then full integration.</p>
+          <p eId="para_70"> How do the witnesses see us moving forward in that mindset of trying to get to full accessibility and integration where disabled people are seen as fully part of the club and not just something that the club is doing to be inclusive or that is nice to do? We might start with Sport Ireland. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_17">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_71">Who would like to come in there? </p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Geraldine McTavish<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_72">I thank the Deputy for the question. Since 2004, the new disability and inclusion in sport policy and that statement of commitment and action has given us a broader policy and guidelines on how to create those environments the Deputy is talking about. It is making sure that the language, the framework, the training and the education are around the sector, which is what that policy is delivering for us at present.</p>
+          <p eId="para_73"> Looking at the operational plan and many of the clubs and local sport partnerships, they all have their own mechanism of attracting the community. What we have found from the national governing bodies of sport is that they have created their own disability plans. With those, they are now working on key actions to make sure they are accessible and inclusive through terminology, initiatives and programmes but also through making sure their communication is accessible to people, from their websites to their apps. We are seeing the national governing bodies working on that area with their disability plans. We are also seeing the local sports partnerships rolling out through their operational plans.</p>
+          <p eId="para_74"> It is a pillar that runs through their whole strategic plan and is not something idle that stands alone. The Deputy complimented that in light of where we started, which may have been quite siloed. Now, it is being ingrained in the strategic plans, policy developments and engagement with other sectors. We are seeing that through pilot programmes with the HSE and different agencies. We are starting to see more and more of the integration, inclusion and making things more accessible. </p>
+          <p eId="para_75"> One of the programmes we have rolled out in recent years is the universal design for sport. We have been leading on that through Sport Ireland and down through the national governing bodies and LSPs, re-educating them on the universal design for sport. That has made our clubs and venues more accessible.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T10:00:00+01:00"/></from>
+          <p eId="para_76">The GAA traditionally would have been very competitive. You can even see it in our structures with knockouts and the best 15. In the past 20 years, we have adopted some best practice around player development pathways. In a general sense, that has led to more adapted games for younger age groups and for different stages of development, which has massively increased our participation at those age grades.</p>
+          <p eId="para_77">We are looking at the challenge that the Deputy referred to and at the EDI strategy that Ms Keane is leading out on to provide a framework to move forward. How a lot of things come to the mainstream in the GAA is when a club addresses a challenge it has and develops a solution. What the central council tries to do is shine a spotlight on that and show it to other units in the context of a way forward. That works very successfully for us through the framework of our healthy club programme. Generally, many of our facilities are quite dated. We have many facilities because of the structure of the organisation in every parish and county. An investment in upgrading those facilities to make them more accessible presents a significant challenge for us. It will be a primary barrier and solution to bringing more people into full integration.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Louise Keane<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_78">Mr. D'Arcy mentioned the strategy we are developing. A huge part of that and of what we are trying to get across with it is that EDI is everybody's responsibility. Sometimes when we talk about equity, diversity and inclusion, people get a little scared. If we can reframe that slightly, as in our manifesto, and show that it is really important in terms of where we all belong and changing it to being about belonging, compassion and kindness. If we can educate our members, from our staff at the top down to our volunteers on the ground, and bring that level of education to it, then it would be a core part of the strategy and the work we are trying to do in order to make it mainstream. There is a need to for both. It needs to be integrated and mainstream, but there is a need for those specific programmes as well. Making sure that everybody is aware of the responsibility that they have is a hugely important component.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_21">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_79">I thank the witnesses. I have to leave to go to Mayo, but I will have the proceedings on in the background as I travel.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_22">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_80">Cuirim fáilte roimh na finnéithe go léir. It is great to have everyone here. The whole idea for many of us is that sport is involvement in community. For some of us, it can be very competitive. Some of us would like to be more competitive than we are, but that is a different kettle of fish. I agree with Deputy Keogh. It is no shock that the GAA is here on a day like this, particularly on the basis of the all-star programme. I have seen High Five in boxing. We need to see that across the board, while also facilitating as many children and adults as possible into general participation.</p>
+          <p eId="para_81"> I will direct my questions to Mr. O'Brien. It is good to see him. Disability cycling is something that I fell into. Representatives from the Louth Disability Cycling Club are in the Gallery. Paul, Sandra, Daniel and Kevin are here. I have said it before, namely that Paul sort of volunteered me. Politicians will show up to anything. They will get in a picture for anything, but this was something that was particularly good. The club has been able to provide for a huge cohort of people. We are talking about adults and children, those with disabilities from the point of view of mobility issues, sometimes incredibly severe, right through to autistic children and those with intellectual disabilities. It was about making them comfortable. The club had certain disability bikes. Some required a pilot, such as a trishaw or whatever. In some cases, kids were able to move from these disability bikes to regular bikes. What the club created for parents was somewhere they could go that took them away from the battle in relation to services. The club was able to get something that was healthy and had involvement in the community. It has all been very positive.</p>
+          <p eId="para_82"> I will go to Mr. O'Brien because Louth Disability Cycling Club has worked almost hand in hand with him. It is about the mobility programme for individuals that they can get bikes, but it is also about creating sustainable disability groups. We know we have a battle there. We are engaging with Louth County Council and himself in the context of delivering it. What we need to see across the State is disability hubs, centres and homes for disability groups being put in place. We need to see groups like Louth Disability Cycling Club all across the country.</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_83">Variety put in place the first greenway disability cycling hub in County Mayo last year. People who visit the area on the greenway can access mobility bikes. More importantly, members of disability groups in local areas of Connacht can use the bikes and learn to cycle. It is about inclusion, having fun and seeing smiles on faces, as Deputy Ó Murchú said. We are working now. Louth Disability Cycling Club in Dundalk is probably the best disability cycling organisation in the country. The Deputy is blessed to have that. I know there are volunteers here today and we work closely with these guys who give up so much of their time. Deputy Ó Murchú gives up time as well to cycle with these people. He does not just talk the talk, he walks the walk. Well done to him.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_24">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_84">People would say I am doing that when there are other things I should be doing.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_85">No. The Deputy is out there cycling. It is important that inclusion is there for everyone. It is a getaway. People can get away from the day's strains, the pressures parents are under and everything else. The disability cycling hub we are planning to put in in Clondalkin is not just for people with disabilities. This goes back to the Deputy's question about how they can be included and brought together with able-bodied children and adults. It is an opportunity to cycle. We have put a lot of work into this special hub, which we are going to roll out across the rest of the country. It is bringing people with additional needs and mobility issues together. They can integrate and have fun. That is what this is about. It is freedom. It is fun. It should be exciting. It should not be a chore. That is what we push for at Variety. To go back to the partnership with Dublin GAA, as I said, it is about inclusion and coming up with these ideas. People who were in wheelchairs were there. They cannot actively play sport, but we had stuff for them there, along with people who were kicking or throwing balls. That was about them integrating. It was also a good time for parents to come together to talk and discuss. It is a breathing space for these people.</p>
+          <p eId="para_86"> We are only a small charity. We have not got the answers to everything else. We are very small and compact in what we do. We are good in what we do because we look at things. We partner with different organisations. The Government has been very good to us, particularly the Ministers, Deputies Foley and O'Brien, and the Ministers of State, Deputies Hildegarde Naughton and Seán Canney. The Ministers and the HSE especially listen to what we come up with. We like to put programmes together that are scientifically driven. We work with the Royal College of Surgeons. When we do come back and put programmes together, we can say is that value for money. For example, our recycle mobility programme report is due out next month.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_26">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_87">Mr. O'Brien should explain what that is to people and how it works.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:10:00+01:00"/></from>
+          <p eId="para_88">The recycle mobility programme is where people can apply to Variety for funding we receive from the HSE and the Departments of Transport and children. They can apply for a subsistence grant toward the cost of a special mobility bike for their child. Normally, that was up to the age of 18. We have actually removed the ceiling now. We are not going to exclude people. You cannot be ageist or whatever. People can apply for special mobility bikes. We will put subsistence in place. When the child outgrows that bike, we take it back, NCT it and pass it on to a special school in order that even more children can enjoy cycling together. This means that the child who is passing on their bike can go back into the system to apply for money for their next bike. It is not reinventing the wheel, but it is a sustainable programme that saves bikes from going to landfill or wherever. It is also environmentally friendly. It is also inclusion in schools and outside the classroom. The recycle mobility programme report that will be published next month will show that for every euro the Government invests in the programme, it is giving a five-euro return. That is a good return on investment. That is not just a one-off; it is year on year.</p>
+          <p eId="para_89"> The HSE and the Ministers have been magnificent in getting politicians to buy into programmes or whatever and to listen. They are listening now, because it is scientifically driven. You cannot argue with science. They are engaging. After today's meeting, we will be travelling to Galway to meet the Minister, Deputy Foley, the Minister of State, Deputy Naughton and the HSE to present another special mobility bike. It is about getting people mobile. It should be fun.</p>
+          <p eId="para_90">We are not a huge charity but we pack a punch. We are there to help, not just children but also families, because this is a family thing. We are lucky. As I said, the event we did was fantastic. It was great to see so much come from it. There is a video going live tomorrow, with families down in Whitehall Colmcille GAA Club. We are going to do this with other clubs around Dublin as well. The GAA, as I said, is a fantastic organisation. We work with Dublin GAA. I have never worked with an organisation like it. I always say, "They are bigger than the Catholic Church." That is what we do.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_91">I thank Deputy Ó Murchú. His time is up. The next speaker is Fianna Fáil's Deputy Martin Daly.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_29">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_92">Thanks very much. I apologise that I was not here for the opening statements. I am also a member of the health committee and was attending its meeting. I thank the witnesses for being here. I appreciate it.</p>
+          <p eId="para_93"> I have participated in sport. I have been involved with the GAA as a medical team doctor for the past 30 years. I am giving away my age now. I have also been involved with my local rugby club and in athletics.</p>
+          <p eId="para_94"> While we can have national policies and strategies from the Government down to our sports organisations, much of what happens on the ground is community driven. It is often driven by parents who have either an interest or a need in their own families. They may have a child living with disability who they want to participate. As the witnesses pointed out, all the same benefits that pertain to someone who does not live with disability are there for the person who lives with it. It is about mental health, physical health and the sense of community.</p>
+          <p eId="para_95"> Creggs rugby club in my area has developed an outstanding facility in a small village in east Galway. This small junior club that was set up 50 years ago now has 76 dressing rooms which are fully compliant and fitted out - including in the context of shower areas - for people living with disability. The club has developed a relay system within its complex whereby people who are travelling with children who have a disability and need, for example, changing or shower facilities, and maybe stop off and have a cup of coffee, and they are designated on this network. I am sure our guests are aware of that system, but it just shows what can be done. It is driven by, in particular, Ger O'Dowd, who is a teacher down there, his brother and a very committed committee. It can be done. Our GAA clubs and other clubs are also pressing that button, but it is often driven by community, regardless of the number of policies we put into place.</p>
+          <p eId="para_96"> Where do the witnesses see this going? It is a big ask, because there are different levels and different types of disability. Certainly, during the summer, along with Ability West, Creggs rugby club ran the first camp of its kind in the west of Ireland for 12 children. I was in attendance on the day the Minister of State, Deputy Hildegarde Naughton, launched that initiative. It was good to see the relief of the parents at being able to drop off their children, go away and come back, knowing they were safe and were participating in a sporting activity that was appropriate to their needs. It was also good to see the joy of the volunteers, young and old, who came out and helped and also the joy on the faces of the children participating. Where do our guests see this model going? Are there going to be many different solutions on offer? It cannot be a case of one size fits all.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_97">It is definitely not one size fits all. In our own summer camp programme, the Cúl Camps, we have sought to ensure that there are opportunities for inclusion in a fully integrated way. It requires more training and more resources, and because the vast majority of our operation is volunteer led, that poses a particular challenge. Education has to happen on a cyclical basis whereby you train new volunteers repeatedly.</p>
+          <p eId="para_98"> The facilities challenge is very pertinent. As I said, many of our facilities are dated. Upgrading old facilities is, I would argue, more difficult than developing new facilities. There are lots of challenges in that regard. We are looking at both integrated inclusive models and, as Ms Keane said, specific programmes for people with different needs as well.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_31">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_99">I thank Mr. D'Arcy.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_100">I know Creggs well. We were down there on the day.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_33">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_101">Were you? Did we meet?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_102">We put up the special mobility wheelchair bike-----</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_35">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_103">Brilliant, yes.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_104">-----touring down to Creggs. The work they are doing down there is magnificent.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_37">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_105">It is amazing to see.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_106">They are setting the bar very high.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_39">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_107">Very high.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_108">Very high. Ourselves and the IRFU put the sensory room in. We paid for the sensory room to go in down there in Creggs. That was good.</p>
+          <p eId="para_109"> As for whether there will ever be a one-size-fits-all approach, the answer is "No". We have to be patient because it is no good going in head first thinking that this is the solution. At Variety, we like to come up with solutions and work with scientific evidence behind. If you are going to corporate partners or you are going to the Government or whatever, it is nice to go with science. If they are going to put their name to it, you must remember that ultimately it is taxpayers' money that is involved.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_41">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_110">Sure.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_111">It is our money that we are putting into that to have research-driven programmes. It is a challenge for Sport Ireland and for any sports organisation, such as the FAI or the GAA, to come up with that. It takes time. I have seen the work they do in Creggs. It is worth a visit for any Minister.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_43">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_112">I was going to say it is, and Mr. O'Brien can testify to that.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_113">Yes.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_45">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_114">By the way, I am for the GAA, soccer and any other sport. I am multidenominational, but Creggs is a particular example of what can be done. I will be guided by Mr. O'Brien's opinion. Would it be worthwhile for the committee to visit Creggs? Are the facilities of that standard?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_115">I would highly recommend that you go down to Creggs.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_47">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_116">We will certainly discuss that in our private session later on. We will definitely take that on board. Ms McTavish wanted to come in.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_117">I thank the Deputy so much for that question. It is the vision of Sport Ireland, the board and the executive that participation is for all and that is across the sector. We have seen that in previous organisations trying to make sure that everyone is catered for.</p>
+          <p eId="para_118"> The challenge is that we are creating systems and we are creating initiatives and programmes to make sure we are meeting the needs of the individual. Much of the time we see everyone going out to the sector assessing the needs of the individuals in their club and we are seeing that process through a lot of the local sports partnerships and the national governing bodies of sport.</p>
+          <p eId="para_119"> To give the committee the background of myself working with Special Olympics for many years, the GAA for many years and other disability sectors, in bringing that piece together in the context of participation, we have to look internally and externally at how we can train ourselves, first, to remove our biases when we are looking at programmes and initiatives and, second, how we can develop and communicate better and co-design with people from the disability area. As was said, all the equipment is adapted. We need to adapt to the needs of the individual. We are starting to see that through our training frameworks.</p>
+          <p eId="para_120"> Sport Ireland is rolling out different initiatives and programmes, but also resources and funding. The smaller grants coming from our local sports partnerships to the clubs, such as Creggs in Galway and the rural clubs in Connemara that may not have the opportunities to get transport. The funds are going locally to the grassroots clubs. We are then seeing the capital programme.</p>
+          <p eId="para_121"> Through the Dormant Accounts Fund, we are able to fund four different steams. One is disability training and education, a second is disability initiatives and a third is disability capital for adapting that equipment.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_49">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_122">I thank Ms McTavish.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_123">We will now move on to the Labour slot and Senator Laura Harmon.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_51">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_124">I thank all here for their valuable and insightful contributions. This is an important discussion.</p>
+          <p eId="para_125"> I wanted to ask all of our guests if they have examples of international best practice or countries that they think are doing this very well in terms of the inclusion of people with disabilities in sport.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T10:20:00+01:00"/></from>
+          <p eId="para_126">I can come in on this. I thank the Senator so much for the question. Currently, we are looking to the European Disability Forum, which will give us great guidelines and direction across policies and frameworks. It will also give us specific guidelines on transport, accessibility, mobility issues and adaptable equipment.</p>
+          <p eId="para_127">We also look to our European counterparts. Ireland is quite a leader in this area. We are currently working on the sport for all project with the European Council and several other countries. That project is looking at how we can make the world we live in more accessible and, in making sure the European accessibility act is part of that, that our Internet and services are accessible for people with a disability living at home. This is so they can know where their closest club or local sports partnership is and can engage with people at their local level from their homes.</p>
+          <p eId="para_128"> Apart from the European projects we have been looking at, we have also been looking at the Global Disability Summit. That is an initiative that happens every four years. It is about the sharing of best practice that ties in with the UNHCR and the World Health Organization's global directives. In our European counterparts, the best practice we have seen is probably in Belgium and Switzerland. We have worked very closely with our counterparts in New Zealand and Wales as well. We are leading in some of these areas across some of the European projects we are currently running through.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Louise Keane<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_129">It is similar to what Ms McTavish said. With any of the programmes we are creating or developing, we are looking at what is happening internationally as well. For example, Mr. D'Arcy mentioned the all-star resource we are creating at the minute, which is both a coaching award but also a resource to support clubs in developing and starting our all-star programmes. We have taken a lot of guidance from New Zealand, which has a similar programme within its Australian rules football, AFL. We have got a lot of resources, information and guidance from that. In terms of our strategy, we are looking at what is happening in other countries in other sports. That is also informing what we are doing and how we are building our strategy. </p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_54">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_130">On the roll-outs for the inclusion cycling centre, are there plans to expand that outside Dublin, for example, to Cork or other areas?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_131">We are. The whole thing is about working with county councils and everything else. We are talking to Louth County Council at the moment, and Kerry as well. Basically, we want to do a conjunction thing. It should not all be just left down to national level and the Government. It should be public-private partnership as well. I do not want to mention any specific sites because then people will go crazy asking why they are not mentioned, but we have plans to roll out seven of these next year across Ireland.</p>
+          <p eId="para_132"> To go back to the Senator's previous question about charities and our recycle mobility programme, we are an international charity. We are a charity in Canada and a children's charity in Australia. We are rolling out the recycle mobility programme, which is our thing here in Ireland, and it is being adopted in America next year. That will be a win-win for us with an idea that was created here in Ireland to help kids in America, Australia and Canada. To answer the Senator's question, we will be rolling that out. I do not want to mention any specific sites yet. Louth is in there, which will keep Deputy Ó Murchú happy. Again, if any club or county deserves a thing, it is certainly Dundalk getting the second centre.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_56">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_133">I have some final questions for the GAA. Training for volunteers in terms of inclusivity was mentioned. How will that work on a day-to-day basis in how they can improve inclusivity in their actions? On the EDI strategy, what organisations are being consulted as part of that in terms of stakeholders?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Louise Keane<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_134">We are at the stage where we are developing the actions out of the strategy. Initially, we did research to help inform the strategy. We surveyed our members and we spoke to external bodies and to our staff, from national level down to staff who are working in our clubs. That has informed our strategy and given us a strong basis to start from.</p>
+          <p eId="para_135"> We currently have a variety of options for training. I run workshops across the year in a webinar format but we are also developing a series of e-learning courses as well. One of those directly relates to rule breach, but a second one is a general DEI e-learning course for our members. This is a modular based e-learning course that people can dip in and out of to find the topics and areas they feel are most relevant to them which they want to learn more about. The idea of that is it is our opportunity to educate our members in the easiest way for them. There is so much pressure on our volunteers at this stage. There are so many responsibilities and educational pieces coming from across our department. It is to make it as easy for them as possible that they can do it at a self-paced format. The idea is that is how we are bringing our education to them. </p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_136">I will add to that. In 2012, we took the initiative to develop an e-learning platform. Since that time, we have put a lot of investment into developing an integrated IT infrastructure, where all of our members can access those platforms. Their training is recorded and the best options for them are targeted at them. It is an important component of the education service we provide that the training people require is there at the right time they require it and is available to them on a multitude of devices, or through the phone or whatever. That is a big part of the training when you are trying to reach volunteers who are time-poor and need things to be provided to them when and where they have the opportunity to engage.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_59">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_137">Good morning, everybody, and welcome. Apologies for being late; I will be nipping out. I thank the witnesses so much for the opportunities they provide to people of all ages within communities and the opportunities they give volunteers to have a little bit of positive mental health in being involved in the giving-back process through volunteering.</p>
+          <p eId="para_138"> I have to commend in my area - I will be parochial - Cumann Lúthchleas Gael at Domhnach Seachnaill agus Ráth Tó for the Rockets and the fledgling group beginning in Dunshaughlin - there is another in Kilmessan - on the efforts they are making. Young Beth Monaghan from County Meath recently received her trike. There is no keeping her off the road now; she is absolutely flying. I also commend Meath Local Sports Partnership, and Mary Murphy and her team, on their can-do attitude and willingness to be involved.</p>
+          <p eId="para_139"> I have a couple of questions. I will try not to overlap or repeat what colleagues have asked. Is there any consideration for older people as well, maybe by linking up with the age friendly initiative? I know attendance at games is something that is being rolled out but is there a possibility the tricycle or rickshaw-type bicycle that is available could link with cycling clubs? This is where the volunteers from cycling clubs might take charge of the rickshaw and go to the local nursing homes. Is there scope for anything like that?</p>
+          <p eId="para_140"> Does alternative respite feature in the work the organisations are already doing, with support from the HSE? Is the involvement in inclusive sport something that comes up for discussion under the heading of alternative respite? There is funding for that. No more than young people or older people getting a break from parents and siblings, likewise, when somebody is at their activity, that is a respite break for parents and siblings as well. That might be something of use.</p>
+          <p eId="para_141"> If each group represented were to do a SWOT analysis, what would that be for each of their groups? I note that facilities, volunteer numbers and training and education have been flagged already. Moving through each of the three groups present, what would their SWOT analysis be? It would provide learning for us and for our plan formation, if we are collaborating and co-operating.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_142">The questions are for all three groups. Who wants to go first?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T10:30:00+01:00"/></from>
+          <p eId="para_143">On SWOT analysis, I again emphasise our facilities because these are a massive challenge for clubs in terms of fundraising.</p>
+          <p eId="para_144">Luckily the sports capital grant - I am not sure what the new term for it is - now heavily emphasises both accessibility and inclusion, as well as responses to environmental impact. That should be more integrated into the application process for those grants and perhaps some guidance provided about how best to frame applications considering things like inclusion. That is coming from my own experience as the development officer for my own GAA club and applying for those grants. There is an opportunity there. It is not just an internal one but a collaborative one with Government. </p>
+          <p eId="para_145"> The healthy clubs programme has been a revelation within the GAA construct. Over a third of our clubs are now involved in it and social inclusion is a big pillar within that. That is definitely a strength. That settings-based approach to implementing health initiatives would definitely be a strength. We are seeing that programmes like that, and its sister programme, the GAA green club programme, which is helping our clubs build community resilience and respond to climate change, are bringing in new and more diverse groups to our construct. Those perspectives are helping us develop empathy for seldom-heard groups and disabled persons within our communities and that is a real strength. If we had the resources, it is a programme that would be taken on board by every club. I suggest there is an opportunity there also.</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_146">Resources is the word. We could all do with more resources. From Variety's aspect and what we do, to mention respite I am leaving here today to go to Galway to present a special mobility trike for respite centres. That is what we try to do. We do not really provide services; we provide programmes. For us, collaboration is good. We work with different Departments and different organisations to get out there to drive as much inclusion as we can. This can be seen out in Meath where we presented trikes, the cycling clubs we will be introducing and even the bee kind project, which is bringing communities together. What is more important to us is happy smiling faces, integration and inclusion. People should never be judged on their disability; they should be judged on their ability to do things. That is where we are currently at with Variety and the programmes we are pushing out. We try to bring people together. The stuff we did with Dublin GAA two weeks ago was amazing. We had 30 clubs from Dublin all in one place. There were smiley happy faces - people in wheelchairs and people with additional needs. It was about the fun, the laughter and bringing the families together so that they could have fun. It was great. It was absolutely fantastic. That is where we are coming from. All organisations use resources. It is not only having the money but it is about what you do with the resources and being clever with them. As I said earlier on, research is always really good. If you are going to push for any type of funding you need to have it scientifically backed up. We went with the Royal College of Surgeons in Ireland for everything we do on this. It is great. </p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Paul McDermott<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_147">I thank the Deputy for the questions. On the SWOT analysis, we have touched on a lot of these topics. A real strength at the moment is that the sports sector in Ireland is really growing. Our governing bodies and sports partnerships are going from strength to strength. Organisations like the GAA but also rugby, soccer, athletics, swimming and sailing groups are major organisations in civil society now and they want to be involved in this. They are not resistant to mainstreaming and being involved in the disability sector. We find, as sport is growing and as these organisations become stronger voices in civil society, they are in agreement with what is happening. We are not saying anything that is out of step with our colleagues in sport. That is a real strength at the moment. </p>
+          <p eId="para_148"> Colleagues have referenced weaknesses. It is always about more resources. That is always good. Mr. D'Arcy has mentioned existing facilities. It is also about trying to retrofit existing facilities and address major issues. Sport can do it but facilities, transport, education and all of these things have to work together. That is a challenge. Regarding opportunity, we have talked to colleagues here who are doing excellent work. If we are talking about volunteers, this starts in the community. We are a national agency. It is about policy and resources and driving it down. Ultimately, the opportunity is that so many people who are volunteering at a local level really want to do this. We see it in every club. We certainly see it in my community on the northside of Dublin. The momentum is here. We are making changes and I hope we continue in that way. I do not want to speak about threats because the mood here is good. We are all on a page here. The world is changing in the right direction around this. There are excellent people in the room here today and the support from the committee is excellent but the wider community of sport is also in agreement here. We are not in the business of trying to convince anybody. There is a wider advocacy for people with disabilities within the sport sector, which we should find encouraging. </p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_149">To add some more specifics as well-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_65">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_150">Briefly. </p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_151">-----Dún Laoghaire-Rathdown County Council does a really good programme called the bike hub. It has accessible bikes but also has engaged volunteers to be the drivers. For people who are retired or who would like to volunteer, there is a whole booking system. We work with the organisation Age and Opportunity, the local sports partnership and then with Dún Laoghaire-Rathdown. It gives an option for the volunteer in that a bike can be booked in and out on the booking system but also that an older person can actually be the driver and volunteer as well. All those organisations from the men's sheds to all the different organisations could be pulled in to create a hub. </p>
+          <p eId="para_152"> On the networking and the interdepartmental interdependency, we also need to communicate a bit more across the sectors.</p>
+          <p eId="para_153"> A huge one that many of the individuals communicate to me is transport. Getting from their own homes to the activities is the first barrier. If they can do it in their own homes - online and all of that - it is great but having that social interaction and getting the person to the activity, to the school or to the club is a key barrier we need to look at as well. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_154">I thank the witnesses. We will move on to Fianna Fáil's Senator Margaret Murphy O'Mahony.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_68">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_155">I welcome the witnesses. Participation in community life for people with a disability - or for us all - is a subject I love. It is so important that people with a disability can live their best lives and be part of, and not feel less than within, a community. I thank the witnesses for the work they do. I have a question for each group. If the witnesses could keep their answers to about two minutes I will get through them all. </p>
+          <p eId="para_156"> First, I mention the GAA all-stars programme. Even the name is brilliant. There is a very strong programme in Bandon in my local GAA club every Saturday morning. The excitement is unreal from the participants, the helpers and the parents. There is such a buzz. It is a programme I love. What do Mr. D'Arcy and Ms Keane see as the biggest challenges clubs face in sustaining the inclusivity programmes? How can national policy help out? </p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Louise Keane<recordedTime time="2025-10-22T10:40:00+01:00"/></from>
+          <p eId="para_157">While sustaining the programme is a barrier, a lot of our clubs have done it incredibly well. A lot of it comes from the goodwill. People volunteer on that programme for a reason. I ran it myself in my own club in Naas and there is a real feel-good factor as a volunteer to be involved in that programme. That gives a huge amount of running power and sustainability to it. However, coach education is a huge part of it. A huge factor is making sure our coaches and volunteers are equipped to deliver the programme but also to deal with any situations that may arise. There is obviously a variety of needs within the members and the families who are participating so it is about being able to equip our volunteers to be able to deal with those situations. What we have learned from feedback is that a lot of our clubs find that having SNAs as volunteers is really helpful because they deal with those situations every day in the schools and have that experience.</p>
+          <p eId="para_158">A lot of our programmes work with transition year students and integrate them as coaches. We can give as much training and education as we can, but to have that older, more experienced person to be able to guide them with the experience and knowledge they have is invaluable.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_70">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_159">That cannot be beaten.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Louise Keane<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_160">Exactly, yes.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_72">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_161">My colleague Senator Harmon and others have raised the recycle mobility programme, which sounds great. Are there any policy changes or supports from Government level that could help spread it out all over the country, especially in rural areas? Can Mr. O'Brien from Variety Ireland see anything that could be done?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_162">We provide bikes all over Ireland. We have over 500 bikes out so far. People can apply online to us. They apply from Cork, where we have given out loads of bikes, to Donegal, and all over the country, so the programme does not target any specific area. We give them out all over the country. It does not matter if the person is in a rural area. In rural areas, people with additional mobility needs may need power to get the bike up hills, etc. They can also apply. People who apply through our programme can apply for the mobility bikes. They are free to go as long as the bikes are medical device regulation, MDR, approved, which means they are compliant with European standards. Anyone can apply. There used to be an age limit because we are a charity which helps children up to the age of 19. We have removed that from the programme now, so age does not matter. The age is not limited now. That is thanks to the HSE working, again, with the Minister, Deputy Foley, the Minister of State, Deputy Naughton, and the Minister for Transport. We have lifted that ceiling now so anyone can apply.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_74">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_163">Well done. We are all living longer and that includes people with a disability. How is Sport Ireland adapting its strategy to meet the needs of this demographic, namely, older people with a disability?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_164">I thank the Senator for her question. We work very closely with Age and Opportunity. It is one of our funding agencies and it rolls out programmes across the country, specifically targeting older demographics. We have 29 local support partnerships, and we also have a sports inclusion disability officer who has a specific remit to work with people with disabilities. The local partnerships run initiatives and co-ordinate programmes with the services. They are the link at grassroots and club level. We have just started a network of those groups. We had sports inclusion disability officers from national governing bodies, NGBs, and local sports partnerships come together last week for a networking event to identify the gaps and the resources and supports they need as sports inclusion disability officers. These key personnel on the ground at grassroots level are linking into local councils, and our grants, funding and resources, as well as into our NGBs for sport, progressing that, so we have personnel there who can support that work in the national governing bodies. We are seeing those hugely positive results with Sport Ireland as well.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Paul McDermott<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_165">We encourage all our governing bodies to have programmes to engage with the sector, but particularly for older people. For example, in golf they have a lot of programmes for people with a disability. They target people because individual sports involve more of a life-long participation. Also, people might be recovering from a health setback, and they are coming together under health groups and working with golf and golf clubs. The Senator is absolutely right to identify that. It is a very important need. There are gaps in participation, both for older people and for people with disability, and of course they compound when it is an older person with a disability. We work to identify that gap. As Ms McTavish stated, we are working with local sports partnerships and the national governing bodies. The Senator is right to identify this issue and it is one we are working with all our stakeholders to address.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_166">We move to a second round of questions. I call Deputy Ó Murchú.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_78">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_167">It is all about involvement and engagement. As we have all seen, this as very positive. It is about how we can facilitate as many people as possible. What resources need to be provided to facilitate people? We all know the projects that are working well, whether it is the High Five boxing academy or the all-star inclusive clubs programme. I have seen the work that Mr. O'Brien has done to facilitate groups like the Louth Disability Cycling Club. Gary Shiels, who was the chairperson of the Louth Disability Cycling Club, was a serious cycling fanatic and had a really serious accident that left him with huge mobility issues. I have seen Louth Disability Cycling Club facilitating him. That is alongside carers and all the rest. This is what I would have seen as complex stuff. I would have been afraid to touch it, from a health and safety point of view. However, I spoke to Gary Shiels afterwards and he said the organisation gives him a sense of purpose but, beyond that, it restored his ability to cycle and got him outside again, getting hit by the rain and all the stuff that had been removed from his life. This is the sort of positivity that can be provided by sport in general. We are talking turkey here in relation to what is needed. What is required? As much as Mr. O'Brien wants to say very nice things about the Government, what do we need to facilitate this as best we can?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Paul McDermott<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_168">Everything we are talking about requires resources. Mr. O'Brien mentioned a few minutes ago that additional resources need to be used appropriately. There is a lot of activity in this space. There are sports organisations, local sports partnerships, the Government, the likes of us, voluntary organisations and charities. What we need is the right strategic direction so people are working together. Additional resources are clearly required because when these organisations are mainstreaming people with disabilities and complex problems, resources are needed. It is about having the right plans and programmes, which work, and about us supporting them. We are taking a new approach, with Ms McTavish's appointment, to make sure that, strategically, we have plans and, operationally, we are going in the right direction. Then, as we build the programmes and understand the strategy better, and once we are working with the national organisations, the voluntary sector and all their excellent work, the ask for resources will come. However, our priority now is to make sure we are doing the right things. We agree with everything members have said. We understand the value and what we are trying to do is ensure the plans are right so that when the ask comes, we can stand over it. That is the approach we are taking.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_80">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_169">Due diligence so we can make the best bang for our buck.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Paul McDermott<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_170">Exactly.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_171">We are very grateful for the funding that we receive from the various Government Departments, but it is predominantly on an annual basis. Multi-annual funding would allow us to plan for expanding our initiatives. We spend a lot of time in this cyclical process of applying and drawing down funds, whereas if we had multi-annual funding, we could look forward into the future.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_83">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_172">That is what every community organisation will say. They are constantly chasing money. It will be chased down the wrong cul-de-sac at times and they are not doing what they could. If we could get multi-annual funding delivered, we would be in a far better place.</p>
+          <p eId="para_173"> Specifically on the GAA, we are talking about a voluntary organisation where a chairperson will be hammered if they cannot deliver a championship over a number of years. It is about trying to keep the volunteers who are, at times, people who become involved because their kids are involved. How can that be done, while also making sure it is as accessible as possible and while running programmes that kids with autism, for example, can enjoy and avail of?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_174">Is the question how do we sustain that?</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_85">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_175">How can both be sustained? At the end of the day, the GAA is always going to be a competitive sporting organisation that is based on volunteerism.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T10:50:00+01:00"/></from>
+          <p eId="para_176">The community identifies a need when there is a need within a community. GAA clubs are very adaptable and we find that they respond to that need.</p>
+          <p eId="para_177">We try to shine a spotlight where best practice is working and show other clubs that they can do this, too. That takes away the fear. That can be followed with education and training, in partnership with expert organisations. That is what we try to do through our community and health department.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_87">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_178">May I just-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_179">No, your time is up, Deputy. I am sorry. Deputy Toole, you have five minutes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_89">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_180">One would think there would be some element of flexibility from the Chair.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_90">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_181">You get it from me.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_91">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_182">I know.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_183">Everybody gets flexibility from me, Deputy.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_93">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_184">Keep manners on that lad. I have only one question. It is relevant to Variety and the GAA, in particular, but possibly from a policy perspective to Sport Ireland as well. In the important areas of Garda vetting and insurance, are there changes or improvements required? The greatest asset in the delivery of inclusive sport and activity is the strength of the volunteer cohort. There can be delays with Garda vetting, in particular, and that may limit the number of people who can help. There is then a knock-on effect on the number of participants who can be accommodated.</p>
+          <p eId="para_185"> On insurance, are there extra levies relating to the complexity of equipment? Is there a higher risk, or a perceived higher risk, for running activities? Perhaps that is totally irrelevant but I am asking to help us to plan as comprehensively as possible to assist the witnesses' organisations.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_186">I am not sure I have the information to respond adequately. Correct me if my understanding of Garda vetting is historical, but the requirement for vetting for each organisation or role is a very significant barrier. I call that out. For our healthy club programme, insurance is a challenge because we are trying to insure activities that do not traditionally fall under the banner of the relationship created in the first place. There are challenges there. Perhaps we need to consider insurance in a different way, based on the space or place. The idea of the GAA club becoming a hub that is more community-based than specifically a sporting place might be considered.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_187">I thank the Deputy for the question. We are seeing a lot of challenges coming through the Portlaoise sport hub. There are challenges around volunteering, insurance and equipment, and some of the adaptable equipment. We are considering how the sector can support volunteers. We are also looking to Volunteer Ireland to support us with some of its resources and to show us how it does its training and education and how it gets past the insurance side of things.</p>
+          <p eId="para_188"> It is crucial that safeguarding is constantly at the top of our governance. We also look at the safeguarding of our vulnerable adults and children. Currently, we in Sport Ireland are going through a policy and review of our safeguarding. We are also looking at vulnerable adults. That whole process is currently being undertaken. Once there is more information, I will happily share it with the Deputy.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_96">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_189">I apologise for being late. I was on Chair duty in the Dáil. I welcome the witnesses and thank them for the cross-organisation work that has been done heretofore. There is an awful lot more to do. We are starting from a point well behind. I know Ms McTavish in Sport Ireland is a strong advocate in this area. I know that more is going to be done while she is in that role. Well done on the work so far.</p>
+          <p eId="para_190"> I have a question for all the organisations. Have they the resources in place to implement what we need to do? As some of the witnesses will be aware, I am the Chairperson of the Joint Committee on Autism. The committee is doing review work on the report to see where we are, 24 months later, and what we have implemented. One of the key parts of the programme we did years ago in the committee related to awareness. We did an autism awareness project in Leinster House and over 1,000 people did the training through AsIAm. That will be replicated across other Government Departments now that we have done it here. What plans are required in the witnesses' organisations, non-governmental bodies and Sport Ireland to roll that out? People on the ground are lacking awareness and knowledge. I ask that particularly of the GAA. A couple us from the committee, AsIAm and the EDI officer here were involved with and met representatives of the GAA a number of years ago about sensory facilities. I welcome the work that was done following that meeting by Mr. Peter McKenna and the representatives before the committee today in developing a sensory area in the Cusack stand. It is accessible from the museum and to patrons in the Cusack stand. What further plans does the GAA have in that area? This was the first year of it. How did it work? What further plans has the GAA?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_191">I do not think we have a formal relationship with AsIAm at the moment but it is definitely on our radar. I met someone from the organisation at a networking event recently. That person reached out. Developing partnerships with expert organisations such as AsIAm is very much the strategy we follow in the community and health department to build our capacity to support clubs and units and to reach out to as many diverse groups as possible.</p>
+          <p eId="para_192"> On the sensory gardens and rooms, there are more and more units. There is now one in Breffni Park in Cavan. Through our green club programme, the idea of building these spaces, in some cases using recycled materials and other things, and bringing these diverse groups into the GAA grounds is resulting in different types of facilities being developed through initiatives by the clubs. Ms Keane is leading on an EDI strategy for the organisation. That strategy is going to have to look at these things and provide roadmaps and resources.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_98">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_193">The Gaelic for all programme is limited where it is. I know there is a fantastic example at Athlone GAA, which took it on a number of years ago. I know it put in significant resources from personnel and included one-on-one coaching, which is fantastic. What are the plans to roll that out across the country?</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Ms Louise Keane<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_194">I mentioned previously that we are currently developing a coaching award in line with our all-star programme. It will educate coaches and those who are co-ordinating the programme. It will also give a structure to setting up the programme so that we grow it across our whole club base. The Deputy mentioned the sensory room, and we have seen many clubs that are doing the all-star programme take the initiative to create a sensory room or garden close to where they are running the all-star programme. I was at the launch of one in Blessington recently. It is something that is coming quite naturally through our club base. It is something of which we are very conscious.</p>
+          <p eId="para_195"> Part of our strategy will be around visibility. The Deputy mentioned the awareness piece, which is incredibly important, as is making sure that we have case studies available to show clubs best practice and help them to do those things within their clubs.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Jimmy D'Arcy<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_196">The oversight of the implementation of the all-star programme has been moved to our games development department. It oversees the network of our full-time coaches. While we in community and health would have been involved in the development of the programme, it has now been passed to that network, which should support its expansion.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_197">I think Sport Ireland wanted to come in on a previous question from the Deputy.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T11:00:00+01:00"/></from>
+          <p eId="para_198">I thank the Deputy for the question. There are currently 29 sports inclusion disability officers in the local sports partnership across the country. They are our network of support at grassroots level for our initiatives and programmes. We are putting all our resources together in a networking forum to ensure we identify and resource the gaps.</p>
+          <p eId="para_199"> We are also creating a network of the 65 national governing bodies for sport. Many have a specific sports inclusion disability officer but if they do not have that support or resource in their national governing body, because some of them are volunteer-led, we bring them together as a collective to support each other.</p>
+          <p eId="para_200">That network was officially launched this year. All the funded bodies come together as a network to share knowledge, training and education and build networks and relationships so that they deliver good practice on the ground while supporting one another.</p>
+          <p eId="para_201"> The second part as regards resources looks at the autism strategy. We have two actions in the autism innovation strategy. Currently, we are working on autism training and support with Active Disability Ireland. Those workshops have been rolled out across the local sports partnerships and through the national governing bodies of sport. We also look at the autism-friendly towns in Dublin, Cork and Clonakilty. They have spread out, not only through various venues, but also clubs. We are looking at working closely with AsIAm on more of those.</p>
+          <p eId="para_202"> In the past year for phase 1 of the roll-out of the policy and the statement of commitment that Sport Ireland has, €1 million has come from the Government as a resource. We are looking to project what we will need in years 2 and 3. We are thankful for that resource and we hope to be able to build on that Government support. As everyone has mentioned, one-to-one resources are what are mainly needed for persons with disabilities and we need to take that into account.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_103">
+          <from>Deputy Michael Cahill<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_203">I welcome the witnesses. To participate in community life, the best place for a person with a disability to live is at home with their family and carers. With that, it creates another issue. For it to work, there has to be adequate respite. That is a huge problem in my county and it is obviously a problem in many other counties. We have two units in Kerry: one in Listowel, which is a four-bedroom unit, and one in Cahersiveen, which has two beds. It is actually a four-bedroom unit in Cahersiveen but only two beds are open, and they are not even open seven days a week. That is an issue as well.</p>
+          <p eId="para_204"> I have met the parents numerous times. They are really at their wits end. Many of them have not had a break in five, six or seven months. That is not good enough. It is bordering on criminal.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_205">In fairness, the Deputy is asking a question, he is allowed to and I do not mind him asking it, but none of these witnesses is equipped to answer it.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_105">
+          <from>Deputy Michael Cahill<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_206">There is a fabulous facility in the heart of mid-Kerry in Whitefield, Beaufort, in St. Mary of the Angels where you also have St. Francis Special School. There are a lot of facilities there. It was donated by the Doyle family many years ago for children with profound disabilities. They are all adults now. As they pass, they are not being replaced. There is a very good school there and there are existing services there. Will the witnesses' organisations make every effort? It is the obvious and ideal location for respite in the heart of the county. Many of the services are already there. There is plenty of development land there. Our goal should be to promote, develop, enhance and provide respite for the families of these children and adults. That is urgently required and it is obvious as night follows day. I am pleading here today at this meeting.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_207">I understand the Deputy's commitment to that issue but I do not expect any of the witnesses to answer that. They did not come here for that.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_208">We provide mobility equipment for children or adults in respite centres, like the one I am going to later on to present. That is what we do. However, I do not believe that the services involved are in the briefs of anyone here.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_209">That finishes round 2. Does anyone want to come back in for one minute? I am sure Deputy Ó Murchú will come in for a minute.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_109">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_210">We can be a bit more flexible than a minute, in fairness. Right, it is no-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_211">Deputy Carrigy is actually first if Deputy Ó Murchú wants to come back in later.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_111">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_212">No, go ahead.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_112">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_213">I much prefer Deputy Carrigy. I am better coming in later.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_113">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_214">I give way to Deputy Ó Murchú. He was in.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_114">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_215">All right. It is hardly shocking that people have spoken about the need to streamline Garda vetting and how public liability insurance is killing an awful lot of organisations. I get it. There is nobody here who can answer that. Groups might have to come together but, with the duty of care legislation, the feet of the insurance companies may need to be held to the fire. It is as simple as that.</p>
+          <p eId="para_216"> I know Variety is a small charity but it works with organisations like Louth Disability Cycling Club. What is the timeline for delivery of most of these central hubs? Are we talking about five or six years? What are we talking about?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_217">No, we are looking at a timeline of the next two years. They will start next year and following on in the next year. They are scientifically driven. We have to put two or three in and use that research to find out what is working and what is not working, and we can develop on from that.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_116">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_218">It will be in most counties at that stage.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_219">Yes, but we have to walk before we can run. Next year, we are hoping to roll out nine hubs.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_118">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_220">With regard to the recycle mobility programme, there is a sufficient amount of funding for that at the moment.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_221">Yes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_120">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_222">Does it need any more? The big one is making sure we have sustainable disability cycling groups. There will be a need for supports from the Government and local authorities for that.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Mr. Kevin O'Brien<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_223">The HSE and the Ministers have allocated extra funding for Variety for the recycle mobility programme. We have a target to deliver 150 bikes a year. These bikes can range from €3,000 up to €6,000 or €8,000. It all depends on the needs of the child or adult. The family have to put something in. We co-fund it and do the heavy lifting of looking after the bike itself.</p>
+          <p eId="para_224"> Previously, the Government was giving out bikes to anyone and everyone. They were leaving them on planes, trains and automobiles and there was no value in it. That was taxpayers' money they were using. These bikes have to go through a fire sale if the true value is not there. We record and know exactly who has a bike from across the whole spectrum. It could be from autism to Down's syndrome to cerebral palsy, CP. Anyone with a proven mobility issue can apply.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_122">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_225">Obviously, the supports for the disability cycling groups-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_226">The Deputy had one minute but was into his third.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_124">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_227">My question has to do with facilities. I know Ms McTavish mentioned the 29 officers based in the local sports partnerships, etc. They provide a great service. I know the work they do at home in Longford. What is the link between local authority management as regards accessible sporting facilities? Are there sufficient facilities across the country? I know there is a deficit of sporting infrastructure in general across certain sports but for sports that are specific to people with disabilities or different abilities, are there sufficient facilities on the ground? Is that link there with the local authorities when they are developing their local area plans or county development plans. Are we feeding into that?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T11:10:00+01:00"/></from>
+          <p eId="para_228">I thank the Deputy for that really good question. Now is a great time to talk about the Get Ireland Active website that Sport Ireland has rolled out in the past number of years. That Get Ireland Active website looks at accessible facilities, where your club is, where your trail head is, where your local swimming club is and where your local cycling club is. It gives an opportunity for anyone to get active. In the last picture on the brief that I provided to the committee, it showcases a map of Ireland and where the facilities are. It also shows the facilities that are accessible, which means they may have a ramp or a beach ramp to access the beach. They may have accessible toilets and may have accessible sports equipment. They may have accessible bikes.</p>
+          <p eId="para_229"> A lot of the work you can see happening through the local sports partnerships is through the local council.</p>
+          <p eId="para_230">Every local council has training on Get Ireland Active and they facilitate getting the data into that online portal. It is a website for everybody. Anyone in public society can go online and look at what is in their local area from the perspective of any sport or club, trail, outdoor walk, activity and gym. It is also being populated by our local councils, our national governing bodies of sport and our sports inclusion disability officers. It is giving us a picture of Ireland and what is accessible. It even has dog-friendly accessible maps on it as well. It is a specific platform that has been rolled out through Sport Ireland.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_126">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_231">Are we feeding into the county development plans as they are being developed?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Ger McTavish<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_232">This is feeding not only into county development plans but also into the local sports plans. It is actually being tied in. In the last year, local sports plans have been put together by every county. Previously, however, we only had county outdoor sports plans and facilities, whereas now we have local sports plans that everybody engages with in the community. There are consultations with the community, local-level organisations and sporting organisations. All those groups come together then to create a strategy for the local area. After that, we are looking at Get Ireland Active being constantly updated by the local council.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-10-22T11:20:00+01:00"/></from>
+          <p eId="para_233">I thank Ms McTavish. I thank Deputy Carrigy. This finishes our discussion. On the issue of multi-annual funding, it is raised by every committee and every group. We are all involved in different groups. I am a director of a local drug and alcohol forum. We do not know what we are doing from year to year, so multi-annual funding is important and needs to be addressed by the Government.</p>
+          <p eId="para_234"> I thank all the witnesses. I propose that we publish the opening statements on the committee’s website. Is that agreed? Agreed. I thank the witnesses for coming in. It was an important discussion. It was informative for me and I am sure for all the committee members. I propose that we now go into private session. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_8"> The joint committee went into private session at 11.22 a.m. and adjourned at 11.58 a.m. until 9.30 a.m. on Wednesday, 5 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

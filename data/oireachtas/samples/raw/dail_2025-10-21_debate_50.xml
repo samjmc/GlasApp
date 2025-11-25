@@ -1,0 +1,982 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-21/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-21/debate"/>
+          <FRBRdate date="2025-10-21" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-21/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-21/debate/mul@"/>
+          <FRBRdate date="2025-10-21" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-21/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-21/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-23" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="DeeRyan" href="/ie/oireachtas/member/id/Dee-Ryan.S.2025-01-29" showAs="Dee Ryan"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LynnRuane" href="/ie/oireachtas/member/id/Lynn-Ruane.S.2016-04-25" showAs="Lynn Ruane"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-21">Dé Máirt, 21 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-21">Tuesday, 21 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LynnRuane">Lynn Ruane</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GarethScahill">Gareth Scahill.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Artificial Intelligence and the State: Discussion<recordedTime time="2025-10-21T11:00:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T11:05:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Senators O'Donovan and Harmon. Deputy Ó Cearúil will join the meeting later this morning.</p>
+          <p eId="para_13"> This meeting is to continue our discussion of artificial intelligence, AI, and the State. The theme this morning concerns guidelines for the responsible use of artificial intelligence by the State. Last week, we heard from the Government chief information officer about how the State is exploring, and the Department of public expenditure is deploying, the use of AI in the delivery of public services.</p>
+          <p eId="para_14"> I welcoming the following witnesses: from the Irish Human Rights and Equality Commission, IHREC, Mr. Liam Herrick, chief commissioner, and Ms Rebecca Keatinge, head of monitoring and compliance; and from the Irish Council for Civil Liberties, ICCL, Dr. Kris Shrishak, senior fellow, and Mr. Joe O'Brien, executive director, who will join us shortly and who may know his way around these buildings.</p>
+          <p eId="para_15"> I invite Mr. Herrick, followed by Dr. Shrishak, to deliver their opening statements.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:05:00+01:00"/></from>
+          <p eId="para_16">I thank the Cathaoirleach and members of the committee for the invitation to appear before them. The Irish Human Rights and Equality Commission is Ireland's national human rights institution and its national equality body. We have a broad mandate to protect and promote human rights and equality.</p>
+          <p eId="para_17"> Advances in artificial intelligence come with opportunities but also with risks, many of them to human rights and equality. While Ireland and the EU will, of course, strive for competitiveness in the area of technological developments, Ireland's strategic priorities must also include building robust safeguards against harms, adapting and applying existing human rights and equality protections, and ensuring alignment with both domestic law and European Union standards. We must be wary of a self-interested antiregulation discourse that would strip away fundamental rights protection in the interests of corporate profits. Indeed, we have seen how such an approach has had disastrous consequences in other, parallel areas.</p>
+          <p eId="para_18"> There is a strong public appetite for effective regulation. Our 2025 polling found that 73% of people are concerned about the societal impacts of AI. Only 22% of Irish people believe the Government is effectively regulating technology companies to date. Furthermore, 68% expressed concern about the use of AI by the Government and public services. </p>
+          <p eId="para_19"> The Council of Europe's Framework Convention on Artificial Intelligence sets out core principles, including human dignity, individual autonomy, equality, privacy, accountability, reliability and safe innovation. AI systems that are designed and deployed throughout their life cycle in compliance with these principles have the potential to do good, including, for example, to significantly improve healthcare, widen access to justice, promote independent living for people living with disability and help to address complex global challenges, including the climate crisis. </p>
+          <p eId="para_20"> However, as we witness AI systems being integrated into daily life, we are also seeing clear impacts on rights, such as privacy, dignity, non-discrimination, education, work and access to justice. Specific concerns, which are already manifesting, include devastating impacts on children and young people in many instances, harmful stereotypes that are reinforced through media and online platforms, negative impacts on both youth and adult mental health, and impacts on the wider workforce, including socioeconomic discrimination. </p>
+          <p eId="para_21"> The risks associated with AI are not evenly distributed. Discriminatory outcomes are being documented across a range of protected characteristics, including gender, disability, race, family status and age. AI technology poses a variety of risks to children, ranging from radicalisation to social withdrawal. Large language models can replicate and amplify sexist and racist narratives in public discourse. AI is also being used to spread misinformation and hate more effectively than previously. </p>
+          <p eId="para_22"> Looking specifically at the area of disability, our disability advisory committee has highlighted the ableism embedded in many AI systems and raised concerns about discriminatory outcomes in education assessment tools and around the automation of services and supports, including in the area of mental health.</p>
+          <p eId="para_23">It is essential, then, that any approach to AI is intersectional and inclusive. It must involve the people who are most affected in the design, deployment and development of regulatory frameworks around AI systems.</p>
+          <p eId="para_24"> Particular attention must be paid to the use of AI in the public sector. The deployment of AI in public services carries particularly high risks, especially when used to make decisions about essential entitlements and supports. We have seen examples from other jurisdictions, including the Netherlands, where flaws in the design of AI systems led to serious and systemic rights violations in the provision of welfare protections. In this context, we have raised concerns with the Department of public expenditure that its recently issued Guidelines for the Responsible Use of AI in the Public Service do not reference the pre-existing public sector human rights and equality duty. This is a critical omission. That duty should be the core framework guiding public bodies in their adoption of AI, thereby ensuring systems are rights compliant from the start.</p>
+          <p eId="para_25"> As Ireland moves towards a multi-authority regulatory model for AI in its transposition of the EU's Artificial Intelligence Act, it is essential, to ensure accountability and effective enforcement, that the roles, responsibilities and powers of the relevant designated bodies are clearly defined and supported. Structured co-ordination of these mechanisms must be established to ensure collaboration and information sharing between all the relevant authorities. The model of regulation must embed human rights and equality standards and expertise from the outset.</p>
+          <p eId="para_26"> The Irish Human Rights and Equality Commission has been designated, along with eight other public bodies, as one of the fundamental rights regulators of high-risk artificial intelligence under Article 77 of the EU AI Act. This role will carry additional and significant responsibilities. To fulfil the role effectively, in line with established UN and EU standards, we and the other designated bodies must be provided with ring-fenced multi-annual resourcing, including financial capacity and, in particular, technical and human capacity, to deliver on our promise to perform this regulatory function.</p>
+          <p eId="para_27"> We greatly welcome the establishment of this committee, which can play a key role in the design and oversight of Ireland's approach to artificial intelligence. We aim to support the work of the committee in any way we can. We look forward to engaging with members today.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_28">I thank Mr. Herrick.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_29">A Chathaoirligh, the reason my colleague, Mr. O'Brien, is not here yet may be that we were scheduled to present at 12.15 p.m.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_30">My understanding was that both groups of witnesses were scheduled for 11 a.m. Is Dr. Shrishak happy to deliver the opening statement on behalf of the ICCL?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_31">That is okay.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_32">If members are happy with that, we will proceed. Mr. O'Brien may, if he wants to, make a statement when he arrives.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_8">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_33">I was also of the understanding that there would be two separate discussions.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_34">Yes, the agenda lists the two presentations separately.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_35">I am happy to proceed in that way, if people prefer it, but I am conscious that we will be tight on time. I now invite questions from members, starting with Deputy Murphy. Each member has seven minutes for questions and answers.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_11">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_36">I thank Mr. Herrick for his opening statement on IHREC's work. He indicated that the commission has been designated as one of the fundamental rights regulators. Has it received any extra resourcing as a result of that designation?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_37">There has been no direct increase. Under the recent budget, the overall budget of the Irish Human Rights and Equality Commission has been increased for 2026, which we greatly welcome. As part of the Estimates process, we made the case that there needs to be a ring-fenced provision for this particular mandate. However, there has not been such dedicated and ring-fenced funding, which we understand is also the case for the other identified Article 77 bodies. Our view is that the combined mandate under Article 77 and the EU directive on standards for equality bodies clearly requires bodies designated for this function to be given technical and financial capacity, in particular, to execute it effectively.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_13">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T11:10:00+01:00"/></from>
+          <p eId="para_38">To clarify, Mr. Herrick is saying that, as far as he knows, none of the bodies designated as fundamental rights regulators of high-risk AI under the EU AI Act have been given any extra resources to enable them to do that work.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_39">To my knowledge, no. We have taken the initiative to convene meetings of the designated Article 77 bodies. From our perspective, we are examining how we might co-operate and collaborate, but that is within existing resources. There has not been direct engagement with the Government on how it envisages us carrying out this function and what we might require to do that.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_15">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_40">Does Mr. Herrick have any idea of the sorts of resources he would need, the number of staff and the amount required to have appropriate funding?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_41">I will hand over to Ms Keatinge because it will be her unit that will be overseeing this function.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_42">I am not sure we can give a clear answer on that but I understand there has been consideration of a pool of technical resources. Recently, we had informal engagement with other Article 77 bodies to explore that. Some of those Article 77 bodies have a dual function because they are also Article 70 bodies. They are currently quite engaged in that strand of work.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_43">It is fair to say that work is more advanced on the Article 70 bodies and that there is some engagement around capacity for those with regard to the associated function, but not the fundamental rights function.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_19">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_44">I thank Mr. Herrick.</p>
+          <p eId="para_45"> One of the points our guests made is that they have raised concerns with the Department of public expenditure and reform over the fact that its guidelines on the responsible use of AI in the public service do not refer to the public sector human rights and equality duty. We had officials from that Department in here last week and it was striking that their opening statement made no reference whatsoever to human rights or fundamental rights. Deputy Mythen made this point. When I asked the officials whether they had conducted a fundamental rights impact assessment under Recital 96 of the EU AI Act, they were not able to list anything. It does not seem that any fundamental rights impact assessment has taken place. Everything the officials say they have been addressing so far has not been defined by them as high risk, meaning no fundamental rights impact assessment is required. Are our guests aware of any fundamental rights impact assessments taking place within the public sector or of any activities they would qualify as being high risk and therefore requiring such an assessment?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_46">More broadly on the guidelines, we welcome the values-based framework proposed for assessing the use of AI in the public sector. However, our overarching concern is that there is already an existing framework for conducting a fundamental rights-based assessment, namely, the public sector equality and human rights duty, a statutory obligation under section 42 of our founding legislation. It is very regrettable that this is not reflected. We are at an early stage of engagement with the Department, and we have just written to it seeking a meeting to discuss that gap. We hope to engage with it positively on that.</p>
+          <p eId="para_47"> On the broader point of the guidelines, I am aware that in this committee’s previous hearings the issue around consultation and stakeholder engagement has come up. It is light touch on that, and it is light touch on how that is effected. There was a very cogent discussion about the need for co-design in the whole life cycle of the use of AI, and that strand really does not come out.</p>
+          <p eId="para_48"> Under the EU AI Act, the fundamental rights impact assessment applies for high-risk AI, but that in fact relates to a narrow strand of the use of AI within the State as it will pan out. There are a number of exceptions under Article 6 with respect to that usage. The guidelines therefore take on new import in that wider context, so the State does need to step in. Another concern is that they are neither mandatory nor required, whereas the statutory duty under section 42 is.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_21">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_49">I thank Ms Keatinge for that.</p>
+          <p eId="para_50"> It was mentioned last week that AI is being used in the public sector to process grant applications in the Department of agriculture, to streamline the process, etc. The officials stated this was not high-risk activity. At the very least, it is a grey area in some respects. It definitely seems to me that if such a process were to be used for social welfare applications, it would be a black-and-white issue, clearly posing a high risk under the definition. The opening statement mentioned examples from other jurisdictions, including the Netherlands, where flawed AI systems caused serious and systemic rights violations in welfare provision. Could Ms Keatinge say a little about what happened and the dangers in this area?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:15:00+01:00"/></from>
+          <p eId="para_51">The examples from other jurisdictions are really arresting and should be at the forefront of everybody’s consideration in respect of this. They seem to have arisen from our research in respect of social welfare systems, because these systems affect such a wide proportion of the population.</p>
+          <p eId="para_52">In the Netherlands, it is the infamous child benefit scandal of 2018 that led to the fall of the government. The tax authorities used what turned out to be a highly discriminatory algorithm in respect of identifying fraud within the child benefit system. It had a category, an indicator of citizenship, as one of the risk factors. It was developed in a black box and it was a self-determining algorithm so that led to its own decision-making capacity. That led to whole nationalities being essentially blacklisted for very small administrative errors in their applications for the benefit. It led to really devastating human impacts where people lost their homes and people experienced a huge impact on their mental health due to the stress of the experience. It affected tens of thousands of people. That was the starting point for the public discourse.</p>
+          <p eId="para_53"> There is a very wide-ranging report on the Danish example produced by Amnesty International. Denmark has a very high level of social welfare provision, such that half the population is in receipt of a social welfare support. I think 26% of its GDP goes on social welfare. It is a highly digitised state. It employs something in the order of 60 different algorithms to help run its social welfare system, including fraud control. There is a similar example coming out in the Danish context where you have a model that uses citizenship as another indicator. It also has a model that picks out atypical characteristics that do not, I suppose, essentially conform to Danish social norms for household size or residence patterns - things that identified risk and then identified people through that. There is an argument to be made that under the EU AI Act this could constitute social scoring but there is probably a lack of legal clarity about exactly how those terms will apply in practice. Those are some examples. Amnesty has written a more recent report, which I think was just published this year, on the UK Department for Work and Pensions, which is similarly employing a digital-first approach. This includes some of its very sensitive and nuanced areas like the personal payment for people with disabilities and universal credit. Serious concerns were raised about similar algorithmic discrimination in the processing of that.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_23">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T11:20:00+01:00"/></from>
+          <p eId="para_54">IHREC is one of the most important factors involved in this process. It stated, "The deployment of AI in public services carries high risks". What are some examples of that?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:20:00+01:00"/></from>
+          <p eId="para_55">Ms Keatinge has just set out some specific examples in the welfare area. What the AI Act says in terms of identifying high risk in the public sector is that it is anything relating to critical infrastructure, any public sector activity in the area of employment, public sector activity<b>
+						</b>in the area of education including grading, any essential services such as energy and so on, and any assessment of credit. As such, a pretty broad range of public functions are in the category of high risk.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_25">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T11:20:00+01:00"/></from>
+          <p eId="para_56">A lot of issues have been raised with us to do with costs and inequality. AI costs a lot of money. Suddenly you have to have iPhones and so forth. It is expensive, especially for people with disabilities. What is Mr. Herrick's opinion on that?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:20:00+01:00"/></from>
+          <p eId="para_57">We note that this has come up in the committee's sessions with some of the groups representing older people and people with disabilities. The question of access to technology becomes much exasperated if public sector delivery is primarily through digital means. This is one of the challenges in this area. The digital divide can greatly impact on people in that context. Cost has a broader sense as well. One of the areas we believe has not been given sufficient attention so far is the very high energy costs associated with artificial intelligence, the data associated with it, the impact that can have on energy supply and ultimately on the environment, and whether that cost is ultimately to be absorbed by the general public or those who might suffer the negative consequences from it. We understand the digital divide question, but we are also concerned older people and disabled people might be negatively impacted by the technology itself, particularly in how some of the technology is trained in a way that might exclude them.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_27">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_58">Perhaps the witnesses are aware of this, but I understand that Commissioner McGrath is in charge of the democracy shield at the moment. It is almost finished. Has IHREC made any recommendations on that?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_59">We met Commissioner McGrath recently. We have engaged with him. There has also been significant engagement between our European Network of National Human Rights Institutions and the Commission on that ground. There are many positive aspects to what is promised in the democracy shield, but there are also concerns. We are engaging on an ongoing basis.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_29">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_60">What are the concerns in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_61">It is probably outside the remit of today's discussion but one of the concerns-----</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_31">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_62">It will have an effect. I do not think it is beyond the remit. It affects everybody.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_63">That is absolutely the case, but our concerns are not specifically in the area of artificial intelligence. Our concern is more about the impact that aspects of the democracy shield might have on freedom of expression, assembly and association. There is a danger that in trying to protect European democratic values and processes, there might be unintended restrictions on the activities of some democratic actors within the Union.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_33">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_64">Obviously, the witnesses are aware of the chat control law, which would mandate the scanning of all encrypted messages. That would pose the threat of surveillance of ordinary citizens.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_65">We very much agree. That is a broad concern. Any measures that would restrict encrypted communication can have that impact. I do not know if Ms Keatinge would like to add anything. We have not looked specifically at that proposal but it is, broadly speaking, an area of concern for us and our colleagues.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_66">The phrase that jumped out at me in some of the research was "mass surveillance" in terms of the amount of data that is collected, including in the area of social welfare assistance, to digitise the process and to apply algorithms to so much information on individual citizens that is held by central government. That allies with the Deputy's point.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_36">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_67">What regulations would IHREC recommend we put into law?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_68">We have two key messages. We have raised directly with the Department of public expenditure our concern that in issuing guidelines for public sector usage of AI, it has chosen to separate it and not make any cross-reference to the public sector duty in human rights and equality. That is a significant omission. It is missing a trick. There is a possibility of integrating the two to ensure that human rights and equality considerations are taken into account in all decisions about the use of AI. We would ask the Department to reconsider and revisit that decision.</p>
+          <p eId="para_69"> If the designated regulatory bodies with a brief such as ours to oversee the impact on fundamental rights of the technology once it is in place are not properly resourced, we will not be able to fulfil that function. On public sector regulation and oversight, we can do better to put robust systems in place.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_38">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-21T11:25:00+01:00"/></from>
+          <p eId="para_70">I thank the witnesses. I will pick up on Deputy Mythen's last point. Will the witnesses articulate what a robust framework would look like and how it would operate? We heard from the Department last week. It has developed guidelines and the witnesses have articulated some concerns in that regard. We also know that AI is being used. There are individual projects and pilots. Do the witnesses have any reflections as to how we might put systems in place to ensure there is co-design and input from the range of stakeholders and perspectives on that? My sense is that is not happening yet.</p>
+          <p eId="para_71"> On IHREC's responsibilities under Article 77, do the witnesses have a clear understanding of what is expected of IHREC? Is there ongoing engagement with the Government and Department? How is that taking shape and how might it be improved to ensure we can have confidence?</p>
+          <p eId="para_72">We understand there are balances to be struck. There are risks associated with this but there are also opportunities. How do we give people confidence that we are being as rigorous as possible and that our systems are robust? </p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:30:00+01:00"/></from>
+          <p eId="para_73">As an overview, there has not been a great deal of engagement so far by the Government with the Article 77 bodies or in convening some form of engagement between the Article 77 bodies and the Article 70 bodies and also around the question of the design of the national AI office. From our perspective, we would greatly welcome a much higher level of engagement with the Government and the other agencies. We are willing to do whatever we can to collaborate and co-operate more effectively. We are particularly interested in what the Government's intentions are with regard to the national AI office. We have not been party to any discussion about the design of that to date but we are clear it will be critical in the overall scheme of things. We have already made reference to the fact that in terms of our own specific role as an Article 77 body, we have convened informally the designated nine bodies to begin a conversation about what we all feel we might need. However, there is not any process of engagement with the Government at the moment about providing resources or, indeed, designing memorandums of understanding or whatever other tools might be needed to ensure effective co-operation either between us or between us and the other designated functions and mechanisms. Ms Keatinge might want to add to that. </p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:30:00+01:00"/></from>
+          <p eId="para_74">To amplify that with respect to the EU's AI Act, it is an extremely complex regulatory structure. We have a very short space of time for it to be implemented so there is a need to accelerate the protocols that need to be in place and the information-sharing mechanisms. There will need to be statutory change to a number of regulatory mandates of the different bodies involved, including Article 70 bodies and Article 77 bodies. We are amenable to that discussion and we are available but it is not a discussion that has been been opened. </p>
+          <p eId="para_75"> Second, there is a role for AI literacy and availability of information, specifically with respect to the rights framework. We have human rights and equality architecture, we have the Equal Status Acts, the Employment Equality Acts and our own Constitution, which has the prohibition on discrimination. We also have the Charter of Fundamental Rights. There is an overarching architecture and it is about making the links between that and the use of AI. The guidelines that have been issued are something of a starting point. However, it is important that the messaging and the narrative capture that side so that we can pre-empt a procurement stage from the start of the life cycle of AI and it is captured within that broader architecture. </p>
+          <p eId="para_76"> As a legal practitioner by trade, I know that detecting discrimination in the use of AI is extremely difficult. For individuals to try to enforce rights in this space, it is difficult to identify how algorithms are being used, how they are working and how they are impacting on individual citizens. There could be consideration of Departments being clear as to how they are using AI and in what deployments and circumstances. That falls quite neatly under the public sector and equality duty ongoing assessment of how it is impacting on and intersecting with human rights and equality concerns for service users. </p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:30:00+01:00"/></from>
+          <p eId="para_77">To be very specific about it, our statutory functions were established under the Irish Human Rights and Equality Commission Act 2014. It is likely that our powers and functions under that Act may need to be reviewed to make specific reference to functions in this area. Furthermore, Article 77 contemplates that we will be in a position of requesting information from certain bodies and then following up and maybe exercising statutory powers. In any process by which we are requesting sensitive commercial information, for example, there might be a need for specific statutory powers around that to provide certainty both for us and for the entities we are requesting information from. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_42">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-21T11:30:00+01:00"/></from>
+          <p eId="para_78">I thank the witnesses for that. It is important that we hear what has been said there about the need to move these things on and the need for greater engagement and clarity.</p>
+          <p eId="para_79">Are there good international examples from counterparts which are further down the road? Where might the Department and the Government look to? Perhaps everyone is in the same position.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_80">It is an interesting question. At one level, every state is in the same position because the timeline for transposition is the same for all member states. I made reference earlier to the European Network of National Human Rights Institutions and there is also the European Network of Equality Bodies. Both of those bodies have made recommendations to the European Commission on how, for example, the questionnaire,under which a lot this regulation will be rolled out, should be designed. There are bodies that have been setting standards. There is also the Council of Europe's ongoing work with regard to artificial intelligence, which is a resource that is available. There is quite a lot to draw on rather than from specific national examples. I do not believe any state really has put in place a fully effective and operational model to date.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_44">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_81">That is helpful. I thank the witnesses.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_45">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_82">I thank the witnesses for their comments so far. Does IHREC believe the AI office should be independent? If so, what do the witnesses believe the consequences of it not being independent may be?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_83">We have not seen any proposals yet for what is the Government's intention for the design of the office. As a basic principle from a rule of law perspective, it will have enforcement powers. We believe that requires it to have a certain degree of independence from bodies it may have a direct line management or commercial relationship with. That would lean in our view to have significant levels of operational and regulatory independence from Government Departments, for example, or bodies in the process of developing artificial intelligence technology. We need to see the Government's intention. We have no insight as to what it has mind, whether it is to be an agency of a Department or one set up at arm's length with significant protections in its leadership and decision-making.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_47">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_84">Are there any other examples of that arm's length-type agency in relation to a Department?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_85">There are several. For example, we as a statutory body have a line relationship in operation and financial terms with a Department but our independence in terms of decision-making and operations is set out clearly in statue.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_49">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_86">What if that Department is the one the complaint is made about? How would that work then in terms of the relationship?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_87">There are plenty of examples of statutes that put protections in place to ensure there can be no interference by central government with the operation of bodies. There is us, the Ombudsman and other entities of that nature. There are different degrees of independence as well. We are at the upper end of clear operation and decision-making independence from central government. Others have partial levels of separation and independence. There are a lot of options open for the Government. It seems to us, given there is an enforcement function envisaged, that requires a significant level of separation.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_51">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T11:35:00+01:00"/></from>
+          <p eId="para_88">In relation to transparency around procurement, the public services piece bothers me the most. I was looking at some pieces in the US where they automated bail decisions. Machine learning was involved that knocked many people off their disability payments. Some people died as a result. I have a concern around transparency about the use of AI in public services.</p>
+          <p eId="para_89"> Also, in taking a step back to procurement processes, does IHREC feel independent auditing services of AI should be in place as part of the procurement process? That would both ensure that the AI will work - the Government is not in a position with the right expertise to know if it will work without that kind of auditing process - and assess, if it does not work, how it will impact people.</p>
+          <p eId="para_90">I am wondering about transparency and accountability in the procurement process.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:40:00+01:00"/></from>
+          <p eId="para_91">There is a number of different aspects to that. First, in the category of high-risk use of artificial intelligence, it is contemplated that a fundamental rights impact assessment should be carried out. I again come back to the fact that all public bodies are already under a statutory obligation to ensure that all of their operations properly take into consideration human rights and equality. They are required under law to demonstrate that they do that in the planning stages, which should encompass and include procurement, and to review the operation afterwards. We have an oversight function to see whether public bodies are doing that. There has been a significant uptick in the number of public bodies that are in compliance with their obligations in this regard but it is still far from complete. We believe that the public sector duty can play a significant role in ensuring this. It is a question of adding an artificial intelligence dimension to the public sector duty obligations bodies already have. In that regard, it is unfortunate that there was not a cross-reference to the public sector duty when guidelines were being issued. Whereas we understand from some of the committee's previous sessions that the guidelines are not mandatory for public bodies but are to act as guidance, the public sector duty is a statutory obligation on public bodies. There is potential for that to be the vehicle to ensure that the impacts the Senator has identified do not manifest themselves.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_53">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T11:40:00+01:00"/></from>
+          <p eId="para_92">Beyond the personnel the Article 77 bodies will need to fulfil these functions, what kinds of technical resources are required for their adequate functioning?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:40:00+01:00"/></from>
+          <p eId="para_93">We have not been specific about that to date. As Ms Keatinge mentioned, we have had some informal conversations with some of the other designated Article 77 bodies about the potential for co-operation. There is no doubt that we will need technical expertise in human form, that is, properly qualified experts in this technology to allow us to make requests of bodies in an informed way regarding technical information and to then analyse and process that information. It is envisaged that we would request information from commercial entities and others and that we would be able to assess whether we have sufficient information to make an assessment as to the fundamental rights impact and, possibly, request further information. We will need properly qualified experts to do that. We will need people who can engage in technical analysis and technology. We do not have such experts. Public sector bodies in general are unlikely to have that type of expertise in-house at this point in time. Our colleagues in the other Article 77 bodies are in the same position. Ms Keatinge may wish to add to that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_55">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T11:40:00+01:00"/></from>
+          <p eId="para_94">I ask Ms Keatinge to be very brief because I am conscious of the time.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:40:00+01:00"/></from>
+          <p eId="para_95">I will be very brief. We will also need legal expertise because the analysis we need to undertake is to determine whether fundamental rights are at stake and in what form and whether our own mandate is affected. That will be a key part of it.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_57">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-21T11:40:00+01:00"/></from>
+          <p eId="para_96">I thank the witnesses very much for their presentations this morning. It has been very interesting. I am at a beginner level on all of this so they will have to bear with me with regard to my questions. To summarise for my own benefit, broadly speaking, could I categorise the commission's concerns as relating to three streams, the first being the use of AI to amplify bias and human rights discrimination across the Internet, large language models or multiple platforms, the second being the AI being used as a tool in the public sector to drive efficiencies in the delivery of services, as is correct, and that being used in the private sector potentially discriminating against people and violating human rights, and the third concern, which we have heard clearly this morning, being concern about having adequate technical expertise to deliver on its obligations? Is that correct, broadly speaking?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:40:00+01:00"/></from>
+          <p eId="para_97">Broadly speaking, that covers a lot of the key points from our perspective.</p>
+          <p eId="para_98">I made reference in the opening statement to the specific concerns around disability. We have a disability advisory committee that is composed of people with lived experience of disability and they have made a pertinent point, which is an interesting observation, that a lot of discourse around artificial intelligence emphasises productivity and efficiency. They have a long history of seeing how discourses around productivity and efficiency have been used against people with disability where their value was being assessed in terms of their role within the labour force, for example. It is a pertinent example of how we need to make sure that we are building in the consideration of rights and equality impacts from the very beginning in our policymaking.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_59">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-21T11:45:00+01:00"/></from>
+          <p eId="para_99">I would like to learn a little bit more about the annual polling that was referenced. In the submission Mr. Herrick talked about the 73% of people who are concerned about the societal impacts of AI, and the mere 22% who believe that we are regulating technology companies effectively right now. Another result highlighted was the 68% who expressed concern about the use of AI by the Government in public services. Will the witnesses talk to me a little bit more about the questions in the poll and what the commission was hearing.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:45:00+01:00"/></from>
+          <p eId="para_100">We conduct a poll every year on public attitudes and knowledge about human rights and equality issues. In our poll for 2025, and going back over the past three years, we had a question on artificial intelligence because of the commission's function under the Act. The polls are carried out with Ipsos and it is a large sample of over 1,200 adults. It is robust data and a good tracker of how public attitudes are changing. The percentage of respondents over the three years saying that they are familiar with artificial intelligence has increased. There is more public knowledge and understanding, yet the level of public concern and trust in State regulation is still very low. The reason we made reference to it today is that we think it is important to send a message to policymakers such as Oireachtas Members that the public, we believe, has a strong appetite and a will for robust regulation in this area. It is pertinent at this time because at the European level we are seeing, and certainly from the United States, a strong political message against regulation. It is talking about competitiveness and against regulation. This was the message that was used by social media platforms over the past ten or 15 years; that we had to have light regulation or even self-regulation for competitiveness and jobs. We all know that this has had some very negative consequences and particularly for young people. We would caution that this is an area where listening to the public and their desire for protection is well worth listening to from a policymaker perspective.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_61">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-21T11:45:00+01:00"/></from>
+          <p eId="para_101">I have a couple of minutes, does Ms Keatinge have anything else to highlight for us this morning that she would like us to take away and reflecting on?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:45:00+01:00"/></from>
+          <p eId="para_102">I would just like to flag that there are models for that sort of engagement with different sectors of the public. The committee has had different groups in, which is really valuable, looking at the youth aspect, and to address ageism and ableism. There are other aspects of discrimination on the basis of race and gender. Those are important aspects to consider. We have a statutory committee, which is made up of people with lived experience of disability. This is a valuable forum. The Ombudsman for Children, similarly, has a youth committee. So there are models out there - there was a question about that - to engage different sectors. These are very important in this space.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_63">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T11:45:00+01:00"/></from>
+          <p eId="para_103">I thank the witnesses for coming in this morning. I thank Mr. Herrick for his opening statement and for answering the questions so far. Like Senator Ryan, I am new to this. I am taking a lot of the different angles that are coming at us here. I was going to ask the witnesses about their annual polling. Is there any way that the committee members could be furnished with a copy of that? I just tried the website and I could not see it.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:45:00+01:00"/></from>
+          <p eId="para_104">Of course we will send on the polls to the Senator. Absolutely.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_65">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T11:45:00+01:00"/></from>
+          <p eId="para_105">That would be very interesting. Senator Ryan has gone through them. There is a figure of 22% who believe that the Government is regulating technology companies effectively. That is a very low number and something we obviously need to address and look at. Mr. Herrick spoke of sending a direct message to policymakers and it being up to us to listen.</p>
+          <p eId="para_106">It is not just in the area of human rights and equality but it is across the whole spectrum of regulating in this particular sector. </p>
+          <p eId="para_107"> The witnesses have answered a few questions about the regulating bodies and the nine Article 77 bodies. I find it hard to believe IHREC has not had engagement or more interaction about the resources it believes it will need to do that regulatory job in terms of financial, technical and staffing resources. Has IHREC done any work internally on what its organisation will need? Ms Keatinge mentioned legal resources as well. Does she see the nine bodies potentially sharing resources in order to deliver on this?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:50:00+01:00"/></from>
+          <p eId="para_108">Those are exactly the conversations that we are having and were raised recently. In terms of our own journey, we recently obtained legal advice to really delve into what precisely is required under Article 77. I should preface that by saying the information we have been provided with to date from the Department is that these functions will not require more resourcing because they are not specific mandates; they are just a role and are part of our broader remit. As it has come out, and it is a theme in the discussion today, the level of technical know-how and expertise required to properly interrogate these uses of AI from a human rights perspective are very specific and are not currently within the organisation. That is a discussion we will need to continue to have.</p>
+          <p eId="para_109"> In terms of our own preparedness, this mandate sits within my team and we also have a mandate under the UNCRPD on disability and as a national rapporteur on human trafficking. This is a separate and different function. One part we need to look at is how we can use our existing powers and functions to address AI because that is partly what is envisaged under the EU AI Act. Part of our function will be to report back to the market surveillance authorities and part of it will be to inform what targeted action we take. That is another aspect we will need to give consideration to. We are engaged with our European networks as well, as has been mentioned, which are all facing similar challenges. Those conversations are very helpful in terms of what resourcing we might need.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_67">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T11:50:00+01:00"/></from>
+          <p eId="para_110">Does IHREC have any other examples of the regulators in other jurisdictions collaborating? Is that an example IHREC can follow?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:50:00+01:00"/></from>
+          <p eId="para_111">It is really interesting because the way that other states are approaching this is very diverse. As I understand it, in Belgium I think there are 22 different regulated bodies whereas in the Netherlands there are just three. There are really divergent models being taken in how this is being implemented. It is extremely helpful to have conversations with them. We have met our Dutch counterparts and they are a bit further down the road in terms of protocols and the legislative change that is needed to effect their mandate. Those conversations are really crucial to see how we can collectively implement this in an effective and efficient way.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_69">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T11:50:00+01:00"/></from>
+          <p eId="para_112">Outside of resources, how does IHREC see itself working together with the other regulators to ensure consistent protection of rights?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:50:00+01:00"/></from>
+          <p eId="para_113">We are at a very early stage of that conversation. I suppose each of the nine bodies has a different centre of gravity in some respects. We have the Environmental Protection Agency, for example, the Ombudsman for Children and then ourselves and several others. Everyone has a focus. There are overlaps so there will need to be consideration as to who will be focusing on which specific areas. There is need for protocols for information sharing and operational aspects between ourselves but more importantly, with the national competent authorities. It will be that relationship that will be absolutely critical in terms of receiving the information we need to fulfil our roles and functions. There is a huge architecture that needs to be developed to make this actually work. The deadline, I think, is 26 August. As that is when we are due to be up and running, this needs to be expedited.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:50:00+01:00"/></from>
+          <p eId="para_114">Just to add to that, it is an almost uniquely complicated type of model of regulation that the European Union has designed here. That is difficult for every state. The bottom line, from our perspective, is that we have a significant difference with the Government at this point in time. The Government has formed the view that the Article 77 bodies do not require any additional capacity, resources or technical expertise and we certainly have a different view. We think it is very clear, in terms of the powers and functions set out in the AI Act, that it is envisaged we would have a meaningful role in protecting people's rights. It is clear to us we cannot do that without being given the capacity to execute that. At this point in time, there is a pretty stark difference between where we stand and where the Government stands on this question.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_72">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T11:55:00+01:00"/></from>
+          <p eId="para_115">Mr. Herrick mentioned that the approach to AI should be intersectional and inclusive. He said we must involve people in most aspects of it, including the design, deployment and development of regulatory frameworks. How does he envisage that we involve people in various categories, such as people with disabilities and children? How does he see envisage that we engage them and get them involved with this?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:55:00+01:00"/></from>
+          <p eId="para_116">I think Ms Keatinge has made mention of that already. A lot of public bodies already have structures in place to assist with this. For example, we have a disability advisory committee. The Ombudsman for Children has a youth panel. A key question is going to be in the design of the national AI office. If, for example, it is recognised by the Government that the experience of children is especially important in terms of the regulation of AI, it would be important in the design of that office that people with expertise and lived experience, including young people, can make an input into it in a meaningful way. We would also be identifying other sections of society that need to be taken into account that are likely to be potentially disproportionately impacted by this technology. Disability, for example, is just one area. There are many examples across public sector and Government decision-making where effective ways of engaging or consulting different sections of society have been found. It is essential that they are deployed in this instance. We would be delighted to be of assistance to the Department in that regard.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_74">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-21T11:55:00+01:00"/></from>
+          <p eId="para_117">I thank the witnesses. This has been really informative and helpful. One of the things that I keep emphasising at this committee, and it is worth emphasising, is that if you think of China, the United States and Europe, AI is operating in a fully regulated environment in only one of those entities. By "fully", I mean that there is regulation. You can quibble about how that regulation is written and the extent to which more regulation could be introduced, but there is a regulatory requirement in Europe that just does not exist in China or the United States. In the United States, what we are seeing right now is actually a divergence where individual states are taking a regulatory approach that is different from that of the federal state.</p>
+          <p eId="para_118"> Europe has an enormous opportunity even if the technology, such as the large language models, has not been developed within Europe. Most of the models have been developed outside of Europe. That level of certainty should be attractive for enterprise. On the AI Act, Ms Keatinge mentioned the Netherlands example in 2018, which I suppose may well have involved AI but it predates the turbocharging of AI as we now think of it. Would she consider that the AI Act is progress in terms of how a citizen interacts in the digital world in Europe?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T11:55:00+01:00"/></from>
+          <p eId="para_119">Undoubtedly it is progress. At a recent conference we held, we had a workshop on AI where we asked whether the EU AI Act would have guarded against that scandal. We had our Dutch colleague over. In part, it would have because it provides prohibitions on certain uses of AI and it provides protections and regulations for high-risk AI. It is absolutely a helpful framework within which to capture some of the potential fundamental rights and equality violations that can occur. There is an overall unease in terms of how AI is going to be deployed in a way that does not promote discrimination. It exists within a broader society where we have systemic discrimination. It is really just a further example of that. That is an extension of our existing function to combat that and promote equality.</p>
+          <p eId="para_120"> The legal certainty piece is really important. I said there was some uncertainty. In any legal text there are going to be quibbles about the interpretation of a certain term, but it provides a really valuable broader framework. We are working across Europe to make sure we are singing from the same hymn sheet. It is progressive in that regard. It is the difficult phase of the how and the wheretofore - this stage of implementation - that is challenging.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T11:55:00+01:00"/></from>
+          <p eId="para_121">To add to that, the Deputy is absolutely correct. We have two advantages. We talked about the national enforcement mechanisms, but across Europe we have a robust system of enforcement. It sits alongside the enforcement mechanism under the Digital Services Act and GDPR.</p>
+          <p eId="para_122">There is a strong body of enforcement. All of the European approach is underpinned by the Council of Europe convention and the principles of human dignity, equality, respect for privacy and personal data, transparency and oversight, reliability and safe innovation. The design of the system here is very strong. It is just a question of replicating that at national level.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_77">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-21T12:00:00+01:00"/></from>
+          <p eId="para_123">The witnesses may have seen that the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation was before the committee last week. They may have read some of its testimony. One of the things the chief information officer highlighted is that they are looking at 195 life events related to 35 services. They are exploring the extent to which AI could assist or support that.</p>
+          <p eId="para_124"> Mr. Herrick mentioned his concerns that the AI guidelines do not make explicit reference to fundamental rights and human rights obligations. Is the existing framework in which the State and civil servants are operating when they are looking at this sufficient to guard against, when looking at these life events, how they will be delivered? They are still bound by all of the existing laws when it comes to rights. It just so happens that they may well use AI to support the State services being provided. The rights will remain exactly the same. There is no distinction here to provide that just because you are using AI, you can somehow override existing human rights obligations.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:00:00+01:00"/></from>
+          <p eId="para_125">This is something we have engaged in correspondence with the Department on. What is the function of the guidelines? They are not mandatory, but they are to remind public officials who are in key positions of procuring, designing or deploying artificial intelligence technology of the principles that they should bear in mind when they are doing that. The Government has regrettably chosen, in identifying the principles that should inform those choices, to not remind people about their obligations with regard to human rights and equality. That is a missed opportunity.</p>
+          <p eId="para_126"> The Deputy is absolutely right; of course the Charter of Fundamental Rights applies to everything that happens in public administration in this country. There is a missed opportunity there. We want to instil in all public officials who are making key choices in this area an awareness that they must bear in mind principles of human rights and equality when they are doing so. Easy tools are available to the public sector to do that already. They are tools we have designed under the public sector and equality duty. I think it is a missed opportunity.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_79">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-21T12:00:00+01:00"/></from>
+          <p eId="para_127">In the absence of that inclusion in the guidelines, does the Mr. Herrick have a legitimate concern that the State, in the example of these life services, would act in a way that would be in breach of fundamental human rights? Would civil servants, in delivering or exploring a service, knowingly or actively breach fundamental human rights obligations just because it is not in the guidelines?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:00:00+01:00"/></from>
+          <p eId="para_128">There are two broad risks. One is that a public body, through the normal decision-making channels, might unintentionally choose or deploy a technology which has negative consequences that have not been visible in the decision-making process. The second one is that individuals in a public body might make use of artificial intelligence outside of the guidelines or the policies of that public body. Both risks are real and need to be guarded against. The purpose of the guidelines is to try to avoid negative consequences in public decision-making. I think we can do a little bit better in terms of bolstering the protections that are in place.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_81">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T12:00:00+01:00"/></from>
+          <p eId="para_129">I thank the witnesses for their contributions so far. I find it really interesting not only because IHREC is the Article 77 body but also because I think it has a lot to offer, as a State agency, in giving its views on governance, particularly because IHREC is governed by the Paris Principles, which I will get onto in a second. I want to start on the public sector duty because Mr. Herrick has been very clear that this is a missed opportunity for the State to essentially enshrine this within the public sector guidelines that were drafted for the use of AI in the public sector. This is not the only time that this duty has been overlooked by the State in the development of guidelines or initiatives, all of which could potentially be strengthened by the positive obligation that was set out in the 2014 Act. I know this is slightly outside of the remit of this meeting, but it is important because it gives the broader question more understanding. Why is the body not taking hold in that way from a central government perspective in the way IHREC would wish?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:05:00+01:00"/></from>
+          <p eId="para_130">We monitor the level of compliance of all public bodies with their obligations under the public sector human rights and equality duty on an annual basis. In the past two years in particular, we have seen a significant uptick in the number of bodies meeting their basic obligations under the Act and in the number fully complying. There is definitely progress. We have developed guidelines and tools to support and assist public sector bodies in meeting these obligations. It is cumulative. Public sector bodies are now witnessing other public sector bodies meeting their obligations and that peer example is very influential. As the Deputy has identified, it is not yet universal across the system. That is primarily a question of awareness as opposed to a question of public will. We want to see more leadership and better examples. We then want to see full compliance across all areas including, for example, local authorities.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_83">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T12:05:00+01:00"/></from>
+          <p eId="para_131">To pick up on some of the comments that have been made, I appreciate that AI does not change rights and equality. What is changes is speed, scale, scope and sophistication in the transgression of those rights and the experience of discrimination across a population. Ms Keatinge mentioned the Dutch example. That continues today, by the way. For the benefit of the committee, there are still bodies charged with the redress programme for those individuals who were so negatively impacted by it. Mr. Herrick mentioned that, as a legal practitioner, the identification or enforcement of rights - I cannot remember which word he used - is difficult in the context of AI. There is an issue in that the technology is so sophisticated and difficult that it is hard to understand how your own areas of expertise, legal or whatever it might be, intersect with it. The absolute foundation is governance. It is all about how to build safeguards and systems that ensure we are all safe. I agree that the EU is further ahead than America or China, but that is a very low bar. I have concerns and questions about the AI office. The UN Paris Principles could be a potential set of governing guidelines or principles to inform the establishment of that office. As a body, the commission is obviously informed by the UN Paris Principles. For the benefit of the committee, will the witnesses tell us how that impacts on the commission's operations and functions? To their knowledge, is there anything that would prevent the State from adopting those same principles in the establishment of the AI office?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:05:00+01:00"/></from>
+          <p eId="para_132">The Deputy is very familiar with this given her previous roles but, for the benefit of all of the members of the committee, the Paris Principles are a set of guidelines that set standards to measure the independence of a body like a national human rights institution from Government and that body's relationship with the parliament. There is an objective system of measurement and an independent body assesses this. The principles deal with questions about independence in appointments, financial independence, operational independence, independence in recruiting staff and independence in the execution of powers. We have powers to intervene in legal proceedings and we have certain enforcement functions. These operate without fear or favour as regards our relationship with Government. I am happy to say that, in the 11 years the Irish Human Rights and Equality Commission has been in existence and during the lifetime of its predecessor body, the Irish Human Rights Commission, going back to 2001, there has never been Government interference in the operation of the body. That model of standards for independence has been applied in other areas. Under the EU migration pact, the EU is setting guidelines as to how the oversight mechanisms under the pact should reference the Paris Principles as regards ensuring independence. It is our understanding that the AI Act sets a bar, basic requirements for each State in transposing it. However, as always under EU law, it is open to member states to aspire to a higher standard of protection. A higher standard of independence should also be required. To go back to the Deputy's initial question, we are very clear that, as the national AI office will have enforcement functions, it will need to have a high level of independence, whether that meets the Paris Principles standards or otherwise.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_85">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T12:05:00+01:00"/></from>
+          <p eId="para_133">There is one final issue. I refer to a comment in Mr. Herrick's opening statement. He mentioned being wary of self-interested anti-regulatory discourse and the disastrous consequences this has had in other areas.</p>
+          <p eId="para_134">Will he outline which other areas he is referencing?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_135">As I made reference to earlier, it is specifically with regard to the regulation of social media. We all know now that errors were made at a European and national level with the ineffective models of regulation of social media. We have all lived with the consequences of that in the context of how social media has managed to visit significant harms. We need to be cautious. Deputy Geoghegan made important points about how we are regulating and pointed out that other regions of the world are regulating in different, very often much weaker, ways. Everything that happens within the European Union is governed by the Charter of Fundamental Rights, which is, I agree with Deputy Geoghegan, a great strength of the European model. We need to be careful not to sacrifice it. There are clearly very strong commercial interests that are pushing for weaker and lower levels of regulation in this area. We should be wary that they are some of the same entities that were calling for weaker regulation of social media 15 years ago.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_87">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_136">The discussion has been interesting. Naturally, we sometimes talk about the scary things and negatives at this committee. Looking at the guidelines from their human rights perspective, do the witnesses see anywhere that there will be benefits to human rights? Mr. Herrick talked about disabled and older people in his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_137">We have referred to areas, particularly with regard to disability, where-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_89">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_138">Mr. Herrick mentioned living alone or independent living. I am asking about the departmental guidelines. We have identified a lot of risks but is there anything he sees that is working well?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_139">It is probably too early to make an assessment as to whether things are already working well. We heard from previous Government contributors that while there are isolated instances of the Government use of artificial intelligence, it is not widespread yet. That is probably a good thing, given that the guidelines in the early stages of implementation. We see potential benefits. In the justice system, there may be ways to improve access to justice and to speed up processes. There may be potential around administrative tasks, including processing applications and design, but there are also risks in those areas. Deputy Murphy made reference earlier to the fact that there are already examples in the agricultural sphere where it is understood that there is some use of artificial intelligence but it might have risks if it engages people's livelihoods, grants and so on.</p>
+          <p eId="para_140"> On disability, there may be potential in areas around access to services. One of the concerns from a disability perspective is how the AI models are trained. If the base they are being trained on does not include people with disabilities, for example, they may be skewed. That was part of the problem with the Dutch model, as we understand it. Ms Keatinge may want to add some other areas.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_141">To add another note of caution, members of this committee have heard about the potential cost to disabled people in giving so much of their private information where there is a risk of it being compromised. In my own client work at the commission, I have worked with disabled clients who have availed of assistive technology, which has enabled them to exercise independence in their day-to-day lives. It is the same for some of the members of our disability advisory committee. We see that in a micro way, but we are yet to have a proper deep dive into how it is being implemented on a wider scale by public services.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_142">One of the areas of risk to which we did not refer earlier, but I know some of the earlier contributors did, is the use of chatbots. That can greatly assist and speed up access to public services and the resolution of conflicts and problems, but when we are seeing their deployment into such areas as the provision of medical advice, psychotherapy and counselling, really serious risks are manifesting themselves. It is about distinguishing those areas where the technology can have a predominantly beneficial effect in terms of access and when it engages in more sensitive questions and impacts people's health.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_93">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-21T12:10:00+01:00"/></from>
+          <p eId="para_143">It is a matter of getting the balance right. Before we had AI, people were going to Dr. Google for medical advice. Now they are asking ChatGPT. We must ensure that we are there at the forefront with chatbots in our health service. The caveat of being aware you are talking to an AI chatbot or AI model on the phone, and being able to ask for a human, is vital.</p>
+          <p eId="para_144">The digital divide was also mentioned. In my constituency office, I have a clinic every Monday. Often, the resource that we are providing involves printing something off the citizens information website and helping someone to fill it out. There has to be an area where we can utilise public libraries or civic offices and have chatbots help people to fill out forms, with the caveat and the protections that were always there in the form of a human at the end of it. There is huge scope there for people who come in and are not aware of what is available to them. </p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:15:00+01:00"/></from>
+          <p eId="para_145">We have to hold our hands up as well. There are many public bodies, including ourselves and the Citizens Information Board, that have functions to provide information to members of the public about their rights and entitlements. We can all do better at making those resources more accessible and more widely available. There may very well be areas in which new technologies in this space are of assistance to us in doing that. We have an open mind about the potential benefits. Even though most of what we have said today has been about flagging the potential risks, there are absolutely benefits as well. It is about having the correct framework in place.</p>
+          <p eId="para_146"> Internationally, with chatbot technology, for example, we are seeing some negative consequences both in terms of children turning to chatbots and also people who are vulnerable with regard to mental health difficulties and other counselling needs of counselling who are accessing chatbots. There can be very negative consequences in those instances, particularly if the models of chatbots are reinforcing people's existing behaviour. We have seen some tragic outcomes, which are currently before the courts in different countries. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_95">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-21T12:15:00+01:00"/></from>
+          <p eId="para_147">I am impassioned about online safety and very aware of the risks in the context of eating disorders and suicidal thoughts. We have to make sure the systems we are using within the Departments are robust because people are going to those systems anyway. </p>
+          <p eId="para_148"> In relation to the deadline of 26 August or 27 August, given all I have heard today about the lack of engagement and resources, are we going to be able to meet that timeline? From our perspective, is it about parliamentary questions or letters to the Minister? What next steps are needed? It is such a short time between now and August. </p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T12:15:00+01:00"/></from>
+          <p eId="para_149">I do not want to speak for the other Article 77 bodies but from our perspective, we are all established statutory bodies. We have been identified because we already have expertise and functions in the relevant area. It is just that everything needs to be speeded up and expedited. If there is a role there, that would be very helpful to put the pressure on, to increase the dialogue and to put the processes in motion. It is such a complex structure. The Data Protection Commission is involved in our structure. It obviously has a huge amount of expertise in this area having led on the data protection regime. There is a huge amount of shared learning that can be mapped onto this. It is really just that it needs to be moved on at this stage. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T12:15:00+01:00"/></from>
+          <p eId="para_150">I thank the witnesses. It now falls to me to put some questions. I agree with colleagues' comments around the role of children and young people in the process. Certainly, when the Office of the Ombudsman for Children was being set up and, indeed, when we set up Coimisiún na Meán, in each case there were youth advisory panels. From talking to the Minister, my understanding is that we will have a youth advisory panel as part of the AI office. It is certainly something we will expect.</p>
+          <p eId="para_151"> To come back to the area of AI education and literacy, by its nature, legislation in this space is always quite complex. One of the areas of success for the GDPR was that, ultimately, it was very simple. People came to realise that they could only use the data someone gave them for the express purpose for which he or she had given it to them. There are obligations under the AI Act, whether it relates to State organisations, private individuals or companies, to inform users, citizens and consumers that AI is being used and to advise them of their rights in this space. While it is important that we embed those considerations within the thinking of the public service and within wider society when we are deploying AI, I am looking at it from the other perspective of how I would know as a citizen or a consumer that my human rights were being respected? In other words, when the AI Act is being deployed, as an ordinary citizen what should I expect to be informed about? </p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Rebecca Keatinge<recordedTime time="2025-10-21T12:20:00+01:00"/></from>
+          <p eId="para_152">This comes up very strongly in our disability advisory committee. For example, if you have a visual impairment, how do you know AI is being used? For the ordinary citizen, it is imperative there be transparency around it being used. One theme that has come up in our work is around contestability, which links with the Article 47 effective remedy protection. If you do not know it is in use, you will not know how it has been used or the basis on which the decision was made. It is critical that the principle of transparency carry through from engagement with the citizen. It is core to trust; that came up in our poll data. People want to be able to trust that the regulation is there, and that allies with transparency, whereby you know it is being used when you are engaging with a public service.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T12:20:00+01:00"/></from>
+          <p eId="para_153">The challenge ultimately comes to the design of AI. It is always more difficult when the AI has been deployed and you are then trying to ensure human rights are being vindicated. On the concept advanced around the code of conduct for AI developers and those who are engaged, how would IHREC envisage that operating? I am going back to the principle that we need to make safe AI because, frankly, once AI is out there, it is increasingly difficult to make it safe. What sort of code of conduct should the State operate in its procurement of any programme or platform using AI or developers of AI?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:20:00+01:00"/></from>
+          <p eId="para_154">The mechanism envisaged is complex but strong at the same time. It is a bit difficult at this stage without having full visibility of what the notifying authorities, notifying bodies and the national AI office will look like. In a crude shape, the AI Act envisages the different roles everybody has, specifically engaging with the questions about design technology. The role contemplated for Article 77 bodies such as ours is somewhat modest in the system. It is effectively that if concerns are raised about the fundamental rights impact of a particular technology, we would then have a power to seek information about its operation and interrogate that further. The primary mechanisms will be those under the notifying authorities and bodies. It is a question of seeing the design. We are confident a lot of thought has gone into the basic architecture of this. It is very much having a central focus on the design of the technology itself and building in fundamental rights considerations at the design stage, including carrying out the fundamental rights impact assessment of anything in the category of high risk.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T12:20:00+01:00"/></from>
+          <p eId="para_155">My final question relates to Deputy Geoghegan's, which is a big issue we need to grapple with. For all its flaws, the EU has made a good first stab with the AI Act. Whether we like the phrase or not, we are in a global AI arms race at the moment. Clearly, the values at the European level are not shared in the United States and, even more worrying, in countries like China, Russia and Iran. I am even thinking about procurement policies. When the Government looks to procure platforms, do we specifically exclude particular countries? Do we look at it at an EU level to take action with regard to particular countries? We have concerns under data protection where some European citizens' data is being stored. Do we similarly need to show concern around how AI is being deployed for the abuse of human rights in some of those other countries when we are hiring or employing platforms?</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Liam Herrick<recordedTime time="2025-10-21T12:20:00+01:00"/></from>
+          <p eId="para_156">Our colleagues in the ICCL have done quite a bit of work on this question, but yes. It is also a question of how technologies have been developed and trained, for example, in other jurisdictions. If we are consistent in adopting a business and human rights approach, looking at the human rights dimensions of how commercial products have been developed and ethical concerns about the equality and human rights processes in another part of the world whereby people might have been negatively impacted in the development of commercial products, then the European Union should not use them.</p>
+          <p eId="para_157">Deputy Geoghegan is absolutely right. We have a strong ethical framework here and we should not abandon that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T12:25:00+01:00"/></from>
+          <p eId="para_158">I thank Mr. Herrick and Ms Keatinge very much for their input. We now welcome back, as the case may be, Mr. Joe O'Brien. I am not sure if this is your first time on the other side of the table but you are very welcome here as executive director of the Irish Council for Civil Liberties, ICCL. I will also invite Dr. Kris Shrishak, senior fellow with the ICCL, to present after Mr. O'Brien.</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Joe O'Brien<recordedTime time="2025-10-21T12:25:00+01:00"/></from>
+          <p eId="para_159">I thank the Cathaoirleach. Apologies for the confusion regarding the start time. I am largely here in an introductory role. My colleague, Dr. Kris Shrishak, and I thank the committee for the opportunity. The ICCL is unusual in the community and voluntary space in that we have had for a number of years a very high level of expertise in AI, with Dr. Shrishak, which stems from our experience with the breach of other European regulations like GDPR by big tech. We could see that this was going to be an issue into the future. Dr. Shrishak will do the bulk of the presentation. He will highlight two key elements where the State plays a major role and where this committee can act in the coming weeks and months. Those two areas are the State's responsibility in the use of AI in public services and the State's role in establishing an effective regulatory ecosystem to enforce EU laws on AI.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:25:00+01:00"/></from>
+          <p eId="para_160">I thank the committee for having me here. As Mr. O'Brien mentioned, the first thing I will touch on is the State's responsibility in the use of AI in public services. The State should take responsibility in how it decides to use AI or algorithmic systems. The guidelines that were discussed last week and also by the previous panel of witnesses about the responsible use of artificial intelligence in the public service, for instance, advise against incorporating generative AI in public services without an approved business case. What happens, however, when a business case is approved, whether for generative AI or for other kinds of AI systems? How is the public informed when and how algorithmic systems are used and in which public services?</p>
+          <p eId="para_161"> Last week, Senator Ruane mentioned in this committee that the Department of Justice is using a chatbot called Tara. The Department has a disclaimer that it cannot guarantee accuracy and that it cannot take responsibility related to this chatbot. In addition to the Tara chatbot the Department of Justice also ran the Erin chatbot targeting asylum seekers, which the <i>Dublin InQuirer</i> has reported on previously. Currently, the Department also runs another chatbot using Microsoft Copilot, assisted by a vendor whose name itself the Department tells me is commercially sensitive. Through a freedom of information request we have learned that the Department did not run a tender process, nor did it have any risk assessments, bias tests or environmental impact assessments for any of these. Chatbots are only one example of algorithmic systems or AI systems. We do not know how many other AI systems and algorithmic systems are in production, not just in pilots, and we do not know what kinds of these systems are being used in public bodies.</p>
+          <p eId="para_162"> What should the State do? First, the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation should provide clear guidelines, not only on the use but also on the procurement of AI systems and services. It can take inspiration from the guidance provided by the Biden Administration last year in the United States. The State should establish a publicly accessible central register for all algorithmic systems used by public bodies. This is essential for the transparency of the algorithmic systems used at various levels of government. People have a right to know. The national algorithms register in the Netherlands, while not perfect, is the best example currently of such a register.</p>
+          <p eId="para_163"> Second, as committee members are aware, the State has announced the national AI office, designated 15 AI regulators - let us call them a market surveillance authority or a national competent authority - and nine fundamental rights bodies. None of them, however, have been empowered. For that, the State needs to pass a national Bill, which we await.</p>
+          <p eId="para_164">In this context I will list four actions that would be important for this committee. The national AI office will be Ireland’s single point of contact under Article 70 of the EU AI Act. The State has informed the European Commission that this office will be within Department of Enterprise, Tourism and Employment. However, the committee should press for this AI office to be independent, with a dedicated budget and commissioner, with adequate technical and legal expertise employed to support itself, but also in its capacity as a co-ordinator of enforcement actions to support other regulators and fundamental rights bodies. Like the Data Protection Commission, it should not be housed within any Government Department.</p>
+          <p eId="para_165"> There is a huge dearth of AI expertise among the nine fundamental rights bodies, as mentioned earlier. There is no indication of additional funding to fill this gap, which is deeply worrying. This committee should urge the State to provide these fundamental rights bodies with human, technical and financial resources as, otherwise, they cannot fulfil their mandate. I would be happy to elaborate later as to why this is important.</p>
+          <p eId="para_166"> We recommend that various groups, including the ones previously invited to appear before this committee, artists, teachers and others affected by AI systems who are at the receiving end of AI deployment, are brought together in the form of an advisory group to not just help legislators, such as the committee members, but actually help the AI regulators and give them insights about on-the-ground AI harms and incidents. We recommend that such an advisory group be mentioned in the Bill and established as soon as possible.</p>
+          <p eId="para_167"> I emphasise that existing laws such as the GDPR, various equality laws, copyright law and others already apply to AI. We are not starting from a blank sheet when it comes to the AI Bill. In addition, the committee should be aware of the product liability directive, which is in force in the EU and which Ireland must transpose by 9 December 2026. This directive will allow people who suffer damages due to products, including AI systems, to hold AI operators liable and claim compensation.</p>
+          <p eId="para_168"> Let me sum up by stating what should be obvious to this committee: using the false dichotomy of innovation versus regulation serves the vested interests of billionaires and is a political decision. Driving forward innovation that protects the rights of the more than 5 million people in Ireland is also a political decision, one that should be made by this Oireachtas for the good of the people, not a handful of billionaires.</p>
+          <p eId="para_169"> I look forward to members' questions.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T12:30:00+01:00"/></from>
+          <p eId="para_170">I thank Dr. Shrishak. I am conscious of time. Each member has six minutes for questions and answers, starting with Deputy Paul Murphy.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_107">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T12:30:00+01:00"/></from>
+          <p eId="para_171">I thank the witnesses for their presentations, which I very much agree with. On the Erin chatbot, Dr. Shrishak said that he learned through FOI requests that the Department did not run a tender process, performed no risk assessment, no bias tests and no environmental impact assessment for any of these. That is obviously very concerning. It would seem very unusual that there was no tender process. Is it illegal? Are there not EU competition law requirements to run a tendering process for things like these? Is Dr. Shrishak aware of any part of the public sector doing an environmental impact assessment on AI before its use? It was certainly not mentioned to us last week when officials from the Department of public expenditure and reform were here. What other concerns does he have on that?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:30:00+01:00"/></from>
+          <p eId="para_172">On the first point, we first learned about this through the <i>Dublin InQuirer</i> which had spoken to various asylum seekers. We had asked the Department officials what processes it had put in place and how it procured the system. They told us that they used what is known as a pre-commercial initiative which involved the Department of public expenditure and reform and Enterprise Ireland, and it was not supposed to be deployed. We cross-checked with Enterprise Ireland and were clearly told that any output coming from that programme would need a separate procurement process. The Department of justice clearly told us none of that actually happened.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_109">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_173">How did it end up being deployed if it was not supposed to be deployed? Who made that decision?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_174">They were unwilling to tell us much more beyond that. Basically the response was that no procurement was done and no contracts were available. They could not provide us with any of the implementers' information. There was no vendor information, no impact assessment and no risk assessment. We were told that this is just a chatbot and everything is fine.</p>
+          <p eId="para_175"> On environmental impact assessment, so far we do not know. We actually use freedom of information requests when it comes to environmental information. I think that comes through the Aarhus Convention. So far we have not found any information on this from various governments but we have not asked all the governments yet. We have just started the process of asking different governments about the kind of process they have in place. We are pushing for a transparency register so that people do not need to go around asking every government and every council what kinds of processes they have put in place or what kinds of systems they use in the first place.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Joe O'Brien<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_176">We have very little sight of 30 or 40 pilots in operation across various Departments. I believe the committee asked for information on that. That should be public knowledge.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_112">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_177">Related to that is the issue of a legal disclaimer being attached to chatbots saying, "We're telling you this, but don't take it too seriously because we're only a chatbot". Am I correct that the product liability directive would effectively mean that these legal disclaimers are certainly misleading and have no legal force? Therefore, if, for example, people get wrong information through the Department of justice chatbot that results in serious damage to themselves in whatever way, they can hold the State responsible and the State cannot get to wash its hands of it because of some legal disclaimer.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_178">That is likely. The product liability directive primarily targets the manufacturers, what we know as the developers, of AI systems. It will depend on whether the Department is treated as one such. There is also the concept of shared liability across the supply chain, so who will be held liable-----</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_114">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_179">In that case it would be between the Department of justice and Microsoft.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_180">For example, yes.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_116">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_181">I wish to explore the dangers of locating the AI office within the Department of enterprise. It seems there is a danger of regulatory capture there where the AI office would be subordinated to the mission of the Department, which is to promote business interests and profitability. We have obviously seen regulatory capture in the past in this country with devastating impact involving the financial regulator and the banks and so on. Is that effectively Dr. Shrishak's concern here?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_182">That is one of the concerns but there is also a very practical concern. As has been announced, there will be 15 regulators, some of which are already statutory independent bodies. They cannot be reporting to the Department by design. That would not function at all. That is one of the primary reasons we cannot have 15 regulators actually reporting to the Department when some of them need to be independent.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_118">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_183">Mr. Herrick earlier made the point about big tech companies pushing a model of self-regulation. They claim that governments should not get in their way with messy regulation because they are leading the way to the future. If big tech has its way, that is what they will recommend and that the best thing for us to do is to let them rip, but we should not go along with that.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_184">That is already in the public domain. We have heard them make statements in public about it especially when it comes to large language models. In the context of the EU AI Act and general-purpose AI models, they have been pretty vocal. For instance, earlier this year when the code of practice for general-purpose AI was pretty close to being published, Meta came out in public saying it would not sign it. Of course, that was a very interesting move because it is not required to sign it but is required to follow the law.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_120">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_185">It is nice to see Joe O'Brien again.</p>
+          <p eId="para_186"> I think Senator Ruane brought up the Tara chatbot last week. There was no risk assessment or bias tests and no tenders. How worrying is that?</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Mr. Joe O'Brien<recordedTime time="2025-10-21T12:35:00+01:00"/></from>
+          <p eId="para_187">It is hugely worrying. I mentioned that 30 to 40 other projects have been completed. We need oversight of them. It should be public knowledge.</p>
+          <p eId="para_188">There is a record here about AI that has been used in the past. The Department of Social Protection was found by the Data Protection Commissioner to be in breach of various regulations with the public services card. Some 70% of the population have had their data used in that, and it was a type of AI. It is not like we are starting with a blank slate. Even before the 30 or 40 projects I mentioned, there is a history of using AI in ways that are not lawful. I also flag that the Department of justice seems determined to push forward facial recognition technology, which is another problematic form of AI. That will obviously require legislation of its own, but it needs particular attention.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_122">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_189">Deputy Geoghegan brought up the negative consequences. I read an article a couple of weeks about the American judicial system. They brought in an AI system for sentencing judges. The AI had done a situation where it had a black person and a white person. The AI decided that the black person was more likely to reoffend, so the system was giving the black person a higher sentence than the white person. That is the kind of area in which we have to be very careful. A national independent AI office was mentioned. How important is that independence?</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_190">As I mentioned in reply to Deputy Murphy, it is critical, and we can take examples from other countries. Every other country that has informed the European Commission who its national single point of contact would be is an independent authority. Not all countries have notified the Commission about this, but those that have are all independent and that is public information.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_124">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_191">Dr. Shrishak spoke about various groups and forming an advisory group. How would that look?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_192">We have heard the example of the youth committee for Coimisiún na Meán. We propose cross-cutting that and not having specifically youth or children's committees, but across the board because AI impacts plenty of groups and they are all impacted in many different ways. Often the AI regulators do not have expertise in any of these fundamental rights. They need such assistance on the ground. They would not even know if harm were happening, which fell within their remit. There are aspects of monitoring that such a group can help with.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_126">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_193">I previously mentioned the democracy shield. Has the ICCL put any recommendations on that to the Commissioner, Michael McGrath?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_194">I am not sure if we have put in any recommendations related to AI, but I am sure we have put in recommendations related to data protection.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Joe O'Brien<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_195">Democracy shield is European legislation that Michael McGrath has responsibility for. Our main recommendation under that relates to the recommender systems. This is a form of AI that has been running and causing damage in a variety of ways for many years. It is not that new. There are issues with the recommender systems in terms of the damage they are doing to democracy. Our recommendation is that recommender systems be automatically turned off so the person has the choice about whether they want a particular orientated feed coming into their phone. At the moment everyone is getting the preferred feed and algorithm of people in other countries and the billionaires Dr. Shrishak referred to. That is what is coming into our social media feeds. That is causing a problem not just in communities and nationally, but across Europe and particularly at election time. We have been pushing the Commissioner to do something about the recommender systems. This is an obvious example of a negative of AI and how it can be used and abused.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_129">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_196">What is the opinion of the witnesses on chat control?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_197">It depends on which version we are talking about. The latest version we know of is a proposal from the Danish Presidency in the Council. The short version is that we are not in favour of it.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Mr. Joe O'Brien<recordedTime time="2025-10-21T12:40:00+01:00"/></from>
+          <p eId="para_198">There are huge issues with opening back doors in terms of encryption and we have big concerns with rights to privacy in relation to breaking encryption.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_132">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T12:45:00+01:00"/></from>
+          <p eId="para_199">On the democracy shield, Senator Higgins and I also wrote to Commissioner McGrath with the same concerns. When the democracy shield was promised by Ursula von der Leyen it sounded like Russia was the main concern in the context of election interference. However, obviously we have the American multinational tech industry and the huge fear about the role it can play through recommender systems. We in the Civil Engagement Group completely agree with the role that Commissioner McGrath should play in making sure those recommender systems are turned off in order that we are protected against that level of interference.</p>
+          <p eId="para_200"> My question is an attempt to understand liability and accountability. I paraphrase Deputy Murphy's point about the tech industry saying to leave them be, to move over, they know what they are doing and so on. When AI fails and goes wrong, which it inevitably will and has, as we have seen in other jurisdictions, I wonder who the accountability sits with. We have an absence of updated procurement policies. We can see the issues with justice and applying it there. My concern is that if there is a procurement or tendering process, is the State liable in that system? Also, how do we respond and who responds? If we have AI that goes terribly wrong, especially as it relates to a public service, and massively impacts the lives of people, how does the State respond, who responds and who is responsible to respond? What type of research, understanding and knowledge will that public service have to respond to the negative consequences on those who have been affected by an AI failure? I am not sure if there are examples from elsewhere that would be easy to use in this regard. I hope that question is clear.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:45:00+01:00"/></from>
+          <p eId="para_201">The first thing is the public knowing that there is an AI system. That is where the transparency register comes in. One element of such a register that we would like to see is who is the developer and the deployer of these systems. In this case, the deployer could be the Department but in other cases, the Department could be both developer and deployer. That would also give a person who has been harmed information about whom to ask for damages when it comes to liability. That is one. On the damage, I emphasise that it is not just physical damage, which is usually thought of when it comes to products. Psychological damage is explicitly mentioned in the law for this. If that is a concern, that is also covered so you can consider damage to that. The Senator mentioned the AI system not working. The emphasis is also on, when it comes to liability, an element where one has to show there is a defect. A defect could mean it did not work as expected. In different circumstances, that could mean a different thing. If a person with a disability is interacting with an AI system and if the system has not been designed in a way where the data sets are not collected and the AI system is not trained using data that captures their representativeness, that in itself could potentially be a defect in the system.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_134">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T12:45:00+01:00"/></from>
+          <p eId="para_202">Who has the capacity for that oversight? How does that level of oversight come in?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:45:00+01:00"/></from>
+          <p eId="para_203">That kind of oversight is where the market surveillance authorities, as regulators responsible for overseeing the imposition of the AI Act, come in. That is one part. When it comes to the fundamental rights part of things, IHREC for instance could potentially play a role from an equality and non-discrimination point of view. There is also the possibility that they might need to exchange information and share insights. The first case I mentioned was the market surveillance authorities. It is highly likely that in many sectors they may not have expertise in human rights. It is not just technical expertise that needs to be everywhere so there needs to be this exchange.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_136">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T12:45:00+01:00"/></from>
+          <p eId="para_204">I want to see if I understand. Right now, IHREC is the body responsible for looking at the human rights aspect.</p>
+          <p eId="para_205">How does IHREC a defect in the AI system itself?</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_206">IHREC would not determine a defect because that would then have to go to the courts.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_138">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_207">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_208">IHREC can only identify if there is a strong case of discrimination happening.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_140">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_209">Okay. Do the courts have the expertise to be able to determine a defect?</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_210">I do not know. We will have to see.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_142">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_211">I have a final question. Facial recognition technology, FRT, was mentioned. The previous justice committee looked at this and I remember there was an inaccurate statistic used to promote FRT. I think it was said to be 99% accurate but a particular sample was being used that is not appropriate. Does Dr. Shrishak have concerns about Government, State bodies or any actors being too under-resourced to be able to understand when the AI tech industry is using statistics that are not accurate to implement sweeping things like FRT within the Department of justice?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_143">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_212">I ask for a very brief response.</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_213">On the example the Senator mentioned, the first issue was the sample number was picked up from a document that was not representative at all. It had mugshots, basically, and that is not the kind of situation where you would be using FRT. It is also about identifying whether we are even matching apples with apples or are we comparing apples with oranges. That is where we are, even before we get into specifics about statistics. On the 99%, even if that was true we need to consider how many people's images would be captured in these systems. If a million people walked past a camera and their images are captured with 99% accuracy, that means 1% of the million are going to be identified wrongly. That is not a small number.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_145">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_214">I acknowledge the Irish Council for Civil Liberties for its continued leadership in civil liberties. I welcome Mr. O'Brien and Dr. Shrishak. How do I pronounce it?</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_215">Kris is good.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_147">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_216">That is perfect. I thank him for his technical expertise because it is welcomed. It was mentioned the State should establish a publically-accessible central register for all algorithmic systems used by public bodies. How would that work and how might it help citizens understand when AI is being used in discussions that affect them?</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:50:00+01:00"/></from>
+          <p eId="para_217">I thank the Senator for the question. There are different layers. On what kind of information it would have, I already mentioned deployer and developer information but it could have information on various other metrics such as what kind of performance metrics have been assessed. For instance, a system used in a healthcare scenario would use different performance metrics than one being used in a judicial scenario. The same accuracy metrics would not be used across sectors. This kind of information is useful not just for the public but also for any of the regulators so they know the basics have been fulfilled. The second thing is that ideally, it would be mandatory because if it is optional we will have scrutiny of those who have accepted they will register and we will not have scrutiny of those who have not registered, meaning there is a strong disparity in the public sector where some are opening themselves up for scrutiny and others are not, which is not the ideal scenario. Other information that would be great would be a fundamental rights impact assessment or at least a summary of it. I do not think we want the entire assessment in the public domain but we definitely need basic high-level information put in the public domain. The other things could be things like cost. Not all existing registers cover costs like procurement costs, but for instance Colombia and Chile have algorithmic registers where procurement costs are required to be made public. This kind of information can then be used to know if you have been affected or if you have a suspicion of being affected. It is about just knowing it is an algorithmic system and if it falls under the AI Act, then you have certain rights. You know which rights you can use.</p>
+          <p eId="para_218">If, for instance, you do not fall within the scope of the AI Act you might still have discrimination concerns and you could go to IHREC or the Ombudsman for Children depending on the needs. The public can, based on this information, decide where you have potential redress mechanisms and where you do not.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_149">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_219">Dr. Shrishak referenced the register in the Netherlands and said it was not perfect. What lessons can we learn from that?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_220">I was specifically referring to the national register in the Netherlands, because there are multiple ones, at the city level and various other levels. The thing I find imperfect in the national register is it is not mandatory. The registering mechanism is based on what one might call a gentlemen's agreement among the departments they will do the right thing, but it is not mandatory. That has been one of the big concerns there. Despite that, more 1,000 systems have been registered.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_151">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_221">Dr. Shrishak is also calling for an independent national AI office that does not sit in the Department. What benefit does he see coming from that independence?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_222">We need to remember despite the fact 15 regulators have been set up it is quite likely there will be gaps in sectors where we may not have an existing regulator. A potential example I can think of is in the insurance sector where there is credit scoring. If credit scoring is done in the banking sector, my understanding is it will fall within the remit of the Central Bank because it already regulates that sector. It is unclear to me, however, where credit scoring in the insurance will easily fall and which regulator will be responsible for it. That is just one example. Plenty of other examples will probably come up and in these scenarios, it is the AI office that will have to step in because if the public have complaints and do not know which regulator to go to, the AI office will become a central co-ordinator taking responsibility to triage which regulator is responsible or for itself to be the regulator. It remains to be seen how that is formulated in the national Bill.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_153">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_223">The Ministers for Enterprise, Tourism and Employment and Transport and the Central Bank are all there already. Mr. Herrick earlier mentioned the regulators and the lack of resources they have. We have one entity that is sitting where it is sitting at the moment and we were one of the first countries to implement this and get this established. This is one of six, I believe. The benefits are there. Is there an example of a country setting up a stand-alone body?</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_224">Spain is a good example. It has an independent authority. I cannot remember exactly what the AI agency is called but there is a fully independent authority set up there.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_155">
+          <from>Senator Gareth Scahill<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_225">Okay, but on what Mr. Herrick was saying about capacity and expertise, one of the benefits of the AI office is it will have expertise it can make available to the Departments, regulatory bodies and authorities. That is built in there at the moment, is it not?</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_226">We have not seen the details on that but that would be a really good thing. If that is done, it is also important there be information sharing but also a legal basis formulated in the national Bill that allows the other regulators and fundamental rights bodies to use that resource.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_157">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-21T12:55:00+01:00"/></from>
+          <p eId="para_227">I thank both witnesses for their presentations. The ICCL said in its submission there is a false dichotomy between regulation and innovation, but is that really true? Ultimately, regulation imposes a burden and impacts on competitiveness. The witnesses are probably familiar with the Draghi report that clearly set out the regulatory burden in Europe negatively impacts research and development and the technology sector <i>vis-à-vis</i> China and the United States. Is there not a bit more nuance to this debate than saying that the regulatory dichotomy is untrue?</p>
+          <p eId="para_228"> I also take issue with the billionaire narrative.</p>
+          <p eId="para_229">I am certainly not here to defend billionaires but Dr. Shrishak is here from the Irish Council for Civil Liberties. That kind of language is popularising a very serious discussion. He is trying to say the guys building these things are all just billionaires and they do not care about the citizen, they are just trying to make money and over here we are focused on your rights and citizens' rights. Is there not a lot more nuance to this debate? Dr. Shrishak rightly highlighted one organisation which does not have a great reputation, let us be frank, in this area and in terms of its contribution to the debate but there is a spectrum of industry. Some LLM creators are not as hostile, put it that way, to a regulatory environment as others. Perhaps we should call that out. It is no great surprise and probably as predictable as the tide that industry wants less regulation and does not want regulation. We have to find nuance. We want to Europe to be competitive. As I said, Europe can have a leading role in regulation. If you look at how successful Ireland in particular has been at implementing the data protection regime without diminishing investment from technology companies, as frustrated as a lot of the entities that received fines from the Data Protection Commission might be, we have balanced it reasonably well. Europe has a good opportunity when it comes to the whole AI regulatory environment - not no regulation and not pausing the AI Act but there is somewhere in between. Would Dr. Shrishak not agree? It is not a false dichotomy. It is about getting the sweet spot between innovation and regulation. One would probably view the federal government of the United States as very far away from that. China is very far away from that. Europe has made mistakes in the past. We have to get the sweet spot. Is that not an important factor, even from a citizens' rights perspective?</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_230">I get the sense that we agree more than we seem to. When I say no false dichotomy, what I am saying is we are completely in favour of innovation that fulfils our human rights obligations as a State. As the Deputy rightly mentioned, there are plenty of small companies which are not only in favour of the AI Act but also GDPR in the sense that they want to show how to do it well. I know of some examples from the Netherlands where they are actively telling others how they are fulfilling obligations and how it is not a big burden. I have to mention that China does have regulations. It has specific regulations for generative AI and recommender systems which have been in force since 2024 or perhaps even 2023. We are actually behind on that; we are not ahead. The Deputy might know the DeepSeek AI model which came out earlier this year, after the regulations were put in place in China. That is also the reason I am saying there is no clear dichotomy of either innovation or regulation but, rather, the regulation drives innovation forward. The EU AI Act pretty much right in the beginning is pushing for that - the regulation is strongly in favour of promoting the use of AI. It is only that it wants to make sure it is not used in ways that harm people.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_159">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_231">As a matter of interest, is Dr. Shrishak saying China is stronger in a regulatory environment in some aspects of AI than Europe?</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_232">Yes.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_161">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_233">In generative AI.</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_234">Yes.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_163">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_235">Will Dr. Shrishak elaborate on that?</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_236">I have a piece on that from a couple of years back when China initially proposed it. For instance, it requires prior permission before deployment of large generative AI systems. That is not in the EU law, for instance. You can deploy and much of the compliance is self-check. Of course, there are standards, guidelines and all of that but there is no pre-permission needed. I am not completely in favour of the governance ecosystem in China. I do not want that in Europe either but there are elements we can learn from.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_165">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T13:00:00+01:00"/></from>
+          <p eId="para_237">I love that Gibney comes after Geoghegan because we get quite a different viewpoint presented at the committee on a lot of these issues.</p>
+          <p eId="para_238">I would argue for a start that I do not think we have got it right in terms of our data privacy work. The trace data exposé that recently came out will signal that. Regulation is an important way for businesses to operate. I personally believe in the mantra that constraint breeds creativity. I have worked in a corporate environment and the public sector. When you put constraints and regulations on a corporate entity, it innovates and creates ways of continuing to make money within that environment. The reality is they will always be there to make money. They will never be inclined in any way to consider rights and equality, for example, against their bottom line because what everyone works towards is that bottom line. I have some specific questions to tap into Dr. Shrishak's unique expertise in legal and tech understanding. I will pick up on the discussion with Senator Ruane in relation to the defects. They can often only be seen in the aggregate rather than for individuals or protected groups. Is there a role for the Government to take that aggregate information from AI and slice and dice it alongside the protected groups, for example, in equality legislation here? </p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:05:00+01:00"/></from>
+          <p eId="para_239">My understanding is they would be different parts. The defects part would be more on a product liability side of things while equality legislation and especially the standards directive mentioned open up separate avenues of redress. We may not go through a product liability direction in that sense but rather protecting through equality legislation.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_167">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T13:05:00+01:00"/></from>
+          <p eId="para_240">So it would not be possible to mix the two? If that aggregate is the only way to identify those defects, is that a barrier to identifying discrimination within that? Would it be a role for the Government or the State to bring together that data?</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:05:00+01:00"/></from>
+          <p eId="para_241">There are a few things. One is from where we would source the data. For instance, for equality data, where would we source that, where would that aggregate come from and who has that data. As an example, within the AI Act in Article 10(5), there is the possibility that providers of AI systems can collect additional data about sensitive attributes to prevent bias coming into systems but that is only for that purpose. It is unclear whether that information can be requested by an equality body at this point.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_169">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T13:05:00+01:00"/></from>
+          <p eId="para_242">It would need to be in the same set of data. How can we best handle end user consent or assent to AI? Currently, people just click "Yes" to cookies to make the banner go away. Could there be an opt-out or opt-in model at browser level? When we come to regulating AI, in what way could that be stronger than what we currently have?</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:05:00+01:00"/></from>
+          <p eId="para_243">Much of the cookie consent requirement initially comes from the ePrivacy directive and the personal data aspect comes from the GDPR. So far, even when it comes to AI systems, that is also the angle where this comes in. There are a couple of things. The first is the legal basis the companies use to collect that information. If they use consent, it is an opt-in mechanism. Some companies are pushing for the use of legitimate interest, so then there is no opt in or opt out unless the company gives the option to opt out. The ideal scenario would be consent based only.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_171">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T13:05:00+01:00"/></from>
+          <p eId="para_244">We spoke earlier about the AI office and I covered off governance in my discussions with IHREC. I want to talk more about the constitution of the AI office. We know it is difficult for the State to compete with salaries in the tech space. Is that an issue? Is there anything we can do to overcome that? Is there something the State should be considering, particularly at the moment with patterns of movement, even from places like the US where people genuinely are relocating due to the current Administration and some of its values? Are there things we can do to draw the talent we need to be the best AI office in Europe?</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:05:00+01:00"/></from>
+          <p eId="para_245">We can learn from the lessons of the UK's AI Security Institute, formerly the AI Safety Institute.</p>
+          <p eId="para_246">They have figured out ways to increase the salaries even though they are based within the UK Government in some sense. The salary caps are much higher. They have been able to attract people from academia and various industries, and people from senior and junior positions. That is something we can do. I have not seen if the Irish AI office is going to do that but that is one possibility, just on the salary aspect, to bring in more people.</p>
+          <p eId="para_247"> The other thing is to figure out ways evaluations of AI systems can be done in close collaboration with research institutes. Ireland has good research institutes. That may be one mechanism where even if there is not sufficient in-house capacity for very specific aspects of AI, those things can be somehow outsourced to the research institutes which do have those capabilities. There are ways we can play around with that.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_173">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T13:10:00+01:00"/></from>
+          <p eId="para_248">I want to ask a related question about the constitution piece. Is there a way we could set up a volunteer body of experts in the area? </p>
+          <p eId="para_249"> There are thoughts about how the AI office will relate to State and Government. How about those private actors? They will need to so what does that look like?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_174">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T13:10:00+01:00"/></from>
+          <p eId="para_250">Please answer succinctly.</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:10:00+01:00"/></from>
+          <p eId="para_251">One thing about the voluntary thing is to ascertain for what purpose would we use those people. If we are using them for enforcement actions then their involvement would, for instance, perhaps need an NDA or all kinds of things based on confidential information that they might get access to from companies. That would be a thing. That is also why ideally they are employed and not volunteers.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_176">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-21T13:10:00+01:00"/></from>
+          <p eId="para_252">What about EU-based private actors like Mistral AI in France. How would you get that kind of relationship set up? </p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:10:00+01:00"/></from>
+          <p eId="para_253">Currently there should be relationships built primarily through the EU AI board. There are multiple working groups that are involved. Various existing players in Ireland are also involved. That is a mechanism. There is co-ordination across the EU.</p>
+          <p eId="para_254"> One thing the State can do, currently, as best I know, there is neither Irish nor EU funds to set up technical infrastructure - it is not about only people - do tests and evaluations. If regulators are checking AI systems, they need the technical infrastructure, and we do not have that currently.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_178">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T13:10:00+01:00"/></from>
+          <p eId="para_255">I thank Dr. Shrishak for his work in general. Deputy Mythen mentioned the US and how when a series of cases were being decided that a person of colour tends to be discriminated against most. Of course, that is based on the training data. The AI does not just act on its own. It is based on the training data that is put in. That is a big concern for us and the State in the deployment of AI. In terms of if AI is used to more effectively and efficiently deliver public services, one of the biggest complaints we get, as public representatives from people, and it is even related to human rights, is their rights not being vindicated because it takes too long and they are filling in forms. Will Dr. Shrishak comment on where AI may be used to combat the situations that Deputy Mythen mentioned? Where can AI be used to tackle some of that bias? Where can AI be used to ensure that human rights and civil liberties can be vindicated and act as a check on human impulses?</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:10:00+01:00"/></from>
+          <p eId="para_256">I might have cited separate work that I have done on bias and AI systems. I need to emphasise that data is just one component of bias that goes into the system. There are things that we call algorithmic bias that often involve choices made by the designers of systems. Choices could also be not looking for certain issues. That is also a choice and there are logics in all of that. As far as I know, I would not use AI to prevent bias but what we can do, and that comes back all the way to the beginning of the development process, is look at who are the people involved in development and where is the data, for instance, coming from because in many of these systems the data that we are getting and is used are actually proxy data for what the actual concern is or what the system is being built for. That is the key thing. I would not use AI to fix it but there are various technical methods that take us to an extent to address the issue of bias in AI systems, and the kind of example that the Chair gave is one.</p>
+          <p eId="para_257"> The example, for instance, was from the US. We have plenty of examples from the US. We have some examples in Europe as well. What we really need to look after when it comes to data is the representativeness of the data going into the AI system to where it is being deployed. If it is deployed in Ireland, it needs to represent people in Ireland, not just the EU overall.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_180">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T13:15:00+01:00"/></from>
+          <p eId="para_258">That leads me to my next question about the challenge of data sets. Concerns were expressed when we met representatives of the older people representative groups. The concerns were that a lot of the data does not look at those who are in older groups and they tend to be excluded, and often those with disabilities may not form part of the data sets. What would Dr. Shrishak recommend with regard to the State preparing data sets?</p>
+        </speech>
+        <speech by="#" eId="spk_181">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:15:00+01:00"/></from>
+          <p eId="para_259">One thing that can be done is how you actively involve the people and then by involving them also get their consent so that they are actually contributing to the development of systems. That way they are giving their data. This is a concept that is known as data donation. That is one way to get active consent of specific data about people who are not represented in the data set. For instance, what the state can do is create mechanisms where data donation can be done. Of course there needs to be consent but there also needs to be trust in the infrastructure where people are donating their data. Who is going to run that infrastructure? Do they already have interactions with the State body or the regulator? All of this will also play for the state to get that data.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_182">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T13:15:00+01:00"/></from>
+          <p eId="para_260">We are moving towards the digitalisation of the census, which is probably the biggest source of data for the State. If we deploy the data that is gathered in an effective way, we can ensure a more efficient management of resources and target particular things in particular ways. From the next census gathering in 2027 this is going to happen and we will have a huge bank of data then. What safeguards do we need to put in place to allow the State to use that census data to inform decision-making? </p>
+        </speech>
+        <speech by="#" eId="spk_183">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:15:00+01:00"/></from>
+          <p eId="para_261">The first thing is, and to go back to the GDPR, for what purpose is the data being collected? If it is being collected primarily and only for the purpose of the census, it cannot be used for other purposes. That is the baseline.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_184">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T13:15:00+01:00"/></from>
+          <p eId="para_262">What if people are asked to consent?</p>
+        </speech>
+        <speech by="#" eId="spk_185">
+          <from> Dr. Kris Shrishak<recordedTime time="2025-10-21T13:15:00+01:00"/></from>
+          <p eId="para_263">Then it would have to be done it separately and not during the census process. A separate process would be needed to collect data for this purpose. The Chair mentioned elderly people and people with disabilities. One thing that they are currently lacking is companies are deploying and then telling them often after as opposed to involving them during the development. Had they been involved in developing carefully designed systems that actually work for them, a lot of issues would be identified early, and some could be solved and then you could be go for deployment. If issues are not solved, they will not reach the deployment stage.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_186">
+          <from> An Cathaoirleach<recordedTime time="2025-10-21T13:15:00+01:00"/></from>
+          <p eId="para_264">I thank everyone for a very informative session. I thank Ms Keatinge, Mr. Herrick, Dr. Shrishak and Mr. O'Brien for joining us. This committee will continue its consideration of this module on how the State may use AI in the delivery of services over the next period. We will then move to discussing other modules like AI in education and healthcare. There is always an opportunity for people to send submissions by email to <i>ai@oireachtas.ie</i>.</p>
+          <p eId="para_265"> We will have a brief private meeting shortly.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee suspended at 1.19 p.m., resumed in private session at 1.21 p.m. and adjourned at 1.29 p.m. until 11 a.m. on Tuesday, 4 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

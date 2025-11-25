@@ -1,0 +1,605 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-07/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-07/debate"/>
+          <FRBRdate date="2025-10-07" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-07/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-07/debate/mul@"/>
+          <FRBRdate date="2025-10-07" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-07/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-10-07/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-18" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LynnRuane" href="/ie/oireachtas/member/id/Lynn-Ruane.S.2016-04-25" showAs="Lynn Ruane"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-07">Dé Máirt, 07 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-07">Tuesday, 07 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LynnRuane">Lynn Ruane.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Artificial Intelligence and Disability: Discussion<recordedTime time="2025-10-07T11:00:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T11:00:00+01:00"/></from>
+          <p eId="para_11">I welcome everybody to the meeting. There are a few other matters going on in Leinster House today, as you may be aware, but this is a particularly important session in the work we are doing. Our committee will move to the impact, opportunities and challenges of artificial intelligence in a range of areas, including from next week AI and the State, in terms of how the State uses AI.</p>
+          <p eId="para_12">We took a decision that before we examine any of the issues such as AI and healthcare, AI and energy and AI and education, we would engage with three groups to hear the relevant perspectives on those areas so that we can look at AI through those lenses. In the past two weeks, we heard from children and young people and their representatives. Last week, we heard from older people. This week, we have a session around AI and disability. I welcome a number of representatives from disability organisations. From the Disability Federation of Ireland, I welcome Dr. Emer Begley, director of advocacy, and Ms Charlotte Olhausen, policy and advocacy officer. From the National Disability Authority, I welcome Dr. Aideen Hartney, chief executive, Dr. Gerald Craddock, chief officer of the Centre for Excellence in Universal Design, and Dr. Donal Fitzpatrick, senior standards and monitoring officer. From Voice of Vision Impairment, I welcome Ms Rosita Apaza Machaca, representative, and Mr. Tim Culhane, representative.</p>
+          <p eId="para_13"> I advise members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex in order to participate in these meetings. I will not permit a member to participate where he or she is not adhering to the constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member participating via MS Teams to confirm that he or she is on the grounds of the Leinster House campus prior to making his or her contribution to the meeting.</p>
+          <p eId="para_14"> I invite Dr. Begley to make her opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T11:05:00+01:00"/></from>
+          <p eId="para_15">I thank the committee for the invitation to appear before it today. I am joined by my colleague Charlotte Olhausen, who is the Disability Federation of Ireland's policy and advocacy officer. The Disability Federation of Ireland, DFI, is a civil society and pan-disability federation of over 100 organisations that work at national, regional and local level. </p>
+          <p eId="para_16"> The extent, implications and impact of the rapid advancements in AI are still being understood. We met recently with our members and heard about AI's potential benefits for the disability community, including levelling the playing field for inclusive education and employment and supporting independent living. Voice detection technology and geographically accessible maps for wheelchair users were identified as positive advancements. Other forms of AI have the potential to support greater efficiencies and reduced costs for voluntary organisations. </p>
+          <p eId="para_17"> However, the rapid evolution of AI also has the potential to leave people behind and put people at risk. If these significant risks are not understood and corrected, they will create new and additional structural barriers promoting discrimination and deepening existing inequalities and disability exclusion. AI should serve as a tool to empower people to live independent lives on an equal basis with others. </p>
+          <p eId="para_18"> The EU AI Act aligns with the UN Convention on the Rights of Persons with Disabilities, UNCRPD, to which Ireland is a state party. Any national policies, legislation or leadership Ireland shows in the life cycle of AI-enabled systems must be framed around the protection of the fundamental rights of all people in Ireland, including those enshrined in the convention. Members of the DFI have questions and concerns about the use of AI-enabled systems and their applications, such as those systems trained on biased data sets that fail to take account of the breadth and diversity in our population. The EU AI Act lists several high-risk AI systems across employment, education, healthcare, housing and financial applications. The associated risks are exacerbated by the lack of data to inform the evidence base. In employment and recruitment, for example, AI poses the risk of worsening Ireland's disability employment gap, which is one of the highest in the EU at 38.2% compared with the EU average of 24%. The right to equality and non-discrimination as per the UNCRPD requires countries to abolish all forms of disability-based discrimination, ensuring provisions for reasonable accommodations and equal and effective protections for disabled people. The EU AI Act obliges member states to conduct fundamental rights audits in partnership with disabled people on AI systems to assess their inclusivity. </p>
+          <p eId="para_19">In a rush to embrace AI, the Government must not forget that it is bound by public sector duty. Any new policies or actions must be considered in this light.</p>
+          <p eId="para_20"> The EU AI Act also aligns with the principles of universal design. Our colleagues from the NDA will speak more eloquently to that, I am sure. The prioritisation of AI co-creation with disabled people in the development processes will support Ireland's fulfilment of its obligations under Article 16 of the convention. DFI welcomes the step to establish a national AI office by August 2026. We recommend prioritising disability within this office to ensure the disability perspective is mainstreamed in all national AI development.</p>
+          <p eId="para_21"> Affordability was a key concern for our members when we spoke to them. We heard of the expense of AI innovations which support independent living. To ensure equal benefit and access, AI systems must be affordable and the financial burden not placed on individuals. This is particularly important considering the extra cost of disability. The ESRI earlier this year estimated that households where there is a disabled person have between €488 and €555 in additional costs per week, with lower average incomes and higher average expenditure experienced by disabled households compared with others.</p>
+          <p eId="para_22"> Knowledge of AI systems and their applications are also a key concern on how data is used and collected and the implications of its use. A response to this is a focus on AI literacy. Accessible training on AI must be prioritised to enhance digital skills for disabled people and the disability community and mitigate the risk of furthering their digital exclusion, as well as to enhance informed decision-making and the ability to undertake personal risk-benefit analyses.</p>
+          <p eId="para_23"> Intersectionality was also a key concern. The Government has a duty to regulate companies, especially when it comes to developing AI. All actions related to its development, including codes of conduct, must embed intersectionality as a core guiding principle. The multiple and intersecting identities of minority groups most at risk of AI bias and discrimination are protected. For example, disability- and gender-inclusive data should be integrated into AI development and regulatory safeguards established to prevent algorithmic discrimination.</p>
+          <p eId="para_24"> DFI is a civil society organisation and we note the large energy demands for training and running machines and for the disposal of specialist hardware used in AI. While AI can also be used to combat climate change, its growing carbon footprint raises significant sustainability concerns which should be considered alongside its social implications.</p>
+          <p eId="para_25"> While AI has the potential to support independent living, participation and active citizenship for the disability community, it is only if the inherent biases of AI systems are identified and corrected; if the diversity of lived experience of disability is acknowledged and addressed, with a primary focus on co-design and co-creation; if the cost burden of AI systems and enabled technologies do not fall on individuals; and if there are strong regulatory systems in place, with accessible and freely available information on AI to increase awareness and understanding.</p>
+          <p eId="para_26"> I thank the committee members for their time this morning. We will be happy to answer questions.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-10-07T11:10:00+01:00"/></from>
+          <p eId="para_27">The National Disability Authority welcomes this opportunity to appear before the Committee on Artificial Intelligence to discuss the impact of AI on the lives of persons with disabilities. The NDA is a statutory agency established to provide evidence-informed advice and guidance to the Government on disability policy and practice and to promote awareness and application of universal design. Universal design is the design and composition of an environment so that it can be accessed, understood and used to the greatest extent possible by all people regardless of their age, size, ability or disability.</p>
+          <p eId="para_28"> The emergence of AI marks a transformative moment for disability inclusion in Ireland, offering unprecedented opportunities while raising important challenges which need careful consideration. In Ireland, as elsewhere, AI technologies have begun to make progressive impact on the lives of individuals with disabilities. They offer innovative solutions that have the potential to enhance accessibility and inclusivity across services, education and employment. AI technologies have been embedded in many everyday services and technologies for several years now.</p>
+          <p eId="para_29">These technologies already show significant promise in breaking down barriers to participation and eliminating common obstacles faced by people with disabilities. However, significant challenges lie ahead, many of which may only become apparent as AI systems are deployed in practice. Early recognition of these challenges is therefore essential to ensure AI genuinely serves and empowers people with disabilities rather than creating new barriers.</p>
+          <p eId="para_30"> A fundamental concern centres on training data biases. Current AI systems reflect and perpetuate existing inequalities due to the significant under-representation of people with disabilities in their development, as well as the fact that many AI models are based on existing datasets where disabled people are also under-represented. Technical limitations compound these issues, as many AI interfaces continue to rely on modes of interaction that can exclude users with certain disabilities. Implementation risks present a third challenge where improperly deployed AI systems could amplify existing inequalities rather than alleviating them. This is particularly crucial in public services where AI systems may influence access to essential services and supports, indicating that the use of AI in these services will require rigorous oversight and continuous evaluation to ensure it enhances, rather than hinders, accessibility and inclusion.</p>
+          <p eId="para_31"> The European AI Act establishes a comprehensive framework for AI regulation, introducing a tiered approach that categorises systems into four designated risk levels: unacceptable, high, limited and minimal. We welcome that the Irish State has designated nine national authorities with responsibility for protecting fundamental rights. We advise the importance of these authorities in engaging closely with disabled people and their representative organisations to ensure a universal design approach to managing and mitigating the potential risks. The committee is likely aware that almost 22% of the Irish population reported a disability of some kind in census 2022. This is a substantial segment of the population. We also note the committee's engagement on the subject of older persons at a recent hearing.</p>
+          <p eId="para_32"> The NDA advises that ensuring the principles of universal design underpin the development and deployment of AI will benefit these population cohorts and others, given the focus on access, understanding and use for all users. Ideally, public bodies would work to achieve universally designed AI in their services, moving beyond mere compliance with the legislation. This will mitigate risks to the greatest extent and ensure sustainable and beneficial growth of AI into the future. We therefore recommend ongoing monitoring of the impact and outcomes associated with its deployment for disabled people and other marginalised groups within our population. Universal design is also based on codesign and coproduction principles and we advise the importance of AI service providers meaningfully involving disabled people during design and training phases, where biases can be more easily identified and resolved. Ideally, AI systems should offer multiple modes of interaction that genuinely accommodate diverse user needs and preferences rather than treating accessibility as an afterthought.</p>
+          <p eId="para_33"> On the policy side, it will also be important that plans are made to guard against unintended consequences of AI use, where marginalised groups within society can be more impacted. For disabled people, for example, AI can increase employment opportunities, particularly for those with higher levels of educational attainment. For others, however, AI could potentially displace employment opportunities. Studies have shown that disabled people can have lower levels of educational attainment and so are at greater risk of loss of jobs that can be easily replaced by AI and other forms of automation. Application of AI in public services is also dependent on levels of digital literacy within the overall population. As we have just heard, there are many groups in society that have lower levels of digital literacy, including disabled people. Related but separate is the cost of access to the technology necessary for effective use of AI. The 2021 cost of disability report prepared by Indecon showed the extent of the additional draw on budgets associated with having a disability, which, when combined with the higher rate of poverty in this population, means the financial implications of increased use of AI in public services cannot be disregarded.</p>
+          <p eId="para_34"> While there are many opportunities for AI increasing participation of disabled people in the socioeconomic life of the State, careful management and ongoing monitoring is required to ensure that its roll-out does not perpetuate existing inequalities or create new ones. A commitment to a universal design approach is one route to mitigating this risk, as is building capacity among public services, disabled people and AI developers.</p>
+          <p eId="para_35">We also suggest adopting a structured assessment framework to support implementation of the AI Act and would be happy to speak more about this in the remainder of this session.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Tim Culhane<recordedTime time="2025-10-07T11:20:00+01:00"/></from>
+          <p eId="para_36">Voice of Vision Impairment is Ireland's disabled persons representative organisation representing the human rights of blind and visually impaired people. I thank the committee for inviting us here today to give our views and perspectives on artificial intelligence as it relates to visually impaired people and their human rights. Before I start, I will thank my colleague, Martin O'Sullivan, who cannot be here today. He put a lot of work into researching this presentation. Unfortunately, he has serious ill health at the moment. I just wanted to put that on the record.</p>
+          <p eId="para_37"> I will start with a real world example of how unregulated AI can have a negative effect on people in minorities in general. In 2023, iTutor, an American tutoring company, had to settle a case with the American employment commission for over $365,000 because it had used AI software in recruitment that rejected people based on age and gender. In particular, all women over the age of 55 and all men over the age of 60 were removed from the recruitment process. While there is no certainty that visually impaired people or disabled people in general were discriminated against, it is likely that such discrimination is occurring already.</p>
+          <p eId="para_38"> There is no doubt that AI has the potential to be a game-changer. It is already benefiting visually impaired people significantly in many areas of our lives. I will highlight a few of those. There is the ability to read and process inaccessible material such as menus, signs and printed documents. It allows us to quickly access essential information such as emergency contact numbers and transport software updates. It makes shopping much more accessible by describing and identifying products, doing price comparisons and reading important information, such as nutritional and cooking information, that would not have been available to us thus far. In education, it unlocks accessibility to printed archives, books and other research materials.</p>
+          <p eId="para_39"> However, there is no doubt that, if left unregulated, AI could introduce a number of significant risks for visually impaired people. We would argue that visually impaired people are proportionately more exposed to these risks. I will highlight a few of those potential issues for us. The first is privacy and data security. Many visually impaired people are using AI tools to photograph and scan sensitive documents such as bank statements, medical records and so on. This leaves us vulnerable to data leaks and identity theft. It is important that there is legislation to ensure GDPR compliance, data minimisation and the availability of secure offline AI tools.</p>
+          <p eId="para_40"> The second major issue we see with AI, which was touched on earlier by DFI and the National Disability Authority, is affordability and accessibility. Many of the most beneficial and hence most useful features of AI are based on a subscription model. This will automatically exclude a significant proportion of people with vision impairment, given the low-levels of employment in the vision-impaired community. Affordability is already a barrier to equality. We recommend the introduction of a non-means-tested disability allowance to enable access to essential AI technology.</p>
+          <p eId="para_41"> The next issue is bias and discrimination. This was well described earlier by my colleagues in that the AI models are using data sets that are inherently biased towards non-disabled people. If we use those, we will be perpetuating discrimination because we will not be representing disabled people and visually impaired people from that perspective. Therefore, we need to reverse that exclusivity. Otherwise AI will actively magnify the existing inequalities we see in society as a whole. </p>
+          <p eId="para_42"> Lastly, I want to point out accountability and transparency. AI systems are often opaque black boxes when it comes to high-stake decisions such as those relating to employment, welfare and healthcare. This lack of explainability is really unacceptable from anyone’s perspective. We recommend that AI systems used in such contexts provide transparent, auditable decision-making and proof of non-discrimination on the nine grounds set out in Irish equality law. </p>
+          <p eId="para_43"> To sum up our recommendations and views on AI as a whole and what we think needs to be done, it goes without saying that mandatory consultation is needed with disabled persons and organisations when it comes to AI policymaking, strict privacy and data protection standards, GDPR compliance and the option for offline tools, proof of non-discrimination in AI use in employment and service delivery, accessibility by design in all AI systems and not just as an afterthought, affordability measures to include a cost-of-disability allowance, transparency and explainability requirements for AI in high-stakes decisions. </p>
+          <p eId="para_44"> We have all seen the negative repercussions of unregulated social media over the past number of years. I am sure many committee members have experienced the negative effects. It is really important that we do not make those mistakes when it comes to AI and that we get out ahead of the game and regulate.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T11:30:00+01:00"/></from>
+          <p eId="para_45">I will now turn to the members. There is a revised speaking order because there was an error in the one circulated. Apologies have been received from Senator Dee Ryan. All members have seven minutes for questions and answers. I ask them to direct their questions to a particular individual or organisation and if somebody wants to indicate that they have a point to make I ask them to raise their hand. I called Senator Harmon.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_6">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-07T11:30:00+01:00"/></from>
+          <p eId="para_46">I thank the witnesses for their contributions this morning. It has been very insightful to hear from all of them. There is certainly a load of food for thought and topics that the committee needs to discuss. It is fair to say that inequalities exist for disabled people in Ireland with or without AI. It is very important that AI does not contribute to widening this inequality gap and that we use it to close the gap and make sure society is more inclusive, including through education. Many of the witnesses mentioned the stark figures relating to our workforce and how we are at the bottom of the EU table in terms of disabled people in employment. The political system and civic participation and participation in voting and elections is also an area that needs to be looked at to see whether AI can contribute to it.</p>
+          <p eId="para_47"> I have a number of questions and my first is directed to Voice of Vision Impairment. It was mentioned that less than 25% of visually impaired people are in employment in Ireland, which is a very stark figure. Paid AI services and how they are often inaccessible due to financial costs was also mentioned. How would Voice of Vision Impairment propose that this be dealt with? An additional allowance was mentioned. Could this be introduced with a cost of disability payment, for example? I ask the witnesses to expand on this.</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T11:30:00+01:00"/></from>
+          <p eId="para_48">The best way of getting a cost benefit, or making AI affordable for visually impaired people, is that there should be a stand-alone model of AI that is not linked to the Internet and can be used completely privately. Maybe if AI were subsidised for people who are visually impaired in some way, if it were possible, it would certainly lighten the burden of the cost. I use a pair of Meta AI glasses and they are fantastic. They help me and they mean I can read documents. They have given me a lot more independence. On the other end of this, there are privacy concerns and there is the cost of paying for the advanced model or getting extra facilities. I cannot afford that extra cost. In one way, it limits me but in another, it gives me access to read independently documents to which I never had access previously. There has to be a way of finding a balance between the cost and meeting that cost.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_8">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-07T11:30:00+01:00"/></from>
+          <p eId="para_49">My next question is for the Disability Federation of Ireland. The UNCRPD has been mentioned. Will the witnesses expand on how we can ensure it is not abandoned as we rush to adopt AI? Will they give suggestions on how we can better codesign in terms of AI?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Charlotte Olhausen<recordedTime time="2025-10-07T11:30:00+01:00"/></from>
+          <p eId="para_50">It is really important to bear the UNCRPD in mind with all AI development. The EU AI Act states it is aligned with the convention. Ireland as a state party to the convention has to take into consideration the rights enshrined in the UNCRPD when it is developing AI policy on a national level and looking at AI innovation.</p>
+          <p eId="para_51">Going to cocreation and codesign first, the European economic and social committee has an opinion piece on including persons with disabilities in the development of new technologies and AI. It strongly recommends including disabled people throughout the process of designing, developing, assessing and implementing new technologies. Without this component we will be further away from mitigating potential discriminatory risks. As others have said as well, if we do not consult with people with disabilities not only will their voices not be heard in terms of potential risks but AI will also not be developed and shaped by them to improve their lives. As Ms Apaza- Machara said, there is much imbalance between the negatives in terms of the risks and the positives. It is about really finding a balance there. We know that Ireland has to establish its national AI office. I think that may be done some time next year. One measure could be ensuring that disability is very much prioritised in that office and potentially creating a disability in AI advisory group or something to this effect and ensuring in doing so that people with disabilities in all their diversity are included in those conversations. That speaks to the intersectionality point as well.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_10">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-07T11:35:00+01:00"/></from>
+          <p eId="para_52">My final question is for the NDA. Dr. Hartney touched on access to education and upskilling in her opening remarks. How can better access for disabled people be ensured and that jobs are not displaced for them when it comes to AI?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-10-07T11:35:00+01:00"/></from>
+          <p eId="para_53">I ask Mr. Fitzpatrick to step in and give some examples on how education can benefit people.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Dr. Dónal Fitzpatrick<recordedTime time="2025-10-07T11:35:00+01:00"/></from>
+          <p eId="para_54">It could be a game-changer. There are two comments I will make and Voice of Vision Impairment referred to them. AI has the capacity to take inaccessible educational materials and render them accessibly. A crucial part of this are things like mathematics, diagrams, charts, visualisations and other diagrammatic material that can either be described or access provided to it. This use of AI could enable vision impaired people to access subject material that is not currently available. Another really interesting approach here could be if we take it in the context of the Irish language. To the best of my knowledge, and I am open to correction on this, there is one speech synthesiser, which is responsible for converting text into artificial speech, available in the Irish language. AI and AI-generated speech has the capacity to produce really accurate, really high-quality Irish language speech, which could improve the access to Irish language education for lots of students at all levels across the country. Taking a universal design approach, it could be usable by everybody and not just restricted to people with disabilities.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_13">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-07T11:35:00+01:00"/></from>
+          <p eId="para_55">I thank the witnesses for attending. I could listen to them all day, especially their examples of where AI is helping. A lot of them used the profound phrase "accessibility as an afterthought". They spoke about how this should not be the case with AI and that disabled voices are not being represented because of the biased data sets. They also talked about cocreation and universal design. I would love to hear more about universal design when it comes to AI. We are aware of it in terms of thinking about buildings. If a bathroom is being built, it is easier to build an accessible bathroom that everybody can use. The same is true with wide doors.</p>
+          <p eId="para_56"> In relation to AI, it would be great to get some examples of universal design so that it is easier to picture. Everyone could answer this question, but will Dr. Hartney start?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-10-07T11:35:00+01:00"/></from>
+          <p eId="para_57">I thank the Deputy. A universal design approach would absolutely be of benefit to AI because one of its key principles is that it designs for all users rather than the middle. I will ask my colleague Dr. Craddock to speak on this because he is the chief officer for our centre of excellence and universal design. He has some useful examples of how not looking at the extreme user has caused issues.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Dr. Gerald Craddock<recordedTime time="2025-10-07T11:40:00+01:00"/></from>
+          <p eId="para_58">I thank the Deputy. One of the big things happening at the present is Ireland signed the European Accessibility Act on 28 June this year. Under that there are six standards that are to be harmonised. One covers ICT. Two are new standards, one of which is very relevant to the question. It is around the digital support services. Within that we are talking about online automated systems, but also the use of chatbots, which we see regularly on every system we access now on the Internet. A chatbot appears looking to give the user assistance. Ireland, through our work at the centre, but also through the National Standards Authority of Ireland, is seen as the leaders in advancing these standards. It is a bit like the egg before the chicken in that the Act is in place but the standards are still in development, which is a bit of an issue not only for Ireland but the other 26 member states across Europe. A lot of the big industry players, such as Google, Microsoft etc. are saying they cannot really implement this Act until they see the actual standards. That will be a game-changer once we get these standards in place. Very much following a universal design approach, one of the standards is called "Universal Design" and relates to how we manage accessibility of products and services. We have led on that European standard for the past seven or eight years. It is now in its final revision. It is very much based on the ISO 9000 quality management series of standards. We see that from an organisational perspective and specifically how an organisation or public body or private sector organisation incorporates universal design. It is not an add-on. The issue with accessibility is, as the Deputy mentioned, often about the accessible bathroom; it is sort of retrofit. We are aiming for universal design to be a way we can embed good design that makes sure AI products and services are fully accessible, understandable and usable by people with disabilities. We see that as a significant game-changer over the next two to three years.</p>
+          <p eId="para_59"> Returning to the question on education, we are working with the NSAI and we are talking to a lot of the third level institutions about how to incorporate these standards into their education programmes. We are talking about the new designers, be it in ICT, the built environment or product services, so they understand what these standards mean and how they can implement them in new products and new services being designed. It is critical that they are fully accessible.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_16">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-07T11:40:00+01:00"/></from>
+          <p eId="para_60">Dr. Craddock mentioned new products being designed, Ms Apaza Machaca's referred to her AI glasses, and Mr. Culhane outline how he does his shopping with AI. It is exciting to hear that. However, again it is worrying about the digital divide and what subsidies and grants we need. I worked in the neurodiverse space, and it is great to see improvements with AAC devices being rolled out in recent years but I am now seeing that when batteries die it can be hard to get them replaced. What sorts of grants and subsidies are needed? Is it individual for each person? How would witnesses suggest we go about that?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Tim Culhane<recordedTime time="2025-10-07T11:40:00+01:00"/></from>
+          <p eId="para_61">If I could just go back to earlier question around the issue with AI and accessibility, there are two sides to this. First, there is the direct connection with AI. </p>
+          <p eId="para_62">We probably all are aware of having ChatGPT apps on our phone where we ask questions and that sort of thing, but there is no guarantee that ChatGPT could bring out an app next week and break accessibility on it, and that would immediately prevent me or anyone else with a visual impairment from using the app. That would be a concern. On the other side is the use of AI as a tool to, as we were talking about, create products and even the generation of websites and stuff like that. There was mention of human jobs being replaced by AI jobs and bringing in an automated way so that we could potentially end up with websites being created that are not accessible or only partially accessible.</p>
+          <p eId="para_63"> Can I clarify the Deputy's second question? Was it about creative funding? </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_18">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-07T11:45:00+01:00"/></from>
+          <p eId="para_64">Ms Apaza Machaca mentioned AI glasses and Mr. Culhane mentioned a device that he uses when he is shopping. I was wondering if he was thinking about subsidies and grants or the Government coming in to support that digital divide. What would be his suggestions?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_19">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T11:45:00+01:00"/></from>
+          <p eId="para_65">I will ask Mr. Culhane to be brief because we are over time.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Tim Culhane<recordedTime time="2025-10-07T11:45:00+01:00"/></from>
+          <p eId="para_66">Sure, no problem. There are already areas where we do this. For example, visually impaired people can reclaim the VAT on accessible products, that is, software and hardware. That already exists for AI glasses, etc. It is something that would be well worth look at. The cost of disability allowance would be the way to go there. It is something that has to be targeted. It is essential AI. It is something that will make a difference and it is also targeted at the people who really need it. This would not be a blanket provision. It probably is something that would need a bit of consideration.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_21">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T11:45:00+01:00"/></from>
+          <p eId="para_67">I thank Mr. Culhane and Deputy Keogh.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_22">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-07T11:45:00+01:00"/></from>
+          <p eId="para_68">I thank the witnesses for the presentations and their work. I will start with the DFI. I was interested in the comment about the AI Act aligning with the UNCRPD. Is that actually happening in reality? A footnote to the presentation states that Recital 96 of the EU AI Act stipulates that deployers of high-risk AI systems, especially public bodies or private entities providing public services, must conduct a fundamental rights impact assessment before using the AI system, but AI is being used. Have those fundamental rights impact assessments taken place?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T11:45:00+01:00"/></from>
+          <p eId="para_69">The development of AI is happening at such a fast pace that for employers, employees, potential candidates to keep up with it is hugely challenging. We have heard from colleagues today about the regulation. We know from talking to colleagues within the disability community that they are experiencing a negative impact around accessing employment because of AI, for example, large data sets being used to exclude people who are more diverse in terms of their profile of education or employment, and the intersectionality with gender as well in gaps in employment.</p>
+          <p eId="para_70"> We ratified the UNCRPD in 2018. We are up in front of the UN committee shortly. We did our own alternative report around the implementation of the UNCRPD and, most certainly, there are gaps in implementation.</p>
+          <p eId="para_71"> Ms Olhausen will talk to more of the technical aspect.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Charlotte Olhausen<recordedTime time="2025-10-07T11:45:00+01:00"/></from>
+          <p eId="para_72">It is a good question. As Dr. Begley, things are moving so fast with AI. Although things are moving fast, Ireland also has an opportunity. It is one of the first EU member states to have assigned its designated competent authorities and we have an opportunity in Ireland to also get ahead on ensuring we are compliant in the area of development of human rights.</p>
+          <p eId="para_73"> I am not entirely sure whether the fundamental rights impact assessments are taking place. It is the deployers who should be undertaking those and then, after the fact, consulting with groups to see if those impact assessments are robust enough.</p>
+          <p eId="para_74">If they are not happening, it is a question of raising awareness about the specific protections within the AI Act that can support the protection of people with disabilities and other minority groups. There are also the codes of conduct for which the Commission will bring out a template later this year. Those codes of conduct will be essential. Article 95 of the EU AI Act speaks to the importance of consulting marginalised groups. Whether those assessments are happening is a great question. The fact that today's hearing is happening is fantastic because we need to ensure that the disabled voice is at the forefront. There are systems in place that we can look to use.</p>
+          <p eId="para_75"> It is important that the designated competent authorities, DCAs, are also aware of the concerns of the disability community and the risks involved, as well as the opportunities. They will consult closely with the community.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_25">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-07T11:50:00+01:00"/></from>
+          <p eId="para_76">I thank Ms Olhausen. My next question is for the National Disability Authority. It relates to some of what Dr. Begley has said. They used to say about computers that if you put garbage in, you get garbage out. If you give a computer the wrong information, it will come back. With AI, it will be discrimination and oppression in, discrimination and oppression out, and probably amplified. That is what it is doing. Dr. Hartney was referring to that when she talked about reflecting and perpetuating existing inequalities. Is that what Dr. Begley was talking about with regard to the potential for people to be discriminated against in terms of job opportunities by AI systems that simplify things by deciding certain people do not fit an idealised model of what is wanted? Is that happening? Are disabled people losing out on job opportunities because AI is slashing through CVs and discriminating?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-10-07T11:50:00+01:00"/></from>
+          <p eId="para_77">I thank the Deputy. We have a concern that because at the moment the algorithms are based on the middle of the bell curve, AI is excluding anything it would conceive of as not normal. My colleagues are always telling me a story that I find horrifying. In the examples of a self-driving car, it ran over a disabled road user every single time because it did not see him or her as a road user. There would be some concerns, particularly in the employment context. Some of the issues around this are improving data collection as a whole so that the data sets that are fed into AI learning models are improved. At the moment, disability or equality data are not necessarily of the standards they should be. A national data equality strategy is supposed to be coming out soon and we hope it will take measures to address that issue. Some measures will be taken in that regard.</p>
+          <p eId="para_78"> On the public sector side of things, there are guidelines for good and ethical use of AI in the public service at the moment. There is a useful canvas board where people can assess the impact on rights holders of the deployment of AI in a particular context. Our concern from our experience of the years is that there is sometimes a hierarchy in terms of equality grounds and disability can be forgotten or come towards the bottom of that hierarchy. We need the public sector staff to be aware of disability as an issue before they can properly account for those assessments. Those are some of the concerns.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_27">
+          <from>Deputy Paul Murphy<recordedTime time="2025-10-07T11:50:00+01:00"/></from>
+          <p eId="para_79">I have a question for Mr. Culhane from Voice of Vision Impairment in respect of what has been said about potential GDPR violations when people who are visually impaired are using AI to, let us say, read a bank statement. Will he give an example of what that would look like? I can imagine if someone has a gambling problem and repeated instances of sending money to a gambling site appear on his or her bank statement, he or she could potentially be targeted by advertisements for gambling sites. The information might not be separated. If you are at home, get a bank statement and read it yourself, the information does not go to Google, Facebook or an advertising company. Mr. Culhane is saying there is potential for that information to be used in that way.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Tim Culhane<recordedTime time="2025-10-07T11:55:00+01:00"/></from>
+          <p eId="para_80">Yes, it is a potential risk. The Deputy touched on the fact that blind and visually impaired people are by definition more likely to use AI to access sensitive material. If, for example, there was a data leak where the records of lots of people got released into the dark web or something like that, blind people are probably proportionally more likely to be caught up in that. Their sensitive information is more likely to be caught up in it than that of people who do not need AI to access that type of sensitive material.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_29">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-07T11:55:00+01:00"/></from>
+          <p eId="para_81">I thank the witnesses for being here. It has been very informative and useful for the committee.</p>
+          <p eId="para_82"> Age Ireland and ALONE were here last week and similar problems came across. We are particularly concerned about affordability and the inequality that is built into the systems. For disabled people, as was said a moment ago, the equipment is far more expensive. It is a good idea to have a non-means tested allowance for technology. It is important. That could be explored.</p>
+          <p eId="para_83"> The witnesses spoke about universal design and affordability and transparency regulations. That came up with almost all the people we are dealing with, which makes it a common theme. Do the disability organisations think that there is enough consultation between them, companies and the Government authorities on AI policy development?</p>
+          <p eId="para_84"> How can we ensure disabled people are represented in the training data sets that were mentioned?</p>
+          <p eId="para_85"> What role should the NDA or another regulator play in auditing AI systems and disability bias? Do the witnesses think an AI ombudsman should be established?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-10-07T11:55:00+01:00"/></from>
+          <p eId="para_86">I can start on the potential role for the NDA in this. We are an advisory body and we have some statutory monitoring functions under existing legislation. Currently, we have not been assigned a role under the EU AI Act and the nine enforcement authorities have their own areas and domains in which we certainly do not have expertise or competence. However, there would be potential for us to take on a role similar to what we currently do under the European Accessibility Act, where we provide advice and guidance and input to standards to support the implementation of that Act. It is about building a body of knowledge on accessibility and universal design in a context and then making it available to the authorities that have the regulatory and enforcement powers. There is potential for that.</p>
+          <p eId="para_87"> The Deputy mentioned representation in data sets. That takes me back to my earlier point that better collection of data on disability can help that to improve over time. That is about public bodies deliberately and carefully gathering information about the members of the society they serve.</p>
+          <p eId="para_88"> The UNCRPD is definitive about the importance of consultation and engagement with disabled persons organisations and others on the design of policies and services that affect them. This is an area where Ireland is perhaps growing competency but it certainly has not achieved the levels required to mitigate against all these risks.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T11:55:00+01:00"/></from>
+          <p eId="para_89">I will speak about the issue of digital literacy. One of the things we found from talking to our members is the lack of awareness around both the potential and risks of AI. Some are very informed if they are in the space and others are not. There is something about public awareness for the disability community about the potential of AI and also the risks it holds, and supporting people to make informed decisions around their use of AI.</p>
+          <p eId="para_90">That information needs to be accessible. We are seeing with the accessibility Act that there is no one-stop place for people to go for information on the issue. The same potentially applies in respect of AI. Where can people go to get training or basic information? Where can they find out what AI is available to support their independent living and participation and to inform them of the risks and allow them to make informed decisions? That is for people across disabilities, including those with neurodiversity, intellectual disabilities or physical and sensory disabilities. In other jurisdictions, there are central places for training and awareness raising around AI. We do not currently have that in Ireland, as far as I am aware.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_32">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-10-07T12:00:00+01:00"/></from>
+          <p eId="para_91">The same problem is arising around data. AI systems take all this data. Where do we go to get proper data that will inform companies to make the programmes? Last week, the committee met representatives of older people. There is no data for people over the age of 75 in Ireland. What is the problem? How do we solve that problem? How do we get the proper data in?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Dr. Dónal Fitzpatrick<recordedTime time="2025-10-07T12:00:00+01:00"/></from>
+          <p eId="para_92">I thank the Deputy. My colleague, Dr. Hartney, earlier mentioned universal design and the bell curve. We use a process, and it has been extensively used in other surveys, whereby we over-sample the two ends of the bell curve. Everyone in the centre is average. At the two ends of the curve are where people with disabilities and older people reside. That is where we need to get data to input into AI tools. That would give a better understanding of what is happening out there. At the moment, all the information that is gathered is within the 80% in the centre of the bell curve. I see that as a key initiative. The Government's AI canvas score card has been developed. If that tool is developed in finer granular detail, it would have a major impact for Ireland as to how to make AI tools more accessible.</p>
+          <p eId="para_93"> To return briefly to the Deputy's original point, we are working closely with the Office of Government Procurement, OGP. A critical change in making products more accessible and affordable in the United States was getting accessibility built into procurement. At present, the OGP is developing a public procurement strategy. We have several engagements with it to ensure accessibility and universal design are included as key components. If we can buy in bulk, a Department making accessibility a core requirement for any product or service we want to procure will have a big impact on the wider industry.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:00:00+01:00"/></from>
+          <p eId="para_94">I am conscious we are over time, but Ms Apaza Machaca indicated. Perhaps she could come in briefly.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:00:00+01:00"/></from>
+          <p eId="para_95">My point has been covered.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:00:00+01:00"/></from>
+          <p eId="para_96">I thank Ms Apaza Machaca and Deputy Mythen. I call Senator Ruane.</p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_37">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-07T12:00:00+01:00"/></from>
+          <p eId="para_97">I thank the witnesses for their contributions so far. My first questions are geared towards whichever of the representatives of Voice of Vision Impairment wishes to speak to them. The AI Act prohibits the use of AI systems that threaten fundamental rights, which we have touched on, or exploit vulnerabilities such as disability. The national artificial intelligence office is responsible for implementing the Act. Have any of the witnesses have been in contact with that Department regarding a potential role for DPOs? Has that Department been in contact with Voice of Vision Impairment or other DPOs to discuss a role within that structure? There is also, potentially, the AI advisory council. Is there a role for the civil society organisations that will be most impacted by the vulnerabilities that may be posed by the advances in AI? That is the first question.</p>
+          <p eId="para_98">The second is part of a larger conversation, namely, the training and deployment of AI systems. There have been many instances of AI systems can reflect and perpetuate existing inequalities which we have been speaking about. A dangerous of example of that is where vision systems in vehicles failed to recognise wheelchair users. Knowing those challenges that exist for disabled people and DPOs when it comes to participating in consultations and in public and political life generally, how can we, as a committee, encourage more inclusive or co-designed processes as part of our work? </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_38">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_99">Does someone from Voice of Vision Impairment want to reply?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Tim Culhane<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_100">I will ask Ms Apaza Machaca to take that.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_101">On the first part of the question, the failure of AI to recognise, say, pedestrians or certain situations is a lack of input in the dataset that is already there. We have to teach AI to recognise things better. That means working at the edges of the bell curve, getting input from more people with disabilities whether that is through a survey or somehow engaging the public in inputting data about what difficulties they experience and how they interact with AI so that the feedback can be more complete. I am well aware, for example, that when I am navigating, AI will not recognise certain things. For instance, if I am looking for a post box I will drop a pin to mark it but the information the AI is provided has to be accurate and it has to be doubled-checked because AI can give spurious information that is completely inaccurate and has no practical benefit. When it gives feedback it can be completely irrelevant to what you asked it sometimes. </p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_41">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_102">Would Ms Apaza Machaca agree that beyond surveys and consultations, there should be a role for DPOs and other civil society organisations at the level of the AI advisory council or else the artificial intelligence office? </p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_103">Absolutely, the needs to be consultation back and forward consistently so that when people are telling me things and giving me feedback then I can provide that feedback onwards. </p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_43">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_104">I thank Ms Apaza Machaca. Everyone has mentioned GDPR. I think VVI described the vulnerability of disabled people when it comes to their personal data as discrimination on steroids. What is the consensus on understanding how data is being collected and used? Should this committee and organisations that are representative of people with disabilities have a larger focus on understanding and improving accessibility and transparency around GDPR and how data is used? </p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_105">If I scan a document, where does that document go? Is it in the cloud somewhere for someone to steal off a server? I have identity theft concerns. I have concerns about where exactly my data is going. What digital dust am I leaving behind that someone else can then use to target me specifically or anyone in a vulnerable position? I scan my private medical records. Where is that going? There needs to be regulation that says the data is destroyed within a certain time on servers or, even better, stand-alone systems where it does not actually go to a server so something like the original OrCam that is artificial intelligence but is not connected to the Internet in any way, shape or form. There has to be a safety there. </p>
+        </speech>
+        <speech by="#LynnRuane" eId="spk_45">
+          <from>Senator Lynn Ruane<recordedTime time="2025-10-07T12:05:00+01:00"/></from>
+          <p eId="para_106">How can we potentially differentiate between data on one hand to enhance accessibility and on the other data that can potentially leave a person vulnerable to the things Ms Apaza Machaca spoke about?</p>
+          <p eId="para_107">Does she think that transparency and understanding will help us differentiate between those two?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:10:00+01:00"/></from>
+          <p eId="para_108">It will help differentiate between the two. For example, I can take a picture of a photo and it will describe the photo to me. This is completely irrelevant but if I take a picture of a personal document with all my details and address, I want that erased from wherever as fast as possible. I do not want a data breach.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:10:00+01:00"/></from>
+          <p eId="para_109">There is also the affordability piece. One can buy privacy on the cloud but there is a cost.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Dónal Fitzpatrick<recordedTime time="2025-10-07T12:10:00+01:00"/></from>
+          <p eId="para_110">I support what colleagues just said. The privacy issue is hugely relevant. There are services that offer image recognition possibilities. They convert an image to text, whether it is a document, photograph or anything else, but they specifically state in the terms and privacy documentation that come with the various apps that once the image goes up, it is theirs to do with as they wish. There is not a monetary one but a significant price for engaging with these systems. In some cases, that price of independence is extremely high.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_49">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-07T12:10:00+01:00"/></from>
+          <p eId="para_111">I thank everyone for being here. I am sorry I missed the opening statements. I had another engagement. I am delighted to hear the contributions throughout. I will drill down further into privacy. It is an area I have some of the biggest concerns about. It is a different situation for people with disabilities when they give personal information to screen readers and other applications. It is great to hear people referencing the AI Act and how it will roll out here. I will read from a book called <i>Rewiring Democracy</i>. It is coming out in a few weeks. I was lucky enough to get an advance copy. It states:</p>
+          <p class="indent_1" eId="para_112">The EU has taken the most comprehensive and boldest action on AI to date, by means of the 2024 AI Act, and deserves credit for its early regulation of this new technology. For example, the act requires disclosure to employees of certain AI uses in the workplace and prohibits AI from exploiting and manipulating people with disabilities. However, the AI Act falls short in important ways. Although it creates a public registry for disclosure of high-risk AI systems, fairly narrow boundaries define the sort of models that must be disclosed. Even where it requires disclosure of AI implementation, it does not require AI developers to respond to public input, or solicit any engagement by stakeholders.</p>
+          <p eId="para_113"> I have real concerns that although we are best in class compared to China or America, Europe still is not providing a regulatory framework that would be helpful. I have fears about whether the State in Ireland, even when given the regulatory tools, will enforce and police them. We have seen across a number of sectors, including the data protection area, that has not happened. Starting with Voice of Vision Impairment - Disability Federation of Ireland may wish to input as well - beyond the AI Act, which domestic-level legislative and policy tools has it been calling for up to now? Parking the AI Act and trying not to pin our hopes quite so much on it, what other tools do we have to use as a State to protect data, privacy and the ability to engage with these tools in a way that actually helps people with disabilities without putting them at risk? Will Mr. Culhane comment first?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Tim Culhane<recordedTime time="2025-10-07T12:10:00+01:00"/></from>
+          <p eId="para_114">As we said in our recommendation, there has to be robust legislation when it comes to GDPR compliance and the protection of our privacy and data. These companies have to know there are consequences if they do not, first, protect data and, second, provide people with a means to have control over their data. There is a provision online for Google etc. that you have the right to be forgotten. AI companies have to be brought into that. I could be wrong; perhaps they are already included. I have not seen personally that whatever I did yesterday, for example, can be forgotten.</p>
+          <p eId="para_115">The other thing is that there has to be a clear auditable line of investigation there so that, if regulators do come in, they have access to information and are not fobbed off or blocked from getting access to the information they need if they feel that the AI companies are not standing up to their legal obligations.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_116">I agree with what was said about organisations and companies knowing that there are consequences for breaching people's rights. Providing a means for people to have control over their own data means they have to understand how their data may be used. That is a massive gap. I have mentioned already today that people are not fully aware of how their data may be harvested and used and that there needs to be some support around training and awareness but also clear and accessible information provided to people about how their information may be used. There is also the optional protocol which we ratified last year. It is not perfect or anywhere near it but it does provide a mechanism for people, but they have to exhaust all other legal avenues before they go to use the optional protocol.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_52">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_117">Dr. Begley mentioned the CRPD but we do not have a date scheduled for the next examination for Ireland, do we?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_118">We do, yes.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_54">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_119">Do we?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_120">The date is not scheduled but the topical issues have been discussed. That happened in September.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_56">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_121">The public sector duty was mentioned in an earlier contribution and I was really glad it was referenced because I do not feel we are integrating our human rights and equality concerns and the duty itself into our attitude to AI policy. Our strategy makes barely any reference to fundamental rights and no reference at all to equality. How do we play catch-up in this space? What would a strategy look like that actually did take account of human rights and equality and the public sector duty specifically?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Charlotte Olhausen<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_122">I will link back again to the point of intersectionality. If we want to embed human rights principles throughout our approach, it is essential that the voices of all minority groups are heard around the table. We cannot just be measuring the impacts in terms of disabled people. We need to look at disabled women, for instance. Having those voices at the table from the get-go is incredibly important, and we are a bit late in that regard. We were asked if any of us have been contacted by the Department in charge of this until we have the national AI office up and running, and as far as I know we have not. With the CRPD and alignment, and the optional protocol was mentioned, there are definitely systems in place-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_58">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_123">They are just so lengthy, though.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Charlotte Olhausen<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_124">Yes, there is a gap.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_60">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_125">We know how long it takes to get to anything and-----</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Charlotte Olhausen<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_126">There is definitely a gap between what we have on a policy and legal level and the lived experience. Most of what we have in terms of regulation is, as we have all mentioned a number of times, the EU AI Act. In Ireland we definitely need to review our national policy. I understand there is a process under way at the moment with regard to the digital and AI strategy but-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_62">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_127">That description of the AI Act that I just read out there, does Ms Olhausen share similar concerns that it is not strong enough?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Charlotte Olhausen<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_128">With the EU AI Act, because, as Dr. Begley said, AI is moving so fast, by the time it was actually published, you could say it was almost out of date. It is definitely something that needs to be constantly monitored and reviewed. It is not a case of developing policy and leaving it at that. We need to be constantly monitoring, keeping the conversation open and assessing the impacts. We do not have the data we need. There is a huge data gap. A number of contributory issues are at play here.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_64">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-07T12:15:00+01:00"/></from>
+          <p eId="para_129">I thank all of the witnesses for being here.</p>
+          <p eId="para_130">I joined late but I listened to the full meeting in my office. Picking up on that theme about how we move towards or ensure that we have a robust legislative and regulatory framework that protects interests and rights and is inclusive and participative, what do the witnesses think of the notion of codesign in the space of AI? There are real risks there but there are also significant potential benefits for everybody, including people with disabilities. I would have thought that our response needs to be one of strong legislation and regulation notwithstanding the fact that these are private technologies, there is a black box and none of us really know exactly what is going on with regard to it. Central to all of it is that there would be codesign, participation, inclusivity and the voice of the citizen. Do the witnesses, individually or collectively, have models or ideas about what that might look like from a practical day-to-day point of view in terms of their own participation as groups or individuals but also in terms of regulation, because these are private companies? We need to mandate them to do this stuff. They can do it of their own volition for environmental, social, and governance, ESG, reasons, but from a governmental point of view, they will not do it unless we mandate them to do it on a wholesale basis.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:20:00+01:00"/></from>
+          <p eId="para_131">There are some examples where DPOs and disabled people have been consulted on the development of policy. The housing strategy for disabled people is one good example of that. Our DPO colleagues in VVI would be better placed to speak to this but there is no funding stream for DPOs in Ireland so we are asking people to engage in a voluntary capacity and organisations to exist in a vacuum of funding streams. There has been increased demand for consultation with DPOs and disabled people, and rightly so, with the UNCRPD and the obligations under it, but there is no infrastructure that exists to enable that to be done in a meaningful way.</p>
+          <p eId="para_132"> We have already mentioned that disability has to be a priority in the new office to be established in August 2026. We would see it as an obligation under each of the national authorities which have responsibility around this. I think there are 15. This is a really good starting place to have a conversation, but we are three organisations and there are many more across all the different types of disabilities.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_66">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-07T12:20:00+01:00"/></from>
+          <p eId="para_133">Is Dr. Begley saying that to do it well, you need to resource it.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:20:00+01:00"/></from>
+          <p eId="para_134">You need to resource it. It is also to engage with people with intellectual or physical disabilities, wheelchair users, people with neurodiversity, etc.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-10-07T12:20:00+01:00"/></from>
+          <p eId="para_135">I echo and build on what our colleagues in the DFI have said. It is about recognising it in the AI office when it is established but, equally, it is about building disability competence in each of the nine domestic authorities, which is probably at varying levels across them. That is important as they design their own regulatory duties or approaches to this area.</p>
+          <p eId="para_136"> Regarding what my colleague, Dr. Craddock, said about procurement, if the criteria are set and made essential that accessibility is recognised and codesign approaches are taken, that is a way of driving the market and a fundamental business case in terms of how much revenue could be lost if developers did not take an approach and if there was confidence that the regulatory system would punish them for not doing so.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:20:00+01:00"/></from>
+          <p eId="para_137">Companies need to be held accountable and the system has to be transparent. If the system is not transparent, it will fail. When creating legislation, it has to be inclusive, but there is no point having a carrot and a stick if you cannot use the stick, if that makes sense.</p>
+          <p eId="para_138">They have to be held accountable. There has to be a point where we say, if data is breached, this is the consequence and the consequence has to follow through. They have to be held accountable.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_70">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-10-07T12:25:00+01:00"/></from>
+          <p eId="para_139">Does Mr. Culhane want to add to that?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Tim Culhane<recordedTime time="2025-10-07T12:25:00+01:00"/></from>
+          <p eId="para_140">We included consultation with DPOs in our recommendation. It is so important to consult people. The earlier you do it, the better. It has to be there from the get-go. It makes life so much easier. Trying to do it later on and trying to retrofit stuff is a complete mess. It is about consultation and making sure Government Departments and agencies are aware of what they are required to do. Even existing Government Departments now are not engaging with DPOs in the correct way. That discussion is not for this meeting today but perhaps the public sector and Civil Service have to be educated on how they have to consult when it comes to drawing up legislation for AI regulation and so on.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_72">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:25:00+01:00"/></from>
+          <p eId="para_141">It now falls to me to put some questions. I thank all of the witnesses for their testimony and their work generally. Ms Apaza Machaca spoke about how she uses Meta AI glasses. We want to understand, as new technology is rolled out, how it can assist people with disabilities. Tied to that, our recommendations are on policy measures. I was conscious when we had the session on AI and older people, and it has come up today, we talked about rather than a telephone allowance, there would be a digital allowance and it should be sufficient. Equally, there may be other measures through grants or support in the purchase of appliances and equipment. Will Ms Apaza Machaca speak- others may comment if they want - about how AI can make her life different through the use of those glasses and what supports the State can put in place for people with disabilities to be able to access the likes of AI glasses?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:25:00+01:00"/></from>
+          <p eId="para_142">I can walk around a supermarket and identify what aisle I am in or ask the glasses what is in my hand, if I am looking for a particular brand, or I can ask it to read the cooking instructions on something. It is nice for me not to have to rely on a third party to read those things to me. The thing I like about the glasses is there is a lot more privacy. If I use seeing AI on my phone, it reads everything out publicly in the middle of a shop. It is much better for me to have it here. It is also the ability to do things independently that I have not been able to do in years. In one respect it is an absolute boon but I wonder what I am giving away at the same time, which of my rights am I giving away when I use this facility. How much of my data like my shopping habits, even the locality where I live, am I giving away? I have privacy concerns on that end. At the other end, it is a great tool for independence. It can be further developed to assist better with identifying postboxes, for example. As a tool, AI is a good thing but it needs to be tempered with the fact that we need to protect our privacy. I am finding the balance quite difficult because you are basically telling a computer everything about you. Would I walk up to a random stranger and tell them everything about my life? Absolutely not. I do not want to be doing this to a computer that could be anywhere on the planet.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:25:00+01:00"/></from>
+          <p eId="para_143">Having the safeguards is critical. Could I also ask about State supports for you to be able to access that equipment?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:25:00+01:00"/></from>
+          <p eId="para_144">I was very fortunate. I managed to a cheap pair of Meta glasses second hand. The cost of having a permanent data package on my phone is expensive.</p>
+          <p eId="para_145">Support needs to be in place, whether that is a digital package so that people can afford to have data on their phones and can afford to have a pair of glasses that is linked virtually permanently, because there is a cost associated with it. I am balancing that just about, but there is no way I can afford the advanced privacy stuff.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_146">There is something about looking at the existing infrastructure as well as having something that is digital specific. For example, the aids and appliances grant that is given by the HSE could be expanded. We could look at the home adaptation grant, which is not sufficient for building work, but there are a lot of smart technologies now that can support people to live independently at home. That could be incorporated into the home adaptation grant and the work and access programme-----</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_147">Specifically on that point, as politicians we regularly deal with the housing adaptation grant.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Rosita Apaza Machaca<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_148">I use Alexa to control my lights.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_149">The role of the committee is to make policy recommendations. I was specifically asking about the appliances and everything else. What policy recommendations would the witnesses make on the housing adaptation grant to include smart devices or appliances?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_150">At the moment, the housing adaptation grant is not sufficient as regards the amount people are awarded. A lot of these technologies are very expensive. Their advancement is also fast moving. It is about that, increasing the amount people can access under the grant. It is also about awareness in local authorities that it is not just about the adaptation of a downstairs loo or bedroom or installing a ramp. People should be able to access the grant for such things as smart and AI-enabled devices in the home to support independent living.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Dr. Gerald Craddock<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_151">Getting back to what universal design is fundamentally about, how do we mainstream this? I mentioned public procurement earlier. If this is built into public procurement, it will cut down the cost of any product. A classic example is the telephone, which was invented by Alexander Graham Bell for his house assistant who was deaf. Now it is a ubiquitous product and a high number of assistive technologies are built into the telephone. My colleague mentioned Alexa, which is a mainstream product. We did work with Alone about two years ago on house adaptations, such as electric door and window openers and so on, but the number one outstanding element that the 30 individuals thought was the best piece of technology was Alexa. They could operate their telephones, lights and so on. It is a mainstream product that people can buy for €100.</p>
+          <p eId="para_152"> We see procurement as critical. As I mentioned, we have done work with the Office of Government Procurement. My colleague mentioned assistive technology. The WHO and our parent Department, the Department of Children, Disability and Equality, produced a report which looked at a whole new system for assistive technology delivery in Ireland. All going well, it should be published before Christmas. Adaptations in the home are very much part of that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_153">I am conscious I am over time. Do Dr. Fitzpatrick and Ms Olhausen have two-line inputs?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Dr. Dónal Fitzpatrick<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_154">What is interesting about this - Dr. Craddock just mentioned mainstreaming of accessibility and universal design, and AI - is the fact that AI-based systems can be integrated into other devices. For example, one case of use on the phone - the Deputy is looking for practical examples - is where a photo comes in on a messaging app. It can be shared with an AI-based image recogniser which will tell someone who is blind or visually impaired what is in the photograph. It could be a family photograph. Of course, that comes with privacy concerns. Potentially, images of minors could be shared. What is happening to those images and so on? However, that integration or mainstreaming of AI into our daily lives is hugely important.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Charlotte Olhausen<recordedTime time="2025-10-07T12:30:00+01:00"/></from>
+          <p eId="para_155">Another piece of infrastructure already in place is the work and access programme. I have just gone through the process.</p>
+          <p eId="para_156">One of the programme's aspects is an option to pick assistive technology. That area could be expanded to include more AI-enabled tools and so on. Although there are some issues there from a policy recommendation perspective, it needs to be made more accessible as a process. There is not much awareness about it. Again, that speaks to the accessibility of public information and communication on such schemes.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_85">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-07T12:35:00+01:00"/></from>
+          <p eId="para_157">My apologies for having to step away but it is one of those days. I thank all the witnesses for being here. I was here for all of their opening statements and some of the exchanges in between. Again, apologies if these types of questions have been asked already.</p>
+          <p eId="para_158"> There is a universal theme that we are hearing and learning about in the widespread biases when it comes to AI that clearly impacts the people the witnesses are or represent. That is going to be the biggest challenge in harnessing the best we can get from innovation and AI, in an environment where all of these companies are aggressively competing with one another. There does not appear to be any time for a pause or a sufficient amount of independent appraisal of the types of technologies as they are moving because they are all so competitive with one another to bring their products to market. Let us be truthful: the products that they are bringing to market are not designed for vulnerable groups or what you might describe as minority groups. Yet, we know that the technologies that are being produced could be unbelievably impactful in a whole host of areas, including for the people represented by the organisations present.</p>
+          <p eId="para_159"> On the latter element, I have been invited by at least one technology company to see their adaptive technology. A lot of it is in beta format or a beginner form of adaptive technologies, particularly for people with intellectual disabilities. Have any of the technology companies that are in this space and producing AI technologies engaged with the organisations represented here in any shape or form? </p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Dr. Dónal Fitzpatrick<recordedTime time="2025-10-07T12:35:00+01:00"/></from>
+          <p eId="para_160">Yes. I am delighted to say that we have, across a lot of different areas, engaged with some of the tech companies, particularly around the area of, for example, the European Accessibility Act and others. As part of those discussions, AI certainly comes up in terms of the products that are being developed or the issues surrounding those. Certainly from the engagements that we have had, it is becoming very apparent that accessibility and inclusion are now becoming very mainstream through recent legislation, such as the European Accessibility Act, etc. Accessibility and inclusion are now very much on the agenda of these companies. Indeed, they have been in many of the US-based companies since the Americans with Disabilities Act came into force over 30 years ago and with section 508 of the telecommunications Act.</p>
+          <p eId="para_161"> There is great awareness of what is required. There has been significant engagement and work by many of these companies in that particular space. We are delighted to be able to continue engagements with many of them and to carry on discussions with them.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:35:00+01:00"/></from>
+          <p eId="para_162">The Disability Federation of Ireland comprises over 100 organisations. We have not been approached by any tech companies but that is not to say some of our members have not. I know that one member has been approached by a tech company and is working with them.</p>
+          <p eId="para_163"> Interestingly, in July we attended the UN Conference of State Parties, COSP, to the UNCRPD in New York. One of the three themes was AI. There was a big tech presence where they had partnered with disability organisations on the development of devices and exploration of ethical considerations. We have shared one of the papers from the UNCOSP with committee members. There is a bit of an information gap in Ireland among disability organisations around AI. That is something we would hope the committee would take that on board in terms of our own comments.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_88">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-07T12:35:00+01:00"/></from>
+          <p eId="para_164">All of the witnesses have succinctly outlined the regulatory gaps in this space and, equally, some of the good regulation that has been put in place in these areas and how it is going to be enforced.</p>
+          <p eId="para_165">Do they have any sense of how the companies themselves are grappling with these biases that are being identified and are emerging? It is not in their interest that there be biases. Presumably they want to prevent these. They are looking for the most perfect AI system they can possibly produce, we presume. Do the witnesses have any sense of how they are dealing with this? Is it a case of better engagement in how they are inputting data or how their machines are learning, to put it in really simple terms? What is their sense of that? </p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Emer Begley<recordedTime time="2025-10-07T12:40:00+01:00"/></from>
+          <p eId="para_166">Honestly, I cannot answer that so I will lean into other colleagues. One thing I would like to say is that the diversity, equity and inclusion programmes are being diluted globally. Our colleagues in the European Disability Forum have identified that global businesses working in Europe are taking a lead from countries across the water in reducing DEI programmes. While that does not speak to AI, it does speak to a culture of diversity and inclusion not necessarily being embraced in businesses.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_90">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-07T12:40:00+01:00"/></from>
+          <p eId="para_167">Dr. Begley has touched on a really interesting point that I was going to ask about. That is self-evident. I have witnessed it and observed it myself. To take one example of an event, although it is not a disabilities event, Pride has always been supported by a large number of corporates in Ireland, in Dublin in particular, and some of those corporates did not support it this year. That is a very different issue from disabilities but it speaks to the whole DEI area. This is what I was wondering about. DEI in one respect touches on workplace environments, HR and everything taking place in enterprise but there is also the aspect of the basement level, such as the engineers, the technology and what the machines are doing. We do not like this row-back on DEI in Europe, and I take Dr. Begley’s point, but is that impacting how they are operating their technologies and machine learning? I do not know the answer to that question. I am just putting it out there in the context of the witnesses' own knowledge base. </p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Dr. Gerald Craddock<recordedTime time="2025-10-07T12:40:00+01:00"/></from>
+          <p eId="para_168">As the Deputy said, we can look at what is happening in America and many of the big corporates were absent from the Pride parade this year. Any of the big AI tools are coming from the States and there is huge pressure on the European Commission to deregulate. We hear this on a regular basis. It is a wild west out there at present. How we catch up or regulate this whole area is a huge issue. </p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_92">
+          <from>Deputy James Geoghegan<recordedTime time="2025-10-07T12:40:00+01:00"/></from>
+          <p eId="para_169">I will close on this point, which I have made a few times. It is all the more reason Ireland has to be a really strong leader in this space when it comes to the implementation of the regulations that will flow from the AI Act, its implementation, the establishment of the national AI office and all the relevant competent authorities because when it comes to regulation, certainty is where you can get the business side and the social sector side to align. Europe should be able to demonstrate that we are not rowing back on people’s rights because of advanced technology. It should be the other way around. I think Ireland has a really big role to play in that. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-10-07T12:40:00+01:00"/></from>
+          <p eId="para_170">I thank all our witnesses very sincerely for their input here today. It is important that in our committee, as Members of the Oireachtas, we have heard their views. It is critical that the voice of those with disabilities be heard in the establishment of the AI office and the regulation of that space, as well as in design of all the exciting technologies including the ones Ms Apaza Machaca spoke about, and that we address those data privacy issues.</p>
+          <p eId="para_171"> I am conscious of time. There is a small matter starting at 1 p.m. that I am sure a lot of people will also be interested in. If at any stage in the discussions of our committee, the witnesses or anyone who is watching wants to make an input,<i> ai@oireachtas.ie</i> is our email address. The team will be quite happy to hear perspectives or ideas.</p>
+          <p eId="para_172">This has been a very useful discussion. I will conclude today's meeting. Next week we will move to our discussion on AI and the State. We will look at the relatively recently published Guidelines for the Responsible Use of AI in the Public Service, as well as govtech and AI. Feel free to tune in. I thank everyone for taking part. </p>
+        </speech>
+        <summary eId="sum_5"> The joint committee adjourned at 12.45 p.m. until 11 a.m. on Tuesday, 14 October 2025. </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

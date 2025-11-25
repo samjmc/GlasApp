@@ -1,0 +1,106 @@
+Here’s what you need to do, file by file, to wire your custom-weights UI right through to the analysis output:
+
+1. MultidimensionalIdeologyProfile.tsx (client)
+Goal
+Capture the user’s weight sliders/inputs and send them in your “Save Weights” API call.
+
+Changes
+State
+You probably already have something like:
+
+ts
+Copy
+Edit
+const [weights, setWeights] = useState<Weights>({ …all axes default to 1… });
+Make sure each slider/input updates its corresponding field in that weights object.
+
+Save Button Handler
+Find your onSaveWeights() (or similar) function. It likely does:
+
+ts
+Copy
+Edit
+await api.post('/enhanced-profile', { dimensions: userDims });
+Change it to include weights:
+
+ts
+Copy
+Edit
+await api.post('/enhanced-profile', {
+  dimensions: userDims,
+  weights: weights       // <-- pass your weights object here
+});
+Type Definitions
+If you have a TypeScript interface for the payload, extend it:
+
+ts
+Copy
+Edit
+interface EnhancedProfilePayload {
+  dimensions: IdeologicalDimensions;
+  weights?: Partial<Record<keyof IdeologicalDimensions, number>>;
+}
+2. server/routes/enhanced-profile.ts (server)
+Goal
+Accept the weights from the request body, and feed them into your match-percentage calculation (and into the AI prompt).
+
+Changes
+Route Signature
+In your POST handler:
+
+ts
+Copy
+Edit
+const { dimensions, weights } = req.body as {
+  dimensions: IdeologicalDimensions;
+  weights?: Weights;
+};
+Pass Weights into Calculation
+Wherever you call calculateMatchPercentage(user, party), change to:
+
+ts
+Copy
+Edit
+calculateMatchPercentage(user, party, weights);
+Feed Weights into AI Prompt
+In the section where you build your “regeneration” prompt for the AI (the text you send off to OpenAI), append a line like:
+
+“Please emphasize the following dimensions according to these weights: economic=2, authority=0.5, …”
+or serialize the weights object and inject it into the system prompt so the model knows how to adjust its language.
+
+Validation / Defaults
+If weights is missing or malformed, fall back to your default DEFAULT_WEIGHTS inside calculateMatchPercentage.
+
+3. EnhancedPoliticalProfileExplanation.tsx (client)
+Goal
+Let users see which weights they applied, and—optionally—how those weights affected the narrative.
+
+Changes
+Accept Weights via Props
+If this component fetches or receives the new “enhanced profile” object from the server, make sure that object includes a weights field.
+
+Display Weights
+Add a small UI panel at the top or bottom:
+
+yaml
+Copy
+Edit
+Your dimension weights:
+• Economic: 1.5    • Authority: 2    • Environmental: 0.5  …
+This gives them transparency on what they asked for.
+
+(Optional) Annotate the Text
+If you want to get fancy, you can highlight sentences in the AI-generated explanation that correspond to heavily-weighted dimensions. But at minimum, just showing the weights gives context.
+
+Summary of the Flow
+User moves sliders in MultidimensionalIdeologyProfile → clicks Save.
+
+Client POSTs { dimensions, weights } to /enhanced-profile.
+
+Server unpacks weights, passes them into your new weighted calculateMatchPercentage(...), and also tells the AI which axes to emphasize.
+
+Server returns match data + the regenerated narrative + echo of weights.
+
+EnhancedPoliticalProfileExplanation shows both the new narrative and the weights the user set.
+
+That’s all there is — just three touch-points. Once you wire weights through those spots, you’ll get a truly weighted, customized analysis. 

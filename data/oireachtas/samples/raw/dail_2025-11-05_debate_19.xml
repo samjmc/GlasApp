@@ -1,0 +1,1416 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-05/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-05/debate"/>
+          <FRBRdate date="2025-11-05" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-05/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-05/debate/mul@"/>
+          <FRBRdate date="2025-11-05" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-05/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-05/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-11" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CatherineArdagh" href="/ie/oireachtas/member/id/Catherine-Ardagh.S.2016-04-25" showAs="Catherine Ardagh"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="LiamQuaide" href="/ie/oireachtas/member/id/Liam-Quaide.D.2024-11-29" showAs="Liam Quaide"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MartinConway" href="/ie/oireachtas/member/id/Martin-Conway.S.2011-05-25" showAs="Martin Conway"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-05">Dé Céadaoin, 05 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-05">Wednesday, 05 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MariaByrne">Maria Byrne.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PadraigOSullivan">Pádraig O'Sullivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputies Catherine Ardagh and Liam Quaide and Senator Martin Conway.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Long-term Planning in the Health Services: Discussion<recordedTime time="2025-11-05T09:30:00+00:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T09:30:00+00:00"/></from>
+          <p eId="para_11">We have apologies this morning from Senator Nicole Ryan.</p>
+          <p eId="para_12"> With regard to presence in Leinster House, I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate when they are not adhering to this constitutional requirement. Therefore, any member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask members partaking on Teams that, prior to making a contribution to the meeting, they confirm they are on the grounds of the Leinster House complex.</p>
+          <p eId="para_13"> The minutes of the meetings of 21 October and 22 October have been circulated. Are they agreed? Agreed.</p>
+          <p eId="para_14"> This morning, we are looking at the issue of long-term planning within the health services. It is quite a timely session. We have a lot of discussion in recent days around Ireland in 2065 and the growth in population, aiming at between 5.9 million to 7.9 million, and coming with that demographic shifts, including an increased older population. No doubt, this is a good news story but it has challenges and it is important today that we consider those challenges for the health services and how we plan for those changes, particularly around the acceleration of Sláintecare, shifting care away from hospitals to the community, meeting that future need and getting that planning right. In particular, I refer to tackling some of the historic deficits in infrastructure, the construction of modern health facilities and the digital transformation, which will be key. For health services to meet the needs of future generations and uphold rights and dignity, we need that strategic planning for the longer term. These are entirely predictable but they cannot be ignored. We will hopefully tease through many of those longer-term projects and changes in this morning's session.</p>
+          <p eId="para_15"> To commence the committee's consideration this morning, I welcome representatives from the Department of Health. We have Mr. Derek Tierney, assistant secretary; Ms Rachel Kenna, assistant secretary; Mr. Muiris O'Connor, assistant secretary; Ms Siobhán McArdle, assistant secretary; and Mr. Chris Ryan, principal officer. From the HSE, we have Mr. Bernard Gloster, chief executive; Ms Kate Killeen White, regional executive officer for Dublin and the midlands; Dr. Colm Henry, chief clinical officer; Mr. Patrick Lynch, national director of planning and performance; and Mr. Brian O'Connell, national director and head of strategic health infrastructure and capital delivery. They are all very welcome this morning.</p>
+          <p eId="para_16"> As a note on privilege, members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that may be regarded as damaging to the good name of a person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> I invite Mr. Derek Tierney to make the opening remarks on behalf of the Department of Health.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T09:30:00+00:00"/></from>
+          <p eId="para_18">I wish the members of the committee a good morning. We are delighted to be here today. I hold responsibility for health infrastructure. I am joined by my colleagues Mr. Muiris O’Connor, assistant secretary for research, development and health analytics; Mr. Chris Ryan, principal officer in our strategic research and evaluation unit; Ms Rachel Kenna, assistant secretary and chief nursing officer with responsibility for strategic workforce planning; and Ms Siobhán McArdle, assistant secretary for social care, mental health and unscheduled care. We thank members for the opportunity to address the Joint Committee on Health and to outline how the Department of Health considers matters relating to long-term planning in our health services within the context of population changes, capital and other investment needs, and the ongoing development of health services.</p>
+          <p eId="para_19"> On the issue of responding to demographic change, Ireland, like many developed nations, faces ongoing demographic challenges: rising life expectancy, population growth and an increasingly older population, alongside fluctuating birth rates and migration patterns. These demographic changes and trends are fundamental in shaping health service planning that serves almost 5.5 million people today. The significant improvements in health outcomes and increased life expectancy seen in recent decades are achievements worth celebrating but they are the result of both external factors, such as social, environmental and economic conditions, and internal factors within the service, including enhanced access to healthcare, improved diagnostics, advanced medicines and greater personalisation of care.</p>
+          <p eId="para_20"> The Department continuously analyses population projections and epidemiological trends to ensure that service planning not only addresses immediate care needs but is robust for future population structures. Older people, as research confirms, require both a higher volume and a different mix of services. At the same time, inward migration and natural population increase drive demand across all age groups. Therefore, demographic intelligence informs investment in paediatric care, maternity services and specialised areas such as chronic disease management, reflecting Ireland's relatively youthful population alongside our growing ageing population. This means that demographic change requires a whole-of-society response to ensure people are enabled by their communities to age in place throughout their lives. In 2019, the WHO recognised Ireland as the world’s first age-friendly country, acknowledging its leadership in the global age-friendly communities movement.</p>
+          <p eId="para_21"> Turning to long-term strategic planning, the Department’s long-term planning is framed by national reform programmes such as the Path to Universal Healthcare: Sláintecare and Programme for Government 2025+, published earlier this year. This acknowledges Ireland’s rapidly ageing population and declining birth rates as central challenges shaping the future of healthcare delivery.</p>
+          <p eId="para_22">In response, the plan recognises the need to build a health and social service that is sustainable for the future. The plan prioritises long-term strategic investment in health infrastructure, workforce and workforce reform to meet the growing demand for age-appropriate services. It also promotes the establishment of the new health regions and a shift toward widened community-based care, enabling more people to receive treatment in their communities and maintain independence in their own homes, and expands programmes like the enhanced community care, ECC, programme and healthy communities. The ECC programme is also delivering end-to-end care pathways that care for people at home and, over time, prevent referrals and admissions to acute hospitals where it is safe and appropriate to do so, enabling a “home first” approach to healthcare delivery. The plan also emphasises preventive health, digital transformation and integrated care pathways to manage chronic conditions more efficiently.</p>
+          <p eId="para_23"> Initiatives are ongoing to strengthen specialist and community-based care for older people, enhance palliative and end of life supports and improve access to mental health services. For example, with the number of people living with dementia expected to double over the next 20 years, a national dementia registry is being developed to guide the planning and delivery of dementia diagnostic and post-diagnostic services in line with the dementia model of care.</p>
+          <p eId="para_24"> To address the challenges and opportunities of an ageing population, the Government established an independent Commission on Care for Older People in 2024. The commission’s work is structured into three consecutive modules, with the first focusing on evaluating the effectiveness, adequacy and efficiency of current health and social care services for older people. The report for module 1 is expected by the end of the year.</p>
+          <p eId="para_25"> The Department of Health has worked to build our capacity for long-term planning in partnership with the HSE and with independent agencies such as the Economic and Social Research Institute, ESRI, and the Central Statistics Office, CSO. As part of a joint research programme with the Department, the ESRI has developed a forecasting model, which we call the Hippocrates model. This combines demographic forecasts with detailed service utilisation patterns to forecast future demand scenarios for health and social care in Ireland. The projections, which extend to 2040 and align with the national planning framework, cover hospital bed needs and primary and community care requirements. This work enriches the evidence base used for health system planning and informs our understanding of future demand. It is the foundation of our workforce planning and our capital investment planning. Importantly, service planning and development strategies are routinely reviewed in light of demographic modelling, including geographic variations and urban-rural differences.</p>
+          <p eId="para_26"> Our national health policy aims to ensure that the health system remains sustainable, equitable, and responsive to demographic realities, with population-based planning frameworks guiding service design and resource allocation.</p>
+          <p eId="para_27"> Service development remains central to our long-term vision for healthcare. The Department fosters innovation and capacity building at all levels, ensuring service models evolve in response to both population needs and best clinical practice. Investment is directed at expanding bed capacity, developing new models for out-of-hospital care and enhancing clinical pathways for chronic illness, paediatrics, maternity and older persons’ services. The Department is committed to delivering care closer to home, improving patient experience and reducing unnecessary acute hospital admissions. </p>
+          <p eId="para_28"> A further priority is tackling health inequalities, including regional disparities and social determinants of health, and supporting vulnerable populations. The Department’s long-term planning integrates actions to improve access, ensure equity and promote positive health outcomes in every community. We also need to ensure equality of access to drug and other social inclusion health services across all regions as we seek to address the changing needs of our growing, ageing and increasingly diverse population and changing patterns of drug use. </p>
+          <p eId="para_29"> On resources, the 2026 health Vote, excluding disability, now stands at €25.22 billion and there is an additional capital allowance of €1.54 billion. With a continued focus on improving controls, the Department’s focus in 2026 will also be on improved access, value for money and performance consistency in service delivery across the regions. This approach focuses on optimising the use of both existing and new resources to drive even greater efficiency and advance progress toward achieving national equity in healthcare for the people of Ireland.</p>
+          <p eId="para_30"> On strategic workforce planning and reform, the Department recognises the health and social care workforce as its greatest asset. Effective workforce planning goes beyond numbers, focusing on aligning workforce skills with patient needs. With regard to workforce growth, as of July 2025, there were 149,099 whole-time equivalents employed in health and social care services by the HSE and section 38 agencies, which represents a 24.4% increase since December 2019.</p>
+          <p eId="para_31"> On education and training expansion, since 2022, up to 1,000 additional student places have been created in health and social care programmes across Irish universities. A separate agreement with Ulster University and Queen’s University Belfast, spanning the years 2023 to 2025 and co-funded by the Department of Health and Department of higher education, has added over 400 places in medicine, nursing, midwifery and allied health professions.</p>
+          <p eId="para_32"> With regard to strategic workforce planning, the Department’s future health workforce strategy outlines a sustainable and evidence-based approach to workforce development. It emphasises increasing domestic supply, reducing reliance on internationally trained professionals and implementing innovative service delivery models. Our planning framework and workforce planning are guided by five pillars: plan, build, optimise, retain and recruit, and invest. It considers short, medium, and long-term actions. A new planning tool, developed in conjunction with the EU, supports and aids in projecting workforce needs over the next ten to 15 years.</p>
+          <p eId="para_33"> Together with an increase in the workforce, we turn our attention to workforce reform and optimisation. Recognising that future services require new approaches, with the HSE, the Department is reforming care pathways and team structures to be a more person-centred service. Initiatives include developing advanced practice roles, expanding skill mixes and introducing new roles such as physician assistants and theatre assistants. We have also reached out to an international network of collaboration and have ongoing engagement with global organisations like the WHO, the OECD and the European Commission, which informs Ireland’s strategic workforce planning.</p>
+          <p eId="para_34"> On capital investment, capital planning is rigorously governed by national frameworks to ensure value for money, compliance with regulatory standards and alignment to the strategic priorities of the Government, the Department and the HSE. The Department maintains a steadfast commitment to strategic capital investment, recognising the importance that infrastructure and digital technology serve in enabling the delivery of health services. The HSE's capital and digital ICT plans for 2025 exemplify this, with a record €1.44 billion allocated for construction and equipping healthcare facilities and progressing digital health nationwide, and investment to rise to €1.54 billion in 2026. This will allow investment in upgrading and adding more acute and community beds and facilities, more primary care centres, the new children’s hospital, progressing the national maternity hospital, new surgical hubs and planning for elective care centres for ambulatory care capacity. These are all essential to meeting forecasted needs driven by demographic trends.</p>
+          <p eId="para_35"> Digital health is recognised as a critical enabler in planning and delivering healthcare and integrated health to meet the evolving needs of Ireland’s population. The Digital for Care strategy, published last year, outlines key investment priorities, including foundational infrastructure ranging from the HSE patient app to the shared care record, all of which pave the way for a future national electronic health record. Priorities also include a number of digital innovations. I will just mention the national e-prescribing system, the medical laboratory information system and other clinical systems alongside back-office and enterprise solutions like the integrated financial management system. With regard to modern care models, we are expanding virtual beds, virtual care and remote monitoring and telehealth to bring services closer to home. We are also using technology integration to leverage data, automation and AI to enhance clinical decision-making and drive system-wide efficiencies. All of these together aim to modernise healthcare delivery, improve patient outcomes and support a more responsive and efficient health system.</p>
+          <p eId="para_36"> I will conclude by mentioning our integrated approach and continuous review. The Department adopts an integrated whole-system approach that combines health service planning, increasing capacity, enabling reforms, a focus on productivity and demographic adaptability. Regular engagement with this joint committee, the HSE, service providers, patient groups and the wider public is crucial to informing strategy, understanding needs, reviewing progress and ensuring accountability. Through the combination of strategic vision, robust demographic planning, dynamic service development and evidence-driven investment in capacity, our workforce, reform and efficiency, the Department of Health and the HSE work to build a resilient, responsive and future-proofed health system for the public. The Department values the opportunity to discuss its approach to long-term planning with the committee and looks forward to continuing our dialogue on delivering world-class health services now and for the future.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T09:40:00+00:00"/></from>
+          <p eId="para_37">I now call Mr. Gloster to deliver his opening statement on behalf of the HSE. He has seven minutes. Members have been given the opening statement in advance so I ask that we stick to the seven minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T09:40:00+00:00"/></from>
+          <p eId="para_38">I will certainly do my best. I am joined by my colleagues. They have already been introduced so, in the interests of time, I will not repeat that introduction. We serve a population of 5.5 million people. The life expectancy in Ireland for 2025 is projected to be approximately 82.7 years, with a slight gender divide. This represents a slight increase from previous years, which is driven by factors like falling mortality rates for major diseases and a growing population. Life expectancy has been steadily increasing and we now rank among the highest in Europe in that regard. For two decades prior to the pandemic, life expectancy here grew faster than the EU average. There are many contributing factors to this outcome.</p>
+          <p eId="para_39">In more recent decades there have been significant improvements in some of the major determinants of health such as housing quality, education, air quality, diet, smoking cessation and physical activity.</p>
+          <p eId="para_40"> A broad range of social, environmental and economic factors are substantial determinants of health. Within healthcare, significant improvements in provision of and access to healthcare, advances in diagnostics and therapeutics, research, and workforce growth by specialty have all contributed to our overall health status. We have seen improvements in health outcomes for older people, a high rate of self-perceived good health, and decreasing mortality rates from diseases like some cancers and particularly circulatory problems.</p>
+          <p eId="para_41"> Despite many successes and improvements, we know from analysis of demographic trends, prevalence of chronic disease and the traditional inpatient centric model of healthcare we have relied on that planning for healthcare can no longer be viewed through the single lens of just increased investment for more of the same. There are many factors but two are critical to planning at this point. First, the ESRI and others report that the population aged 65 and over is projected to grow from 0.78 million in 2022 to an estimated 1.3 million in 2040, increasing their share of the total population from 15% to 21%. Within that we can see clearly that the over-85 age group at circa 85,000 is likely to quadruple over the next 30 years and this is a particular marker for healthcare planning. We have also seen the general population numbers substantially altered due to global movement and unprecedented geopolitical factors.</p>
+          <p eId="para_42"> Secondly, with a population with an expected prevalence of chronic diseases of 53.8% among adults aged over 50, the number of people with chronic diseases in Ireland could increase from 778,000 people in 2016 to an estimated 1.08 million by 2030. The term chronic diseases refers to long-term health conditions which are slow to progress and require ongoing management. Behavioural and metabolic risk factors for these conditions remain substantial: 17% of adults are current smokers, 60% are overweight or obese, and less than half meet physical activity recommendations. According to 2023 figures, chronic diseases account for approximately 40% of hospital admissions and, within that, 75% of bed days.</p>
+          <p eId="para_43"> Ireland's acute bed occupancy rates remain among the highest in the OECD, measured in recent years as approximately 95%, leaving little capacity to absorb demand shocks. This is particularly relevant during the winter season when emergency respiratory admissions have been shown to increase, thus reducing capacity for overall chronic disease management in the population, particularly patients with co-existing or underlying chronic conditions.</p>
+          <p eId="para_44"> The HSE focus on future planning, consistent with Government policy, direction and investment, is focused primarily on the following areas: healthy lifestyle, which is an attempt to improve the health status of the population and thereby reduce traditional demand; clinical excellence, right across social care to primary care, and right up to the tertiary care parts of the spectrum; and, most importantly, accessible, affordable and safe care. The approach this year and for the years ahead is to achieve improvements in all these areas through sustainable foundations. These include a combination of financial resource and using it more efficiently; workforce resource and using it more productively; infrastructure with capacity reflective of new methodologies, such as surgical hubs, chronic disease hubs, primary care centres, and, of course, bed stock; and finally, technology and digital resource systems, such as the electronic health record, EHR, and virtual care.</p>
+          <p eId="para_45"> On the financial position in respect of Ireland's health services, the 2026 health budget, excluding disability services in the HSE, is €25.2 billion, with an additional capital allowance of €1.5 billion, increasing on the 2025 opening positions of €23.7 billion and €1.3 billion respectively. Having worked to improve control and reduce dependency on supplementary health funding, with continued focus required in this area, the next phase of emphasis will be on maximum efficiency and productivity. Budget 2026 provides for an additional 3,300 whole-time equivalents to the workforce. What will be different is the allocation methodology for those.</p>
+          <p eId="para_46"> The contrasts in service performance across regions show that excellence is possible but not yet consistent. The regional model of Sláintecare must be about aligning the performance of every service to the standards already achieved in our best-performing areas. It is only in this context that we achieve comprehensive balance across regions. The Minister's clear instructions for 2026 are to use existing and new resources combined to enable regions to focus on their areas of challenge and underperformance, thereby bringing us closer to national equity. This approach, a first, sets the basis for longer-term planning, with the possibility of moving closer to population-based resource allocation and further efficiency in strategies such as activity-based funding. We must however get to the point where we experience more uniformity across the country; hence the 2026 approach by the Minister is very welcome. After 2026, a next obvious step is multi-annual funding linked to multi-annual planning.</p>
+          <p eId="para_47"> The health workforce will continue to need to grow to meet demand. However, planning is now taking account of the unprecedented growth to date. In 2026, the Department of Health-funded part of the HSE will have an opening allowance of 133,300 whole-time equivalents, rising by the end of the year to 136,600. This is up from 101,000, excluding disabilities, again at the start of 2020. These are enormous numbers requiring major permanent financial underpinning. This rate of growth is not sustainable for our economy and the focus for the future has to be beyond the traditional view of additional workforce.</p>
+          <p eId="para_48"> The focus on planning for the short and medium to long term is best viewed through two lenses. First, we are now pursuing greater flexibility in how we prioritise and change use of existing workforce resources to improve responsiveness and productivity. Contractual methods such as public pay agreements are significant enablers here. Second, generating workforce supply through targeted third level training programmes and new methods, such as apprenticeship, and increased higher education pipeline in the programme for Government will lead to a better balance between how we use what we have and how we target the generation of the most critical supply.</p>
+          <p eId="para_49"> Our core focus on future planning for infrastructure is again not to rely solely or exclusively on traditional models. By OECD standards, we are still very high in our dependency on traditional inpatient and older person bed models. While we need bed capacity to catch up with demand and underinvestment in the years of financial downturn, we also need to build infrastructure that reflects new ways of responding to demand. These include surgical hubs, with five to open in 2026, and general elective reform, chronic disease hubs in the community, primary care centres, and local injury units, together with new beds where we are increasing our specialty focus in 2026, with critical care, maternity care, and, of course, the new children's hospital.</p>
+          <p eId="para_50"> Our only likely possibility of meeting future demand is to arrive at a better balance between these new configurations and traditional beds. Targeted investment will be the only effective response rather than the approaches of the past. Linking revenue to the opening time of new infrastructure is now the priority of the Minister, as endorsed in major reviews such as the Frank Clarke report and proven to have worked in the opening of the recent 96-bed block in University Hospital Limerick. There is now a specified requirement by the Minister that Government investment in 2026 must include the outcomes of concluding and commissioning new infrastructure. Finally, infrastructure need will need to be matched with virtual care methodologies which also have proven to be effective.</p>
+          <p eId="para_51"> In digital care and technology, I believe we are much better positioned than ever before to now exploit the benefits that are available. The Minister is currently finalising her approach to the full EHR business case and we anticipate hearing from Government very shortly. Subject to approval, I believe Ireland can obtain substantial utilisation of EHR as routine practice in a relatively short few years. We are not waiting for all of a system to arrive before progressing. In 2025 we developed our HSE health app. In 2026, we will develop our shared care record. Throughout 2025 and 2026, we will bring segments of the service into EHR mode, most notably our maternity units and of course the children's hospital, followed by others. All these together with the new approval will lead to a place of bringing one full region to EHR in 2027-28, thereby enabling national roll-out to be standardised thereafter.</p>
+          <p eId="para_52"> All of our developing systems such as laboratory and the national integrated medical imaging system, NIMIS, which we will mandate in all services and be the only systems we fund, will position us strongly for the implementation of EHR. Reflecting on attempts over many years in the health service in this area, I firmly believe that the direction of travel now being undertaken is as good as it can be and is achievable for a lasting difference for generations to come.</p>
+          <p eId="para_53">We are separately pursuing a range of virtual care constructs, including wards and virtual care methods in the community. Next year will see further development of these virtual acute wards. They were first introduced in 2024 at St. Vincent's University Hospital and University Hospital Limerick. A total of 1,937 patients have been onboarded in these wards since July 2024, equating to 18,100 patient active days. These virtual wards are now fully operational, with an average of 25 to 30 patients per day. Both sites expect greater occupancy, going up to 40, in line with the expected surge this winter.</p>
+          <p eId="para_54"> Phase 2 sites, originally identified as Our Lady of Lourdes in Drogheda, Tullamore and Mercy University Hospital in Cork, will go live this November. I have recently added Kilkenny to the list, which will also go live this year, and Galway early next year. This will bring enough evidence to make any adjustments to the methodology and thereafter introduce virtual wards as common practice for additional capacity to hospitals.</p>
+          <p eId="para_55"> Virtual care is also being used in the non-acute settings. There are notable projects using remote health monitoring to support patients with chronic conditions. The community acute respiratory excellence, CARE, project in Letterkenny is a 20-bed COPD remote virtual care model, resulting in a 20% drop in COPD admissions, a 50% drop in readmissions of patients with COPD, and saving €4.2 million. On maternity hypertension, a cohort of 113 patients have been seen to date. This suggests a greater than 50% reduction in admission rates can be made from this model. There are others that I have listed in my statement, including the supporting multimorbidity self-care through integration, learning and ehealth, SMILE, project and the national telehealth roadmap where we have projects running right across our various teams in the community based on a model that a patient can attend anywhere, meaning it is a virtual attendance. </p>
+          <p eId="para_56"> Remote health monitoring to support clinical care in the ambulatory setting tender is due for publication in the next two weeks. This will enable the scaling of many of these projects.</p>
+          <p eId="para_57"> We are using technology to improve our resource management systems with both IFMS and NiSRP. In 2025, these were effectively completed in HSE, and we are now moving to full implementation in the section 38 hospital sector followed by the section 38 disability sector. Adoption of these systems by these funded organisations will be mandatory in 2026 service arrangements. I have included further details in the briefing.</p>
+          <p eId="para_58"> There can be no doubting that demand for healthcare is both growing and changing. That should be no surprise to anyone. The complexity of planning for the future is not in formulating the plans themselves, but in understanding that new and different approaches are the only means by which we can meet future demand, as opposed to just the simple strategies of the past where we always needed more to do new or different. We have improved access and outcomes from healthcare, but I recognise we have a distance to go. I am confident that the plans in place are increasingly more realistic, achievable and, critically, supported by the Minister and the programme for Government.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_5">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_59">Mr. Gloster left out the kitchen sink.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_60">This might be my last time before the committee.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_61">We might have Mr. Gloster in again. I thank him very much for his statement. We are now going to take questions from members. As per normal, we will take a break just before 11 a.m. I call Deputy Daly.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_8">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_62">I thank Mr. Tierney, Mr. Gloster and their teams from the Department of Health and the HSE. I have a short timeframe here. The National Office of Clinical Audit's report on stroke care in Ireland is disappointing. There has been a lot of improvement in stroke care over the years. We see that the pace has not kept up in terms of beds. Even where there are beds, patients are not getting them. There are stroke beds in a hospital but somebody admitted with a stroke is not getting into a stroke bed. Even if they do, they are not getting the length of time in that stroke bed that they should be getting.</p>
+          <p eId="para_63"> The National Office of Clinical Audit lead, Professor Joe Harbison, said that a plateau had been reached around some areas of stroke treatment. Every hospital now has a stroke unit, but too few patients are being treated in them. There is almost no private acute stroke care, so the public system is the go-to. This is a devastating illness. What are the HSE and the Department doing in creating additional capacity and making sure that the capacity that is there is utilised fully for people who need it, especially those with this devastating illness, and that the supports are there to get them out of hospital? Early discharge support is something around 12%, which means people are stuck in hospital when they should be out in the community receiving care.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_64">Before I ask Dr. Henry on the clinical side, as recently as yesterday I was in Cork dealing with many issues, this being one of them. It is important to say, and the audit recognises this, that major progress has been made in Ireland in successful outcomes for people with strokes and the response in the first few hours in terms of thrombectomy and so on. The approach that is being taken next year by the Minister is allowing an amount of each region to look at the different places it has deficits. In some cases, that will be in the response to breast cancer compared to their peers. In some areas, it will be stroke. There is always further investment in the health service that is going to support continued improvement. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_10">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_65">There is a geographical disparity.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_66">Completely.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_12">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_67">The west has a dearth of newer rehab beds. It is a black spot. There is none. What is interesting is that there was a rehab unit promised to Roscommon University Hospital in 2015, with a budget attached to it. It surreptitiously disappeared from the capital plan in 2024. Only after some lobbying is it back on the plan. That does not give me much confidence.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_68">I accept that there is a way to go. It would be wrong of me to dispute that. The approach we are taking to giving the regions a chance to bring themselves up to a level in a number of services is the first time it has ever happened in that way. I have a lot of confidence that it will take us a distance. It might take time to get there. We are heavily focused on the patient flow journey for stroke because the egress from those beds to allow others in is equally critical. That is one of the issues that I was dealing with yesterday.</p>
+          <p eId="para_69"> Does Dr. Henry wish to contribute?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Dr. Colm Henry<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_70">It is an area of particular interest - it is my own specialty. In many ways the audit, which highlights a lot of good progress too,-----</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_15">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_71">I accept that.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Dr. Colm Henry<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_72">-----highlights that the problems we have developed now are as a consequence of rapidly expanding acute stroke provision-----</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_17">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_73">Without interrupting because I have a short amount of time, a patient coming into a hospital with a dedicated stroke unit and not getting into a stroke bed is a problem. There are situations around not adhering to standards. There are significant staffing shortages and not having enough consultant ward rounds. These are not issues of capacity. These are issues of organisation.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Dr. Colm Henry<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_74">On standards, and to bring balance to the Deputy's comments, it should be noted that there are some significant improvements, including the swallowing assessment going up from 68% to 81%. That is an important and basic standard of stroke units. A total of 24 hospitals now have established stroke units. We provide 24-7 thrombolysis in those hospitals. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_19">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_75">The report mentions that, but many do not comply with defined standards. That is an issue of management and governance. The Department and HSE are not reaching their targets of people accessing a stroke bed and getting into a stroke unit. We need to accept those facts and move on.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Dr. Colm Henry<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_76">Absolutely.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_21">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_77">I accept that there have been improvements. I am not saying that there have not been massive improvements in past 20 years. As I am short on time, I wish to move on.</p>
+          <p eId="para_78"> On mental services, there were 80 community step-down beds in the community in County Roscommon in 2016 for people who had long-term mental health issues and additional social and addiction issues. All of those beds have gone. It was decided that there was to be a change in policy. Those people were to go into local authority housing and be supported by wraparound services. On the election campaign, I met two of those unfortunate citizens going around and literally being fed at the local supermarket free of charge because the manager felt sorry for them. They could not manage their money and cannot manage their lives. What happens to people in those situations? Some of them end up in the acute services unit in Roscommon University Hospital, with eight of its 24 acute beds taken up by people who should have been in the community but there was no appropriate setting for them. The level is 25% now. We know from international experience what happens to people who have chronic mental issues associated with social and addiction issues. They end up in three places. They end up in our health service in a community setting, homeless or in prison. Why has there been no replacement of those community, supported homes in County Roscommon? </p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_79">I am not familiar with what it is like today but I did manage the service there for a year with the Mental Health Commission when the mental health service was at its greatest crisis. In fact, I brought in external investigators from Northern Ireland because of very serious issues there. Some of the units the Deputy referred to were not in themselves equally good places of care. I need to be very clear about that. That said, that should not be an excuse for the absence of an appropriate level of service for people with mental health issues. People, particularly those with enduring mental illness, can be accommodated through various housing bodies and local authority schemes, but they can and should be supported to their level of dependency. However, we still have a level of need for some inpatient supports, or high-support units or houses.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_23">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_80">I hate interrupting Mr. Gloster and thank him for his answer, but can we confirm that the replacement acute psychiatric unit for Roscommon University Hospital, with the car park, will be going ahead? There are rumours that the funding will be used somewhere else.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_81">I need to check what the capital plan is going to state in two or three weeks’ time. I am not familiar with the individual project. I think we need to give the Deputy a written answer on that, and I promise him we will.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_25">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_82">I have been told it has gone to the planning stage.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_83">I am not aware of any reason to pull anything that has gone to planning. However, to be fair to the Deputy and the Minister, the capital plan for 2026 has not yet been published. I will need to give the Deputy a letter before that. I will do that.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_27">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_84">I thank Mr. Gloster.</p>
+          <p eId="para_85"> We talked about productivity within our health services. Digitalisation remains a big issue, and I know both commentaries this morning have referred to it. However, I have to say, having done research on where we are in the EU, Ireland is a laggard, and not by a few percentage points. Despite our being the home of Facebook, TikTok and such international companies, and given the expertise we have in this jurisdiction, we are a laggard not just by a bit; we are off the chart. The witnesses have addressed this to some extent but it needs to be taken seriously. We need investment in the digitalisation of our health services.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_86">The Deputy’s time is up. We have a dedicated session on the matter coming up in a few weeks, so we will come back to it then.</p>
+          <p eId="para_87"> The next slot is Sinn Féin’s. I call Deputy Cullinane.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_29">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_88">I want to pick up on the audit on stroke services by the National Office of Clinical Audit, NOCA, published today. Perhaps I will start with Mr. Gloster. The audit does recognise some positives but there is a very stark key finding, namely, that "the overall picture reveals limited improvement since 2021”. Those are not my words; they are directly from the report. It states admissions are up 13% but that bed capacity is up by only 2%. It actually states that while every hospital has a stroke unit – I think there are just 24 of them – too few patients are able to access them because there simply are not enough beds. In the budget just gone, how much has been allocated for the national stroke strategy, and how many additional specialist stroke beds will be delivered next year as a consequence of that?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_89">In relation to stroke itself, and as I said in comments to Deputy Daly, each region is now going to be given an allocation in the service plan for additional staffing capacity.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_31">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_90">I know that. Mr. Gloster said that-----</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_91">And-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_33">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_92">I am sorry but I have dealt with this issue a couple of times in the past few weeks.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_93">If the Deputy wants me to answer the question, he should let me answer it, to be fair.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_35">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_94">To be fair as well, I have asked similar questions and got similar responses back.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_95">But I did not finish the answer.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_37">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_96">National strategies are funded nationally.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_97">No, they are not anymore.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_39">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_98">There is either an allocation or there is not.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_99">They are not anymore. Not like that. That is not the way to get service delivery. The national strategy will determine what needs to happen in each region to bring it up to the next level of improvement, and the region has to use the new and existing resources available to achieve that. It is different in different regions.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_41">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_100">Yes, but my point is that in previous years it was very clear what was additional and what was not.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_101">And it did not always result in an improvement.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_43">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_102">My point is that we cannot hold anybody to account here. We do not know what is additional or what is not. I, and I am sure every other member of this committee, will be asked about this audit, which states there are not enough beds. I will have to answer that I do not know how many additional specialist stroke beds will be delivered. I do not know how much additional funding exists. It is reasonable to ask, on foot of a report that shows we do not have enough beds, how many additional stroke beds may or will be funded, or, more important, be delivered next year.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_103">We are not building a group of beds and saying they are for stroke, cancer or another condition. We are building beds to respond to population need, and then the hospitals cohort within that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_45">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_104">But these are specific beds for stroke victims, so they are specialist.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_105">What makes them specialist is the staff around them. It is not a matter of the beds themselves.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_47">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_106">Exactly, but they are still specialist beds. The beds are the beds, but the staff make up the service. The point is that this report shows we do not have enough beds with specialist staff. If that is accepted, is there any idea of how many additional beds will be delivered?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_107">We will improve. The next phase of finalising the service plan is that the national clinical programmes for the different specialties have to tell me what the priorities and deficits are in the various regions. The allocations to the regions are then used, along with existing resources, to bring those standards up as much as possible.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_49">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_108">I just want to make one point on funding. It is not a quarrel I have with Mr. Gloster; it is more with the Department and the Minister. I have no idea, and I do not know if anyone else on this committee does, how much new money for new measures was provided in the budget just gone. I am aware there was €1.5 billion in additional funding, but I was told by a Department official at a senior level that most of that is for existing levels of service. It is not unreasonable for this committee to ask those in the system how much is additional and how much is new across all the services. We simply cannot get that information. The response is that it will go into the regions. On almost any issue we ask about, we are told by the officials they do not know and cannot be specific. I do not believe that is good enough, particularly when it comes to cancer care, stroke and the national strategies. I will leave it at that. It is more of a point for the Minister.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_109">If you wanted to come up with a simple figure for the amount of money that is new, you would note that there are 3,300 additional whole-time equivalents. If you apply a median factor of €75,000 to each of those, that is all new money.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_51">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_110">Yes, but staffing is not the only element of new funding.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_111">No, but I am saying it cannot be said bluntly that there is €1.5 billion and that none of it is new, as 3,300 hundred staff are new. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_53">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_112">I am not going to get into a row over this other than stating there should be a simple figure that shows existing levels of service and itemises what is new and where it is going. That would be transparent but that is not what is being done.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_113">I believe you will see that in the service plan.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_55">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_114">We will see whether we get the detail.</p>
+          <p eId="para_115"> I want to move on to the integrated financial management system, IFMS, because that is important. It is something I have been calling for and something I support. I have seen recently that there may be pushback from the voluntary hospitals. I have said on the record on several occasions that there should not be. I do not want to see a situation where this becomes a slow bicycle race with the voluntary hospitals. What I want to see – and I believe this is mandatory in the first instance anyway – is all of the voluntary hospitals playing ball and using the system, because we need it and we need the data from it. Is there a concern in relation to the implementation of the system with the voluntary hospitals?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_116">Yes, and that was widely publicised in the last few days, including in <i>The Irish Times</i>. There was no secret about it<i>. </i>We have gone through a number of discussions and we have been very clear. Two things are going to happen to bring absolute clarity. First, each hospital will have its service arrangement for next year by the end of this year. That will be a first. Second, each hospital will have, as part of the service arrangement, a specific clause requiring mandatory compliance with the introduction of the IFMS over 2026 and 2027, as well as the introduction of a system we call the national integrated staff records and pay programme, NISRP. From our point of view, there is no equivocation on this, but yes, there certainly is still some hesitancy about it.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_57">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_117">I ask that we invite in officials from the voluntary hospitals. It is important that the voluntary hospitals be funded and play ball. They are almost exclusively funded by the HSE. Two of those hospitals will be the first to be asked to roll out the service. It is important that the Government and Opposition combined put their muscle and weight behind this.</p>
+          <p eId="para_118"> I have a final question for Mr. Gloster. We had the director of the National Ambulance Service here a number of weeks ago. I asked him whether he was in receipt of an allowance. He refused to answer the question. Subsequently, Mr. Gloster wrote to the committee. Should it have taken writing to the committee for it to get an answer to a straight question on whether a senior executive in the HSE or the National Ambulance Service is in receipt of an allowance?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_119">No, it should not have taken that. Equally, I want to be fair to my director. There was a particular context on the day for him, but it should not have taken that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_59">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_120">Mr. Gloster wrote to the committee and said the HSE has reviewed the matter in its totality and that the arrangements are fully compliant. When I tabled a parliamentary question on this issue, the response was that the eligibility criteria for payment for advanced paramedic allowances are set out in HSE Circular 011/2009.</p>
+          <p eId="para_121">My understanding is that this individual received this allowance in 2011. Is that right?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_122">It was 2012.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_61">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_123">The circular of 2009 states, in terms of the criteria, that an individual has to continue to practise advanced paramedic skills in the HSE ambulance service. Is a director practising advanced paramedic skills currently in the HSE?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_124">Certainly, at the time he was awarded that allowance as part of his contract, he was. He was on the Pre-Hospital Emergency Care Council, PHECC, register, and he was using his skills, which were available to the service. I would have to check if he is still. I am sure time does not require-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_63">
+          <from>Deputy David Cullinane<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_125">Can that be checked? It is an important matter.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_126">In any respect, to be fair to the committee because I know the amount of time it put into it that day, it is now part of his contractual entitlement. It is properly established and that cannot change.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_65">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_127">I remind members to stick to the focus of the meeting, which is long-term planning in the health services.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_66">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_128">I thank the witnesses for the presentation and for all the work that is being done.</p>
+          <p eId="para_129"> I will focus a bit on my own area in Cork and long-term planning there. We have a substantial increase in population in Cork, and the Cork-Kerry region has increased substantially, but we have not had any increase in the number of hospital beds in the last 20 years in real terms. Where are we now in relation to Mallow? A new four-storey unit was built there. Two floors - the second and third - are occupied. Where are we with the first floor and ground floor over the next 12 months?</p>
+          <p eId="para_130"> The second issue is the huge pressure in relation to rehab. The facility at Dún Laoghaire is under huge pressure. We have had an increase in population of 40% but we have not had an increase in real terms in the number of beds available for that area. What is being done? We were talking about a rehab facility for Cork 25 years ago to deal with people who suffered substantial injuries and needed a huge amount of care in helping them to get back to a normal way of living.</p>
+          <p eId="para_131"> The other issue I will raise relates to access to some medical services that come in under the treatment abroad scheme. If you travel to Northern Ireland you can get a refund, but the treatment purchase fund is not available for the same medical care. Is that right? What are we going to do about that, where people are available here who could provide the care within this country without people having to go abroad?</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_132">The Northern Ireland piece involves the cross-border directive. The treatment abroad scheme is a slightly different thing. We are bound by EU regulation to provide that facility and allow people who are waiting to go for a service, but I take the point we should be building capacity all the time.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_68">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_133">I am aware of that. I am saying that some services are not available under the treatment purchase scheme. We do not have any private hospitals that are allowed to offer the same service here and come in under the treatment purchase fund.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_134">It depends on the waiting list. There are private hospitals that are allowed offer services here that are paid for under the treatment purchase fund, but it is not every service. I take the point.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_70">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_135">There are not any for ophthalmology.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_136">I take the point that it is not every service.</p>
+          <p eId="para_137"> To go to the Deputy's primary question in relation to Cork and treatment, I am absolutely delighted to be able to tell him, because he has pursued it many times with me over the years, that I was at the hospital in Cork very early yesterday morning and spent a long time meeting people there. The next phase of the beds in Mallow will open in quarter 1 of next year. These will be staffed and will make an enormous difference. I had a long conversation with the region-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_72">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_138">Is that an extra 24 beds?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_139">Yes, that is correct. We had a long conversation with the region about the priority use of those beds to aid the overall system in Cork. That is the first thing.</p>
+          <p eId="para_140"> The second thing is there was a bit of tidying up to be done around the access to and egress from St. Finbarr's. There will be some adjustments for that hospital to be able to take a higher level dependency of the stroke patients who are often delayed getting out of Cork University Hospital, and to take pressure off St. Finbarr's to allow it to do that. We had, through a private provider, purchased 25 beds at Blarney as step-down beds last Christmas. We will take direct control of those next year. They will also have a level of rehab capacity in them. All of that is a substantial addition to the issue the Deputy talked about. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_74">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_141">Are there 25 step-down beds at Blarney?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_142">Yes, but they will become more rehab.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_76">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_143">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_144">St. Finbarr's will go to a higher level of rehab.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_78">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_145">We have been talking about the issue of an elective hospital over the last four or five years and we have still not even gone to planning. Will this be dealt with? When will it go for planning? Once it goes through the planning process, at what stage are we talking about developing it?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_146">I will ask my colleague, Mr. Tierney, to respond to that.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_147">We are dealing with elective voluntary capacity in two ways. The Government has recognised that we will move first with our surgical hub programme. That is under construction in Cork, which will be the first phase of delivering that capacity for patients who need ambulatory care in Cork. We are also progressing the planning application in conjunction with the local authority for the site at St. Stephen's. We are in a detailed design programme on that. We are engaging with the local authority. I believe Mr. O'Connell or his colleagues were in with the local authority on Monday. We are now discussing how best to access that site in conjunction with the local authority. Does Mr. O'Connell want to add to that?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_148">The main issue at the moment is the access off the M8. That is probably the biggest single issue towards the new elective hospital. We are working collectively with the county council to see whether there is a solution. That is the biggest risk to the project at the moment.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_82">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_149">Will a planning application be in by the end of this year?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_150">The planning application is subject to that item being resolved.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_84">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_151">When the HSE gets through the planning application, and there is obviously a timeframe for planning, will it again be put on the long finger as regards doing the work? We are under severe pressure in Cork. Quite a lot of work is now being transferred out of Cork because the capacity is not there. I am just wondering-----</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_152">The delivery of the two elective hospitals is absolutely a priority within the capital programme but, again, the single biggest issue with the elective programme in Cork is the access off the M8.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_86">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_153">On long-term care in Cork, as regards people who are in hospital and then need to be transferred to long-term care, are any proposals in place to develop additional long-term facilities in Cork? While a lot of upgrading of existing nursing home facilities owned by the HSE has been done, we have not actually added anything new in real terms to the number of beds in Cork. Heather House has been done but, again, my understanding is that it is still not fully operational. There is then a question about long-term planning because the age profile, as outlined by the HSE in its own report, is changing. It is about making sure we have adequate supports so the maximum number of people can stay at home without having to go into long-term care, but we will still need those beds and long-term care as well.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_154">In relation to the Cork region, as part of the PPP bundle, St. Finbarr's Hospital is delivering - largely replacement - 105 beds in the coming quarter. That will deliver and will be a significant additionality. Although it is mainly replacement, it is a significant facility. There is also the overall planning for future development of older persons' beds. That programme is in place at the moment.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_88">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_155">My understanding is that beds are still not operational at Heather House, even though additional beds have been added there.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_156">Additional beds were completed as replacement beds and then additionality came into the existing previous unit. Fire works have been done on a phased basis and they will be completed over the next number of months.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_90">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_157">In relation to neurological facilities, I have come across a number of patients, for instance, with Huntington's, for whom there was no facility in Cork city, or within the immediate area of Cork city. What are we doing in relation to long-term planning in that whole area, where there are neurological issues that need to be catered for and a high degree of care is needed, but there is no facility there for that?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_158">The Deputy is quite correct. That is why I said we are not just building traditional beds now.</p>
+          <p eId="para_159">We are targeting beds towards specific needs within future settings. We have only one centre in Ireland which predominantly specialises in Huntington's disease. We are going to have to look at that and the dementia strategy. We have to look at the whole range of those needs. The Minister of State, Deputy O'Donnell, certainly wants to nuance that going into the capital plan next year. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_92">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_160">Thank you.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_161">I wish to acknowledge the extensive briefing prepared and the extent of work that went in and I thank everyone for that. </p>
+          <p eId="para_162"> I want to start my contribution on the long-term spending. People in Ireland fundamentally believe in universal healthcare and increasing public spending but they want that money to be spent well. They want well resourced services and that money managed well. That is why the integrated financial management and procurement system is important. It is very important we have robust systems across all different parts of our health service. That is why I am disappointed to see that push-back from the voluntary hospitals around the roll-out there, particularly given the scale of public money that has been invested there. We are talking about €5 billion annually in State funding and resistance from these hospitals to adhere to the systems that will apply in the rest of our hospitals. That cannot be accepted and the witnesses have my full support in trying to get that over the line.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_163">Thank you.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_164">We need modern, unified financial management systems and that is very important. I would like to tease some of that out. </p>
+          <p eId="para_165"> Mr. Gloster said the roll-outs in the voluntary hospitals will take up to two years, is that correct? Will the adaptation of the IFMS only be mandatory in service agreements for hospitals that would have that system in 2026 or will it apply to all hospitals, even those in the second year?</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_166">There are certain rules the voluntary hospitals and other section 38 agencies have to comply with regardless of the system, such as certain financial reporting and other things. The reason it takes until 2026 and 2027 to introduce this is that you have to go in and completely lift from the old system into a whole new system. There is quite a lot of intensive labour in it for people in terms of processes because you have to keep the system paying bills at the same time. All of them will start work in 2026 with that part of it. They will not just land with the final system in 2027. I certainly hope in 2026, three if not four major section 38 sites will be fully completed but all the others will have other work going on in them so the compliance is necessary from 1 January. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_167">It is in all the 2026 agreements. </p>
+          <p eId="para_168"> It was reported in <i>The Irish Times</i> that some of the voluntary hospitals were seeking separate legal agreements-----</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_169">That is correct.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_170">-----with the introduction of the IFMS. Were all voluntary hospitals seeking this or just some of them?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_171">To be fair, that position was advanced by the Irish Voluntary Healthcare Association, which is like an overarching group for the hospitals. The majority would be deferring to that position at some level, although the level of pushback would be different from different sides.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_172">Is the HSE exclusively dealing with the Irish Voluntary Healthcare Association or is it dealing with individual hospitals-----</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_173">No, we do not have an agreement with it. We of course talk to the association because it is helpful to collaborate where we can but our agreement in law is with each individual hospital. Each individual hospital, one must remember, has a different history and statute. For some of them, the Minister is the sole shareholder, while others have different configurations depending on the religious construct they came from. However, our actual technical legal agreement is with each individual hospital and we are absolutely satisfied there is no basis for a separate legal agreement for IFMS. There is no need for it. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_174">Can the witness name the hospitals pushing back on it?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_175">It would be fair to say at this stage that the majority have expressed a level of concern. Some have said they are happy to go with it to see the concerns as they go along, while others have boards which have much stronger views on it. It is fair to say the sector generally is not as open to this as we would want it to be. I have listed the hospitals that are due to have the system in the briefing paper. They have all expressed varying degrees of reticence.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_176">I understand they claim that without the new legal agreement, their boards would lose financial control, spending decisions could be vetoed by the HSE and they would have to seek approval to make payments. Could Mr. Gloster address the concerns put forward by the voluntary hospitals and outline the structures that will be in place, and how they might differ from what is currently in place? </p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_177">There are two parts to that. First, we have attempted to address the concerns and give reasonable assurances. Second, we went through a process for about 12 months of rewriting the entire service arrangement, not just for IFMS. The voluntary hospitals and other section 38 providers were fully engaged and involved in that process so they had a lot of influence in what went into those service arrangements to try to ensure there were adequate protections for their entities.</p>
+          <p eId="para_178"> I do not believe a legal agreement is required separately and I do not believe it interferes with their responsibilities, if they are company directors, in terms of company law. I have no basis to believe that. Third, we have no interest in going in and micro-managing the day-to-day spending of a hospital. A hospital could not function if you did that. However, it is a financial management system and part of the purpose of a financial management system is control. I will make no apology to anybody for saying there has to be a control mechanism for public money. Whether you are a voluntary hospital or a statutory hospital, if you are spending it, you are spending public money. If I am the accountable officer for that, I have not only a right but a duty to control that. I do not make an apology for it being a control mechanism. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_179">It was reported in <i>The Irish Times</i> on Monday that the Minister for Health, Deputy Carroll MacNeill, is prepared to put forward legislation to force the voluntary hospitals into using IFMS. Could the Department tell us more about this? Has drafting begun on this legislation or where are we at on that? </p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_180">I might ask Mr. O'Connor to come in on that. We were putting specific provision in the Health Information Bill, I suppose to remove any ambiguity on the need for the voluntary hospitals to share performance and financial-related information with the HSE to perform their executive function. I might ask Mr. O'Connor to elaborate on that.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Muiris O'Connor<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_181">As Mr. Gloster set out, the IFMS will be rolled out through agreements within the service-level arrangements but the Health Information Bill, which is the legal basis for the digitisation of healthcare, provides the HSE with very clear authority and establishes a clear duty to share information for the purpose of generating summary care records, and these are set out in the Bill.</p>
+          <p eId="para_182"> Part 4 of the Bill deals with the HSE's very clear authority to request and receive information necessary for performance oversight and service planning. That Part 4 provides a very clear basis in law for the HSE to receive the detail it seeks from statutory hospitals and all section 38 and section 39 organisations. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_183">Thank you for that. In the final minute, I might touch on the elective hospitals because I am slightly concerned at what we are hearing. There does not seem to be clarity in terms of the timeline, when we are going to go to planning or when these hospitals are going to be delivered. There were four elective hospitals to be delivered in Cork, Galway and Dublin. These are recommended as part of Sláintecare with a delivery timeline of 2027 and 2028. That was the timeline set out in Sláintecare. However, the delivery time is unclear and I am concerned about the timeline in Cork. There is not even clarity in terms of when we might even go to planning on that. </p>
+          <p eId="para_184"> Can we get more detail on when we anticipate these hospitals to be built, when we will get the planning application submitted and what is the estimated cost? These are crucially important and I would like more clarity on the delivery of them. </p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_185">I might ask Mr. Tierney to take the position overarching on the electives first and then Mr. O'Connell and I will speak to the Cork planning.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_186">Again, going back to my response to Deputy Burke, this is about building ambulatory care capacity in its fullest sense. We recognised the surgical hubs were our most agile and responsive way to deliver a first phase of ambulatory care. This will really bite into our existing waiting lists for day cases and will provide some OPD capacity.</p>
+          <p eId="para_187"> Our modelling shows that the seven plus two - there are nine surgical hubs - will meet that demand up to 2031 and, beyond 2031 and 2032, we need our elective hospitals or elective treatment centres to be stood up to start dealing with that broader demographic change. To be clear, we are fully committed to progressing design and planning in Galway and Cork as much as it is within our control. We have to engage with the local authority which will have requirements and we will have to tease our way through that. </p>
+          <p eId="para_188"> As much as we can, our policy and priority is to go as fast as we can for Galway and Cork-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_189">We are out of time so we might come back to it. </p>
+          <p eId="para_190"> We are back to the start of our list with the Fianna Fáil slot and Deputy O'Sullivan.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_114">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_191">It will not be surprising that a third Cork man is going to ask a question about the elective hospital. We understand it is most likely going to be delivered over a phased basis and I will get over that and get on with it once we see progress and a planning application lodged as soon as possible. The witnesses may not be willing to or able to discuss the minutiae of the issue with the roads, for example, which was mentioned. </p>
+          <p eId="para_192">Are we saying the local authority has an issue with using that local rural road and requires the HSE to seek alternative access to the building site or is it that concerning?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_193">Within the engagement - Mr. O'Connell can speak to this - with the planning authority, it is now putting an access requirement on the broader site. We will have to tease through the implications.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_194">The access road that leads from Glanmire up to the St. Stephen's site is quite rural. In our early engagement with the city council, we are teasing through the requirements to ensure successful planning permission will be achieved. We are looking at the impact of that to see if there is a solution. We only met the council last Monday in relation to that.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_117">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_195">Just so I understand, the HSE is required to look at the impact. It is not necessitating that it might have to use-----</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_196">We are looking at the impact of how we are going to achieve the required improvement of access to the site and the existing road will not have the capacity to deliver an elective hospital.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_119">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_197">That is clear enough for me. Moving on to broader issues, on retention of healthcare staff in general, will Mr. Gloster in his response focus in particular on mental health and intellectual disabilities? This is about long-term planning. How is the HSE planning, going forward, to retain those staff? We do not need to go through the vacancy rates. In my CHO, it is a travesty. How is the HSE building towards that in the future?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_198">Mental health had the traditional model. It was a completely nurse-staffed service and nurses could retire at a certain age because of the nature of the work. That created an almost impossible workforce supply issue. We have overcome that. The supply is much better. People working in mental health services now are working with a much better distribution of services where I think they feel a greater level of job satisfaction as opposed to the very traditional old institution they worked in. That is helping but we have a bit of a way to go. The disabilities area is fundamentally different. It is a very serious area to work in. I am a former social care worker and I worked in residential care. Working in residential care and disabilities, the demand factor is very heavy. It is heavy work on the body, emotionally and intellectually. The level of training for staff and staff support are much better. There is employee assistance support and the CORU registration of staff has brought the standard up to a very high level. On planning for community disability services, CDNTs particularly, the Government this year thankfully increased the supply of training places for therapists. My job is to make sure we provide the clinical placements for them, which we are doing.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_121">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_199">Mr. Gloster may tell me this is not correct but it has been implied to me that fourth-year students, whether occupational therapists, speech and language therapists or whatever else, are not getting placements here and many are travelling abroad. Why can we not get fourth years a placement here?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_200">This may well appear unfair to some of my own people but I am going to say it anyway. We have exponentially increased the number of therapists working for us. They are all professionally trained and after a certain period of time, they have the capability to supervise a student. I do not see as big an obstacle to them taking students as they might see. The infrastructure some professions require to take students, quite frankly, is not only not necessary but inappropriate to block people. We will make it very clear that the provision of clinical placements will become a compliance requirement of the workforce each region has.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_123">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_201">How quickly is that likely to happen? Mr. Gloster is aware of the vacuum we are in with no service.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_202">I am making it clear for 2026. I cannot ask the Government to increase the supply of places if I then do not provide the clinical training placements for those students. That is an affront to the supply, sends those students way and tells them we do not want them. I am not prepared to accept that. We may have a fight on our hands with that. We do not negotiate with ourselves is what I would say.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_125">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_203">My concern with how it has unravelled up to now is that if somebody goes off to England and does a placement, they might love England, Canada or wherever they get placed and they might never come back.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_204">The Deputy is 100% right. I am in violent agreement with him. It is a problem but I intend, for whatever bit of time I have left going into next year's service plan, to make it a component part of the requirement.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_127">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_205">I was listening to the discussion before I came down. Deputy Martin Daly got in at the end about digitalisation and ehealth. We were here a number of weeks ago and were told procurement alone will take 18-plus months. I forget who said it. I cannot recall which official said it. It will take 18 months for procurement in terms of rolling out digitalisation and, if we are lucky, maybe it will commence by 2030 and then take a further five to ten years. Why is it taking that length of time to roll this out?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_206">I am not one to avoid a question but I might ask the Department officials to set it out.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_129">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_207">It might have been Mr. Tierney who said that.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_208">We have a technical briefing lined up the week after next because the digitisation agenda is not just about the electronic health record. I owe the committee a broader briefing and explanation to understand what digital health actually means. An electronic health record is just one component of our digitisation agenda. We have started pre-market engagement. We have got a great response from the markets, which are coming into Ireland to support our digitisation of health records programme through an electronic health record at a national level. Our next step will be, subject to Government decision, and we are hopeful to get the Government in the next weeks to allow us now to commence the next phase of procurement, short-listing those with credibility, capability and financial standing. Then, we get into what is called a competitive dialogue phase. That will take 12 months because we are talking about a system that will fit the health service for the next decade. We have to very clear - we know what we are asking for and we get what we ask for. Our aim is by 2027 or 2028 to have an agreed standard and configuration we start deploying across the regions.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_131">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_209">It is my understanding this roll-out has already happened in a lot of private settings or is due to happen. I assume they have chosen their own platform or whatever company will roll this out. Is that going to impact the Department's decision in any way in trying to marry the two systems? Is there potential there will be two platforms, private and public?</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_210">I have to be clear for the record and for everybody looking in that we are vendor agnostic. We will be very clear about what our requirements are. There will be a requirement for interoperability with existing systems in Ireland so we can get that transfer Mr. O'Connor is allowing for in our underpinning health information Bill. All the vendors deal with interoperability and data flow so that should not be an onerous requirement. We want to get the best value for money going into a competition.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_133">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_211">I thank the witnesses for coming in and for their opening statements and briefing notes. In terms of regional development, I am always disappointed when I do not see the midlands mentioned in an opening statement. I make no apology for that. I want to focus in terms of future planning on the future use of existing buildings owned by the HSE. I recently asked a parliamentary question about buildings owned by the HSE that may be going through a process of sale or could potentially be sold. One is St. Loman's Hospital in Mullingar. Does the HSE intend to sell it? If so, which parts and to whom?</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_212">Apologies; I do not think I called out any region in the statement but I did better - I brought the chief for the midlands with me today. I will let Ms White comment.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_135">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_213">We will negotiate.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_214">There are discussions ongoing with regard to St. Loman's. There is a whole campus there.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_137">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_215">I am familiar with it.</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_216">There are different sections of it that are subject to those discussions around an onward sale.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_139">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_217">Is the laundry one of those?</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_218">Not to my knowledge. I will double-check and come back to the Deputy in writing. It is a large campus.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_141">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_219">It is a large campus. It is also a campus that has a number of unmarked graves on it.</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_220">That is correct.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_143">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_221">Quite a high number of unmarked graves. There is land at Rochfortbridge also. Is that the land held by the HSE in Castle Park?</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_222">I would have to ask my colleague, Mr. O'Connell, if he is aware of that. Before he comes in, on the graves, I am aware of the graveyard in St. Loman's and in Mullingar. That is a very sacred space and is not in discussions for onward sale.</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_223">I will have to come back to the Deputy on that one in particular. I would have been down in the midlands in my time but I am not fully aware of that site so I will come back to her on that. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_146">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_224">If it is that site, I ask that Mr. O'Connell would consider selling it to Westmeath County Council. It is in a residential housing estate and has been a bone of contention for the residents in that area because of the lack of maintenance carried out by the HSE over the years. Selling it to Westmeath County Council would make sense. It is a very small site. </p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_225">Just to be clear as to the steps we go through, if we identify a property surplus to our requirements, we put it onto the State register in line with all our requirements for disposing of State assets. All the county councils get view of that in relation to the protocol. Since, I think, 2022, 51 of our disposals have gone to local authorities and other public bodies. We are very active in that. We would absolutely welcome the county council engaging with us in relation to that site. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_148">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_226">If it is the same site, that may be a positive step. </p>
+          <p eId="para_227"> Mr. Gloster spoke about the 3,300 whole-time equivalents that are going to be a part of budget 2026, 300 of whom are for the mental health service. Where is the HSE going to get them from given the shortages that exist within those services? </p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_228">The recruitment pipeline shows us that 3,300 is a doable number in terms of graduates and people returning. There is always the balancing factor as people leave and people retire but this would be net. In the past, we stood rightly accused of saying we were going to add 10,000, 12,000 or 14,000 people to the workforce and the supply does not stand up to that. I think the 3,300 will do it. The fact that they are not coming prescribed by discipline is very helpful because it means some regions will be able to focus on allied health professionals if that is what they need and others will focus on nursing, midwifery and so on. There will be------</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_150">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_229">The Minister of State, Deputy Butler, has referred to 300 specifically around the mental health services. </p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_230">Yes. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_152">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_231">Is Mr. Gloster confident they can be recruited? </p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_232">I am confident they can be recruited but if the pipeline is not there to automatically generate them to come from college or back from abroad, there are also people in agency posts in mental health. I have written to both mental health unions recently to encourage them. I have said that if their members are in agency posts and they want to convert to HSE employment, and if the unions encourage them, we will convert them. It will a combination of strategies that will bring us up to that number. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_154">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_233">Regarding mental health, the Minister of State also spoke of the crisis support teams and one specifically for Tullamore and Westmeath. Will Mr. Gloster provide more information on that? As I said to the Minister of State on the day, the midlands is a big area. Where is this to be situated? What are the criteria for that decision to be made and what area will be responsible for covering? </p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_234">We acknowledge that investment and are delighted to receive it into the midlands. It is an area that-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_156">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_235">How much is that investment? </p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_236">There is a specific allocation for mental health in the letter of determination for the country nationally and a portion of that-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_158">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_237">What is that mental health allocation? </p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_238">My understanding is that 300 WTEs are ring-fenced for mental health within the letter of determination. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_160">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_239">Ms. Killeen White mentioned the budget. </p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_240">I am talking about the 300 WTEs. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_162">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_241">I had spoken of the whole-time equivalents but then Ms Killeen White mentioned budget. </p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_242">My apologies. It was WTEs that I was speaking about. We are working through that with the services to ensure we have a local population response to where that service is best placed. The Deputy has mentioned areas such as Tullamore and others. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_164">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_243">I did not mention that area. That is what the Minister of State has announced, that Tullamore and Westmeath is the area it will be covering. I was quoting the Minister of State as having said that. The HSE is responsible for determining where that crisis service operates out of. What are the criteria for determining that place?</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_244">It is dependent on clinical specialty and clinical need and risk. We will look at all of those in the context of how we might make this work. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_166">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_245">In that regard, how does Tullamore compare with, say, Mullingar, which has an inpatient mental health hospital and a regional hospital? </p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_246">I am not quite sure of the question. What we are trying to do is shift care to the left and ensure we provide care as close to the home as possible based on community needs and population needs. It is not necessarily the case that these crisis resolution teams would be based in an acute hospital. That would not be in the vision for all cases. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_168">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_247">That is contrary to information that I was given. </p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_248">Okay. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_170">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_249">Ms Killeen White is saying today that a crisis resolution team will not be attached to a hospital. </p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_250">No, I did not say that, because of course there will be a flow of patients in terms of models of care for mental health. I had understood the Deputy's question as whether it was going to be based in the hospital, and that may not necessarily be the case. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_172">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_251">Finally, as regards eating disorder beds, will the HSE provide more information on the number of inpatient eating disorder beds that will be delivered in 2026, excluding the ten that will be funded for the national children's hospital under budget 2026? The capacity of that hospital, by the way, is 20 for inpatient beds. </p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_252">Other than what is already published, I cannot specify that at the moment because the capital plan still has to be finalised and signed off by the Minister. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_174">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_253">Okay. I thank the witnesses. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_175">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_254">I suggest we now take a five-minute comfort break. Is that agreed? Agreed. We will suspend for five minutes. </p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Sitting suspended at 10.56 a.m. and resumed at 11.04 a.m. </i>
+        </summary>
+        <speech by="#PadraigRice" eId="spk_176">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_255">We will continue our consideration of long-term planning for health services. Next is the Fine Gael slot and I call Senator Boyle.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_177">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_256">I thank all the witnesses for coming in. Mr. Gloster mentioned in his opening statement the CARE project in Donegal, which I visited with the Minister way back. The project shines a light on what needs to happen in the future. There is a great team there. The project is absolutely brilliant. The feedback I get from patients who avail of it is brilliant too. It is like having a 24-hour call service and the patients are over the moon about it. Are there plans to roll out such a service?</p>
+        </speech>
+        <speech by="#" eId="spk_178">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_257">Yes. Specifically, for some of those digital projects we have to do a short tender for some of the technology that supports them. That is necessary because we do not want to end up with loads of different technology products around the country. We have a lot of good virtual projects. Obviously, I do not want to commit the Minister to the final end of the service plan but I really hope the CARE project is the one that will be mandated for further scaling in 2026. I have been up to see it and it is outstanding.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_179">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_258">The HSE team there is outstanding.</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_259">They are super.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_181">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_260">The feedback I have received from the patients is that the project saves them travelling hundreds of miles. It is a great service.</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_261">Yes, it is absolutely super.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_183">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_262">It needs to be rolled out in other counties. When is the 110-bed community hospital in Letterkenny due to be up and running, and staffed, along with the chronic disease hub in St. Conal's Hospital?</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_263">The community nursing unit, CNU, project is due to be delivered in quarter 4 of 2026.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_185">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_264">What about the chronic disease hub?</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_265">I will come back to the Senator with that information.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_187">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_266">What plans has the HSE to retain GPs in rural areas? People in my region keep telling me that there is an absence of GPs and it takes a while to fill the service. Is that the situation nationally or is it just a Donegal issue?</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_267">I will mention two things and maybe Dr. Henry can assist me with this. In terms of rural GP practices, the reality is that the traditional model of general practice is not sustainable. In rural areas of isolation, the work is now too hard and people will not do it that way. In recent years, we first targeted the introduction of doctors, particularly from South Africa, towards either rural areas or areas of disadvantage. They come here and work with existing GPs for two years and then they can qualify to be added to the register for GPs. Those doctors are taking up some of the slack.</p>
+          <p eId="para_268"> Second, we increased the number of training places from 280 to 350 a year for the supply of GPs. That increase should keep us steady with the rate of retirements, albeit it will not keep it steady in every location.</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Dr. Colm Henry<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_269">We have a strategy to reach a ratio to population corresponding to the one in Scotland, which I think is about nine GPs per 10,000 population. We are short of that and there are geographical inequities. The GP coverage is particularly sparce in the north east, for example. As Mr. Gloster said, our approach is to increase the number of trainees quite significantly, to 350 a year. Also, as an interim measure, because the increase will take a while to go through our pipeline of training, we will fill in the gaps in under-served areas through the recruitment of GPs abroad. We are doing that quite successfully in County Donegal and other counties.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_190">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_270">It is not just because Donegal is geographically so far way that is causing this problem.</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Dr. Colm Henry<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_271">Yes, as I said, when we look at our current provision, there is geographical spread. There are some areas that are under-served because of the problems we found ourselves in. Our aspiration is to reach a GP provision of nine GPs per 10,000 population.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_192">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_272">What is the long-term plan to expand the mental health service in Donegal?</p>
+        </speech>
+        <speech by="#" eId="spk_193">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_273">It is the same as it is for the country. Perhaps Ms McArdle from the Department can outline the roadmap for the country.</p>
+        </speech>
+        <speech by="#" eId="spk_194">
+          <from> Ms Siobhán McArdle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_274">As part of Sharing the Vision, the national mental health policy, members will have seen over the last number of years very significant investment, not just in adult teams and CAMHS teams but also in specialist teams like the ADHD teams and the crisis resolution teams that were discussed. There is quite a focus now in the Minister's allocation in budget 2026 to ensure that in those areas where the HSE is seeing that those services have not fully development, those gaps will be filled in a measured and balanced way, notwithstanding the need for a workforce to fill those. Donegal and the north west are as important as any other area in the country and it is really important that we see access to those services for people in that area.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_195">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_275">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_196">
+          <from> Ms Siobhán McArdle<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_276">Complementing that are both specialist services and the promotion around our mental health promotion plan ensuring we have access through our Connecting for Life plan. We are engaging in training and building awareness around mental health and mental health literacy. Across the country, we have invested in digital mental health solutions such as access to the My mental health plan through the navigator on the website so that when people have queries on their own mental health and wellness, they are able to get the right information at the right time and quickly while also having access to pathways such as more specialist services if and when they are needed. </p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_197">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_277">What is the long-term plan for our community hospitals? Where I come from in Killybegs, the community hospital plays a really vital role for the elderly community there and the hinterland. Are there plans to expand that service? From talking to older people, I know they really like to come to some place they know and spent their childhood in. They do not want to go away to Letterkenny or Gweedore. It is vital that we expand these hospitals. </p>
+        </speech>
+        <speech by="#" eId="spk_198">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_278">That goes back to one of the earlier questions. We have spent most of our investment bringing what we now call community nursing units up to standard rather than losing or closing them. As we have spent most of our investment on that, adding to the public capacity has been a challenge for the past few years. The challenge for the next few years in capital investment for older persons' residential is to accept that we have now come up to a standard and we need to add to capacity. I think I can say with confidence that there is no plan to close any and there is a definite plan to increase many - the reason being our disproportionate balance on the private sector. The dependency is too high in terms of nursing home care and we have to correct that. We also know from evidence that public nursing home care will allow us to respond very well to things like the impact of stroke, dementia specialist units within them and adding on a day centre in a place like Killybegs, which is the lifeblood of the community. I can assure the Senator that none of them are going away. We have brought most of them up to a standard with which HIQA is happy but we must now increase public bed capacity. </p>
+        </speech>
+        <speech by="#" eId="spk_199">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_279">Mr. Gloster is right. We are investing quite a significant amount of euro into refurbishing the existing stock to comply with HIQA standards. That will continue probably into early 2027 so my job is to look for an opportunity to overlap that and start to build new capacity. Mr. O'Connor might have to referred to it earlier. I picked it out in the opening statement. The ESRI has done quite a bit of work for us to help us understand the model demand forecast out to 2040. That is great because it gives two parameters within which to plan. Where there is appetite on the part of the private sector to build, I will not stand in its way and I do not think the State will but we must make sure that when we start building new infrastructure that it is regionally balanced as well so there is equity of access and geographical distance does not become a barrier to access. </p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_200">
+          <from>Senator Manus Boyle<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_280">It is vital for our elderly people because they are far happier in an area they know. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_201">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_281">Mr. Gloster would probably be disappointed if I did not bring up Limerick and how we had a great day there recently - the Cathaoirleach was there himself - at the opening of the 96-bed block. My understanding is that it is certainly making a difference in terms of bed shortages. I know the next 96-bed block is going to tender. Is there any update on that and how the services have been working to date?</p>
+        </speech>
+        <speech by="#" eId="spk_202">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_282">Given that the Senator and I share the same county jersey, I share in the joy of that particular day. We have added 128 beds to Limerick. It is often forgotten that 32 have been put in since last New Year's Eve. That is very valuable bed stock. The 96-bed block is working and will continue to work to enormous effect because it is not just 96 beds. The management model of the hospital is increasing towards what we call cohorting. I will not bore members with what is behind that. Management processes like weekend discharging have been really taken on there at great pace. I was on for the past two weekends. They are outstripping themselves in terms of what they are doing. Regarding the 96-bed block, I have all of the evidence here by day and I can say that since 10 October, we have reduced trolleys by an average of 50% in that hospital. That is the impact of the beds and all those reforms. If we take the focus of the reform the Minister has emphasised since the start of the year around process and contract application and five over seven working and put that with a thing like cohorting where we group patients along with new bed stock, that is where we get real reform. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_203">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_283">I pay tribute to all staff from the bottom up because everybody has played their part. </p>
+        </speech>
+        <speech by="#" eId="spk_204">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_284">Absolutely - they were excellent. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_205">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_285">Everybody from the patient to the staff deserves a safe space. There is an expansion plan for St. Camillus's community hospital. I had experience recently with a number of people waiting to get in there. The rehabilitation hospital in Dublin was completed in 2020. Are there plans for more beds in that area because I can see there is far more demand for beds? I know people waiting for beds in Dublin and St. Camillus's. I understand that the new 25 beds in St. Camillus's will be in 2026 but that they will be more nursing home beds. Could Mr. Gloster comment on that? </p>
+        </speech>
+        <speech by="#" eId="spk_206">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_286">There was a two-part plan for St. Camillus's. I was the chief there at the time so I commissioned that plan and the design of it. We built a new 50-bed replacement block, which is the same point I made to Senator Boyle about Donegal. We built a replacement block because we had to. The old workhouse was not going to work for us, HIQA was not going to leave it open and it was hard to expect people to continue to stay in it. The 25 beds constitute the finishing of that replacement that is happening next year. It is state of the art. Then we can move on to additional capacity. I think that site has great potential and great scope for a number of individualised modern-day specialised nursing units. That all has to take its place in the overall plan the Minister must work through under the national development plan. It is a great site and a great service. There are queues of people waiting to get in there. The rehab unit there is fantastic. Adding to those rehab beds is also important for us. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_207">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_287">I know there were plans for additional beds in St. John's, Nenagh and Ennis. Is there any update about where they are because I understand works had commenced on tendering? Could Mr. Gloster comment on that? </p>
+        </speech>
+        <speech by="#" eId="spk_208">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_288">I want to be really careful about this because I know the Minister has to make a bigger decision about one week before Christmas. What I will say is that what was committed to in the previous capital plan is fully committed to. Everyone accepts that the mid-west needs additional beds. Beds will not be taken off anywhere. We will be adding beds. I do not have any fears for the mid-west bed stock or the commitments already made. I do not think there is any different in that. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_209">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_289">Regarding long-stay beds mainly for children, I know that people from Limerick have to go to Nenagh or Tipperary if something happens to a parent. Those are where the long-stay beds are. Are there any plans for long-stay beds in Limerick because having someone quite a distance away can cause a family trauma? </p>
+        </speech>
+        <speech by="#" eId="spk_210">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_290">Does the Senator mean for children with disabilities? </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_211">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_291">My apologies, yes. </p>
+        </speech>
+        <speech by="#" eId="spk_212">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_292">The Minister for Children, Disability and Equality, Deputy Foley, and the Minister of State with responsibility for disabilities, Deputy Naughton, have a capital plan with an expanded envelope for 2026. We are trying to finalise that plan with them. Mr. O'Connell is meeting the Minister for Children, Disability and Equality this evening. I do not want to commit the Ministers but there is a preference towards the provision of community bed housing structure in each county. My preference is that they be run directly by the HSE and focus first on respite because that is the bigger need in children's services compared to long stay. However, we also have to make long-stay provision as well. There will be some exciting things happen in the area of respite next year. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_213">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_293">In terms of mental health services in Limerick and UHL, there is a small unit. Are there any plans for expansion there? There has been some demand in relation to it. An upgrade of the unit there is planned, I understand, but I would just like to know-----</p>
+        </speech>
+        <speech by="#" eId="spk_214">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_294">Does the Senator mean the 5B acute unit?</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_215">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_295">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_216">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_296">We did a major refurbishment of that about ten years ago, I think. It was definitely done when I was working there. It is the bed capacity that is under pressure. We have to cross-match it all the time with Ennis. I do not have any specific plan to hand. I can maybe get the regional executive officer down there to write to the Senator but I do not have any specific detail I can give her on that.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_217">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_297">As for my last question, I was at a HSE briefing with the team in the mid-west on Monday and they were really open to progression and areas we need to look at. One area that has been of concern to me for quite a while, and it was highlighted on Monday, is the shortage of not only neurological surgeons but neurological staff more generally in that area. I firmly believe, as regards illnesses like MS and so on, that if patients can have access to a neurological nurse or neurological supports, it helps them to stay at home within their own home support, but because sometimes there is a shortage, they end up in hospital. Are there any plans to try to expand those services?</p>
+        </speech>
+        <speech by="#" eId="spk_218">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_298">I think the need is only growing in terms of neurological condition and demand. Going back to my own time working in Limerick, there was one neurologist; I think there are four or five now, which is really good to see.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_219">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_299">Six, I think.</p>
+        </speech>
+        <speech by="#" eId="spk_220">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_300">Six even. That is good, and they will all have specialist nurses with them, so there have been great advances. Neurosurgery is different. That would not be happening in a place like Limerick. That is a tertiary centre issue, that is, Cork and Dublin, predominantly, but, yes, it is a growing demand. That is why I made the point I made at the start of the committee meeting. The departure the Minister has taken for next year is a phenomenal milestone in terms of making sure regions have some agency in coming up to the level of consistent standard across the country, rather than my saying to someone, "You are getting two posts to do that and that is all you can do with them." Those days are gone. It is a fantastic approach to moving towards what a population needs, and we will all have to take a bit of risk with it.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_221">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_301">Next is Senator Conway, then Deputy Ardagh.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_222">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_302">I welcome everybody here. First, on a positive note, I thank Mr. Gloster for his engagement with Vision Ireland and the ECLO service. I know there is a very important meeting he has organised for this afternoon and I hope that will bring clarity on a multi-annual basis to this critical service. I thank him for that.</p>
+          <p eId="para_303"> To follow on from my colleague Senator Byrne, I was at that high-level briefing on Monday morning in Limerick and there was some extremely positive feedback from the management team there under Sandra Broderick. I very much welcome the good news that trolley numbers are down by 50%, but that is only half the challenge. I know how committed Mr. Gloster is to driving that down further. On that, we are aware of the HIQA report and the Minister's extremely important decision, which has to be made this side of Christmas. Has the Minister been on to Mr. Gloster and his officials since the HIQA report to discuss the options? Have they given any briefings on the options from their perspective, and do Mr. Gloster and his team have a preferred position on which they may be advising the Minister?</p>
+        </speech>
+        <speech by="#" eId="spk_223">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_304">That is a very informed question, I am sure, and I would hate to finish my term of office in a few months and be accused of being evasive. I talk to the Minister every day. We talk about lots of things and, yes, we have discussed the mid-west and her thought process around that. I worked in and live in that region and I was heavily involved in the health service there for 30 years. The Minister is dealing with a decision that is very significant on an impact that has now gone on for 17 years. I would say to everybody that there is huge value to leaving her with her thoughts for now, and when she brings her position to the Government it will be clear to everyone. Of course I discuss this with the Minister. I will not presuppose in any way what she might say by even saying to the Senator what those discussions would look like.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_224">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_305">Sure, so-----</p>
+        </speech>
+        <speech by="#" eId="spk_225">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_306">It would not be fair to the people of the mid-west or to the Minister.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_226">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_307">Yes, so as soon as-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_227">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_308">Senator, we will have a dedicated session on the HIQA report.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_228">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_309">Yes, I am conscious of that, Chairperson. Finally, on that, as soon as a decision is made, it will have to be actioned as a matter of urgency. That is where a team will need to be put in place very quickly. I hope we can have an engagement post Christmas on the implementation of the Minister's decision.</p>
+          <p eId="para_310"> On the second 96-bed block, I have been on this committee for two terms and I remember when the 60-bed modular unit was announced and then when the 96-bed block was announced. After a long time, we now have the 96-bed block. The decision to do the commissioning work for the second 96-bed block in order to cut time was extremely wise and intuitive and, I think, has made a difference. What worries me, however, is that we are told that the next 96-bed block, which is committed to, will be delivered at the end of 2029, in quarter 4 of 2029. Is there any possibility of escalating that and getting the delivery date maybe to the end of 2028?</p>
+        </speech>
+        <speech by="#" eId="spk_229">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_311">I will ask Mr. O'Connell to deal with the construction date. First, I thank the Senator for his compliments about the decision because not everyone agreed with us when we made that decision at the time to go ahead with the enabling part of the foundation. That was a decision on which the Department supported us wholeheartedly, and I am exceptionally grateful-----</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_230">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_312">And it was the right decision.</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_313">It was a high-risk decision.</p>
+          <p eId="para_314"> Second, we have only just got through clearance of the objection to planning. That is what the statute requires. Citizens have a right to their planning processes. The week we opened the first 96, we got the approval for the second block, so the clock only starts in that sense now, but everything that could have been done up to that date to be ready to go with the shovel was done.</p>
+          <p eId="para_315"> Mr. O'Connell might address the timeline.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_232">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_316">Just briefly.</p>
+        </speech>
+        <speech by="#" eId="spk_233">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_317">The time period is a significant development. The Senator can see how long the first 96-bed has taken. Those are the timeframes we are living to. The team I have down there has delivered exceptionally for the Limerick region and the mid-west region. If it can be done, the team will do it more quickly.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_234">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_318">To move on, the HSE has taken over Children's Health Ireland, which is very welcome and, moving forward, is the right decision. Can the witnesses give this committee any update on the timelines for the national children's hospital? Is there any further update they can give us on when we can expect patients to be seen at the hospital?</p>
+        </speech>
+        <speech by="#" eId="spk_235">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_319">Does Mr. Tierney want to come to that first or-----</p>
+        </speech>
+        <speech by="#" eId="spk_236">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_320">I can deal with that. We know the NPHDB is engaging with BAM. In fact, the director for the UK and Ireland was over this week and is fully committed to getting CHI into the building in November to give it a jump start on its own commissioning activity. Now the NPHDB and BAM are working through a revised programme. I expect we should see something come out in the next weeks on that but, in fairness, we have to give the NPHDB its time with BAM to get through those details and look for a compliant programme.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_237">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_321">Finally, to follow on from Deputy Cullinane on the allowance for advanced paramedics, I am looking at Circular 011/2009, which was issued following the Labour Court recommendation. It says clearly that in order to receive the allowance, the person receiving it needed to be continuing to practise advanced paramedic care. I do not really want to get into any specific person's allowance but, clearly, if somebody is contracted and this is part of their remuneration, that will have to be addressed in a different way because it sends out clearly the wrong message, the same way as the National Ambulance Service's refusal to answer at this committee a number of weeks ago sent out the wrong message.</p>
+          <p eId="para_322">I thank Mr. Gloster for his intervention to resolve that, but this clearly sends out the wrong message to the people working in the ambulance service on the ground. Are there more people at senior management level receiving this allowance but not actually practising? Maybe it is something on which a review could be carried out. For example, if an Oireachtas Chair continued to receive the allowance when he or she were no longer in that role, the public would rightly have an issue with that, in the same way in which, in my view, the public would have an issue with the perception this creates. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_238">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_323">As I said to Deputy Cullinane, the issue of pay in the National Ambulance Service is beyond the scope of this meeting, but if Mr. Gloster is happy to take it-----</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_239">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_324">I think it is something-----</p>
+        </speech>
+        <speech by="#" eId="spk_240">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_325">I am not aware of any other senior official in the ambulance service, but I am around too long to catch myself out on that. I will check it and come back to the Senator. At the time the allowance was given to the director, he was a practising advanced paramedic and on the PHECC register. In fact, he continues to be on the PHECC register and he can, therefore, practice, subject to time available. It was given to him because the salary itself was not going to, essentially, sustain the level of responsibility that was required to take over the service in 2011 during financial straits and other things. Everyone can look back and say whether it was right or wrong, but the reality is that it is a part of a person's contract now. That is what it is. </p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_241">
+          <from>Senator Martin Conway<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_326">I do not have any particular personal issue with him receiving it. It is just the perception it creates. </p>
+        </speech>
+        <speech by="#" eId="spk_242">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_327">I understand that. </p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_243">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_328">I thank the Chair for indulging me today and I thank all the witnesses for coming in. My ears pricked up when Mr. Gloster said big things are happening when it comes to children's respite next year. For people watching back home, we know that in CHO 7, where I live and represent, there is no respite for children available. There are no afterschool respite facilities for children. There is no overnight respite for children under eight and there is non-existent home support for children in CHO 7 at this point in time. Can Mr. Gloster please explain that to me? How has the HSE come to this point? </p>
+        </speech>
+        <speech by="#" eId="spk_244">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_329">On the specific detail of CHO 7, does Ms Kate Killeen White wish to-----</p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_245">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_330">That is what I am told formally by the HSE. </p>
+        </speech>
+        <speech by="#" eId="spk_246">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_331">In terms of increasing capacity in respite-----</p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_247">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_332">I am asking why there is absolutely no respite available to children and families in CHO 7 at this point in time. I have been told that formally by the HSE. </p>
+        </speech>
+        <speech by="#" eId="spk_248">
+          <from> Ms Kate Killeen White<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_333">Deputy, there is no defending that. That is not acceptable and I will take that away to look at what capacity can be generated for the former CHO 7 area. In terms of home support, I am aware there are ongoing recruitment and retention challenges for home support specifically. There are measures being taken to try to increase service provision. </p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_249">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_334">For those at home, CHO 7 encompasses large parts of south Dublin city and stretches all the way up to Kildare. It is a huge amount of our population in Ireland. When we are seeing so much money being given to respite services, it is scandalous that they are not getting any respite at this point in time. </p>
+        </speech>
+        <speech by="#" eId="spk_250">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_335">I am not going to defend it nor will I dispute what the Deputy is saying. What I can say is that, with the additionality that has been secured for next year, I am certainly favouring positive discrimination in favour of the areas that have the least. I have to work that out with the Minister, Deputy Foley, and the Minister of State, Deputy Naughton, but I am not going to defend what the Deputy has described, which is just not right. </p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_251">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_336">Okay. I will move on to CAMHS services. Again, I am speaking from both personal experience and as a representative of parents and families in CHO 7, particularly in Dublin South-Central. Will Mr. Gloster explain to the committee and public why children with severe self-harming behaviours, for whom multiple referrals have been made by GPs and paediatricians, are constantly refused by CAMHS? According to the reply to a recent parliamentary question I tabled, over 60% of referrals to CAMHS are refused. Can he explain to me why this is happening? What are the criteria? How come clinicians do not know the criteria for CAMHS referrals? Why are so many CAMHS referrals being refused? Tell the public please, Mr. Gloster. </p>
+        </speech>
+        <speech by="#" eId="spk_252">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_337">I am not aware of any disproportionate change in CHO 7 to how CAMHS clinicians conduct their work or business. I will certainly talk to the national clinical director for CAMHS in that regard and I will come back to the Deputy with a detailed reply. When a referral is made by a general practitioner, or indeed anyone else, to a CAMHS service or any other service, I am bound to rely on what the receiving clinician says about that referral. If he or she says that referral does not meet the criteria of their service, I am not in a position to second guess that. </p>
+          <p eId="para_338"> Due to the complexities of referral pathways that parents, teachers and GPs are experiencing, since October 2025 and nationwide, I have created a single pathway of one front door for referrals to all specialist community healthcare services for children. Once that referral is made, the services cannot refuse it. It is the services behind that door, such as the primary care teams, CAMHS and disability services, that have to decide which is best placed to respond to the child. That is the best-----</p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_253">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_339">With all due respect to Mr. Gloster's policy, that is not being adhered to by clinicians. </p>
+        </speech>
+        <speech by="#" eId="spk_254">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_340">It has only just started. </p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_255">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_341">I am flabbergasted that the HSE is not tracking how many CAMHS referrals are refused in each CHO area. I ask Mr. Gloster to provide the committee with those referrals broken down by CHO area, acceptance and refusal rates, as well as waiting times. It is just not acceptable for families and children in this day and age that the services are not available to them. </p>
+          <p eId="para_342"> I have three minutes left. I wish to mention equine therapy. My colleague, Senator Anne Rabbitte, is a fantastic advocate for disability services. She asked me to ask about multi-annual and capital funding for Toghermore equine centre. We know that equine therapy has huge, measurable outcomes for children with disabilities. I am asking that the HSE evaluate how it can roll out further programmes, like expanding Cherry Orchard Equine Centre in my area. There is huge demand and waiting lists. When something works, why not expand it? </p>
+          <p eId="para_343"> The figures with regard to respite services and CAMHS are startling. They are unforgivable. </p>
+        </speech>
+        <speech by="#" eId="spk_256">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_344">While I am not disputing or defending anything the Deputy has said, what she is saying to me about CAMHS services is not that there is an absence of a service but rather there is an issue with decision-making within the service. I am happy to look at that. </p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_257">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_345">I always ask why the door is being closed. As a parent and a representative, it seems like there is a row going on between CAMHS and the CDNT. </p>
+        </speech>
+        <speech by="#" eId="spk_258">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_346">Exactly. </p>
+        </speech>
+        <speech by="#CatherineArdagh" eId="spk_259">
+          <from>Deputy Catherine Ardagh<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_347">CAMHS are saying that they do not want these referrals on their lists or to be publishing figures with big, long waiting lists. Unfortunately, everything seems to fall back on the CDNTs. They have huge waiting lists. CAMHS waiting lists, however, look quite moderate, but they are whitewashing their figures to make them look moderate. They are just brushing everything back on the CDNTs. A root-and-branch review of CAMHS is needed. It is not working at the moment. </p>
+        </speech>
+        <speech by="#" eId="spk_260">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_348">All that I can say to the Deputy in that regard is that this is why I have created the single point of access and said that no child’s referral can be refused. It is why I have said that it is up to those services and the people who lead them to work out which is the best response that can be given to a child. I absolutely agree with the Deputy that there has been a fundamental disintegration. The more we specialise in the Irish health service, the more disintegration we create. That is an unintended consequence. I categorically say to the Deputy, and I have said it in public many times, despite the good work done, I am not proud of our record in children's services, be it children's services for disability or indeed mental health. I am not proud of it and I will do what I can to improve it. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_261">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T11:30:00+00:00"/></from>
+          <p eId="para_349">I wish to follow on from Deputy Ardagh because I was very impressed by her passion on the subject of CAMHS. What she said is true. While I take Mr. Gloster's observance that he does not feel he is in a position to second guess a clinician’s decision, any branch of medicine or the health services is open to review. We had a situation in the Roscommon and east Galway area where it was my impression that the professional receiving the referrals – this is not historical but, rather, recent - almost viewed it as some sort of performance to push back as many referrals to GPs.</p>
+          <p eId="para_350">It was a major issue for GPs in the area, so much so that letters were full of disrespect for fellow professionals. I think it has been resolved now, but the same issue keeps coming up over and over again. Deputy Ardagh is speaking about Dublin. I am speaking about rural Roscommon and east Galway.</p>
+          <p eId="para_351"> At the end of the line, parents are dealing with very difficult situations and are striving to do their best for their children. I will give an example. I had a family, who, for work reasons, worked in middle management. They went to the west coast of America on a contract for two years with a child with ADHD. The child was assessed over there by a professional psychologist and paediatrician specialising in the area and put on treatment. The child came back to this country because the contract was up. The parents wanted to continue the medication because it had changed their lives in terms of the child's ability to attend school. My referral to CAMHS was received and sent back. Essentially, it stated that it did not think the child was suitable for its assessment. Second, even if the child was seen, the child would have to be taken off the medication, reassessed at six months and then it would be decided because the assessor could not be guided by professionals in the United States of America. I had reports from them.</p>
+          <p eId="para_352"> That is the level of dysfunction. That is not patient-centred, parent-centred or child-centred. It is not productive in any way. It creates resentment, anger and frustration. I heard this from loads of GPs in that area who are outraged not just because of the waste of time for them, but also because of the disservice to the families and the parents who are trying to do their best and making their lives even more difficult than they already are. What Deputy Ardagh says is true.</p>
+          <p eId="para_353"> I am delighted with Mr. Gloster's assurance of this one-door policy of a referral into the service where a child in the family will receive a service which is deemed most appropriate by the HSE. I am happy with that and with the assurance on that. What Deputy Ardagh described is true. It is not just her experience or that of a few people in her area; it is true. It seems to be an institutional issue throughout the country because GPs in other parts of the country are telling the same stories about the same service. I accept Mr. Gloster's assurances on that and that things will change.</p>
+          <p eId="para_354"> Moving on, Senator Boyle spoke about GP numbers in rural areas. It may be an easier topic to discuss. Nonetheless, it is a service that is required. I agree with Mr. Gloster that the modelling has to change. Part of that is a reluctance. It is not just in general practice; I see in specialties in smaller hospitals that reluctance and a difficulty to recruit and retain medical professionals and allied health professionals in those areas. I accept that there has been an extension of training. We also need to be careful when we cast a net so wide that we make sure that we get high-quality graduates into those training programmes. That is also a challenge.</p>
+          <p eId="para_355"> In some remote and rural areas and deprived inner-city areas where there is specific need and a difficulty recruiting and retaining GPs, we need to look at a different model. Somewhere along the line, someone decided that 1,200 medical cards were enough work for one GP in 1989, with one nurse and one secretary. No one ever did a working time study on it. We have changed considerably in the last 35 years to a point where there is much more complexity in the work we do. The consultations are longer. In those areas, the State does have a responsibility to provide a service. It may be that there are fewer patients but it takes two GPs to provide that service, maybe on a salaried model or some other subsistence model. We need to think outside the box. That is not just in rural areas; it is also in deprived inner-city areas. What is Mr. Gloster's own observation on that?</p>
+        </speech>
+        <speech by="#" eId="spk_262">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_356">I do not disagree. I do not think a uniform or homogenous type of model for Ireland works any more. That is the truth. We have always had, to the greatest value of our health service, GPs as independent practitioners. That model has, in the main, served us very well. We should not break the whole thing. In areas of huge disadvantage, like Summerhill in Dublin, where the GP care for all construct came from, despite challenges around Revenue rules and so on, we have managed to sustain that. That works for people who would never have had a chance of getting a doctor.</p>
+          <p eId="para_357"> We have to think as creatively as we can about how we support the model and funding of general practice for rural isolation. I was down in Bantry in west Cork two weeks ago. If you were to do a home visit there, you would nearly want a day to go out and back. In fairness, in terms of the strategic review of general practice, the Minister is very attuned to not simply saying one size fits all. I think the ICGP, the INMO and others will all contribute to that, but I do not disagree with the Deputy.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_263">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_358">We probably need more supports as well in terms of nursing and other staff. I do not want to run down the clock. I have a couple of other questions. I thank Mr. Gloster for being so open on this.</p>
+          <p eId="para_359"> Maybe Mr. O'Connell is dealing with the St. Brigid's psychiatric hospital campus, but I know it is to be disposed of. As a representative of people in Ballinasloe and that area, I know they are deeply frustrated that this site has been left in such a derelict state. It is an eyesore for the town. I know there is a protected building at the front, but the protected building has a tree growing up through its floor. There is not much protection for that any more. It will be sold off as one piece. Has there been any discussion between the HSE and the local authority to consider a more rounded view than simply disposing of this estate?</p>
+        </speech>
+        <speech by="#" eId="spk_264">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_360">In relation to Ballinasloe, the delay to date has been as a result of trying to rectify the title issues. The first registration takes a period. It has been identified as surplus to requirements. We are engaging with all the local stakeholders in relation to any interest. There would be challenges to get other interested public bodies involved in the historical buildings, to be perfectly honest.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_265">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_361">It is a big campus. There would be opportunity to have some form of a community campus where you could have an educational, social and health campus. It would be an ideal-----</p>
+        </speech>
+        <speech by="#" eId="spk_266">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_362">There is a range of different plots in and around the town that is within HSE ownership. We will look at a strategy of disposal to see what best suits that sort of model. Again, it is on the property register as surplus to our requirements. It is there for the county council to express an interest at the moment. We are absolutely open to engage. We want to get this reused and repurposed. It is not conducive to modern healthcare provision.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_267">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_363">It is a town that has huge social and health need.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_268">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_364">Deputy Daly is out of time. I will take Deputy Quaide, then I have some final questions and we will conclude at 12 o'clock.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_269">
+          <from>Deputy Liam Quaide<recordedTime time="2025-11-05T11:40:00+00:00"/></from>
+          <p eId="para_365">I thank the Chair for allowing me in. I met Mr. Gloster in June in the disability matters committee and I raised the crisis in primary care services for young people, which overlaps both the areas of disability and health. At that stage, I knew anecdotally that children were routinely waiting up to several years across disciplines nationally, including psychology, occupational therapy, physiotherapy and speech and language therapy.</p>
+          <p eId="para_366"> I was experiencing a lot of frustration in trying to get actual statistics on this because the HSE was returning responses to parliamentary questions that only gave figures for children waiting more than 52 weeks. We had an exchange about that. I kept following up, and I eventually received a set of responses in July that were staggering in terms of the depth of the crisis. All around the country, young people were waiting routinely up to four or five years for these services. There was one particularly jaw-dropping figure in Dublin North-West of a child waiting 13 years for psychology. This crisis is very keenly felt by families who are on the receiving end of it and by clinicians within those services.</p>
+          <p eId="para_367">It has kind of flown under the radar. In mental health, there has been more of a political focus on CAMHS and in disability, there has been more of a political focus on children's disability network teams, CDNTs, but all of this is interlinked. When we do not address issues at primary care level for young people who have difficulties in the mild-to-moderate range, we know that those children are more at risk of developing more entrenched difficulties and may end up requiring CAMHS or CDNT support.</p>
+          <p eId="para_368"> I wish to ask about this matter, given that we received very clear information on it and how stark it was over the summer. There was quite a lot of coverage of it. It is cross-disciplinary, it is national, it is not just in Cork or Kerry, which was the message we got from Simon Harris when my party leader, Holly Cairns, raised particular issues in Cork and Kerry the previous year. It is actually worse in some areas than in Cork and Kerry. What has been the HSE response's to that? I want to emphasise that there is a legacy of chronic underresourcing. It is not just that we cannot find the clinicians or we are not training them fast enough. While that is an issue now, there was very serious underresourcing of primary care even prior to the official recruitment embargo, which I know from working within services.</p>
+          <p eId="para_369"> The pay and numbers strategy has really hamstrung recruitment as well, and it continues. Through parliamentary questions, I have been trying to find out to what degree posts that were lost as a result of the pay and numbers strategy have been re-advertised and put back out there by the HSE and which have remained cast into oblivion. I have been asked follow-up questions by the HSE for clarity, but the ultimate response I get is pretty Kafkaesque. I know the statistics are being provided to the people collating the information, but I do find that very frustrating. It is a bit like the issue I raised regarding exactly how long people were waiting beyond 52 weeks. Are they waiting 52 weeks or 500, 600 or 700 weeks? This is no exaggeration. What has the HSE done in response to the very real crisis that is now instantiated clearly by those statistics? What is the situation with recruitment and recruitment restrictions? Can we get clear responses regarding posts within the HSE in primary care that have been lost or the number that have been reinstated despite the pay and numbers strategy?</p>
+        </speech>
+        <speech by="#" eId="spk_270">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:50:00+00:00"/></from>
+          <p eId="para_370">There is a lot in that. I will do the best I can to answer it. Maybe I will start with what we are doing about it, because that is the most important thing to get in.</p>
+          <p eId="para_371"> When I last spoke to Deputy Quaide at the disability committee, I made it clear that, in respect of psychology, I had removed this year's intake into the doctoral programme in psychology from the numbers count so that services did not have to come up with a position number to underscore it. I stood over that decision. I met the heads of psychology subsequent to meeting Deputy Quaide. I confirmed that for them. They pointed out a problem in one area to me, which I resolved the same day. That is just the basic piece of taking it out of the numbers. That was the first thing.</p>
+          <p eId="para_372"> Second, and as Deputy Quaide knows as a practising psychologist, we have thankfully grown the number of psychologists in Ireland exponentially. I am not sure whether we will ever have enough because of the way the referral pathways and demands now go.</p>
+          <p eId="para_373"> In relation to the generality of primary care, there are two things I want to say. The Minister recently gave me approval to make a short-term intervention to try to clear some of the demand lists in some of the therapies. We are doing that this year and next year. There is an element of catch-up to that. There is an element of insourcing our own staff to do it and there is an element of using private sector demand. Just yesterday, I had a team conclude a procurement evaluation for private supplementary support for the public sector to deal with the particular issue of assessment of need and autism assessments under the disability services. Next year, we will see regions investing some of the 3,300 posts in primary care services. In the letter of determination, the Minster has placed a specific obligation on me to show a positive discrimination in favour of, and towards, community healthcare challenges, particularly people who are on waiting lists for community healthcare and primary care services. We will see primary care feature in that.</p>
+          <p eId="para_374"> There is no current recruitment embargo. There is no current restriction on recruitment. Regions have a cap and they must live within it. It is a challenge for them, but they have to do it. There are still vacancies they can fill.</p>
+          <p eId="para_375"> If I may say, the one part I fundamentally have an issue with is that we tend to describe primary care in terms of what it was ten years ago rather than today. We forget that a substantial body of work was taken out of primary care under the enhanced community care programme. We took out a lot of adult services for chronic disease, for integrated care and for older people. A lot of staff were invested in that, and some primary care staff applied for those. I accept there is a challenge in primary care and I think we are responding to it. It is going to take a bit of time. The jobs we "lost" were jobs we were never meant to have. The jobs or vacancies we lost on 31 December 2023 - I have repeatedly said it is very hard to trace them all - would probably be in or around the average vacancies we would have in the Irish health service on any one day, which would be about 3,000 posts. I believe that has been well compensated for since in terms of the additionality we have been given.</p>
+          <p eId="para_376"> If anyone is on a waiting list for nine, ten or 11 years for a psychologist, we would be far better as an Irish health service writing back to that family much sooner to say this is not the service that is going to meet their need and we have to look to see if there is any alternative way we can respond to that need. I do not think someone being on a waiting list for seven years is credible.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_271">
+          <from>Deputy Liam Quaide<recordedTime time="2025-11-05T11:50:00+00:00"/></from>
+          <p eId="para_377">The degree to which private outsourcing is happening in respect of assessments of need and possibly other parts of primary care or disability services is running a real risk of creating a perverse incentive for clinicians.</p>
+        </speech>
+        <speech by="#" eId="spk_272">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:50:00+00:00"/></from>
+          <p eId="para_378">I do not disagree.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_273">
+          <from>Deputy Liam Quaide<recordedTime time="2025-11-05T11:50:00+00:00"/></from>
+          <p eId="para_379">I know a lot of clinicians are quite incentivised to leave the health service now and take up very lucrative private work. That is going to further hollow out some of those State services. We need to be very careful with that. </p>
+        </speech>
+        <speech by="#" eId="spk_274">
+          <from> Mr. Bernard Gloster<recordedTime time="2025-11-05T11:50:00+00:00"/></from>
+          <p eId="para_380">We are being careful and we are calibrating it to the greatest extent we can to protect the public service and keep building the public service. I am sure the Deputy will agree that the position of the current demand list on assessment of need, because of the out-of-date legislative position we are in, is just appalling for children We have to try to meet that need. It is Hobson's choice.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_275">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:50:00+00:00"/></from>
+          <p eId="para_381">In the final minutes, I will ask some questions on primary care centres. It is an important issue and I do not think it came up today. Before I do, I want to pick up a point around vacant and derelict buildings. It really frustrates people when they see vacant buildings. The HSE is guilty, like some of our other State agencies, of leaving buildings vacant. One comes to mind in my own constituency on Grattan Street. It has been vacant for seven years. Next door is a primary school that is bursting at the seams. It is an Educate Together school that is looking to expand. It has caused frustration and is something I have written to the HSE about. It would be good to examine how best those buildings can be used in the longer term.</p>
+          <p eId="para_382"> In terms of primary care centres, they are crucial and we have not had a chance to touch on them today. They are too often overlooked despite the fact that a strong network of primary care centres is central to the delivery of Sláintecare. They are key to the comprehensive continuum of care that was referenced by the Department in its statement. It is increasingly important with our ageing population that we have a robust network of primary care centres. I do not think it has been prioritised enough. We have seen this, for example, in the Comptroller and Auditor General's report from 2018 on the development of primary care centres. It included four recommendations that the HSE and Department of Health agreed to implement. However, when the Comptroller and Auditor General's team went back in the middle of this year, not one of those recommendations had been implemented. We also know that the ranked prioritisation list of primary care centres has not changed in over a decade, but what has changed is the total number of centres on the programme, from 356 in the list provided to the Comptroller and Auditor General to circa 300 in the Department's briefing. Will the witnesses provide the committee with a note that lists the 300 projects still under the primary care centre programme, with the status of each? Will they identify those that have been removed since they provided the Comptroller and Auditor General with the list of 356? The Comptroller and Auditor General's list of primary care centres lists those that merged, are deemed not to be required or are under review. I take it that they have been removed, but we need to get full sight of that. Will witnesses give us an updated list on the primary care centres?</p>
+        </speech>
+        <speech by="#" eId="spk_276">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T11:50:00+00:00"/></from>
+          <p eId="para_383">Yes, we can write back formally to the committee. I will give context of where it has gone from.</p>
+          <p eId="para_384">An exercise was done and identified all the 356 needs at the time through further engagement and ongoing review, both at local and national levels. They would have been reviewed and refined from that initial assessment, for example, where it would have been deemed to be more appropriate. Coolock is a bigger centre and serves Coolock and Darndale, with a small outreach in Darndale that already existed. They are the sorts of element where we have gone for slightly bigger centres and less quantity, which has been better for service provision and the delivery of the programme. That is the context, but we can come back to the committee-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_277">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_385">We need a bit of oversight of which ones are involved. Following the C and AG reports, the Department agreed to set a goal for when the full network of primary care centres would be delivered. This never happened. Why is that?</p>
+        </speech>
+        <speech by="#" eId="spk_278">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_386">If we can just stand back for a minute, the 356 that the Chair referred to was a list compiled in 2012, recut in 2014 and again in 2016. What we have committed to the C and AG and accepted as a recommendation is that our job in 2026 is to stand back, map the 180 that are currently operational, map the 2024 to 2025 centres in the pipeline and see what that regional distribution per head of population looks like so that we can at least see whether there is any inequity or whether we have achieved equity. That is what we need to do. Next year will be around defining the gap that is left to go per head of population for that service need. I will confident that, by the end of 2026, we will have a full understanding of what a full pipeline network looks like. When will then have to understand how we fund and resource it. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_279">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_387">The rate of increase has been far too slow. </p>
+        </speech>
+        <speech by="#" eId="spk_280">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_388">I do not disagree.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_281">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_389">There are two more recommendations to look at. In the 2018 report, the C and AG recommended that the Department define the minimum scope of services in accommodation that constitutes a primary care centre. This was never acted on. What is the status of the minimum scope of services? </p>
+        </speech>
+        <speech by="#" eId="spk_282">
+          <from> Mr. Derek Tierney<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_390">Part of our job in 2026 is to work with Mr. O'Connell and the team and understand what the minimum schedule of accommodation per site is, what we have provided and where the gaps exist. We know it not uniform, and it has been largely informed by local services in terms of what additionality they might like. There is a body of work in 2026 at the macro level, but also within our 180 primary care centres that are operational. What is the schedule of accommodation? I am keen that we need to make sure we are sweating those assets and they are fully utilised before we start considering whether we need to build additional capacity in those areas. That is part of our 2026 programme.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_283">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_391">I have some more questions, but I might follow up in writing with the witnesses in the interest of time. </p>
+        </speech>
+        <speech by="#" eId="spk_284">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_392">The Chair raised the issue of disposals. A key priority for us is to dispose of all of the surplus assets that we have at the moment. There has been a significant body of work done this year in relation to that. There were two sold yesterday at auction. There were eight sold last Thursday. We are making a concerted effort to try to remove-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_285">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_393">Part of the point is delivering those to where other State services are needed, for example, schools and-----</p>
+        </speech>
+        <speech by="#" eId="spk_286">
+          <from> Mr. Brian O'Connell<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_394">Yes. A significant proportion of all the assets we have disposed of since 2022 - it is in the region of 51 property disposals - have gone through the State register and been disposed of to other public bodies.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_287">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T12:00:00+00:00"/></from>
+          <p eId="para_395">I thank the Department and the HSE for the extensive engagement, the extensive briefing that was prepared and all the work that has gone into this. It is greatly appreciated. I thank the witnesses for their engagement.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 12.03 p.m. until 9.30 a.m. on Wednesday, 12 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

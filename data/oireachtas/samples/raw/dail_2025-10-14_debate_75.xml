@@ -1,0 +1,916 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-10-14/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-10-14/debate"/>
+          <FRBRdate date="2025-10-14" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_fisheries_and_maritime_affairs"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-10-14/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-10-14/debate/mul@"/>
+          <FRBRdate date="2025-10-14" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-10-14/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-10-14/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="PadraigMacLochlainn" href="/ie/oireachtas/member/id/Pádraig-MacLochlainn.D.2011-03-09" showAs="Pádraig Mac Lochlainn"/>
+        <TLCPerson eId="SarahOReilly" href="/ie/oireachtas/member/id/Sarah-O'Reilly.S.2025-01-29" showAs="Sarah O'Reilly"/>
+        <TLCPerson eId="TimDooley" href="/ie/oireachtas/member/id/Timmy-Dooley.S.2002-09-12" showAs="Timmy Dooley"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine" href="/ie/oireachtas/role/minister_state/agriculture__food__marine" showAs="Minister of State at the Department of Agriculture, Food and the Marine"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM IASCACH AGUS GNÓTHAÍ MUIRÍ</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Fisheries and Maritime Affairs</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-14">Dé Máirt, 14 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-14">Tuesday, 14 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PadraigMacLochlainn">Pádraig Mac Lochlainn</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#SarahOReilly">Sarah O'Reilly.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#CharlesWard">Charles Ward</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#JenniferWhitmore">Jennifer Whitmore.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#ConorDMcGuinness">Teachta / Deputy Conor D. McGuinness sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Quotas, Common Fisheries Policy and Sustainability Impact Assessment: Discussion<recordedTime time="2025-10-14T11:00:00+01:00"/></heading>
+        <speech by="#ConorDMcGuinness" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:00:00+01:00"/></from>
+          <p eId="para_9">Tá céad míle fáilte roimh na finnéithe chuig an gcruinniú seo. I have received apologies from Deputy Pat the Cope Gallagher. He is attending a meeting of the British-Irish Parliamentary Assembly in London. I have also received apologies from Senators Diarmuid Wilson and Gerard Craughwell.</p>
+          <p eId="para_10"> As most of the witnesses have been in those seats recently, they will understand this, but I have to go through it again. As we are in public session, I wish to bring to their attention the following note about privilege. Witnesses who are giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence that they give to this committee. This means that they have a full defence in any defamation action for anything said at the meeting. However, witnesses are expected not to abuse this privilege and may be directed by the Chair to cease giving evidence on any issue. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precincts should note that they may not benefit from the same level of immunity from legal proceedings as witnesses giving evidence from within the parliamentary precincts. They may consider it appropriate to take legal advice on this matter. Privilege against defamation does not apply to the publication by witnesses outside of the proceedings of this committee of any matters arising from the proceedings.</p>
+          <p eId="para_11"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the parliamentary precincts will be asked to leave the meeting.</p>
+          <p eId="para_12">I do not believe we have any members joining us by Teams this morning, but should any member seek to participate via Teams, I will ask them to confirm that they are on the grounds of Leinster House before they make their contribution. </p>
+          <p eId="para_13"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in any such way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks and it is imperative that they comply with any such direction that I make.</p>
+          <p eId="para_14"> I have already welcomed the witnesses. I also want to welcome those watching online and those in the Gallery who are here observing our meeting. There is a huge amount of interest in this meeting and it is one I have been very keen to have as we run into the December Council meeting and the negotiations around the quota allocation. It is a very topical issue in light of the mackerel crisis that has dominated all our agendas over the past number of weeks.</p>
+          <p eId="para_15"> We will discuss quotas, the Common Fisheries Policy and the sustainable impact assessment. The committee meeting will be broken into two parts. In first part we will hear from sectoral representatives and in the second from the Minister and his officials. Officials from some of the agencies under his remit will be here to listen to the feedback members want to give and answer questions ahead of the negotiations.</p>
+          <p eId="para_16"> Witnesses are representing the Seafood Ireland Alliance, which comprises a number of producer organisations, POs. We are joined online by Mr. Patrick Murphy, CEO of the Irish South and West Fisheries Producers Organisation; Mr. Dominic Rihan, CEO of Killybegs Fishermen's Organisation; Mr. Aodh O'Donnell, CEO of the Irish Fish Producers Organisation; Mr. John Lynch, CEO of the Irish South and East Fish Producers Organisation; and Mr. Brendan Byrne, CEO of the Irish Fish Processors and Exporters Association.</p>
+          <p eId="para_17"> I understand two written statements have been provided and circulated to members. As time is short in this particular meeting, I will ask Mr. John Lynch and Mr. Patrick Murphy to provide two-minute synopses of the statements. We have an awful lot to discuss. When I come to members, we will work on the basis of five minutes for each member, and that has to include time to put a question and get a response. I will remind members of that when we start the question and answer session. If Mr. Murphy is online and ready to go, he can provide a two-minute summary of his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Patrick Murphy<recordedTime time="2025-10-14T11:05:00+01:00"/></from>
+          <p eId="para_18">I thank the Chair for the invitation to appear before the committee and give an outline of what is facing the Irish industry in 2026. As he said, our fleet will suffer huge losses next year in terms of opportunities and quotas. The Chair stated that mackerel was down 70%, but with his allowance I will outline some of the other quotas. </p>
+          <p eId="para_19"> Haddock off Rockall is down 35%, haddock in the Irish Sea is down 30%, monk off Donegal is down 1.2%, monk in the Celtic Sea is down 3% and black pollock off Donegal is down 24%. Sole in the Irish sea is down 10.5%. Whiting in the Irish Sea comprises 200 tonnes, less than what we had under the bycatch provision. Plaice in the UK and English waters is down 56%. Sole in the same area is down 19.9%. Haddock in the Celtic Sea is now zero, adding to whiting and cod in the Celtic Sea. We have no advice on nephrops.</p>
+          <p eId="para_20"> What is facing the Irish fleet in 2026 is a reduction in opportunities right across the sector. This comes on the back of stocks having been reduced year on year. We have a Common Fisheries Policy that bases itself on a maximum sustainable yield, MSY. That does not seem to be working because even though the MSY figures have been provided, stocks are still reducing. Rather than MSY, the figure keeps dropping which makes it virtually impossible for our members to keep making a viable living. Profits for the fleet are down by 82% according to a Bord Iascaigh Mhara, BIM, report. It is really serious and we in the Irish south and west are calling for help in any imaginative way possible.</p>
+          <p eId="para_21">I am going to leave it at that and let my colleague come in.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:10:00+01:00"/></from>
+          <p eId="para_22">Gabhaim míle buíochas le Mr. Murphy. Mr. Lynch has two minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T11:10:00+01:00"/></from>
+          <p eId="para_23">I thank the Cathaoirleach. The opening statement I provided to the committee speaks for itself, for people who have read it. There are huge issues in the pelagic sector and I will let my colleagues elaborate on that in a few minutes. The scale of the reductions in the total allowable catches, TACs, in the pelagic sector are catastrophic for the Irish fishing industry. There is no question about that. It is the same for the processing industry. If you follow it through, the economic impact of it is really bad for coastal communities and operators around the coast.</p>
+          <p eId="para_24"> Our organisation concentrates more on demersals and nephrops. The fact that we now have six stocks in our area that are on zero TAC advice means that our stocks have declined, all while being fished within the International Council for the Exploration of the Sea, ICES, advice and within MSY. How much more we can we do? We are fishing within the advice. We have made improvements in technical measures. At this stage, we need to look at a different way of rebuilding. The potential losses for us in the Celtic Sea are €3.9 million if the zero advice is followed. We would encourage that bycatch TACs are sought for these stocks to allow other fisheries to be pursued, in particular the nephrops fishery, where we do not have the advice yet. It is due out at the end of October but a negative advice there would be really painful for our sector. The Irish Sea stocks have a potential minus of €1.25 million and there too we will be dependent on bycatch quotas to keep other fisheries going.</p>
+          <p eId="para_25"> The cuts are so severe this year that to have any stock rebuilding, or any type of effort reduction to accommodate a stock-rebuilding programme, would definitely need subsidies. It would need a lot of supports for the fleet and the processors who depend on that fleet, similar to the structure we had in the BAR funding after Brexit. Things are so serious at the moment that this type of structure will be necessary.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:10:00+01:00"/></from>
+          <p eId="para_26">I thank Mr. Lynch. We will go to questions and answers and I remind members that they have five minutes, including their questions, remarks and responses. To aid efficiency and keep things rolling nicely, members might say who they are putting their question to, if it relates to a particular speaker. The floor is open for Senator Boyle.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_6">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:10:00+01:00"/></from>
+          <p eId="para_27">I thank the Chair and everybody who is listening in. I know the whole fishing community around Ireland is looking in on this meeting here today. It is crucial. I wish Mr. Cormac Burke well. I know he had his operation on Thursday and I hope everything is going well. We are thinking of him.</p>
+          <p eId="para_28"> My first question is for Mr. O'Donnell. The Norwegians are overfishing mackerel stocks in Irish waters. Why are we allowing them to fish blue whiting in our waters?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:10:00+01:00"/></from>
+          <p eId="para_29">Basically, we have a big problem. We have the Norwegians, the Faroese, the Russians, the Icelanders and Greenlanders - non-EU states - overfishing our shared stocks by up to 40%. In the past five years, it is estimated that they have taken, cumulatively, 1 million tonnes of stock over and above the science. We cannot understand this. We know the cause of the problem. We have pointed this out a number of times over the past number of years. We have expected this cut. We have a 70% cut in mackerel. We have got 40% in blue whiting and 22% in boarfish. Cumulatively, this is a 50%-odd cut in one year. It comes up on top of the Brexit cut of 26%. It is not a crisis; it is a collapse. On top of this, each year, Europe, which negotiates on behalf of Ireland as a member state, enters into a soft deal with Norway to allow it to access EU waters to fish blue whiting and other species.</p>
+          <p eId="para_30">This is simply not on. We are rewarding a rogue state to fish in European waters and to catch three or four times our quota in our waters or waters to the west of Ireland. We know the cause but we have a problem with inaction at European level. Something needs to be done to address this in terms of trade measures and blocking access.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_8">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_31">On the question of blocking access and imposing trade measures, what payback does Ireland get for letting the Norwegians in to access the blue whiting stock in our waters?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_32">As I have pointed out, this is a soft deal. This benefits other EU members much more than Ireland in terms of the reciprocal access arrangements they have. Ireland for its part gets a small percentage of the arctic cod quota - less than 280 tonnes per year. This compares to an overall access arrangement for Europe of up to 9,500 tonnes or 10,000 tonnes annually. Ireland pays the price in terms of access and gets very little by way of benefit.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_10">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_33">It is hard to believe.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_34">Europe and the Common Fisheries Policy, CFP, have let us down in this regard.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_12">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_35">They have let us down big time.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_36">Totally, yes.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_14">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_37">It makes no sense at all.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_38">Reckless behaviour in macro fishing is being rewarded. There is systematic overfishing by up to 40% each year and quotas are being inflated. At the same time of the year, soft deals are done with the perpetrators to fish blue whiting.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_16">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_39">Can Mr. O'Donnell see this being stopped? Is Norway going to be stopped overfishing? Is there any way of doing it?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_40">We have come to a stage where we have to press at an all-of-government level for Europe to negotiate on our behalf and to impose whatever trade measures it can. Sixty-seven percent of the salmon production of Norway, which is approximately 1.3 million tonnes per year, goes into the European market. Norway then has access to fish in the waters to the west of Ireland. These two measures could be taken quite simply to block the Norwegians and punish them for their irresponsible behaviour.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_18">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_41">Can our Minister call for sanctions to be imposed?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_42">We need the Minister to act on this. We need an all-of-Government approach. This needs to be raised at the highest levels within Europe, possibly at the level of Heads of State.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_20">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_43">What is going on is ridiculous. It was reported last week that the Norwegians had landed 40,000 tonnes of mackerel. That is our quota for the whole year and they landed it in one week. Something has to be done. We cannot turn a blind eye any more.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_44">The data is correct. In one seven-day period in 2023, the Norwegians landed 40,000 tonnes of mackerel. That exceeds our total annual quota. If the cuts go ahead as planned in 2026, that will be four times our total quota. This overfishing is continuing. It is happening in the international zone where they fish mackerel at an inflated level even as we speak. This is damaging our shared migratory stock. It has to stop.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_22">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T11:15:00+01:00"/></from>
+          <p eId="para_45">This issue of overfishing has continued for a number of years. It is not new. The IFPO's submission refers to a five-year process. If one puts in all of the different cutbacks, we are facing losses of €200 million next year. If no firm action is taken, conservative estimates predict that 2,000 jobs will be lost and there will be devastation in coastal and fishing communities.</p>
+          <p eId="para_46"> I want to get a sense of something. The witnesses have referred to reciprocal arrangements the EU has with Norway, the Faroe Islands, Iceland, Russia and the UK. Am I correct in stating that there are fishing corporations based in the EU that have major investments in these countries that are responsible for overfishing? Could one of the witnesses take us through that?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Dominic Rihan<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_47">There is no hiding that there are European interests which have investments in Icelandic, Faroese and Greenlandic firms, less so in Norway, but also in the UK. They are not doing anything illegal but they are complicit in the overfishing that has been ongoing for a long time. This is a long-standing company. It has been investing for many years. It has also invested in the Pacific and other places around the world. It is not a new concept but these companies are involved and they are complicit in this, in that they are fishing against quotas that have been overinflated and set unilaterally.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_24">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_48">There is a lot of talk about countries here but my issue is that major corporations are involved in industrial scale fishing and reckless practices that ignore science and that may well destroy a precious, shared resource that spawns off the Irish coast and works its way up to the north Atlantic. This is clearly reckless and clearly in defiance of the science, and there are no repercussions. My understanding is that the European Commission separates this out. The Commission fails to have any actions taken against the offending corporations and countries. The corporations with investments are in all of these countries. They are making huge profits and are actually based in the European Union. We need to talk about these corporations that are making huge profits and are involved in reckless practices. Not only is the Commission failing to hold those accountable or take action against them, but these companies are also being given access, through a separate process, to European waters to fish for the likes of blue whiting. Apparently the European Commission separates these two things out and says there is no connection. Will Mr. Rihan take us through that for the people listening in today?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Dominic Rihan<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_49">As the Deputy said, the European Union looks at it as a member state issue. A member state is a member state and a third country is a third country. The European Union also looks at it from a different point of view, more from a competition law perspective rather than as European fisheries law. It is difficult because technically these companies are doing nothing wrong in terms of how they operate-----</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_26">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_50">They are recklessly overfishing.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Dominic Rihan<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_51">What the Commission can do is to seriously look at the actions of those third countries where those operations are working. The frustration we have is that for years we go to the coastal state meetings in London - there is one this week on mackerel - with high hopes that something will happen but nothing happens. The Commission representatives throw insults across the table and send strongly worded letters and do very little of substance - in actual action. The other countries go away and just carry on doing what they have done. We had hoped that the stark scientific advice on mackerel would have provoked a bit more of a reaction and that rather than trying to attack the science, they would actually try to sort out the problem and come up with a sharing agreement that works and protects the stock into the future. We go to London again this week with high hopes that this will happen but there is no guarantee. In reality, the only tool the Commission has is on the trade side. This is where the Commission and the EU have power. It is where it needs to go because everything else, including diplomacy, has not worked so far. That is clear in the scientific advice.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_28">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T11:20:00+01:00"/></from>
+          <p eId="para_52">I am conscious we do not have a large number of members here yet, so I will ask one final question, if I may. There has been a failure to take any action in the last five years. Every single year that the fish producers have come before this committee to discuss the sustainability impact assessment, the issue of mackerel overfishing has been flagged. It has certainly been flagged for the last three years, from my recollection. Last year, there was a cut to the mackerel quota. The Hague preferences softened that somewhat for us but we can see the trajectory we are on here.</p>
+          <p eId="para_53">Whatever about taking sanctions against countries and having some kind of trade battle between third countries, surely the European Commission can take action against rogue fishing corporations that have overfished recklessly. Whatever about countries, these are corporations. For example, we have the Apple tax. We have €13 billion that came to the State because of practices that were found to be illegal. What has been done about fishing corporations that are operating between countries, recklessly ignoring science and destroying a resource for our people?</p>
+          <p eId="para_54"> Obviously, we will have the Minister of State before us in the next session. I am not asking for a response because the witnesses can see I have a firm view that the European Commission has utterly failed to take action against rogue corporations that operate between countries and states and avail of international trade. Mr. Rihan rightly said that, legally, they can move from country to country. I accept that, but they are involved in reckless overfishing that has done incalculable damage to our community. I will probe that with the Minister of State. I will come in with another round of questions in a minute.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_29">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_55">Mr. Murphy is joining us online and his hand has been up, so he may go ahead.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Patrick Murphy<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_56">I thank the Chair. I commend the questioning from the Senator and the Deputy. It is opening up this debate. It should have been done years ago. We have been raising this via our presence on the Pelagic Advisory Council and asking for a predictive analysis from ICES of this continuous overfishing.</p>
+          <p eId="para_57"> To explain to the viewers watching, in the coastal states negotiations that Mr. Rihan referred to, the representatives of all the coastal states meet. When it finishes, they agree the science. They agree with the numbers that are set by ICES. The problem is that without a comprehensive sharing arrangement of who catches what of that share, these countries then unilaterally increase their shares above that which exceeds the scientific advice. This does not just affect the pelagic fleet. We have a system in Ireland where we use a portion of the TAC to do swaps with our European counterparts in getting necessary stocks for our whitefish and demersal sector, and without mackerel, this will prove impossible. Therefore, this has a contagion effect right across.</p>
+          <p eId="para_58"> We also have to understand that if vessels that are primarily pelagic vessels lose their pelagic entitlements, they will have to go back into demersal fishing, which, as we know, is a shared pot. To survive on, Ireland gets 15% of the fish that swim in its waters. This is not only specific to pelagics. This really is a problem for the future of our fleet. I have said this many times in this meeting, and I welcome the opportunity to say it because it needs to be understood - Ireland has successively cut its fleet each time of asking, losing the opportunity for future generations to fish our own waters. We are down to 140 boats. We have lost more than 50% in the last 20 years, and this will continue because if there is no change in the Common Fisheries Policy to protect the indigenous people of Ireland, this is what will be asked of us again. We do not have the fish, even though the fish are in our waters, unlike Norway, England and Iceland, which just keep taking more. Their fleets are building while ours are actually going out of business. I agree with my colleague, Mr. O'Donnell, in that we definitely need to put pressure from the highest representatives in this country, right up to our Taoiseach, to go to Europe and say this cannot continue and that it is actually wiping out our fishing industry for future generations because it will not be there. Once a boat goes, the rights with that boat go with it.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_31">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:25:00+01:00"/></from>
+          <p eId="para_59">I thank Mr. Murphy. I have a couple of questions, particularly for Mr. Lynch. They relate to the Celtic Sea and Irish Sea and the key asks that are coming from members of the Irish South and East Fish Producers Organisation in terms of the quota negotiations, which include and will be aligned with the asks of the wider industry. They are different fisheries, particularly in terms of the nephrops. The scientific advice is not published yet and we do not have sight of that, but what are the asks?</p>
+          <p eId="para_60">Mr. Lynch mentioned the bycatch TAC as well. In a nutshell, what are the Irish and South East Fish Producers Organisation's members looking for Government to deliver from Brussels?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_61">As I mentioned, the first ask is that the bycatch TACs be maintained. That is essential to keep other fisheries open. Our next ask would be that all the Hague preferences be invoked, including one that we have paid particular attention to over the last few years, which is the Hague preference for sole in areas 7f and 7g. Ireland has never invoked this Hague preference and any time we have tried to invoke that Hague preference, we have failed for one reason or another. We have to invoke that this year because that sole quota is declining. Ireland's access to that small share, 3% of the TAC, will only be 27 tonnes for 2026. With a Hague preference, we would have 111 tonnes, so the Hague preference is important for that stock and it has to be invoked with all the other Hague preferences.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_62">What is the value of the nephrops quota to the industry on the south and east coast? What is the danger if there is a diminution of that quota in the negotiations?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_63">The value of the nephrops is around €40 million per annum to fishing vessels, with added value for the processors. On the implication of another cut, there was a 12% cut in the overall nephrops TAC last year. We lost 14% of our share of that in Brexit and we lost 25% of access to the Porcupine Bank. All of the fishing organisations in the Irish Fishing and Seafood Alliance have recommended extra protection for the Porcupine Bank nephrops fishing area, functional unit 16, FU16, and so far, we have not made much progress on it but it is still our position that we think that fishery needs extra protection, particularly during summertime. We have recommended the summertime closure should be extended to at least three months to protect the nephrops.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_64">I have a question for Mr. Byrne about fish processing and exports. We all understand the gravity of the crisis with pelagic species. Deputy Mac Lochlainn spoke eloquently about everything leading up to that, including overfishing. What is the implication for members of the Irish Fish Processors and Exporters Association, for industry and for employment in that sector?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:30:00+01:00"/></from>
+          <p eId="para_65">We are facing an economic armageddon in the processing sector. It is no different in the catching sector. We need to address that. To put it in context, and we have not put much in context today yet, the impact of the advice from ICES last week is the equivalent of four years of Brexit put into 12 months. It is four years of negative impacts and loss from Brexit in a 12-month period. As a member state, we were shocked at the scale of Brexit, which was a six-year deal. Four years are being condensed into one. That is what our sector is facing in the next 12 calendar months.</p>
+          <p eId="para_66"> If I can deviate slightly, the most important question was asked by Deputy Pádraig Mac Lochlainn earlier, about larger entities, third countries, corporations and all that. It was not answered by us. We have been a member state of the European Union since 1973 and the actions of others have decimated the most valuable fisheries we have. Involved in those actions are companies that have shares here, there and everywhere, which may all stem back to one entity. Meanwhile, Europe has a toolkit which it can use under Regulation 1026/2012, which has been subsequently amended by the Commission, which is trade actions and market restrictions to defend member states when the actions of others as third countries are undermining a stock, but it is in a state of paralysis. If we as a committee cannot say loudly and clearly that the actions of third countries, aided and abetted by the United Kingdom and influence from within the EU, are decimating an industry that this country depends on for 17,000 jobs which will not be easily replaced, then we need to address the elephant in the room.</p>
+          <p eId="para_67">I was trying to get in to respond to Deputy Mac Lochlainn's question because that is the kernel of where we are and how we got here. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_68">I was going to pick up on the issue Deputy Mac Lochlainn raised. It strikes me that this overfishing and wanton destruction of a sovereign natural resource of the Irish people taking place off our west and north coasts is to the detriment of 17,000 jobs and a way of life in living communities, to enrich shareholders, many of whom are based in the European Union. Many of these operations might have flags of other countries on their vessels but they are based within the European Union. It begs the question: where is the European Fisheries Control Agency? Where is the European Environment Agency? Where is the corporate enforcement authority of the European Union? Where is the EU response? The Irish Government also has to take a level of responsibility. We will have the Minister of State here and we will be having very forthright conversations with him, sending him to Brussels with a very clear mandate to come back with something and to take a very firm line on this. The European Union has a huge number of questions to answer. Has it the bottle to address this issue? Has it the interest to address it? By God, we as a nation, we as a people, need to force them into that. We need to hold them to account and ensure they are doing something. I hope to God that, when the Minister of State goes to the December Council meeting he will bring that strong message from the witnesses as fisheries representatives, from us as committee members, and from this committee as a whole. I thank Mr. Byrne for responding to that. It is really important. It is a really good and important set of questions, and it is really heartening to hear his response. </p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_38">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_69">I welcome that the witnesses mentioned we need to stay within the scientific limits. There are biological caps and limits to what we can do. How the EU is managing this is clearly not respecting those limits. This is an area where science is hitting politics and, unfortunately, Ireland is not winning the political game at the EU table. There will still be legislation and statutes which the EU has to operate within. At what point does it become a legal case if the EU is not doing something it should be doing and is not sharing this resource fairly? Is it something Ireland should be bringing from a legal perspective? It appears that year after year the negotiations do not work. Ireland gets overlooked in this and has for decades. We have to change how we deal with it and how we respond to it. There are quite a few legal mechanisms within the EU. Is that something Seafood Ireland Alliance has looked at or is it something the Government should look at?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_70">I do not mean to correct the Deputy but, unless I misunderstood her, she said the EU is not fishing within the science. The EU very much is fishing within the science. </p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_40">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_71">No, but they are not protecting European fishers against-----</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_72">The issue here is that there are third countries such as Iceland, the Faroe Islands and Norway that are grossly abusing the science. The key issue is that those rogue states are still getting full and unfettered access to European markets. Last year Norway sold €600 million of herring and mackerel into the European market at a time when Ireland was suffering because we adhere to the Common Fishery Policy. This goes back to the earlier question. Unless Europe can defend its own members, it is not going to defend the science against the actions of the others and call it out. This is where we are. We are suffering because Europe has been weak. It had a toolkit in terms of market access and trade access but it has failed to do anything with that. Going back to the point made earlier by Mr. O'Donnell, if it was not bad enough that Europe gave these countries unfettered market access, it then proceeded to give access west of Ireland to Norway to fish, on occasions, up to 200,000 tonnes of blue whiting. </p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_42">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T11:35:00+01:00"/></from>
+          <p eId="para_73">That is my question. Is there an opportunity for a legal challenge against those European decisions? Europe has not paid attention to fisheries concerns in Ireland for many decades.</p>
+          <p eId="para_74">We are a very small player politically, although we are a large player from a resource perspective. At what stage is it going to require holding Europe to account for managing its seas and fisheries? What are the other tools? Ireland try to negotiate or look for fairness but it has not worked before, so at what stage does it need to be wrapped up? </p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_75">Can the Deputy or I say comprehensively that Ireland has been robust at the heart of Europe for the past 20 years? Have we put the issues to the heart of Europe? I would sincerely say that we have not, that we have been weak in Europe and that we are paying the price. We have 12% of the waters. The industries of every other member state that fishes around the waters of Ireland are benefiting. The Irish processing industry has been on a downward trajectory since 2017. The processing industries of the other member states that are fishing west or south of Ireland are on an upward trajectory. We have been weak. When I first took this job four and a half years ago, the greatest weakness I saw was our own domestic policies in terms of fishing. We need to address that before we go to Europe. We need to address how robust our fishery policies have been from a catching perspective or from a processing perspective. I think we have been extremely weak in Europe, and that is why Europe is weak when it comes to defending us. </p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_44">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_76">Would either of the other witnesses like to add to that?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_77">I think there is a lot of folly going on and there is a pretence at play. The UK, for example, as a sovereign state, has entered into a trilateral arrangement with these rogue players. It has traded inflated quota above scientific recommendations with these players in a three-year deal to give access to UK waters to the benefit of sovereign fishers in the UK. These things must be addressed and I think the Deputy's point about legal action is something that needs to be considered by the State, because everything else is failing. At the end of the day, our members have to pay their mortgages, pay their crews and employ their staff. This is not possible in the current situation. Fishers cannot have a 50% cut in their opportunity in one year and survive. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_46">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_78">I thank the witnesses for coming in today. My first question is for Mr. Lynch. I want to pick up on his statement about sole from areas 7f and 7g. The advice for 2026 was for a 14% reduction. Mr. Lynch stated that the advice was far removed from the reality being experienced by fishers on the ground. The ISEFPO has serious concerns about this advice and the uptake in 2025, where the Irish quota was exhausted before the end of May. Will Mr. Lynch expand on this? </p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_79">The advice is described by ICES as robust. On the reason for the reductions, if we look at the ICES advice, all the indicators are good, so I am not sure why the reduction was recommended, but our vessels are encountering a lot of sole on the fishing ground. However, that is anecdotal evidence. What we are looking for really is for our Hague preference on this stock to be invoked, to give us our proper share of the fish. Last year, we had 33 tonnes, while a Hague preference would have given us an extra 89 tonnes. This year, we have 27 tonnes, and a Hague preference would give us an extra 83 tonnes. Whether we invoke a Hague preference makes a huge difference to the access our vessels have to this fish.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_48">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_80">Mr. Lynch mentioned that it had never been invoked. </p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_81">No. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_50">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_82">Mr. Lynch said that this was for various reasons. </p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_83">Last year, there was an issue with the Commission, which has yet to be clarified. The Commission maintained that the threshold where the Hague preference came into effect was 10 tonnes. A Hague preference of 10 tonnes is pointless. Any paperwork or documents that I have seen have the Hague preference for sole for Ireland in areas 7f and 7g at 194 tonnes. When our share went below 194 tonnes, we should have been invoking a Hague preference from then on. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_52">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T11:40:00+01:00"/></from>
+          <p eId="para_84">Okay. I will go back to Mr. Byrne on the issue of mackerel and the overfishing by other countries, which he clearly stated his thoughts on.</p>
+          <p eId="para_85">Does he believe that the Commission and the Government have the ability to deal with this? </p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_86">The Commission most definitely has ability and the toolkit to deal with this comprehensively. However, I do not see any willingness on its part to do so. As I said to the Chairman earlier, we are facing an economic Armageddon where quite literally within the first number of months of next year, there could be up to 2,000 job losses, multiple factory closures and decimation in coastal and maritime communities. Those are the realities we are facing. Our mackerel stock and quota will have been cut by 89% over the last three years.</p>
+          <p eId="para_87"> At the same time, as a processor, I see free and unfettered access by the Norwegians who are the culprits who caused this - likewise, the Faroese and to a lesser extent the Icelandic. In international waters the Russians are at play. The European Commission has shown no respect to what is Ireland's richest stock. Around our coast many other member states are benefiting from the fish stocks that are there. In the only stock we have a 50% share in, it is not being defended because the actions of others have undermined the stock we have. This is crazy stuff. The Commission has the ability; what we now need is the willingness.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_54">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_88">That is actually what I had written down - whether the witnesses are confident there is a willingness in Europe. What Mr. Byrne is saying is that they are coming in, plundering and selling back to us. Would he agree that trade sanctions could be put in place? Is that a possibility?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_89">Absolutely. The ability is there under Regulation 1026/2012. The Commission has recently increased the powers within that relevant regulation. It is there but it is not being invoked. Other countries also benefit from the mackerel stock, such as the Dutch to a lesser extent. We are sitting passively waiting for the Commission to defend us as a member state.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_56">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_90">After Brexit, was there a difference between what those in the fishing industry were told would happen and what actually happened? Before Brexit, were they assured that the negotiations were in capable hands and the fishing industry in Ireland would not be affected too much? What is the difference between what they were told and what actually happened?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_91">The EU chief negotiator sold us a pup. He said we would be inextricably linked to trade, which we were until the eleventh hour and then the Irish fishing industry was jettisoned and sold out, not for the first time, whereby we carried 40% of the cost of the overall TCA deal. One member state contributed 40% of the value of that deal. We were sold out. Is it any different now that they have these tools and mechanisms to fight for a member state, to protect a member state and they are not invoking or activating them? It is not. Must this industry in Ireland sit and wait until it is completely destroyed before we shout stop?</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_58">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_92">Did the Irish fishing industry get assurances that it would not be affected?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_93">In the negotiations it was a battle cry of Michel Barnier that the Irish fishing industry would be inextricably linked to trade. It was something he said in this House when he visited here. It was something he said numerous times in public and in the European Parliament in Brussels. However, it was not inextricably linked to anything other than colossal loss for the failure to defend it.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_94">I notice that Mr. Murphy who is joining us on Teams has had his hand raised for quite a while. I call Mr. Murphy, after which I will go to Deputy Ward to begin the second round.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Patrick Murphy<recordedTime time="2025-10-14T11:45:00+01:00"/></from>
+          <p eId="para_95">I thank the members for their excellent questions. Deputy Whitmore asked if we stay within the scientific biological limits. We do.</p>
+          <p eId="para_96">As I said earlier, the problem is the coastal states all agree with the scientific advice. Afterwards, as my colleagues have outlined very well, other rogue countries keep taking more fish well above the biological limit. We suffer as a result because we successively get cuts. To give some figures on this, our mackerel quota in 2019 was 55,313 tonnes. In 2020, it went up to 78,000 tonnes. In 2026, we are now facing that being reduced to 11,000 tonnes. This is not because of the activities of our vessels in our waters or waters anywhere else - we stick to the biological and scientific advice - yet this is what we are facing in 2026. This is not just exclusive to one fishery. The cuts from everywhere else are right across the board.</p>
+          <p eId="para_97"> The other question asked was whether I thought Ireland was robustly defending us. We heard it in the last discussion on Brexit. Under the scientific, technical and economic committee for fisheries, STECF, valuation, we paid 40% of the payment in the Brexit TCA deal, which we are signed into for another 12 years. This is having huge impacts on all the other fleets and stocks, even though we reduced our fleet last time by 39 boats. It was actually 40 boats because another vessel owner sold his vessel in Castletownbere. As a fishing industry and indigenous people, we have been decimated by our involvement in the Common Fisheries Policy in Europe. A legal challenge was asked about. The whole Common Fisheries Policy that is under review now should be legally challenged because relative stability has not worked. No socioeconomic impact statement was carried out on what Mr. Barnier agreed for the likes of Ireland and the devastating impacts it would have on our fishers. This will continue.</p>
+          <p eId="para_98"> The help we got following Brexit was approximately €1.1 billion, yet we are facing four times that impact in 2026 due to what is happening to our industry. We are in serious trouble. Legally speaking, it is crazy that we are resource rich and the fish are in our waters, as Deputy Whitmore said, yet our vessels have to go elsewhere. This happened in Newfoundland when other fleets came in and decimated the cod stocks on the Grand Banks. This is happening again in our time and in our generation. The committee's members are the politicians. They are seeing this is and witnessing it happen in front of their eyes. We are losing our fishing industry around our coastline. Something legal definitely has to be looked at, not just for the coastal states, but for the entire Common Fisheries Policy. We will be the sacrificial lamb, once again, under the Common Fisheries Policy.</p>
+          <p eId="para_99"> I will leave it there with those stark words.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_62">
+          <from>Deputy Charles Ward<recordedTime time="2025-10-14T11:50:00+01:00"/></from>
+          <p eId="para_100">I thank all the witnesses for attending and apologise for running late. I was preparing some notes yesterday. We have 12% of EU waters, which we are currently fishing. The number of people we have in Europe is alarming for the size of our country. Somebody said that other countries would have 12 or 13 people representing the fishing industry directly in Brussels and we had very few in comparison. I will read something out that really sums it up. In 2013, the Faroe Islands increased their own allowances of herring by 229%. In 2021, the Faroe Islands and Norway raised their mackerel quotas with the agreement of the EU. Since then, there has been a constant call within Europe for this to be looked at, especially from Ireland, which is most reliant on mackerel. In 2024, the UK signed an agreement with Norway and the Faroe Islands, dividing 70% of the mackerel quota between them all, without involving the EU. If they can do it, what is stopping us from doing it? We are being held to ransom here.</p>
+          <p eId="para_101"> I will move on to my questions. I am aware of the cut that is coming. I am aware of the 70% quota cut, which is particularly tough for the fishing industry in Ireland, as it is already pinned to its collar.</p>
+          <p eId="para_102">One of my first questions for anybody who wants to take it concerns towns near us in Killybegs. We suspect there might be a 50% quota. What will that do to the fishing industry in Killybegs? I would like anyone who has any experience of this in Castletownbere or other towns to outline what effect such a change will have. We are already put to the pin of our collar. From a business point of view, 70% is a death knell.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T11:55:00+01:00"/></from>
+          <p eId="para_103">It is an important point. We represent national members. On Killybegs, the direct and indirect employment in the sector is about 4,300 in the coastal communities that are at the heart of the pelagic business, including the marketing, production and branding of seafood products. Quite simply, if we take away 50% of the raw material, in effect 2,000 jobs are at risk. Worse than that, the critical mass, scale and scope of the business will be diminished at a time when other member states are likely to continue to maintain and increase theirs. It will create devastation and collapse. We need to be clear about that and address it.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Bernard Byrne<recordedTime time="2025-10-14T11:55:00+01:00"/></from>
+          <p eId="para_104">One of the key things we need to take away from mackerel is that in any pelagic factory dealing with mackerel, blue whiting and other stocks, mackerel contributes more than 80% of the profits. It is the engine that keeps the industry going. Earlier, Mr. Murphy referred to whitefish stock swaps and the service sector. Without the revenue generated by mackerel, from an employment and business perspective the entire model in this country would collapse on itself. That collapse would be very stark and very quick. </p>
+          <p eId="para_105"> I have not seen any official report reflect that. We are here today as a fisheries committee in our national Parliament building having known for the past 15 days that mackerel will collapse. I have yet to see a report. We need to take things seriously around here. Some 2,500 jobs will be lost within the first six to eight months. Within the first six months, six or seven factories will be lost. The service sector will be devastated within six months. We have not addressed this. Unless there is a state of paralysis which I do not know about and can be explained to me, we should be all over this.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T11:55:00+01:00"/></from>
+          <p eId="para_106">I thank the Deputy for the very good question. It has a very simple answer. It is completely irrelevant whether the figure is 50% or 70%. In terms of the trajectory of the stock, if what has gone on in the rogue states of Norway, the Faroe Islands, Iceland and, by default, the UK continues for another year, the advice next year will be the figure will be minus 100%. There will be no mackerel to be caught. That is a simple answer to the question. The mackerel that is provided for in swaps for whitefish, which is essential because of our small share in whitefish stocks, will be off the table. There will be absolutely nothing. It will be disastrous for the Irish fleet. That is all I can say.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Dominic Rihan<recordedTime time="2025-10-14T11:55:00+01:00"/></from>
+          <p eId="para_107">My organisation represents 14 or 15 of the large refrigerated sea water, RSW, vessels. They employ around 250 people. The problem they face is that even if mackerel recovers – it is a very resilient stock and the chances are that if people do the right thing it will recover - they will not have a crew to fish the stock. Those vessels require a very skilled crew. There are legal requirements to have qualified engineers and skippers to take a haul on board those boats. Those people do not grow on trees. They are not available. We cannot take people off the street, put them onto fishing boats and expect them to operate. The short-term issue is how those vessels will retain their crew. Without a crew, they do not have a vessel even when they have fish to catch. That is a stark situation for those boats in terms of where they will be in two or three years' time.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_108">Thank you. We will do another round of questions.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_68">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_109">An eight-point plan has been brought forward. I commend the Seafood Ireland Alliance, our fishing organisations and the producer organisations on working together as one voice. They have been doing that for a number of years in uniting together and speaking directly to the European Commission. There is an eight-point plan. In his submission Mr. Lynch said that we are going to have to see financial supports similar to the Brexit supports because clearly, as Mr. Murphy said, it is four times worse. People need to get their heads around that. Brexit was a disaster for our fishing industry but this is four times worse. I have been the fisheries spokesperson for Sinn Féin in opposition for about five years and the last few weeks have been absolutely heartbreaking. The witnesses and their organisations have warned about this. The sector has warned about this. This is our industry playing by the rules but being absolutely pummelled again and again. Obviously, we will engage with the Minister of State next. There needs to be a complete gear change in the approach. Legal challenges and everything have to be on the table in terms what has led to this.</p>
+          <p eId="para_110"> I am reticent to talk about the financial supports, and the witnesses all know why. Fishermen want to fish. This is what I always hear. When I talk to small inshore fishermen and island fishermen about supports similar to the single farm payments that farmers get, the fishers are always reluctant. They say they just want to fish. Right now, however, we have to be realistic. The first priority for me is to stop the overfishing and to stop it immediately. This will give the mackerel stock a chance to recover. This has to happen immediately and it is not negotiable. There will have to be financial supports in tandem. Could we maybe talk about this? I want to be clear for any fishermen that this is not us waving the flag with regard to taking financial payments. The first thing to do is deal with the overfishing and to stop it. The second thing is that we do need to renegotiate the Common Fisheries Policy. We have to look at relative stability. Relative stability is absolutely failing us. The British did not look at relative stability when they negotiated Brexit. It was zonal attachment for the British when they were dealing with Brexit. This policy is in tatters and it makes no sense. Nobody can stand over it. It has no moral standing anymore. I want every fisherman listening to understand that we are not parking that. This is first and foremost. We do, however, need financial supports. We do need to save jobs. Mr. Rihan talked about the type of people we need to keep in play. Can we just start to talk about the type of financial supports that will be required if we achieve a stop to the overfishing and all the other matters that we need to negotiate? This question is to whoever wants to take it first.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Dominic Rihan<recordedTime time="2025-10-14T12:00:00+01:00"/></from>
+          <p eId="para_111">It is a very salient point. The Deputy is absolutely right that fishermen want to fish. This is absolutely clear and there is no fisherman who wants to tie his boat to the wall but we are where we are. If we look at the pelagic side, under the Brexit scheme there was a liquidity fund provided for RSW boats, which reflected some of their losses. We need something similar to that for the pelagic fleet to get over this hump in the short term - to keep the crew and the businesses afloat and to keep loans being paid, and whatever else. From the whitefish side, again we are going to face a shortage of quota. We have been trying to manage the quota for 12 months. We need to look at some sort of a tie-up scheme, like we had before under Brexit, so we can spread the quota over the year and maintain supply of fish to the factories. In those terms, that is for the catching sector. We need those kinds of financial support in the short term. The short term is not necessarily a year, because mackerel will not recover in a year, and for some of the other white fish stocks we are looking at a few years of this to get them over that hump, on the basis of resilience.</p>
+          <p eId="para_112"> It is not just about financial support. We need to look at what we can control in the short term. We have a very rigid quota management policy in this country. It has served us quite well but we need as much flexibility as possible in that so that the vessels can operate to maximise what they can catch and make sure we do not leave a fish that we could catch in the sea.</p>
+          <p eId="para_113">Every fish is important. We need to really look at our own national policies to see what we can do with them and how we can introduce some flexibilities that, again, will help operators in the short term to get over this hump. I will let Mr. Byrne talk a little on the processing side because, as I said, it is his side of the fence.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_70">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_114">Mr. Byrne might be very brief because a number of speakers have indicated to put further questions.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_115">In terms of the Brexit schemes that were directly applied to the processing sector, particularly in terms of liquidity, they were an unmitigated disaster. We cannot blame Europe for that; the fault particularly lay with BIM<b>
+						</b>and the mismanagement and poor drafting of it. We need to avoid that before we get back into that situation.</p>
+          <p eId="para_116"> We must also remember that, in Brexit, €213 million of it was left unspent and returned to Europe. We are now in a situation where, from a processing point of view, we have already accumulated three years of loss and now we are faced with this economic Armageddon of a 70% cut in the most valuable stock. We do not have time even to get into the drafting of the schemes, such is the immediacy of the crisis. However, I do not think that penny has dropped in the Department yet. That is a question that needs to be put squarely with those who will come in after us. We are facing Armageddon, however.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_72">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_117">I have a question for Mr. Lynch in relation to his conclusions wherein it is specified that one thing that could be done is a review of the minimum conservation reference size for demersal fish. Could he go through that a little bit with me?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_118">It is certainly something I have been promoting for a long time that the minimum sizes for some of the species need to be reviewed, in my opinion. I am not a scientist, but in my opinion as a fisherman. I have fished for nearly 40 years. I have my own vessel. I ended up in the fisheries representative position I am in now. However, it has for a long time been my opinion that a lot of the minimum landing conservation reference sizes are too small.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_74">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_119">Obviously, this would not work for all aspects, but there is a question as to whether from a fisheries science perspective we are better off leaving the big fish in because they are the ones that are actually the most fecund; they are the ones that will actually lend to the next generation. Obviously, it depends on the fisheries. It is not going to work with trawling and all the rest, but is that something Mr. Lynch has looked at or considered? It is sort of the same as the v-notching and stuff, whereby if people catch a bearing female, it goes back in.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_120">That is correct, but it is almost impossible to release big fish and keep whatever in-between sized ones. The theory would be that if we let more small ones away, they grow to be bigger, and catching the big ones can be managed by the quota.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_76">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_121">Okay. It was just interesting that-----</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. John Lynch<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_122">What the Deputy is saying is scientifically correct.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_78">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_123">There is a sort of inherent knowledge among the more mature fish. There was a collapse in the herring fishery off Iceland because all the large fish were gone and the young fish did not know and they brought them to a completely different fishing ground, which meant the boats were waiting in the wrong area. It is something I might raise with the Marine Institute later.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_79">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_124">Deputy Mac Lochlainn is right; there is nobody giving up the flag. However, there has to be something for the catching sector and service industries. If we take the ports in Killybegs and Castletownbere, there are a lot of service industries including engineering, net menders and factories. All of that has built up this last 50 years around these ports. There has to be something in it for these people too because they employ people the whole year round, and they are really important. Could we get clarification on a couple of things? I would be the first to say after listening to the debate today that Europe really needs to call this out, end of story. Whatever political pressure has to be put on must be put on for Europe to call out what is going on. They are taking away our livelihoods and our coastal communities from under us.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T12:05:00+01:00"/></from>
+          <p eId="para_125">The Senator's point is very valid. We have worked very hard as an alliance.</p>
+          <p eId="para_126">We have worked very hard on a cross-party basis. We have worked with the likes of the Senator and others. We are going into Europe on 12 November again. We are going to meet all of the MEPs. They have been very supportive of our position and they understand what is happening. There may be a role for this committee to support us in that engagement at European level and in going into the heart of Europe to explain our case so that people understand that fisheries are a national priority. Ireland cannot be the sacrificial lamb when it comes to the marine sector.</p>
+          <p eId="para_127"> I support the view that the entire value chain has to be looked after on an emergency basis to tide us over in this situation. We need to be clear about one thing. If we look after the stock and have the sanctions to make sure other coastal states look after the stock as well, the stock will recover. Our members are looking at the cuts and asking what it takes to make sure that, in two years' time, we are not facing a zero-catch advice. If we face that, that is total Armageddon for coastal communities.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_81">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_128">In fairness, Chair, it is one of the ideas I floated here, that maybe this committee should go out to Europe and talk to MEPs. I know we cannot make a decision here today but it is something that needs to be put on the agenda. This is far too important. We cannot stand back. What has happened for the last 20 years is that the Irish stood back and everybody else took our fish. Now, our communities are being decimated because of it.</p>
+          <p eId="para_129"> I have one other point, although my time is running out. It is on zonal attachment. Can Ireland invoke a zonal attachment? We have 85% of the waters. Can we invoke it in Europe?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_130">I will let the others speak but I am firmly of the view that we have zonal attachment. The fish spawn in our waters. The mackerel do. The blue whiting migrates south to the west of Ireland to spawn and a big percentage of the catch of blue whiting is caught in these waters. Zonal attachment is an argument we can use. It has been used and abused by the Norwegians who have overfished the mackerel stock. It is our stock; they have taken our fish in their own waters and now they have had to do a three-year deal with the UK to catch the inflated stock quotas in UK waters. It is crazy.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_83">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_131">I have one final point. I know the time is running out. People at home are listening. It happened a couple of years ago, but who signed off on the blue whiting that Ireland and Norway got? Was it two years ago on St. Patrick's Day? Was it the Irish Government that signed off on that or was it the European government? There are conflicting stories here and I would like the people at home to know who had the final say here.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Aodh O'Donnell<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_132">I will defer to Mr. Rihan in that regard but as a representative of the fishing industry, there were a number of us in Spain that week when it was granted. We held up the access to the Irish box for almost six weeks. We kept the Norwegians out, who wanted access for the second consecutive year on an unfettered basis. The deal was done on the eve of St. Patrick's Day. I do not know who signed off on it but we did not benefit greatly from it.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Dominic Rihan<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_133">With regard to all of those international agreements, the EU negotiates on behalf of the member states. The EU negotiates on a mandate that is agreed by the members states. I am not answering Senator Boyle's question directly but it is the EU that ultimately signs off on it and the mandate is given to it by the member states. That mandate is something that is rather untransparent. I would say that, outside the walls of Berlaymont, nobody ever sees those mandates.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_86">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_134">Even I, looking in, know that they got access to 190,000 tonnes and we got 10,000 tonnes. I do not know what genius we had out working for us but it is a sad indictment of the people we have working for us in Europe if that is what we get. The least I would have expected was, maybe, 50,000 to 80,000 tonnes but we came back from Europe with the crumbs from the table once again. Europe has a lot to answer for here. We really have to get tough on it.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Brendan Byrne<recordedTime time="2025-10-14T12:10:00+01:00"/></from>
+          <p eId="para_135">Absolutely. The deal Senator Boyle is talking about probably goes back to 2014, or maybe before that to 2008. That deal was designed by the Danes and other countries to benefit them. Where was Ireland when those deals were being drafted, where the Danes can get access to whitefish stocks off Norway and, in turn, they granted Norway access to blue whiting off Ireland? The Irish were somewhere in that room but they certainly did not raise their voices. Those are the legacy issues destroying this industry. Those are the legacy issues that have left us here today in a very desperate situation trying to save our industry, coastal jobs and coastal communities.</p>
+          <p eId="para_136">Let no one be under any other impression in this room - we are facing economic Armageddon as has never been witnessed before.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_137">Mr Byrne's question, which was a rhetorical one, was on where Ireland was in those discussions. Where have the State and successive Governments been in any of these negotiations? I am hoping this committee will charge the Minister to discover, for the first time, a voice at these negotiations and to bring a level of ambition and assertiveness into them.</p>
+          <p eId="para_138"> In the final round of questions, I go to Deputy Ward.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_89">
+          <from>Deputy Charles Ward<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_139">Why did the Irish producer organisations not make a submission to the call by the European Parliament for evidence to shape a new strategy on fisheries external actions in the summer?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_140">Mr. Murphy has his hand up. I do not know if it is in response to that question or a previous one. Does he want to come in on that?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Patrick Murphy<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_141">I apologise to Deputy Ward, as I did not get that question. I refer back to the question Deputy Ward asked, and fair play to him, a man from Killybegs. He mentioned Castletownbere and the impacts of quotas. I will mention a couple of simple facts. I have a vessel owner who had 700 tonnes of mackerel to catch. This year, he will be lucky if he has 70 tonnes. We have one factory left in the whole country outside of Killybegs. Speaking to that factory owner, he cannot see how he can financially keep the doors open with what is coming. This means that everything - what little we have of it - will have to be trucked up to Killybegs. I find this incredible in this day and age when we are talking about carbon footprints. When I started in fisheries in my youth, we had predominantly timber boats that could not compete with the foreign fleets. It took two generations to acquire the vessels we have now and they could be wiped out at the stroke of a pen because the opportunities are not there.</p>
+          <p eId="para_142"> Referring to Deputy Whitmore's question, we put forward management plans of our interactions, looking after stocks, and the size of fish. We do not have the resources within the Department to implement them. We were told this at the last meeting with our Minister. That may be something the committee can raise. This is on BSA crab where the industry, with the active participants, brought up a management plan and were told the resources were not there within the Department to bring it in. A person might be told that it is late in the year but we raised this in August. This may be something the committee could raise with the Minister of State and his Department when they come in. As Mr. Lynch said, we have a minium size for species and we are looking towards an increase. We increased the mesh sizes and we use technical measures. We are constantly working on them in the industry. However, we were told in my industry that if we left the juveniles behind us, protected them and increased the mesh sizes, we would have larger fish to catch. Since we advocate for quotas as an actual quantity, not in weight or the amount in numbers, then big fish is what we will catch. We face a dilemma. We are leaving the juveniles behind us and targeting the larger fish but if we are not allowed to target the larger fish or the juveniles, then we will need help to cross the divide of what needs to be done to rebuild the stocks.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_143">I will cut across Mr. Murphy. Deputy Ward asked a specific question so I will put that to Mr. Murphy or to one of his colleagues to answer because we have two minutes left on the clock and then we have to begin the second part of our meeting.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Patrick Murphy<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_144">I will defer to my colleagues because I did not hear that question.</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Mr. Dominic Rihan<recordedTime time="2025-10-14T12:15:00+01:00"/></from>
+          <p eId="para_145">The external actions mentioned in the call primarily deal with what is called sustainable fisheries partnership agreements. These are international agreements with the likes of Morocco, Mauritania and places like that. In the last few years, we have had very limited interest in those fisheries due to bad experiences. Mauritania is a very difficult place in which to do business. We made an input into that call at the time. I do not know whether it was a Department call or a Commission call. I talked to the Department about that and it asked us about it. I had an interview with one of the contractors that was carrying out that study. The issue with those agreements is that they could have value to us but because of the political instabilities in many of those places, they are not places in which we want to do business. Also, in a lot of cases, those agreements are very much stitched up by other European countries that have been in these places and spend a lot of money there. It is the usual suspects that have been in those agreements.</p>
+          <p eId="para_146">There are potentially opportunities there, but they come with a big cost and are not easy. Without a lot of capital and political contacts, they are very hard to get into. The agreements need to be reviewed and changed to allow better access to other countries. There is no doubt about that. It is an issue that has been on the table for a long time. It is something we have looked at and will have to look at again in the future.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:20:00+01:00"/></from>
+          <p eId="para_147">We have to end this part of the discussion, as we have the second part of the meeting due to start in a couple of seconds. On behalf on the committee, I thank Mr. Murphy, Mr. Lynch, Mr. Byrne, Mr. O'Donnell and Mr. Rihan for their presence, contributions and responding to all our questions. I also thank them for sharing their opinions and those of their members. We will take those on board. We are going to digest what has been discussed for a few minutes and will then be grilling the Minister of State for the second part of this meeting.</p>
+          <p eId="para_148"> I propose we suspend the meeting to allow the exchange of witnesses to take place. Go raibh míle maith agaibh.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i>Sitting suspended at 12.21 p.m. and resumed at 12.26 p.m.</i>
+        </summary>
+        <speech by="#ConorDMcGuinness" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_149">Before we begin, I want to bring to everyone's attention, as per usual in these meetings, to the fact that witnesses giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence they give to the committee. That means that witnesses have a full defence against any defamation action for anything said at a committee meeting. However, they are expected not to abuse this privilege and may be directed by me to cease giving evidence on an issue. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable person or entity. Witnesses who are to give evidence from a location outside the parliamentary precincts, which I do not think arises in this case, may not have the same level of immunity and should take their own legal advice. Privilege against defamation does not apply to the publication by witnesses outside of the proceedings held by the committee of any matter arising from proceedings.</p>
+          <p eId="para_150"> Members have already been reminded of their obligations to be physically present, which, again, I do not believe arises in this case. If they are joining us on Microsoft Teams at some point during this meeting, I ask them to confirm verbally that they are on the grounds of Leinster House and to take note of the general warnings and guidance about privilege. I remind members of the long-standing parliamentary practice that they should not criticise nor make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity.</p>
+          <p eId="para_151"> Our agenda for today is quotas, the Common Fisheries Policy and sustainability impact assessments. The witnesses are very welcome. Tá fíor-fáilte romhaibh. We have had a previous part of this meeting where we had another set of witnesses in and heard their take on things. For us as members, this is a continuation of that discussion. The committee will hear from the Minister of State at the Department of Agriculture, Food and the Marine and the Department of Climate, Energy and the Environment, Deputy Timmy Dooley. The Minister of State is joined by a number of officials from both his Department and agencies under his remit. We have Ms Sinéad McSherry, assistant secretary general, Ms Anna O'Sullivan, principal officer, and Mr. Lorcan Breheny, assistant principal officer. From the Marine Institute, we have Dr. Ciaran Kelly, director of fisheries and ecosystem advisory services, and Dr. Andrew Campbell, team leader in the same section. From Bord Iascaigh Mhara, we have Dr. Emmet Jackson, director of economic and strategic services. Tá fíor-failte romhaibh.</p>
+          <p eId="para_152"> I ask the Minister of State to give a synopsis of his opening statement because it has been circulated to members in advance.</p>
+        </speech>
+        <speech by="#TimDooley" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine" eId="spk_97">
+          <from>Minister of State at the Department of Agriculture, Food and the Marine (Deputy Timmy Dooley)<recordedTime time="2025-10-14T12:25:00+01:00"/></from>
+          <p eId="para_153">I will get into the generality of it. I thank the committee for giving me an opportunity to discuss with it the opportunities that exist based on the sustainability impact assessment that is being carried out by ICES. Over the coming month to month and a half, I, together with departmental officials, will engage with the Commission and other member states to address the challenges set out therein.</p>
+          <p eId="para_154">Since we are going to stick to the narrow focus, the issue of greatest concern for the year ahead is the significant advice we have received regarding a number of species within what might be termed pelagic stock. The scientific advice that would indicate the necessity of having a reduction in the total allowable catch of mackerel of over 70%, of 42% of blue whiting and around 20% of boarfish sends shockwaves and shivers through the industry, particularly in pelagic stock - not just the fleet owners or those involved in the catching sector but in the processing sector as well. When I appeared before this committee previously, we discussed the challenges the industry faces. I have used every opportunity available to me since appointment to challenge the orthodoxy that has existed heretofore. It is clear that the unilateral setting of quota by certain coastal states, particularly Norway, the Faroes and Iceland, is unsustainable. We are sadly reaping the reward for a <i>laissez-faire</i> approach to that particular practice. We have seen a very significant reduction in biomass with the impact this will have on our industry. I have called out Norway in the past and will continue to do so. </p>
+          <p eId="para_155"> On 3 November 2025, the Commission on behalf of the EU will begin negotiations with Norway. The mandate for the Commission in these discussions is being discussed by member states at the Council working party. I have taken a very strong line on this and have instructed our officials to make it clear that Ireland cannot accept a business as usual approach with Norway. The actions of Norway as well as those of the Faroes and Iceland have contributed to the situation in which we find ourselves with regard to mackerel. The EU must take that into account in any fisheries agreement with Norway and we must take a very strong and stern approach. </p>
+          <p eId="para_156"> There are other advices that will come towards the end of this month that will have an impact on nephrops or prawns. Our whitefish stocks have also seen reductions. The very significant negative advice on the pelagic stocks that are most important to Ireland will have a very significant impact on the industry and is one I cannot underestimate. I am happy to engage with members regarding that.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_98">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_157">The findings of the North Atlantic Pelagic Advocacy Group point to a significant imbalance in fish stocks management. In one week alone in 2023, Norwegian vessels caught over 40,000 tonnes of mackerel. This amount exceeds Ireland's annual quota for 2025 and is nearly four times the permitted catch for 2026. What will the Minister of State do to address this? Will he consider going to Europe and demanding trade sanctions or the legal route? </p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_99" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:30:00+01:00"/></from>
+          <p eId="para_158">There are a number of options that have been suggested by various different players in this space. The first issue I have to address in terms of representing Ireland's interests is directly with the Commission. The mandate I have given to our team in Brussels is that it cannot be a case of business as usual. That is not acceptable or tolerable. In taking that position, I am mindful that I do not have a veto and that to get a blocking minority, I have to work with other states. Over the course of the summer, those of us who were around this space were apprised of the declining pelagic stocks, particularly mackerel, based on last year's cut of 20%. I engaged over the summer with member states and fisheries ministers in those states to build a better understanding of the challenges Ireland faces. I met with the Commissioner on a number of occasions and spoke with him last week when the advice came out.</p>
+          <p eId="para_159">I have made it very clear that the tools that are available to us will be deployed on this occasion.</p>
+          <p eId="para_160"> There is a measure known as the Hague preferences, which the committee may have discussed earlier. It is a methodology that allows Ireland to recoup some of what is lost in negotiations when the allowable catch falls below a certain threshold. We used it last year. A number of member states made it clear to me that they intend to challenge that this year, if we deploy it again. I have made it very clear that we will assert our rights and entitlements under the Hague preferences.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_100">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_161">Does the Minister of State agree that that does not address the imbalance, with Norway consistently overfishing?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_101" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_162">It does not, but it is the only tool available to me at the moment under the system as currently constructed. What the Senator is referring to is a unilateral position that has been adopted by Norway and other third countries where, in accepting the total allowable catch, rather than through negotiation-----</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_102">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_163">Does the Minister of State agree that those countries are possibly being protected within Europe?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_103" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_164">I will get to that. I just want to take the committee through this for the benefit of members who are not as well versed in this as the Senator is. The unilateral identification of quotas, which are being assigned to themselves, is leaving a very limited amount left, and that is leading to overfishing. I have felt that the European Union, through other measures, relationships or the neighbourhood agreement with Norway, is turning a blind eye, to some extent, to the actions of Norway, Iceland and the Faroe Islands. I certainly would be happy to work with the industry to look at the trade option as a means to bring Norway to heel, but I am mindful that that is not my competency and it does not fall within my remit as the Minister of State with delegated powers in respect of fisheries. I have begun an engagement with other Government colleagues on how we might address this crisis. I believe that is one tool that could be used but-----</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_104">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_165">I have only one minute left. Will the Minister of State concede that, year after year, the fishing industry has been very badly let down, not only by the Irish Government but also by Europe? Will he also concede that there is a massive fear among fishermen because they think their politicians are not up to the mark?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_105" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_166">I do not want to comment on other politicians. I do not even want to comment on what the industry thinks of me because people will make their own decision on that. All I can work on is the challenge we face and how, collectively, we can try to address it. I am conscious that in my desire to get the best outcome from, and on behalf of, the Irish fishing industry, we face very significant challenges. There are tools that could be deployed that would help to bring Norway, in particular, to heel. I have observed the statements that have been made by representatives of the industry who believe that if mackerel or blue whiting that has been taken from Irish waters or overfished ultimately finds its way into fishmeal and returns to the European Union in farmed salmon from Norway, it is hard to square that circle. I certainly accept that. Trying to address it is a challenge that I am up for but it will take a broader European perspective in terms of how we might challenge that trade or bring it to heel. I am prepared to work with others on that.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_106">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T12:35:00+01:00"/></from>
+          <p eId="para_167">It absolutely cannot be business as usual. As the Minister of State will know, Sinn Féin has welcomed the appointment of a dedicated Minister of State with responsibility for fisheries who is entirely focused on this sector. We have disastrous recommendations on mackerel, blue whiting and boarfish. Our mackerel industry is crucial. We have just heard evidence from the processor sector that mackerel accounts for 80% of the value of many of our factories. We also learned that we could end up with processing factories in only one area, Killybegs in County Donegal. I do not need to rhyme off the scale of this. The current situation did not just happen overnight. It happened over a number of years. I will be frank with the Minister of State. This country has repeatedly failed to defend our interests, year in and year out. We have an appalling strategy in terms of representation in the European Commission and European Parliament.</p>
+          <p eId="para_168">We have allowed this to happen. We have not spoken up when we have seen reckless overfishing. We name countries, such as Norway, the Faroe Islands and Iceland, and we talk about the role of Russia and the United Kingdom, but we also need to talk about the role of European Union-based corporations. Major corporations have built up pelagic industries in areas like Iceland and the Faroes. The Faroes are part of Denmark, a European Union member state.</p>
+          <p eId="para_169"> We need to be frank. We have a European Union that has not stood up to the corporations that have recklessly overfished and destroyed a precious shared resource. They have abandoned the Irish fishing fleet again, as they did in the Brexit negotiations, which have been extended for another 12 years. Therefore, the injustice of the trade and co-operation agreement on the Irish fishing fleet has been extended for another 12 years. If that was not bad enough, we are now told that this is four times worse in its impact than Brexit was.</p>
+          <p eId="para_170"> I want to get a sense of the game plan. We have a dedicated Minister of State. We need a fresh approach, not business as usual. It is a question of what that means in terms of dealing with the states and corporations in the European Union that have been involved in this reckless practice. What does that mean in terms of the supports that will be required? Even if the reckless overfishing stops tomorrow, what financial supports will the European Commission be asked to put on the table to save our industry and keep it alive? This has happened because of its utter, wilful failure to follow the science and confront the wrongdoers. I want to get a sense of the Minister of State's game plan and strategy, and the resources he is going to deploy.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_107" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:40:00+01:00"/></from>
+          <p eId="para_171">I know the Deputy has a significant interest based on where he comes from and the people he knows best. I was in Killybegs last Sunday to meet those who are most impacted and to hear at first hand their thoughts and ideas. I share the Deputy’s assessment of the way in which the European Union has attempted to balance its responsibilities and opportunities in relation to fishing. Perhaps for geopolitical reasons, enough pressure has not been put on those third countries in negotiations. There has been a trade-off, unfortunately, that has allowed this to happen. From a conservation perspective, a climate change perspective and a biodiversity perspective, it is unacceptable on all of those fronts, regardless of the geopolitical stance. I have made it very clear with our team here and in Brussels that it cannot be business as usual, and there is not necessarily a difficulty in doing that. At every opportunity, we have to challenge the approaches that were taken, even where it does not relate directly to mackerel. We have to act, insofar as we can, to disrupt what has happened.</p>
+          <p eId="para_172"> When I say that, it is raising a red flag with the Commission and other member states. I am also mindful that in doing this, it is not a slam-dunk because we do not have a veto. I have to try to build alliances, which I have been doing. There are some stocks that are more relevant and important to other states. My attitude is to be a disruptor there, insofar as I can, and to say that what is good for the goose is good for the gander. If we have an issue here, we need their support, but to get our support in relation to a matter of concern to them, they will have to work with us. It is about trying to ruffle the feathers.</p>
+          <p eId="para_173"> The opportunity to do that is enhanced because of the size and scale of the shock that we now have. That is coming on the back of a 20% cut in mackerel last year, which the Deputy identified, and a 26% loss of quota as a result of the continued TCA. I take the Deputy’s point in regard to the extension of the TCA, although I do not fully share his assessment. The difficulty I had with it at the time was that guaranteed access for a period of time was also of benefit to the fishing sector. Some had hoped that some of that might have been clawed back, but that was never on the agenda and never possible. We were not going to be able to achieve that. The longevity of it was the best we could achieve.</p>
+          <p eId="para_174"> On the financial package, there are a number of ways that we have to look at this. For example, given the scale of the shock, the question is what we can get back for ourselves at the December Council. The deployment of the Hague preferences will be very challenging.</p>
+          <p eId="para_175">It has been made clear to me by a multiplicity of member states that they are going to push back heavily against that. I have to battle that. To go back Senator O'Reilly's point, that is small in terms of what is involved but it is an important one for the sector.</p>
+          <p eId="para_176"> I have already raised the issue with the Commissioner, and I will be meeting him next week in Luxembourg. I made it very clear that I want the Commission to think outside the box in the context of how we might address this. It is not just about setting aside some of the terms and conditions of the EMFAF that would allow us to spend our money here. I have also spoken to the Taoiseach about it. Senator Boyle has been in discussions with the Tánaiste on it. The Tánaiste and I are going to get together on this and with the Minister, Deputy Burke, and the Ministers for Finance and public expenditure. We will be looking at the scale of the problem, the impact on employment and on the revenues that are generated and the downstream impact on not just the processing industry but also on the support industries. I do not need to tell Deputy Mac Lochlainn about Killybegs and the extent to which the entirety of the commercial activity there hangs on the back of the pelagic sector.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_177">I am sorry to cut across the Minister of State, but we are under time pressure. I am going to allow Deputy Whitmore to come in. We may have an opportunity to pick up some of these points at the end in another round.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_109" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_178">I have time. If the committee wants to extend proceedings, I am happy to stay around.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_110">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_179">The Minister of State may regret saying that. I thank him for coming in. I have a few questions. In the sustainability impact assessment as it relates to biological assessment, it is stated that the short-term trend since 2021 gives rise to a growing concern. Will the Minister of State provide some rationale for that? Is it due to the fact that Norway, Iceland and the Faroe Islands are now fishing particular stocks? That is probably a question for the Marine Institute.</p>
+          <p eId="para_180"> The Minister of State also stated that he is very concerned about the <i>laissez-faire</i> approach that was taken in allowing Norway and others to fish these stocks and that he will use every tool he can to deal with that. Has he received legal advice on the matter? Are there any legal tools the State can use in respect of Norway or, indeed, with regard to how the EU has managed this process? Has he looked at that matter?</p>
+          <p eId="para_181"> My final question relates to the sustainability impact assessment. What I do not see is any acknowledgement of or risk assessment in respect of these cuts. If these cuts go through, which they will, there is always a domino effect on other aspects of the fisheries. Are there potential impacts on the inshore fisheries? If they cannot fish mackerel or other pelagic fish, what does that mean for the inshore fishery? We have had many discussions about how vulnerable the inshore fishery sector is and about how it is continually being squeezed. Is there a potential that this could squeeze the sector even further? What will the Minister of State do to prevent that?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_111" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_182">I will answer the last question first. In the allocation of quota, particularly mackerel, the inshore fisheries get 400 tonnes off the top, regardless of the cut. The inshore fisheries, if I am not mistaken, are not going to be impacted in terms of their quota allocation by any decision that might be taken in line with the scientific advice in December. I am confident that this resolves that issue.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_112">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_183">It does not necessarily resolve it on a one-for-one basis. Is there potential that if people are not able to fish mackerel, they will fish something else that could potentially encroach on the inshore sector?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_113" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_184">From the pelagic fleet and the equipment that is involved, I am not sure that there is necessarily a species in our economic zone that would be commensurate with the kind of volumes involved there. Is it possible that they could find fisheries in some other part of the globe? That is possible, but there are certain restrictions in the context of delisting boats, etc. I have heard a number of suggestions that may come to us at later stages as to how we might address the economic viability of the fleet in terms of using different equipment in different jurisdictions. That is a wider matter. In answer to the Deputy's specific point about the potential for a domino effect that would give rise to stress being put on the inshore fleet, it will not result from the activities of those craft.</p>
+          <p eId="para_185"> Will the Deputy remind me of her second question?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_114">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_186">Has the Minister of State received legal advice?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_115" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:45:00+01:00"/></from>
+          <p eId="para_187">I have not, but I am open to looking at what we might seek legal advice on. I am mindful that the negotiations are between the EU and Norway.</p>
+          <p eId="para_188">Therefore, the EU acts on behalf of Ireland. We have input into it. A Minister in my position gets into those negotiations on behalf of the State. I am not so sure how I would deploy legal advice there because it ultimately comes down to a decision of the Council in which I am a participant. The only thing I do not have is the veto. Regarding looking at the legal advice, I think it would be more a case of how we might challenge the existing neighbourhood agreements or the trade agreements. Could this be considered in breach of those regulations of engagement on trade? I am mindful that when the Council agreement is reached, it is always done on the basis that it is known that Norway has set these unilateral quotas and there is tacit acceptance of it in the agreement being reached. So it would be harder to find where they are in breach. I am certainly open to getting a discussion on it.</p>
+          <p eId="para_189"> I am also conscious that there is ongoing engagement on the future of the Common Fisheries Policy and the conditions set therein. There is a review under way that may ultimately lead to some changes to the CFP and that is where we might have the best chance within our own remit. I am conscious that when we change anything, somebody else will be discommoded or affected and they will assert their rights there.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_116">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_190">I seek a response on the Marine Institute.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_117" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_191">We had this conversation this morning.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_192">I call Dr. Kelly briefly.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Dr. Ciaran Kelly<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_193">On Deputy Whitmore's question, the concern here relates to the trends we see in fishing pressure. The number of stocks exploited at or below the rate of fishing mortality consistent with achieving maximum sustainable yield, FMSY, is going up and therefore, fishing pressure is coming down. We would expect to see a commensurate response in the stocks themselves so that the biological status of the stocks - these biological reference points - should also be following the same trend. We do not see that. That may speak to first-order changes in the environment driving second-order processes in relation to recruitment, growth and maturity in these stocks. In other words, the conditions that we have expected to get maximum sustainable yields, MSYs, may no longer hold.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_120">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_194">It could be down to temperature, tidal changes or something in the physical environment.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Dr. Ciaran Kelly<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_195">Regarding those changes to the physical environment, fish do not eat temperature and so they do not affect them in that way. However, they affect the environment within which fish live. Therefore, it affects their reproductive potential if there is a mismatch in timings of conditions for spawning. It can affect their growth potential if it affects their predator or prey availability. It can also affect their reproductive potential in terms of stressors on the environment like heat waves and other things. All those are second-order effects and it is not very straightforward to deduce one from the other. However, we may possibly be seeing the impact of that now and the Marine Institute is looking into this.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_122">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_196">That would be very worrying because it would essentially mean that any fishing future is very changeable. At the moment it is very hard to predict.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Dr. Ciaran Kelly<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_197">Yes, but it does not seem to affect all stocks in the same way. This effect is more pronounced in certain gadoid species, but it is not the same in other species like monk, hake and megrim.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_124">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_198">Our national policies should reflect that and provide supports for the sectors fishing those vulnerable species. It seems very dynamic and the security will not be there. That needs to be translated into policy.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_125" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:50:00+01:00"/></from>
+          <p eId="para_199">It does. I have had this discussion with Dr. Kelly as to how we might respond and how we might try to understand the longevity of the crisis. If we set our limits in line with the scientific information, what would the return period be? He identified to me exactly what he said to the Deputy, which is that it is not linear. The only action over which we have control is the fishing or the reduction in fishing. That is an imperative. There are some, not necessarily here but outside, who would suggest we should ignore the scientific advice. Clearly, that is not what I will be doing nor would it be appropriate to do so. There are some who say we should fish it out for as long as it is there and to hell with it after that. That is not something I am prepared to contemplate. I am also mindful that just because we follow this pattern, it does not mean we will see a commensurate return because of the other various issues.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T12:55:00+01:00"/></from>
+          <p eId="para_200">Go raibh maith agat, a Aire Stáit. I call Senator Boyle.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_127">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T12:55:00+01:00"/></from>
+          <p eId="para_201">I thank the Minister of State for coming to Killybegs. When he visited he saw the real hurt and the anger that is on people's faces and in their voices. We have been sold out with so many bad deals over the past 20 years. It is unreal how one country could be made to suffer when other countries are just ploughing ahead and doing what they want. It is something that needs to be addressed. Deputy Mac Lochlainn asked the Minister of State my first question, which was on what the plan is. The Minister of State has answered that. The second question is: how we can maximise support against Norway on this? </p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_128" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T12:55:00+01:00"/></from>
+          <p eId="para_202">Everybody has a different relationship with the agreement that exists with third countries. Some will benefit more. We always take the view that those that benefit more should pay most but it does not always work out like that. The fact that we have developed this fishery to such a real extent, and Killybegs is such a wonderful example of it, means that when it goes wrong we suffer most. We have to try to use our influence with the Commission in the first instance but it is really only the ringmaster; the Council decides on a lot of this. I am trying where I can to build alliances with other member states in trying to get them to understand how heavily we were impacted first and foremost by Brexit, which is an outside-the-box situation. Everybody who fishes stocks that are declining suffers in equal measure, in percentage terms. Some will have greater amounts than others. However, we have already lost disproportionately because of Brexit so I am trying to use that, insofar as I can, as a way of explaining and trying to build alliances. The fact that I am doing this and networking and explaining the situation does not mean other countries are minded to row in behind us, however. It is having an impact on them as well. What we have to try to do is get the Danes, who are currently in the chair, to understand that they have to bring forward a fair outcome to the discussions. The Commission needs to understand that, short of the significant changes that I believe should be made to the CFP, we have to get through 2026. It may fall to the end of 2026 when we have the Presidency to renegotiate some elements of this policy. I would be happy to try to do that. We have to get through 2026 and the one thing for sure is that there are not a lot of fish out there. What have we got left? We have to get the best deal we can out of what is available, out of the total allowable catch, and then try to look to a framework towards sustaining the sector through the challenging period. When we talk about the challenging period, the question I will have for the Marine Institute and BIM is what the economic impact will be. They are of immense benefit in guiding me in terms of finding a policy position through this. BIM has been really helpful in coming forward with best guesstimates as to what the impact will be and what the impact will be on certain jobs. I wish to clarify one point for the record. My opening statement referred to the numbers of jobs that will be affected. That does not mean job losses. It means jobs that may be short time, part time or whatever. It is the quantum that will be impacted rather than job losses. It will have a position across the sector. We are trying to model what impact a 70% cut in mackerel, a 42% cut in blue whiting and a 20% cut in boarfish will have on the economy and how we might respond to that by way of supporting the sector to get it through to the other side. We know the kind of supports that were deployed for, say, the Covid pandemic. When we started into that event, we did not know when the end point would be. We thought it would be a lot sooner actually. I am conscious that when we go to that space to discuss this and try to game it out, there is no defined end point at this stage. That is where we have to be careful. I did not get to see the presentations of the producer organisations and the various representatives but I met each of them in advance of this meeting. They all have some good ideas. I need to try to work through this and see how we can support the industry as I believe we must. However, it will be national and international. </p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_129">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T13:00:00+01:00"/></from>
+          <p eId="para_203">Time is running out-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_130">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:00:00+01:00"/></from>
+          <p eId="para_204">We will have another round. There will be time but I want to be fair to Deputy Ward. </p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_131">
+          <from>Deputy Charles Ward<recordedTime time="2025-10-14T13:00:00+01:00"/></from>
+          <p eId="para_205">This is devastating for the communities, as the Minister of State well knows. I will get straight into it. Does he intend to continue to engage with the communities regarding this? I refer to the fishing communities especially but also the public. There is a massive service industry that relies on the fishing industry. I understand the Minister of State referred to short cuts and all that but when the fishing industry is affected, and it affects the hotels that employ people and the businesses and shops that people go to, that equals a problem in these rural communities, especially in and around Killybegs, where there is unease and fear. I understand what the Minister of State said about the Covid measures but it needs to come across, especially for fishing industries and towns, that it is known we have a problem which will take time and that everybody who lives off the fishing industry will be looked after. That is vital, especially in Killybegs. Historically, it is a fishing town. It has history but the community now also has fear and anxiety. I encourage the Minister of State to engage with the community. It is very important for these towns up and down the country where the fishing industry provides jobs that there is clear communication. </p>
+          <p eId="para_206"> Is there anything Ireland can do, separately from the EU, to seek redress from Norway and the Faroe Islands for the destruction of the herring and mackerel stocks? What is the Minister of State's opinion on zonal attachments? It is a strategic weapon, I would say, that these other countries use which we do not. That is all I have got to say. I am conscious of the time. </p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_132" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:00:00+01:00"/></from>
+          <p eId="para_207">I thank Deputy Ward. To his first point on the impact that this will have on communities, I absolutely get it. Having visited Killybegs and other fishing harbours and ports on a number of occasions since my appointment, Killybegs is the stand-out beacon of our pelagic sector - similar to Castletownbere, I suppose. Certainly, Killybegs has built up a phenomenal supply chain around the fishing industry. It is a great credit to the communities there and their ingenuity and capacity to adapt over the years. I accept that this kind of loss of quota will have a really negative impact. I am really mindful of that. I am not just taking it from a fishing perspective. I have spoken with Government colleagues and we will have to work through this, no more than the issue of Brexit and the loss of 20% of quota required a Brexit adjustment reserve fund. It was recognised both nationally and internationally that there was a very significant shock to the sector, albeit for a prolonged period of time. This is a 70% cut on top of that 20%. If it was appropriate to address the losses resulting from a 20% cut, then it follows that a 70% cut for a period of time should also be addressed. It is not clear from the science how quickly it will resolve. If this was a one-year shock and we knew some hiatus had caused it and that it was now back to normal, we could look at things differently. We could batten down the hatches and try to get through it. However, that is not the case here. I believe we have a very strong case and I will advance that on behalf of the sector and the industry. I know the challenges I face but I will not be found wanting in making the case. That is very clear. </p>
+          <p eId="para_208"> As regards the zonal attachment, I am advised it is very difficult to nail down the migratory pattern of fish now. Some of it is due to changes in nature because of the changing temperature conditions. Zonal attachment is a very hard one to win out on.</p>
+          <p eId="para_209">As such, it is not something we have really pushed, nor do I think there is an appetite there for its adoption. My focus is a little bit different at the minute. It is on trying to maximise the allocation of quota. Like in any negotiation, you pick your strongest team, or you pick your strongest weapons when you go to war. To me, the Hague preferences are certainly what I will really have to die in the ditch on. That is the one we really have to push. Then it is about looking at the framework for support to get us through that period, and whether that is national or a combination of national and European.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_133">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:05:00+01:00"/></from>
+          <p eId="para_210">Go raibh maith agat, a Aire Stáit. Earlier in the meeting, before our witnesses were here, I gave the apologies of Deputy Pat the Cope Gallagher, who is Vice Chair of this committee. He is attending a meeting of the British-Irish Parliamentary Assembly in London and cannot be here. He did ask me to put a number of questions to the Minister of State on his behalf. The first relates to Ireland's position in these negotiations. Is it the position of the Irish Government that Norway will be denied access to fish blue whiting west of Ireland and in Irish waters, and that it would not support quota swaps between Norway and the European Union when it comes to blue whiting? Is that a position that the Irish Government has adopted? Is that the Minister of State's position going into these sets of negotiations over the coming weeks and months? The second part of that question relates to what we have discussed here, namely, the abuse of shared stocks by Norway, the Faroe Islands and Iceland, amounting to 1 million tonnes in overfishing over five years, which I believe is about €4 billion worth of overfishing. Is it the position of the Irish Government and of the Minister of State that Ireland should invoke or seek to have the European Union utilise the Regulation No. 1026/1999 powers that are available to it in terms of its trade competency to restrict trade with Norway, Faroe Islands and Iceland for this gross, irresponsible and reckless overfishing of a shared resource?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_134" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:05:00+01:00"/></from>
+          <p eId="para_211">On the first one, the answer is "Yes", but I am conscious that it is a battle because I do not have a veto. My view is that the Commission should not facilitate Norway at this time. I will be pushing that position but I will be doing so in a way that it is effectively saying to Norway that we cannot have business as usual and we cannot continue in this environment where we just nod along and hope for a different outcome. My approach here is to challenge the consensus at every possible opportunity.</p>
+          <p eId="para_212"> In relation to trade, I think I answered this in a roundabout way in response to one of the previous questioners. Since it is outside my competency, it would have to be a whole-of-government approach. I am prepared to engage, and am engaging, with other Government colleagues to see how best we might address this issue. I will have to get their assessment in terms of the knock-on implications for other aspects of trade, both between Ireland and third countries and at EU level. As far as I am concerned, we now have to go back and look at everything in terms of our relationship with Norway, recognising that negotiations with third countries are not a competency of individual Ministers but are done through the European Union.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:05:00+01:00"/></from>
+          <p eId="para_213">I thank the Minister of State. I have a couple of questions of my own. Part of the rationale behind this meeting is to challenge the Minister of State, mandate him and charge him to go to these sets of negotiations regarding Norway and other third states, but also to the December Council, and for the first time in my reading of these things have an assertive and ambitious approach to these negotiations, because I think that has been lacking to date. Certainly, anybody looking at the results of those negotiations could only conclude the same thing. There needs to be an all-of-government approach. The Minister of State needs the backing of his colleagues in government, including the Minister for Agriculture, Food and the Marine, and the wider Cabinet in this regard. To go into these negotiations solely talking about fisheries is not going to work.</p>
+          <p eId="para_214">The European Union as an institution and the member states that comprise it have a bad habit of seeing Ireland as a soft touch, a huge maritime resource that is there to be taken and that we cannot even see or count all of. We need all of Government to back the Irish State in the positions the Minister of State has outlined in terms of these negotiations. It will be a real test of this Government. We have heard a lot in other debates about neutrality, sovereignty and the rest but this will be a real test of how serious the Government as a whole is about sovereignty.</p>
+          <p eId="para_215"> When it comes to the gross overfishing of pelagic species by the states I have already mentioned, particularly Norway, Faroe Islands and Iceland but also by our nearest neighbour in Britain, there is a question of EU enforcement. Deputy Mac Lochlainn raised this issue earlier and was quite correct to do so. This is overfishing not necessarily by states but by corporate actors, many of which trade extensively not just with the European Union but also inside the Union. Many of them have shareholders or are headquartered within the European Union. While the vessels they operate might have the flags of other nations on them, they are European Union operations. Where are the EU enforcement mechanisms in terms of corporate enforcement, environmental protection and sea fisheries enforcement? What is the Government saying to the European Commission and other member states? </p>
+          <p eId="para_216"> The next point is in relation to our own sea fisheries protection capabilities. At different times in the history of the State, there has been what we could call close-contact policing. Governments, and invariably Ministers for justice, in response to gangland crime in Dublin, for example, decided to engage in close-contact policing where those involved in criminality would not have the opportunity to do so because the State would be so close to them and so watchful. Quota might be allocated, because we have to assume that history is not going to change in December and that we might not get all that we want in these negotiations although I hope to God we do and I wish the Minister of State well. We are coming to a point in our waters that we should have a system where our well-resourced, very capable Sea-Fisheries Protection Authority is engaging with these vessels, inspecting them and boarding them. We need to do that at the very least. We know what quota they are allocated but God knows what is being taken from those waters. It will concentrate minds ahead of the next December Council meeting if they see that Ireland is flexing muscles and being assertive. That is the step-change we need from the Minister of State and the Government. </p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_136" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:10:00+01:00"/></from>
+          <p eId="para_217">I take the Cathaoirleach's point about the SFPA and the illegal activity where it takes place. In terms of the quota management, a lot of that is based on landings and monitoring of what is landed and where. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:10:00+01:00"/></from>
+          <p eId="para_218">Just to clarify, irrespective of whether there is illegality or not, it is about assuring ourselves that everything is hunky-dory on those vessels. Knowing that engagement activity was happening would be a great relief to the Irish fishing industry. It would send a very clear message to our European partners, other member states and third countries that it is not business as usual from Ireland and that Ireland is no longer the soft touch.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_138" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:10:00+01:00"/></from>
+          <p eId="para_219">There are two parts to that. This is not meant to be evasive or defensive but the SFPA is independent of me in its entirety and carries out its own functions without direction from me. Legislatively, I cannot involve myself in that. I am sure it will be listening to the Cathaoirleach's points. It does a risk-based analysis. We have to be careful about unintended consequences as well. Particularly in the processing sector, there are some who would say that the actions of the SFPA on occasion lead to foreign vessels not visiting our ports or depositing fish here and it is impacting on processors' ability to get enough fish to process. There is a potential double jeopardy there. All the members will understand what I am saying.</p>
+          <p eId="para_220"> At the Council, which is what the Cathaoirleach is talking about, regarding how we can assert our position and take a whole-of-government approach, I am in the process of putting that together with colleagues to see how we can use other relationships that exist between the Union and third countries and assert ourselves in those fora to a point where we can challenge the trade everyone is referring to, particularly the trade in farmed salmon that comes back into the European Union. Overfishing is, unfortunately, baked into the agreements that take place in December. It is overfishing as opposed to illegal fishing, where activity takes place outside any parameters. That is also an issue, mainly perpetrated by Russia.</p>
+          <p eId="para_221">It is where there is a tacit acceptance that we agree that they fish above a certain level because they just will not engage on the agreement. Should there be a push-back there? I believe there should be. It is about how we can do that through the other trade relations between the two. I am prepared to work with my colleagues here, and I am sure there are other committees. Perhaps it is an opportunity for this committee to bring in other Government colleagues with responsibility for those areas and identify to them the challenges the industry faces as a result of being benign or passive in trade relations.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_139">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:15:00+01:00"/></from>
+          <p eId="para_222">I appreciate that the Minister of State is in the process of putting together that negotiating strategy and building that support within the Government. This committee is an active one and our schedule between now and the December Council is full. I would welcome it if the Minister of State gave a commitment to give a briefing to members. Perhaps we could meet and receive a briefing on that because there is significant interest in it. We wish the Minister of State well in that - I genuinely mean that - but we are also waiting with bated breath to see what comes back.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_140" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:15:00+01:00"/></from>
+          <p eId="para_223">I have been open from the start in saying that I am prepared to brief members individually or collectively whenever they can manage that. The agencies - the Marine Institute, the SFPA and BIM - will always be available with me to do that. We can arrange that for early morning or late evening over the course of the weeks ahead.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_141">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:15:00+01:00"/></from>
+          <p eId="para_224">Over the past five years, more than 1 million tonnes of mackerel have been caught above the level set in scientific advice and in defiance of scientific advice. It is astonishing that this has been allowed to happen. I have met with fishing interests over recent years and they have provided, to the best of their ability with the limited resources they have, research that demonstrates that corporations based in the EU have built up a significant amount of the fleet involved in this utterly reckless practice. If these corporations were operating in European waters, they would have to stick to the quotas defined by the Common Fisheries Policy, but what they have done is build up fleets in places like Iceland, the Faroes and, to a lesser extent, Norway and recklessly overfished. I have tried to get this information but the Commission says that it is a matter for each country to decide on quota. It has done nothing about this. It has done nothing to stop this. The Common Fisheries Policy lies in ruins in terms of credibility and moral force. Over the past five years, 1 million tonnes of mackerel have been caught in defiance of scientific advice. A precious fishery resource has been wrecked by EU-based corporations that built up the industry and did that. </p>
+          <p eId="para_225"> Will the Minister of State look for the Commission to urgently investigate who these corporations are, what their interests are in these third states and whether they also benefit from reciprocal fishing arrangements in terms of Arctic cod? Are they benefiting on the double as EU-based corporations, while Ireland suffers on the double because we have access to our water for blue whiting and we are devastated by the impact on mackerel? We are being destroyed. If we speak about what happened with Brexit, the betrayal of Ireland in terms of fisheries was outrageous. There was financial compensation for that but what has happened here is even worse.</p>
+          <p eId="para_226">Will the Minister look for an investigation into EU-based corporations that have been hugely enriched on the back of these reckless and destructive practices? Will that be looked at?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_142" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:20:00+01:00"/></from>
+          <p eId="para_227">I am happy to seek that advice but what we have to look at here is the framework in which all of this happens, which is the Common Fisheries Policy. I am conscious that other member states view their quota differently. In Ireland, we view the quota as a national resource. We assign catching capacity to certain vessels based on that, but we do not do anything that ascribes ownership or in any way has the potential to ascribe ownership. Other states do it differently and, as a result, large corporations have bought up quota. It puts them in a strong position.</p>
+          <p eId="para_228"> I am mindful with regard to looking for an investigation, and I am using my words guardedly here, that it may not be illegal at all because like lots of conglomerates, these companies have succeeded in purchasing opportunity and travelling from there. I am happy to explore it but the issue lies in what the member state or third country chooses to do in its negotiations, rather than the corporations. I am not in any way suggesting that they are not part of the mix but, from what I have read, it would seem that they are operating within national law and European law. The context in which all of this is set is the Common Fisheries Policy. The question is whether the Common Fisheries Policy is fit for purpose if it allows something as distorting as this to happen.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_143">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:20:00+01:00"/></from>
+          <p eId="para_229">For anybody listening in, it would appear that Iceland controls its fishing fleet, the government of the Faroe Islands controls its fishing fleet and countries like these have nationalised fishing fleets. This is private enterprise. All the EU has done is tut-tut for the past three or four years about the behaviour. We hear about countries but these are corporations based in the EU that have become enriched with no price to pay. The EU has no credibility because it has allowed this to happen.</p>
+          <p eId="para_230"> The Minister of State is right. It is possible to legally purchase quota across the EU under the Common Fisheries Policy and it is possible to legally go into Iceland, the Faroes and, to a lesser extent, Norway and buy up quota. That is true. Legally, it can be done but is it moral? Is it ethical? Is it at the heart of what we are seeing? The answer to the last question is "Yes". Do we have a Common Fisheries Policy that appears to reflect the industrialisation of fishing by these corporations? We talk about climate change and being sustainable and low-impact. All of this is in tatters because we have allowed an industrialisation policy from some corporations within and outside the EU to destroy our fisheries. That is the investigation that needs to happen. The EU has no moral high ground from which to tut-tut at other countries when it has allowed this to happen under the guise of international trade and legalities. It is very clear that these corporations are transcending the EU and outside it and are involved in utterly reckless practices that have destroyed our fisheries. There needs to be an investigation into that.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_144">
+          <from>Senator Manus Boyle<recordedTime time="2025-10-14T13:20:00+01:00"/></from>
+          <p eId="para_231">In fairness, Deputy Mac Lochlainn has covered some of the issues. He is completely right. The Minister of State spoke earlier about jobs. Regarding my job in Killybegs, even getting men to do anything is difficult because nobody can stay given the way we have been cut year after year. It is driving young people away. We will reach a stage where it will not be possible to get anyone to work in a factory or go on a vessel because it does not pay. At one time, a fisher could have gone to a bank in Killybegs and got a mortgage no bother. No one would even look at doing that now. Fishing used to be for nine months. Now it is down to nine days. One trawler had its net in the water for 12 hours and landed its mackerel last year. How sustainable is that?</p>
+          <p eId="para_232"> When Brexit was being talked about, we were told we were going to get a deal. The next thing was that this burden sharing was thrown into it. Since that, burden sharing has not been mentioned at all. Zonal attachment seemed to work for the UK when it was doing its deal but it does not work for Ireland.</p>
+          <p eId="para_233">We get the crumbs off the table from Europe all the time but everybody else can go and do what they want. It is time now for Ireland to stand up and be counted. Let us call Europe out on this. What is going on with these third countries is criminal. It is time for Europe to stand up and be counted, and if we have to push for that, we have to do it. I really am happy that the Minister of State is taking an approach on the blue whiting this early on. It is good to see it. We never had that before. We need our Minister to stand tall with us, and it is good to see that. However, we also need him to go and tell Europe to look at what these people have been doing this past 15 years. It is not sustainable. The people who have been doing it right this last 20 years have been getting hammered and the people who are doing it wrong are getting away with it. When I was brought up, I was told to try to do things right and it always works out but, by God, in this instance it is not working out for Ireland. It is time now to stand up and be counted and tell Ursula von der Leyen that she has to get them sorted. The time for talking is over. Our jobs and coastal communities are dying on their feet. I cannot see many companies in Killybegs - the Minister of State was there - sustaining another year like it. Everyone is operating at a loss. Any lock of pound we had was for trying to keep going. This is total annihilation for us. It is time to bang the table and get out there and tell the Europeans that enough is enough.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_145">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:25:00+01:00"/></from>
+          <p eId="para_234">I will go to Senator O'Reilly for the last word and then back to the Minister of State to wrap it up.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_146">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T13:25:00+01:00"/></from>
+          <p eId="para_235">I want to support Senator Boyle and Deputy Mac Lochlainn on what they have said. What does the Minister of State have to say about the Department gradually pulling support from the fisheries? In budget 2023, it was €337 million; in budget 2024, it was €176 million; in budget 2025, it was €177 million; and in budget 2026, it is €157 million.</p>
+          <p eId="para_236"> On the BAR funding, I am not sure of my figures on this but is there €213 million left unspent? Was there analysis done on why that happened?</p>
+          <p eId="para_237"> There was a suggestion earlier that there was possibly poor drafting of schemes, perhaps by BIM. The Minister of State might comment on that.</p>
+          <p eId="para_238"> Will he commit to visiting Castletownbere as he visited Killybegs?</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_147" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:25:00+01:00"/></from>
+          <p eId="para_239">I will start at the end. I have been to Castletownbere, and I will go there again. I have been in Castletownbere two or three times - two certainly - and I brought the Commissioner to an event in Castletownbere. There are two I have not been to, namely, Dingle and Dunmore East, but I will visit them and I will continue that engagement.</p>
+          <p eId="para_240"> On the poorly drafted schemes, BIM works with us very closely in the Department and manages quite a number of schemes in terms of supports, promotion, training and all of that kind of thing. It engages very openly with the industry. From time to time, some of the terms and conditions do not suit everybody and we try, and BIM tries wherever it can, but there are certain rules that we have to obey at European level in terms of the audit control. It is under the European Maritime, Fisheries and Aquaculture Fund, EMFAF, that many of these schemes are funded and, therefore, we must be mindful that there are rules and regulations that come with that, and we have to watch it. We are always open to work with the industry, however. People contact me about certain schemes they have issues with and we try to work through that.</p>
+          <p eId="para_241"> The Senator talked about the ongoing funding of the fisheries sector, and it varies significantly from year to year. In the year of Brexit, there was a significant upside in terms of the supports that were put in. Some years have greater demands than others. Some of it is to do with capital infrastructure. Sometimes, people are finishing one scheme and they do not have a contractual commitment the next year for an extension of a harbour or a pier. We are currently undergoing significant upgrade of the facilities at Howth. We thought we would have completed the project at Rossaveel but there were some planning issues and there were some appeals through the courts and we had to go back for planning. Some moneys that will ultimately have to be expended there are not necessarily included in this year's round of capital funding but will be on the books next year. It is not just about a downward or upward graph in relation to funding.</p>
+          <p eId="para_242">It is based on the needs and demands the Department has in a particular year. We negotiate with the Departments of Finance and public expenditure on that. I am confident that we have an adequate amount of money to get us through on the basis of our contractual commitments, needs and vision. Could we do with extra money? Always. We would find something to spend it on, but we have to mindful about the overall Government code on spending. We had a pretty robust engagement through the Estimates process this year. I am content with what we succeeded in achieving. I thank the officials for the work they did in assist us in that regard.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_148">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_243">And the BAR funding.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_149" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_244">If it is okay, I will come back to the Senator on that. I have heard that mentioned before, and I will get the Senator specifics on it. I am conscious, however, that we had a relatively short window between the time we had to get money spent and when it was agreed.</p>
+          <p eId="para_245"> The Department and the State did a lot of good work, and I see projects have had the benefit of coming to the table a little later than the person who assigned the money to opening some of these facilities, cutting ribbons and stuff like that. There was a lot of money spent during that period. If we had more time, perhaps we could have spent it all. Most of it was spent. I am sure that an analysis will be carried out and that people will identify things which might have been done slightly differently. In general, it was a response, based on the conditions attached to it, that helped the sector. In the face of what we are now facing, particularly on the pelagic side, that is in the past.</p>
+          <p eId="para_246"> I am not going to beat a drum and say that BAR resolved all the issues. It did not. It was an effort at the time to assist the industry in adjusting to a very significant shock. We now have a shock that is of more seismic proportions.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_150">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_247">I have a very quick question on real-time closures.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_151">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_248">I will allow it.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_152">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_249">Apparently, there is a device called real-time closures that can be deployed on the basis of ICES scientific advice. I had to check it out, but I think Denmark deployed it in 2025. I have just landed this on the Minister of State. If he does not have the answer-----</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_153" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_250">That is okay.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_154">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_251">-----maybe some of his officials or the Marine Institute representatives might know something about it.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_155" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_252">I will come back to the Deputy. Off the top of my head, I do not have that.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_156">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_253">To be fair, I had to research it myself.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_157" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_254">I am happy to get information on the issue of real-time closure. What we have looked at is not the same. It relates to boarfish. There is anecdotal evidence to suggest that the scientific information on boarfish is not in line with what was expected. That is the position as best as I understand it. I am saying this on the basis of some scientific information I have been provided with. It is not fully consistent and there is potential to review it with some other analysis that may allow for something to happen mid-season, if this was a blip. I do not know whether that relates to the Deputy's other question. I will come back to him on it. We will write to him separately.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_158">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_255">Could the Minister of State come back to me on real-time closure? Is it a device that can be used-----</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_159" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_256">Dynamic closure, is that the one?</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_160">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_257">Real-time closure.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_161" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_258">Real-time closure, okay.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_162">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_259">Apparently, it was deployed by Denmark and can be used, on the basis of ICES advice, to close a fishery on a temporary basis. Would the Marine Institute representatives be able to comment on it?</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Dr. Ciaran Kelly<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_260">It is kind of an academic idea as an alternative way, but it would be for the Department to look into it.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_164">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_261">In Dr. Kelly's opinion, it is a device that can be used.</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Dr. Ciaran Kelly<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_262">It comes, as with every other fishery management instrument, with pros and cons.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_166" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_263">I will be happy to get that information for the Deputy.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_167">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_264">No problem.</p>
+        </speech>
+        <speech by="#TimDooley" eId="spk_168" as="#Minister_of_State_at_the_Department_of_Agriculture,_Food_and_the_Marine">
+          <from>Deputy Timmy Dooley<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_265">I will write back to the committee and circulate the information to the members. We will do a bit of work on that.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_169">
+          <from> An Cathaoirleach<recordedTime time="2025-10-14T13:30:00+01:00"/></from>
+          <p eId="para_266">Gabhaim buíochas leis an Aire Stáit. Táimid thar am. Time is up. In fact, we are a little over. I thank our witnesses, the Minister of State and the officials from the Department, BIM and the Marine Institute for being with us. I thank members for the questions and the good conduct of the discussion. It has been an interesting meeting.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 1.34 p.m. until 11 a.m. on Tuesday, 21 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

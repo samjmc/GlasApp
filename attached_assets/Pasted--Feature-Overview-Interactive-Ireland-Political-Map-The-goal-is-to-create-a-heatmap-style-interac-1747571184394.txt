@@ -1,0 +1,151 @@
+🧭 Feature Overview: Interactive Ireland Political Map
+The goal is to create a heatmap-style interactive map of Ireland with layered views for:
+
+Counties
+
+Electoral Constituencies
+
+Per-region user opinion overlays from quiz/poll data
+
+Real-time information on elected and contesting representatives
+
+🔧 Technical Requirements for Replit / Developer
+🔹 1. Frontend Stack
+Use Leaflet.js or Mapbox GL JS for rendering the interactive map (both support shapefiles, zoom/pan, tooltips).
+
+Use GeoJSON boundary data for:
+
+Irish counties
+
+Irish Dáil electoral constituencies
+
+Backend: Replit-compatible Flask or Node.js backend to serve data via APIs.
+
+🔹 2. Core Functionality by Tab
+A. County View
+Load county boundaries from GeoJSON.
+
+Enable:
+
+Hover tooltips: County name + summary of public opinion (e.g., % agree/disagree)
+
+Click event: Show modal or sidebar with:
+
+Detailed quiz/poll data
+
+Issues trending in this county
+
+Voter sentiment heatmap for key bills
+
+B. Electoral Constituency View
+Load electoral boundaries GeoJSON (use OSi or Irish Electoral Commission open data).
+
+Enable:
+
+Hover: Constituency name + voter turnout + dominant issue
+
+Click: Display info panel with:
+
+Elected TDs (pull from a database or static file)
+
+Candidates in upcoming elections
+
+Quotes/posts from each candidate
+
+Vote history or polling data (if available)
+
+🔹 3. Map Interaction Features
+Zoom / Pan: Allow full pan/zoom from country to constituency level.
+
+Toggle Buttons:
+
+"🗺️ Counties" ↔ "🏛 Constituencies" ↔ "📊 Combined View"
+
+Layer controls for:
+
+Quiz/Poll overlays
+
+Topics (abortion, immigration, housing, etc.)
+
+Election overlays (representatives)
+
+Tooltips/Popups: Show on hover or click, powered by Leaflet’s bindTooltip and bindPopup.
+
+🔹 4. User Opinion Heatmap Layer
+Overlay quiz/poll results across the map.
+
+Color scheme:
+
+Yellow = strong agreement
+
+Purple = strong disagreement
+
+Intermediate tones = mixed/neutral
+
+Filter dropdown (top-right or sidebar):
+
+Select issue (e.g. "Legalize euthanasia", "Open immigration", etc.)
+
+Map auto-updates to show sentiment across regions.
+
+Data source: Pull user opinion data (from app database or JSON store) using backend API like /poll-data?region=X&issue=Y.
+
+🔹 5. Elected Officials & Candidates Panel
+On click of a constituency:
+
+Show list of current representatives
+
+Name, party, contact/social links, latest post
+
+List of upcoming candidates
+
+Bio, stances on trending issues, responses to polls
+
+Admin/moderator dashboard could allow candidates to manage their profiles and posts via Replit database or Supabase.
+
+🔹 6. Tech Stack Guidance
+Frontend: HTML, TailwindCSS, JS (Leaflet.js), optional Vue or React
+
+Data Storage:
+
+Static GeoJSON for map boundaries (hosted locally or via CDN)
+
+Firebase / Supabase / Replit DB for:
+
+User answers
+
+Candidate info
+
+Poll metadata
+
+API endpoints:
+
+/poll-data
+
+/get-candidates
+
+/get-constituency-info
+
+📁 Example File Requirements
+Required Files:
+ireland_counties.geojson
+
+ireland_constituencies.geojson
+
+poll_results.json (by issue, region)
+
+candidates.json (by constituency)
+
+📌 Suggested Roadmap for Replit Build
+Build basic Leaflet map with toggle buttons for counties/constituencies
+
+Add zoom/pan and tooltip on hover
+
+Integrate issue filter and load dummy heatmap overlay
+
+Add click-to-open panel for counties and constituencies
+
+Connect database for user opinion and representative data
+
+Style map with clean UX (dark/light toggle optional)
+

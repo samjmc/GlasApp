@@ -1,0 +1,963 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-15/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-15/debate"/>
+          <FRBRdate date="2025-10-15" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_disability_matters"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-15/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-15/debate/mul@"/>
+          <FRBRdate date="2025-10-15" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-15/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-10-15/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-18" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MartinConway" href="/ie/oireachtas/member/id/Martin-Conway.S.2011-05-25" showAs="Martin Conway"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="ThomasGould" href="/ie/oireachtas/member/id/Thomas-Gould.D.2020-02-08" showAs="Thomas Gould"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM NITHE A BHAINEANN LE MÍCHUMAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Disability Matters</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-15">Dé Céadaoin, 15 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-15">Wednesday, 15 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichealCarrigy">Micheál Carrigy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SeamusHealy">Seamus Healy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LauraHarmon">Laura Harmon.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#LiamQuaide">Liam Quaide</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#GillianToole">Gillian Toole.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Thomas Gould and Senator Martin Conway.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MauriceQuinlivan">Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Autonomy and Integrity for Persons with Disabilities: Discussion<recordedTime time="2025-10-15T09:30:00+01:00"/></heading>
+        <speech by="#MauriceQuinlivan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T09:30:00+01:00"/></from>
+          <p eId="para_13">Apologies have been received from Senators Nikki Bradley and Margaret Murphy O'Mahony.</p>
+          <p eId="para_14"> The purpose of today's meeting is to discuss autonomy and integrity for people with disabilities. On behalf of the committee, I extend a warm welcome to Ms Angela Denning, CEO, and Mr. Tom Ward, head of superior court operations, of the Courts Service; Ms Áine Flynn, director, Mr. Ian Grehan, head of operations, and Ms Aoife McMahon, head of registration, of the Decision Support Service; and Ms Joanne Condon, national manager, and Ms Suzy Byrne, regional manager, of the National Advocacy Service for People with Disabilities.</p>
+          <p eId="para_15"> Before we begin, as is always the case, I will read out a note on privilege and parliamentary housekeeping matters. All witnesses present are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction that may be given. The evidence of witnesses physically present or who give evidence from within the parliamentary precincts is protected pursuant to both the Constitution and statute by absolute privilege.</p>
+          <p eId="para_16"> I remind Members of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex.</p>
+          <p eId="para_17">I am aware that a wide range of issues will be the subject of discussion today. If necessary, further and more detailed information on certain issues raised can be sent to the clerk of the committee for circulation to the members.</p>
+          <p eId="para_18"> I now call on Ms Angela Denning to make her opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T09:40:00+01:00"/></from>
+          <p eId="para_19">I thank the Cathaoirleach and members of the committee for the invitation to appear today. I look forward to discussing progress on discharging wards of court.</p>
+          <p eId="para_20"> The Courts Service has been responsible for the management and administration of the courts since 1999. As the members are aware, the administration of justice is a matter for the Judiciary and, in accordance with the constitutional independence of the Judiciary and the provisions of the Courts Service Act 1998, is outside the scope of the functions of the Courts Service. Therefore, I am precluded from commenting on any matter relating to the exercise by a judge of his or her judicial functions. This includes discussion of individual court cases or matters relating to individual wards of court. I am also, of course, precluded from commenting on matters of Government policy.</p>
+          <p eId="para_21"> The wards of court system in Ireland was a legal framework used to protect individuals who were deemed incapable of managing their own affairs due to mental incapacity. The court appointed a committee, often a relative or solicitor, to act on the ward’s behalf within the powers granted by the court. The High Court controlled the ward’s property, finances and even decisions like medical treatment, travel and making a will. The registrar of wards of court oversees the wards of court office, which manages the daily operations related to wardship. The High Court appointed the General Solicitor as committee when no suitable family member was available, if there was a disagreement in a family as to who should act as committee or in complex cases involving significant assets, legal disputes or where professional legal expertise was needed to manage the ward’s affairs effectively.</p>
+          <p eId="para_22"> As of 30 September 2025, there are 1,671 live adult wards of court remaining to be discharged. Under the Assisted Decision-Making (Capacity) Act 2015, the High Court must review capacity, make a declaration of capacity and discharge each ward from wardship by 26 April 2026. The court must make one of three arrangements. If the court finds the ward does not lack capacity, the person is discharged from wardship and any property held in court is returned to them. If capacity is conditional on support from a co-decision-maker, the ward is discharged from wardship after a co-decision-making agreement is registered. If a person lacks capacity even with the assistance of a co-decision-maker, a decision-making representative is appointed by the court and the person is discharged from wardship. There has been a very slow uptake in the process to bring applications to discharge people from wardship, despite significant efforts by the Office of Wards of Court. Only 380 applications for discharge were lodged in 2023 and 2024, with the vast majority of these from the General Solicitor.</p>
+          <p eId="para_23"> Based on feedback to a survey of committees in August 2024, factors for the slow pace of applications lodged include that committees found the discharge process intimidating. They were nervous about the new responsibilities that come with discharge, particularly around managing funds awarded through the courts in catastrophic and serious injury cases. Committees were worried about the costs of the discharge application and whether clawback of legal aid might apply. Some wanted to wait for the new system to bed in as they were not ready generally to embark on the process.</p>
+          <p eId="para_24"> Since 2022, the office has mounted an extensive communications campaign with wards of court, their families, committees and members of the legal profession to encourage early applications. We have run 41 online question-and-answer sessions for committees, as well as seminars and open days where colleagues from the Legal Aid Board and the Decision Support Service provided a one-stop shop for people to explain the discharge process. In response to concerns raised in the survey, the Office of Wards of Court organised a series of in-person events in Dublin, Cork, Galway and Tullamore, in conjunction with the Decision Support Service, the Legal Aid Board, the National Disability Authority and the National Advocacy Service, to give people information on the new process.</p>
+          <p eId="para_25"> The Office of Wards of Court has worked to ensure that every ward of court is legally represented, either through their own solicitor on record or by application to the Legal Aid Board. The office also worked with the Legal Aid Board and agreed that when wards are represented by the board, any legal aid certificates issuing prior to regulations on clawback of legal aid would not be subject to a clawback based on means. This overcomes one of the most contentious issues for some families in that they do not have to pay twice - once for a wardship application and again for a discharge application. So far, the office has submitted over 965 applications for legal aid on behalf of wards of court.</p>
+          <p eId="para_26"> In order to meet the April 2026 statutory deadline, the Office of Wards of Court is managing two distinct streams for discharge from adult wardship. Stream 1 applications are those lodged by committees on behalf of wards of court where the legal process has been undertaken voluntarily and 1,104 such applications have been received. Over 700 of these applications were lodged in 2025. Stream 2 applications are cases that were listed by the court before 26 October 2025 for the court to issue directions on actions to be taken by the committees, their legal representatives and the Office of Wards of Court. These cases will be adjourned for three months, at which time updates will be provided to the court to advise on progress and clarify any issues. The cases will then be listed for a substantive discharge hearing before 26 April 2026. It is anticipated that up to three courts will be sitting daily to meet demand. It is not clear what the position is where the High Court does not have the evidence before it to make a declaration under section 55.</p>
+          <p eId="para_27"> The General Solicitor is arranging for the HSE solicitors to bring discharge applications on behalf of wards of court who are subject to detention orders. These will require management in a separate court list as each hearing is expected to be complex. As of 30 September 2025, 161 wards have been discharged and 180 are listed for discharge between now and January 2026. We hope these figures will go up significantly over the coming weeks. The office continues to communicate with and support committees and wards of court through the discharge process. Our focus is to assist the High Court in its obligation to review and discharge all wards of court. I am happy to take any questions members of the committee have. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T09:40:00+01:00"/></from>
+          <p eId="para_28">I thank Ms Denning very much. I invite Ms Áine Flynn to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T09:40:00+01:00"/></from>
+          <p eId="para_29">I thank the Cathaoirleach and the committee for the invitation. I am joined by my collegues Aoife McMahon, head of Decision Support Service, DSS, registrations, and Ian Grehan, head of DSS opoerations. My colleague Orla Keane, general counsel for the Mental Health Commission DSS sends her apologies. The Mental Health Commission is the regulator for mental health services in Ireland. It is an independent statutory body established in 2001 under the Mental Health Acts with a statutory mandate to promote, encourage and foster the establishment and maintenance of high standards and good practices in the delivery of mental health services and to protect the interests of persons admitted and detained under the Mental Health Acts. The Decision Support Service is a national public-facing service established within the Mental Health Commission under the Assisted Decision-Making (Capacity) Act 2015, as amended.</p>
+          <p eId="para_30"> The director of the DSS and the director’s staff are staff of the Mental Health Commission with separate functions conferred by the 2015 Act. The Act commenced on 26 April 2023. The reforms that the Act introduced include: the repeal of adult wardship under the Lunacy Regulation (Ireland) Act 1871; a statutory functional assessment of capacity, which is non-diagnostic, time-specific and issue-specific; guiding principles that emphasise personal autonomy, minimal restriction of rights and freedoms and respect for a person’s will and preferences; a three-tier framework to support decision-making; new provisions for advance planning; and the establishment of the DSS with our functions. The DSS has many statutory functions, the principal of which are to promote public awareness and confidence about the 2015 Act, to be a source of information and guidance and to register and supervise the performance of decision support arrangements.</p>
+          <p eId="para_31"> Communications and stakeholder engagement are very important. This is a far-reaching Act and the DSS meets regularly with diverse stakeholders in health and social care, banking and financial services, the legal profession and public bodies, disability services providers, voluntary organisations and family carers. Our most important stakeholders are the potential users of our service. We convened a stakeholder forum of experts by experience in 2022, all of whom are persons with disabilities. This forum meets quarterly, facilitated by Inclusion Ireland, and the forum members provide vital feedback on our resources and operations.</p>
+          <p eId="para_32"> The demand for reliable information about the 2015 Act and the DSS is a constant. Our information services team, which includes a dedicated enduring power of attorney helpdesk, answers 600 to 700 calls per week. We have delivered two national multimedia information campaigns to raise public awareness. Our next campaign will focus on promoting advance planning by adults, which is the aspect of the Act that makes it an Act for everyone. The DSS publishes monthly statistics on decision support arrangements. As of the end of September 2025, we had 6,096 registered decision arrangements, of which more than two-thirds are enduring powers of attorney. We are now supervising the performance of over 2,000 active decision supporters.</p>
+          <p eId="para_33"> Turning to discharge from wardship, the DSS is not involved in the management of applications for discharge from wardship under Part 6 of the 2015 Act. These applications, as we have been hearing, are managed by the Office of Wards of Court in the Courts Service. One of the functions of the DSS is to establish a panel of independent and suitable decision-making representatives. When requested by the wardship court, the DSS has supplied nominations from this panel of decision-making representatives. If the former ward is discharged subject to a new decision support arrangement under the Act, the DSS takes up registration of the court order and supervision of the decision supporter who has been appointed.</p>
+          <p eId="para_34">The DSS has published information about what the 2015 Act means for wards of court. The service has also supported the Office of Wards of Court, attending at five in-person regional events this year for wards and their committees and families. In September 2025, the service invited an organisation representing the interests of families of wards to a meeting at which we provided reassurance and clarification around the potential future role of the service in their families' lives. We are very happy to continue with this engagement.</p>
+          <p eId="para_35"> The DSS has multiple functions and we are committed to a culture of continuous improvement in our delivery of those functions. It should also be noted that the Assisted Decision-Making (Capacity) Act is much bigger than the service and involves numerous stakeholders. The successful real world implementation of the Act depends on the development of knowledge, leadership and best practice in all relevant organisations and sectors to ensure that the promise of this legislation is realised. We appreciate the invitation to attend today, we are happy to take questions, and we look forward to our continuing engagement with this committee.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T09:50:00+01:00"/></from>
+          <p eId="para_36">I thank the Chair and members of the committee for inviting us today. I will read a slightly abridged version of our submitted opening statement in the interests of time. I am the national manager for the National Advocacy Service for People with Disabilities, NAS. I am joined today by Suzy Byrne, regional manager with NAS. Our service provides professional representative, independent advocacy to adults with disabilities throughout Ireland, supporting people with disabilities in asserting their rights, making their voices heard, and safeguarding their autonomy. The theme of today's meeting, autonomy and integrity, is at the heart of our work. These are fundamental human rights enshrined in the UNCRPD and reaffirmed in Irish law through the Assisted Decision-Making (Capacity) Act 2015, ADMA.</p>
+          <p eId="para_37"> Every day, we witness the challenges people face when systems and laws are slow to respect their rights to self-determination. The Act, in force since April 2023, aims to reorientate decision-making from one of doing for to supporting with. Prior to the commencement of the Act, NAS advocates were well accustomed to supporting people to have their will and preferences heard where applications were made for wardship and to inform the High Court regarding people's concerns about decisions being taken by their committees. NAS advocates have also successfully supported several individuals over the years seeking to be discharged from wardship.</p>
+          <p eId="para_38"> Since commencement of the Act, NAS has supported people to have information about their rights and the new Act; to be viewed as decision makers; to have their views heard by those who might believe that decision-making representative arrangements are required; and to communicate with their legal representative and to make their views directly known to the court. NAS advocates work with the person independent of others and free from all conflicts of interest. The advocacy process is person-led and directed. Our advocacy work includes supporting people to make decision-making assistance agreements, co-decision-making agreements, to seek a decision-making representative, to make advance healthcare directives, as well as enduring powers of attorney arrangements. We also support people to be recognised as decision-makers foremost and build people's capacity to make their own decisions in all areas of their lives.</p>
+          <p eId="para_39"> Since commencement of the Act, systemic barriers have also existed within this new system that can act to limit people's autonomy, like non-adherence to the guiding principles of the Act, decisions being made for people rather than with them, assumptions being made about people's capacity or lack thereof, and a sometimes outcome-driven approach to decision-making representative applications aimed at fixing problems that are not always necessary, proportionate or person centred.</p>
+          <p eId="para_40"> Since commencement of the Act, NAS has worked a combined total of 3097 advocacy cases. Of these cases, 24% have related to advocacy support with decision-making. Members have been provided with a breakdown of these figures.</p>
+          <p eId="para_41"> We urge that the implementation of the Act be more closely monitored and reviewed to ensure full adherence to the guiding principles of the Act in every respect. The Act's guiding principles must be seen as operational imperatives. It has been our experience that departure from the Act's guiding principles presents a fundamental threat, undermining the spirit and human rights-based nature intended by it. Where fidelity to the Act's guiding principles has been undermined, problems arise, including decisions being made for rather than with individuals, capacity assessments being misused to inhibit individuals rather than support their decision-making and an undermining of proportionality resulting in an over-reliance and rush to the highest tier of decision-making.</p>
+          <p eId="para_42"> Wardship has long denied people with disabilities the ability to make decisions about their own lives. We welcome the ongoing work and commitment to abolish wardship, but we urge that this process be expedited and adequately resourced so that no one remains longer than is necessary in a system that is profoundly incompatible with human rights.</p>
+          <p eId="para_43"> I will turn to some of our notable observations based on our work in wardship discharges. We have observed that those assessing the capacity of people seeking discharge from wardship are at times provided with limited information on the person in advance of meeting the person and often only have one meeting with the person. They may not have access to vital information on the person's preferred communication style, activities of daily living, support plans in place or indications of the decisions that the person routinely makes.</p>
+          <p eId="para_44"> The current system has a two-tier system for capacity assessments. Those assessing capacity in ward of court discharge cases include court-appointed medical visitors, which are currently only registered medical practitioners, mainly psychiatrists or general practitioners. However, for other applications under ADMA, Parts 4, 5 and 7, functional capacity assessments may be conducted by a wider prescribed class of assessors. With the expected rise in wardship discharges before April 2026, the current approach may place additional strain on an already limited number of professionals, increasing the risk of delays. This variation in assessment approach and templates should, in our view, be standardised with immediate effect. The inclusion of multidisciplinary roles is key to a move away from a purely medicalised approach to UNCRPD compliance in keeping with a social model of disability.</p>
+          <p eId="para_45"> Disability service providers, where involved, as well as advocates, often have a legitimate interest in the person's rights as well as a lot of information that can assist in the discharge process, but they are not officially notifiable parties under the Act, which could be further considered. Where it is determined that decision-making support at any level is required, information and support to clarify the distinct difference between the role of a wardship committee versus the role of a decision supporter is essential, particularly where former committees may take on formal decision support roles.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T09:50:00+01:00"/></from>
+          <p eId="para_46">Time is up. The rest of Ms Condon's presentation is in her document, so will be put on the public record. We only have five minutes each. I invite members of the committee to put their questions. When I call them to speak, they should adhere to the agenda.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_7">
+          <from>Senator Tom Clonan<recordedTime time="2025-10-15T09:50:00+01:00"/></from>
+          <p eId="para_47">I thank everybody for being here this morning. I have to declare a conflict of interest in that I worked with the Mental Health Commission for 11 years. Having attended hundreds of mental health tribunals, I know the commitment that everybody puts into that process. I have been in and out of the courts for the past 20 years as, I hasten to add, a witness. As a layperson, I see the changes even over that period. I appreciate the witnesses' time and being here.</p>
+          <p eId="para_48"> I will address my first question to Ms Byrne. I know there are difficulties and concerns about the legislation and its implementation, as she put it, in the real world. She adverted to a number of cases of people who have come to the NAS. Is it possible within the parameters of not identifying people to give a flavour of some of the primary challenges that confront disabled citizens in relation to these matters? Are there any examples that will give us real insight on a human level into the challenges it poses?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T09:50:00+01:00"/></from>
+          <p eId="para_49">Specifically with regard to wardship discharge, which is the purpose of today's meeting, we have been working with a number of people for quite some time who are anxious to seek discharge from wardship. They have found the system difficult to navigate. One thing we alluded to in our statement is that sometimes the assessors who come to meet them to determine their capacity do not have any information when they arrive. They may not know how the person communicates, where the person is living and how he or she is supported. That meeting can be difficult. One of the roles of advocacy is to support people in those meetings. That is where we are involved. Of course, a limited number of advocates are available to support people in these situations. It is a huge benefit when advocates know people already. We have built a relationship with people and develop an advocacy plan. That is the way in which NAS would work with people.</p>
+          <p eId="para_50"> The other issue is that we are aware of many people living in disability services for whom the services working with them, which are funded by the State to support them, are not aware and were not aware until very recently that the people they were supporting were wards of court. They may also not be aware that this process for discharge is under way because the committee and others may be instigating the process for discharge and the appointment of a new decision-maker.</p>
+          <p eId="para_51">Due to the fact that they are not aware, they are not able to contribute to the process, may not be able to flag any concerns they have about decision-makers who are making applications or the processes that are under way, and may not be able to support the person to communicate their wishes. There may be legal professionals and medical assessors contacting disability services and coming in and having meetings and leaving again. Vital information may missed in that process. The big difference we have noticed is that, in terms of Part 5 applications, which are applications for decision-making representatives in the Circuit Court, generally, and increasingly, the process from the courts is to seek independent advocacy to be involved in supporting somebody in order that their will and preference can be heard before the court. That is when people will contact NAS and make inquiries about those situations.</p>
+          <p eId="para_52"> In terms of Part 6, it is not currently the practice to seek independent advocacy automatically. It is only for people who are peripheral to the process - committees, maybe some legal professionals, and the wards of court office, the office of the general solicitor, for example, or others - to submit applications for advocacy to become involved. It is possible, probably, that a lot of people being involved in this process of discharge may not have the support of independent advocacy in supporting their will and preference to be heard. They are relying on their legal professional to do so. The role of advocacy in these cases, however, is to support people in communicating with their legal representative, so there is a valid role there. That can be missed, particularly in these discharge processes that are under way.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_9">
+          <from>Senator Tom Clonan<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_53">Forgive me if this is a stupid question but, again, I am a layperson on the periphery of this. Are those who come to assess capacity professionally trained? Do they come from a particular professional background? We know more broadly as a committee the challenges with recruitment and retention across all the different clinical and professional grades. Notwithstanding the social model that should apply, flowing from the UNCRPD, are those people fully trained to assess a person? I am thinking of a situation I would be very familiar with where the young man has scanning or dysarthric speech and, as a consequence, people assume he has some kind of intellectual disability and they might not always give him the time to articulate what he wants to articulate. Could the witnesses speak to that in the brief time we have? Sorry for the long-winded question.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_54">We outlined that the process for discharge from a wardship, in terms of medical assessment or capacity assessment, is different at present in that it is general practitioners and consultant psychiatrists or gerontologists who are involved in the assessment, whereas there is a broader range of specialist or multidisciplinary assessors in the other parts of the Act. That would include speech and language therapists, occupational therapists, nurses and social workers, who would have experience, depending on the profession, with regard to speech and language and supporting people in the circumstances the Senator outlines. The person coming to meet with somebody may not have all the information available to them about the communication style of the individual. This is where we have found that where there are advocates involved who are aware of those things they can bring to the attention of the assessor that there are particular ways in which questions might be put to people or information presented to them and that people might communicate in means other than speech. Also, if there were other natural supports available that were involved in people's lives, they would be able to bring that information to the attention of the assessors.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_11">
+          <from>Senator Tom Clonan<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_55">It is such a critical moment for people, and it must be very daunting, so I really appreciate all the great work the witnesses do. I thank them.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_12">
+          <from>Senator Maria Byrne<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_56">I thank the witnesses for their presentations. I read through all of them. My first few questions are to do with the Courts Service. Almost ten years ago, the Oireachtas voted to bring adult wardship under the lunacy Act 1871 to an end, to discharge all adult wards within a fixed period of three years and to move them to measured supports under the new framework. Will the witnesses meet the deadline to have this work completed? How did they encourage people to apply? It does not look like all the applications will be in by 2026. What are the witnesses' plans going forward?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_57">As of today, we have: 904 cases listed for directions and 1,104 for discharge; 170 wards of courts have been discharged; and 267 are listed for discharge up until February 2026. The plan is to list all cases for discharge either through stream 1 or stream 2 in advance of April 2026, but we recognise that it may not be possible for all wards to be reviewed and discharged by the deadline. That is for practical reasons, not through any want of will on anybody's part. People could oppose discharge, there might be insufficient evidence to carry out the capacity review properly, it might not be possible to get a capacity report from a medical visitor or from a medical practitioner in time, or people could appeal the discharge order made in their case. There are therefore reasons that we foresee why not everybody might be discharged by the deadline, but we are making best endeavours to make sure that everybody is listed, and we will see what happens after that.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_14">
+          <from>Senator Maria Byrne<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_58">Great. Do the witnesses envisage that they may be looking for an extension to the April 2026 deadline?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_59">No, I do not think we will be looking for an extension to the deadline for the discharge applications. There may be a lacuna that needs to be filled as to what happens to the people who have not been discharged - through nobody's fault - by the deadline, but we will have to wait and see closer to the time, I think.</p>
+          <p eId="para_60"> The Senator asked a second question, which was about the efforts that have been made. We have made a significant communications effort with wards and their committees since 2021. A significant step change was the decision earlier this year by the Legal Aid Board to support us in assisting wards and their committees. I think that has really assisted with an increase in the numbers in 2025 - plus the feeling that people were getting closer to the deadline and they did not have much option at that stage.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_16">
+          <from>Senator Maria Byrne<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_61">I had a case recently. I was working with a lady who is housebound. She has a number of relations but none of them wanted to become her ward of court or to support her. What options are in place there? We were trying to contact the bank. She received a letter from the bank and she was in an awful state. She actually did not have to do anything about it - it was one of those standard letters - but it really caused that lady anxiety. She was even asking the next-door neighbour if he would collect her pension for her. Are there options for somebody like that?</p>
+          <p eId="para_62"> The other thing is that access to any information or anything is all online. People like that lady are not able to deal with that. I spent two hours in that lady's house trying to sort out different issues for her but I was conscious that I did not have any rights, as such. Even when I rang the bank, I had to get her to say that I could speak on her behalf because she was trying to clarify what the issue was.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_63">What the Senator outlined is exactly what the Act is intended to meet. Perhaps Ms Flynn will deal with the panel that is in place to assist people.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:00:00+01:00"/></from>
+          <p eId="para_64">The panel referred to is a panel of decision-making representatives. We are able to make nominations from that panel at the request of the court, but that is only at the top level of support. We have a panel of professionals, all of them vetted and trained. We have met all of them and they come from a range of professional backgrounds and are able to step into that decision-making representation, DMR, role.</p>
+          <p eId="para_65"> As regards the situation the Senator describes, though, I think one of the lower tier supports might be appropriate but may not even be required. One of the key principles of the Act is that people are to be supported as far as possible in their independent decision-making, so there should not be a rush to assess capacity, and the new tools for support which are available on the lower tiers of the framework should be thought of as problem-solving tools to be deployed only as required.</p>
+          <p eId="para_66">In the circumstances described, it may be that the lady would benefit from a decision-making assistant. It does not sound like the middle tier, a co-decision-making agreement is indicated. However, she may actually benefit from other external parties having a good sense of the Act and if it is somebody's will and preference to involve another person who is able to support them in gathering and understanding information, then that is the tool for support which should be facilitated before the rush to formalise.</p>
+          <p eId="para_67"> In terms of access to information, members may be aware that we have a lot of information available via the DSS website. I am conscious of the limitations of online and of it not suiting everybody so there is information there in a range of formats ,including easy-read materials, video guidance and so on. I urge people to have access to that but, where they cannot, we operate an information services team. We are very busy. The demand for information is constant. I encourage anybody in that situation where they feel they are in an information vacuum to contact our team where we have real, living, breathing people who answer the phone all day and deal with a huge diversity of queries. That is a freephone number and I commend it to people. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_19">
+          <from>Senator Maria Byrne<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_68">Following up on my question about the particular lady, no family member or neighbour wanted to do so. She approached several people to ask whether they would look after her affairs for her. Does she just contact DSS to have somebody appointed?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_69">Yes. Those lower-tier supports are for people whose capacity is or may be called into question. I do not know the situation the Senator is speaking about, but perhaps just practical supports are what is required. It may not be that anything under the Act is indicated, and it certainly is not where anyone would go first. I am happy to continue the conversation to see if there is something under the Act that helps, but a good understanding among third-party services of what the Act does and says might actually be of benefit. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_21">
+          <from>Senator Maria Byrne<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_70">Perfect. I thank the witnesses very much. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_22">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_71">Tá fáilte roimh na finnéithe go léir. Gabhaim buíochas leo as achan rud. </p>
+          <p eId="para_72"> In relation to the overall framework, we once had a system where any man with a suit could take control of somebody's life and take all their personal responsibility away from them. We also had a history of putting people away in institutions. Everything is done from the point of view of a human rights ethos, which is absolutely correct. However, as a constituency TD you can sometimes become tempered by where this does not work. I am going to throw out two examples and ask witnesses about the framework. I am always afraid about anything that involves solicitors and courts and the fact that we are dealing with a backlogged system, which is, no doubt, impacting on this. The witnesses can tell me about that from an informed position. </p>
+          <p eId="para_73"> If I take the example of mental health, there are circumstances where somebody who very obviously requires help does not believe they do due to their condition. The rules and regulations and how they are sometimes operated with regards to doctors, gardaí and whoever else relate to getting that person where they need to be. In the example I have in mind, the person finally got there but that was after multiple arrests under the Mental Health Act 2001 and failure to get him into voluntary committal. It was almost by pure chance that it got sorted. I am just using it as an example and it is probably a fairly extreme example but that does not mean that is how we should set the rules. Many people who have worked in the disability services will talk about particular cases. I get the idea that people will assume a level of capacity. However, while these people have some element of capacity, they do not have complete capacity. Then there is the idea that they may have the absolute freedom to make really bad decisions that impact on their life. I have a question about the framework, about where it is going and the impact it has. Obviously for individuals, whether they are the wards of court or sorting out issues related to assisted decision-making, there is an issue with regard to power of attorney and most solicitors do not want to touch it at the moment. I am throwing a lot out for the witnesses. </p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_74">I might deal with the inherent jurisdiction of the court. The High Court does have inherent jurisdiction, which it exercises infrequently to detain people in some circumstances, as the Deputy outlined. We do have some people who are wards of court because applications were perhaps made by the HSE or other bodies to have people detained in circumstances where they did not have the capacity to make decisions themselves. Those orders would always be made on foot of medical evidence showing the person does not have the capacity to make decisions themselves. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_24">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_75">I accept that no one should make decisions on the basis of what I decide.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_76">They are the only circumstances in which people would be detained by the court, but it is always on foot of medical evidence. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_26">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_77">I am asking about the overall framework. We are talking about empowering people and ensuring they have the rights, but there are those who will need protections. Sometimes there are obstacles for family members or others to facilitate them and go through the process to become an assisted decision maker or even if they need greater powers. It goes beyond, where it can impact on those in the disability services who would have been able, to a degree, not to make decisions for them but to facilitate them. However, now, if they were to be given their absolute rights, they could make some pretty bad decisions.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_78">It is a tricky balance. Our courts, at District Court level, every day are filled with people who have addiction problems and mental health issues and who have made poor decisions as a consequence of that. However, they do not fall into a degree of severity so that the High Court would invoke its jurisdiction to detain somebody and make them a ward of court. There is a significant distance between that. That is part of the challenge we have. This is a stepped regime for people with mental incapacity for medical reasons in the main.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Tom Ward<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_79">What the High Court is trying to do in discharging people from wardship is to conduct an overwhelming review with the intention that when they move to the new regime, the relevant decision-making supports are in place for them so that it gets off to a good start once they move out of our domain of influence.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_29">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_80">Does anyone else want to try it?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_81">I thank the Deputy for the question. It gets somewhat into the territory of mental health legislation. </p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_31">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_82">I understand that. </p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_83">Evidently, the presumption of capacity is one of the guiding principles under the Act and the fact that somebody has an enduring mental illness does not further indicate a lack of capacity. The Deputy referred to the absolute freedom to make bad decisions. That is not a principle of the Act. Sometimes it is misquoted as far as that goes. The Act does not confer an unlimited right on anybody to do unwise things. Section 8 states that the fact that you want to make an unwise decision, or you have decided to do something to do something that seems objectively unwise does not mean you lack the capacity to decide to do it. The Deputy's question gets somewhat into the territory of mental health legislation and, again, that is more the business of my colleagues on the wider Mental Health Commission. I do not know if anyone else is volunteering for the question on the enduring powers of attorney.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_84">We do not deal with them since the Act commenced.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:10:00+01:00"/></from>
+          <p eId="para_85">Yes. Powers of attorney have been around since an Act of 1996 and under the old Act, there was a different process. When an enduring power of attorney, EPA, was made, nothing needed to happen with it involving a public service at that stage. It was only at the point where the person making the EPA, called the donor, who had lost capacity, that the attorney appointed by them would then make an application to the Office of Wards of Court for what was then called the registration of that EPA. As a requirement under Part 7 of the Act, as amended, when an EPA is executed now, it is sent to the DSS for review and registration. We have the responsibility to check that it is compliant and that it meets certain other standards before it is registered on a searchable register. The second stage involves us as well. We hope this would not happen, but should the donor then lose capacity, because we have gone through that detailed review at the first stage, it is a return trip to us.</p>
+          <p eId="para_86">There is no requirement to go to court any more in respect of that document. This is called notification. The attorney is then able to step up and make the decisions. The Deputy mentioned the role of solicitors in it. They could be involved in one of two ways. First, somebody may choose to instruct a solicitor in respect of the whole application end to end, and that is true in about 12% of cases. Most people are engaging directly with us in order to make their EPA. Where they are involving a solicitor, we engage with the solicitor. The Law Society has published guidance around how to interact with the system.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_35">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_87">It is expensive and they generally try to avoid it. Some solicitors have told me they have particular issues with it.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_88">Yes. That is why, among other reasons potentially, donors are choosing not to instruct solicitors. It is their absolute prerogative to instruct a solicitor should they wish. There are solicitors in every county doing these. We engage with them every day.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_89">The Deputy's time is up. We will move to Senator Harmon of the Labour Party who has seven minutes.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_38">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_90">I thank all our guests for their really valuable and informative contributions. It is a really important and timely discussion we are having in the committee this morning. It is an historic opportunity to move away from an archaic culture of control to one of respect, autonomy and choice. I will direct my questions primarily to the National Advocacy Service for People with Disabilities. The submission rightly points out that the law alone will not effect this change. It needs to be broader than that, with political will and cultural change. The guiding principles need to be binding standards and not just aspirational. That is a crucial point.</p>
+          <p eId="para_91"> I note the service's key recommendations and want to zone in on some of them. It is clearly highlighted that there needs to be more resourcing for independent advocacy. The NAS has noted its own waiting lists, with 232 on a waiting list as of August this year. Clearly there is pressure there. I might ask our guests to expand on that and describe what needs to happen and what investment is needed. The service has called for a Government strategy on independent advocacy and highlighted the need for commitment to ongoing training for professionals; increasing public awareness campaigns for those working in the sector and the broader public; involving people with disabilities in implementation and oversight; and the importance of an interim review of the Act to guard against any issues. I would like Ms Condon and Ms Byrne to expand as well on how we can have a rights-based approach to the transitions from wardships, and on some of the risks they currently see and how we can ensure we are compliant with the UNCRPD.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_92">There are quite a few issues to cover off, so it will be a combined answer. I will deal first with the advocacy resource. The role that independent advocacy plays is clearly recognised in this new system. There is a code of practice for independent advocates, as Ms Byrne mentioned already. There is quite a heavy reliance on advocates to ensure the voice of the person is heard and the person is kept central to the process. However, there has been no increased investment in the advocacy sector. We are, therefore, in a position where we have to absorb a considerable extra volume of work. I mentioned that 24% of our casework is now in the area of decision-making. That has been absorbed with no increase in resources since the inception of the National Advocacy Service. That is simply not sustainable. It is why we are calling for a Government strategy on advocacy, so that there is some joined-up thinking and some strategising about the future. It is only going to increase with the introduction of protection of liberty safeguards, the likes of safeguarding legislation and other developments that are yet to come. There needs to be a focus now on adequate resourcing of independent advocacy. It is absolutely fundamental to the rights, to get to one of the Senator's other questions.</p>
+          <p eId="para_93"> We see the guiding principles as absolutely foundational and essential to be adhered to in making sure the spirit of the Act is adhered to. Where that does not happen, as I mentioned already, we can see that things like presumption of capacity can quickly get bypassed. The voice of the person can be left out, and we can end up back in a system that is based on best interests, which is exactly the type of thing we are trying to move away from. Under the lunacy Act, it was okay for others to make decisions on behalf of people. If we bring it to ourselves, none of us wish to have decisions made on our behalf. We want to be involved and included ourselves. People with disabilities need to be recognised as citizens with rights who deserve that same level of autonomy and respect to make their own decisions and be included. Even to Deputy Ó Murchú's point about unwise decisions, we all make unwise decisions. It is not about abandoning people to do things that are going to harm them or others. While we all have that ability to weigh choices, we all make bad decisions. For people with disabilities, that is part of personhood and of being an individual trying to work out their day-to-day life.</p>
+          <p eId="para_94"> On adhering to the guiding principles, we feel that is really where the rubber hits the road. Where that is not happening and where people are making assumptions about others' capacity based perhaps on the fact that they have a disability in the first place, or indeed where there is not proportionality, this rush to put in the highest tier of decision-making straight away can sometimes by system-driven, to solve problems. For example, where beds are perhaps needed, that is a real need in terms of hospitals and so on, but it does not justify rushing to get a decision in place. We all know that where time is a pressure, things get compromised. Adequate time is not often given to understand where people are coming from. There are important facets that need to be taken into consideration about the decisions they can make in their lives so that we are truly respecting autonomy.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_95">On risks, I want to add that for people who are going through the discharge from wardship process, if they are found not to require the highest level of decision-making support, and they do not have anybody else in their lives, then they may not be able to find somebody who might support them as a co-decision-maker or decision-making assistant. We do not have a structure in place for independent panel members for that level of decision-maker. The court could decide to make a decision-making representative order and instruct someone to act as a co-decision-maker with the person, but it is definitely a gap in the process. We might just be replacing wardship with wardship lite, with decision-making representatives for people who do not need that high level of decision-making support. There are wards of court who may not have natural supports or whose committee may not want to go forward to be a decision-making representative or co-decision-maker. There are gaps. We want to make sure we are not using the system to replace wardship with decision-making representation where it is not required, and we want to support people to be seen as decision-makers. That is happening every day. It is very important in all matters to do with the Assisted Decision-Making (Capacity) Act that people are being supported, are making decisions every day and do not need formal levels of decision-making assistance. We have to recognise that there have been massive moves in disability services and with families and communities to recognise people as decision-makers. We should be supporting that, rather than just saying that everybody needs to have this put in place for them. That is not the case. People are making decisions every day and are being supported to learn and develop the capacity to make decisions. That is our bread and butter at NAS and we support it to happen every day.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_96">We will move on. Joining us online is Deputy Keogh of Fine Gael.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_42">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_97">I thank the witnesses for all of their engagement so far. Of all the topics we have covered so far in this committee, this is the one I know least about. I will do my best with my questions. If I do not direct them properly, please feel free to come in. I am conscious of the April 2026 deadline. Does the Courts Service need any extra supports to meet the deadline?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:20:00+01:00"/></from>
+          <p eId="para_98">We have prepared to meet the deadline in that we have increased staffing in the office on our side and so on.</p>
+          <p eId="para_99">The President of the High Court has appointed additional judges to the list to try to meet the deadline. There is a challenge in the flood of late applications but we expected that. It is just a matter now of seeing how things will go. If required, I can direct additional resources to the office. Capacity on the judicial side is something else. We expect to see constraints within the wider system in terms of medical visitors, reporting and so on. We will have to see how it goes.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_44">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_100">My next question is for the Decision Support Service but if I am directing it incorrectly, please feel free to answer anyway. There was a discussion in the opening statement about in-person events and online questions and answers. What was the turnout for those events? Are there plans to further reach out to families? I am conscious of people who might be in this process but also acting as carers. Are there plans to reach out independently to people who did not go to the questions and answers or in-person events?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_101">The reference might have been my colleague's to the particular events organised by the Office of Wards of Court at which the Decision Support Service contributed. We have taken some feedback from those events and assessed the inhibiting factors that might make people hesitant to apply for their loved ones to come out of wardship. The question might be for Ms Denning in relation to those events that have already taken place in Cork, Galway and Tullamore and two in Dublin.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_102">One webinar had almost 1,000 people at it. Each existing ward of court has a case officer. That case officer has worked with the ward and the committee and continues to support the ward as best we can through the process. The addition of extra support from the Legal Aid Board has also been very useful. Each ward currently has a case officer they know and have been working with all along. That assistance remains in place.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_47">
+          <from>Deputy Keira Keogh<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_103">Having 1,000 attendees at an online seminar definitely sounds well attended in any field.</p>
+          <p eId="para_104"> This question is for anyone to answer. Do the witnesses see any risks in the process of people being discharged from wardship?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_105">I can speak to the post-wardship scenario, which is where we come in. We are not involved in the processing of applications to come out of wardship except to the extent that we might be asked to nominate a professional decision-making representative from our panel if there is nobody else in the former ward's life to take on that role. The Assisted Decision-Making (Capacity) Act contains safeguards at a number of levels so it is not as if somebody has their resources restored to them and then has free rein unless that is appropriate and the court applies the guiding principles to ensure the least restrictive outcome. In circumstances where a codecision-maker or a decision-making representative is identified as the appropriate level of support, we exercise a supervisory role. Those orders are registered with the Decision Support Service and then our supervision function takes over, introducing ourselves to the individuals who have stepped up to that role. They have to turn in reports to us annually or in respect of property and affairs decisions. A decision-making representative submits a report to us at the three-month mark setting out assets, liabilities and a statement of income and expenditure. They remain under our supervision. If any reporting is deficient, it can be re-entered before the court. We also have a complaints and investigations function, which we hope is relied on only minimally. Overall, we see ourselves as supporting the supporters. In 80% of these cases, it is ordinary people taking on this role out of love and loyalty. We want to help them do the best job they can. This is not an Act that is short on safeguards.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_106">We have had experience of supporting some people who were completely discharged from wardship and deemed to have capacity to manage their own affairs. However, this can be nuanced. Sometimes, the ability recognised for somebody to have the capacity, for example, to manage their own funds versus the level of experience they have had in managing their own funds can be very different. We have experience of people being fully discharged from wardship who then regain control over very large funds but have never had the experience to practise what it is to manage your own money and have therefore needed support. Ironically, they put in place a codecision-making arrangement of their own volition but they did not have any family members. The current setup only allows for somebody to be appointed from the decision-making representative panel through the Decision Support Service because there is no specific panel for codecision-makers. While this person must act in accordance with the code of practice for codecision-making and make joint decisions with the person, it would be great in the future to see specific panels developed for that purpose and to recognise some of the nuances of people being discharged from wardship. It is a big transition when people come out of wardship. They have been accustomed to people making decisions for them and supporting them with everything and then they start doing that for themselves. There are supports required very often in making that transition.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_50">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_107">Good morning everybody. I thank the witnesses for meeting us. Apologies that I was late. Similar to Deputy Keogh, I have limited experience, so the information the witnesses have given verbally and in advance from research has been extremely useful. I thank them for the essential and sensitive work they do with people who avail of or require their services.</p>
+          <p eId="para_108"> I am not quite sure who to direct my questions to, so the witnesses can jump in as appropriate. Given the feedback the witnesses have given today and in the documents in advance on where they see improvements or gaps, how do they feed that back? Do the three agencies collaborate and co-ordinate? Is there a formal feedback mechanism to the Department of justice and the Department of Health? If there were three referrals or standardised requests from each of the groupings today for the committee to bring forward, what might they be? A person came to me in relation to one incident. They have not asked me to move forward with it but just gave me feedback on their experience of the system as a committee of one. It has to do with the stamp duty and-or an exit tax on each transaction. Is there any interaction between NAS, for example, and Revenue on the financial implications? Another example given to me involved a bank statement for a ward and €20. I appreciate that this is heading into the banking and financial piece, which may not be the remit of any of the witnesses. The concern was the investment of funds by the ward of court committee. How is that overseen? Is there feedback to the committee <i>vis-à-vis</i> same? How often is a review of each of the functions carried out? Does it culminate in an overall review of ensuring that there is autonomy and integrity for wards or those exiting in April?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Tom Ward<recordedTime time="2025-10-15T10:30:00+01:00"/></from>
+          <p eId="para_109">On levels of collaboration between the different agencies, I am not sure NAS is one but the Department of children and disability has responsibility for the legislation now. There has been an interdepartmental group meeting on a fairly regular basis since the new Act was commenced in 2023.</p>
+          <p eId="para_110">We would share issues of interest and concern at that group regularly. The officials in that Department are monitoring how the roll-out is being handled. That is generally how things go there.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_111">I will deal with the question of the investments. At the moment, we manage €2.499 billion on behalf of wards of court, but that will reduce to about €1 billion. A total of €1 billion belongs to minor wards and the €1.499 billion belongs to adult wards. The funds are managed by the accountant of the Courts of Justice and are held in the control of the courts. It is not the committee that invests the money. There is a very complex and tight governance arrangement. I might send in a note on that.</p>
+          <p eId="para_112"> There is an investment committee that supervises the types of funds that are available. Depending on the duration the money will be in court, it is invested in one type of fund or another. At the moment, we have reduced from seven funds to four. Three of those funds are for minor wards and then, effectively, we have a cash fund for adult wards because they are going to be discharged. A decision was taken in 2021 to de-risk that money, so funds that would have been in a long-term fund were moved across, with a view to people being discharged. This means they are not subject to the vagaries of the market at the time of discharge.</p>
+          <p eId="para_113"> The exit charges are standard exit charges when selling units in funds. That is where this comes in. We have a fairly low fee. It is not a maintenance fee, but there are fees payable to the accountant at various points if money is invested or taken out. It works out at 0.3%. I will include in the note the management fees associated with the management of the funds at the moment.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_114">I will speak to the three areas. We would call for strengthening and sustaining independent advocacy services through adequate resourcing and strategy, and involving people with disabilities in policy and oversight of the new regime. In terms of any review of the Act that is undertaken, it needs to specifically look at adherence to the guiding principles of the Act.</p>
+          <p eId="para_115"> With regard to the question of collaboration, while we are not part of the interdepartmental steering group, we are part of the HSE human rights office oversight implementation group, which feeds into the interdepartmental group. There is an opportunity within that for feedback from the advocacy sector.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_116">That interdepartmental steering group, of which we are members, was instituted as long ago as 2016, after the Act was enacted. We meet regularly, and it acts as a point of escalation. We have quite regular collaboration with the National Advocacy Service and I am pleased to see that happen.</p>
+          <p eId="para_117"> In relation to the questions raised around banking, and this is somewhat adjacent to that, we have regular engagement with the representatives of the main pillar banks and their vulnerable customer units, as they are called. We are arranging a webinar for front-line banking services at the end of next month, at which the National Advocacy Service will be contributing.</p>
+          <p eId="para_118"> In terms of the overall review of functions, I hope I am not misunderstanding the question. I have mentioned the supervision that we exercise in respect of decision support arrangements that are under our remit. Of course, the Act itself is subject to review. That is built into the Act and is to happen not later than five years after commencement. We are halfway into that.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_55">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_119">I welcome the witnesses. I have some questions for the Courts Service on the transition. What mechanisms are in place for that? Are there sufficient mechanisms, in the opinion of the witnesses, to allow for that and allow for co-ordination between relevant bodies and the Courts Service? The National Advocacy Service mentioned in its introduction that implementation is more than just enacting legislation, and it called for resources and training. What is in place currently? What needs to be put in place to ensure there are sufficient supports in place for people?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Tom Ward<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_120">Regarding the mechanisms for transition, once the legislation was commenced, we had a deadline to meet. We are not immune to the fact that we have been working with the families and the wards of court for many years in many cases. Our objective in all of this was to have the smoothest transition possible for the people concerned. We would have liked to have people engage with us and move applications for discharge earlier than they have up to now. However, our overall intention is that, as and when the court makes the decision for discharge, all the outstanding issues to do with their wardship are wrapped up and that we have a smooth transition to supervision or work under the new regime.</p>
+          <p eId="para_121"> In order to facilitate that, what we have been trying to do is communicate extensively with existing committees to explain to them why the deadline is important. More recently, we have managed to get legal representation for people through the Legal Aid Board to move those applications, so at least the legal aspect of the process is under way and they have somebody independent who can facilitate that aspect of the process.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_57">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_122">Is the Legal Aid Board properly resourced to deal with additional cases?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Tom Ward<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_123">We certainly have not heard the contrary. It has issued legal aid certificates to the people concerned and received funding to facilitate this from the Department of justice. A lot of people are using private practitioners on the panel in that regard.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_59">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_124">Mr. Ward referred to outstanding issues. What sorts of outstanding issues are there?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Tom Ward<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_125">When you consider anybody's life, they might have outstanding bills that they need to pay, commitments towards dependants or things like that. Our objective is that, at the point in time, there is a smooth transition so those commitments continue.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T10:40:00+01:00"/></from>
+          <p eId="para_126">In relation to training and resources, the NAS has been involved in providing information and supporting training across the health, social care and banking sectors, including the credit union movement. When we were getting ready, we had a long period of time between the passing of the initial legislation and the commencement. We were extensively involved in providing information to support, in particular, the guiding principles on the rights of people to make decisions and to be seen as decision-makers. We continue to do that and support that. I am thinking particularly about people who are working in health and social care. This is a big change process in all of those sectors, and we understand that.</p>
+          <p eId="para_127"> There is also the continuing understanding of what advocacy is, what independent advocacy is and how it is distinguished from other supports that people may have or require. In terms of the information and resources required, apart from the case that we are making that there needs to be extensive resourcing of independent advocacy, we also think the public information campaigns for this legislation need to be enhanced and continued to continue the wider understanding of what this legislation is, what it means and what the guiding principles are. This would mean that when people are presenting and trying to conduct transactions in business or banking, or with solicitors, the Department of Social Protection or any avenue of health or social care, the people they meet recognise the fact that because they have a disability does not mean they automatically need someone to support them or make a decision for them. We need to continue to enhance that training and support.</p>
+          <p eId="para_128"> In relation to the role of advocacy, it is important that people have their decisions reviewed. After somebody has had a decision-maker appointed for them, there is a review process built into that. It is really important that advocacy is available to support people in that review if they are not happy with the decision-maker that is in place. We have extensive experience of supporting wards of court who were bringing information to court under the old system where they were not happy with the committee that was making decisions or where there were concerns. It is important that we have an independent code of practice for advocates where advocates can support people to make complaints to the Decision Support Service or bring information to the court or to others about the decision-maker that has been appointed for them if they are not happy with that or if there has been interference and a higher level of decisions are being made for people where no order is in place.</p>
+          <p eId="para_129">There are risks with regard to orders that are made that they may be far-ranging if information is not brought to the court. There is a role for advocacy in ensuring the views, will and preference of the person are involved all the way through the process.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_62">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_130">Is there a mechanism for where somebody is not happy?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_131">Yes. There is a complaints procedure through the Decision Support Service.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_64">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_132">Ms Byrne mentioned a public campaign. What way would she like to see that put across so people are more aware?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_133">There should be both public advertising and targeting of people who are involved in dealing with people in a customer service context and the provision of financial, healthcare and social care services. We should continue to bring the message home and not just make an assumption because people have done a particular type of course or whatever. There should be messaging continually that cites people and supports disabled people as rights holders.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_66">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_134">I do a lot of work in the area of autism. I have an autistic son and have been involved in all the promotional campaigns. It is about society in general having a better understanding of people with a different ability, whatever that may be. We need to roll that out on a national level. We have done a project in here. We have started retraining people in autism awareness within the Parliament and a number of Departments are taking on the model that started here. That needs to be broadened out across the whole disability sector, all Government agencies and society so we have a better understanding.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_67">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_135">I thank the witnesses. Huge progress has been made in this area in recent times but clearly a lot more progress needs to be made. I take the opportunity to acknowledge the huge work Deputy Carrigy has done over the last number of years on making the Houses of the Oireachtas an autistic-friendly Parliament and even the existence of this committee in the last term and again this term. When I was elected to the Oireachtas first in 2011, it was a very different place. I was the only elected person with a disability back then and compared with how it is now, it is a whole different place for a person with a disability.</p>
+          <p eId="para_136"> On the specific work the witnesses do, I came to the meeting because I was interested in hearing more about the review mechanism that was in place, especially when it comes to the competence of the decision-makers in doing the necessary work. Where there are more than two decision-makers and there is a dispute between them, what is the process or the experience of conflict resolution?</p>
+          <p eId="para_137"> Are all scenarios reviewed within a specific period? I have a concern about the people who are making the decisions on behalf of the person with a disability, in that the person with a disability may sometimes not have the wherewithal to know if they are being advocated for in an appropriate way. I would be interested to know more about the review mechanism. Have decisions been made to remove people from the decision-making methodology? I am interested in that because I have concerns it is not as robust as it should be.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_138">I thank the Senator for the question. Review mechanisms are built into the Act, so we act within that statutory remit and they vary depending on the support in question.</p>
+          <p eId="para_139"> When it comes to codecision-making agreements - we have registered something like 150 of those - these are voluntary arrangements that people opt into and can reverse back out of at will. That describes a process of joint decision-making. They are reviewed by the DSS between the ninth and 15th months after registration to ensure they remain fit for purpose and we can dispatch people called our general visitors from our panel to engage with the parties and to satisfy us that the arrangement is still operating properly. In addition, that codecision-maker reports to us annually, providing a template report setting out how they are delivering on their functions. There is a particular set of requirements they have to meet and that is outlined in the Act, which sets out what the functions of a codecision-maker are, including what is called a duty of acquiescence. That means if they disagree with what the person wants to do, they still have to give way to the person unless they apprehend serious risk to themselves, to that person or to another person.</p>
+          <p eId="para_140"> You can only have one codecision-maker in an codecision-making agreement with you.</p>
+          <p eId="para_141"> Turning to the decision-making representative at the top tier should always be a last resort. They are court-appointed following an assessment by the court about who is suitable. As I have mentioned, they report to us at the three-month mark in respect of property and affairs and thereafter annually. They are subject to our ongoing supervision. The relevant person, as they are called, can bring the matter back before the court. They are free under the Act to do that. The court itself keeps its declaration in relation to the person's capacity under review, so those periodic reviews have also been happening.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_69">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_142">That is great. I have two questions to follow up. I am fully aware that the Act has provisions, but how is it working in practical terms, given that there can sometimes be unintended consequences? Based on the on-the-ground experience and the working experience, is further legislation or amendment required to strengthen this more?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_143">To take the second question first, we keep the performance of the Act and particular targeted amendments under review. There are certain things that we can think of - they are quite niche and detailed - that might make the functioning of the Act better. It might strike members as a fairly simple thing, but there is a requirement for everybody to physically be in the one room to sign and witness an enduring power of attorney or codecision-making agreement. That can present a challenge. There are other things we would point out about the timelines for the investigation of complaints, which we think could work better and more effectively.</p>
+          <p eId="para_144"> As to how things are working on the ground, we speak to decision supporters every day about how they are carrying out their roles with the aim of providing support to them. We particularly seek engagement from the relevant persons who are the subjects, namely, the parties involved in these arrangements who are supposed to be benefiting from them. There are codes of practice as well for how all these arrangements are to deliver and they are mandatory in nature. A question was asked earlier about training and we are getting into that territory. The good delivery of this Act depends not just on the Decision Support Service's communication and stakeholder engagement. This Act will work successfully when it is understood across a whole range of sector that recognise their responsibility is to take the Act and make it work in the area in which they deliver.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_71">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_145">I thank Ms Flynn. I am looking at the clock and I have 30 seconds. Suppose somebody's disability deteriorates or their health deteriorates and they are not then in a position to direct and advocate for themselves. What is the review process in that scenario like?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_146">I do not mean to monopolise, but does the Senator mean when they do not have any arrangement in place or when they do?</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_73">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_147">They might have an arrangement in place, but supposing after the arrangement is put in place and their health deteriorates, and then they are-----</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_148">So that arrangement no longer works. There are obligations set in the Act. For example, a codecision-maker who realises it is not working any longer has a direct obligation under the Act to bring that to our attention so that it can be reviewed and replaced.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_75">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_149">Has that happened?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_150">Not quite in that scenario, but we have become aware of it in relation to those section 26 reviews - our reviews that happen between the ninth and 15th months - where it has become apparent to us that, unfortunately, the person's capacity is no longer what it was.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_77">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_151">That is the situation I am referring to. Has the service had many of those?</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_152">No, but it has happened. We have established a position where we say that, rather than escalate it to court, which we think would be burdensome, the parties have the option to reverse out of it if it is simply not working and potentially a higher tier of support is required.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_79">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_153">Has Ms Flynn concerns in that area?</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_154">Senator Conway's time is up. Ms Flynn can answer briefly if she wants to.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_155">I am happy to speak further on that.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_82">
+          <from>Senator Martin Conway<recordedTime time="2025-10-15T10:50:00+01:00"/></from>
+          <p eId="para_156">Okay.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_157">The next person is Fianna Fáil's Deputy Martin Daly.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_84">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_158">I thank the witnesses for attending. I apologise for being late. I am also a member of the health committee and we have a good discussion going on there as well.</p>
+          <p eId="para_159"> I have read both statements and the aims are very similar but there appears to be a divergence of opinion on how to get there. I will start by putting my questions to the representatives of the Mental Health Commission first. How is the discharge from wardships progressing? How do they feel the Act is working at this point in time? What additional resources might be required, in their analysis? I am sure the witnesses are aware of the views of the National Advocacy Service.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_160">For clarity, we do not manage that process. We are not responsible for the functions under Part 6 of the Act. We are not a notice party to those applications. They could begin and end without us knowing about them and we do not see the court papers. We are future facing, so if the court directs discharge from wardship with an arrangement that is under our remit, then that is where we become involved. We could be involved mid-process if one of our panel member decision-making representatives is required. Otherwise, we are exclusively dealing with a future-facing scenario.</p>
+          <p eId="para_161"> We have heard from Ms Denning on where the numbers are and how they are to be progressed in order to meet the deadline. We have sought to support that because that is a statutory imperative. The Oireachtas voted more than ten years ago to usher out the 1871 Act processes. From our own observations, these are very valuable events and where we have met with wards and their committees and families. The reservations are about the new, and that is understandable. The old process had existed in one form or another for over 150 years, so this one is quite new. It has been an opportunity at those meetings to socialise the DSS, to put a human face on it and to provide reassurance, where that is required, about what engagement with us the DSS might look like, but we are responsive, reactive and waiting for the applications to be concluded so that we can take up our role.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_86">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_162">I put the same question to the National Advocacy Service, please.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_163">In terms of reservations, we have focused largely on the importance of the guiding principles and that any review process of the Act really does need to examine how well the adherence to those guiding principles is working.</p>
+          <p eId="para_164"> This Act is very much about bringing Ireland into alignment with the United Nations Convention on the Rights of Persons with Disabilities. To draw the committee's attention to Article 12 specifically, it places emphasis on the fact that disabled people should have access to the supports they require, where necessary, to exercise their rights and autonomy. For us, as an advocacy service, it is critical in terms of the outworking of the Act that people can access advocates if and when they need them. That is currently not the case because we have waiting lists. There has not been adequate attention paid thus far to the resourcing of the supports under Article 12 that may be required outside of the formal structures of decision-making. The guiding principles all focus on, as we have already alluded to, people being supported to make their own decisions first and foremost and building their own decision-making muscle to make their own decisions every day without ever going near any of the formal structures. The reality for lots of people we meet, however, is that to have information to understand systems and rights, they often need somebody to do that with them. For those who may not have natural supports in their life, that role often falls to advocacy services. Unfortunately, there really has not been any focus to date. Outside of recognising the role of advocacy, there has not been a strategy or resource plan to make sure that, under Article 12, people can access those rights. I think that is something that really does need to be examined more closely.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_88">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_165">I put the same question to the Courts Service, please.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_166">We have 904 cases listed for directions and 1,104 listed for discharge. It is only when those cases come before the court that the judges will see the evidence as to whether they can make an order at that point. That is where we have a remaining reservation. What happens in the event that, through nobody's fault, the evidence is not there to discharge somebody? There is a bit of a lacuna there as to what is to happen after 26 April. That is the only reservation we would have. Through nobody's fault, an order cannot be made over the question of whether the existing regime is to remain or whether somebody is to be discharged regardless of whether the necessary supports are in place for them.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_90">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_167">Is there uncertainty around that?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_168">The Act is silent as to what is to happen after 26 April. I cannot talk about policy and it is something that has come up at the cross-sectoral group, but we will do our best. Everybody is working towards 26 April but "where problems happen" is the only reservation we would have. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_92">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_169">Is there anyone else who would like to address my question? </p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Aoife McMahon<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_170">I can quote some of the numbers that we are seeing.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_94">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_171">Yes. </p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Aoife McMahon<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_172">Under Part 6 and the ward of court orders that have come to us, we have 139 registered decision-making representation orders, which are the highest tier under the 2015 Act. Of these, 124 are active. We have seen 11 applications for the middle tier, which are codecision-making agreements, of which five are registered.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_96">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_173">Do the witnesses recognise the possibility that there is an issue there? If the court does not discharge a wardship, there is a grey area.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_174">There is definitely more than a grey area. There is a black and white area in the Act at the moment that the discharge has to happen. That is the statutory mandate. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_98">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_175">So, it has to happen.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_176">There is no other wording. No other interpretation of the Act is possible, as it is worded now. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_100">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_177">Does Ms Flynn recognise the uncertainty as described?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_178">Yes, and it does not fall to anybody sitting over here to rectify it. It could only be achieved by statutory amendment, which I think would be all of our impressions.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_179">That is not the job of the people sitting over there. It is the job of the people sitting on this side.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_103">
+          <from>Deputy Martin Daly<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_180">I thank the witnesses for their answers.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_181">Next is Deputy Thomas Gould from Sinn Féin.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_105">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_182">On advocacy, the National Advocacy Service has put forward a proposal. What staffing and funding resources are required to provide a proper advocacy framework to support people with disabilities? How much money is envisioned?</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_183">We need an initial increase in staffing. Advocates on the ground are the most important aspect of the service that we want to see develop and grow for obvious reasons because that is where the waiting list is and pressure exists. Broadly speaking, an investment for future sustainability requires an initial investment of up to €1 million. That would allow us an initial uplift in advocate numbers. We are operating with the same level of advocates that we did when the service was established many years but the landscape has changed very significantly. In terms of the recognition of the role advocacy plays, the Assisted Decision-Making (Capacity) Act is only one area that we operate in. We provide advocacy across a whole range of issues. This is only one area but it now accounts for 24% of our work.</p>
+          <p eId="para_184"> At a broader level, there is no Government strategy for the development of independent advocacy in an Irish context. It is very piecemeal and <i>ad hoc</i> currently. Interdepartmental discussion around advocacy has not happened.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_107">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_185">Why is that the case?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:00:00+01:00"/></from>
+          <p eId="para_186">Advocacy is growing, is now more familiar to people and is now more embedded in systems in a way that perhaps it was not even ten years ago. Advocacy just has not got the focus, but we are calling for that now. Given its recognition in relation to the legislation and, in particular, today's discussion, if advocacy is to be a core part, then there needs to be a look at how it is going to be resourced into the future, what with the other growing demands it is going to meet. It goes to the very heart of the Act in terms of making sure that this is person centred and people are kept at the heart of it. The simple reality is that, without advocacy access, a lot of the people we support are not going to be able to seek a review of their orders if they are not happy. They are perhaps not going to be able to contact the Decision Support Service by themselves to make a complaint if things are going wrong. So, advocacy is a fundamental part.</p>
+          <p eId="para_187"> We have to first and foremost see our waiting lists eradicated. It is not acceptable that people must contact us to tell us about their distress very often and the very difficult circumstances they find themselves in and then have to sit on a waiting list for months in order to get an advocate to help them.</p>
+          <p eId="para_188">Our first priority would be eradicating the waiting list, but we are obviously mindful that there needs to be a strategic examination of exactly what level of uplift is required in future for other developments, such as the protection of liberty safeguards, which is not dealt with under this legislation, and deprivation of liberty issues. There are also lots of other developments to come in the space of disability.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_109">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_189">It was not until I got into politics that I saw the importance of people advocating for people. People with mental health issues, who are among the most vulnerable of all, must have people to advocate for them. I come from a working-class area. Even though I only had two sisters, I had a big extended family and there was always someone there to provide support. Then, when I got into politics I realised that a lot of people have no one and are very isolated. Whether it is in relation to housing, disabilities, childcare or whatever else, a lot of people are on their own. That is why advocacy is such an important right that people should have access to. The witnesses spoke of how we should be person-centred and that people should be at the heart of things. We certainly need a strategy. We are talking about €1 million, which, in the scheme of things, is tiny money when it comes to people's rights and liberty. I support the work being done by the National Advocacy Service, including the other work it does on disabilities. This is an important part of today's discussion.</p>
+          <p eId="para_190"> Last night in the Dáil, we discussed a motion on the cost of disabilities. A report from 2020 or 2021 showed that disabled people incur additional unseen costs of between €10,000 and €12,000 per year compared to able-bodied people. Disabled people need people to advocate for them because many of them are living below the poverty line. What are the other areas in which the NAS works with disabled people to try to advocate for them?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_191">A lot of our work is about people who are inappropriately placed or have no supports or services. We have people under 65 who are placed in nursing homes because there is nowhere else for them to go. There are people in homeless services who are inappropriately placed and cannot cope in homeless services but may not meet a threshold of disability to move into more supported accommodation.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_111">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_192">I am sorry for interrupting. How would the NAS find that out? Would someone from the local authority or disability services contact it on the person's behalf?</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_193">We are contacted by the people directly, their family members or by other professionals and organisations. There are people in so-called mainstream provision who do not know how to adequately support somebody with disabilities. They come to us. Those people may be supporting people really well and may not require independent advocacy. Often, we can signpost people or work with somebody to indicate independently what they want to happen in a situation and support their rights to information. They have a right to know they can oppose or complain about the service they are receiving already, or the lack of service. That is the responsibility of everybody. There is a specific role for NAS but we also have to recognise there is a public sector duty on all services to support people with disabilities to have access to information.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_113">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_194">Do people in the public service know that? Is it communicated regularly that, when dealing with a person who has a disability, NAS is there to advocate on their behalf? As Ms Byrne said, people could be doing their best and may have the best will in the world, but they obviously do not have the knowledge and experience that NAS has.</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_195">Deputy Carrigy referred to the increase in information and strategies we are seeing throughout the public sector. We are starting to see that in the context of awareness. We might request reasonable accommodations for people attending court, for example, so that they are aware of what they will be facing in a courtroom, or if someone is attending a meeting for which a specific appointment is needed, rather than have that person sitting waiting for a meeting to happen, or that people know what is going to happen at a meeting or a process. A lot of advocacy work is to prepare people to ensure they are okay with what is going to happen, but also that they get their point across.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_196">Ms Denning spoke earlier about the wards and about stream 1 and stream 2. Will she explain what that means?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_197">Stream 1 is where the committee has made an application to have the ward discharged from court voluntarily. Stream 2 is the people who are hoping to wait and see and be in the last batch, so to speak. Once we reached six months out from the cut-off deadline, something had to be done to get those cases moved through the court. We have written to all wards of court and told them they can pick a solicitor or have a solicitor appointed. If they pick a solicitor, that is great, and if they do not, a solicitor will be appointed for them from the Legal Aid Board. The court has listed all of those stream 2 cases where people were not voluntarily coming forward. It listed them before the end of this month to give direction as to what is to happen to move the cases towards exit from the wardship regime.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_198">Ms Denning also commented that the Act is silent after 26 April. Will she explain what she meant by that?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_199">Where the court has not been in a position, because of a lack of evidence or because somebody has perhaps appealed a court order, there is no provision in the legislation directing either the Courts Service or the DSS as to what is to happen. The High Court has inherent jurisdiction, so applications will perhaps be made under that jurisdiction. However, the legislation itself is silent.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_119">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_200">I also understand the legislation is for us on this side of the table. Does Ms Denning have concerns we might not meet that, or that there will be people left behind?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_201">It is not that people will be left behind. For example, if there is not sufficient evidence or there is a dispute on the evidence, or whatever it might be, as to what arrangement is suitable for somebody and the court simply has not been able to make the order, the legislation does not direct us as to what is to happen then. That leaves the judge in a position where they do not know what to do. The legislation is clear that everybody should be, and is mandated to be, out by 26 April. However, we perceive situations where that might not be possible. That silence is of concern. At the end of day, there are wards of court and their committees trying to live their lives. We would like arrangements to be in place for people in order that they have certainty.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_121">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_202">I will follow on from that. Ms Denning said the legislation is silent. There is the possibility that not everybody will be in agreement on the new set-up and the appropriate measures, some of which may be in dispute. I assume the Courts Service has raised this issue before. This is hardly the first time it has come up. What answer has it got back? Obviously, it has not received one.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_203">We do not deal with policy or legislation. We are simply here to implement the legislation in place. We voice the concerns, and it is then a matter for people elsewhere to deal with that. It is a policy matter.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_123">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_204">The Courts Service has voiced the concerns previously.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_205">We have, yes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_125">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_206">There has been a failure to deal with them, so I am right.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_207">Do not be-----</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_208">Can I come in-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_128">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_209">In fairness, Ms Denning said there was an anomaly. The anomaly was pointed out and the anomaly remains. Therefore, nobody has rectified the anomaly.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_129">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_210">The Deputy is not trying to put words in Ms Denning's mouth.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_130">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_211">No, certainly not. That is something we should obviously address or at least play our part in making sure it is addressed.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_131">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_212">Yes, but that is not a question for the witnesses.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_132">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_213">No, I did not say it was. I appreciate the clarity the Chair brings to matters.</p>
+          <p eId="para_214"> I will ask Ms Condon a question on advocacy. She stated the NAS is €1 million short. Is that just to deal specifically with the assisted decision-making Act?</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:10:00+01:00"/></from>
+          <p eId="para_215">It is not that we are €1 million short. It is obviously difficult to give a specific figure.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_134">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_216">An approximate figure.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_217">We are talking here today about wardship and assisted decision-making, ADM. That is one part of a very large area of our work. However, I suppose we are hampered in being able to actively promote our service, which is another issue. As a result of our waiting lists, we have certain hot spots in relation to waiting lists in particular parts of the country where there is maybe a greater demand or a higher population.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_136">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_218">What sort of numbers are we talking about and what sort of timeline in relation to people getting dealt with?</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_219">The timeline differs depending on the geographical area because waiting lists differ in size in different parts of the country. Currently, Dublin, Limerick, Cork and Kildare are the most affected areas. It could take anywhere between three and 12 months to access an advocate. It is difficult put a specific timeframe on it. That is to give an average idea.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_138">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_220">Is that for multiple purposes?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_221">Yes, but including, obviously, advance healthcare directives, ADHs.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_140">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_222">So it is impacting in relation to this - call it what you will - framework.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_223">Yes. Given it is 24% of our work currently, overall it is obviously significantly impacting on this specific issue.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_142">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_224">Ms Condon says it varies, and she is saying three to 12 months, but what sort of numbers are on the waiting list at the minute?</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_225">At the end of August, there were 232 people on the waiting list for the NAS.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_144">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_226">Some of these cases are relatively complex.</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_227">Absolutely. There are people on the waiting list who are due in court and feel very overwhelmed, may not understand the new ADM legislation or what it means for them personally to be discharged from wardship, and may have unique communication styles that we need to support. We often develop, for example, easy-to-read documentation to support somebody or they may use augmentative technology. It is a very individualised approach to supporting people through their unique set of circumstances. Without that support, where somebody lacks natural supports in their own life, they can often not feel prepared to access legal aid to have their voice appropriately represented in court free of all other conflicts of interest. One of the unique aspects about our service is that we are independent. We are entirely there for the person and the person only. We do not have any other agenda.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_146">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_228">We set up this framework to try to ensure that people would have their rights but, without resourcing it, there will be continual problems. When dealing with courts, legal processes and whatever, there have to be checks and balance and we need due diligence and to make sure that everything is expedited, but there will always be particular issues. In relation to what we are dealing with here, I am assuming that from beginning to end there will be a resource issue and they are dealing with log-jammed courts. Is that impacting, first of all, on those who need to be-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_147">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_229">The Deputy's time is well up. Does anyone want to answer that briefly?</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Ms Angela Denning<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_230">We increased the number of staff in the wards of court office in preparing for this legislation and the President of the High Court increased the number of judges available to deal with the list. We have a glut of applications coming in at the end but that is not unusual in courts. We will manage as best we can. We can redeploy resources, if required. That is part of what we do. We look at where the backlogs are and we try to deal with them before they become backlogs. There is a statutory deadline here that we have to meet.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_149">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_231">That is it. People are using the Assisted Decision-Making (Capacity) Act 2015 and are going through-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_232">The Deputy's time is up. I call Deputy Toole.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_151">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_233">My time is always up.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_152">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_234">In the general scheme of things, are there any other jurisdictions where best practice or the utopia exists in order to comply with the various articles of the UNCRPD? I presume the phrase used, "protection of liberty safeguards", is linked to the draft adult safeguarding Bill 2024. If they are different, the witnesses might say so. How will the lessons learnt to date from the Assisted Decision-Making (Capacity) Act 2015 inform the process in relation to the proposed adult safeguarding Bill?</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Ms Joanne Condon<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_235">I will clarify the protection of liberty matter, given I raised it. That is different from the safeguarding legislation. It is the responsibility of the Department of Health, which has been working on developing protection of liberty safeguard legislation. It is not yet in place. That will deal with the matter of deprivation of liberty, which is currently dealt with under inherent jurisdiction of the court. It lies outside of the assisted decision-making legislation.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_154">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_236">I thank Ms Condon.</p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_237">In relation to utopia, this Act is quite highly regarded at an international level. I suppose if you wait 150 years to replace something, there is lots of learning that you can take from around the world. Opinions vary but it is spoken of as coming close to hitting the mark in terms of UNCRPD compliance. Quite honestly, what full compliance with Article 12 of UNCRPD consists of could occupy a three-day conference.</p>
+          <p eId="para_238"> This legislation, which is ambitious in scope, operates at a scale which is not replicated in many other jurisdictions because we have three tiers of support. It is spoken of as doing very well because we have moved away from a medicalised approach to capacity. This was a consequence of really good input from NGOs and disabled persons organisations in the run-up to 2015 because there was a conscious determination to take the UNCRPD and translate it into the guiding principles under the Act. That has had good effect. Even at the top tier, and even if that is a model of substitute decision-making, there is still an onus on that court-appointed decision-making representative to ensure they are informed about the person's will and preferences and, while making decisions on behalf of the person, to give effect where possible to that will and those preferences. The legislation is held in quite high regard by international commentators. We await to see what the UN committee will make of it when we are before it.</p>
+          <p eId="para_239"> In terms of adult safeguarding, which is separate, I urge that capacity be recognised as having the singular meaning that exists under the Act. It is about decision-making capacity and a move away from that concept of mental capacity or that diagnostic approach which definitely prevailed previously. Wherever capacity comes up in other legislation or policy, it is to be understood in those terms.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_156">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_240">I thank Ms Flynn. I will ask a final question, if I may. Pardon my ignorance, but I am wondering, since we have expertise in the room, whether it is possible to amend the Act to provide for an extension. The deadline of April is looming and obviously there are concerns about meeting it and the post-deadline period.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_157">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_241">That is not for the witnesses, in fairness; it is for us on this side. It has been highlighted that maybe we need to do that. That is for ourselves. We will come back to the Deputy on that. Nobody needs to answer that question.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_158">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_242">Grand, thank you.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_159">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_243">Does the DSS now have the resources, the manpower and the woman power to manage this?</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_244">Resources are something that, obviously, we keep closely under review. We are a growing organisation. The task initially was to take an Act and implement it, to design and build an organisation, to design processes, to procure and to recruit. We now have over 100 members of staff but as we are obliged to be busy, particularly around advance planning, we need to look to our resources and ensure that, while as far as possible we will work smarter and used automated solutions where they are available, the question of human resources is something that we need to keep a good eye on if we are to continue to meet our obligations, of which we have several under the Act. We have spoken about some of our niche functions today but we do quite a bit. We need to make sure that we have the capability to deliver.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_161">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:20:00+01:00"/></from>
+          <p eId="para_245">I would not like to see what happened with Tusla happening here. Tusla was set up but, from day one, it was never resourced to the level it should have been. It is a critical organisation dealing with vulnerable young people. Now we have this work that is being done here which also involves dealing with vulnerable people. If Ms Flynn is not getting the support she needs, she has to be honest about that. There was a completely different situation in An Bord Pleanála.</p>
+          <p eId="para_246">For years, it went under-resourced and understaffed. People wondered why we had a problem with planning in this country. No one called it out. I know it is not up to the witnesses to be holding the Government to account, but they are given a job and if they cannot do the job 100%, it needs to be said.</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_247">I do not think we will be found wanting when it comes to making our case. My head of operations would confirm that we are very specific when we are setting out our estimates for what is required. As an evolving body, with a set of specific and important statutory responsibilities, we will be keeping a close eye on things. We have the benefit of a supportive Department but we need to continue to thrive.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_163">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_248">We were talking about the courts. Deputy Ó Murchú and I visited Mountjoy Prison last year or the year before. We met the governor.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_164">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_249">We were released, obviously.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_165">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_250">The governor outlined the number of people who are in prison but should not be. They are in prison because they have mental health issues. I know people who have gone to prison or who are in the courts at the moment. Their families or friends have contacted me. Those people should not be going through the court system because their issues are mental health issues. During the course of their mental health episodes or crises, they broke laws. They should be dealt with from a mental health perspective. Do the witnesses ever have any involvement in that kind of advocacy? Governors of prisons are telling us there are people in prisons who should not be there.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_166">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_251">Deputy, as interesting as your comment is, our witnesses are not here today to deal with those issues.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_167">
+          <from>Deputy Thomas Gould<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_252">With advocacy, the standard would come up.</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Ms Suzy Byrne<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_253">Absolutely. We provide advocacy for people currently before the courts and those who are on remand or who have been sentenced. We assist people with disabilities to access supports and services, communicate with legal professionals, participate in the courts process and undergo capacity assessments where there may be some query about their capacity to face charges. We are also involved with, work with and get referrals from the Probation Service, which works with people who are preparing to leave prison. Those people may have an acquired brain injury or mental health difficulty, or may be autistic or have an intellectual disability. They may need to engage with services in the community for the first time on their release from prison. Advocacy has a role there, too, in supporting people to have their wishes heard and to make decisions. We take inquiries and are regularly involved in supporting people.</p>
+          <p eId="para_254"> We also have people who are detained in prison because there is nowhere else for them to go. That is also an issue we have seen emerge in our casework of late. There is a need to find appropriate supports for them in the community rather than sending them to prison.</p>
+          <p eId="para_255"> I should also draw the attention of the committee to an advertisement that the Prison Service and the Department of justice are doing this week to scope the range of mental health and disability that is presenting in prison. It is something of which all parties involved are aware. The Prison Service, the Department, the Irish Penal Reform Trust and the Irish Human Rights and Equality Commission have all been involved in highlighting this as an issue. It is something that NAS has brought to their attention through our casework.</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_256">As it happens, we met the Inspector of Prisons yesterday on the theme of making this Act meaningful for prisoners.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_170">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_257">Does Deputy Ó Murchú want to come in again? I ask him to be brief. He has one minute.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_171">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_258">I will be brief. Mr. Eddie Mullins was the governor of Mountjoy Prison at the time Deputy Gould and I visited. Resources will always be an issue and we will always need more. Everything will need to be reviewed. There seems to be some support for the new system and framework. Something was said earlier that almost touched on the issue of the Mental Health Act. It is all well and good having the law, best practice guidelines and whatever else. If all stakeholders and people are not aware of those, no more than is the case in respect of the Mental Health Act, bad decisions will constantly be made. Are we sure it is not too onerous on those who are trying to advocate or those who obviously fall into this position and their wider families? There is a difficulty if they cannot get advocacy services.</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_259">I would support the need for advocacy. We would absolutely endorse the real and vital role that advocacy services play. We have functions under the Act to be that source of information and guidance, and to promote public awareness and confidence. We engage, as I have mentioned, with a diversity of organisations weekly, as well as having public information campaigns. It is a question of embedding and constantly reiterating the core principles of this Act. We are a new service. People need to know we have that function and that they can come to us for that information. We are probably busiest, in some ways, in the delivery of that core information and constantly working and developing our own resources. There is always going to be only so much we can do, as I have touched on. This Act applies in banking and financial services, as well as health and social care and the delivery of disability services. It is also relevant to the Garda and we have spoken to An Garda Síochána. Although it has been around for a while and implemented for two and a half years, it is still relatively novel and needs to be understood. The responsibility needs to be taken by those sectors to educate themselves around the Act, to develop their own best practice around it and to run with it. They can come to us if need be for assistance in interpreting the Act or for input, where relevant, but ultimately they must take ownership across these sectors.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_173">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_260">Would Ms Flynn be worried about banks in that regard? On some level, people are always afraid of making mistakes so the easiest thing to do is to go with the most conservative read of every circumstance.</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Ms Áine Flynn<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_261">There is probably a whole other session to be had on that theme, as I think NAS would confirm. I mentioned our engagement with the pillar banks, the credit unions and An Post. I also mentioned that we are having a webinar for people in front-line banking. That event will happen at the end of November and NAS has kindly agreed to speak at it.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_175">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_262">I thank Ms Flynn and Deputy Ó Murchú, whose time is well up.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_176">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_263">Thank you, a Chathaoirligh.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_177">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T11:30:00+01:00"/></from>
+          <p eId="para_264">We will publish the opening statements to the committee's website. Is that agreed? Agreed. I thank everybody for attending today's meeting and for their insightful contributions. It is very much appreciated.</p>
+          <p eId="para_265"> The committee stands adjourned until the public meeting at 9.30 a.m. on 22 October with Sport Ireland, the GAA and Variety, the Children's Charity.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 11.37 a.m. until 9.30 a.m. on Wednesday, 22 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

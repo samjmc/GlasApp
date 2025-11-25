@@ -1,0 +1,563 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-10-02/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-10-02/debate"/>
+          <FRBRdate date="2025-10-02" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_foreign_affairs_and_trade"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-10-02/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-10-02/debate/mul@"/>
+          <FRBRdate date="2025-10-02" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-10-02/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-10-02/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-09" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AindriasMoynihan" href="/ie/oireachtas/member/id/Aindrias-Moynihan.D.2016-10-03" showAs="Aindrias Moynihan"/>
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="FionaOLoughlin" href="/ie/oireachtas/member/id/Fiona-O'Loughlin.D.2016-10-03" showAs="Fiona O'Loughlin"/>
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="JoeCooney" href="/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29" showAs="Joe Cooney"/>
+        <TLCPerson eId="JohnLahart" href="/ie/oireachtas/member/id/John-Lahart.D.2016-10-03" showAs="John Lahart"/>
+        <TLCPerson eId="MartinKenny" href="/ie/oireachtas/member/id/Martin-Kenny.D.2016-10-03" showAs="Martin Kenny"/>
+        <TLCPerson eId="MichaelFitzmaurice" href="/ie/oireachtas/member/id/Michael-Fitzmaurice.D.2014-10-10" showAs="Michael Fitzmaurice"/>
+        <TLCPerson eId="NatashaNewsomeDrennan" href="/ie/oireachtas/member/id/Natasha-Newsome-Drennan.D.2024-11-29" showAs="Natasha Newsome Drennan"/>
+        <TLCPerson eId="ParaicBrady" href="/ie/oireachtas/member/id/Paraic-Brady.S.2025-01-29" showAs="Paraic Brady"/>
+        <TLCPerson eId="PaulDaly" href="/ie/oireachtas/member/id/Paul-Daly.S.2016-04-25" showAs="Paul Daly"/>
+        <TLCPerson eId="PaulLawless" href="/ie/oireachtas/member/id/Paul-Lawless.D.2024-11-29" showAs="Paul Lawless"/>
+        <TLCPerson eId="PeterChapCleere" href="/ie/oireachtas/member/id/Peter-'Chap'-Cleere.D.2024-11-29" showAs="Peter 'Chap' Cleere"/>
+        <TLCPerson eId="WilliamAird" href="/ie/oireachtas/member/id/William-Aird.D.2024-11-29" showAs="William Aird"/>
+        <TLCRole eId="An_Comhchathaoirleach" href="/ie/oireachtas/role/office/an_comhchathaoirleach" showAs="An Comhchathaoirleach"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM GHNÓTHAÍ EACHTRACHA AGUS TRÁDÁIL</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Foreign Affairs and Trade</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-02">Déardaoin, 02 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-02">Thursday, 02 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#WilliamAird">William Aird</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ParaicBrady">Paraic Brady</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#BrianBrennan">Brian Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#JoanneCollins">Joanne Collins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PeterChapCleere">Peter 'Chap' Cleere</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PaulDaly">Paul Daly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MichaelFitzmaurice">Michael Fitzmaurice</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#FionaOLoughlin">Fiona O'Loughlin.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#MartinKenny">Martin Kenny</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#PaulLawless">Paul Lawless</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#AindriasMoynihan">Aindrias Moynihan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_16">
+                  <person refersTo="#NatashaNewsomeDrennan">Natasha Newsome Drennan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_17">
+                  <person refersTo="#SeanOFearghaillFF">Seán Ó Fearghaíl</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_18">
+                  <person refersTo="#GillianToole">Gillian Toole.*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Danny Healy-Rae.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#JohnLahart">Teachta / Deputy John Lahart sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Commissioner for Trade and Economic Security; Interinstitutional Relations and Transparency: Mr. Maroš Šefčovič<recordedTime time="2025-10-02T12:30:00+01:00"/></heading>
+        <summary eId="sum_6"><i>Deputies John Lahart and Aindrias Moynihan co-chaired the meeting</i>.</summary>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_1">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_19">Welcome to the joint sitting of the Joint Committee on Foreign Affairs and Trade and the Joint Committee on Agriculture and Food. In accordance with Standing Order 107(b), the quorum is four. The quorum of both committees shall apply, with the modification that each such quorum shall be halved and then rounded up to the nearest whole number. Standing Order 103 on functions of the departmental select committees states:</p>
+          <p class="indent_2" eId="para_20">...the following may be notified accordingly and shall have the right to attend and take part in such consideration without having a right to move motions or amendments or the right to vote:</p>
+          <p class="indent_2" eId="para_21">(i) members of the European Parliament elected from constituencies in Ireland...</p>
+          <p eId="para_22"> I am joined by my colleague, Deputy Aindrias Moynihan, who will co-chair the committee meeting. He is Chair of the Joint Committee on Agriculture and Food and will chair the second half of the session and will conclude it.</p>
+          <p eId="para_23"> Apologies have been received from Deputies Bennett and Shay Brennan and Senator Ahearn who are away on committee business, as well as Deputy Noel McCarthy. Apologies have also been received from Senators Stephenson, Lynch and Collins<b>. </b> Deputy Toole will substitute for Deputy Danny Healy-Rae.</p>
+          <p eId="para_24"> Before we begin, I bring to the Commissioner's attention that witnesses giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence they give to the committee. This means that witnesses have a full defence in any defamation action for anything said at a committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at the Chair's discretion. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Privilege against defamation does not apply to the publication by witnesses outside the proceedings held by the committee of any matters arising from those proceedings.</p>
+          <p eId="para_25"> Members are reminded of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against any person outside the Houses or an official by name or in such a way as to make him or her identifiable. Parliamentary privilege is considered to apply to the utterances of members participating online when their participation is from within the parliamentary precincts. Members may not participate online in a public meeting from outside the parliamentary precincts and any attempt to do so will result in members having their online access to the meeting removed.</p>
+          <p eId="para_26"> Members have been made aware of the agreed format of the meeting, which, in the interest of time, I will not give detail on. The secretariat has circulated copies. I ask members to note that the engagement has to finish no later than 1.50 p.m. as the Commissioner has further engagements. They should also bear in mind that their time allocation includes the response time and we will be strict about that.</p>
+          <p eId="para_27"> I take the opportunity to welcome the Commissioner and his officials to the meeting, the purpose of which is to allow for engagement with Commissioner Maroš Šefčovič, Commissioner for Trade and Economic Security; Interinstitutional Relations and Transparency. I will allow him five minutes to make his opening statement or a brief synopsis of it. We will then proceed to a question-and-answer session.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_28">I thank the Chairs and honourable Members of the Oireachtas for the invitation. I am delighted to be back. Due to the time limit, I will be telegram-like in my opening remarks, because I know the committee would prefer to have an intensive question-and-answer period.</p>
+          <p eId="para_29"> I will start with the matter we concluded on the last time, which was an expression of gratitude for the solidarity of Ireland, not only with the people of Ukraine but with all EU member states being in a front-line position and being generous and kind hosts to Ukrainian refugees and working with the rest of the EU to help Ukrainians to defend their freedom and address the economic consequences of the war in Ukraine, which resulted a few years ago in the steep energy crisis we discussed on the last occasion.</p>
+          <p eId="para_30"> I also acknowledge and inform members that we are fully aware that 22 Irish citizens are in a difficult situation because they were part of the flotilla bringing humanitarian aid to Gaza. The EU is in close contact with the Irish Government and institutions to secure the safety of all the Irish nationals who took part in delivering humanitarian aid to Gaza. The position of the European Union is that humanitarian aid should be available immediately and we hope that through the new 21 point plan, this will finally be possible.</p>
+          <p eId="para_31"> I came here because I know that trade is important, not only for the committee, but for such a trading nation as Ireland. Across the European Union, almost 30 million people are working in one way or another in sectors related to import and export. In Ireland, I understand it involves more than 770,000 people. Trade is in the Irish blood and economy and it is important for Ireland. Therefore, we are always in close contact with the Irish institutions and Government to make sure that on this turbulent front, we are in close contact with Ireland's partners.</p>
+          <p eId="para_32"> In the past, I have spoken to the committee mostly about EU-Ukraine relations but today it is much more interested in relationships with the US. It is interested in our free trade agreement agenda and in particular in the agreement with Mercosur. The Irish agrifood industry is especially exposed to the new super-assertive position and actions taken by China against European exporters.</p>
+          <p eId="para_33"> These are the topics I am happy to discuss with the committee. If members have any other questions, I will also be happy to respond.</p>
+          <p eId="para_34"> I will make some final remarks, starting with the US. We are now in a situation where it is clear that the United States of America has decided to completely transform global trading partners and systems. Therefore, it has been important to be in intensive communication and negotiations with the US. We secured the best possible deal under difficult circumstances where we were talking about 15% all-inclusive tariffs and shielding important parts of Ireland's industry such as pharmaceuticals, semi-conductors and aerospace aircraft parts from future very high tariffs expected to be imposed on imports of such goods to the US in the coming days.</p>
+          <p eId="para_35"> It is important for the committee to know - this will be my last point - that the turbulence we are witnessing right now is the main reason for our acceleration of diversification of trade. That was the reason we put on the table of our Legislature the free trade agreement with Mercosur. Mexico is one of the biggest net agrifood importers. Indonesia is the same. We are also working hard with the United Arab Emirates, India and three south-east Asian countries, the Philippines, Malaysia and Thailand, to conclude free trade agreements as quickly as possible so we can diversify our trade portfolio and open access to new markets for our businesses. Thanks to our free trade network, we have managed to more than compensate for the 62% decline in trade we had between the EU and Russia in the past. This network of free trade agreements has also helped us to address the tensions, especially in the export sector in the first half of this year, when we were negotiating with the United States of America.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_3">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_36">Thank you, Commissioner.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_37">I will stop here.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_5">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_38">In case the Commissioner is not aware, there is a clock in the room which he can keep an eye on.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_39">I was looking at it, but it was moving a little faster than I thought.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_7">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_40">The committee has been divided into groupings. The first one is Sinn Féin. Colleagues have 12.5 minutes. It seems the easiest way to divide the time is that the three members take six and a half minutes between them and the Commissioner would then have six minutes to respond. Would that work for them?</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_8">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-02T12:30:00+01:00"/></from>
+          <p eId="para_41">Yes. I thank the Chair. Deputy Ó Laoghaire is unfortunately in the Chamber where the flotilla and Gaza are being discussed. He is tied up there, but I hope he will be here shortly.</p>
+          <p eId="para_42"> The Commissioner is welcome. I thank him for his opening statement. The big issue before us this morning is what happened with the flotilla last night. People from every part of Europe were going to Gaza to try to bring humanitarian aid. The huge genocide and crisis we have seen unfold for the past number of months is something the vast majority of Irish people are extremely concerned about and they wish to see more action from Europe in taking Israel to task for what it is doing. That brings me to the big issue of the EU-Israel association agreement. The view I share with all my colleagues from all political parties and none in these Houses is that we want to see Europe take a strong stand against Netanyahu and the Israeli Government and what it is doing. The best way to make that stand is through strong and severe sanctions against Israel and by ensuring that members of the European Union do not sell arms to Israel that are blowing children to bits in Gaza. That needs to end. That message needs to come firmly from here. I wanted to make that statement first. I think I have the agreement of everyone in these Houses about that. Will the Commissioner give us some information about how the European Union intends to proceed to hold Israel to account for what it has done? How does it intend to proceed with regard to those trade agreements? They are the first issues we need to look at.</p>
+          <p eId="para_43"> Moving on to other trade issues, the Commissioner mentioned in his opening statement the issues regarding the United States and the tariffs that are coming and the volatile situation we have in America at the moment. We are concerned about that in Ireland. Ireland is a large trading partner of America. We export a lot of pharmaceuticals. We are a big exporter of food to everywhere in the world and America is one of our trading partners in that sector and we are concerned about what the future holds in respect of ensuring we can maintain that level of exports to the United States.</p>
+          <p eId="para_44"> The Mercosur trade deal is another transatlantic issue. I am a member of the Joint Committee of Agriculture and Food, as are many of my colleagues in this room. The Mercosur trade deal is very concerning for Irish agriculture and farming. We, in Ireland, are very proud of the quality of food that we produce and the high standards that we attain. Many of those standards were set in rules and regulations that came from the European Union. We welcome those standards, are open to them and want to meet them because we want to ensure that European consumers get the highest quality food. They certainly do, where that food comes from this island. However, the Mercosur deal exposes European consumers to food, mainly beef and chicken, that does not meet those standards. The trade agreement stipulates that countries must meet certain standards. How does the European Union intend to ensure that Mercosur countries meet those standards? What mechanism will the EU put in place? Will inspectors inspect the production and processing of foodstuffs in the Mercosur countries? Will there be checks when those foodstuffs reach Europe?</p>
+          <p eId="para_45"> I want to convey the clear message that we are very angry because the European Union is out of step with the vast majority of people in Ireland. This will cause huge mistrust and we do not want to see that happen between the people of Europe and-----</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_9">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:40:00+01:00"/></from>
+          <p eId="para_46">The Deputy is eating into his colleague's time.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_10">
+          <from>Deputy Martin Kenny<recordedTime time="2025-10-02T12:40:00+01:00"/></from>
+          <p eId="para_47">There is only one of my colleagues here.</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_11">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-10-02T12:40:00+01:00"/></from>
+          <p eId="para_48">My family are suckler farmers. As Deputy Kenny stated, Irish beef is top quality. We do everything right, yet beef produced to a lesser standard will come in here and will be placed on the same shelf as Irish beef. What is being done about that?</p>
+          <p eId="para_49"> In Mercosur countries rainforests are being chopped down, while on this side of the world we are being punished because we are not doing enough. We are doing lots. Countries on the other side of the world will be given a pat on the back for being the bad boys in the class, yet their meat can come in here and land on the shelf with our meat. Representatives of the tillage sector appeared before a committee yesterday. There has to be a level playing field for beef and grain.</p>
+          <p eId="para_50"> We have been told that if the Mercosur-EU agreement goes through, there will be a financial safety net for farmers. I have four children, one of whom will probably take over the farm. That pot of money is our safety net. We cannot guarantee it because, to be honest, I do not trust what is going on in Europe. I do not trust that that pot of money will be there for my children. Suckler farming is already on the way down and if this deal comes in, it will go down further and we will not have food security in this country. As an island, we need food security. The Commissioner cannot guarantee that the pot of money will be there for the next generation of farmers in Ireland. Ireland has some of the best ground in the world. We produce quality food, whether it is animals or crops. We need a level playing field.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_12">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:40:00+01:00"/></from>
+          <p eId="para_51">The Commissioner has a good amount of time.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T12:40:00+01:00"/></from>
+          <p eId="para_52">On humanitarian aid to Gaza and Israel, as members will know, the European Union is the biggest provider of humanitarian aid anywhere, especially to Gaza. There are hundreds of trucks around Gaza waiting for permission to get in and deliver the absolutely necessary humanitarian aid. We have been doing our utmost to communicate with the Israeli Government to make that happen. It was on and off and on and off again. I agree that the pictures coming from Gaza and the number of casualties are heartbreaking. In my previous diplomatic capacity, I was posted to the Palestinian territories so I have been in Gaza many times. When I see the pictures on the screen, like everybody else, I recognise that the place has been completely destroyed.</p>
+          <p eId="para_53"> What is happening right now, and what we proposed, is the suspension of the trade parts of the EU-Israel association agreement. Why not the whole association agreement? The reason is that as an exclusive competence of the EU, the Council would vote on that by qualified majority. I will not hide the fact that even this proposal might not be easy to get from the member states. If we were to suggest the full suspension of the association agreement, it would require unanimity and I know 100% that we would not get it. This is a clear signal to Israel that we are suspending the trade parts of the association agreement. We did it immediately after the commitment of the President of the Commission to the European Parliament, at which Irish MEPs have been very vocal on this issue.</p>
+          <p eId="para_54"> On the US, Deputy Kenny is absolutely right that the pharmaceutical business and food exports are extremely important for Ireland and the EU. On the pharmaceutical business, we have discussed from the beginning the strong preference for having zero-to-zero tariffs because this concerns the prices for medicines in pharmacies and the provision of healthcare to people on both sides of the Atlantic. The philosophy of the United States is different. They believe that, through tariffs, you can re-industrialise the country and address some of the issues with the public finances. There are many other reasons which I will not go into.</p>
+          <p eId="para_55"> Members will have heard President Trump announce that tariffs might be 100%-plus. That was supposed to happen on 1 October. We negotiated in our deal with the Americans that the European pharmaceutical business would be shielded by the 15% all-inclusive tariffs, which we agreed and I know our pharmaceutical businesses would very much welcome. Until now, all the parts of the agreement we had in the joint statement, negotiated together, have been respected and transformed into executive orders and instructions to the customs offices. I am convinced that will be the case here as well.</p>
+          <p eId="para_56"> The two last questions were linked to Mercosur and related to standards and having a level playing field. It is important to note that there already is quite a big trade relationship between Ireland and Mercosur. It is worth almost €4 billion. We believe that with this agreement, there will be even more opportunities for all sectors in which Ireland is strong. Ireland is exporting machinery, electrical vehicle transport, medical and surgical equipment, pharmaceutical and chemicals, all of which are currently burdened by tariffs of up to 35%. These will go to zero.</p>
+          <p eId="para_57"> I know the committee is mostly interested in agriculture. Currently, tariffs on EU agrifood exports to Mercosur are 55%. Those will also go to zero. I believe, knowing the quality of Irish products, that the same will happen as happened with Canada and that exports to these territories will increase.</p>
+          <p eId="para_58"> Ireland currently exports to Mercosur countries meat and meat products worth €20 million, vegetables worth €10 million and beverages worth €22 million. How do we guarantee that these exports will not be offset by the members' concerns, which I fully understand, related to the level playing field element. First and foremost, the quota we negotiated is very small. In the EU, we currently consume some 6 million tonnes of beef. The quota, including the bones because we are talking about carcases, is 99,000 tonnes. As such, it is 72,000 tonnes of meat and even that is divided among four countries and relates to so-called prime "Hilton beef" and is frozen. It is really a very small quota.</p>
+          <p eId="para_59">We would guarantee that if the standards are not met, this food will simply not come to Europe. To do that we will, first, rely on European veterinarians who will do on-site inspections and check if the exporting slaughterhouses are respecting the deals and standards. They will be checked when they arrive at ports in Europe and by the importers. We are also making sure the safety net the Deputy referred to in the realm of €6.4 billion will be available in the unlikely event something goes wrong. We do not believe it will but in the unlikely event it does, it will be available.</p>
+          <p eId="para_60"> In the next round, I am sure Mercosur will come up again, so I will explain in greater detail how this legal safeguard should work for Irish farmers.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_14">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_61">I think you will have ample time. I thank the Deputies and Senators. Next is the Fine Gael group. They have 20 minutes.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_15">
+          <from>Deputy William Aird<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_62">We have four speakers.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_16">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_63">I was going to suggest that if you get three minutes each, that gives a total of 12 and it gives the Commissioner eight minutes to come back.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_17">
+          <from>Deputy William Aird<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_64">Most of the questions that are going to be asked will be the same in any event. I welcome the Commissioner and his adviser. With my other hat, I milk cows for a living so I produce milk. I would love if the Commissioner could taste our milk before he leaves the country. We have the best milk in the European Union; there is no question about that.</p>
+          <p eId="para_65"> On agricultural trade and protections with regard to the impact of trade deals such as Mercosur, the EU-UK agreement and US tariff policies on Irish agriculture, how does the Commissioner intend to ensure any future trade agreements will include robust protection for the EU and Irish farm sectors such as enforcement safeguards, adjustment supports and market access limits?</p>
+          <p eId="para_66"> On trade security, supply chain resilience and agricultural inputs, I know the Commissioner has a remit over economic security and trade. What concrete measures is the Commission taking to strengthen the supply chain resilience of key agricultural inputs such as fertilisers, crop protection chemicals, feed and energy to shield EU farmers from external shocks and geopolitical disruptions which we have already seen to date?</p>
+          <p eId="para_67"> On customs reform, border friction and post-Brexit deal facilitation, I understand the Commissioner is leading efforts on a modern EU customs regime under the new customs authority. In the context of Ireland's dual trade across the EU land bridge and trade across the Border North and South, what steps will he take to simplify customs procedures or reduce friction? How will he ensure such reforms do not disadvantage Irish exporters in practice?</p>
+          <p eId="para_68"> On sustainability, trade policy and farm income, how does the Commissioner see us meeting European Green Deal and sustainability ambitions, such as emissions reductions, biodiversity and deforestation, while at the same time guaranteeing that Irish and EU farmers maintain viable incomes and competitiveness in the global market? In particular, will he support compensation or incentives for farming systems that deliver enhanced environmental goods but face higher costs on a lower yield, as in this country?</p>
+          <p eId="para_69"> On institutional transparency, stakeholder access and the Irish voice, I understand Mr. Šefčovič is also Commissioner for Interinstitutional Relations and Transparency, alongside his role in trade. How does he propose to strengthen transparency and stakeholder engagement in the trade negotiations process, such as by giving national parliaments, Oireachtas committees or farming organisations earlier sight of texts or impact assessments? How will he ensure smaller member states like Ireland have an effective voice in the whole process? I thank the Commissioner.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_18">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_70">Star pupil is all I can say. I call on Deputy Brian Brennan.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_19">
+          <from>Deputy William Aird<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_71">I did all that on the train coming up this morning.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_20">
+          <from>Deputy Brian Brennan<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_72">I welcome the Commissioner. I hope he gets to see places outside of Dublin as well. The 7 October attacks should not have happened and the hostages should be released but, as the Commissioner well knows, we are witnessing one of the most grievous crimes and instances of genocide in our lifetime. We have serious questions about Europe. I preface this by saying I follow what the Commissioner is doing and admire his stance and how he has stood up. The people of Ireland want to know why Europe sat on its hands for so long? Why the slow response? As I speak, people are dying but some of the states in our Union are selling arms or components of arms to Israel. It just does not add up for the people of Ireland. I am very interested to hear the Commissioner's comments on that.</p>
+          <p eId="para_73"> On Mercosur, the Irish farmer is such an important part not only of our community but of the social fabric of our country. As I said, I would love if the Commissioner could go down the country and see how ingrained they are in what happens. If farming is not going well, our small towns and villages suffer. It is not only farming. Our tillage sector is on its knees. There is a fear with Mercosur that we will be flooded with cheap goods, when we pride ourselves on quality. There is a conveyor belt of young farmers today in Dublin Airport going abroad because they do not see any future in farming. Farming in Ireland is more than just a community; it is part of what we are. I would really appreciate the Commissioner's comments on both of those issues.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_21">
+          <from>Senator Paraic Brady<recordedTime time="2025-10-02T12:50:00+01:00"/></from>
+          <p eId="para_74">I welcome the Commissioner. I too am a farmer. I farm sheep and suckler cows. In 1973, when we joined the EEC, now the EU, the population of our national herd was the same as it is today. We talk about environmental impacts and so on, but our national herd has not grown. It has actually diminished over the past number of years. When we talk about a green product and a green way of life, we have instilled something into our farming community, of which I am a part, such that we have pride in our food and what we produce, whether chicken, beef, lamb or pork. There are regulations. We had the National Ploughing Championships, which, unfortunately, the Commissioner is just after missing. It was held last weekend. Over 200,000 farmers attended, taking pride in what we have achieved over the year.</p>
+          <p eId="para_75"> Over the past number of years, farmers have become accountants and environmentalists and have adhered to all the regulations and rules that have come in from Europe. We are now looking at the scientific facts and DNA - that is where our beef sector has gone - to see whether we can produce a lighter carcase that can go onto a shelf and be killed at an lower age. We have looked at the scientific facts and emissions from cattle. We have DNA data. We have followed the whole scientific procedure with our cattle. I know for a fact this has not happened across Europe. We are the only country that has followed these scientific facts. We have figures from our factories on one thing or another. I fear we will import a product that does not have traceability, with hormones that were used here in the past, and we will have to compete with that in a global market. Our farmers, of not only beef but also of pork, children and lamb, feel this is a step too far for our economy, farming and communities. No farmer is against trade. We are the biggest exporters. We exported from the dairy, beverages and beef sectors to the tune of €19.1 billion last year.</p>
+          <p eId="para_76">The fear concerns how we compete in a market that is not a level playing field. That is the fear factor. If we can get a regulator from the EU on which Ireland has at least one auditor who can go to these inspections, it would help. </p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_22">
+          <from>Deputy Joe Cooney<recordedTime time="2025-10-02T13:00:00+01:00"/></from>
+          <p eId="para_77">I welcome the Commissioner. It is great to have him here. Deputy Aird put most of the questions to him. I will not delay the Commissioner as I want to give him time to respond. What is making my blood boil is hearing and seeing what is happening in Gaza. Women have been on the phone to me crying and asking whether there is anything we can do to stop supporting Israel in whatever way we have to do it and in every way possible. What is happening there is scandalous, outrageous and unbelievable. If we could help today, it would be a big addition. </p>
+          <p eId="para_78"> The other issue is the Mercosur deal. The issue has been raised here a few times and I am sure it will be brought up again. There is serious concern in this country that it could destroy farming. I will not go into the ins and outs of it but it is to be supported, it is important that there be a level playing pitch. The fact that tillage farmers on their knees was mentioned. If we do not have a level playing pitch, it is quite possible that dairy and beef farmers could go the same way.</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:00:00+01:00"/></from>
+          <p eId="para_79">In response to the Deputy's question about Mercosur safeguards, I note that he is a very proud milk producer. I will set out the checks and safeguards. We took with all seriousness the statement of the Irish Government from the beginning of the year that it cannot support Mercosur in its current form. We are working very closely with the Irish Government and other countries that have doubts about this agreement to see how we can address these fears and concerns.</p>
+          <p eId="para_80"> I will start with legal safeguards. What we put on the table is an unprecedented step. There is a so-called safeguard chapter in the agreement. We are proposing the strongest legislative mechanism in the EU, which is regulation, regarding how these safeguards will be properly implemented. In a nutshell, it means that trade with Mercosur and imports will be under constant monitoring. A report will be issued every six months telling national parliaments, member states and stakeholders how trade is evolving. If there is market disturbance in one country and the disturbance is described two factors - a 10% increase in imports or a 10% drop in prices - within five days, we must propose further action and within 21 days, which I think members will agree is super fast, we must adopt if needed safeguarding measures. Once the safeguards are in place, they will be in place for four years. This is a very strong legal guarantee about what would happen if there is a disturbance concerning an increase in imports or a decrease in prices. </p>
+          <p eId="para_81"> Regarding the level playing field, we made it clear to our Mercosur partners that we will accept no compromises on food standards. The checks on the side in this country by European veterinarians will be upscaled and more resources will be dedicated to these controls. There are very strong elements in the agreement concerning animal welfare. We are finalising the stocktaking exercise. Someone from a farming community knows what MRL is. We want to make sure that if certain pesticides are banned in Europe, they will also be banned in the countries from which we are importing agrifood products. Under no circumstances will we import hormone-treated beef. As one can imagine, this was one of the difficult topics we discussed with our US partners. We proposed €6.4 billion in a so-called unity safety net in the unlikely case that something would go wrong. It is not insurance. It is ready insurance if something does not work out. </p>
+          <p eId="para_82"> I very much appreciate the Deputy's remark that Europe is an agrifood exports superpower. Nobody exports more agrifood than the EU. He is very proud to represent the Irish people. Ireland has one of the strongest agrifood sectors on the planet. Its quality is uncontested so Ireland should not worry about competition. Its meat, poultry and milk are so established on the European and global market. When I travel around the world and go into supermarkets, I see them everywhere. If we want to remain an agrifood superpower, we have to have an agreement where we can open the doors for Ireland and where it will not pay 30%, 40% or 55% tariff duties in the case of Mercosur because it will limit its opportunities. We can lower tariffs for Irish whiskey and Bailey's from 150% in Indonesia to 5%. In the case of India, the figure is also 140% or 150%. The agreement will increase opportunities for Ireland. On top of it, Ireland will have protected its general indication that nobody can present a product as Irish whiskey or Baileys so it can sell these as premium products. We have super confidence in the quality of Ireland's products for European consumers and those elsewhere. </p>
+          <p eId="para_83"> I know other countries have been extremely worried about CETA. Between 2016 and 2024, bilateral trade between Canada and Ireland increased by 267% from €1.3 billion to €5.11 billion. Exports from Ireland to Canada increased by 353% so it shows that Ireland is very strong in the agrifood sector, machinery and services. Regarding the very sensitive segment of beef and poultry, Irish exports went up and our sanitary and phytosanitary, SPS, measures clearly withstood the test because we are not taking any hormone-treated beef from Canada and any kind of products that do not fulfil 100% our SPS regime. We have been very clear to the US that we are not willing do to that for it either despite the high cost.</p>
+          <p eId="para_84">I understand there was a lot of accumulated negative energy and mistrust because these negotiations were taking a long time. There were ups and downs and there was a lot of disappointment from the Irish side. Ireland had legitimate worries that it would lead to disaster, but I believe we learned from that exercise. We know that we should not put an agreement on the table that would be bad for Ireland. An agreement with minimalistic quotas, a strong legal guarantee and a strong standards guarantee would make a strong case for Ireland to reflect on.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_24">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:10:00+01:00"/></from>
+          <p eId="para_85">I thank the Commissioner. The Fianna Fáil members have 17 and a half minutes, or three and a half minutes each with six minutes for the Commissioner to respond.</p>
+        </speech>
+        <speech by="#PeterChapCleere" eId="spk_25">
+          <from>Deputy Peter 'Chap' Cleere<recordedTime time="2025-10-02T13:10:00+01:00"/></from>
+          <p eId="para_86">The Commissioner is very welcome to Ireland. I am from the small village of Graiguenamanagh in County Kilkenny on the Kilkenny-Carlow border in the south east of Ireland. I cannot impress upon the Commissioner enough the significance and importance of the agribusiness and agrifood sector to Ireland. It is not just about the trade; it is also about the impact it has on local shops, local sports clubs and the local community. It is the heart and soul of Ireland and rural Ireland in particular, which I represent.</p>
+          <p eId="para_87"> The agrifood sector in Ireland employs approximately 170,000 people. It is a huge employer in a population of 5.5 million. As said by previous speakers, our agrifood exports accounted for approximately €20 billion last year. It was a record year for us. It comprises 10% of our overall exports. Agriculture matters to the people in this room and to this country. I acknowledge there are a lot of economic opportunities with the Mercosur deal, but there are risks as well. Balancing those economic opportunities with the potential risks, in particular to the agrisector that I represent and the people in this room represent, is absolutely vital. I would be interested in the Commissioner's comments and views on that. What comfort can he give us to allay the fears and worries the Irish people have regarding the Mercosur deal, given the importance it has for us? In the Commissioner's view, how will the Mercosur agreement impact Irish agricultural exports, particularly in beef, which comprises such a large portion of our exports?</p>
+          <p eId="para_88"> Standards were mentioned by previous speakers. This issue comes up every day in this room because the standards the Irish farmer has to adhere to are so high. The Commissioner said that Europe is a superpower in the agrifood sector but Ireland is a superpower within the European superpower. The standards that are set are so high, and we meet them and fulfil them every day of the week. There is a genuine worry and fear that the same standards are not being applied in the Mercosur countries. It is grand to assess products when they come into Europe but we need to make sure there are standards that are being are maintained over there as well in order to ensure that when the beef comes in, it is of a certain standard.</p>
+          <p eId="para_89"> There approximately 5.5 million people living in Ireland. We produce enough food to feed approximately 45 million people. We are a net exporter of food and a net contributor to the European Union in the agricultural sector. The Commissioner touched earlier on the protections that will be built into the agreement to protect the Irish agrifood sector. Could he expand on them? He mentioned that legal issues could arise if a country goes below a certain percentage. I ask him to expand on that.</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_26">
+          <from>Senator Paul Daly<recordedTime time="2025-10-02T13:10:00+01:00"/></from>
+          <p eId="para_90">The Commissioner is very welcome. I take this opportunity to congratulate him and thank him for the trade deal he did with America at 15%. That deal gets a bad press in the media, but it has been proven in recent weeks with the pharmaceutical industry being tied in at 15%. That was what saved it. It would be remiss of us not to mention it. The most-favoured nation tariffs on many products were larger than 15%. It looked like we would have to pay a lot more. The Commissioner deserves to be thanked, congratulated and complimented on the deal. President von der Leyen signed off on the deal in Scotland, but the Commissioner did a lot of negotiating behind the scenes. I want to thank him for that.</p>
+          <p eId="para_91"> I know the negotiations are still going on. I am from a small village called Kilbeggan, where Kilbeggan Whiskey is produced. I am still hopeful that the Commissioner can carve out a 0% tariff for spirits. That is vitally important for this country. Is the Commissioner in a position to update us on those negotiations? It was the American Administration that initiated this whole process. We wish there were no tariffs at all. It was important that Europe did not have a knee-jerk, tit-for-tat reaction that involved imposing a tariff on American product coming in here, as an eye for an eye. That would eventually have been paid by the consumer. Many people were asking for that and it took strength not to take that reciprocal action. Again I congratulate the Commissioner on that.</p>
+          <p eId="para_92"> The Mercosur deal has been covered. There is a major issue with equivalence of standards, and not just with beef from Mercosur countries. We were told yesterday that at the moment - before the Mercosur deal - 1 million tonnes of genetically modified grain and animal feedstuffs are coming into this country from Mercosur countries. We cannot or will not produce genetically modified product. We need to look at equivalence of standards across all imports into the EU, and not just in this one trade deal. It is happening already. This trade deal might help to highlight it but it is happening already and needs to be looked at.</p>
+          <p eId="para_93"> The Commissioner spoke about veterinary inspections on the meat coming in. A vet inspecting a carcass will not tell you where or how it was produced. They cannot tell by looking at a carcass whether it was raised in flattened rainforest land, for example, or whether it was hormone treated. The inspections need to be on the other side. They need to be on the farms at the point of production.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_27">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-10-02T13:10:00+01:00"/></from>
+          <p eId="para_94">It is a real privilege to welcome the Commissioner to Dublin and to Ireland at a time when there is no doubt that the EU faces very profound challenges. However, there are extraordinary opportunities for us as well. As the Commissioner knows, Ireland is a very proactive and constructive voice within Europe. We are very proud of being pro-Europe and pro-enterprise. With all of the global instability we have around us, that is important.</p>
+          <p eId="para_95"> We seek assurance that future UK divergence will not undermine the peace we have on the island of Ireland since the Good Friday Agreement.</p>
+          <p eId="para_96"> From an energy perspective, it is important to highlight Ireland’s leadership in terms of offshore wind and the potential offered by green hydrogen. We need to see how we can progress that within the European network.</p>
+          <p eId="para_97"> Coming from the small rural village of Rathangan, County Kildare, I know that the most important thing, as we hear time after time, is to advocate on behalf of the agricultural market and rural Ireland. The just transition is hugely important. Is there any room for further funding in relation to this? Due to some of the decisions made in the last just transition programme, some key geographical areas were left out. I am interested in knowing if there is any possibility of expanding the targeted funding.</p>
+          <p eId="para_98"> County Kildare is a hub for farming and medtech, as indeed is the country as a whole. Naturally we are very concerned about the tariffs. I agree with my colleague Senator Daly, who thanked the Commissioner for the incredible work he has done on behalf of all of us in Ireland and across Europe. Does he have any ongoing concerns that things could change for us in the near future?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_28">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:10:00+01:00"/></from>
+          <p eId="para_99">The Commissioner has six minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:10:00+01:00"/></from>
+          <p eId="para_100">Thank you very much. I thank the Deputy from Kilkenny. I apologise for not knowing his name but unfortunately I do not have the members' names in front of me. Of course we know how important agriculture is for Ireland. It is very active in talking, and not only to us. The presence of Irish farmers' representatives and associations in COPA-COGECA and all across the board is very visible. I am sure they would confirm that I meet them quite often. </p>
+          <p eId="para_101">A total of €20 billion of agrifood exports for Ireland is a remarkable success and I have no doubt that it will continue because the agreements we are putting on the table are opening a new level of the market access for Ireland's farmers. If we look at Mexico, it is a huge country which is one of the biggest net agrifood importers. I just signed the deal with Indonesia a week ago. It is the biggest Muslim country of almost 300 million people. Again, it is a net importer. We also managed to squeeze in a very important tariff-like quota for wines and spirits. When I am in the United Arab Emirates and having my meetings, I look in the shops and they are full of Irish products. Ireland is very much present there. We are working very hard on India where the agriculture sector is super-sensitive because they are very protective of their sectors. We are looking for ways of how to open it for our exports.</p>
+          <p eId="para_102"> To provide more details on this guarantee, once again I will try to explain the mechanics. There is an agreement and then there is our internal legal Act which is called a regulation, because you cannot have more binding legal Acts than the regulation in the European Union. It very clearly sets the framework for how this safeguard chapter of the Mercosur agreement would be applied. This means in practice we have to do this regular permanent monitoring where, every six months, we have to report the developments in the import-export of agrifood products with Mercosur. Let us talk about Ireland. If there is a 10% increase from the previous period in these sensitive commodities or if there is a 10% decrease in price because of the situation in the market, then the process of imposing the safeguards is automatically triggered. I reassure the members we will not be playing for time. We will act properly. This regulation has very clear timelines. We have to respond to such a finding with five days and we have to propose the measures and implement them within 21 days which, I would say, is the speed of light in any administration, I hope the members would agree. Once the safeguards are imposed, they are there. The safeguards are that we can limit or block the imports and then they are in place for four years. That is the legal guarantee.</p>
+          <p eId="para_103"> On the guarantee on standards, I totally agree that, once the beef is here and there is a doubt, then it is too late. That was the point which was made. Therefore we will increase to the maximum our checks in Brazil and Argentina on the farm and in slaughterhouses to make sure there is no hormone beef and all the standards are fully respected, and our partners agree with that. Members will have access to this finding because that is our common goal. On top of that, the goods coming to Ireland will also be checked by Irish authorities when they come here. There is also an initiative from different farmers’ unions that we have to set up a very close network between the most important ports which bring the goods into Europe to be particularly specialised on agrifood products to be well equipped to do the controls. We, as the European Union, will do regular audits on whether this control system is working and performing. We will do sample testing in laboratories to make sure everything is complied with concerning standards. If we find something is wrong, our rapid alert system, which I am sure the Deputy is familiar with, will be triggered and the exports will be simply banned.</p>
+          <p eId="para_104"> There are additional elements and measures on how we monitor, on top of hormones, the use of antibiotics and everything else which was raised by the farmers’ representatives in Brussels. We will insist on a reciprocal standards to be mutually respected. There is all this plus a limited quota, which I will describe. If we are talking about real meat without bones, we are talking about 72,000, and if we are talking about prime Hilton Quota beef, it is about 50,000 tonnes, which compared with the European consumption and production are really small numbers. In exchange for that we are opening the biggest market for us. It would a trade agreement that is four times bigger than that with Japan. There are all these astronomical tariffs going to zero.</p>
+          <p eId="para_105"> One last thing on Mercosur I forgot to mention is the 99,000 tonnes is the final number after seven years. The Deputy will see what is happening over the seven years and how this quota is being used. All this was done to reassure people. We will be very happy to work with Peter Power and the delegations to provide the Deputy with more technical details if needed. The Chair is signalling for me to stop and I am over time. He was very gentle with my use of time.</p>
+          <p eId="para_106"> If I did not respond to the Senator, I will do it in the next round if I can.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_30">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:20:00+01:00"/></from>
+          <p eId="para_107">We will move to the next block which is Independent Ireland. It is five minutes for questions and answers.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_31">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-02T13:20:00+01:00"/></from>
+          <p eId="para_108">I want to get in as much as I can. First, I thank Mr. Šefčovič for coming. Can he explain one thing on the trade deal? When is the movement of the products going to happen? Has it happened already or will it be when it is ratified by the EU?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:20:00+01:00"/></from>
+          <p eId="para_109">Is the Deputy talking about Mercosur or the US? </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_33">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-02T13:20:00+01:00"/></from>
+          <p eId="para_110">I am talking about the trade deal. When do the products go over and back tariff free? Are they moving already or is it when they are ratified? The second question is on the 10%. My understanding in reading it is that if beef reduced by 8% in a year, it does not kick in, and if that happened over four or five years, it still does not kick in because it is under the 10% each year. Clarify that for me, please.</p>
+          <p eId="para_111"> On standards, with due respect, we had the tillage committee in yesterday. There is a huge difference in how tillage is grown in third countries compared with Ireland, especially. Let us be real about traceability and date of birth. Irish journalists have gone to some of those countries. It is abysmal how they rear cattle compared with Europe. How does the Commission intend to resolve that issue? Am I correct in saying that part of this deal is that no country will be kicked out of the deal unless they are kicked out of COP, the climate agreement? Environmentally, the deal means some of the rainforest can be cut until 2032. Part of the deal is that it is a drop down.</p>
+          <p eId="para_112"> If Mr. Šefčovič is confident about the deal, why did he basically make redundant each member state so there is no vote for us as elected politicians in each country? One time, Ireland had a vote-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_34">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:20:00+01:00"/></from>
+          <p eId="para_113">It is time to finish up, Deputy.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_35">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-02T13:20:00+01:00"/></from>
+          <p eId="para_114">The last question is on fertiliser. There is €50 per tonne coming in on fertiliser. Does Europe not understand that farmers will be crippled by that? I will finish with that because I want to get in as much as possible.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:20:00+01:00"/></from>
+          <p eId="para_115">Let me start at the end because I did not manage to answer the fertiliser questions. As I am sure the Deputy is very well aware, half the price of fertiliser is the price of gas. We have been getting major exports of fertiliser from Russia where you will find it at absolutely dumped prices. The fact is there are installations across Europe on the verge of bankruptcy right now.</p>
+          <p eId="para_116">We have just seen how much everything can be weaponised. We have seen that developing dependency, even in the production of fertilisers, is quite dangerous for the future of the farming community. What we are doing is opening the fertiliser business to the US and others, tariff free, and we are giving a fighting chance to fertiliser producers in Europe to supply the EU from European sources rather than create another source of funding for Russia and Belarus. Of course, we are fully aware that fertilisers are very important to Ireland. Once the deal enters into force, the goods will start to be transported back and forth. If there is a beef quota of 99,000 tonnes, the tariff is 7.5%, but it would be phased in over seven years. Therefore, it is not 99,000 tonnes in the first year but that amount over seven years. There is a seven-year adjustment period. Of course, from day one of Mercosur goods arriving to Europe, all the checks, controls and inspections have to be done. If there are any doubts concerning traceability or any criticism in that regard, we are always ready to examine it and ensure the required traceability is guaranteed.</p>
+          <p eId="para_117"> Concerning the question on the 10%, it is a matter of an increase of more than 10% year on year, so, as a rule-----</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_37">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_118">Is the Commissioner saying that if the amount is 5% or 6% every year, the break does not come in?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_119">It is measured on a year-to-year basis. I understand that-----</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_39">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_120">I thank the Commissioner.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_40">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_121">I thank the Commissioner. I need to move to the next group. In this group, there are two and a half minutes per member for questions and answers. I will allow a minute and a half for each set of questions, and we will begin with Deputy Lawless.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_41">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_122">It is really important that the Commissioner fully understand how food is produced in Ireland. I ask him to come to Mayo and travel around to see how food is produced, particularly beef. It is radically different here than in other parts of the world. My main concern relates to the regulatory differences and the uneven playing field. In the tillage sector, we see how genetically modified produce is being imported into Ireland and sold as the equivalent of our native produce. This is happening currently under EU trade deals. What guarantee can the Commissioner provide that this will not happen in relation to Mercosur deal and to beef? It is obviously totally unfair.</p>
+          <p eId="para_123"> Would the Commissioner agree it is unfair to create a playing field that is so unlevel that genetically modified imports are competing at market prices with our native grain and that the tillage sector on its knees as a result? Does he agree that the consequence of the Mercosur trade deal will effectively be to increase unfair practices in the beef sector?</p>
+          <p eId="para_124"> My final question is about the safeguards that were mentioned. The Commissioner said prices can reduce by up to 9%-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_42">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_125">Members should adhere to the time.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_43">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_126">-----but the guarantee is for only four years. What happens after four years?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_44">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_127">The Commissioner has 40 seconds.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_128">I understand the question. First and foremost, I really do not believe we are imposing an unfair deal on Ireland. We have done everything possible and I was doing my utmost to explain this in greater detail. We are ready to continue engaging directly with the Deputy or his team to reassure him that what we are putting on the table is an absolutely fair deal with an unprecedented number of safeguards for European farmers, including Irish farmers. I was talking about the legal safeguards. When I was talking about the imposition of the safeguards after the mechanism is triggered, the safeguard will be in place for four years. After four years, of course, you have to reassess it. Again, this is unprecedented. We never had that.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_46">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_129">After four years-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_47">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_130">I thank the Commissioner. I need to move on to the next speaker.</p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_48">
+          <from>Deputy Paul Lawless<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_131">After four years, what happens?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_49">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_132">The floor is Deputy Toole’s.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_50">
+          <from>Deputy Gillian Toole<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_133">Cuirim fáilte roimh an Commissioner agus Ms Galiffa.</p>
+          <p eId="para_134"> My questions are as follows. In relation to CETA, are there reciprocal protections for Irish businesses? With regard to Mercosur, Irish grain growers are particularly concerned about the CBAM tax on exports and there being no reciprocity in relation to imports. What will be the timeline for reciprocal standards?</p>
+          <p eId="para_135"> My final question is on the WHO’s pandemic treaty, effective from July 2025. In this respect, what contingency planning is being done for potential impacts on EU logistics and trade if there are shutdowns?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_136">When it comes to CETA, the success of Irish businesses and exporters – with a dramatic increase of exports to Canada, whose value increased from €1 billion to more than €5 billion – is proof that this deal is good for Ireland and Irish exporters. I firmly believe it is a fair deal. I know there are still questions with the Irish Government concerning investment protection. It is a very technical discussion. If the Deputy is interested, we can have that discussion, but it is difficult to cover in a short period.</p>
+          <p eId="para_137"> On the pandemic treaty, I really do not know the answer because it is not my remit. If the Deputy submits all her questions, I will make sure the Commissioner responsible for health provides a proper answer to her.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_52">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_138">The next speaker is Senator Higgins. She has two and a half minutes.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_53">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_139">We know that the Commission, following the ruling of the European Court of Justice, found the basis on which the EU was trading with Morocco and with Western Sahara, which is illegally occupied by Morocco, not to be legitimate. A new negotiating mandate was sought and given on 10 September and we were told the new deal had been negotiated on 18 September, with the decision to be made yesterday at the EU Council. It would be good to get an update on that. Why, when the court said either explicit or implicit consent from the Sahrawi people would need to be shown, was the choice made not to engage with the only recognised representatives of the Sahrawi people, namely, Polisario, and not to seek explicit consent from the people of Western Sahara on the new trade deal, particularly when the stated position is that we support a referendum and want to move towards it? Why was this not used as leverage, for example, to press Morocco to support and allow a referendum to take place in Western Sahara?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_54">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_140">The Senator should give the Commissioner a chance to answer.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_55">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_141">The proposal is that the EU intensify investment in Western Sahara, but that investment will be available to Moroccan settlers and Moroccan businesses operating there. Is this not echoing some of what we have seen in the West Bank? Why was the choice made? Are we in danger of intensifying the occupation in that context?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:30:00+01:00"/></from>
+          <p eId="para_142">I thank the Senator. The question on Morocco is one on which, to be honest, I did not go into great detail in preparing for this meeting. Therefore, I can give only a general outline. I can provide a written answer if that would be welcome.</p>
+          <p eId="para_143"> The steps mentioned were indeed triggered by the ruling of the European Court of Justice, which asked us to correct the way the trading mechanism was set up. I believe that what has been proposed is in full conformity with the court’s ruling, which was our prerogative; however, concerning the greater details, I will have to look into the matter so as not to mislead the Senator and to give a precise answer.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_57">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_144">Could I ask a follow-up question instead?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_58">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_145">I thank the Senator. We have a number of minutes remaining and two speakers have not had an opportunity to speak yet. Senator Higgins can take one minute.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_59">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_146">I will be very brief. I was disappointed that the Commission is only looking for a partial suspension of the EU-Israel association agreement, especially as it is in response to a breach. Does that not lend a lack of confidence in human rights clauses and environmental clauses if we decide to only half respond politically to those breaches? Specifically on Horizon, I know the Commissioner is bringing proposals on qualified majority voting for it, but on the next Horizon programme, is the Commission looking at the non-inclusion of Israel rather than a sanction or suspension in the next round of Horizon funding, given that we are entering the next round with an awareness of the human rights situation?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_147">I think I already answered this question before but I am very glad to reassure the Senator that if it comes to the partial suspension of the association agreement focused on the trade parts of the agreement, we did it because under the exclusive competence of the EU - meaning under the exclusive competence of the Commission - they are decided upon by the qualified majority.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_61">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_148">In that context, was it just goods and not services?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_62">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_149">I thank the Commissioner. I am conscious that he did not have an opportunity to answer a number of questions as he wished. He can send on further details to the committee if he wishes. The Co-Chairs have not had an opportunity to ask questions so in the remaining few minutes, we will ask one or two questions.</p>
+        </speech>
+        <speech by="#JohnLahart" as="#An_Comhchathaoirleach" eId="spk_63">
+          <from>An Comhchathaoirleach (Deputy John Lahart)<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_150">I am not going to take the Commissioner's time as we had an opportunity to chat in advance and I raised some issues with him. I thank him in particular on behalf of Ireland for his role as trade Commissioner in his dealings with the United States. We spoke about that. We are in his debt. It is not ideal but when we look at what was facing us, it was a pretty comprehensive deal. We hope it is solid and sealed into the future.</p>
+          <p eId="para_151"> The Commissioner is an influential figure. He is a long-standing Commissioner with a lot of experience. It is clear he does not have political influence but he has administrative influence at the Commission. Aside from trade and economics, what binds member states are the values of the European Union. If the European Union cannot respond in a unified way to genocide or to the weaponising of food in the middle of a conflict that is creating famine-like conditions for people on the ground, or cannot use its influence and power to compel access for humanitarian aid or even for independent media, which are basic requirements of any democratic, civilised state, in Gaza and the West Bank and if the EU does not demonstrate the will to do these things in the medium to long term, that creates a real difficulty for the value system of the European Union. I urge the Commissioner to share that around the table of Commissioners, notwithstanding the historical issues and challenges that some countries face in terms of their own historical past. We accept that there are differences but if the EU is to survive as a value system, then these challenges have to be faced. They are the points I would like to make to the Commissioner.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_64">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_152">I will briefly make one or two more quick points to the Commissioner. The points on the flotilla and Gaza have been well made already. Beef farmers have very real concerns in regard to Mercosur about the environmental standards, animal welfare and hormones, etc. Could the Commissioner write back to the committee with an outline of the level of inspections that will be conducted, in particular from an environmental and animal welfare perspective?</p>
+          <p eId="para_153"> If there is an opportunity, could he also briefly refer to pig products being exported to China and the efforts that would be made to remove the related tariffs and to find alternative markets as well? I will give the Commissioner an opportunity to respond.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Maroš Šefčovič<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_154">I thank the Co-Chairs very much. I know that we are running out of time so I will be very brief. First and foremost, on the question of the trade deal with the US, as we discussed earlier, it is our most important trading partner and a very important ally in the field of security. On issues like Gaza and the EU, all members around the table have clearly presented a very strong view. I will share their very strong impression with my colleagues in the Commission. I reassure them that from the first moment we have been pushing very strongly for the provision of humanitarian assistance. We have been supplying aid. We have been working on air bridges and on making sure the trucks are at the gates but we cannot open the gates if Israel is not willing to do that. We have been raising this relentlessly with the Israeli authorities. We do it all the time. That is what members need to know. Not everything is in the newspapers or on the TV, but it does not mean that it is not happening. Members know very well that when it comes to the Common Security and Foreign Policy, it is a shared competence with the member states and therefore what the Commission can do is use to the full the competences we have in the field of humanitarian aid and trade policies. We really use them to the fullest.</p>
+          <p eId="para_155"> I would be very happy to provide the committee with more detailed written answers on the level of inspections <i>vis-à-vis</i> Mercosur, as well as to the questions I did not have a chance to answer. I was puzzled by the GMO question so we will look into it and provide the committee with additional information.</p>
+          <p eId="para_156"> On China, we raise this at every single meeting I have with Minister Wang Wentao. We will continue to do so. We are considering the legal remedies but they take time to trigger so I would prefer to find solutions to open the market immediately. Alternative solutions are all the FTAs we have been discussing - with Indonesia, the UAE, and Mexico - but I am sure Irish agrifood businesses will do as well as they did in Canada where the trade was marked by a dramatic increase in Irish exports because Ireland is so strong in agrifood standards, the quality of the product and also in marketing.</p>
+          <p eId="para_157"> In concluding, I thank the committee for the invitation and for having me. I also clearly confirm that, as we have discussed Brexit in the past, we can discuss all these topics. If the committee feels it needs additional information directly from me, we will make sure we will provide it with all the details necessary for its decision-making. I thank the committee very much.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" as="#An_Comhchathaoirleach" eId="spk_66">
+          <from>An Comhchathaoirleach (Deputy Aindrias Moynihan)<recordedTime time="2025-10-02T13:40:00+01:00"/></from>
+          <p eId="para_158">Thar ceann an choiste, gabhaim buíochas leis an gcoimisinéir as an eolas agus as an gcomhrá anonn agus anall. On behalf of the committee I thank the Commissioner and his officials for the very constructive exchange of information at today's meeting. As there are no further matters for discussion, today's meeting is adjourned.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 1.49 p.m. until 3 p.m. on Tuesday, 14 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

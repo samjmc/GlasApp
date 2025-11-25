@@ -1,0 +1,1046 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-12/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-12/debate"/>
+          <FRBRdate date="2025-11-12" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-12/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-12/debate/mul@"/>
+          <FRBRdate date="2025-11-12" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-12/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-11-12/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-15" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AlanKelly" href="/ie/oireachtas/member/id/Alan-Kelly.S.2007-07-23" showAs="Alan Kelly"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="DonnaMcGettigan" href="/ie/oireachtas/member/id/Donna-McGettigan.D.2024-11-29" showAs="Donna McGettigan"/>
+        <TLCPerson eId="JoanneCollins" href="/ie/oireachtas/member/id/Joanne-Collins.S.2025-01-29" showAs="Joanne Collins"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MartinConway" href="/ie/oireachtas/member/id/Martin-Conway.S.2011-05-25" showAs="Martin Conway"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="TeresaCostello" href="/ie/oireachtas/member/id/Teresa-Costello.S.2025-01-29" showAs="Teresa Costello"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-12">Dé Céadaoin, 12 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-12">Wednesday, 12 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#CathalCrowe">Cathal Crowe,*</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#JoanneCollins">Joanne Collins,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AlanKelly">Alan Kelly,*</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#TeresaCostello">Teresa Costello.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#DonnaMcGettigan">Donna McGettigan,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#MauriceQuinlivan">Maurice Quinlivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PeterRoche">Peter Roche.*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputies Sorca Clarke, David Cullinane, Pádraig O'Sullivan and Marie Sherlock, and Senator Nicole Ryan.</summary>
+          <summary eId="sum_5">I láthair / In attendance: Senator Martin Conway.</summary>
+          <summary eId="sum_6">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-11-12T09:30:00+00:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T09:30:00+00:00"/></from>
+          <p eId="para_14">Apologies have been received from Deputies Clarke and Cullinane, and Senators Nicole Ryan and Boyle. Deputy McGettigan is substituting for Deputy Clarke, Deputy Quinlivan is substituting for Deputy Cullinane and Senator Collins is substituting for Senator Ryan.</p>
+          <p eId="para_15"> I will read a note on privilege. Parliamentary privilege is considered to apply to the utterances of members participating online at a committee meeting whenever it is sitting within Parliament. There can be no assurance in relation to participation online from outside Parliament and members must be mindful of this when contributing.</p>
+          <p eId="para_16"> We will go into private session to consider some housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> The joint committee went into private session at 9.36 a.m. and resumed in public session at 9.39 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Healthcare Services in the Mid-West: Health Information and Quality Authority<recordedTime time="2025-11-12T09:30:00+00:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T09:30:00+00:00"/></from>
+          <p eId="para_17">Today the committee will consider a review of urgent and emergency health care services in the mid-west. I welcome from Ms Angela Fitzgerald, chief executive, HIQA and her team, who have joined us this morning.</p>
+          <p eId="para_18"> For too long, access to healthcare has been a postcode lottery across the country with some regions being left behind. Nowhere is this more apparent than in the mid-west.</p>
+          <p eId="para_19">While investment has undoubtedly increased in recent decades, the decades of underinvestment and poor policy decisions have really plagued this region. When it comes to the reconfiguration of the health services in the mid-west it is now widely accepted that they have been a failure. Accident and emergency departments in Ennis and Nenagh hospitals and at St. John's Hospital in Limerick were closed without the recommended bed capacity in University Hospital Limerick, UHL. There was a review in 2008 that made clear the closure of these accident and emergency departments should not occur without the capacity of 642 inpatient beds in UHL but the accident and emergency departments in Ennis, Nenagh and St. John's Hospital were closed with only 375 inpatient beds in UHL. Only this year has UHL finally reached the bed capacity that was recommended 17 years ago. That recommendation has been outstripped by demographic changes. It is important to note this. As people will know, UHL is now consistently the most overcrowded hospital in the country. Just yesterday there were 96 patients without a bed in the hospital. This was the highest in the country by some distance. Furthermore, since the reconfiguration HSE Mid West is the only region without a model 3 hospital. All other health regions have at least two model 3 hospitals, if not three or four. Addressing these capacity constraints and regional disparities in the mid-west must be a priority. That is why we decided to have this meeting to consider this issue this morning, particularly in the context of the report being published and the pending decision from the Minister. This issue has been deferred for far too long and must be dealt with. This is why it is important to have this session this morning.</p>
+          <p eId="para_20"> I am delighted to welcome HIQA to give their opening statement on the matter.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T09:40:00+00:00"/></from>
+          <p eId="para_21">Good morning everyone. I thank the Chairperson, Deputies and Senators for the opportunity to address the committee this morning and to seek to address members' questions about HIQA’s review, which was undertaken to inform decision-making on the design and delivery of urgent and emergency healthcare services in the mid-west. I am joined today by my colleagues Dr. Máirín Ryan, director of health technology assessment and deputy CEO within HIQA, and Sean Egan, director of healthcare regulation, who together with their teams conducted this review.</p>
+          <p eId="para_22"> In mid-2024, the then Minister for Health asked HIQA to conduct the review following significant patient safety concerns and capacity issues in the HSE Mid West region. The review was conducted jointly by the healthcare regulation and health technology assessment directorates within HIQA.</p>
+          <p eId="para_23"> Members will be aware that HIQA is the independent health and social care regulator, with 18 years’ experience of promoting quality and safety in healthcare services in Ireland. Since our establishment in 2007 as the independent regulator, and in accordance with our legal remit, we have been tasked by successive Governments and Ministers with conducting statutory reviews and investigations into patient safety issues and publishing our recommendations. Our recent statutory review on the governance of implantable devices at Children's Health Ireland, CHI, including the use of non-CE marked springs in surgery at CHI at Temple Street, is an example of how we deliver on this core objective of promoting and protecting the health and well-being of the people we serve.</p>
+          <p eId="para_24"> We also have extensive experience of carrying out health technology assessments, HTAs, and other forms of evidence synthesis review. It was this particular brief that also equipped us very well to do this piece of work. Our HTAs provide evidence-based advice setting out key considerations for Government to inform investment decisions on new interventions and programmes such as new care pathways, immunisation programmes and changes in screening programmes. One recent example was the addition of new conditions such as spinal muscular atrophy, SMA, to the heel prick test for infants. We also conduct evidence synthesis to inform public health policy and the development of national clinical guidelines. The team was instrumental in supporting advice to the Government during the pandemic.</p>
+          <p eId="para_25"> For this review, through our evidence synthesis function, we critically assessed the best available evidence to inform advice on addressing the patient safety and capacity issues in HSE Mid West. The regulatory lens we have allowed us to provide an independent and objective view of the operation of University Hospital Limerick and the other hospitals in the region. We had an understanding of what is required to ensure services are consistently delivering the excellent standards of care and the best possible outcomes for the people of the mid-west.</p>
+          <p eId="para_26"> As members will know, overcrowding in UHL has been a cause for concern for several years, despite recent efforts to increase staffing and expand bed capacity at the hospital. We are acutely aware of the impact this overcrowding has had on families right across counties Clare, Tipperary, Limerick and beyond. During our review we heard directly from many of those families, the public, clinicians and healthcare providers. This helped to get different perspectives on how best to address the overcrowding at the hospital. We greatly appreciate those patients, families, staff, individuals and organisations who took the time to engage with us and to share their experiences and views with us.</p>
+          <p eId="para_27"> Our work was supported by a multidisciplinary expert advisory group, which provided input and advice throughout the review. HIQA took a programmatic approach across different areas to inform the overall advice to the Minister for Health. These included: a review of international evidence to look at what works in alleviating overcrowding and what were the requirements for the provision of an emergency department service; a review of relevant policy developments between 2000 and 2024 that have impacted on the current configuration and design in the delivery of services in the HSE; regulatory inspection of the healthcare services in HSE Mid West, including our ongoing programme of monitoring of services in the region against the national standards for safer better healthcare; a review of data relating to capacity and service activity performance to understand the context in the HSE Mid West and how it compares with other health regions; and a detailed stakeholder engagement exercise, which was probably one of the most extensive we have undertaken so far, including a public consultation, to seek the views of people in HSE Mid West, and other interested parties regionally and nationally. This stakeholder engagement exercise involved over 1,100 submissions via an online survey and 17 in-person meetings. We were also asked to take particular cognisance of the recommendations by Chief Justice Frank Clarke in his report of the investigation of UHL.</p>
+          <p eId="para_28"> Critical to informing our advice was a significant piece of work undertaken by the Economic and Social Research Institute, ESRI. This research, published in September 2025, provided projections of the demand and capacity requirements for urgent and emergency care and inpatient care in the region up to 2040. This is part of a wider exercise that was done to look at capacity requirements for all regions in the country. This work was central in shaping our recommendations and advice to the Minister.</p>
+          <p eId="para_29"> In line with our legal remit and the terms of reference agreed with the Minister, a key priority for us is patient safety. This is at the forefront of our advice to the Minister. We found that the core issue impacting urgent and emergency care in HSE Mid West is the significant inpatient capacity relative to other equivalent hospitals and having regard to the demand from patients presenting with more serious or complex care needs that require admission. This is intensified by an ever-growing demand for services, which will continue into the future, as highlighted by the ESRI projections for the period up to 2040. We believe that the current situation caused by the demand-capacity gap at UHL and across HSE Mid West represents a risk to patient safety. Our advice has, therefore, highlighted a need for immediate action and investment to address the current risks to patient safety in the shortest timeframe and in the safest way possible.</p>
+          <p eId="para_30"> HIQA has identified three potential options for the Minister to consider on how the deficits in HSE Mid West might be addressed, while also meeting the additional inpatient bed capacity requirements in line with the ESRI’s projections up to 2040. We have identified three options. Option A is to expand capacity at UHL on the Dooradoyle site. Option B is to look at the potential to extend the UHL hospital campus to comprise the existing Dooradoyle site and another site adjacent to UHL to support the delivery of healthcare services under a single campus with shared governance and a shared resourcing model. Option C is to develop a model 3 hospital in the mid-west, providing a second accident and emergency department for the region. Our advice outlines the benefits and potential implementation challenges for each of the three options. We believe that options A or B will likely yield the required inpatient bed capacity to address the immediate risks to patient safety within a shorter timeframe. Option C offers the potential to meet the longer-term bed requirements. It also has the longest lead time, which means it cannot address the immediate and urgent capacity deficits. In the event that option C is considered the preferred option, it will still be necessary to meet the current capacity deficits through options A or B. This is an important consideration in terms of shaping the decisions and in the context of the overall capital programme.</p>
+          <p eId="para_31"> Given the range included in the ESRI projections, it will be important to ensure that investment decisions taken now enable flexibility in how services are planned and developed for the longer term.</p>
+          <p eId="para_32">It is also essential that there is continued monitoring of actual demand for services relative to the ESRI demand and capacity projections because of that range. Such analysis should also take account of the impact of investment in capacity in the region on emergency services and inpatient care. In working to progress the selected option or options, we have recommended the development of a comprehensive strategic plan to address the safety concerns which prompted this review, while having regard to future demographic and policy considerations. Ongoing communication and engagement with the people of HSE mid-west will also be crucial to implementation of the selected option or options.</p>
+          <p eId="para_33"> As the committee knows, we presented our findings and advice to the Minister for Health and published the review and associated advice in September 2025. I thank members for their attention. We look forward to addressing any questions they may have.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_4">
+          <from>Senator Teresa Costello<recordedTime time="2025-11-12T09:50:00+00:00"/></from>
+          <p eId="para_34">I thank the witnesses for being here today. How long would it take for option C to yield the desired results? What would the timeframe for developing a model 3 hospital in HSE mid-west look like? What specific methods would be used to expand capacity on the Dooradoyle site at UHL? If options A and B were to be chosen, how long would these options be able to provide enough inpatient beds for to match the demand in the short term and how long would it take for options A or B to be implemented? Given that options A and B have relatively similar timeframes and results, what would the benefits and drawbacks of each option be?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T09:50:00+00:00"/></from>
+          <p eId="para_35">I might ask Mr. Egan to take this question and we are happy to work through all of it.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T09:50:00+00:00"/></from>
+          <p eId="para_36">The Senator's first question is about the potential timeframe for option C. As we have outlined within the advice, a potentially long timeframe is required to identify a site for commissioning and building a model 3 hospital. We know from our history in the State that it can take many years from deciding to make a decision to develop a hospital to actually opening the doors. Some of that is infrastructural. Some is planning. Much of it is around the design and delivery of services. We have identified in our advice the various different evidence-based requirements for a model 3 hospital to be established in the region. It is not as simple as just opening the door to establish emergency services. You need the full range of clinical services available in the hospital to be able to treat any of the conditions that might present at the front door of the hospital. That includes critical care services, surgery, interventional radiology, cardiology and so on. Those services are not currently present in the model 2 hospitals in the region.</p>
+          <p eId="para_37"> A key consideration is obviously infrastructure but there is also one about building up and developing the various different clinical services and staff that are required in order to be able to provide a safe service that meets the clinical care programme requirements for each of the different inputs that need to be provided within a service such as that. You could be talking many years of planning and development in order to be able to develop that. We have identified an ongoing deficit within the region, notwithstanding the recent provision of capacity, with the opening of the new 96-bed block, which is very welcome.</p>
+          <p eId="para_38"> Moving on to the Senator's other questions about the options other than option C, what we have outlined in our advice are option A, which is to develop and expand the Dooradoyle site, and option B, which is to develop an adjacent campus to further support services which are already provided in Dooradoyle under a single clinical governance model.</p>
+          <p eId="para_39"> If we look at option A, we can see that there is the potential to develop on that site. We have seen that in more recent times with the opening of the 96-bed block. By the end of this year, relative to where we were in the middle of last year when we commenced the review, 128 beds will have been added, which is quite significant in the totality of services in the region. As we conducted the review, we were provided with documentation and evidence from HSE estates which provides a potential roadmap for the development of all the necessary capacity on that site. It would be outwith HIQA's specific competence to get into detailed evaluation of planning and infrastructure but on the basis of the information that we have been provided by the HSE, there is the possibility in the footprint of the site as outlined by HSE estates to develop all of the necessary capacity on that site.</p>
+          <p eId="para_40"> One thing that we have highlighted through our advice is that that is subject to receiving the necessary planning at a sequence and rate that would be necessary to keep pace with capacity in the region. It is not a straightforward option and it requires a judgment call about how readily that could be provided within the region.</p>
+          <p eId="para_41"> Option B is a variation on A in many ways because it maintains the clinical governance of a service across two sites. We have a precedent for that within the State, for example, up the road in Galway, where there are essentially two sites that operate in a single hospital. There are benefits to that in staffing, oversight and so on. The potential benefits of option B are that it can address some of the concerns that may arise regarding the full potential to develop Dooradoyle within the timeframe that is required. Clearly a site would need to be identified to do this but as part of good medium- to long-term planning, what we have said in our advice is that regardless of whether A or B is chosen, there would be benefits in considering identification of a site to provide contingency in planning because the population in the mid-west requires services and we are playing catch-up from a low base in capacity.</p>
+          <p eId="para_42"> The benefits of B are that you potentially avoid risks associated with development on a single site. It provides for the potential of flexibility in how services are provided and configured and it provides the potential to decamp services in time to allow for development on the Dooradoyle site because, for those who are familiar, as I am sure many people are, there has been much investment in Dooradoyle's infrastructure. Much of the newer development is of a high standard and is really very good infrastructure but many older parts of the hospital are quite aged and not really in keeping with 21st century medicine, so there will be a requirement to look at that infrastructure in time, regardless of which option is chosen.</p>
+          <p eId="para_43"> The Senator can see that there are benefits and potential challenges with all of the options that are outlined. What we have sought to do in our advice is to provide that menu of options for policy consideration by the Minister going forward through the work that we have published.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_7">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T09:50:00+00:00"/></from>
+          <p eId="para_44">I thank HIQA for the presentation. It would be remiss of me as a TD for the Limerick and mid-western area not to put on record the policy failures in the past which have led to massive overcrowding in University Hospital Limerick. I do not have to tell anybody in this room that. That has affected every family in Limerick and in the mid-west region. We have had horror stories from people who tried to access the emergency department. What is probably never recorded is the number of people who did not go to the emergency department when they probably should have because they knew they would be waiting for days and days on trolleys. As somebody who has had close relatives, neighbours and friends there, it has been a disaster for so many people. The policy failures in the closures of St. John's, Nenagh and Ennis hospital emergency departments without delivering what was supposed to be the centre of excellence in the mid-west region led to this.</p>
+          <p eId="para_45"> We are in a situation now where it will take us, with the best will, years to get out of the mess that we are in. Trolley numbers have come down slightly since the 96-bed unit opened. My concern would be how long a new 96-bed unit will take. The HSE tells me it will be the end of 2029, which is four years away. I spoke to the Minister. It has to be done quicker than that. There has to be some way that we can get that done quicker. It is simply not good enough to say that there are issues with planning but funding and all the red tape around that has to be agreed.</p>
+          <p eId="para_46"> There are three options, as the witnesses said, options A, B and C. My party has come out in support of that. I think most TDs in the mid-west region have written to the Minister. Today, we co-signed a letter where we all agreed to that. Those three options need to be expanded. My first question is about option A, as we spoke about, and the capacity.</p>
+          <p eId="para_47">If I am not mistaken, Ms Fitzgerald said in an earlier response that there was sufficient space on the UHL site to deliver the capacity we need, which comes as a surprise to me. Will she explain that?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_48">As part of the exercise, we had to engage with national capital estates to try to assess whether building on the current site is feasible. We are not planners or engineers but the HSE's estates unit has done a comprehensive assessment of the site, which looks at future projections for requirements and the potential of providing up to 500 to 600 beds. It also recognises maternity care and need to provide a space for co-location. We spoke to the Department in doing the review about the policy context and its assessment through the estates unit suggests the site can support that. We recognise that.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_9">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_49">It suggests that maternity care could be transferred as well as doing this.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_50">Yes, but what we have said is that we recognise that. Clearly, it would be a significant undertaking to run the current services and a capital programme in parallel. We have at least assessed it based on the HSE's assessment but it would require a more detailed assessment by the Minister. On paper, the HSE's capital estates unit assessment suggests the 600 beds could be supported on the site and a space could be carved out for the maternity unit. It is one of the considerations the Minister will need to take into account.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_11">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_51">For option B, HIQA talked about a space near UHL. What does it mean by "near"?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_52">We have seen examples. As Mr. Egan said, we have the example in Galway but there are other examples of large campuses. I have seen them particularly overseas, where the campus extends across both sides of a street. The Mater hospital has some of that. A lot of its services are provided across the street. It came up in a discussion on how to develop a campus solution because there are benefits in attracting and retaining high calibre staff. Staff who are highly qualified when they come back to Ireland want to work in centres of excellence. They want to work where they will get the opportunity to use their skills, so that concentration of expertise is attractive to doctors, nurses and other therapists coming back. In that context, we have looked at whether there is potential to find an adjacent site. The benefit of that, as Mr. Egan said, is that some of the challenges of trying to build it all on one site would be de-risked. There would also be some decant options. That means that while the building is ongoing, there would be space to decant services. That is an option we have asked the HSE and the Government to consider.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_13">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_53">My question was how Ms Fitzgerald would define "nearby". Would it be across the street?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_54">There are a number of options. In Galway, Merlin Park University Hospital is approximately ten minutes away from University Hospital Galway. Certainly, adjacency is wanted because what we are looking for is clinical cohesion and sharing. There are models where ambulatory care can be decanted and that is the direction of travel of the Government anyway, with the elective hubs and the separation of elective capacity for minor surgery and some outpatient capacity. There are opportunities to look at creating the space on the Dooradoyle sub-site for the most complex patients and then putting supporting infrastructure around it. It is one of the options we have looked at the merits of. The unified clinical governance would be maintained - that is essential - to make sure there is strong clinical leadership.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_15">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_55">It is not necessarily next-door. It could be ten minutes away, as in Galway.</p>
+          <p eId="para_56"> Ms Fitzgerald said there are three options, A, B and C. I would love to develop A and B as fast we can and ultimately then deliver C because that will take time, with the best will in the world and the problems we have with planning and getting funding agreed and all the ducks in a row. My position and that of my party is to deliver A and B and ultimately get to C as well.</p>
+          <p eId="para_57"> Before HIQA leaves, I did not mention in my opening remarks but I want to put on the record the work the vast bulk of staff have done in that area, including nurses, porters, doctors, clinicians and everyone who has done the best they can. Sometimes, when we talk about patients who had a terrible experience there, by and large in the emergency department, we forget to mention the staff.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_58">I totally agree with the Deputy. Through Mr. Egan's work, one of the things we have tried to distinguish in our reports is the commitment and dedication of staff and the circumstances in which they are operating. In my last job, I had a lot of close engagement with the staff in Limerick and I think it is fair to say that in the past three years where we have intensified our engagement with them, there has been huge dedication. It is very difficult for staff to get up every day to circumstances in which they cannot treat patients as they want. That is the other driver.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_17">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_59">As I am running out of time, I will go back to option A. Does Ms Fitzgerald think the current plans the Government has will deliver option A?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_60">At the moment, what we have looked at is that to try to get parity with other hospitals, UHL needs about 220 beds. The beds that have come on stream and the balance of 36 beds will get us some of the way there. The other 96 beds that are planned would give parity if they were coming now.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_19">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_61">Therefore, we need a commitment to something else at the moment.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_62">They need to start looking at another 100 beds straightaway.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_21">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_63">I thank HIQA for the detailed report. I was online the day it presented the report as well. I thank the witnesses for all the work that was done on it. It has been an issue of ongoing concern. As Deputy Quinlivan did, I pay tribute to the staff who have worked under very difficult circumstances to ensure that not only staff but patients have a safe stay in hospital.</p>
+          <p eId="para_64"> I am on record - I was on the radio shortly after HIQA issued its report - of being in favour of options A and B happening now, leading to option C. I welcome that 16 Members, TDs and Senators, came together to sign a letter with an agreed plan for what we would like to see happen. That is basically options A and B leading to option C.</p>
+          <p eId="para_65"> On HIQA's engagement, it has highlighted that bed shortage is the biggest issue. How many beds are we short? Approximately 140 were delivered in the past 12 months.</p>
+          <p eId="para_66"> Option A has received planning permission. On the 2029 timeframe, is there any hope of delivering that faster?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:00:00+00:00"/></from>
+          <p eId="para_67">That is quite a few questions. We have been clear about the need to act now. Whether it is on option A or B, we are very clear that there is a need for investment now. We welcome that the beds have opened and we can already see, as one Deputy mentioned, the immediate impact on trolleys. That shows the relationship between capacity and demand.</p>
+          <p eId="para_68"> On the current gap, when these beds have been opened, we will be looking at a gap of 90 beds based on current demand. The challenge is with the timeline for the 96 beds because of planning permission, which is longer than we would like. That underlines the need to progress the next 100 beds that are required. On option A, we are clear that building now to meet current demand and building on the plan that is already there for the next 100 beds is essential.</p>
+          <p eId="para_69"> On the configuration of services, as Mr. Egan said, we have very little experience in this country of building a new hospital from scratch other than the children's hospital and the national maternity hospital and they have taken a considerably long lead time. That is a consideration when we look at the potential for option C. However, as we said in our advice, it means we still have to act now. Our view is clear that the opening of the 120 beds now and the plan for the next 95 beds will get the hospital to what is required right now but there is a need to act now to get ahead of the demand that is coming.</p>
+          <p eId="para_70"> The Senator will notice that the Economic and Social Research Institute, ESRI, has a wide range. It goes from 299 to 599. That reflects uncertainty in demographic projections.</p>
+          <p eId="para_71">It is not the ESRI's fault, but the range is to reflect that. That also builds in a requirement to continuously assess the impact of what we have put in now, and are we able to get a better assessment as we move along in order that we put the investment where it is needed most. We have to remember that the ESRI did a national review. Every region has a shortfall, so we have to be mindful, as Deputy Quinlivan said, of addressing the significant deficit in Limerick but also keeping pace in other areas. We have been mindful of that in the advice.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_23">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_72">HIQA has looked at international best practice and has looked outside the box. It then engaged with different groups. Did it engage with the patient service users committee? Perhaps Ms Fitzgerald would give a brief overview of what kind of international best practice HIQA may have examined.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_73">Dr. Ryan will maybe take the international best practice, and then I will ask Mr. Egan. He led on the consultation and Dr. Ryan led on the international best practice.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_74">We did a review of international best practice and looked at a range of countries that had some similarities with ourselves in terms of healthcare delivery. We looked at the UK, Australia, Canada, New Zealand and some European countries. On the standards required for a hospital that supports an emergency department, what is very clear is that you do not consider just the emergency department. It needs to be integrated with a hospital. Mr. Egan mentioned the services that need to be available. You need to have critical care, anaesthetics, medicine, surgery, cardiology, intervention, radiology, other radiology services, lab services and mental health support. It is really about having an emergency department that is going to be capable of treating the sickest patients or providing what we call undifferentiated care, that is, in respect of patients who arrive and you do not know what their diagnosis is but you need the wide range of services to provide them with safe and effective care. To do that, you need to have that emergency department sited in a hospital that has all of the specialties I mentioned and that is also able to maintain a safe roster for those services. For example, with anaesthetics, the model of care at the moment is two plus two. Therefore, 24-7, with three shifts over every 24 hours, you have two consultant anaesthetists and two supporting doctors. It is about standing up a very big service behind an emergency department in order that you can guarantee that the patients who are seen in that emergency department receive a safe service.</p>
+          <p eId="para_75"> One of the other things that is really important about it is that it is patient-centred care. It is about focusing on ensuring that it is about the patient as opposed to being maybe about the efficiencies, although the efficiencies are obviously really crucial as well, and then having dedicated services around paediatrics and older persons as well to meet specific requirements. That is the overview of international standards.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_76">On the engagement piece, this review is primarily about and for the people in the mid-west and the services they should expect to receive. We were keen to ensure we spoke to as many people as we could to get their views in relation to the way services are provided within the region and their views on how things need to be provided going forward. We conducted a very extensive engagement exercise. As our CEO stated earlier, it was actually the largest engagement process we have ever conducted in any of the work we have done in our 18 years of existence. We received over 1,100 submissions. About 75% of those came from family members or people who use services, and we got a really good range of views in relation to service users. We also proactively engaged with a number of interested stakeholder groups, including patient representative groups.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_27">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_77">That is perfect. I am going to cut across Mr. Egan, if that is okay, because I want to get one more question in. I agree that once the 96-bed block goes up there is not an awful lot of room left on the site. I have been engaging with residents in the area who were involved in the objections to the previous one because of the impact on them. The hospital would run into issues if it was to expand.</p>
+          <p eId="para_78"> I wish to pay tribute to Ms Sandra Broderick and the team involved there now. In terms of reducing bed numbers, having people leave the hospital over the weekend has really helped, as has getting consultants to work at the weekends. I wanted to acknowledge that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_79">I thank the Senator. I have a number of questions I would like to put at this point. As I said at the outset in terms of context, there are real policy failures here and real lessons for the Department of Health and the HSE with regard to the long-term planning of health services. They need to be seriously considered and lessons need to be learned moving forward, particularly around the closing of the accident and emergency departments in Ennis, Nenagh and St. John's without a prior building up of capacity in UHL. This is something that cannot happen again. We need to be far better at long-term planning if we are putting those kinds of reconfigurations in place. The results have been catastrophic and have serious impacts on services and people in the mid-west.</p>
+          <p eId="para_80"> I thank the witnesses for all of their work on this report. It is really important. It is crucial we have options on the table now and decisions made to rectify some of those and provide better services for people living in the mid-west. I also pay tribute to staff who worked in services that were massively under pressure and overstretched. They did Trojan work in circumstances that were not ideal and were really stretched. I also pay tribute to the people who have engaged in this process, including the stakeholders, researchers, community members and experts who have engaged with us and sent us questions they would like us to put to the witnesses, in particular Ms Sinéad Madden, who has sent some questions she would like to have answered. One of those is in regard to option C, which, as we know, is around developing a model 3 hospital somewhere in the mid-west providing a second accident and emergency department. Does HIQA have a position on where that should be? If we build a model 3, where in the mid-west should that be?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_81">We have not set that out. I do not think we would have the expertise to make the final decision because there are a range of other considerations that would be outside our remit. What we did look at - and I might ask Dr. Ryan or Mr. Egan to come in on this - was where people access services and where they are coming from. We looked at the volume of presentations and the utilisation of the sites. In the context of saying that option C and a model 3 is required in the longer term, there are planning and other considerations that would be required. We did not look at that as part of our remit but we did look at where patients are coming from in the region. I do not know if Dr. Ryan has that information readily to hand.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_82">In regard to the patients who present at the emergency department in UHL, 56% of them come from Limerick, 25% from Clare and 11% from Tipperary. We did not have data to break that down as to whether it was just north Tipperary or what proportion might have come from south Tipperary. The remainder comes from other counties and might be people either studying or working in the area, who give their home address when they register. Those are the data in regard to presentations.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_31">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_83">Am I right in thinking there is a minimum number of people who need to attend accident and emergency? There is a minimum requirement of 60,000 of critical attendance, is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_84">Yes, and I think the emergency medicine programme would have some guidance. The reason they look at minimum numbers is to tie into the point both Mr. Egan and Dr. Ryan have made, which is you need to have certain numbers to support sustainable rosters. You need to be seeing enough people to maintain your skill and gain expertise and that is very true in the areas of critical care and anaesthetics. It is also true in regard to surgery. If you are presented with a patient who has a very complex surgical intervention, you need to be seeing enough of them.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_85">Does HIQA's model use those critical mass figures?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_86">Exactly.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_87">Did HIQA look at the geographical spread of that or whether there would be enough people attending from Clare or north Tipperary to have critical mass for another accident and emergency department there?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_88">We did not specifically look at that specifically. The numbers attending the emergency department in UHL are about 87,000 per year at the moment and the ESRI projects that is going to increase by somewhere between 16% and 23% by 2040. There will be over 100,000 accessing emergency department care by 2040. We did not specifically look at the distribution of the population or where the critical mass would be. We did not look at that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:10:00+00:00"/></from>
+          <p eId="para_89">Was there a reason that did not come into the considerations?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_90">Our feeling was that it is a policy decision to determine what options you go with. If a policy decision is made to go with option C, then there is a body of work that needs to be undertaken to decide-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_91">There needs to be a subsequent piece of work to decide on location.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_92">Yes. As the Chair will appreciate, there was a time pressure on us to try and do this as quickly as possible.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_93">I appreciate that. Thanks for all of your extensive work on that. Am I right in thinking that there was not a consensus across the expert advisory group?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_94">That would be correct. We had a very extensive expert advisory group, which included input from all of the relevant clinical care programmes, academia, public health, patient representatives and administrators who have responsibility for management in the region. We were unable to come to a consensus because while the options we outlined were all legitimate options, ultimately what is required is a policy decision with a judgment call-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_95">How do you weigh up or interpret the different opinions? When there is no consensus, what weight do you place on public engagement, professional opinion and so on?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_96">It is our job to objectively and independently consider all of the various different inputs and come to a considered and educated view in relation to the actual advice that we subsequently provided through the publication of our report. In other work that we have done, there are certainly much clearer pathways. It can be quite obvious, after we have done all of the work, as to what the direction of travel should be. In this situation, however, we are not in that space. There are legitimate options that could be taken in various different directions. Ultimately, it requires a policy decision in relation to the specific pathway that is followed in the context of the advice that we provided.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_97">I understand that 1,121 submissions were received as part of the consultation process. Over 1,000 of those were from individual respondents and 24 were from organisations. Did the Minister for Health or the chief executive of the HSE make a submission?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_98">No.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_99">We spoke with the CEO of the HSE, as we would speak to people around this, but there was no written submission from either the Minister or the CEO.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_48">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_100">In 2022, HIQA stated that the absence of a model 3 hospital in the University of Limerick hospital group contrasts with the structure of other hospital groups. While hospital groups have now been replaced with health regions, the same disparity is present within the new regional structure. What is HIQA's view on that disparity in terms of model 3 hospital provision?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_101">One of the positives in the region is the way in which they have used the model 2 hospitals. Dr. Ryan's team looked at utilisation and at the volume of activity in the region and compared them. We would have to say that there is an unusual presentation of data. When we looked at the data first, it looked like Limerick was less busy than other sites but actually a significant number of patients go to the model 2 hospitals who will not be admitted. It is important to say that, nationally, about 25% of patients are admitted. The balance of patients are seen and discharged so the model 2 hospitals are doing a very good job in the mid-west in terms of seeing and treating.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_102">We are under time pressure, but we can come back to this again.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_103">In terms of the requirements for model 3 hospitals, we have set out what those requirements are. They are significant.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_52">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_104">We might come back to that because we are out of time for this slot.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_53">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_105">Thanks very much to Ms Fitzgerald and her team for coming in and for the report. One could make the reflection that people in the mid-west would quite rightly question the views of experts. They were ridiculed in 2008 when they opposed the downgrading of Nenagh and Ennis hospitals. They were told that they were going to get a centre of excellence in Limerick, but that did not happen. It has caused a huge loss of confidence, not just in the mid-west but also in other areas. When we were planning our health services at the time, the advice of experts was followed and considerable political capital was spent on making those changes and convincing people that they were wrong and that the experts were right. It pains me to say that. This report is so welcome because it is based on data and proper projections from the ESRI.</p>
+          <p eId="para_106"> Following on from the Cathaoirleach's questions, Ms Fitzgerald was making some comments on the model 2 hospitals. That has been one of the untold stories of reconfiguration in the context of a growing older population and hospital admissions. Has there been any examination of the types of admissions in Limerick? We know that a lot of the people who are being admitted now are older patients with complex and chronic illness. Many of those cases could be dealt with adequately in a model 2 hospital. Is there an ability in the short term to develop further model 2 capacity in the area, pending the outcome of this process?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_107">I will take that question. The Deputy is right that we need to look at the way in which services are configured in the round. In the context of the model 2 hospitals, as our CEO stated, they are working very well and efficiently. They actually provide a good template for other model 2 hospitals within the region. In our evaluation of the data around where patients present, we can see, as Ms Fitzgerald outlined, that the model of distribution of where patients present differs within the region because the configuration differs. If one looks at the triage score for patients who present to Limerick, it is actually much lower, meaning that the level of acuity of patients who actually present to Limerick is higher than it would be in many of the other emergency departments around the country. What that means, essentially, is that model 2 hospitals are carrying a lot of the heavy weight that is required around patients who do not need to go to an emergency department and can be very safely and effectively managed in the local injury units, medical assessment units and so on. Recently, we have seen a significant additional investment within the region in the medical assessment units. As part of our assessment approach, we would have visited those units. We can see that they are providing a really vital service, particularly for those older patients that the Deputy mentioned who have myriad conditions that need to be managed in an appropriate setting. The model does work in so far as the way that it is configured but what does not work is the fact that the capacity within Limerick is not enough to deal with those patients who rightly present to that particular setting.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_55">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_108">Would it be right to say that the real weakness is that there is not a model 3 hospital in the region? In other regions there are model 3 hospitals as the intermediate piece between a model 4 and a model 2 hospital. Is that where the weakness lies? I accept the recommendation that producing a model 3 hospital will take time. What the Government and all of us here need to address is the delivery of critical infrastructure, not just housing and wastewater treatment, but critical infrastructure in healthcare which has such a long lead-in time. Perhaps that is for another day but the AB model seems to be the one that will deliver capacity more quickly.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:20:00+00:00"/></from>
+          <p eId="para_109">Yes, and the other thing is that in the Government's current plan there are 114 additional beds planned for the model 2 hospitals. We have recommended in the advice that we should look very closely at the best use of those beds. We have seen that step-down beds can support earlier discharge. Limerick, of necessity, was one of the early adopters of shortened length of stay. We can see that they have the shortest length of stay and that they move people on. If one looks at other countries, that is what they do. That was a necessity there but it is a good model.</p>
+          <p eId="para_110"> The other point is that the Government has supported elective hubs. We know that Nenagh has very good minor injury and minor surgery capacity and that should also be leveraged. In terms of looking at option A, it is also about looking at the potential to further develop what is a good model. If we look at the UK and other countries, we see that they leverage smaller hospitals in a way that we do not do so well. It would be a mistake to lose that. I know it is early days and it is 96 beds, but the early signs are very good in terms of the impact of that investment to date.</p>
+          <p eId="para_111"> A point made by one of the Deputies earlier and picked up on by Mr. Egan is that the other critical ingredient is management capability. It is important to recognise that in recent years, the capability and capacity of the region has been leveraged by strong internal processes.</p>
+          <p eId="para_112">Mr. Egan's reviews show that Limerick is using what it has very well. It is also adopting new interventions in line with best practice. The ingredients are about having the right capacity in the right place. It is about leveraging model 2 hospitals and leveraging egress capacity, such as delayed discharges. It is about using what you have very effectively. All of those things are critical.</p>
+          <p eId="para_113"> Going back to giving acknowledgement to staff, the review shows that in recent years the staff in Limerick have been doing the best with what they can. It is about trying to protect that going forward. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_57">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_114">That is a very important statement from Ms Fitzgerald because if you read the media and the reports, a lot of blame was being laid at the feet of staff two, three, four years ago when they were doing their jobs in an almost impossible situation. I would say they were being set up to fail. There was no possible way there could not have been adverse outcomes in a system that was under so much pressure.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_115">The Deputy made the point about the power of evidence. An objective assessment, like what Mr. Egan's team does through regulation and Dr. Ryan's team does through evidence, as well as what is coming through from the ESRI, allows us to look at whether the capacity is adequate. That is an important lesson learned in terms of how we go forward.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_59">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_116">Of course we need more level 4 capacity but - this is more philosophical - we also need to avoid a narrow drive towards specialisation with an ageing population. We need more generalists in the system. As a GP, I see that it can be a problem to find a general medical opinion. The only places where we can get those general medical opinions are in places like Roscommon University Hospital or Ennis Hospital in County Clare. We are not even getting them in level 3 hospitals any more. Medical personnel are deciding they are specialists in one area of endocrinology, for example, and are saying "I am only doing diabetes; I do not do anything else in endocrinology." We need to protect ourselves against this drive for complete specialisation because we need more generalists in the system.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_117">With chronic disease management and older persons, the Deputy is absolutely right. The ICPOP model, which is in early-stage development, is designed to put the clinical lens around people in the community. I agree with the Deputy. Roscommon is a very good example. The Louth-Meath group, as it was, has also tried to leverage that. People in local areas have a sense of connection with that service because it can meet many of their needs.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_61">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_118">Especially older people.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_119">I thank Ms Fitzgerald. The Sinn Féin slot is next with Deputy McGettigan, then Deputy Roche of Fine Gael. We will then take a break.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_63">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_120">I thank the witnesses for coming in today. I am from Shannon so you can imagine the issues we have there. To us, the disastrous decision that was made in 2009 has unfortunately played out. It would be remiss of me not to mention Aoife Johnston, who was needlessly lost to her community and her family. Unfortunately, since then we have needlessly lost another young lady from Shannon in the hospital.</p>
+          <p eId="para_121"> As the witnesses can imagine, when this HIQA report came out people were disappointed and angry. They said they probably could have written it themselves. They were annoyed that it offered options rather than setting out A, B and C. Do the witnesses agree that a lack of infrastructure is causing the deaths of people in the mid-west and that infrastructure needs to be put in place? Could crisis and emergency plans be implemented to expedite this? We know it can be done because a private hospital was built in Limerick in 16 months. We just need the political will to do it.</p>
+          <p eId="para_122"> We have agreed, as already said, to sign a letter that will go to the Minister, Deputy Carroll MacNeill. Hopefully A, B and C will be implemented. Do the witnesses believe implementing A, B and C is feasible and would alleviate things in the long term? Why are we talking about the short term? We need to look at the long term; we need to look at the future. Would the witnesses say A, B and C would be feasible?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_123">I might make some general comments first and then I will ask Mr. Egan to come in.</p>
+          <p eId="para_124"> First, it is right and proper that we remember people who have lost their lives and the prompt for this review. One of the things we were specifically asked to do was to take account of the recommendations made by the former Chief Justice, Frank Clarke. He very clearly said that when a system is constantly overcrowded, it becomes very difficult to manage effectively. He called that out. On the Deputy's point about infrastructure, when you do not have enough capacity and you are constantly in escalation, which is what he was saying, it makes it very difficult to make good decisions and to allow clinicians to operate effectively. That is a strong message and that is why we are saying there is a need to act now. The benefits of the 96 beds that have opened are showing already and those beds need to be followed by the other 96.</p>
+          <p eId="para_125"> Regarding the timelines, the Bon Secours hospital can open beds because it is not bound by public procurement and public arrangements which make things more challenging for us. It is also important to say that those beds will have some benefit for the region because nationally-----</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_65">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_126">That has been stated before. Does Ms Fitzgerald think it is feasible?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_127">We were asked to provide advice to the Minister rather than recommendations. There is a distinction. We do that through a lot of the work we do. We understand that doing something for Limerick can have an adverse implication for somewhere else. It is not for us to make a decision. We have said there is a need to act now and acting now means taking options A or B. That is very clear. That is to meet the current requirements. Those 220 plus beds need to be addressed.</p>
+          <p eId="para_128"> We were asked specifically to look at option C. As Dr. Ryan has said, it is not just about building a building - we are talking about billions in those terms - because it is also about ensuring that building is staffed by a whole suite of specialties right across-----</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_67">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_129">Is it feasible? That is what I am asking.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_130">We are saying it is an option which needs to be considered now by the Government, in conjunction with taking short-term actions, having regard to the potential for doing that in the long term and remembering that the ESRI is also making very similar recommendations for other regions in the country.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_69">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_131">The witnesses said earlier that they are not planners, but they are giving options in respect of massive decisions. Did they get expert opinion on planning and areas?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_132">The ESRI provided the capacity assessment because it is expert in that. It took account of all the projections. Regarding planning considerations, I might ask Mr. Egan to talk about who he consulted.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_133">As part of our advisory group, we had input from estates experts in terms of what can be potentially provided. Our area of expertise lies in clinical safety and the design and delivery of clinical services. What is required in the first instance is a decision or decisions relating to exactly how services will be set out. From there, there are further pieces of work that need to be done, as we have highlighted already, where that additional planning piece needs to come in. There is a policy decision that is required here around how it is intended to configure services now and into the future. Once that decision has been made, at that point the appropriate input would be around the specifics of planning.</p>
+          <p eId="para_134"> I will go back to the Deputy's original question on whether these options are mutually exclusive. No, they are not. We have said in our review that there is potential for the delivery of one or a number of these options at various different stages. Ultimately, as our CEO has outlined, there is a requirement for action now. Some of that action has occurred but more action is required. In addition, there is a requirement to plan for the future and there are various different ways that can be managed. One of the possible options is the development of a model 3 hospital but for the reasons we have outlined, that is not something that can be developed quickly. It would require significant investment from a capital perspective but also in terms of the development of clinical services that would be appropriate and sustainable.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_72">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-11-12T10:30:00+00:00"/></from>
+          <p eId="para_135">When the witness says that clinical services would be needed if it was a model 3 hospital, does he not think the whole point of a hospital is to save lives? Yet, there is a fear out there. I am not saying that people are saying, "I do not want to go in there", as my colleague referenced earlier. People are genuinely afraid to go into a hospital. It is about saving lives. Should we not be sitting there thinking we need them to save lives? This is a moral issue. The model 3 hospital is a necessity. We are the only area that does not have one.</p>
+          <p eId="para_136">Do the witnesses not think that the 2009 decision was a disaster? It has been a disaster for the area. The figure being thrown out that is 439 people have died on trolleys in UHL. That is an astounding, incredible number of people. They may have died from natural causes, etc., but I just do not get that A, B and C have been proposed but there does not seem to be a massive push on C for the people of the mid-west. People way out in Carrigaholt cannot get an ambulance so the critical time is missing there. They cannot even get into UHL. We need to be very clear on this. I am not getting that from the witnesses. I think the HSE should be here to answer these questions, to be honest.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_137">I understand the Deputy's concern. We would say - the report actually says this - that when you make a decision to reconfigure, if investment decisions are required alongside that, they need to happen. Otherwise, you take something away and do not put something else in its place. That is clearly understood by everybody here. There were reasons for what happened. The economy was in a significant downturn. That investment did not happen. It means we cannot avoid the need for action now. While the model 3 hospital proposal has merit and we can see the merit, we know it will not provide an answer for the people of Limerick and the staff working in Limerick for a significant number of years. If we were to rely on that without acting now, we would not serve the people the Deputy represents.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_138">We had the HSE in quite recently and a number of Deputies asked them about this report. We have engaged with the Minister as well. There has been engagement with the HSE and Deputies have asked about this issue. There will be engagement again into the future, no doubt, on that one.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_75">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_139">The witnesses are welcome and I thank them for their comprehensive opening statement. We seem to be constantly firefighting when it comes to adequate resources and facilities. One could be forgiven for thinking that many people fell asleep and all of a sudden have woken up to a situation where there are 5.5 million people living in this country. As a consequence of that, the demands have increased extraordinarily and there are more and more people presenting, sadly and regrettably, at accident and emergency departments with illness. Cancer is more prevalent. Going back 20 years, it was one in ten; now it is one in three or probably more than that. The demographics have changed considerably.</p>
+          <p eId="para_140"> I have heard a few times in the responses that action is required now. Of course it is. Ms Fitzgerald mentioned that staff are always attracted to centres of excellence and places where things are going well. It is fair to say, and I hear it quite a lot, that staff rarely like a pressured environment where the demands are great and it is at times under-resourced. In pressured and under-resourced places where there is stressful work, retention becomes a problem and that poses a problem for the patient in accident and emergency.</p>
+          <p eId="para_141"> It beggars belief that ten years on from that reconfiguration, UHL has the highest emergency attendance and the lowest bed numbers per capita. I find it bewildering, to say the least, that such a situation could arise. The statistics are always presented. We talk of projected population growth and one would think that would have flagged something to ensure UHL would not be the way it is right now. UHL is model 3, to my understanding. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_142">UHL is a model 4.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_77">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_143">Model 4, but it is sort of operating, really, under model 3 dynamics.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_144">It is the busiest model 4 in the country, so it has the highest number of presentations. In terms of the profile of patients who present, because so many patients who are lower acuity go to the model 2 hospitals, UHL has a slightly higher proportion of complex patients than some equivalent model 4 hospitals. It is not correct to say it is functioning as a model 3. A resource investment was required to ensure it had all the resource requirements of a model 4. In fairness, there has been significant investment. Our review showed it compares favourably in terms of the numbers of nursing staff because of the safe staffing framework. It also compares well in terms of the numbers of doctors. That investment is still ongoing. It is not correct to say it is functioning as a model 3 but because of the distribution of services between it and the model 2 hospitals, it takes a heavy burden of appropriate patients who require to be admitted. It needs the bed capacity and space to do that properly.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_79">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_145">Maybe this is a loaded question, but what is Ms Fitzgerald asking for to make that situation better? There was reference earlier to billions being required. What additional capacity, right now, is Ms Fitzgerald recommending?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_146">There is a lot of numbers floating around but, to break it down, the ESRI has projected out to 2040 that between 299 and 599 beds are required. You might ask why that range is there. ESRI says the range is there because there are uncertainties about ageing and the profile of the population. Taking the 299 figure, the investment planned now and the next 100 beds which have just been granted planning permission will get us close to that. It will leave us about 70 beds short. I think it is 90 beds short of the overall requirement. The difficulty is it does not get us there right now. We have an immediate need to meet current demand and to get to an equivalent level to other model 4 hospitals. Taking the lower end of the ESRI projections, we have an investment requirement of 299 beds, of which some are planned but an additional requirement is there.</p>
+          <p eId="para_147"> On the reference to billions, we do not know what it will cost to build a model 3. The only benchmarks we have are the children's hospital and the NMH. From discussions with HSE estates about starting <i>de novo</i>, we are talking about billions and a ten-year timeframe. We are not saying it is something the Government does not need to consider; we are saying that if it takes that option, it still has to invest now. The investment planned and coming on stream, which is the 95 beds in 2029, needs to be augmented by another 100, at least, to stay ahead of the demographic bulge.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_81">
+          <from>Deputy Peter Roche<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_148">In terms of patient safety, can Ms Fitzgerald be sure that between now and then no one's position will be compromised as a consequence of that deficit?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T10:40:00+00:00"/></from>
+          <p eId="para_149">With the investment that has happened, the way services are being managed now is safer than it was. We know there is a close correlation between having enough capacity and being able to run a safe service, which means that investment needs to happen in the quickest possible timeframe. We spoke earlier of the 114 beds planned for the model 2 hospitals. They will also support the delivery of safe care. As for the third piece, we are not able to project exactly what impact it will have but there is no doubt the private hospital in Limerick will have some impact. Over 40% of the population hold private health insurance. The new contract requires that people with insurance will be treated off-site. That combination of factors will go towards meeting that projection but our report is saying there is a clear link between inadequate capacity and safe service so there is a need to invest and to continue to invest.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i> Sitting suspended at 10.40 a.m. and resumed at 11.01 a.m.</i>
+        </summary>
+        <speech by="#PadraigRice" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_150">We will continue the considerations into the urgent and emergency care hospital services in the mid-west.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_84">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_151">I want to go back to Ms Fitzgerald's opening statement. Before she outlined the three options, she stated: "Our advice highlighted an immediate need for action and investment to address current risks to patient safety in the shortest timeframe and the safest way possible." She then outlined the three options: A, B, C. Option A includes plans to deliver capacity on the existing site on UHL. There are plans for an additional 96-bed unit. One also opened recently. There are plans for 16 or 18 extra beds as well. From her answers to previous questions, there is an estimated gap of between 90 and 100 beds in the area. Even though the 96-bed unit is not scheduled to be finished by the end of 2029, it is not going to deliver what we need or address the issues in the immediate term.</p>
+          <p eId="para_152"> I want to put two points on the record. The Royal College of Emergency Medicine in the UK said people waiting more than eight hours in an emergency department adds one additional death per 67 people waiting. In January 2023, the vice president of the Royal College of Emergency Medicine, Dr. Ian Higginson, told the BBC that for every 82 patients who wait more than six hours, there is one associated death. Do the witnesses believe we have similar numbers in Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_153">I thank Deputy Quinlivan for his questions. I am familiar with the evidence he presented from the Royal College of Emergency Medicine. In fact, we quoted that in terms of the inspection reports as they relate to Limerick. There is no equivalent study that has been conducted in Ireland but there is no reason to expect that there would be any major difference in the context of the way that emergency medicine is provided in this country relative to the UK. We know that overcrowding is a potential risk to patients. We also know the longer people are waiting is also a significant factor. Through our inspection work, we have identified that of the hospitals we inspect, Limerick is relatively efficient notwithstanding the capacity challenges it has. If you look at the way it is able to move patients through the hospital in terms of length of stay and its ability to discharge patients at weekends, it performs very well. It just does not have the capacity to deal with the demand that comes through the front door.</p>
+          <p eId="para_154"> On the first part of the Deputy's question around the capacity gap, as we have already outlined, the addition of 128 beds over the past 12 months or so - the 96-bed unit, the 16 beds that were provided pre-Christmas and the other 16 beds due imminently - does close some of the gap but there is a capacity gap that still remains. The addition of 96 beds would close that gap but there will be a delay in that. The Deputy is right to say that there is an ongoing deficit in terms of capacity-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_86">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_155">Is the gap still between 90 and 100 beds?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_156">Ninety and 100 beds----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_88">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_157">That is assuming we get the additional 96 beds in 2029, so-----</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_158">The 96 beds in 2029 are those 90 beds. The difficulty is that it is coming later than was envisaged. In fairness, the expectation was that it would be available by 2027 but the planning has delayed that. That 96-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_90">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_159">The planning is not just the issue. There are issues in which the Government could intervene. I believe it could cut through some of the red tape that is not due to planning. We could just agree to do it and provide the funding.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_160">As I understand it, the planning has been approved for those 96 beds. Is the Deputy asking if we can accelerate the build?</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_92">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_161">Yes, I am asking if it can be treated as priority. Do we tell people in Limerick that they have to wait another four years for the 96-bed unit? The one that opened recently has, in fairness, made an impact. However, despite the impact it is made, we are still leaving 50 to 60 people on trolleys every day. It is not acceptable. We have been abandoned in the mid-west for so long. While I welcome the report very much and the three recommendations in it, as one of my colleagues said, nobody needed HIQA to do the report, we all knew this. We are not experts but everybody knew the issue in UHL. The staff do a great job, as I said. It is the number of people who present to the emergency department. It is the huge catchment area of over 400,000 people and we have no other hospital supporting it in the way, for instance, there is in the south east. I appeal to the Government, and I know HIQA cannot answer for it, to cut through whatever can done and to do this as fast as possible. It needs to treat this as the emergency it is.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_162">There is that plan for 96 beds but there may be other options to address the gap and shortfall in the short term such as the temporary build of accommodation.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_94">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_163">Will Mr. Egan give us an idea of what other options may be there?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_164">We have had preliminary discussions with the HSE and the Department of Health in relation to this. There may be other potential to develop on the site. There is always the possibility of procuring additional capacity. We are conscious of the fact that there is a private hospital within the region but that is only coming on stream. There may be a requirement to think along different lines to be able to provide additional capacity in the short term. I agree with the Deputy that there is an imperative to develop the capacity to above and beyond what has already been delivered.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_96">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_165">We have to develop options A and B and also get to C. That is what we hope to do. However, if option A is going to take as long as we think it will, we are talking about 2029, and we will still have a gap of 90 to 100 beds. As I said, I spoke to the Minister recently. Does Ms Fitzgerald want to come in?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_166">I just want to clarify that the unit scheduled for 2029 gives us the 224 beds that was identified as the current requirement. It is just coming a little bit later. It is not leaving a gap but it is coming later than we need. The Deputy is right about two things. The first, and this is a matter for the HSE, is to look at what accelerated build programme it can do to deliver the 2029 timeline earlier. That is challenging for all kinds of public procurement reasons. As Mr. Egan said, the second thing is to look at interim solutions. We have done this in other areas. We have sourced capacity that can be used. We did it during the pandemic. We can source capacity to support the delivery of services in Limerick and that discussion has happened. The third thing, which Dr. Ryan referred to, is that there are 114 beds planned for Nenagh and Ennis. The timelines for those also need to happen as quickly as possible, so that we get ahead of that curve.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_98">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_167">Before I run out of time, I want to go back to the three options. We need all three to be delivered: options A, B and C. I also want to go back to the figures quoted by the Royal College of Emergency Medicine and Dr. Higginson on the BBC. People are dying on trolleys because they are there for too long. I do not see us getting out that situation any time soon with where we are at the moment. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_168">Next up is Deputy Crowe, who is substituting for Deputy O'Sullivan.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_100">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_169">On average, how long does the process take from the time a 96-bed block is conceived as an idea, goes through the design phase, is submitted for planning, is built, commissioned and opened?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:00:00+00:00"/></from>
+          <p eId="para_170">It can take a number of years. If we take the more recent examples on the Limerick site, you could be talking a minimum of three to four years to develop a block such as that. The other challenge is providing the staff in order to be able to provide a safe service.</p>
+          <p eId="para_171">That is also something that can take quite a significant period of time to develop. It does take a number of years to develop.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_102">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_172">I think the quickest time it was ever achieved was three years and two months. I was a member of the previous health committee and we held a committee meeting on site. We got a tour of the facility and its representatives spoke about how 96-bed blocks can be built and how the roof can be load-bearing so you can add more onto it. They told us about their frustration that once you complete one 96-bed block, you have to start thinking about the next one. I asked why the height of the building was not doubled or increased to 12 or 15 storeys. In Limerick city, some fine buildings are now high rise. They faced planning obstacles but got permission and the buildings were built. They are hotels and office blocks. I asked why it would not be possible to go down the same route. I asked if there was a planning barrier or something in planning regulation to stop it. They told me the issue was the €200 million spending cap from the Department of public expenditure. There are all these procurement caps. They told us there was a €200 million procurement cap, which roughly equates to a 96-bed block. HIQA should be very concerned with the provision of healthcare facilities. Has it made a submission to the Department of public expenditure to state that this whole process of €200 million caps and 96-bed blocks rolling on every three years is not enough and we need to lift the cap?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_173">No, we have not. The reason we have been asked to give advice, rather than make recommendations, is that there are policy decisions involved, and the Deputy has spoken to some of them, that are not for us. What we have tried to do in setting out the options is to set out the safety imperative of doing something now. The Deputy's point is well made and we need planning now if another 100 beds would get us ahead of demographic growth. We would suggest that over and above the 96 beds that are planned to come on board for 2029, there should be immediate planning for another. That way, we would get the benefits of parallel planning, which I think the Deputy is talking about. We are not planning experts and that is not why we were asked to do the review. There are wider considerations for the Government. While we are here to speak abut Limerick today, we know, and Mr. Egan knows from his work, that Cork and other areas also have challenges. There are challenges for the Government. It must ensure that in addressing the short- and medium-term requirements identified by the ESRI for Limerick, it does not displace other areas and create a new set of issues.</p>
+          <p eId="para_174"> We were on site in Limerick. I was in the city for another reason and we went to the site just before it opened. Mr. Egan will be down in the next few weeks to see it again. You can see clearly the impact that has and the benefits of parallel planning. That is what we are saying when we say that we need to act now.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_104">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_175">We all obsess about the numbers of beds available and how quickly someone progresses from triage to accident and emergency and into the ward system. That is rightly where the focus should be. The point I would make is that it is a complex site down there. Every time you go to build a 96-bed block, you have the rigours of planning. You could have objections. You could have a judicial review, though you would hope not. You then have to build in a site where there is a huge amount of activity happening. Car parks have to be excavated. It is not just a matter of digging down foundations. Each facility must be tanked. Electrics, services, water, sewerage and a lift system must be included. It would make sense when you are building 96 beds and going up five storeys to continue to ten storeys and build 200 beds and five ward systems. That would make more sense than the current model. I would buy into the witnesses' recommendations. I am positive towards them. I cosigned a letter on behalf of TDs and Senators in the region. I am supportive of all of this. I just see a flaw in the report being that the<i> status quo</i> of delivering hospital wards and beds in UHL at the moment is that you go in for 96 beds, build it as a stand-alone unit, link it by a corridor to something else and put on a load-bearing roof so that more can be added in the future. That is unsustainable. Each time we try to add on a bit, it becomes like Legoland. It takes three years and ends up costing far more than €200 million. The cap is a slowing down mechanism. It is designed to achieve better cost efficiency but by the time you have built a new block, you have far exceeded the cap.</p>
+          <p eId="para_176"> Presumably HIQA had a draft report and then the Minister gave a direction that it should stitch in the ESRI report because the two needed to be married.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_177">No.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_178">The report was compiled by us. Dr. Ryan can talk to the interaction with the ESRI. We worked in parallel with the ESRI. It provided us with population projections in terms of demand to 2040. We took into account all the various factors that we inputted into the process. At the end of the process, we were provided with the official data from the ESRI. We received that in September this year. We were in a position to take that fully into account for the final recommendations we made, or advices we offered, within the document.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_107">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_179">I will move to ask about all the submissions that were received. The whole process of making submissions was quite tricky. I had to make a submission on three separate occasions. Eventually, I saved and uploaded a Microsoft Word document. You expect when you make a submission to get a confirmation or your submission to be emailed back to you so you can see what went in. Many people believed they made a submission but are not sure if it ever made its way into the system. It was quite blunt. You just clicked and the submission disappeared from the screen. When will we get to see all of the submissions that came in? That is quite important. It is quite important that we see, in particular, the views of clinicians. We have had certain briefings in the region from clinicians. I think 1,200 submissions in total went in.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_180">There were approximately 1,100.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_109">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_181">I only know what was in a few of those because political colleagues have shared what they said. It is important that we, as policymakers, see some of what has gone in.</p>
+          <p eId="para_182"> Option B would be two hospital systems that are in some way interconnected and the staff would be able to move from one to the other. You would decant services from one to the other. University Hospital Galway and Portiuncula hospital are under the same governance structures with the Saolta group. They are quite a distance apart. Where HIQA talks about option B and moving onto option C, what is the upper distance limit? There is a question in this region. I am a TD for Clare. Deputy Kelly is a TD for Tipperary. We are rightly asked if this has to be in Mungret, Coonagh or some place like that. Could it be further afield.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_183">To answer the second part of the question, it would need to be in relatively close proximity.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_111">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_184">It is relatively close.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_185">It would have to a ten- or 15-minute journey. What we are talking about there is having a practical distance that would allow for the hospital to be operated as a single unit over two sites. There is precedent in Ireland for that happening. Galway is an example. It happens in many other countries as well. The realities are that healthcare services regularly need to expand and there can be challenges with capacity on site. What you need is enough proximity to enable the hospital to function seamlessly, accepting that there can be limitations in terms of space, going forward.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_186">I thank Mr. Egan. That is the end of that time slot.</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_187">We have all that-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_188">Time is up. I thank the witnesses very much. I call Senator Collins.</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_116">
+          <from>Senator Joanne Collins<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_189">I thank the witnesses for being here and for the report that was drafted. It is probably 15 years too late. We have had 15 years of unnecessary deaths and fear. In County Limerick, the question if you are sick is whether to go to UHL. The only options that have come across my desk are staying at home, going to Kerry or going to Galway. I know people from the county who drive past UHL and go to Galway. The fear among people is unbelievable. I have elderly relations who refused to get into an ambulance because it had to take them to UHL. What is happening in the mid-west is damning. Do the witnesses see any barriers to implementation of options A, B and C? Is it going to come down to staffing? Is it going to come down to the management structure within the hospital? Perhaps there will be a lack of follow-through from the HSE or a lack of political will. There are so many ways that this could go wrong. Do the witnesses see any barriers to implementation?</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:10:00+00:00"/></from>
+          <p eId="para_190">I will make a general comment and ask Mr. Egan to come in. Our task was to set out the advice for the Minister and the Government to make a policy decision. In setting out the three options, we felt it was incumbent on us to look at the benefits of the three options but also the implementation challenges.</p>
+          <p eId="para_191">The advices, I think, set those out. We are also saying there is a need to act now in terms of the safety concern. The Senator's opening comments are testament to that. That was the lens we were looking at it though.</p>
+          <p eId="para_192"> In terms of our expertise, we are not planning experts. That is not why we were asked. We were asked because we are good at producing an evidence base for doing something. On the earlier comments, what this does provide is a clear evidence base for where Limerick sits relative to its peer hospitals, and where the gap is. The ESRI is providing the expertise it has to bring forward projections so I hope the two will provide the Government with a safe basis. </p>
+          <p eId="para_193"> None of the options is without challenge. In looking at option A, we did ask capital estates in the HSE for its assessment, because they are engineers and technical staff, to look at what the site can support. That is set out in the advice. It does say that, on paper at least, it can support the additional capacity that is identified in the ESRI projection. It also suggests that it can support a maternity hospital. We have suggested that requires more detailed analysis because we know there are planning issues and then, as Deputy Crowe said, you have to run a hospital alongside that. Those are some of the operational challenges. </p>
+          <p eId="para_194"> Option B was designed to recognise some of those challenges. You are running a living, breathing hospital. I worked in St. James's Hospital. I know what that is like. A building programme has a displacement effect. How do we minimise that displacement effect? The benefits of option B are that we continue to enjoy investment in option A but look at some additional investment in option B where it provides some decant possibilities which means we can move services off and that allows us to run the hospital more safely. It also provides the opportunity for future-proofing some of those options, as Mr. Egan said. Option B has some of those but seeks to look at benefits in its own right while also addressing some of the challenges of option A.</p>
+          <p eId="para_195"> We were asked specifically to look at the requirements for a model 3 hospital and Dr. Ryan's evidence base looked at what is the international evidence in respect of how to stand up a model 3 hospital. The building of it is what everybody thinks about when we think about CHI, and the capital cost is a significant consideration. The other requirements, however, are that to build it safely and not create a new set of safety concerns we have to have clinical capability across anaesthetics, critical care, radiology, diagnostics and emergency medicine in order that we can run a hospital that is capable of taking that level of acuity.</p>
+          <p eId="para_196"> That is one of the considerations the Government will have t look at, in addition to Limerick - whether we can support the clinical staffing as well as the capital build. Each of the options have clear merit. They also have challenges. The benefits of options A and B are that, in terms of the current capacity deficit Deputies Quinlivan, Crowe and others have spoken about so eloquently, it allows us to deal with those more quickly. Option C needs to be considered in the context of longer-term planning and planning for elsewhere in the country and that is outside our remit. That is a policy decision.</p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_118">
+          <from>Senator Joanne Collins<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_197">On that issue, in Ms Fitzgerald's opinion is it feasible to do options A, B and C all at the same time?</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_198">It is not a matter for us to say. That is a policy decision. We can see there is certainly a potential to progress with option A. In terms of looking at additionality, as Deputy Crowe said, trying to parallel plan, one would do that informed by what the site assessment can do.</p>
+          <p eId="para_199"> Option B would be subject to procuring a site. Again, I understand that is a matter for the Department and the HSE which would examine that as part of the assessment. Option C has a very significant planning requirement and I saw in some of the correspondence that came in around setting up a task force that would put its arms around this. It is not for us to tell the HSE how to conduct its business but, in any of these options, there will need to be significant infrastructure around the planning for them. I hope that answers the Senator's questions. </p>
+        </speech>
+        <speech by="#JoanneCollins" eId="spk_120">
+          <from>Senator Joanne Collins<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_200">It does. I thank Ms Fitzgerald. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_201">Deputy Burke is next, then Senator Conway followed by Deputy Kelly.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_122">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_202">I thank the witnesses for the presentation. I am concerned about the time it takes to get all of these projects done. To take the example of the elective hospital in Cork, we are now four years on from when it was originally proposed and there has not been even a planning application submitted, whereas the private sector can turn a project around in three, three and a half or four years from the start, to getting planning to actually building and opening. I am absolutely astonished by how long it takes to make a decision.</p>
+          <p eId="para_203"> As we will not get all of the decisions made very quickly, and even if we do we will still have a timeframe for planning and construction, in relation to the existing infrastructure in Limerick - minor injures units, for instance - we must consider whether we are using them adequately. Could a second minor injuries unit be opened to deal with and release a lot of the overcrowding in the accident and emergency department? Can that be done, as a start?</p>
+          <p eId="para_204"> The second issue I am very concerned about at the moment is the transfer of patients. I have had three cases now where adverse outcomes have occurred. One was a case of a cardiac arrest in north Clare where the patient was transferred to Limerick and then on to Cork. There was a four-hour delay from A to B to C. That person is now in rehab in Dún Laoghaire. The second was a maternity case transferred from Sligo to Galway and on to Cork. There was an adverse outcome there. The third was a recent case of a patient transferred from Tralee to Limerick and then to Galway. Surely in this day and age there must be a way of co-ordinating transfers in a far more effective way in order that we do not have adverse outcomes. It appears to be a big problem now, whether it is in maternity, cardiac or other cases, that there are delays in the transfer and then no satisfactory outcome at the end of the day. </p>
+          <p eId="para_205"> The focus at the moment is on what can be done now that could be delivered within a six-month time period which can help to deal with the numbers who are using the accident and emergency department.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_206">I will take some of the comments and then hand over to Mr. Egan who has much more detail than I have on some of the questions the Deputy posed. I thank the Deputy for his questions. On the minor injuries unit, as we said earlier on one of the features of the mid-west is very good utilisation of minor injury units. The data Dr. Ryan's team looked at really supports that. The total volume of presentations to Limerick is higher than it is everywhere else but when we look at it relative to <i>per capita</i> figures we see some distortion and that is due to the number of people who present to the minor injury units. We would not envisage that should change. We think those presentations-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_124">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_207">In relation to the minor injury units, can their opening hours be changed?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_208">The operating hours, as I understand it, have been extended and they have looked at supporting those with ambulance transfers. It is important to say that, for those patients who need to be admitted, they still require to be admitted in an appropriate unit. To answer the Deputy's question, the Limerick and mid-west region does a good job in using the minor injury units. We understand form the Department that there are 114 additional beds planned for the model 2s and we would support that because, with the demographic growth, there will be a larger proportion of people who are appropriately going to those areas. If that can be brought on quickly, we would very much support that. That was a near-time plan developed by the Government in consultation with the HSE. There are 114 beds planned for those minor injury units that are existing units and skilled in doing what they do. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_126">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_209">What time scale are we talking about for that?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_210">I am not sure.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_211">Between now and 2031.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_212">Between now and 2031.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_130">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_213">Why can that not be expedited?</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_214">The question has been raised a number of times here about what can be done to accelerate the build. I know from my last job - it is one of the issues the Deputy raised - the issue was planning. In the case of the 96 beds, we are very pleased to say the planning has been granted. Planning is one of the challenges, no matter which option we look at. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_132">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:20:00+00:00"/></from>
+          <p eId="para_215">I am talking about the fast turnaround. For instance, one of the other issue with clinics is that clinics in a lot of HSE facilities close at 5 p.m. What is being looked at in that regard?</p>
+          <p eId="para_216">For instance, one hospital I know, especially for day procedures, does not close at 5 p.m. but at 8 p.m. In other words, different staff come on. Some staff come on at 8 a.m. until 2 p.m. and another lot of staff come on from 2 p.m. until 8 p.m. Therefore, far more people can be turned over. We have the facilities but are not fully utilising them.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_217">The point the Deputy is making is there are possibly a lot of different additional things that could be looked at to provide incremental gains in efficiency and capacity within the region. We would certainly support that. I think-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_134">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_218">Was that looked at when HIQA was looking at Limerick? Did it look at where efficiencies could be created in clinics? If someone is seen in a clinic, they are less likely to have to come to accident and emergency. Sometimes, it is because of the delay in getting access to clinics that people end up in accident and emergency.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_219">Yes, we have. In all the inspection reports we have conducted, we have looked at various different models of service provision within each service.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_136">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_220">Has there been a change in the timeframe from, say, 8 a.m. until 5 p.m. to 8 a.m. to 8 p.m. in some clinics, or even doing Saturday clinics? I have heard that in one hospital, which is a HSE facility, people are being seen on Sunday.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_221">We can point to a number of reforms that have occurred within Limerick across lots of different areas to improve efficiency in the provision of services over the last number of years. It is important to flag, as we outlined in the advices document, that the primary issue here is a lack of inpatient beds for those who require what we call undifferentiated care. These are people who just need to be admitted to an acute bed in a model 4 hospital. That is the biggest deficit.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_138">
+          <from>Deputy Colm Burke<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_222">My point about clinics is the earlier people are seen, if they require medical care, the less likelihood they will need a hospital bed in the long term. It is the delays that are the reason people end up requiring beds. If waiting times can be expedited and reduced, through people having access to clinics in a far faster timeframe, then that can be reduced.</p>
+          <p eId="para_223"> The other issue we have is the growth in the over-65 age group. It is growing at a phenomenal rate. By 2030, we will have over 1 million people in that group. At any one time, 50% of all hospital beds are occupied by people over 65. That is why we need to make sure we have enough facilities available to do day procedures in a timely manner, and access to clinics.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_224">It is a fair point. In the advices, we talked about how we leverage what we have. We have looked, first of all, within the walls of Limerick. As was said, there was perhaps a perception that Limerick could work harder with what it had. There is always potential for gain, as the Deputy said. In terms of the interventions that specifically support emergency medicine, our regulatory lens shows Limerick is doing those. The Deputy made a good point that if you can run additional outpatient clinics, you catch people at an earlier point. That is a fair point. It is one of the more broad recommendations we make generally. Leveraging is not just about Limerick. It is also about leveraging and looking at shorter timeframes for bringing on capacity.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_140">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_225">I thank the Cathaoirleach for facilitating me this morning. I thank the witnesses for the work they have done. I have a preliminary question. Were they surprised when HIQA was asked to do this body of work in the first place? </p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_226">When we were asked to do this by the then Minister, and I remember being asked by him directly, it was on the basis that an independent and objective assessment was required. We were seen to have the standing to do that, importantly, through the regulatory space we have and Dr. Ryan's work on evidence, which lends us the credibility to do that.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_142">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_227">I totally get that, but had HIQA done this type of work, or anything similar, before? As an organisation, has HIQA ever done this type of work in any other context before? While I do not have an issue with its expertise, which is unquestionable, this was a new departure for HIQA.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_228">It was. That is the reason the ESRI was partnered with HIQA. One of the specific terms of reference was to secure independent assessment of the capacity requirements.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_144">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_229">That was appropriate. It took a number of months for the terms of reference to be written. It was announced by the then Minister in the run-in to an election. The terms of reference took about six months to write, if I am not mistaken, and the report took another 12 months. The witnesses are great people and do fantastic work, but I have to agree with other colleagues that the genesis of what HIQA is proposing was proposed by most public reps. The detail is up to professionals but the conclusions it came to are those most public reps in the mid-west would have been able to put on the table without any report.</p>
+          <p eId="para_230"> I have a concern about two things. First, HIQA did not have the planning and estates expertise. It had to assemble an expert group to do that work. That all takes time. It is about bonding and building relationships with people it would not have worked with before. The witnesses have said HIQA are not planning experts. Basically, HIQA's expertise is in the area of patient safety, which it does a phenomenal job at. I suggest this was a new departure for it in a very significant way. What it has proposed, as I said, is what most of us would have proposed.</p>
+          <p eId="para_231"> The other concern I have about the report concerns options A, B and C. What I hoped would come from HIQA was a clear recommendation, not options. As Deputy Quinlivan and others said, we all co-signed a letter looking for the three options; the first two immediately and the third in a fairly quick timeframe. Why did HIQA choose to go down through options as opposed to just giving one overall clear recommendation, which was HIQA's considered view about what needs to happen and how it should be done in steps one, two and three? Even by using the language of options, HIQA is saying to go with one, two or three options. Which options? It was not the type of clear, distinct, specific recommendation I hoped would come from HIQA stating what needs to be done, and that it needs to be done now, as opposed to options. Will the witnesses elaborate on why HIQA did not give a very clear, specific, conclusive recommendation that this is what has to happen, full stop?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:30:00+00:00"/></from>
+          <p eId="para_232">There is quite a bit in that. I will go back to why HIQA was chosen. Our object is to promote health quality for the people of the country. All of the work Mr. Egan does on inspection is with a safety lens. The prompt for this work was safety. Everybody is familiar with the backdrop. Senator Collins spoke very well about her direct experience. In that context, we were very familiar with Limerick. In our reports, as far back as 2023, we elucidated very clearly both the capacity challenges and operational challenges. We understood the landscape. We like to think we understand what the critical success factors are for safe and effective functioning of emergency departments. That is at the heart of this.</p>
+          <p eId="para_233"> In anything we do, we are not the subject matter experts for everything we do. For every piece of work Dr. Ryan does, she convenes an expert advisory group. That is good practice because you cannot be an expert in everything, but we have considerable experience in harnessing that expertise, and the right expertise, to support our work. It is our job to then make an independent assessment after taking all that expertise. The specific task the Minister asked us to do in this instance was to provide advice and not to provide recommendations because there are policy considerations here that are beyond our role. What we tried to set out was to give the Minister and the Government as much insight into the factors she should consider when taking that advice for each of those options.</p>
+          <p eId="para_234">That is what our job was. To the extent that we are constantly evolving, we are now moving into the area of critical entities - resilience. Mr. Egan and I are working with the Department on taking on a role in relation to cybersecurity. Therefore, our role as a regulator is constantly evolving.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_146">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_235">That is good.</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_236">We would expect that it would change, so we are not surprised by being asked, but when we do anything, we need to make sure we are best placed to answer it, and we very much welcomed the ESRI-----</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_148">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_237">Is there anything in the terms of reference that in hindsight Ms Fitzgerald would have changed or maybe preferred to have seen different? Were they too specific? Would she have liked greater flexibility in the terms of reference?</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_238">I think the terms of reference were appropriate to the context of the review, which was safety. What we were asked to do was provide the expertise that Dr. Ryan's team have in harnessing international evidence and the expertise of Mr. Egan's team in looking at regulation and what the factors are that contribute to safe, effective services. To the extent that there were population projections, it made sense that we used an external party. That is why that term of reference was there. To the extent that we looked at how we found ourselves here, that term of reference is there. Looking at the evidence base, I agree with the Senator, in that most people, and our own reports, were calling out the capacity challenges. However, I think it is very powerful for the Government and for the wider stakeholders to have clear evidence that supports decisions because for every decision, there is a competing decision-----</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_150">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_239">Sure, of course.</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_240">-----and for that reason, it is important-----</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_152">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_241">I am just conscious of time. In terms of the advice, HIQA could have given clear, specific advice as opposed to options. Do the terms of reference prevent it from just giving a set, clear, step-by-step pathway recommendation as opposed to options?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_153">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_242">I thank the Senator, but we are short on time.</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_243">The reason we did that was because we saw merit in each of the options. We also saw a driving imperative to take immediate action, so we tried to delineate what needed to happen in the short term and then what the factors were that would inform the decisions in relation to the medium term.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_155">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_244">Okay. I thank Ms Fitzgerald.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_156">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_245">Last, we have Deputy Kelly. Then, we will have about ten minutes left if people have short additional questions. We can take some short questions for the last ten minutes.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_157">
+          <from>Deputy Alan Kelly<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_246">I welcome the guests. I have had a placard up in my office all my political career. It is called "No to the Hanly Report", which I carried through the streets of Nenagh in the noughties. It is probably the reason I ended up in here, if I went back far enough. I do not think there is any topic I have spoken on more in my political career than this. Obviously, I am not going to repeat it, but I have spoken publicly about my own family and the issues we have had in relation to University Hospital Limerick, UHL, and health services.</p>
+          <p eId="para_247"> The previous contribution by Senator Conway was excellent. He actually took a number of my questions. I have no understanding of why HIQA was asked to do this. It was a political decision to get through a general election. Dr. Gerry Burke, who is the former clinical lead in UHL, more or less wrote this report a decade ago. He went on "Prime Time". He went through the statistics. He demonstrated almost everything that is in this report, and he retired after it because of the backlash. By the way, this is no reflection on the witnesses. They were asked to do a job. I understand that. Now, however, given that HIQA has taken in a whole new elevation of work, it is probably going to be asked to do a whole range of similar types of work. Therefore, its actual <i>modus operandi</i>,<i>
+						</i>reason for existing and terms of reference as an organisation will have to expand. The witnesses might let us know how many total man hours this took. What did HIQA do to replace those man hours internally? Who did the work that everyone who was working on this was not able to do because it took up so much time? How much did it cost? They might supply that to the committee, if that is all right, Chair. I do not expect them to have the answers. Unless they have them-----</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_248">We are actually doing that exercise. We do it after any major piece of work, so-----</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_159">
+          <from>Deputy Alan Kelly<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_249">Okay. HIQA obviously had to have other people doing the work all the witnesses were doing.</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_250">We-----</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_161">
+          <from>Deputy Alan Kelly<recordedTime time="2025-11-12T11:40:00+00:00"/></from>
+          <p eId="para_251">That is not a question. I am sorry; I am caught for time. A, B and C for me is irrelevant. I could have written what needs to be done here myself. In fact, I think everyone here could have written it, and colleagues here have said it. There is more or less a bit of unanimity across the mid-west and across politics on this issue. We all know we need more services out in the community. There is a huge issue in relation to the nursing homes, and we have a whole range of other issues. There are people being left in beds in hospitals for months because we have no space for them.</p>
+          <p eId="para_252"> However, the bottom line here is this. I went to a HSE meeting before this report was published where I felt we were going to get what Ms Fitzgerald has there - options A and B. Some of my colleagues were at that meeting. Due to the political furore, C emerged. Let me be very clear about this - this all has to be done, and more. We have been discriminated against in the mid-west for the last 25 years. I am concerned about what Ms Fitzgerald said. I know she is not policy-driven, but I am concerned that she said that, potentially, if some decisions were made, they might displace other areas and it could create the bubble effect of issues in Cork or Galway. What about the 25 years of discrimination against us in the mid-west? My father said he did not want to go into UHL because he would never come out of it. He never did, by the way. He only came home to die. My wife went to Portlaoise because I rang and a HSE staff member said to go to Portlaoise when I got to the motorway instead of going to Limerick. We all know about all the public cases. Every one of my colleagues here knows all about them. We all know about the public cases and the issues inside the hospital.</p>
+          <p eId="para_253"> There should have been one recommendation here. The 96-bed block is coming down the road. If we have to find a site where we are going to put 100 more beds or whatever, and that is fine, but a hospital has to damn well be put around it. A model 4 hospital will have to be put around it. I was in Wexford yesterday. Wexford, Kilkenny and Waterford all have model 3 or model 4 hospitals. They are not the same populations, by the way. If we add in a bit of north Cork, we have probably a higher population. That is not even including south Tipperary, which would come within that catchment. Basically, we need a new hospital, and we need the work that is being done in relation to UHL as well and the stuff in the model 2 hospitals and in the communities. We need it all, and do you know what? We need to apologise to the people for the last 25 years. That is what we need. We do not need a report saying A, B and C. What Dr. Gerry Burke said a decade ago, for which he was ridiculed in the Dáil by the Taoiseach at the time even though he was damn well right, was correct except it has just got worse.</p>
+          <p eId="para_254"> This is not the witnesses' fault. They were asked to do a job. However, it was a political decision. Politics is going to have to fix this. We cannot be another generation of Oireachtas Members who are actually going to sit and make the wrong decision. I will not tolerate it. I will fight with every fibre of my existence to make sure what I said happens, and the Government knows that. By the way, I am not alone. Colleagues here are with me. That is where we need to go. I would, therefore, like to find out about those costs, the man hours and all that sort of stuff.</p>
+          <p eId="para_255"> The idea that we are going to have one accident and emergency department where everything is going to be filtered through in the short-to-medium term, potentially with 100 beds down the road or whatever, is fine. It is short term. We need a new maternity hospital. I was born in the bloody maternity hospital. My kids were born in it. If the witnesses went into it, they would see it has brilliant staff, but look at the state of it. We need a bit of ambition here. The problem here is we need a short- and medium-term solution, but we also need the ambition for the long term, and I feel that is not emphasised enough in what HIQA did because that has to happen. I will not tolerate it if it does not happen.</p>
+          <p eId="para_256"> I will ask to things in relation to the report. First, how long did HIQA spend with the fire service in Limerick discussing the issues in relation to UHL? Was there a full audit done in relation to these issues? Second, how long did HIQA spend with all the consultants who told us in the noughties that this was the right thing to do to bring everything into Limerick and we would get the resources and buildings and everything? Did it talk to all the clinical leads and all the consultants who led the charge in the noughties? As far as I am concerned, I am sick and tired of it. Where are they now?</p>
+          <p eId="para_257">Did HIQA do a full fire audit?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_162">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_258">The Deputy has just one minute left, so if he wants answers to his question, he needs to leave time.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_163">
+          <from>Deputy Alan Kelly<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_259">I know that. There are only two questions. Did HIQA do a full fire audit and did it speak to the retired consultants who made the recommendations in relation to handling and teamwork in the noughties?</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_260">I thank the Deputy for his questions. We did not do a specific audit of fire as part of this piece of work but we are aware of the work of the local fire officer in relation to services in the emergency department in general. Through our more general monitoring work in the service, there would be engagement with the local fire officials on fire safety. Clearly, overcrowding in that environment is a fire risk. It is something that would come up regularly on inspection but it was not specifically included within this body of work because we have an awareness that there is a challenge more generally.</p>
+          <p eId="para_261"> On the engagement with clinicians, there was extensive engagement with them as part of this body of work.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_165">
+          <from>Deputy Alan Kelly<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_262">Were they retired?</p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_263">We spoke to people who would have been involved in decision-making at that time. We would have received some submissions from-----</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_167">
+          <from>Deputy Alan Kelly<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_264">Sorry, but just to clarify, did HIQA speak to them or not?</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_265">We did not specifically speak to retired members of staff but we would have received submissions from them as part of the submission process. We spoke with the medical board of the hospital and a number of the clinical specialties through our monitoring work. We spoke with local public health and each of the clinical specialty leads for the clinical care programmes within the HSE. There was very extensive engagement with the clinical community to inform the body of work we have conducted.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_169">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_266">We have about ten minutes left. We conclude at 12 p.m. If anyone has any short questions, we might take a couple of them together. I call Senator Byrne.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_170">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_267">I know the witnesses spoke earlier about the collaboration between University Hospital Galway and Merlin Park University Hospital and how it works. I know something like that will possibly be looked at for Limerick. Could they give one or two comments on the outcomes and how it runs smoothly up there?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_171">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_268">We will take a couple of questions together and then we will get answers on them. I call Deputy McGettigan.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_172">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_269">Having listened to all of this, there is no mention of fire risk. I am becoming less and less engaged with this HIQA report. I do not feel it is going with us. Did HIQA rely solely on the ESRI's stats or did it use a system like the dynamics modelling, which would be better suited to complex health systems? When it comes to this here, all different types of stats should be brought in in order to get a consensus around this because there was a big, broad range of things. Since there is no accountability for anything that happens, it is always the front-line staff who get the blame. The staff have to work under incredibly hard circumstances. I wish to give that support to them and also to Ms Sandra Broderick, who has made changes since she took over.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_173">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_270">I will go back to the comments made earlier about the additional capacity - option A, as the witnesses called it, or what we would just call "decency". The concern I have - and I will finish on this - is the wait until 2029. It is simply not acceptable. When HIQA did its report, did it look at, for instance, additional nursing home spaces in the area, home help or care packages? Anybody who deals with people in a hospital will notice people who are ready to come out but there is nowhere for them to go. That is the simplest way to fix capacity issues. I would specifically like to know if HIQA has looked at nursing home care packages.</p>
+          <p eId="para_271"> We opened a fantastic facility at St. Camillus Community Hospital, a 50-bed unit. The problem there is it will not take dementia patients because the Government did not allocate any money to deal with dementia patients for a nursing home. How the hell could that have happened in this day and age? There is another unit and I am not sure if it is for the witnesses to answer this but we cannot have this one opening and not taking dementia patients. It is absolutely insane that there is no provision for people with dementia to go into the nursing homes we are building.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_174">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_272">Can the witnesses make the minutes of the expert advisory group available to the committee? I am quite concerned that there was not unanimity there. I want to dig deep and if I have to put in an FOI, I will. I want to find out-----</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_273">They are already published.</p>
+        </speech>
+        <speech by="#MartinConway" eId="spk_176">
+          <from>Senator Martin Conway<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_274">Are they? That is fine. The witnesses might send a copy to the committee because I would be interested in going through them in detail.</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_275">They are published on the website.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_178">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_276">It seems to me there is a growing political consensus that all of the options need to be done. That would then face us with the question around option 3, which is, where do you build that hospital? That is possibly the next big question.</p>
+          <p eId="para_277"> I have a question for the witnesses. There was a report in 2023 on model 3 hospitals by the HSE's national doctors' training and planning unit. It said:</p>
+          <p class="indent_1" eId="para_278">Outside of main urban areas, Model 3 hospitals play a pivotal role in providing access to high-quality and timely healthcare. They provide elective and general medical and surgical services.</p>
+          <p eId="para_279"> I wonder if the witnesses agree with that and if their view is that the model 3 hospital should be outside of a main urban area for those reasons.</p>
+          <p eId="para_280"> If they do not have time to answer all the questions, we will take written answers as well. I will leave the last four minutes to address some of those points.</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_281">We will distribute the questions. On Deputy McGettigan's point about the ESRI, it was tasked with a very specific job, which is doing the demographic and other projections with regard to bed capacity requirements. It is better placed to do that than us and it did it independently of us. However, we would have also relied on data with regard to looking at the current requirements and at comparisons between Limerick and others. I might ask Dr. Ryan to comment on that one.</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Dr. Máirín Ryan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_282">It is important to say that, in getting to the point where we could make the advice, the first thing we had to do was describe and understand what the problem was. We did extensive data analysis where we compared all of the best available evidence for Limerick and the wider mid-west. We then compared that to the other health regions and there were also comparisons against the other model 4s. Out of that, we came to a place where we had an evidence base behind being able to make the statement that this was not an issue around the staff in Limerick but an issue around not having enough beds to support patients who required complex care or had undifferentiated care needs. To do that analysis, we did an extensive data analysis and there is a data report in the pack and in what is published on the website, which goes through all those comparisons. We did that piece of work as well, which was really about understanding what the problem is with Limerick and the wider mid-west compared to other regions and, as Ms Fitzgerald said, what would need to happen in Limerick now to bring it up to parity with the other model 4s. There was an extensive piece of work done there.</p>
+        </speech>
+        <speech by="#" eId="spk_181">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_283">In regard to Galway and Merlin Park, the way they work is, predominantly, Merlin Park provides either ambulatory or elective work. I know quite a significant amount of orthopaedic work, for example, is done there. It also provides outpatient services. Speaking to Deputy Burke's comment earlier on, there is a critical importance to all of those inputs supporting and keeping people well, and keeping them out of hospital. I might ask Mr. Egan, who has done quite a bit of inspection work at the two sites.</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Seán Egan<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_284">The key element is that it operates under one governance model. To describe the value of that, it can happen - it should not - that you end up with competition for resources between hospitals. If they are governed and managed under the same management structure, then everyone needs to work together to provide services. There is also a benefit in regard to sharing of resources. If you look at surgical care, for example, you need an emergency care roster with surgeons to run an emergency department but they are not going to be busy all the time waiting for emergency care to come in the door. You also need additional work that can be done and a big challenge with that is having theatre capacity.</p>
+          <p eId="para_285"> The key critical element of any kind of emergency care model is to have enough anaesthetic cover as well. If you have a model of service delivery that enables the apportioning of work on appropriate sites while maintaining the same pool of staff so you can maintain a roster, you make theses services sustainable. That is the value of that model with respect to differentiating the emergency treatment from the elective treatment.</p>
+        </speech>
+        <speech by="#" eId="spk_183">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T11:50:00+00:00"/></from>
+          <p eId="para_286">Deputy McGettigan also made a point about the management and leadership in Limerick. In Mr. Egan's regulatory process, it is one of the first things we look at. Every inspection is governance and management because typically, when you have systemic failures, it starts there.</p>
+          <p eId="para_287">It is fair to say, not just since Ms Broderick came but in the period when we have had intensive focus on Limerick, our reports show that while there are challenges in governance and management, the indicators of good governance and management have been there. The separate piece around whether we are doing everything with what we have is part of that. It is part of leadership and management. It is important we acknowledge Ms Broderick, Mr. Carter and other people working down there in very challenging circumstances. We have met very dedicated staff. I know some of the people who have retired and their commitment to the hospital. It is important we acknowledge that here today.</p>
+          <p eId="para_288"> Deputy Quinlivan's question is broadly around what other options we can look at in the short term. We raised that in the advices. We looked specifically at long-term care and step-down care requirements in the review and how Limerick compares with other sites. It actually compares very favourably. The number of delayed transfers of care is typically lower than in other areas. That does not mean fewer people need it. It probably means Limerick is very efficient and effective at managing it. The Deputy's point is well made, however. It is one of the areas we will continue to look at.</p>
+          <p eId="para_289"> The ESRI has also published future projections for long-term and step-down requirement. The Deputy is absolutely right-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_184">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T12:00:00+00:00"/></from>
+          <p eId="para_290">I remind Ms Fitzgerald we are here today because 82 people are on trolleys today-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_185">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T12:00:00+00:00"/></from>
+          <p eId="para_291">The Deputy cannot come back in.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_186">
+          <from>Deputy Maurice Quinlivan<recordedTime time="2025-11-12T12:00:00+00:00"/></from>
+          <p eId="para_292">-----which is the worst-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_187">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T12:00:00+00:00"/></from>
+          <p eId="para_293">I am sorry to cut across. I do not want to let everybody come back in again. We are already at the deadline for the meeting.</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Ms Angela Fitzgerald<recordedTime time="2025-11-12T12:00:00+00:00"/></from>
+          <p eId="para_294">The ESRI had a specific role and remit, which was to look at the projections into the future. It was looking with a longer lens. We have to have regard for what its work is. The point about looking at all of the short-term options is fair. In that context, and Mr. Egan made some comments about leveraging model 2s, there is also the leveraging of private capacity. I was very involved in that during the pandemic, when we used to very good effect some private capacity in the short term. Those are things we would absolutely look at.</p>
+          <p eId="para_295"> Senator Conway made a further comment on the minutes. I think I have probably answered all of the questions but if I have missed anything, I am happy to answer.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_189">
+          <from> An Cathaoirleach<recordedTime time="2025-11-12T12:00:00+00:00"/></from>
+          <p eId="para_296">I thank the witnesses for their engagement, time and consideration. It was important to have this session to get all the views aired and hear from public representatives, particularly the ones from the mid-west. It is great to have many of them here to air their perspectives and to hear the political opinion on it. A decision is imminent from the Minister. That is why it was important we have this discussion to air things out and tease them through. I again thank the witnesses for their work, engagement, co-operation with the meeting and answers to the many questions put to them. No doubt, we will engage again at some point on this and other issues.</p>
+          <p eId="para_297"> The meeting stands adjourned until next Tuesday, 18 November at 3.30 p.m, when the committee will meet in private session.</p>
+        </speech>
+        <summary eId="sum_9"> The joint committee adjourned at 12.03 p.m. until 9.30 a.m. on Wednesday, 26 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

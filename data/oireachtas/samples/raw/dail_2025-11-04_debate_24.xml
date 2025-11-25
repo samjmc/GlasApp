@@ -1,0 +1,831 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-11-04/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-11-04/debate"/>
+          <FRBRdate date="2025-11-04" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/committee_on_budgetary_oversight"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-11-04/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-11-04/debate/mul@"/>
+          <FRBRdate date="2025-11-04" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-11-04/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-11-04/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-11" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COISTE UM FHORMHAOIRSIÚ BUISÉID</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Committee on Budgetary Oversight</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-04">Dé Máirt, 04 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-04">Tuesday, 04 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CathalCrowe">Cathal Crowe</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JohnnyGuirke">Johnny Guirke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#RyanOMeara">Ryan O'Meara</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#JohnPaulOShea">John Paul O'Shea.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#EdwardTimmins">Teachta / Deputy Edward Timmins sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Post-Budget 2026 Engagement: Discussion<recordedTime time="2025-11-04T15:00:00+00:00"/></heading>
+        <speech by="#EdwardTimmins" eId="spk_1">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T15:20:00+00:00"/></from>
+          <p eId="para_9">I call the meeting to order. I ask everyone to turn off all mobile devices or put them on silent.</p>
+          <p eId="para_10"> Before we begin, I wish to explain some limitations of parliamentary privilege and the practice of the Houses as regards references witnesses may make to other persons in their evidence. Witnesses are protected by absolute privilege in respect of the presentation they make to the committee. This means that they have an absolute defence against any defamation action for anything they say at the meeting. However, witnesses are expected not to abuse this privilege and it is my duty as Chair to ensure that the privilege is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such action.</p>
+          <p eId="para_11"> I remind members of the constitutional requirement that in order to participate in a public meeting, members must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirements that, in order to participate in a public meeting, members must be physically present within the confines of the place where Parliament has chosen to sit. In this regard I ask any members participating via MS Teams that, prior to making their contributions to the meeting, they confirm that they are on the grounds of the Leinster House campus. Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any persons or entity by name or in such way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to identifiable persons or entities, I will direct them to discontinue their remarks.</p>
+          <p eId="para_12">It is imperative that they comply with any such direction.</p>
+          <p eId="para_13"> This afternoon's engagement forms part of our post-budget 2026 scrutiny and engagements. I welcome Mr. John McGeady, CEO, and Ms Michelle Murphy, research and policy analyst, from Social Justice Ireland, and Dr. Tom McDonnell, co-director, and Mr. Ciarán Nugent, economist, from the Nevin Economic Research Institute, NERI. The committee welcomes the opportunity to engage with you and thanks you for being here today.</p>
+          <p eId="para_14"> I invite Mr. McGeady to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T15:30:00+00:00"/></from>
+          <p eId="para_15">Gabhaim buíochas le baill an choiste as ucht an chuiridh. Budget 2026 gives a worrying indication of this Government’s priorities over the next five years. The budget failed to decisively tackle poverty and social exclusion. It failed to adequately invest in housing and social infrastructure. It failed to sufficiently broaden the tax base or to address the underlying fiscal deficit. Despite the substantial level of resources available to the Government in budget 2026, many of its priorities were sectional, small scale and of limited ambition.</p>
+          <p eId="para_16"> The Government indicated that this budget would seriously tackle child poverty. We warmly welcome the increase to the child support payment, which will certainly make a difference. However, the Government’s overall approach to poverty is not sufficiently strategic. Poverty is primarily an issue of income. To eliminate child poverty, together with the poverty experienced by other groups, the Government must improve household incomes. This ultimately requires a living wage and adequate weekly social welfare rates. The Government’s failure to benchmark social welfare rates against average earnings or outline a pathway to achieve this, leads us to question its commitment to protect core social welfare rates or to progressively reform social protection. A €25 per week increase in all weekly minimum welfare payments was required to ensure that their value was benchmarked to movements that had already occurred in average earnings. The Government was right to discontinue temporary cost-of-living supports. These, however, should have been replaced with permanent targeted measures. Instead, budget 2026 fails to make up the difference for those households in most need.</p>
+          <p eId="para_17"> Social Justice Ireland welcomes the extension of the fuel allowance to recipients of the working family payment as well as the increase to the threshold for this payment. We also welcome the increase in the national minimum wage to €14.15, but we regret that this remains below the living wage of €15.40 per hour. The Government’s decision to abandon its own target to achieve a living wage this year, delaying it until 2029, says much about the Government's priorities.</p>
+          <p eId="para_18"> We are concerned that the failure to increase the value of personal tax credits will see the value of these credits eroded for the families who most need them. We advocated for a €5 per week increase in the personal tax credits and proposed making them refundable. This would have made the tax system fairer by allowing those who earn too little to benefit from the full value of their credits to be refunded the difference.</p>
+          <p eId="para_19"> Social Justice Ireland welcomes the fall in the rich-poor gap this year. While this is certainly progressive, it does not fully compensate for the significant increase in the rich-poor gap last year.</p>
+          <p eId="para_20"> The strategic importance of having an adequate supply of housing cannot be overstated, yet despite a substantial increase, the scale of investment remains too small. The Government seems to lack the political willingness to tackle the housing crisis at the level and scale that is necessary to address the issues of affordability, social housing waiting lists, recorded and hidden homelessness, land hoarding, and derelict and vacant units. This budget could have done far more on homelessness prevention and could have put in place and resourced a housing first approach to family homelessness.</p>
+          <p eId="para_21"> At a time of economic prosperity, we ought to be dealing with long-standing challenges that require investment. Social Justice Ireland has long advocated that it is sensible to invest in addressing deficits in infrastructure and services and to prepare for the future, provided the underlying budgetary picture is in balance. We have enormous revenues, yet when windfalls are excluded, the underlying fiscal position is in deficit. It is irresponsible of the Government to continue to narrow our tax base while spending must necessarily rise simply to keep pace with a growing and ageing population. We have advocated that we move towards a tax take target set on a <i>per capita</i> basis, linking resourcing to population size, and moving our tax take closer to the EU average. Instead, the Government opted for reductions in VAT, an extension of existing tax breaks and the introduction of new tax breaks.</p>
+          <p eId="para_22"> Securing our public finances is essential for long-term sustainability and success. The first budget of a new term is exactly when a Government has the political flexibility to take the decisions necessary to broaden our tax base. If not in this budget, it is unclear when the Government will take on this challenge.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_3">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T15:30:00+00:00"/></from>
+          <p eId="para_23">I thank Mr. McGeady. I invite Dr. McDonnell to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:30:00+00:00"/></from>
+          <p eId="para_24">I thank the Leas-Chathaoirleach, the staff, and members of the committee for the invitation to appear before them today to give our assessment of budget 2026. A lot has already been said about budget 2026 but it is worth emphasising some key points. One of the first rules of government is the sound management of public finances. As it happens, budget 2026 is clearly expansionary and inflationary. The net spending increase, that is, the gross spending net of tax changes of €9.4 billion, is well above the 4% to 5% sustainable growth rate of the economy. The budget will add to growth and to inflation in 2026.</p>
+          <p eId="para_25"> The budget is also taking place in the context of an economy that is now three years into an economic boom. We are close to record employment rates, with a projected 500,000 extra in work between the end of lockdown and the end of 2026, and with evident labour and infrastructure shortages across the economy. While real household disposable incomes fell in 2022 and 2023 on account of the elevated price inflation, real incomes subsequently increased in 2024 and 2025. Growth is slowing but we are at, or near, full employment. We can legitimately debate whether the economy is overheating but it is certainly experiencing capacity constraints.</p>
+          <p eId="para_26"> If we put the facts together, it is abundantly clear that the budget is firmly pro-cyclical and that the fiscal stance is too loose. We are channelling the mid-2000s with boom-time budgeting in a boom-time economy. It is true that we have a projected surplus in the public finances next year of close to €5 billion but, unfortunately, the recent headline surpluses seemed to be engendering a troubling sense of complacency about the longer term fiscal squeeze that an ageing society and other pressures will bring. The warnings of the Commission on Taxation and Welfare about the sustainability of the tax base are clearly being ignored.</p>
+          <p eId="para_27"> The truth is that the only thing differentiating Ireland from the deficits and austerity facing France, the United Kingdom and other western economies is the windfall corporation tax receipts emanating from a tiny group of US multinationals. These companies are exploiting Ireland's tax regime to reduce their global corporation tax payments, with Ireland benefiting as a side-effect. These companies can very easily change their tax arrangements and Ireland's corporation tax yield is, therefore, extremely vulnerable to policy shifts in the United States, to downturns in the fortunes of individual companies and to boardroom decisions to move intellectual property, IP, assets out of Ireland for whatever reason. If these receipts were to vanish, we would be left with a yawning deficit in the public finances. We should not be running any kind of deficit when the economy is at or near capacity.</p>
+          <p eId="para_28"> While the winding down of these at least €15 billion in tax receipts annually may seem a low probability event to some, it is clearly a high-risk strategy to rely on these taxes. NERI does not believe these receipts are likely to decline in 2026. In fact, we believe they will increase. Even so, we need to change our strategy so that, over the next few years, all of the windfall corporation taxes are being saved into twin savings and investment funds and not just a portion of them. The 2024 summer economic statement noted in its foreword that the "Government cannot, and will not, use these transitory receipts to fund permanent increases in public expenditure." It is not clear what has happened in the interim. We will need to diversify our sources of revenue. Government revenue, excluding corporation taxes, is well below that of comparable European countries as a percentage of national income.</p>
+          <p eId="para_29"> Notwithstanding this concern, many of the policy directions announced in the budget are broadly positive, moving from universal one-off payments to targeted income supports was a necessary shift. However, much more needs to be done to ensure adequacy of income for vulnerable households amidst an ongoing cost-of-living crisis for the bottom half of the income distribution. The Commission on Taxation and Welfare made a number of important proposals around adequacy benchmarking, a second tier of child benefit, and income tapering. Unfortunately, there has been little progress in this regard.</p>
+          <p eId="para_30"> Higher spending on infrastructure is really welcome, given our severe capacity constraints in energy, water, transport and housing. We have a massive need for housing and infrastructure and these twin crises must be addressed with decisiveness. In theory, we are now moving to a somewhat appropriate level of annual public investment. Unfortunately, it is unclear whether the increased budget allocation will even be spent. We simply do not have the domestic construction workers to quickly ramp up housing supply while also meeting our infrastructure and retrofitting objectives. Is there a plan to divert workers from elsewhere or to improve productivity through regulatory or other reforms? The reality is that we will need to import the relevant workers if we are to see a short-term ramp up in supply.</p>
+          <p eId="para_31"> While far from an austerity budget, it was clearly not a populist one. Effective tax rates will increase, albeit very marginally, for most workers. However, context is important. We have already noted that Ireland’s ratio of Government revenue to economic output is well below the average for the European Union once we exclude footloose corporation tax receipts. This does not mean that income tax paid by workers ought or ought not be indexed for inflation or wage growth. However, it does mean that some taxes will need to increase over the medium term. In this context, the decision to cut taxes for the hospitality sector at a time of full employment – the lowest paying and least productive sector in the economy, no less – is a particularly bizarre one. Wasting €700 million annually on a policy that will generate little or no new jobs is a breathtaking waste of resources. The opportunity cost is enormous. We could have hired more than 11,000 nurses, made public transport free or taken 50,000 children out of poverty with that money. Alternatively, we could have just saved the money in order to reduce the need for tax increases in the future. Unfortunately, the evidence-free tax breaks for the loudest business lobby follow a well-worn pattern of responding to complex policy issues with a blunt, ineffective and regressive tool. This measure will do precisely nothing to promote economic productivity. Indeed, it will have the opposite effect. The needed direction of tax reform is to move in precisely the opposite direction through a medium-term project of generating billions in additional revenue via the gradual winding down of the existing tax breaks and not making the existing ones more generous or adding new ones. There is also significant scope to increase the tax yield from capital, property and assets, as noted, for example, by the Commission on Taxation and Welfare.</p>
+          <p eId="para_32"> Many mistakes were made and good opportunities were not taken on budget day. We needed a countercyclical budget that reinforced our resilience to future shocks. We got the opposite. This is not the time to stimulate the economy and our fiscal stance is highly irresponsible. In addition, there is no obvious strategy to deal with our high rates of deprivation and child poverty. Half of households find it difficult to make ends meet, which is a very high proportion by EU standards, including 75% of those at risk of poverty. As a result, we need joined-up thinking around boosting wages through collective bargaining and removing barriers to work, earnings-linked adequacy benchmarking for all welfare payments, the expansion of universal basic services and reduced living costs, for example, through pricing reforms and renewable investment in the energy sector.</p>
+          <p eId="para_33"> We have other concerns. Minimum wage workers will be forced to wait at least three more years before we achieve what the Government calls a living wage. We continue to underinvest in the key ingredients of long-run growth and productivity, such as public research and development and education, and we continue to distort the economy with tax breaks. While the Government was correct to emphasise investment, the increase in capital spending should have been accompanied by tax increases rather than tax cuts. We need a national conversation about how we might develop a proper model of development, growth and prosperity fit for the 21st century , a new economic model, if you will, that prioritises productivity, good jobs, economic security and resilience. We will be waiting another year, it seems. We will read with great interest the Government's Future Forty - A Fiscal and Economic Outlook to 2065 report. We are happy to take questions.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_5">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_34">The witnesses were clear about what they thought of the budget. I will put questions to both of them. My questions will be more for information or my thought process to understand where the witnesses are coming from. I feel what they have said spells it out. It seems like only a couple of weeks since Dr. McDonnell was before the committee. He said the budget was procyclical. There is a €9.4 billion surplus in it. Would he have preferred that to be zero or €1 billion? IBEC suggested €8 billion. What do the witnesses feel would have been a better number?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_35">A reasonable number would have been approximately €6 billion or somewhere in that region. It is for that reason we say that rather than €1.3 billion or €1.4 billion of tax increases, it would have been fine if those had been tax increases instead. That would have given you broadly-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_7">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_36">Additional tax increases to bring in revenue and then-----</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_37">Yes, exactly.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_9">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_38">-----have more spending.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_39">There is €8.1 billion in additional spending. If you compensated partially with approximately €1.5 billion of tax increases, you would have got to somewhere in the region of €6.5 billion. That would have been reasonable. Of course, there is no such thing as a right answer here. It is all about measure of risk and the various models that are developed to predict what is going to happen to the economy over the next ten or 20 years. It is about demographics and ageing generally. It is about other costs, the level of economic growth, productivity and all of those things. Broadly speaking, we believe that the economy can sustainably grow at somewhere in the region of 4% to 5% per annum. On a net basis, for a neutral budget, you would potentially be looking at something like that. When the economy is as hot as it is now, and we can debate if it is overheating, which is not necessarily the case, you would generally have a little less. That allows you to pump money into the economy if there were to be a recession.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_11">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_40">In fairness, I would be the first to say that I think the economy is running hot. There is no doubt about that. That is why we did not spend all the surplus and there is a rainy-day fund, for want of a better term. We are putting that money aside for a potential bad day in the future. We are fortunate to be in that situation. What sort of taxes would Dr. McDonnell have increased?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_41">There is a long and a short answer to that. The short answer is that there is a menu of options to the tune of €14 billion or €15 billion from the Commission on Tax and Welfare. Ideally, you would begin by starting to mop up around the sides of tax expenditure. Whatever you do, do not bring in new ones, or if you do, bring them in for very targeted areas.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_13">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_42">Which taxes would Dr. McDonnell increase?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_43">I would begin by starting to wind down some of the existing tax expenditures, including the help to buy scheme and the special assignee relief programme, SARP. You could begin there. Increasing the local property tax would be an obvious option. Looking at-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_15">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_44">We increased local property tax to a degree.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_45">It was increased to a small degree.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_17">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_46">We introduced local property tax. It was not there previously, in fairness.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_47">I agree. The introduction of the local property tax was politically unpopular.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_19">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_48">The increase in it has not been overly popular either.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_49">That is absolutely so. Local property tax in Ireland is not particular large compared with other western economies. No tax is popular, and some taxes are more unpopular than others. The reason the property tax is unpopular is that we can see it. It comes as a big lump every year. People do not notice VAT, which hurts lower income households much more than the local property tax. Property tax, of course, only hurts homeowners. It cannot be shifted abroad, let us say. It is difficult to move land and property once the commitment has been made. It is often decades before a change, so the local property tax-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_21">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_50">Indeed, in Ireland, home ownership has been a key for all of us. The rate of home ownership is quite high in Ireland. Many people would be up against the wall.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_51">Of course.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_23">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_52">In Ireland, people buy houses whereas abroad they might be renting.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_53">You could be looking at a local property tax of €500 or €600, let us say. It varies depending on the value of the house. If you consider how much people are paying in income tax or VAT, or how much we are collecting in the form of corporation tax, it is a tiny sum. It is unpopular because people can see it and it comes in one big blow.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_25">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_54">I was a councillor for many years and I knocked on doors. I would tell people it was only a tenner a week. It is a tricky thing to say to someone. To Dr. McDonnell's point, it comes out in a block and always at this time of year you get that feedback.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_55">That is the thing. There are options around allowing people to repay over time if there are income difficulties. In my view, the local property tax is extremely well designed but for the fatal flaw that it is much too low. That is obviously easy for an economist to say, and I accept that. However, we can frame it as a choice between taxes. If we compare it, for example, with VAT, that tax is more regressive. Income tax would be more damaging to the economy.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_27">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_56">I am conscious of time. I want to delve into this issue. I am a member of Fine Gael, but that is irrelevant in the context of my question. I am curious as to Dr. McDonnell's view. He said it was not a populist budget. He highlighted that. We went down a certain route, one way or another, as we did the budget. Dr. McDonnell said specifically that he was against the VAT decrease to 9%.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_57">Yes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_29">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:40:00+00:00"/></from>
+          <p eId="para_58">At the same time, he correctly spoke about an increase in wages across the board. That is something we should look towards. Many people would have said that the increase in the minimum wage has brought many small businesses to the brink. The decrease in VAT to 9%, and I do not want to use the word "subvention", but I have said it, would be seen as a way to help those businesses to keep people in jobs.</p>
+          <p eId="para_59">That is as a thought process.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_30">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_60">On this occasion, I will let you continue given the numbers.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_31">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_61">He can come back to me. Perhaps Dr. McDonnell could answer that question if he does not mind.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_62">It is a great question.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_33">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_63">There will be a second round as well.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_64">When doing a budget, people should not necessarily look at a specific sector, but the economy as a whole and employment as a whole. The hospitality sector in the Republic of Ireland is not small and it is not on its knees; it is actually doing quite well and because it is a low productivity sector and we have full employment, the constant subsidising of a productivity-weak sector, which is perhaps keeping businesses alive longer than they might otherwise survive in a proper Schumpeterian creative destruction way, which-----</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_35">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_65">Now who is the capitalist?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_66">It prevents the economy from transitioning and going through the process of constant churn. What we do, therefore, is protect the people who are made vulnerable when something goes wrong. If a business fails, I would argue, we need to have a strong social insurance net, not only for the worker but also for the business owners, and to make things like bankruptcy as painless as possible.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_37">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_67">Often the people who have not contributed by paying their stamps in the same way as employees might are in the worst position coming out of it. I totally get that.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_68">In fact, we need to change that.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_39">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_69">It is a separate point, however.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_70">It is a separate point, but we need to make failing at business as risk free as possible. The safety net needs to be there so people can continually try and try again, if that is what they want to do. That applies not only to hospitality, but in general. Our social insurance system needs to be robust and last for numerous months to prevent such things as overqualification and people going into the wrong types of jobs for which they do not have the skills and so that people are allowed to try again and are not carrying a lifelong debt with them. It is a different perspective on how to support people.</p>
+          <p eId="para_71"> Supports can be provided in other ways through the university sector, research and development and so forth, but we should not support and keep a non-viable businesses alive, if a business is not capable of supporting a decent wage. Remember, the minimum wage is still below the living wage; it is a poverty wage, so if employers are complaining that they cannot pay the minimum wage, that should strike a chord. Perhaps the business model is not ideal and it might be the case - I know it is difficult to say - that the sector is too big and if it were smaller, it could pay higher wages and have higher costs, which is the case, perhaps elsewhere in Europe.</p>
+          <p eId="para_72"> I agree it was certainly not a populist budget. I absolutely accept that.</p>
+          <p eId="para_73"> As for indexation, there was a reaction on budget day that workers were paying for the 9% VAT cut. That is a reasonable perception. It costs €1.2 billion to index the whole system, €700 million goes to hospitality, the rest goes to property developers for apartments. It is easy to see how that narrative would be created. However, we accept that in the longer term, ultimately everyone will probably have to pay a little more in tax. That means that full indexation of wages every year is not necessarily a realistic proposition. That is where we are. It is maybe not a nice answer on the hospitality sector.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_41">
+          <from>Deputy Joe Neville<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_74">I was just curious to hear Dr. McDonnell's view. That is why we are here.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_75">That €700 million has an opportunity cost. It could be used to do other things and those other things might bring better outcomes for poverty and even job creation than that measure does. For example, finding ways to get energy costs down through renewable energy infrastructure would mean we are less reliant on gas, bringing the marginal level down, which would bring down costs for businesses. There are better ways to come at it. Rather than protect hospitality, I would protect business as a whole by bringing such things as energy costs down and focusing on another direction.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_43">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_76">I thank both organisations for their opening statements and for coming in. My first question is for Social Justice Ireland. A lot of issues were covered in its opening statement. I will ask about one. Mr. McGeady rightly said the level of homelessness in Ireland is obscene and that the budget could have done much more on homelessness, homelessness prevention and putting in place a resourced housing first approach to family homelessness. Homelessness is at emergency levels. It has never been so high. More than 5,000 children now live in emergency homeless accommodation. It is getting worse month by month. There is a lot of focus on housing as a political issue. Opinion polls show it to be the number one issue of concern. Given the level of resources we had for this budget and the prioritisation of housing as a political issue, why was there a failure in the budgetary process, when the resources are clearly available, to invest more in homelessness prevention and housing first, which have been clearly proved to work? These are not controversial areas to put money into. They have been proved to work. Why is the system failing to do this?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_77">First, huge sums of money are being spent on addressing homelessness after the fact and on making up for the fact that our social housing stock is totally inadequate. Huge sums of money are going into the housing assistance payment, HAP, rental accommodation scheme, RAS, and other measures. On the homelessness side, huge sums of money are going into paying for emergency homeless accommodation. We would have preferred to see more of that money going into constructing social housing units and increasing the scale of social housing. We would also have liked to see substantially more money go into homelessness prevention, that is, supporting tenants to stay in their homes and putting greater resources into resettling people and getting them out of emergency accommodation faster. We are seeing families staying in emergency accommodation longer and longer. One in four families is in emergency accommodation for more than 12 months. One in five families is in the system for more than two years. Concerted action is needed to get those families out of emergency accommodation and into housing because there are huge detrimental impacts on human well-being and development when people are institutionalised in these kinds of settings. Primarily, the work needs to be put in before homelessness becomes a reality.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Michelle Murphy<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_78">We were disappointed that the allocation was not given to housing first because it has been proven to work. Let us look at some of the other costs, such as tax breaks in VAT for apartment building and other new tax breaks in the budget. Dr. McDonnell mentioned the opportunity cost. What is the opportunity cost to the 5,000 children in emergency accommodation? The cost to the State in the long term from that, both social and economic, is multiples of what it would cost to introduce housing first for families.</p>
+          <p eId="para_79"> On the broader point, it is quite disappointing that we did not have the new housing strategy in advance of the budget. We had the review or update of the national development plan, but we still do not have the details. Each Department will publish its details. Without the Government having that picture, what is the direction of travel? What do we see in terms of housing, service provision, water infrastructure, energy infrastructure, roads or the transport fleet? In the absence of that, given the amount of money that was available for the budget, despite its scale, the budget is sectional and small-scale. We have the programme for Government, but what is the vision for where we are going? Let us forget about the social cost of all those children, and adults, in emergency accommodation. Given the economic cost of rising house prices alone - and we had announcements today about private provision of water infrastructure being taken over by Uisce Éireann - what is the bigger strategy around housing as a whole? It was a huge missed opportunity for the Government not to have published it in advance of the budget, given the scale of the resources it had available to it.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_46">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-11-04T15:50:00+00:00"/></from>
+          <p eId="para_80">There was an hour and a half of budget speeches by the two senior Ministers on budget day and homeless people or homelessness were not mentioned at all. That gives some indication of where the thinking was - or was not - on it.</p>
+          <p eId="para_81">One of the things that comes up consistently in NERI's contributions is the issue of productivity and how we could address a lot of the challenges we have, within the constraints we have, if we focused more on improving productivity. That means higher quality jobs for people, better paid jobs and more efficient output from that. It is kind of a win-win situation when you have a constrained economy running at full capacity. However, partially because some parts of the economy are very strong, we consistently do not see the focus on the parts of the economy where productivity is weaker. It does not get the kind of focus it needs to, though it is something the witnesses keep talking about, to their credit. Why do they think it is consistently missed, given this is one of the best things we could do right now to future-proof? If our windfall corporation tax receipts disappeared and we had sorted out the productivity in the weaker parts of our economy, that would really help. It would really help with housing and infrastructure delivery. We know we are way behind our peers in terms of productivity in those areas. This is a really important area for us to address. NERI is talking about it but it is not getting traction. Have the witnesses a view on what needs to be done to give it the kind of traction we need?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:00:00+00:00"/></from>
+          <p eId="para_82">I wish I knew how you could give it traction. It is a really good and important question. Maybe we can change the narrative. We are going to have all these constraints. An ageing population means fewer people at work. It is a wonderful thing, but it means fewer people at work, relatively speaking. We have got a green transition, deglobalisation, the AI revolution and all these things coming down the tracks with uncertain impacts. There are only two ways the economy can grow in the longer term, namely, we bring in more people or we increase our productivity, and we should do both. On the productivity side, I suppose it is because of the time horizon. We have a health crisis. Every January and February it is there. People are worried about their elders and about people being sick. Housing, in theory, should be an everyday priority as well. Issues about water and energy costs are all immediate priorities because there are clear failures and those are evident right now.</p>
+          <p eId="para_83"> However, productivity failure only manifests over a generation or even 50 years. It builds up over time. It was one instead of one and a half. That does not seem like a lot in an individual year but it really matters over the longer term. Due to the time horizon it is never an immediate priority. It is like saying you will do your homework later. It is always the number two thing you have to do and therefore does not get priority. It is like research and development or education spending. Infrastructure is maybe a little different because people see the need for that. We can even look at sector-level reforms. Government should be dealing with employers and employees to have sectoral task forces in all these areas. The Deputy mentioned getting productivity up in construction. In some sectors you cannot really increase productivity, like hospitality, opera singing or whatever it might be. Higher productivity in opera singing is not what you want. In other areas it is possible to do that, so it is a systems failure. In education too, we have serious questions to ask about how effective our spending is there.</p>
+          <p eId="para_84"> Mr. Nugent is finishing his PhD on overqualification, which has major implications for human capital. He may wish to talk about that.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Ciarán Nugent<recordedTime time="2025-11-04T16:00:00+00:00"/></from>
+          <p eId="para_85">As Dr. McDonnell said, it is a short term political horizon versus long-term investment in growth. We do not do that very well. My research is highlighting the fact about 30% of our graduates who are working are in jobs that do not require a third level education. There is a more hands-on industrial policy-type approach we do not really do in Ireland that could reap benefits in the long term with investment in high-end employment. We started off on tourism jobs, which we talk about way too much. I do not think our peer countries in northern and western Europe discuss tourism like we do because it just does not have good spillover like high-end, high-productivity jobs do. Never mind the VAT, we subsidise them in a lot of other ways. It is a dependency wage in that sector in terms of HAP or in terms of just being a second earner. It just will not cover rent. Of course, most do not enter into the higher income tax bracket so they are not net contributors, even if they are working 40 hours a week. It is about what we envision for the future, what our strategy is, whether there is any low-hanging fruit and any sectors in particular we want to target. Construction is one of those. We need to put money in there and we are not doing that. We are putting plasters on the problem rather than addressing the long-term issue. That obviously has massive implications for our competitiveness as well. We can talk about a high minimum wage, but when you look at rent and the cost of living, our minimum wage is one of the lowest in Europe. That is just in the education area of productivity, but it is about a more mission-focused approach being determined, like in the new Mazzucato book, and asking what we are doing here.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_49">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-11-04T16:00:00+00:00"/></from>
+          <p eId="para_86">Before I hand back to the Chair, is it fair to say a key message from NERI is we should be focusing on productive, high-quality, well-paid jobs that contribute to the economy in the long term as well as areas that have strategic importance rather than trying to grab everything going, including the lower paid jobs and so forth? Maybe that is built into our political DNA because, as a country, we had to do that in the past, but we are at a stage where we should really be focused on high-quality, well-paid jobs that spill over into the economy in a really good way and be less worried about lower paid, low productivity parts of the economy. We should be trying to transform in that way. Is that a fair summary?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:00:00+00:00"/></from>
+          <p eId="para_87">That is broadly it. We differentiate between the high road strategy and the low road strategy. Countries like the United Kingdom pursued a low road strategy, where it is just about bringing down labour standards, environmental standards and all these things to keep costs as low as possible, and by keeping costs as low as possible, you maintain a low level of unemployment and a high level of competitiveness because your costs are low. The problem with that is it might work in theory for some employers but it means living standards are low for the workers. This leads to deteriorating global rankings for countries like the United Kingdom and others.</p>
+          <p eId="para_88"> The high road strategy is based not on getting your costs as low as possible but having your output as high as possible. You are trying to improve the ratio between your inputs and your outputs, which allows the worker and the employer to both benefit. It is more like the Nordic model. Those countries said they would not subsidise or coddle non-competitive low-pay sectors. They have collective bargaining all over the place of course. It is this lifelong system whereby if you lose your job you have adult education and all those supports in place. They have just transition internalised for the last 90 years. Things like the green transition and AI are all going to matter for us, but the focus is on human capital, investing within the firms and on productivity. That allows a high standard of living for their workforce while, despite those high labour costs, having a very competitive business sector at the same time. Everybody ultimately wins. That is really what we are talking about, and when we talk about new economic model policies from the trade union movement broadly, that is ultimately what we are aiming to get at. There are all sorts of attendant policies around that to do with lifelong security, economic resilience around the budget and all these things that do not necessarily sound like left-wing policies but which are ultimately about protecting people, which makes them progressive policies we hope everyone in political sphere can embrace at least in some way. We would love to have a debate about that. I completely agree it is challenging to gain traction though.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_51">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:00:00+00:00"/></from>
+          <p eId="para_89">Before I go to my questions, I will take up a couple of the points Deputy O'Callaghan made about competitiveness and the lack of focus on that.</p>
+          <p eId="para_90">I worked for an Enterprise Ireland-supported company for 20 years. We got fantastic supports to be competitive. I refer, for example, to Enterprise Ireland's lean programmes. Enterprise Ireland very much supports small and medium-sized companies, with an emphasis on getting them to export. I would not like the message to be out there that small or medium indigenous companies are not supported. I have seen many grants and supports for improving employee performance, training, lean manufacturing programmes and a raft of other initiatives. I cannot even remember all the different supports we got. I wanted to put that on record.</p>
+          <p eId="para_91"> I take the Deputy's point in relation to hospitality, but he is looking at it purely from the point of view of numbers. The way I view it is that there is a strategy, which is looking at Ireland as a whole and at small towns and villages in rural areas where there is one coffee shop or one little restaurant that is on its knees. There is a strategic and a targeted way of doing this. It could be stated that it is a blunt instrument for the VAT rate to just go from 13% to 9% and that the big restaurants benefit too, but it is not so simple to target it. The other thing is, although these are low-paid jobs, a lot of people working in those places - I know this from living in a small village in west Wicklow - are students who are helping to pay for college. It also offers what is probably the best thing that can be offered in the labour force, namely a young person aged 16, 17 or 18 getting into the ethos of a job and working, including the discipline, networking, meeting people, dealing with customers and so on. That is a very worthy industry to support.</p>
+          <p eId="para_92"> On the numbers, the Deputy mentioned a figure of €700 million. I am not sure whether he included what the benefit or saving would be. He only looked at it one way. Comparing it with 11,000 nurses is a bit facetious in a way. Nurses come with overheads. That will be a long-term investment; we do not take on nurses and then get rid of them tomorrow. Also, I do not know whether we need 11,000 in the morning. We probably need maybe 3,000 or 4,000 a year for the next number of years; I have seen those projections. I wanted to make those points in defence of hospitality. I am not saying it is a simple case of black and white; it is not. However, there is such a thing as politically strategic decisions that are made on the basis of politicians listening to what is being said all across the country. That is my little soapbox.</p>
+          <p eId="para_93"> I will raise just a few matters with the Social Justice Ireland representatives. These are more like comments on their statements. They said there is a lack of investment in housing, and Ms Murphy spoke about Housing First, but this is the largest ever investment in housing. Carers were also talked about. Carers' means testing has been increased to €1,000 a week for a single person and €2,000 for a couple. That is part of a progressive cycle over the next number of years.</p>
+          <p eId="para_94"> Social Justice Ireland also stated that the Government failed to benchmark social welfare rates against average earnings. I have no general issue with that, but social welfare rates went up more than net wages did. As the witnesses know, wages are not indexed, so people are only getting half the increase that they get, whereas social welfare went up by maybe 4%. It is fair to say that social welfare rates actually surpassed net wages. I know wages are not benchmarked, but social welfare rates surpassed them in the budget. Social welfare went up 4%. While wages are growing by maybe 4% gross, it is closer to 2% when it comes to the net figure.</p>
+          <p eId="para_95"> The other thing is that we have one of the most progressive tax systems in the world. We have been criticised for our tax system, but that point is not referred to anywhere. I was trying to get a recent tax report, published in the US, on my phone but I cannot get a signal, about how we are so progressive in our tax system. I use the word "progressive" but I do not know whether it is the correct word to use. People could have different views on that, but we have an extremely socialist income tax system, apart from some of the anomalies referred to earlier.</p>
+          <p eId="para_96"> It was stated how low the minimum wage is and that it is not up to the living wage, but we have the second highest minimum wage in Europe after Luxembourg. The Nordics do it more by collective bargaining and do not have a fixed minimum wage, but our minimum wage is only €1.25 below the living wage. That is getting quite close. Businesses tell me all the time the minimum wage is putting a massive squeeze on them. To go back to hospitality, that is a really tough business which provides massive employment.</p>
+          <p eId="para_97"> Investment in infrastructure has been increased considerably. Again, I do not think that has been recognised. Taxes were mentioned. Are there any taxes that the witnesses would propose? Do they want to pass comment on my general comments? I have thrown a lot of them. Any commentary they have is welcome.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_98">There are just a few things. On the point about social welfare rates, and the Leas-Chathaoirleach talked about 4%, we have to remember we have to look at what it means for people in real terms. It is a €10 increase, but that increase to core social welfare rates will not make up for the erosion and purchasing power over the course of the year. Those people are still going to be, in real terms, worse off than they were last year even with the €10 increase.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_53">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_99">Is that assuming a certain inflation rate? Is that how Mr. McGeady came up with that?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_100">The inflation rate is at 1.9% or whatever, but, in practical terms, it will leave them fundamentally worse off than they were before.</p>
+          <p eId="para_101"> The other thing to remember is one of the things guiding our policy recommendations is that in 2002, a commitment was made to benchmark welfare rates to what at the time was 30% of average industrial earnings. That can be recalculated to be 27.5% of average earnings today. That is the benchmark we recommend starting at and €25 is required to achieve that. It is important to remember that while-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_55">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_102">Does Mr. McGeady think it is better to link it to average direct wages-----</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_103">Absolutely.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_57">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_104">Does Mr. McGeady not think it should be linked with the cost of living in terms of euros, rather than as a percentage? Is that not how you define poverty?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_105">No. It is because poverty is defined by wages first of all. It is by income, but if social welfare rates are not linked to average earnings, as changes occur in earnings over time, what happens is the gap between those on welfare rates versus those on earnings widens. During times of prosperity, economic growth, growing employment and growing wages, those who are most vulnerable and rely on those social welfare rates fall further behind.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_59">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_106">Conversely, do they not get hit more in hard times if they are tracked to average wages? Surely, we should be more concerned with fixing their income so they are protected in hard times. If wages fall, is Mr. McGeady suggesting that social welfare rates also fall?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_107">Over the long run, wages do not fall like that.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_61">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_108">I am saying that if wages fall, the logic of what Mr. McGeady said is that social welfare rates should fall. I do not agree with that.</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_109">There could be a smoothed version. Having a smoothed indexation for pensions has been talked about, which would protect against that. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_63">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_110">In the long run, or average or whatever, surely-----</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_111">Government can always make choices during particularly hard times to add additional protections, but the key point Social Justice Ireland makes is that if welfare rates are not linked to earnings, we see those huge inequalities growing between those who are in work and those who, for a variety of different reasons, are not in work.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_65">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_112">I am not agreeing or disagreeing. Where Social Justice Ireland thinks the emphasis should be is relative to other people in the economy, rather than people's absolute position-----</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_113">Absolutely.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_67">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_114">-----as regards whether they can afford the cost of living. Social Justice Ireland is not linking it to inflation at all.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. John McGeady<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_115">No. Of course, the cost of living, broadly speaking, tracks. As wages increase, the cost of living increases and<i> vice versa</i>. That is why we strongly recommend that.</p>
+          <p eId="para_116"> The other thing to remember is the poverty line is defined as a percentage of income. Therefore, that is another reason for linking it, from a purely statistical point of view. The other reason is we have to ensure that we do not end up with poverty traps emerging. If we do not want poverty traps emerging because of discrepancies or disparities between the rate of growth in employment versus the social welfare rate, we need to link both together.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Michelle Murphy<recordedTime time="2025-11-04T16:10:00+00:00"/></from>
+          <p eId="para_117">I will make a couple of points. Of course we welcomed the fact that there was a €10 increase in welfare, but it was insufficient. As we warned before the budget, if there was not an increase to €25, we would see poverty increase.</p>
+          <p eId="para_118">The analysis done by the Parliamentary Budget Office points to the same thing. Since 2016, the real value of wages has risen by 20% but the real value of welfare rates has risen by between 3.5% and 8%, so that is the gap and starting point.</p>
+          <p eId="para_119"> On taxation, yes, we have a very progressive income tax system and we always acknowledge that. The taxation system as a whole is heavily reliant on income tax, VAT, PRSI and corporation tax, and three of those hit individuals in their pockets, which is the challenge. As Dr. McDonnell said, there is a raft of recommendations by the Commission on Taxation and Welfare that we should be looking at, with the first one being tax expenditures and looking at ways to broaden the tax base. It is a way to prevent potential overheating in the economy.</p>
+          <p eId="para_120"> On VAT and hospitality and the rural businesses that have been mentioned, I live in a rural area and I understand the challenges faced by rural businesses. As the Leas-Cathaoirleach said, the VAT reduction can be referred to as a very blunt and expensive instrument and there are other means. Those businesses have identified the issues that affect them as being energy costs, staff shortages, in particular sourcing specialised staff, and overhead costs. There are other means to support and target some of those businesses. As Dr. McDonnell said, some of the issues are broader than hospitality, such as rates. The challenge is that a VAT cut means that someone going to that café in July, August or September will expect lower prices but if that VAT cut is there to subsidise or subvent higher costs, then the business may not be able to pass it on so then the consumer is not going to feel too happy either.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_70">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_121">No one expects that the 4% will be passed on. I think people recognise that it will go to the bottom line and save businesses or make them break even or make them more profitable. </p>
+          <p eId="para_122"> I have a few questions for Dr. McDonnell. When the income tax system was mentioned, I thought of a question although the topic is probably complex. What does he think of the idea of the USC being absorbed into the income system? It effectively is an income tax. We have two income tax rates and I am not sure whether we have five rates of USC or how many there are. Could we simplify things by absorbing USC into the income tax system?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_123">It is a very good question. First, we do have a progressive income tax system, which is different from a progressive tax system because income tax is, of course, just a part of that. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_72">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_124">I am talking about income tax.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_125">I would regard USC as superior to the income tax proportion itself. One of the reasons the Government did not just increase income tax rates was that the income tax system is riddled with tax expenditures, which creates all sorts of disincentives and is non-transparent, regressive and so forth. The USC is a broad-based tax and is accompanied by a very tiny number of tax expenditures. If we were just absorbing USC into income tax, then the first goal would be to make sure that the overall yield from the tax as a whole was not reduced. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_74">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_126">That would go without saying. We would not just tag it onto income tax. </p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_127">Yes. The income tax component would have to be redesigned and there would be higher rates or more rates coming in at an earlier level. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_76">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_128">The only reason I suggest this is to simplify the system.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_129">Of course. The alternative would be to get rid of income tax and just replace it with higher rates of USC.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_78">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_130">Is that the same thing? </p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_131">There would be one big difference. There would not be the tax expenditures within USC so it would be possible to have lower rates overall because the system would not be as punctured by all of these tax expenditures.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_80">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_132">My question was an aside.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_133">It is a great question and it is something we should consider but that would be a huge concern. If anything, we would get rid of income tax and replace it with a larger USC rather than the other way around.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_82">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_134">We all get that there is an underlying deficit of €6 billion or whatever next year excluding windfall taxes, although measuring that is probably an impossible task. It is still well below the original European guideline of 3%. I am all for prudence but it is not a scary figure to be running up to a deficit of less than 3%. Does Dr. McDonnell agree?</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_135">I would not disagree. Let me put it this way. We are talking about a surplus of €5 billion. In terms of the windfall, again we do not know for sure exactly what that windfall is because it is a range, but let us call it €15 billion or €16 billion or slightly more, so we could be looking at a deficit of €10 billion. That would be reasonably okay in normal times in terms of the rules-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_84">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_136">Especially when we are investing in infrastructure at a high level.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_137">For sure.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_86">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_138">There is a real distinction there.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_139">Yes, and we absolutely should invest in infrastructure. I have concerns that we may not be able to spend all of that money but that is a different question and that emphasis on infrastructure is very positive. Nevertheless, the economy is performing very well at the moment and the deficit in normal times would be a little bit higher again. We are benefiting from lower unemployment payments. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_88">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_140">We have high employment, yes.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_141">We are also benefiting from higher income tax payments. It is not just about corporation tax. The €10 billion deficit or whatever it might be would actually be slightly higher again.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_90">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_142">Is Dr. McDonnell suggesting that we should have no deficit given that the economy is booming?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_143">I would not go so far as to say there should be none, excluding the €15 billion or €16 billion-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_92">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_144">It is back to putting a bit aside for investment in infrastructure. That is different. It is like investing. If you are running a business or company, you invest in machinery and people.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_145">Yes.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_94">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_146">That is different from payroll and regular day-to-day expenses.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_147">It is.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_96">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_148">That is the big distinction.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_149">Yes. If an economy is growing at a rate of 4.5% or 5% and if, with potential infrastructure gains, it can be increased to 5% or 5.5%, then it is completely reasonable to run a deficit in normal times. That is completely fine. In fact, there is often talk of a golden rule in investment spending where it is excluded from deficits. That has been debated from time immemorial between economists and it is still debated within the European Parliament as to what we should do with the fiscal rules. etc. The European Commission would have a more conservative view than that, for example, but the idea of running deficits for investment spending but not for current spending is one that maybe we ought to look at over the longer term. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_98">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_150">In the real world, people borrow to invest in stuff.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_151">Yes.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_100">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_152">It is a completely different line of finance because there is a payback on investment. There is a payback from paying staff because you are training them and they are developing, contributing or whatever but you can see a real return on the investment. For example, investment in a wastewater treatment plant generates money for the Exchequer. Similarly, there is VAT on the houses and from the people living there once the houses are eventually built as a result of that investment.</p>
+          <p eId="para_153"> We are all talking about euro and percentages. Does the institute ever look at outputs, such as the number of teachers, kilometres of new roads and extra bus and train services? In a way they are more important. That is what we are trying to achieve. You can throw money at a problem and feed inefficiencies. We should not just focus on money and percentage growth in spending. All of these conversations about the budget are about billions, millions and thousands of euro and not about outputs. Should the conversation not be about outputs?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_154">It should, if that were an easy thing to do. Outputs, for example in education spending, are very challenging. Often it is not necessarily about classroom sizes.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_102">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_155">In housing the questions could be how many houses and social houses have been built. I know those numbers come out but I do not think there is enough emphasis on the outputs.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_156">On the outputs, I think the Leas-Cathaoirleach is right. We should be looking at how the money is spent - of course we should - and looking at more efficient ways to do it. That requires investigating what other countries do and always attempting to have best practice, whether it is education policy and health policy. Often it is about structural reform- I absolutely agree - such as changing the institutional architecture in healthcare, and it might be having the systems talk better to each other. In the future we can get productivity gains from artificial intelligence, for example. There are lots of ways. In terms of construction, we can get productivity gains, potentially, through modern methods of construction or planning reform. All of these things matter as well but, ultimately, even the outputs themselves, such as the number of teachers or how many people go to college, are only second order. The first order is what are the sustainable well-being outcomes for society as a whole and that takes it to a further level. Part of the problem with those types of analyses, including outputs, is that they are very difficult to measure and it is very difficult to compare like with like. That is why we often focus on things like X number of teachers or gardaí and things like that, even though that does not necessarily give a sense of what the outcomes are. I agree that outcomes are absolutely what matter.-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_104">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:20:00+00:00"/></from>
+          <p eId="para_157">It has been well documented that there was no increase in the tax bands.</p>
+          <p eId="para_158">That takes money out of the economy and is countercyclical, something Dr. McDonnell supports. I am sure he referred to it. That is a fact, right?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_159">That particular measure is countercyclical but the problem is you have to look at whether the overall package is countercyclical or procyclical. There are many procyclical and countercyclical things happening at the same time. That one is specifically countercyclical but the overall package of €9.4 billion, in a fast-growing economy at full employment perhaps, is certainly procyclical overall. That makes us less resilient for the next crisis. We talk about this being the deficit for 2026. We should not be thinking just about 2026. We should be thinking about 2036 and 2046 and with the ageing population, those deficits, if nothing else happens, are going to become much worse. Now is the time-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_106">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_160">I have always advocated that we should be looking at draft budgets for five or ten years' time-----</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_161">Agreed.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_108">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_162">-----because we know what is coming down the tracks. We know what a lot of the numbers would look like and we do not do that.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_163">The question is, why do we not do that?</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_110">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_164">That is the question I am asking.</p>
+          <p eId="para_165"> My last point, which I have covered with the other guys a minute ago and I am not going to repeat it, is on the minimum wage. I think we are doing okay on the minimum wage. Does Mr. Nugent want to come in?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Ciarán Nugent<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_166">On the minimum wage, I just did a quick calculation and it is all-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_112">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_167">Mr. Nugent is going to go back to the rents, I know.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Ciarán Nugent<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_168">Yes, it is all about housing. If you look at 2007 and the minimum wage, for a one-bedroom apartment in Galway it took around 45 hours over the month to cover the cost of rent. It is now 80. It is out of reach for a minimum-wage worker. We do have high minimum wages which-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_114">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_169">Mr. Nugent is not proposing to double the minimum wage to match that percentage.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Ciarán Nugent<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_170">No, I am proposing to fix housing. Homelessness-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_116">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_171">The minimum wage is not the problem.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Ciarán Nugent<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_172">It is because it is not going to fix rural Ireland either. Even in a rural place like Roscommon, the hospitality sector is still not going to be much more than 10%, if it is even 10%, of employment there. The demand side of that is that the workers in that café or pub are able to buy a pint or such in that café or pub after work on their day off as well, which they are not able to on the current minimum wage. There are high poverty rates there and there is subvention, as I said before, through support from the housing assistance payment, HAP, etc. The Deputy mentioned a few minutes ago about throwing money at something and making it less productive.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_118">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_173">You feed inefficiency. I know from working in business most of my life that if you throw money at things you feed a monster.</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Ciarán Nugent<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_174">That is a perfect example. The VAT is a perfect example of feeding an inefficient sector in the Irish economy. I want to say as well that employment in hospitality is up in the latest figures.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_120">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_175">I know, it is 191,000-----</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Mr. Ciarán Nugent<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_176">Yes. Employers are going to say, when they do pay minimum wage - especially in hospitality - that wages are a big part of their cost. That is going to be their messaging and it has always been their messaging but the fact of the matter is that it has been a profitable sector for the past year. Employment has not gone down. They are not in crisis, at least relative to any other period over the past 20 years or so.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_122">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_177">I gave my reasons I think it may have merit. I am not saying I am 100% in that it is absolutely wonderful and there are no downsides to it but there are strategic and rural Ireland angles to this.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_178">It was already benefiting from having a reduced VAT rate so it was already being subsidised to the tune of billions per year. On Mr. Nugent's point, what is your bang for your buck here? Is this the best way? The Deputy mentioned Enterprise Ireland. What it does is great. Those types of supports are exactly the kinds of supports you want to do, plus building out a proper innovation system like the Nordic countries. Constantly pumping money into a low-value-added, low-wage poverty income for the workers' sector is not the best use of our very limited resources, which are going to become more limited in the future. It would have been better to have simply banked that €700 million and done nothing with it than to give it to the hospitality sector, in my view. I refer to the employment gains from it, at a time of full employment when that sector has increased its jobs by over 11% in the past six years. It is growing at about 2% per year. The average employment growth for an advanced economy is about 1.2%.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_124">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_179">Our population has increased by 2% per year so would you not expect it to match population growth?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_180">The point is that the hospitality sector is not doing badly. That is not what the evidence suggests. If the hospitality sector was bleeding jobs and in crisis, it would be reasonable to have a different type of debate. In this case, it is not so. We should be looking to invest in how we get more construction workers. How do we build up the sectors? How do we invest in adult education to allow workers-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_126">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_181">We are doing all of that as well. It is not an either-or.</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_182">It is an either-or because there is an opportunity cost here. If you choose to do something like spend €700 million on something, it means you are not spending it on welfare or education reform or lower taxes for workers or whatever. There is always an opportunity cost. There is no such thing as a free lunch.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_128">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_183">I know that but with regard to lots of the things Dr. McDonnell is talking about, we are doing them.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_184">No. It could be done to a greater extent, or we could be building up our barricades against the next recession so we do not have to go through another 2008-type situation,</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_130">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_185">We probably just disagree. I made my point-----</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_186">You did.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_132">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_187">-----as to why I see a lot of benefits in it.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_188">For sure.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_134">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_189">Are there any particular capital and property taxes Dr. McDonnell would propose? The witnesses said in their statements that there are tax opportunities there, perhaps.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_190">The reality is that our taxes on capital are very low compared to taxes on average. The effective rate of tax on capital is very low compared to taxes on labour or consumption. If you are benefiting from capital income or capital assets, you are being given favourable treatment compared to the rest of society.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_136">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_191">Yet we have a very penal capital gains tax system where there is effectively a stealth tax because there is no indexation. What are Dr. McDonnell's thoughts on the fact that there is no indexation on capital gains?</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_192">The question there is if you were benefiting from capital gains, would you be happy to change your income gains to that of earned income, for example, and be paying the full marginal rates? I suspect you probably would not.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_138">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_193">No, but I am just thinking about fairness in the tax system. You are talking about capital. If you have, let us say, €100,000 worth of shares and inflation is 4% over five years it is worth €120,000 in five years' time and you are actually no better off. Say your shares go up in line with inflation and in five years' time you sell them at €120,000, they are taxed on a gain. If you have not actually got a gain, that is a stealth tax, right? It is the same as the income tax without indexing. That, to me, is quite a penal capital tax. Would Dr. McDonnell not think that is unfair?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_194">The point the Deputy is making is a reasonable one. I would, however, say that the effective tax rate on capital is generally much lower than taxation on labour, for example, and our consumption taxes are not low by European standards. The Commission on Taxation and Welfare looked at this. We looked at a swathe of different capital taxes. We did not recommend that capital gain taxes be aligned-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_140">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_195">Indexed.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_196">-----with labour taxes, for example, but we identified a range of capital taxes that could potentially be introduced. We talked about a site valuation tax, for example, which is basically a land tax. That would be the single least distortive tax you could bring in as an economy.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_142">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_197">Is that not the residential zoned land tax?</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_198">It could be alongside a local property tax or it could even replace a local property tax.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_144">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_199">Is it the same as the residential zoned land tax, RZLT?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_200">No, it is much more significant than that in the sense that effectively, we were advocating a system whereby you would have a local property tax and a site valuation tax, but a site valuation tax would effectively be replacing commercial rates so we believed it would be a more efficient system. In theory, you could get rid of the local property tax and just have a site valuation tax and that would be a very effective way to do it. You could raise a lot of money that way as well.</p>
+          <p eId="para_201"> With regard to a lot of the property-related tax breaks out there, we advocated that they were uncalled for. We talked about reforms to capital gains tax. We also called for reforms to capital acquisitions tax, which is extremely generous compared to earned income, for example. If you are a nurse working overtime you might be paying 50% tax but if you inherit €400,000, you just get it for free even though you do not do anything at all. We also looked at the possibility of a wealth tax-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_146">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_202">Even though the inheritance tax threshold is a lot lower now than it was 20 years ago.</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:30:00+00:00"/></from>
+          <p eId="para_203">It is but compare it to earned income.</p>
+          <p eId="para_204">So somebody who actually works and earns their money pays a much higher rate of taxation than somebody who has to do nothing at all and is just lucky to have the right parents, for example. That we would see as extremely inequitable.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_148">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_205">Even though some countries have abolished inheritance tax.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_206">Some countries have, but just because somebody else is making a mistake does not mean we should do it as well.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_150">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_207">They could say the same about us.</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_208">They could, perhaps. Within capital acquisition tax, the business reliefs and agricultural reliefs allow a person to earn millions and millions of euro. To be at that level, a person basically has to be in the top 1% of the wealth distribution before all credits and benefits run out. If people want intergenerational equity and fairness in the housing market and all of these things, then those taxes need reform. There are a lot of ideas. There are a lot of pricks of a few hundred million euro here and there, but they add up to billions of euro ultimately. All of the tax expenditures that we are proposing the committee look at distort the economy, including the 9% VAT. They are non-transparent and tend to be regressive, by and large. There are certainly billions of euro that we could identify and at least have a conversation about where we want to go because we do know that we are not going to be able to have these €9.4 billion budgets forever. Eventually, we will have to scale things down. To maintain existing levels of service, it is €3 billion or €4 billion at the moment but it will increase to €4 billion, €5 billion or €6 billion eventually. We are going to have think now about what a sustainable tax base looks like in the 2030s and 2040s rather than making those decisions when they are very difficult to do. To be fair to the Government, it has made some movements in those directions. For example, the PRSI reforms are seeing very tiny increases each year.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_152">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_209">That is the way to do it.</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_210">That is actually a good thing. That is the good way to do policy. So rather than have big bang bumps for the next generation, you have tax increases-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_154">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_211">On a long-term plan.</p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_212">-----like are going to happen in the UK-----</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_156">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_213">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Dr. Tom McDonnell<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_214">-----with the Reeves budget in three weeks' time. There will be very tiny increments every year. That is the right way to do it. We must think about what the most distorting tax expenditures are and instead of getting rid them in a single year, wind them down over three to five years. I am thinking about schemes like the help to buy scheme, which I know was liked by some people. That would be how I would do those things. See it as a 20-year generational project rather than something that happens in each budget.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_158">
+          <from> An Leas-Chathaoirleach<recordedTime time="2025-11-04T16:40:00+00:00"/></from>
+          <p eId="para_215">I am sorry for detaining the witnesses longer than maybe they thought but we had a number of people in the room. I also thank the members of the secretariat for their patience and help. That concludes this session and I thank the witnesses for attending.</p>
+        </speech>
+        <summary eId="sum_5"> The select committee adjourned at 4.43 p.m. until 3 p.m. on Tuesday, 18 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

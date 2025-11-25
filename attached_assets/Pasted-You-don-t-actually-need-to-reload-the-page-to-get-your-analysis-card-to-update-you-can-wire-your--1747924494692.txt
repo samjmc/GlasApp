@@ -1,0 +1,125 @@
+You don’t actually need to reload the page to get your analysis card to update – you can wire your “Save & Regenerate” button to simply update a shared weights state, and then have your analysis component refetch its React-Query data whenever those weights change.
+
+Here’s the outline:
+
+1) Lift your weights into a parent
+Create (or edit) the page/component that renders both your slider UI and the analysis card. Something like:
+
+tsx
+Copy
+Edit
+import React, { useState } from "react";
+import MultidimensionalIdeologyProfile from "./MultidimensionalIdeologyProfile";
+import EnhancedPoliticalProfileExplanation from "./EnhancedPoliticalProfileExplanation";
+import { IdeologicalDimensions } from "@shared/quizTypes";
+
+const AnalysisPage: React.FC<{ dimensions: IdeologicalDimensions }> = ({ dimensions }) => {
+  // keep weights in top-level state
+  const [weights, setWeights] = useState<Record<string, number>>({
+    economic: 1, social: 1, cultural: 1,
+    globalism: 1, environmental: 1, authority: 1,
+    welfare: 1, technocratic: 1
+  });
+
+  return (
+    <>
+      <MultidimensionalIdeologyProfile
+        dimensions={dimensions}
+        initialWeights={weights}
+        onWeightsChange={setWeights}
+      />
+
+      <EnhancedPoliticalProfileExplanation
+        dimensions={dimensions}
+        weights={weights}
+      />
+    </>
+  );
+};
+
+export default AnalysisPage;
+– now both child components share the same weights.
+
+2) Remove the window.location.reload hack
+In your MultidimensionalIdeologyProfile.tsx, replace:
+
+ts
+Copy
+Edit
+// …after successful POST…
+window.location.reload();
+with simply:
+
+ts
+Copy
+Edit
+// notify parent…
+onWeightsChange?.(weights);
+// Optionally you can show a toast here…
+You already call onWeightsChange(weights) in your save handler – that’s enough.
+
+3) Make your analysis component refetch when weights change
+In EnhancedPoliticalProfileExplanation.tsx, change your React-Query hook to include weights in its queryKey and in the POST body (you’ve mostly done this, but make sure):
+
+ts
+Copy
+Edit
+export interface EnhancedPoliticalProfileExplanationProps {
+  dimensions: IdeologicalDimensions;
+  weights: Record<string, number>;
+}
+
+const EnhancedPoliticalProfileExplanation: React.FC<EnhancedPoliticalProfileExplanationProps> = ({ dimensions, weights }) => {
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ['/api/enhanced-profile/complete-analysis', dimensions, weights],
+    queryFn: () =>
+      apiRequest({
+        method: 'POST',
+        path: '/api/enhanced-profile/complete-analysis',
+        body: { dimensions, weights }
+      }).then(r => r.data),
+    // because queryKey changed, React-Query will refetch automatically
+    refetchOnWindowFocus: false,
+  });
+
+  // …render your card based on `data`…
+};
+Why this works: whenever weights changes, the queryKey changes, so React-Query invalidates and refetches your analysis. No manual reload required.
+
+4) Do exactly the same for your party-matches query
+Inside PartyMatchResults, accept the same weights prop and include it in its queryKey and body:
+
+ts
+Copy
+Edit
+interface PartyMatchResultsProps {
+  dimensions: IdeologicalDimensions;
+  weights: Record<string, number>;
+}
+
+function PartyMatchResults({ dimensions, weights }: PartyMatchResultsProps) {
+  const { data, isLoading } = useQuery({
+    queryKey: ['/api/enhanced-profile/party-matches', dimensions, weights],
+    queryFn: () =>
+      apiRequest({
+        method: 'POST',
+        path: '/api/enhanced-profile/party-matches',
+        body: { dimensions, weights }
+      }).then(r => r.data),
+    refetchOnWindowFocus: false,
+  });
+
+  // render your list…
+}
+Summary of flow
+User drags sliders and clicks Save & Regenerate.
+
+Your MultidimensionalIdeologyProfile calls onWeightsChange(weights).
+
+That updates the parent’s weights state.
+
+EnhancedPoliticalProfileExplanation and PartyMatchResults each see their queryKey change and automatically refetch their APIs with the new weights.
+
+Your analysis card and party-match list update in place.
+
+That’s it – no page reload, no extra buttons, just React state + React-Query doing the heavy lifting.

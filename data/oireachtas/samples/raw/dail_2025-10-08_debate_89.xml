@@ -1,0 +1,824 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_enterprise_tourism_and_employment/2025-10-08/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_enterprise_tourism_and_employment/2025-10-08/debate"/>
+          <FRBRdate date="2025-10-08" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_enterprise_tourism_and_employment"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_enterprise_tourism_and_employment/2025-10-08/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_enterprise_tourism_and_employment/2025-10-08/debate/mul@"/>
+          <FRBRdate date="2025-10-08" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_enterprise_tourism_and_employment/2025-10-08/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_enterprise_tourism_and_employment/2025-10-08/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-11" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AlbertDolan" href="/ie/oireachtas/member/id/Albert-Dolan.D.2024-11-29" showAs="Albert Dolan"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="ConorMurphy" href="/ie/oireachtas/member/id/Conor-Murphy.S.2025-01-29" showAs="Conor Murphy"/>
+        <TLCPerson eId="EoinHayes" href="/ie/oireachtas/member/id/Eoin-Hayes.D.2024-11-29" showAs="Eoin Hayes"/>
+        <TLCPerson eId="GeorgeLawlor" href="/ie/oireachtas/member/id/George-Lawlor.D.2024-11-29" showAs="George Lawlor"/>
+        <TLCPerson eId="JamesOConnor" href="/ie/oireachtas/member/id/James-O'Connor.D.2020-02-08" showAs="James O'Connor"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="MaryFitzpatrick" href="/ie/oireachtas/member/id/Mary-Fitzpatrick.S.2020-06-29" showAs="Mary Fitzpatrick"/>
+        <TLCPerson eId="OllieCrowe" href="/ie/oireachtas/member/id/Ollie-Crowe.S.2020-03-30" showAs="Ollie Crowe"/>
+        <TLCPerson eId="PaulNicholasGogartyGP" href="/ie/oireachtas/member/id/Paul-Nicholas-Gogarty.D.2002-06-06" showAs="Paul Nicholas Gogarty"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCPerson eId="TonyMcCormack" href="/ie/oireachtas/member/id/Tony-McCormack.D.2024-11-29" showAs="Tony McCormack"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM FHIONTAIR, TURASÓIREACHT AGUS FOSTAÍOCHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Enterprise, Tourism and Employment</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-08">Dé Céadaoin, 08 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-08">Wednesday, 08 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#BrianBrennan">Brian Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#OllieCrowe">Ollie Crowe</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MaryFitzpatrick">Mary Fitzpatrick</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#RoseConwayWalsh">Rose Conway-Walsh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#AubreyMcCarthy">Aubrey McCarthy</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AlbertDolan">Albert Dolan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#ConorMurphy">Conor Murphy</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#PaulNicholasGogartyGP">Paul Nicholas Gogarty</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#LindaNelsonMurray">Linda Nelson Murray.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#GeorgeLawlor">George Lawlor</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#TonyMcCormack">Tony McCormack.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Eoin Hayes.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#JamesOConnor">Teachta / Deputy James O'Connor sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Competitiveness and the Cost of Doing Business in Ireland: Discussion (Resumed)<recordedTime time="2025-10-08T12:30:00+01:00"/></heading>
+        <speech by="#JamesOConnor" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T12:30:00+01:00"/></from>
+          <p eId="para_15">I welcome everyone to our tenth meeting. Before we proceed, I have a few housekeeping matters to go through. I wish to explain some limitations to parliamentary privilege and the practices of the House as regards references witnesses make to other persons in their evidence. Witnesses are protected by absolute privilege in respect of the presentation they make to the committee. This means that they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege and it is my duty as Chair to ensure that it is not abused. Therefore, if witnesses' statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction. One of today's witnesses is giving evidence remotely from a place outside of the parliamentary precincts. As such, that person may not benefit from the same level of immunity from legal proceedings as a witness who is physically present does. The witness in question may consider it appropriate to take legal advice on this matter.</p>
+          <p eId="para_16"> I remind members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit members to participate if they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via Microsoft Teams that prior to making their contribution to the meeting, they confirm that they are on the grounds of the Leinster House complex.</p>
+          <p eId="para_17"> Members and witnesses are reminded of the long-standing parliamentary practice to the effect that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if a statement is potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that any such direction is complied with. I propose that we publish the opening statements and submissions provided by the witnesses on the committee's website. Is that agreed? Agreed.</p>
+          <p eId="para_18"> I propose to invite our witnesses to speak for up to ten minutes, that we allow members to ask questions or make comments for approximately five to seven minutes. We may have a second round of questions should time allow. Members will be called in the order in which they appear on the speaking rota which was circulated before the meeting. Is that agreed? Agreed.</p>
+          <p eId="para_19"> Today's meeting is on competitiveness and the cost of doing business in Ireland and related matters. The committee has decided our priority policy will be comptetitiveness and the cost of doing business in Ireland. This is our fourth meeting on this topic and we look forward to hearing from many of the stakeholders in various sectors of our economy. At this point, I also wish to express my gratitude to the Leas-Chathaoirleach, Deputy Brennan for chairing last week in my absence. Gabhaim buíochas leis.</p>
+          <p eId="para_20"> I am delighted to welcome the representatives from Chambers Ireland and Dublin Chamber. I invite Mr. Ian Talbot, chief executive officer of Chambers Ireland to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T12:30:00+01:00"/></from>
+          <p eId="para_21">I thank the Cathaoirleach and the members of the committee for the opportunity to address the committee today. We welcome your focus on competitiveness and the cost of doing business. </p>
+          <p eId="para_22"> Adequate, efficient infrastructure is paramount to our competitiveness and critical considering the demands of our growing population, which is anticipated to increase to 6.4 million by 2042. While the housing shortage has been the most visible component, the underlying services critical to housing delivery such as energy, water and wastewater treatment and public transport require prioritisation in all regions of the State. Compounding the lack of delivery are the frequent challenges to planning, judicial reviews and other delaying tactics. The impact of delays are numerous and they are not victimless decisions. The cost is ultimately paid by the consumer and taxpayer, and this contributes negatively to both the cost of living as well as the cost of business. They include dramatically increasing the cost of delivery of projects that are delayed, even if they ultimately proceed. For example, this includes maintenance of the project during the delivery period, reapplying for planning approval or legislative requirements that are implemented while issues are being resolved; legal, interest and other costs obtaining the approvals; obsolescence of material originally envisaged and needing redesign; and inflationary pressures. They contribute to driving up the cost of living as well by limiting access to essential services, increasing transportation and housing costs and reducing economic efficiency. The lack of availability consequently impacts productivity as people cannot access jobs or services efficiently, companies struggle to attract talent and there is a constraint on social mobility insofar as high living costs and limited access to services trap individuals in cycles of poverty. Delays further cause significant costs incurred by the State on projects which are abandoned and the opportunity cost of State resources, such as planners and the court system, occupied on resolving planning and other legal issues which could be spent on other matters, particularly where such expertise is in short supply or constrained. Going forward we urge Government to prioritise capital spend and critical infrastructure over other measures. Investment in infrastructure supports all businesses, regardless of size and there has to be a commitment to multiyear budgets for capital expenditure. As so many economies are seeking to diversify, open new markets and build key energy infrastructure, we need the ability to contract for equipment which we know will be required in the medium to long term or we risk exponential cost increases or even lack of availability. In terms of the cost of business, the topics of the Cost of Business Advisory Forum, which some of our members participate in, are all essential to maintain our competitiveness and ensure our productivity continues to grow. Ensuring our commitments to international agreements is equally vital and we need to support indigenous companies, importer and exporters alike, in availing of the huge opportunities offered by the EU Single Market and free trade agreements. Connectivity is also critical to access new markets, and we welcome progress being made to lift the Dublin Airport cap.</p>
+          <p eId="para_23"> Finally, we urge all members of the committee and all Oireachtas Members to support the holding of a referendum on the Unified Patent Court, UPC, in the near future and to prioritise a "Yes" vote. The UPC can play a critical role in protecting and promoting innovation and making intellectual property protection more accessible for many entrepreneurs. Seeing such positive stories at the annual young scientist awards really brings home how important passing the UPC is for budding innovators and the job creators of the future. I ask all of members to consider the proposals highlighted in our submission which have advancing our competitiveness at their core and I thank members for their attention. </p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T12:30:00+01:00"/></from>
+          <p eId="para_24">I thank Mr. Talbot. I call Ms Mary Rose Burke, chief executive of Dublin Chamber of Commerce, to make her opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T12:30:00+01:00"/></from>
+          <p eId="para_25">I thank the Chair. I wish to focus on the three key areas of infrastructure, regulatory burden and social infrastructure.</p>
+          <p eId="para_26"> Dublin Chamber of Commerce represents about 1,000 members that drive Ireland’s economy through its capital city, from start-ups and scaling and growing businesses to multinationals. About one million people work in Dublin, with about one fifth of these commuting from outside of Dublin. The overwhelming issue for all our members is the persistent delays in the delivery of infrastructure which acts as a drag on the economy as a whole. Many of these issues have been identified by the interim report of the accelerating infrastructure taskforce and include the need for a review of the barriers in the planning system, barriers in the judicial system and the need for multi-annual funding. Housing is the most important issue. As we survey our members on a quarterly basis, more than five-in-six businesses now say that the cost and availability of housing is the single biggest factor undermining Dublin’s competitiveness. Six-in-ten of our members report losing staff, or failing to hire, because people simply cannot afford to live in the city. We would like to see faster and more predictable planning decisions, activation of public and brownfield land, delivery of higher-density urban projects, expansion of affordable and cost-rental schemes, and above all, matching new housing with the utilities and transport connections that make it viable. Housing and transport are inseparable. We know Dublin is now the third most congested city in Europe. The average commuter spends over 200 hours a year in traffic. Nearly 70% of employers say commuting problems are damaging morale and retention and that for workers, reliable transport is now a condition of employment. Projects such as MetroLink, the Luas extensions, DART+ and BusConnects have been discussed for too long they need to be accelerated in their delivery. We welcome the new Infrastructure unit in the Department of public expenditure and the progress made by the Minister, Deputy Jack Chambers in this space, but our message is clear that Dublin needs a decisive shift to a high-capacity, reliable public transport, supplemented by safe walking and cycling routes. </p>
+          <p eId="para_27"> As an open, island economy Dublin Airport is an important piece of national infrastructure and the current 32 million passenger cap in constraining that connectivity. We welcome the Minister's move to legislate for its removal to allow the airport to grow at its natural pace. </p>
+          <p eId="para_28"> Energy and water infrastructure are other critical weak points. Energy grid capacity is holding back both businesses and housing. Water and wastewater systems are stretched to breaking point, with over 85% of the capital’s water still coming from one source, the River Liffey. This is unsustainable. The powering up Dublin programme, the greater Dublin drainage scheme and the eastern and midlands water supply project are vital to growth. The national development plan must be delivered with certainty and pace. We need a predictable pipeline of infrastructure so that investors and developers know what to expect. Renewable energy and grid upgrades must be accelerated, or growth will stall. Ireland is one of the slowest places in the EU for consenting, particularly for wind energy. </p>
+          <p eId="para_29"> A second common concern for firms is they feel that the regulatory burden is rising too quickly. Our members fully support fair regulation, but when rules pile up without regard for their combined effect, competitiveness suffers. Recent measures from higher minimum wages to statutory sick pay and auto-enrolment have merit, but together they create a heavy load, especially for our smaller businesses. Almost 60% of our members have had to hire extra staff or outsource compliance just to keep up. That is time and money diverted from growth. We are asking for a balanced approach and that all new regulation must be accompanied by a proper impact assessment, with a test for small and medium enterprises, realistic lead-in times, and a focus on simplicity. Businesses should be innovating, not drowning in paperwork and processes. Finally, I would also like to comment on the lack of adequate “social” infrastructure and makes some comments on education and training, and on childcare.</p>
+          <p eId="para_30"> Skills and talent are the backbone of Ireland’s competitiveness. However, employers across sectors report critical shortages in critical areas such as artificial intelligence, digitalisation and sustainability. Training is still too supply-driven rather than demand-led, leaving businesses struggling to adapt. Businesses lack access to flexible, targeted supports. The National Training Fund surplus must be fully and permanently unlocked to deliver real investment in our people and businesses. This funding should be used to expand apprenticeships in vital sectors such as construction and engineering, and to provide SMEs with access to training that delivers the right skills at the right time. However, skills are not the only barrier. The prohibitively high cost of childcare continues to keep many talented people out of the workforce. One-in-five Dublin businesses report losing staff or difficulty recruiting because of the cost and lack of childcare. If we want to unlock our full economic potential, childcare must be treated as a core economic issue, not just a social one.</p>
+          <p eId="para_31"> Ireland’s competitiveness depends on strong foundations: housing, transport, infrastructure, access to skills and talent and smart regulation. Right now, those foundations are under serious pressure. Housing shortages are driving wage inflation. Congestion is costing billions of euro. Infrastructure gaps are delaying investment and skills shortages are limiting growth. Childcare barriers are a roadblock to employment. Regulation is pushing up costs. Without urgent action, doing business in Ireland will get more expensive, and our competitive edge will weaken. If Government deliver solutions with pace and ambition, Ireland can remain one of the most attractive countries in the world to live, work and invest in. Dublin Chamber of Commerce and our members will continue to be a constructive and challenging partner with Government and the Oireachtas to make that happen.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T12:30:00+01:00"/></from>
+          <p eId="para_32">I want to welcome the other witnesses. </p>
+          <p eId="para_33">We also have Mr. Shane Hughes, policy and international affairs manager from Chambers Ireland joining its chief executive, and from Dublin Chamber we are joined by Mr. Aebhric McGibney, director of public and international affairs, and Mr. Stephen Browne, head of public affairs.</p>
+          <p eId="para_34"> We will move on to members. The first slot is a Sinn Féin slot and we will go to Deputy Rose Conway-Walsh.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_6">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_35">I thank the witnesses for coming in today. It is very important they are here when we are discussing this topic of competitiveness. I note all the contributions they have made to that space with regard to what needs to be done and it is timely we are here the day after the budget. I might focus on what the witnesses have requested and what has happened in the budget.</p>
+          <p eId="para_36"> There are a few questions I will throw out there and the witnesses can answer them as they so wish. First, in its statement yesterday, Chambers Ireland said that "most businesses won't experience any direct benefit from today's measures". They might answer that for me.</p>
+          <p eId="para_37"> The other one is around the MetroLink not being specifically mentioned in any of the budget day documents and would not, at this stage, appear to be in receipt of dedicated funding in 2026. That is from the analysis we had from the Parliamentary Budget Office.</p>
+          <p eId="para_38"> With regard to productivity, what is impacting on it mostly? I also ask the witnesses to speak to the housing situation. They rightly identify housing as probably the major constraint to our competitiveness with respect to people being able to house their workers.</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_39">I thank the Deputy for reading our commentary. That is always good to have. On the challenges facing business, our view on budget 2026 would be that there were two particular measures, one on the research and development tax credit and, of particular interest to small business, there was an increase in the amount you can get up front, which was always a problem for companies. It is the cashflow problem they face, so that increased and that was positive.</p>
+          <p eId="para_40"> There is a challenge with regard to general access to finance for small, growing and scaling companies that have ambition. It is possibly a competitiveness question, if you like. If you look at the tax strategy group papers that assess the entrepreneur relief, SURE and all the various schemes, the message is that they are there, we need to market them more and spend more money through agencies in promoting them. Perhaps the schemes are poorly designed and administratively complex for companies to access. Perhaps they cost more with regard to hiring an accountant to access the schemes in order to qualify for them. That affects take-up.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_8">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_41">On that, Chambers Ireland and Dublin Chamber would have suggested to the Government that in the design of these schemes, you need in the room the people you are trying to target with the schemes. Have the witnesses had any response from the Government on how it is going to do things differently in the future?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_42">There is no easy answer to that. Not directly. One of things about the tax law and tax structure - we have made this point separately - is that tax law is incredibly complex now. We have had about 9,500 pages of direct legislation since the Taxes Consolidation Act 1997 came into force, plus Revenue has a whole block of additional guidance, interpretations and so on. It is a nightmare for companies to actually understand exactly what their tax obligations are at times.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_10">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_43">What I am talking about, because I am conscious of my time, is more the design of schemes.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_44">I was just going to-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_12">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_45">It could be the energy grant or whatever grant it might be that a business really needs to get a hold of quickly and efficiently. I refer to the complexity of those schemes. Why are the people whom those schemes are meant to reach not in the room?</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_46">The point I was moving on to - everyone wants a go at this one - was that the real experts are the tax companies like PwC, KPMG, Deloitte and so on. They make their recommendations on how to improve these schemes.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_14">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_47">I do not agree with Mr. Talbot but go on.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_48">I will give the Deputy an example. Dublin Chamber proposed an idea that was taken up by the Government when it introduced what is called the keep scheme. It is a share scheme for SMEs that are unquoted to allow staff to access it. If you want a rocket scientist in your tech company instead of them working for a big quoted company where their shares are visibly performing in the market versus an unquoted company, this is to give them access to shares. You can give an employee shares. Take-up of that scheme has gone through multiple revisions and remains low. In fact, it was referred to in the budget, so we have made suggestions. There is an inherent reluctance to open the floodgates and that is understandable if you are guardians of the public purse but I would say that for a number of the schemes, they are so restrictive that they limit accessibility. Our main proposal in budget 2026 was to get rid of them all and introduce a lower CGT rate of 20%.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_16">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_49">On the budget yesterday, it was stated many businesses "won't experience any direct benefit from today's measures".</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_50">Yes, that was our quote. The VAT change impacts certain sectors and obviously a lot of money went into that. For most businesses, things like the research and development tax credit will not be of any value to them. I refer to ordinary business just getting on with day-to-day life and most of the employment. There was virtually nothing positive or negative in yesterday's budget but the cost of doing business still keeps creeping up. There will be extra wage pressure from the failure to index tax bands and things like that as well.</p>
+          <p eId="para_51"> We also made the point about the failure to free up the €160 billion we have on retail deposits, for example. There is a big opportunity there for investment into businesses and we seem to be reluctant to take a chance. There has never been a better time to take a risk on developing new schemes and seeing how they work.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_18">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_52">I have many more questions but I am sure the witnesses will answer them in addressing other members.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_19">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_53">I hope we will get to a second round. I thank Deputy Conway-Walsh. The next slot is Fianna Fáil and we might go to Deputy Tony McCormack first.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_20">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_54">I thank the witnesses for their opening statements. I appreciate them. It is the day after the budget. The witnesses had their asks in a lot of cases. My questions would be on competitiveness and where the witnesses think we could go as a country. We all realise that the minimum wage has been increased. We all want to see workers getting paid more money and all the rest but at the same time, we have to be attractive to industry that we want to bring into the country. Where do the witnesses see us cutting back to make ourselves more competitive? As a nation we have become less competitive over the last number of years.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_55">Primarily, if we get the investment in infrastructure, energy costs, connections, water, wastewater and housing right, competitiveness will be supported. Most of our businesses are looking at that macroeconomic element within which they are looking at investments in Dublin and Ireland compared to other countries. There is the ability to connect to the grid and to get access to water. The basics of the economy are where we need to focus. We welcome the investments announced earlier in the national development plan and reiterated yesterday in the budget but it is not just about the money for those. It is about the political will to push through, accelerate delivery and remove the non-finance barriers.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_22">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_56">The witnesses will find that the political will is there to do this. We obviously understand where we are with it. It was said that businesses did not get anything yesterday in the budget apart from the reduction in the VAT rate for the hospitality. We did, if we think about the extra money gone into infrastructure, power and Irish Water. That is a plus and something Ms Burke reiterated in what she said.</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_57">Absolutely. Those investments support the foundations of the economy.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_24">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T12:50:00+01:00"/></from>
+          <p eId="para_58">There is more work we need to do with regard to competitiveness. The witnesses talked about infrastructure and, as they said in their opening statements, housing. Housing is a vital one. In order for us to get people in here to do jobs that need to be done, we have to house them not just in housing but low-cost, value-for-money housing. That is something we are very cognisant of. There is huge political will at the moment to do this. I would say watch this space going forward. We have heard from the likes of the witnesses, IBEC and other industry leaders what the issues are and we will, definitely, work towards that as a Government in the next number of years.</p>
+          <p eId="para_59"> I have a question for Mr. Talbot. Chambers Ireland is a great lobby group for businesses right across the country.</p>
+          <p eId="para_60">In other countries - America, for instance - when one is in business one automatically pays into the chamber of commerce fund. Over the years, there has been a drop in the number of businesses that are active in chambers of commerce, and indeed in the number of chambers, in this country. Does Mr. Talbot think we should have something in place to ensure businesses contribute directly to Chambers Ireland? Should we put a small tax in place and allow the money to be distributed to the likes of Chambers Ireland as a lobby group for businesses?</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:00:00+01:00"/></from>
+          <p eId="para_61">This is a topic we often discuss. In most of Europe the chamber network is public. We call this network the public sector chambers. Many peripheral countries, such as the UK, if it is a peripheral country, the Netherlands, Belgium, Denmark and so on, tend to be private law. The history behind this is that wherever Napoleon went, he set them up as public organisations. The issue for many public sector chambers is that their lobbying activities tend to be constrained because they depend on public funding. The independence we have because we do not depend on public funding is very important to most of our chambers. Our ability to lobby independently is very important.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_26">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T13:00:00+01:00"/></from>
+          <p eId="para_62">That is fine and grand in Mr. Talbot's situation as the head of Chambers Ireland, but if he goes around the country he will find that for many businesses the issues may be local rather than national. Unfortunately, in many cases they do not have a lobby group to be able to lobby local authorities and local government for whatever they need done to deal with the issues they are facing. Over the years, I have seen a drop-off in the number of chambers of commerce and in the effectiveness of the remaining chambers. Publicly funded chambers of commerce might not be able to lobby as Mr. Talbot might want by virtue of being connected to the system, but at the same time we need those bodies in place. It might be okay. It is very hard these days to get volunteerism in Ireland to the level required to run effective, efficient chambers.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:00:00+01:00"/></from>
+          <p eId="para_63">I fully understand and appreciate the Deputy's point. We have seen the same thing with some town chambers not being able to sustain themselves in a volunteer model. We have been very proactively trying to work with local chambers and local government, particularly since Putting People First came through in 2014, to try to get more critical mass in chambers of commerce. Ultimately, most of the chambers around the room would still take the view that independence is very important. It is about trying to get a critical mass. This could be done by county, for example, by establishing county chambers. In some counties there have been mergers, and in others chambers are trying to co-operate much more with one another. In many of our small towns, it is not great for sustainability or for continuation to depend on the volunteer model. Volunteers can get tired and their interest can wane. We take the view that chambers should work together, collaborate and benefit from that extra resource. We very much encourage our chambers to take the national outputs we put together and convert them for local use. Chambers do not have to reinvent the wheel; they can take what we are producing and go to their local authorities and enterprise centres, etc., to try to make progress. Although we think we have made a lot of progress in this regard, we would like to see improvements in some areas of the country.</p>
+        </speech>
+        <speech by="#PaulNicholasGogartyGP" eId="spk_28">
+          <from>Deputy Paul Nicholas Gogarty<recordedTime time="2025-10-08T13:00:00+01:00"/></from>
+          <p eId="para_64">I will ask the same question of both of our witnesses. They have mainly referred to infrastructure. In Dublin, more of the focus is on transportation infrastructure, along with childcare. Nationally, the focus is on water services and the energy grid. These are issues close to my heart. They have come up at this committee and at the EU affairs committee, in terms of the deficit that exists. At our last meeting we said that the disconnect between the Civil Service and the various Government Departments, in terms of trying to effect change, has reached a certain point. Do our witnesses have any suggestions on what needs to be done in this regard?</p>
+          <p eId="para_65"> I have personal experience of dealing with two strategic development zones in south Dublin. I am familiar with the South Dublin Chamber from that perspective. In SDZs, one can try to tie in the phasing of infrastructure. There have been various arguments among councillors about what the approach should be. For example, is it right to delay housing by providing that a childcare facility be provided for every 1,000 houses? Public transport infrastructure has been missing from the SDZs. When Adamstown was being developed, it was decided that the Phoenix Park tunnel needed to be open by the time a certain number of houses had been built. What is the witnesses' view on the idea that a major arterial bus route should be ready to go through zoned land for 10,000 houses once that housing gets the go-ahead, even if is just a skeleton service? Two issues arise when such a requirement is in place. First, there are delays in getting houses built because of all the planning obstructions and bureaucracy. At the same time, if people are complaining about a lack of childcare, we have to tie in these issues by putting in place a requirement, when land is being zoned for housing, to build communities and not just housing. Is there a way to square that circle?</p>
+          <p eId="para_66"> My personal view on strategic infrastructure is that we should spend a lot of front-loaded money, such as the Apple money, and we should borrow if necessary in order to fix the grid, build the water infrastructure for housing and reach the point of becoming a net exporter of energy in the next 15 years. We should ramp up wind and wave capacity in order to feed into the interconnector going to Europe, Northern Ireland and the UK, to ensure we are not importing energy anymore and to have money to spend on other infrastructure. I know that Chambers Ireland has an international affairs element, so I wonder whether the witnesses have considered this issue with colleagues outside Ireland. In their interactions with other chambers, what is the best practice they have seen that would help us to get rid of the kind of bureaucratic stop we have in this country?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T13:00:00+01:00"/></from>
+          <p eId="para_67">The top issues for our firms, based on our surveys, are the connected issues of housing and infrastructure, and the cost of doing business. We need water supply and wastewater facilities in order to construct housing. That is a big blockage in the greater Dublin area.</p>
+          <p eId="para_68"> To go back to Deputy McCormack’s question, we welcome the levels of capital spending that have been announced. The Minister announced that there will be sectoral spending plans, but we want to see the detail. There is growing scepticism among businesses about whether projects will go ahead and, if so, when they will be delivered. There is an element of spinning plates in way that previously announced projects keep on reappearing. On the capital side, the NDP was largely restated for the current year in budget 2026. We are keen to see great detail in the sectoral plans.</p>
+          <p eId="para_69"> To address Deputy Gogarty’s question, Seán O’Driscoll is chairing the accelerating infrastructure task force. A former member of our board is sitting on that group, which is availing of the expertise of many different agencies that are keen to see the group's recommendations, which we expect in October, and to see them implemented. One of the issues that often arises in the context of the delivery of utilities is the question of multi-annual funding. I have been writing budget submissions since 1994. My facts could be wrong but I have not seen a five-year budget plan in this year's budget. It may be there, as there is a lot of documentation to read. It is the first year I have not seen a five-year spending plan. Multi-annual funding is the first issue, and the second issue is around parallel processes. At the moment, when looks through the system one has to go around the houses with An Bord Pleanála and the SEAI, etc. It is sequential. It is a matter of dealing with one after the other, which adds hugely to planning delays. If one has a problem, one goes back to the start. We would like to see parallel processing to make sure each agency is looking for similar information and those decisions are made in parallel. There are two proposals there.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T13:00:00+01:00"/></from>
+          <p eId="para_70">I will respond to the Deputy’s question about electricity. The primary objective for us is getting sufficient generation and transmission networks built around the country to support the ambitious growth plans for this economy. We are not necessarily looking at exporting electricity; we are a long way from that. One of the biggest cost drivers is that we import most of our electricity. Yet, we are the slowest at consenting for new solar or new wind energy. My colleague mentioned the issue of regulatory overlap and the sequential nature of consenting rather than it being done concurrently. If we change some of that overlap and make sure there is a streamlined process of consenting, it will make a big difference as we seek to become less reliant on imported energy.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:00:00+01:00"/></from>
+          <p eId="para_71">The idea of aligning bus routes with SDZs is a good one, but we are so far behind by virtue of having spent so many years not building housing, for example, that we cannot do everything at once. It is difficult to recruit bus drivers even if the buses are there.</p>
+          <p eId="para_72">Catching up is going to be hard after so many years when we did not invest enough in infrastructure, but we have to start making decisions about the order in which we do things. We cannot get everything perfect at the moment, no matter what our aspirations are, but we desperately need the housing. Before that must come the grid, the waste, and everything else that is holding up building the housing as well. That will allow us time.</p>
+          <p eId="para_73"> Deputy Conway-Walsh also mentioned MetroLink. Again, that is a vital project. We also need to look at other parts of the country to see what transport infrastructure we need and get it built there as well.</p>
+          <p eId="para_74"> There are a couple of other things. We are big supporters of sustainable towns and cities. It makes sense to do this stuff right. We support that, but let us not underestimate as well the difficulty in funding projects across Europe in the private sector as well. Our support for the Capital Markets Union, a savings and investment union, and freeing up the €160 million in deposits here as well are all a very important part of putting funding into getting things done privately as well as public money being spent on it all the time.</p>
+          <p eId="para_75"> Another issue related to the grid is the need for interconnectors internationally as well. That would complicate the ability to export. The real focus is on making sure that we have energy for our own needs first. That is what we would like to prioritise.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_76">I thank Mr. Talbot very much. We now go to Deputy Lawlor of the Labour Party.</p>
+        </speech>
+        <speech by="#GeorgeLawlor" eId="spk_33">
+          <from>Deputy George Lawlor<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_77">I thank today's witnesses for their presentations. They were very informative. I appreciate the reference to utilities and infrastructure, but my questions relate more directly to the cost of doing business. One question relates to commercial real estate both in Dublin and the rest of the country. How does Dublin compare internationally and how does the rest of the country compare? Is availability an issue? Is affordability an issue? How do they relate in terms of attracting business to areas?</p>
+          <p eId="para_78"> In light of the serious challenges, what strategies is Chambers Ireland promoting to seek and maintain the competitiveness of SMEs?</p>
+          <p eId="para_79"> My final question is not about competitiveness but the attractiveness of Dublin. A visitor tax for Dublin has been discussed. What is the view of the witnesses on that and how would they like to see the revenue being spent in terms of improving the product Dublin can be?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_80">Since Covid, Dublin has relied on the counties and areas surrounding it for labour. With flexible and remote working - hybrid working - we have more people coming into the office and the restaurant two to three days a week, which has expanded, if you like, the scope of the labour pool. As we said in our opening statement, we now have pretty much only 20% of people commuting on some days of the week into work in the county of Dublin. That has changed the dynamic in the commercial real estate market. The other dynamic is the change towards more environmentally friendly grade A buildings - modern buildings. Companies want to maintain sustainability so they are looking for better buildings. There will be a huge upgrade of old stock and-or change to apartment use or whatever is going to happen there, but also there remains a demand for good quality grade A buildings.</p>
+          <p eId="para_81"> In terms of the strategies for the competitiveness of SMEs, there is a working group under the Department of enterprise and the Minister, Deputy Peter Burke, that is looking at the cost of doing business. It has a very detailed programme. Some of the issues that are going to be discussed include regulation, the burden of taxation and administration. Insurance was discussed at the last meeting and our next one will be on infrastructure. It is going through all those issues and identifying them. There is a real opportunity for business groups like ourselves, through Chambers Ireland – Cork Chamber and Limerick Chamber are represented – to get to, not confront but challenge, the various agencies that are represented. About 40 State bodies are involved in the group. It is a bit unwieldy, but they need to be there to answer the questions. That is the first thing. That process needs to be undertaken, where we begin to identify how to simplify this SME test, if you like.</p>
+          <p eId="para_82"> In terms of a visitor tax, that issue is not a new one. We worry about its impact in terms of the competitiveness of the location. Dublin is fantastic in terms of air access, so that is always another criterion. On the question about how it would be spent, the city, in particular the city centre, has a real challenge with the multiple agencies that are involved in the delivery. That is outlined by the Dublin task force. The responsibility for implementing and delivering those recommendations does not rely solely on Dublin City Council and Richard Shakespeare. There are lots of other bits to the puzzle. This goes back to a previous point Deputy Gogarty made. It is about the integration of decisions. Dublin Chamber of Commerce has argued for a directly elected mayor, but I will not bring that up today. One of the underlying reasons for that was about the integration of transport, housing and other decisions so that they are integrated at a geographic level. The complexity of Dublin, given its scale, is such that it requires somebody to keep an eye on it. Traditionally, it has often even been a senior Minister, for example. In terms of how the money would be spent, there are lots of things, much of it around security. We welcome the increase in the number of trainee gardaí that have been announced in 2026. That should not come out of a tourist tax. I do not want to conflate the two.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_83">Commercial real estate issues around the country are not coming up as an issue for our members. It does not mean there are not some issues out there but the three big ones that keep coming through are housing, the cost of services such as energy, and skills. I do not think there was any mention of the National Training Fund yesterday. We still have this locked-up concept. I am not sure why it got locked up in the first place but we desperately need to unlock it and spend it on skills training. Skills is such an important issue. The pace of change in the market is just so fast. It is faster than it was a year ago, with AI for example. Potentially, people joining the workforce now may have to retrain several times during their career, so we need to focus more on skills than we ever have before, including retraining people, on-the-job training and so on. It is a real concern that we did not hear much yesterday. The investment in Skillnet next year is buried in the detail. I think I heard it might be down for next year but it is in the detail and I have not got to it yet. We are all looking forward to seeing how the Limerick mayor works out as well, to see if it can be a good model for other towns and cities across the country. That is important. We would like to see it succeed.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_84">I thank the witnesses very much. I appreciate that. I thank Deputy Lawlor. Senator Crowe is substituting for Senator McCarthy.</p>
+        </speech>
+        <speech by="#OllieCrowe" eId="spk_37">
+          <from>Senator Ollie Crowe<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_85">Many thanks to our guests who have come before us this afternoon. Dublin Chamber referenced that the regulatory burden is rising too quickly, especially for SMEs. That is an issue I have come across myself in Galway. In their view, are there any immediate measures the Government could take to assist SMEs to address this? Yesterday, budget 2026 had significant support for the hospitality and retail sectors in particular, with the VAT cut from July 2026.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_86">Specifically with the timing of issues all coming together, be it auto-enrolment and different supports, what we would like to see rather than debating any particular issue is that, when new regulations are brought out, there is a test on the impact that they will have on the smaller and scaling businesses so that a system is in place for assessing the impact of each of those rather than debating the merits of each of the individual measures.</p>
+        </speech>
+        <speech by="#OllieCrowe" eId="spk_39">
+          <from>Senator Ollie Crowe<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_87">Okay. Mr. Talbot highlighted in Chambers Ireland's opening statement the importance of a referendum on the Unified Patent Court. Could he expand on that? What would be the biggest benefit for Irish businesses if it is to succeed? What are the risks posed by not holding a vote or the vote failing?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:10:00+01:00"/></from>
+          <p eId="para_88">It is ultimately about the proper use of the EU Single Market. The patent court was introduced in about 2013 by the EU. Twenty of the 27 EU countries have signed up to it. What it means is that if you have got an idea, you can patent it and a single patent applies across those 20 EU countries. The reason I referred to the Young Scientist Exhibition is that it is great every January to see wonderful ideas from schoolkids, but at the moment if they have an idea to patent, they patent it in Ireland and that is it, whereas, if we have the Unified Patent Court available, they can patent something that can be across most of the 450 million people in Europe, for example.</p>
+          <p eId="para_89">It is clearly not all about young budding entrepreneurs. Existing businesses can avail of it as well. It will help to reduce legal costs and it is to be hoped it will encourage people to export more into different markets, for example, small export businesses that have only focused on the UK market. It is another encouragement for them to move into the wider Single Market across the EU.</p>
+          <p eId="para_90"> There is a conundrum here for us. We see an awful lot of talk in the media and in government about free trade agreements. We have the best possible free trade agreement in the EU Single Market, but I do not think our small businesses are availing of it enough. We need to train them, educate them and give them opportunities to expand. It is really about availing of that Single Market. It is another thing that we should be unequivocally signing up for to encourage our entrepreneurs. However, I know there is a certain resistance to holding referendums.</p>
+        </speech>
+        <speech by="#OllieCrowe" eId="spk_41">
+          <from>Senator Ollie Crowe<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_91">In his statement, Mr. Talbot highlighted the negative role of planning objections, judicial reviews and delaying tactics. As we are aware, the Minister, Deputy O'Callaghan, has signalled the intent to address this. We would all like the system to be quicker and more efficient. What reforms does Chambers Ireland believe are needed?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_92">Some of it is making sure that the planning Act gets implemented as soon as possible. Some of it is about resources. For example, we have just made a recommendation that we need to put further investment into the courts system. We fully accept the appropriateness of objections being raised as part of our democratic standards, but if the courts could deal with the objections raised more quickly rather than the courts system providing multiple-year delays as one goes to the High Court and Supreme Court, it would be a help.</p>
+        </speech>
+        <speech by="#OllieCrowe" eId="spk_43">
+          <from>Senator Ollie Crowe<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_93">Both opening statements highlighted the need for increased investment in infrastructure, which was a key part of yesterday's budget, with €19 billion allocated towards capital projects and with investment plans to be published by Departments in the coming weeks that will work to a five-year timeline. What projects or areas need to be prioritised, from our guests' viewpoint?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_94">We have mentioned some of them. They are all interconnected. It is energy generation, the grid, the transmission network, water, wastewater and transport infrastructure. In addition, while no new money was mentioned for the metro, €2 billion will come from the climate fund to start the enabling works. Each of these projects has been talked about for ten, 20 or 30 years. It is about moving forward to delivery on each of them. They are interconnected and no one stands on its own. All of these infrastructure projects, for example, water, wastewater and electricity, need to be progressed together.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_95">It is not just about the projects themselves. It is about unlocking the supply of housing, ideally, affordable housing.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_96">So many things need to be done across the country. It is a very difficult question for Chambers Ireland to specifically point to projects around the country as many things have national applicability. The grid is one, and there is also Dublin Airport, our national airport, but Cork and Shannon also need to see investment. We have underinvested consistently in infrastructure. Again, we have a chance to get it right this time. We have a chance in the NDP to look at the cities and towns referenced in it and build the right transport infrastructure. There was an earlier point about lining things up together, so childcare, transport and schools are developed together, for example. That is very important. It comes back to the national development plan, Project Ireland 2040 and so on. We need to really take it seriously and get the public to buy into that vision as well. It is very important that the public understand that we have to build cities properly for the future, and not just do it piecemeal, with a bit of this and a bit of that.</p>
+          <p eId="para_97"> The east coast water supply is also a critical project. It tends to be billed as a Dublin project, but it is actually the whole east coast and big chunks of the midlands as well. It is a very important project.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_47">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_98">Thank you. We move to Sinn Féin. I call Senator Murphy.</p>
+        </speech>
+        <speech by="#ConorMurphy" eId="spk_48">
+          <from>Senator Conor Murphy<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_99">I thank the witnesses for the presentations. They have covered a lot about energy infrastructure, so I will not go back into that. I agree with Deputy Gogarty about the potential for renewables across the island and where that could bring us.</p>
+          <p eId="para_100"> The Government acknowledged a number of times yesterday in the budget speeches the macroeconomic vulnerability regarding corporation tax, the tax take, the concerns about the United States and where that is going. Clearly, what is required is a shift not to close that down but to encourage more diversity within the economy. From the perspective of the witnesses, what are the steps that need to be taken? I presume they largely represent small and medium enterprises across the country, and specifically in Dublin for the Dublin Chamber of Commerce. What steps are needed to rebalance the economy to try to offset some of the vulnerability, which I believe will increase over the coming years? We have come through the pandemic and now have the tariff issues, and that has followed on from Brexit. All of these things increase the vulnerability of the macroeconomic model.</p>
+          <p eId="para_101"> With regard to skills, the witnesses were clear that, especially with regard to technology, skills are moving so fast that it is difficult to keep up with what is required. What vehicle do the chambers have in terms of representing those issues directly through the Department? For example, is there is a skills council on which businesses are represented to give them an opportunity to engage with skills providers? How does that fit into Government policy and the approach to skills? Is there a direct conduit for that or is it just Chambers Ireland putting forward position papers and hoping that is reflected? There are some very well-resourced IT colleges and skills providers around the country. However, the ability for them to keep abreast of the developments that are required in technology is dependent on Government support. It is a necessary part of productivity and growing the economy. What is the vehicle for the chambers to try to ensure that the skills provision matches what is necessary for business expansion and growth?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_102">Our membership goes right from small businesses and start-ups through to the global multinationals, so it is the entire mosaic of the greater Dublin business community. Collectively, it is around infrastructure. The clear feedback from businesses is that as a small, open economy, we have no control over the shifting geopolitical tectonic plates that will have an impact on the Irish economy. However, what we do have control over is the investment in infrastructure and getting fit for the future. That is why we welcome the investments announced yesterday in line with the national development plan. It is around controlling what we can control. All of those aspects are a drag currently, based on a long-term deficit in infrastructure, so addressing that deficit will put us in good stead to deal with the next challenges as well as the current ones.</p>
+          <p eId="para_103"> Regarding skills, we have talked about the new skills, like AI. It is not just structured, traditional training. It is very much on-the-job training and upskilling. This is particularly the case for smaller businesses, which need the skills right there at the time when they need them for the implementation of new systems and processes. Time away from the business is a cost that not all businesses can deal with. Where there are training funds and where programmes can be designed to meet the AI piece that is going to impact every business, that will involve an iterative process of upskilling in AI, and more specific, targeted training for businesses as we move into new sectors of the economy.</p>
+          <p eId="para_104"> It is about unlocking finance and then alignment. On the question of whether there is alignment or whether we just make submissions, there is a regional skills forum that we participate in.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:20:00+01:00"/></from>
+          <p eId="para_105">Across our nationwide network, we have the entire mosaic. We represent businesses geographically, which brings its own issues at times because we have such a range of things that we might have to be able to talk about. The vulnerability we have is very much why, as Ms Burke said, we are focused on the investment in infrastructure and skills. Also, I cannot say often enough that it is about the ability to finance businesses, that is, growing businesses that can finance themselves in Ireland and be taxed appropriately in Ireland. We find that too many small businesses get themselves off the ground and then realise that to scale up further, they have to migrate to another country. We need to keep those businesses and entrepreneurs in Ireland. Again, that is why we talk a lot about things like capital gains tax and the various share schemes as well as freeing up the €160 billion that we have on deposit in Ireland and getting that invested into Irish business to really scale them up.</p>
+          <p eId="para_106"> In addition to the regional skills fora, ten chambers around the country are running Skillnet.</p>
+          <p eId="para_107">They are quite involved in generating the training programmes there. We also have the education and training boards. Most of our local chambers have relationships with those ETBs to drive the skills agenda locally. I also welcome a great initiative that the Dublin, Cork and Northern Ireland chambers are running to develop a profile of activities to get more and more cross-Border activity. The Senator is probably familiar with the engagement the Dundalk chamber has with Newry and Warrenpoint. Equally, Letterkenny and Derry work very closely together. They are all things we try to build on as a network in respect of infrastructure but also skills.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_51">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_108">I thank the witnesses for coming in. It was great to read their statements. I am a very strong advocate for small businesses. We are very lucky in our county of Meath to have the fabulous Meath chamber, which is run by Paula McCaul and Trish McDonnell, who I am sure the witnesses are well aware of. In Meath, we run a careers expo, an apprenticeships expo and women in business lunches, which I try to attend as often as I can. We also have the Mí Meath card, which supports local businesses. Only recently, I was in Dundalk for a six-chamber event where we merged chambers from all around. There is very good work being done. Well done.</p>
+          <p eId="para_109"> On the Chambers Ireland submission, in the overall 14-page document, three lines are given over to building resilient towns and communities. This is something I am very passionate about. I really fear for the businesses on the high streets. I urge and encourage Chambers Ireland to really look at those businesses and to see what more we can do to help them. I appreciate all the points raised in the submissions. There is a lot of work going on in our towns at the moment. Many car parking spaces are being removed, a lot of plants and cycle lanes are being put in and a lot of road works are being done that leave businesses in upheaval. A business was in contact me last week that could not believe another cycle lane was going in. Even though it is fantastic for our towns that this is happening, support is needed for these businesses while they go through this upheaval as the towns are developed. Do the witnesses have any ideas around that?</p>
+          <p eId="para_110"> I have a two-part question. I was in Athboy this morning and in Enfield on Monday. I worry about the towns and about the businesses on the high streets. What could we in the Government do to support them more? Perhaps I will ask that first and then come in with my second question, which is on training. Do the witnesses want to respond to that part first?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_111">I thank the Senator very much. To Deputy McCormack's earlier question, there is a very good example of chambers coming together in Meath. Those in Ashbourne, Navan and Kells, the strongest chambers in Meath, came together to form a single chamber and are able to be much more engaged not just within Meath but also in the wider region. It is a very good example of building that critical mass.</p>
+          <p eId="para_112"> We have many recommendations in this area outside the simple statement we have put together. We are big supporters of sustainable towns and cities, as represented in the sustainable development goals. We are big supporters of town centre first initiatives and some of the very positive stuff that came up yesterday, for example, the measures around derelict buildings. We share the Senator's concerns but a lot of the things that come up are quite localised. It is really important that we have strong chambers like Meath's, which is able to engage with Meath County Council and make plans that work in those areas. </p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_53">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_113">Does Mr. Talbot have any thoughts about doing something on rates? It is a question that people do not really like talking about but where a business is going to suffer a 50% loss over three or four months and can prove that, would it be an idea for their rates not to be as high for that particular period?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_114">As a network, we talk about rates constantly. One issue is rates increases. In fairness, over the last few years, most county councils have tried as hard as possible not to increase rates significantly. There is also the way in which business models have changed. For many businesses, it is not as important to have a shopfront or big warehouse. The rates model needs to keep up with that. We know that county councils depend on business rates to a significant degree. When everything else is being pulled in, whatever remains that needs to be funded must be covered by business rates. We would certainly love to see a modernisation of the rates model.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_55">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_115">I believe we all would. That is something the committee might be able to discuss in the future.</p>
+          <p eId="para_116"> I will move on. Mr. Talbot mentioned the training vouchers and raising money for them. How does he see that working, particularly for small businesses? I have used Skillnet in my business. We are in the leisure business. It was amazing. Many people who work for me now have the equivalent of a PLC qualification. They wore the caps and gowns and got qualified. It is great. How does Chambers Ireland see that training voucher working?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_117">There have been some very successful training vouchers in the past and also some that were not so successful. For example, I am not sure how well the current digital voucher is going around the country. The big thing here is that we need to be flexible. If something is not working and not getting out the door, we need to recognise that there is obviously no demand for it. Communication is also key. One of the many challenges we have is that we represent 10,000-odd businesses around the country. There is a huge number of businesses that are not engaged with their local chamber. It goes back to the point that was raised earlier as to whether chambers should be part of the system. If we were part of the system, it might be different getting that message out but there are also reasons we are not. It is about getting the message out to companies that there is stuff to help. As the Senator will know well, in most small businesses, you are constrained on time and trying to keep the lights on and so do not have time for this. Ensuring the message filters down so that people get the really important stuff is key, as is flexibility. It is really key that we keep evolving things. If things are not working, we no longer have two or three years to reflect and say that did not work and we need to do something differently. We nearly need to review every single year. We consistently call for local authorities to have more authority. Perhaps if greater authority was held locally, there might be more delivery for businesses in the local area. That is another key area to look at.</p>
+        </speech>
+        <speech by="#MaryFitzpatrick" eId="spk_57">
+          <from>Senator Mary Fitzpatrick<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_118">I thank all of the witnesses for coming in today and for the work they do representing their members and championing business not just in Dublin but right around the country. We appreciate the opening statements and the submissions the groups make to us, even in between meetings with the committee. I thank them for all the work. It is greatly valued. We take as read all of the groups' submissions on the need for increases in housing, infrastructure, childcare, social infrastructure, built infrastructure and transport. For the Government, all of those areas are huge priorities. The €7 billion being spent on housing alone every year is not a small amount of money. On the changes and enhancements announced yesterday, I take the witnesses' point. It is an iterative process and we face a very significant challenge. However, I will park those issues for a moment and talk more about the mechanics of business and the business elements the witnesses have mentioned.</p>
+          <p eId="para_119"> They called for bold reforms to support entrepreneurship and innovation. Will the Chambers Ireland representatives speak about that? They has also talked about exploring new markets. Where do they see those new markets? What are the opportunities that we are not yet exploring and exploiting? What are the bold changes and innovations the Government needs to make to enable businesses in Ireland, both importers and exporters, to realise that potential?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:30:00+01:00"/></from>
+          <p eId="para_120">On new markets, we have already said that the Single Market is a huge opportunity. It is next door. Since Brexit, 35 ships a week are leaving Ireland for continental Europe, whereas it was five or seven before Brexit. The opportunities are now easier to avail of and access. Of course, life is not all about exports but there are also opportunities for people to buy product from the Single Market. Brexit was a bit of an education for all of us on the finer points of the Single Market. We realised just how easy it is, leaving aside language difficulties, to trade with the 26 EU countries. It is also easy to trade with the UK. We should not forget that it is a market that keeps growing. When I wrote that submission yesterday, I had in mind that we are constantly trying to take in at short notice what is being said in the budget and the accompanying papers and asking whether anyone heard anything about the National Training Fund. We are trying to determine the core message.</p>
+          <p eId="para_121">My core message was about the 41% ETF tax, which the Minister said would be reduced to 38% and on which he said a review would be done. A topic of conversation for several years has been that it was €140 billion, €150 billion or €160 billion, and now we are going to do a review of it. To come back to the time issue, as I said in response to Senator Nelson Murray, we do not have time any more to throw stuff into a review if it is just a matter of deferring making decisions on it. I am not sure how much money the ETF tax raises. I might be completely wrong but I have heard it is approximately €70 million in a year. In the scheme of our tax returns at present, particularly corporation tax, that is nothing.</p>
+          <p eId="para_122"> Could we not throw out this model and put something out there to say that creating new retail products to support Irish businesses is now fully supported and will be supported by the tax system? I am not sure what it would look like - perhaps a tax of 20%. At present, because there is no market for a product that pays a tax of 41%, nobody is building products to serve the market, and they will not build it for 38% either. Rather than keep it for the sake of a €70 million tax return, we should throw it out altogether, put in something new and let the market build new products. I have no doubt whatsoever that the tax return on whatever came back from that new market would vastly outstrip the €70 million. We have never had a better time. That is what was driving my thought process when I wrote it. It has never been a better time to move away from incrementalism. Incremental change in something like VAT or income tax involves big numbers. This is not a big number. Let us take a risk.</p>
+        </speech>
+        <speech by="#MaryFitzpatrick" eId="spk_59">
+          <from>Senator Mary Fitzpatrick<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_123">Has Chambers Ireland made a submission to the Minister on this?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_124">It was in our prebudget submission.</p>
+        </speech>
+        <speech by="#MaryFitzpatrick" eId="spk_61">
+          <from>Senator Mary Fitzpatrick<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_125">Does Dublin Chamber of Commerce wish to comment?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_126">When companies engage, if we look at the reviews of the various entrepreneur schemes, including SURE entrepreneur relief and the angel investor scheme, we are concerned about the level of administrative burden of applying for and using these schemes, which then evolve and change over time. The EII scheme was to add employment and then it changed to involving a bit more. That makes it very complicated for companies to engage. Sometimes there is conflation between capital gains tax and income tax. Sometimes people invest and it does not work out. A lot of the discussion this morning is on whether the stock market is booming too much and will go down, and we are all worried about our pensions and so on. We made a proposal on capital gains tax and investing in unquoted firms instead of backing a large quoted company, many of which are also members so I will not name any individual company. There should be a lower rate of CGT for people who invest in these unquoted firms because it might not work out.</p>
+        </speech>
+        <speech by="#MaryFitzpatrick" eId="spk_63">
+          <from>Senator Mary Fitzpatrick<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_127">There is higher risk.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_128">There is risk involved. It is not the same as income tax. That is tricky and a political challenge.</p>
+          <p eId="para_129"> I believe Senator Fitzpatrick has chaired the co-ordination group in her party for Dublin. This goes back to one of our points on infrastructure. We would like all parties to meet as a group. There are 48 or 50 TDs and Senators, although Senators are not geographically bound, in Dublin. We would like to see the TDs working together, instead of on a constituency basis, for the county of Dublin and its wider environment because companies look at it that way. They do not look at it from a constituency point of view. They do not say they will only hire people from Tallaght or Finglas. They look at the wider labour pool. This is very important.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_65">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_130">I thank the witnesses for coming before the committee. There is a degree of preparation required for this and I appreciate their time. To get a sense of the audience I am speaking to and the chambers' membership, will the witnesses give me a sense of who their members are in terms of the range of employees and revenues they have, the sectors they are in and the ratios of multinational corporations to domestic and privately held to non-privately held?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_131">Dublin Chamber has over 1,000 members, about 250 of which are very large corporates employing well over 10,000 people, right down to small businesses. Our membership is primarily business to business rather than direct to consumer. We do not actively break them down by sector or size of business. We look at small businesses and startups, growing and scaling businesses and larger corporates. They are across every sector, including financial services, education, engineering, graphic design, architecture, hospitality and all of the international services. As you walk around the city, you see the membership of Dublin Chamber.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_132">Chamber Ireland members are the 36 affiliated chambers. The other witnesses are my members. If I add up all their 1,000 members and the number of employees throughout the country, it is the same picture. We try to do sectoral breakdowns every couple of years, out of interest more than anything else, so we have a sense of why we speak about certain things. We have 10% of a lot of different sectors. In terms of relative size, most of the multinational companies throughout the country are members of their local chamber and are probably also a member of Dublin Chamber or Cork Chamber because that is where other big organisations are. The membership also includes some small retail businesses on main streets and a lot of service businesses. It is very broad.</p>
+          <p eId="para_133"> In terms of trying to track how many people work for our members, which is very different, we have approximately 10,000 members throughout the country and we think there are several hundred thousand businesses. Most of these businesses are micro-businesses. Typically, our membership is small SMEs up to the largest companies. It is probably heading for 1.5 million people. Two thirds of the private sector workforce, whether they realise it or not, are probably linked to membership of a local chamber. That is simply because the bigger companies are members.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_68">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_134">That is very helpful and gives me a good sense of where the witnesses are coming from.</p>
+          <p eId="para_135"> I have a hard question and I do not want to put the witnesses in a very difficult position. The Minister for Finance said yesterday that this budget was to protect jobs. Do the witnesses agree with them?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_136">We have mentioned that the biggest drag on the economy and future growth is infrastructure. The businesses will, to a large extent, look after growing and developing their business if the ecosystem is right. The investment in infrastructure is what we have been calling loudly for. The associated investment in research and development has been sought by businesses as well. Could the budget do more? Of course it could, but investment in the ecosystem is what is most important. We have mentioned skills and the development of skills. The budget mentioned 68,000 new jobs being created. That is ambitious but it is what drives the economy. With regard to some of the supports put in place, if we see delivery of the infrastructure, we are looking at this for the long term and not incrementally year on year. Our Dublin 2050 agenda is all about the infrastructure to maintain the growth trajectory and the population growth we have.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_137">It is not that difficult a question. Yes, it was a budget that supported jobs. Ten or 15 years ago, the Government at the time stripped everything it could out of capital expenditure and we are still suffering from that. Huge investment continues to be made in infrastructure, including tucking away some money in case there is a future crisis. There is an element of protecting jobs in the medium to long term in everything we are doing here. There might be a slightly nuanced answer regarding the short term. It certainly was a budget that protects the long-term economy. I will send Deputy Hayes a copy of our centenary book. He asked for it.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_71">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_138">No, I would love it.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:40:00+01:00"/></from>
+          <p eId="para_139">The first meeting of Chambers Ireland took place in the Shelbourne Hotel in March 1923, when the Civil War was still going on outside the door. The first agenda covered ten items and Deputy Hayes can read it at his leisure. These included public transport, education, tariffs and petrol prices. That is what chambers talk about. We talk about geographic issues that apply to all businesses. Chambers go back to the 1700s and have been around for a long time. We are an organisation that thinks about the long-term economy, if that gives Deputy Hayes some context. I must remember to send him a copy of the book.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_140">I thank Mr. Talbot very much. We now move on to Deputy Brennan of Fine Gael.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_74">
+          <from>Deputy Brian Brennan<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_141">I thank the witnesses for their opening statements. I come from a hospitality background. In my previous life, I had up to 600 people working in the Leinster area. I had a very simple synopsis of business. We had the front door that was getting sales, the back door for organising the costs and then the uncontrollables. On the front door, Ms Burke might be surprised that I want to focus on Dublin first of all. I trained in the Burlington. I have a huge affection for Dublin. It is the first time in 30 years that I am actually almost living here now, with my new position. Last night, I walked from Leinster House to where I am staying at the end of Harcourt Street, and I met 20 people on the road. To me, that was utterly frightening compared with the Dublin I knew 30 years ago. I have a huge fear in relation to what is happening in Dublin. I believe that everything Ms Burke discussed earlier is related to what is going on. If we start at the front door, how can we get more people in there? I know infrastructure is huge. We see all the major restaurants that have closed down,. Even last night, I walked by Shanahan's and all these famous names or whatever. It is not only a premises closing down; that is 20 or 30 jobs gone out of that area as well. If an employer is looking for an employee in Dublin, a simple thing is that they cannot afford childcare. The infrastructure is not there to get transport into the city. There is also the cost of housing. It is everything Ms Burke said earlier.</p>
+          <p eId="para_142"> I also have a huge fear that relates to high streets right across Ireland. The main street of Gorey is booming, thankfully, but the main street of Arklow is not. Without a main street, we will have lost the heart and soul of every single town. What are the witnesses' plans to counteract online shopping versus what is going on with the standard shopper? People came out and made it an occasion to come out. They had a cup of coffee and bought whatever. It does not matter what business people are in, whether they are selling a pint of milk or a jacket in Dunnes Stores, if they are not making margins. My fear is that the margin is getting squeezed from the back door by the cost of energy, insurance, wages and whatever else. All of a sudden, people are going to veer online. The business is going to veer online and the customer is going online. It is a precarious situation at the moment. I am fully aware of and fully behind every measure, but I would love to know the witnesses' suggestions on how to get Dublin revitalised, how to get the main streets of Ireland going again and how we can help in that matter. There is a lot in that; I am sorry.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_143">We touched on some of the elements before in terms of the 15-minute city and making sure that people can live in good-quality housing with all the supports they need around them so that they can walk, cycle and use public transport to get around the city in an affordable and accessible way. The shortage of housing in the city centre has an impact on the number of people in the city centre.</p>
+          <p eId="para_144"> When it comes to main streets, there needs to be a local plan because there is no one-size-fits-all solution for what works in terms of regeneration and getting people living in and engaging with the place they are local to. There is no turning back online shopping, however. We live in a digital world enabled by AI, and businesses have to follow the trends of where the customers are. With online shopping, it is very much around filtering down and driving footfall in for things like click-and-collect, where the person can come in and do the interaction around collection or maybe a return if needed. Some of the large retailers have designs in that regard. I do not see the move online changing. What I do see is businesses and local authorities working more closely together around activation of their main streets to attract people in. That is very much around experiential use. We will see a change of use for the experience economy.</p>
+          <p eId="para_145"> In terms of Dublin specifically, we also participate with the policing forum and the night-time economy to make sure we have a vibrant social scene in the city. There is ongoing work around that. At other times, like last weekend, one would not be able to walk around the street with the weight of tourists in the town. Dublin is still doing very well and it is successful in terms of that.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_76">
+          <from>Deputy Brian Brennan<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_146">Do not get me wrong; there are huge positives in terms of football games and concerts, and Dublin is doing them well, but the problem is that they are very limited. Fridays and Saturdays are booming but, as a former hotelier, I know people still have to pay the bills, the head chef and so forth on a Monday and Tuesday. That relates to what I saw when I walked home last night.</p>
+          <p eId="para_147"> Mr. Talbot might come in quickly on that.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_148">Our chambers around the country recognise that this is an issue. There are lots of efforts and a lot of talk about new business improvement districts, BIDs, being established. There are town centre plans. We would love to see more consistency perhaps across local government and, again, perhaps more authority and investment in local government to make these things happen locally. That is where the impetus for most of this stuff needs to come. It needs to be getting more people locally engaged in what is available and getting things like public transport services that might get them in and out of town centres, for example, and solving dereliction and all those issues. It is circular. So many of these things tie together. However, to go back to the Deputy's core point, the cost of business is very challenging.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_149">I thank the witnesses very much. I thank Deputy Brennan for his contribution. We will now go to the next slot, which is also for Fine Gael, and Deputy Clendennen.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_79">
+          <from>Deputy John Clendennen<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_150">I thank everyone for coming in today. I will pick up on this, maybe because I am a Government TD, but a lot of the asks in the witnesses' opening statements in relation to infrastructure and supporting businesses and protecting jobs into the future are what the fingerprints of this budget are all about, and that has to be acknowledged.</p>
+          <p eId="para_151"> In terms of going forward, we have a workforce of 2.8 million right now, and our next objective is to try to grow those jobs further. Do the witnesses see the majority of that growth coming from new companies or existing companies building their workforce further? I am bearing in mind the challenge or opportunity, whichever way you want to look at it, of AI being taken into consideration in that regard.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_152">It goes back to Deputy Hayes' point about protecting jobs. In a sense, I disagree, because companies go bust and then new ones start. There is a stock and flow, which is an awful term when we are talking about unemployment, but people move into unemployment and then they become employed again, or people move from home duties straight into employment. The female participation rate is exceptionally high now and above EU norms. We want a dynamism in our businesses. When we argue about enterprise supports, and we talked about risk earlier, that is what we want to see. The answer is yes but no, in terms of protecting jobs. People want the opportunity, if they are looking for work, to get a job. In terms of the dynamics, we are looking at the stock and flow of people moving into and out of employment. For us, it is largely service based. We have the large firms that are maintaining and growing their position in pharmaceuticals and professional services, and then the SMEs are the ones we look to for their scaling and growing. We provide services through the Enterprise Europe Network to help them export, for example. I do not have the maths on this because they are not broken down at a firm level, but we see dynamism, if you like, and that is my sense check in terms of what is happening within firms. In particular, our arguments here and a lot of our arguments about the budget in terms of indigenous versus multinational firms are about trying to help more indigenous firms to grow and scale.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_81">
+          <from>Deputy John Clendennen<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_153">From a perspective based on that, we have local enterprise offices, Enterprise Ireland and the IDA. Where does Mr. McGibney believe the majority of his members fit in one of those three options? Does he feel there is a misfit there? Is there anything we need to do in terms of those three key agencies at the different levels? Are they complementing what is needed or is there a misfit at any level?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_154">That is a huge enterprise policy question. Where do they fit for us? There are supports across all three. Again, I do not have a breakdown. In general, the reason the agencies are required is because the system can be too complicated.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_83">
+          <from>Deputy John Clendennen<recordedTime time="2025-10-08T13:50:00+01:00"/></from>
+          <p eId="para_155">However, there-----</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_156">We would like efficiencies in the tax system or a much more transparent and simple system to obviate the need for the complexities that require agencies to employ additional staff merely to help engage with the companies. The agencies do good work, and we work very closely with them.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_85">
+          <from>Deputy John Clendennen<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_157">So, as far as Mr. McGibney is concerned, the current model for the LEOs, Enterprise Ireland and IDA Ireland is working perfectly well, and there is no need for any major revision or expansion. Is Mr. McGibney more worried about the tax system than the mechanics of supporting enterprise, business and his members?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_158">There is a debate about whether to provide new or additional services for domestic firms that are not trading or exporting. The existing structure is fine; the focus should be on companies that are growing, scaling and exporting, and trying to develop themselves. There is always room for improvement and we have an ongoing relationship and dialogue with the agencies to work with them to develop services.</p>
+          <p eId="para_159"> The Enterprise Europe Network service I mentioned is provided jointly by Dublin Chamber, Cork Chamber and the LEOs. We help companies to export together.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_87">
+          <from>Deputy John Clendennen<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_160">We also discuss the high street in relation to public realm enhancement, vibrancy and so on, and then we talk about where businesses are closing. How does succession work among member companies? Is Mr. McGibney seeing generational change within families or transactional sales? How does membership change over time?</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_161">May I return briefly to the previous question?</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_89">
+          <from>Deputy John Clendennen<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_162">Sure.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_163">IDA Ireland provides a unique service. It has a budget to go around the world bringing businesses into Ireland, and that is really important. We have seen the threat emerging from the Trump Administration, which is encouraging American companies to invest more in the United States. Obviously, we want our existing companies here in Ireland to grow and we also want to attract new ones.</p>
+          <p eId="para_164"> Enterprise Ireland, meanwhile, deals with what is probably a limited number of exporters. Many companies that would like to export are using supports such as the Enterprise Europe Network. It is important that the LEOs focus on spending their budgets on services that are not being provided in their local communities. We propose to Enterprise Ireland and local government that the LEOs very carefully map out the services provided in their areas and ensure they are not spending money on areas provided for but, rather, on where there are gap. That is something I would draw attention to.</p>
+          <p eId="para_165"> Not many of our members are family businesses. There is some anxiety within Family Business Network Ireland about the various legislative changes. I believe there is a six-year cap that needs to be reviewed. I can come back to the Deputy on that. Again, it goes back to the point I made earlier, which is that we constantly hear of companies reaching a certain point where their best option to grow is to move abroad.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_166">I thank Deputy Clendennen. The next time slot is mine. I thank all the witnesses for attending. This is an important part of the committee’s work in relation to competitiveness and other matters. We have just returned from an important visit to Japan. It was just a few days ago, and not much happened in the political scene in our absence. I found it interesting that Japan has some of the best infrastructure in the world from a regulatory point of view. I refer to how they build infrastructure such as artificial islands to host airport infrastructure, their Shinkansen high-speed rail and the underground system. In Tokyo, the largest city on Earth, with 36 million people, not once were we in traffic. It is a great example of how they do things differently. However, I also found it interesting that, despite all that and even though Japan’s population is declining, the country still faces a huge affordable-housing crisis. People there are working well beyond the Irish retirement age to maintain their standard of living. Like Ireland, Japan is not without problems, but it is interesting to get an international perspective on how things can be done differently. One point that stood out for me on hearing Ms Burke’s contribution was that on political will.</p>
+          <p eId="para_167"> I want to ask a sharp enough question. I have many problems with Ireland’s national development plan and how Ministers and Secretaries General have a sense of internal inertia. They spend so much time producing glossy documents and mapping out plans, but then the actual completion of projects lags behind. It is ridiculous that NDP projects that have been reviewed and reformed six or seven times are still not progressed. This is because they are not funded. I would like the views of both organisations because this is an issue for Chambers Ireland in that it relates to chambers such as Cork Chamber and Cobh and Harbour Chamber, which is very active, and also Dublin Chamber. It would be great to have an insight into political inertia and why we need to deal with it.</p>
+          <p eId="para_168"> I would also like the witnesses to touch on the enormous amount of time consumed by judicial reviews in Ireland’s planning process, where the common good is often outweighed by individual objectors, sometimes on ideological or ecological grounds or on the basis of the impact on their property, etc.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_169">Much of the detail is captured in the interim report of the accelerating infrastructure task force, which we have all fed into, so I will not repeat it. However, there are three key elements: the question of who can take a judicial review, the process itself, and the timelines around the judicial review. We have seen a huge increase in the number of judicial reviews over recent years. The Minister, Deputy O’Callaghan, is dealing with some of that, and we hope it will reduce the overall number and make the planning system robust enough such that recourse to judicial review will not be required in the first place. Where someone does exercise the right to a judicial review, it should be expedited and should not add years of complexity and cost. Those years of complexity and cost have bedevilled many of our infrastructure plans. The plans themselves have been good. We have been this far before, with metro north, but with a financial crisis the capital funding is pulled and the clock is started again. What is needed is political ambition to push through and accelerate the consent processes to make them concurrent rather than sequential, without diluting the intent of some of the protections. It is the design of the process, rather than the desired outcome, that seems to be the problem, and that is where we would like to see a reform agenda focus. We have no issue with environmental protections and the like, but the question is one of why it takes five years to explore an issue. Concurrent consenting processes, where appropriate and properly resourced, an examination of what needs to be stripped out, and the observation of statutory timelines on many of the stages where big projects are bedevilled should be considered.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_170">In addition to all that, there is the issue that if one piece of a 125-piece jigsaw is not fully up to scratch in regard to materiality, the whole thing can be chucked out. The new planning Act proposes to address that. It is important that we have a sense of materiality. </p>
+          <p eId="para_171"> We often discuss what really holds projects up. Is it the planning process, all the requirements, local government or the courts system? We have been knocking most of these issues on the head, and I hope that with the new commitment we are seeing across the political spectrum, we will get things done this time. We really need to. With the new planning Act and the fact that we have the money available, there are no excuses left to prevent us going where we would like to get to. This is when we will really see whether there is any other subtle blockage we are not aware of. At the moment, we have the money and are trying to free up all the processes that might once have slowed things down or prevented them. Now we have to get it done. </p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:00:00+01:00"/></from>
+          <p eId="para_172">A famous saying comes to mind: the only thing that saves us from bureaucracy is its inefficiency. I appreciate the members’ input and thank them very much.</p>
+          <p eId="para_173"> My time is up. Last, but certainly not least, is Deputy Albert Dolan of Fianna Fáil.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_95">
+          <from>Deputy Albert Dolan<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_174">Cuirim fáilte roimh na finnéithe. What I find particularly interesting about the entire competitiveness and cost of doing business debate, the narrative around it and where we are going with it, is the roles the chambers can play in this with regard to highlighting to us what exactly is being faced. That is the purpose for the witnesses being here today. Looking at competitiveness going forward, there is a lagging effect from when a Taoiseach allocates funds in a budget to when the infrastructure comes to life and has long-term implications. In the near term, over the next, say, three to five years, what do the witnesses think are measures the Government can look at and implement to better support businesses across their networks?</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_175">I will start. The most important thing is we just deliver what we know we need to deliver. We have been talking about metro north, as it started - it has become MetroLink - since 2005, and probably longer than that. We know we did not spend any money on housing. We probably stopped spending money on housing around 2006, in fact. It slowed down dramatically and it took us a couple of years to realise it. Then we spent ten years doing nothing. Even as we were trying to gear things up in 2016, there still was not a lot happening.</p>
+          <p eId="para_176"> We know what needs to be done. It now needs to be delivered. That is a core point. The more things we add to the pile that need to be done the more likely we are to fail across the board. We need to take things, deliver them and move on to the next thing. For example, would it not be great if we could get MetroLink delivered and then the construction experts, the specialists, moved down to Cork to build the Cork Luas or whatever? We could get some sequential stuff like that going where we use the resources we have wisely and would not find ourselves in a situation where one thing gets done, we are already going to the next thing and we find there is a judicial review and it is all thrown out the window. Then the new environmental review comes in and the project has to be redesigned. That is the sort of thing that has been happening. The longer you do not deliver stuff, the more likely it is that some of those things trip you up with a curb.</p>
+          <p eId="para_177"> We know there are things we need to deliver and it is back to things like reinforcing the grid, where we have the PR6, the price review process, which is a kind of investment plan rather than a price review. That is under way at the moment. We need to get under way with that. I mentioned the eastern water supply issue. There are all these big things that need to be done. We need to get on with them and stop gawking around the outskirts of them and saying it would be nice-----</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_97">
+          <from>Deputy Albert Dolan<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_178">Yes, of course.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_179">-----and we need to deliver it. We need to get a reputation and believe in ourselves that we can deliver it. It is not just in Japan where they are able to build infrastructure. I am sure we all spend a bit of time in Brussels and we have seen the Brussels metro system expand quite significantly. We see in London, in the time we have been talking about MetroLink, they built the Elizabeth line for the underground. We need to get better at delivering these big projects-----</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_99">
+          <from>Deputy Albert Dolan<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_180">I appreciate that.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_181">-----and other stuff will follow.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_101">
+          <from>Deputy Albert Dolan<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_182">I appreciate that and I appreciate the sentiment because what Mr. Talbot is saying reflects a broader frustration in Irish society. The Cathaoirleach alluded to it as well. There are great plans and great ambition in them but the delivery is lacklustre. It is not there and tangible outputs have to be the priority. That has been reflected in the budget yesterday. The allocation for infrastructure is at an all-time high.</p>
+          <p eId="para_183"> I am conscious of the time but I want to pay a compliment to Ms Karen Ronan, the CEO of Galway Chamber. She has hit the ground running and is making a big impact with the membership there but there is work to be done for Chambers Ireland across the broader network of the more rural towns. There are no town councils at the moment and I think chambers, along with community councils, are one of the stronger representative bodies of activity in and the life of a town. They are best positioned to indicate or dictate how a town should progress. There are a lot of towns out there that really do not have a strong chamber at the moment or they do not have a lot of engagement. The chambers in the cities are really strong. They are thriving. There are events and there is activity. The chambers in our rural towns definitely need to be strengthened, if that is possible. I would appreciate a minute of commentary on that.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_184">I draw attention to the Jim Breslin group on local democracy, for example, which is going on at the moment. We fed into that. Some of our big concerns have been around how municipal districts, for example, are being run and how in some places there are municipal districts and in others, you have area committees. There does not seem to be any consistency. One of the things we have proposed in that group is that we get some sort of consistency and cross-learning from municipal districts that are operating well, for example, to try to fill that space people feel the lack of a town council has created.</p>
+          <p eId="para_185"> On the chambers across the country, it is hard for me to pick out one chamber chief executive and say they are doing a great job. All of our chief executives are doing a great job. Ms Ronan has really hit the ground running; I was just talking to her yesterday. It is the nature of how our business community is spread out as well. This is why I go back to the earlier point with Deputy McCormack. We have been trying to get more chambers that look like Galway. Galway is obviously one of our cities in the NDP, etc., and it has got an advantage. However, we are looking at areas like, for example, Sligo. There is a county chamber in Sligo and it does a good job. Then you go into Mayo and we have five or six chambers. They talk to each other on some stuff. On other things, the Deputy will be familiar with Ballina, which won our chamber of the year two years ago. It did fantastic work around the Biden visit but in the intervening period, the chief executive left and it is a real challenge for a local board of volunteers to say how it would fill the boots of somebody doing a great job. That is a challenge and it goes back to the fact that there is not a huge number of companies in some of those towns to provide not just the funding but also that volunteer element to make things happen.</p>
+          <p eId="para_186"> It is a challenge for us and increasingly, we want to see chambers working together, co-operating, taking some of our core messages and delivering them locally. However, you need some sort of critical mass. You need somebody looking at the stuff coming in and turning it over, making it into a local message. That is really important for us as a network and we all understand that.</p>
+        </speech>
+        <speech by="#AlbertDolan" eId="spk_103">
+          <from>Deputy Albert Dolan<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_187">I welcome that. I thank Mr. Talbot.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:10:00+01:00"/></from>
+          <p eId="para_188">We are going to take a short break before we go to the second round of questions so we can get them done in one block. I thank everyone for their contributions and we will resume here in approximately five minutes.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Sitting suspended at 2.17 p.m. and resumed at 2.25 p.m.</i>
+        </summary>
+        <speech by="#JamesOConnor" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_189">We will now move on to the second round of speakers. Fianna Fáil is first in the running order. Does Deputy McCormack have any follow-up questions?</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_106">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_190">I will be very quick because I only have two minutes. We all know the issues we have with Dublin Airport and that we must raise passenger capacity. In fairness to him, the Minister has worked on legislation so I hope we will have that sorted by next year. Not that long ago, I would always say that certain things would happen in my lifetime. I now say that I hope they will happen in my lifetime but, if not, they will be here for the good of the country. Do the witnesses think we should have a second airport close to Dublin to reduce congestion in light of the issues around passenger numbers?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_191">I do not believe so. Dublin Airport has an ambitious plan in place and the development of a new airport would be so far down the road that it would not help with constraints in the next 20 or 30 years.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_108">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_192">That is not what I am saying. If Ms Burke listens to what I am saying, I am not talking about now but about the future. I suppose Dublin people are the wrong people to ask. I should be asking Chambers Ireland, which would look at it with a pan-Irish view. </p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_193">May I make a point? There are economics around how airports work. A significant part of Dublin Airport's business relies on the ability to attract transit passengers. It is all about building up routes. You want an airport that has interchangeability and that offers different routes. If you split the business between a number of airports, you are adding complexity.</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_110">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_194">However, you can also be simplistic and say that an airport is nothing but a shopping centre with a runway and security. You can also look at the fact that many of the cargo companies operating out of Dublin Airport would prefer to be somewhere else because of how busy it is. You could look at that along with increasing passenger numbers, which would take the congestion away from Dublin. I will ask Mr. Talbot for a pan-Irish look at the thing.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_195">We love all our airports equally. We have invested heavily in Dublin Airport. Two runways have gone in. When the new runway opened, no other runway had been built in Europe for about ten years. There are plans for a third terminal. If we get the MetroLink, we hope that it will take a lot of the traffic that currently goes in by road away from that area. </p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_112">
+          <from>Deputy Tony McCormack<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_196">I am talking about the future. I am also saying that we are probably going to have to build a third runway, which means the Europeans will come in, say it is uncompetitive and make us sell terminals to Abu Dhabi or whoever. I personally believe there is call for a second airport. Other European capitals have one, two or three airports. It seems to work an awful lot better than just having one. As far as I am concerned, there is a bit of protectionism within Government and within society around the whole Dublin Airport thing. The other airports around the country do not get a fair crack of the whip and they will all tell you that. What I am suggesting is that, because Dublin is the economic driver for the country, we need something closer that is a counterbalance to Dublin Airport. That is my opinion.</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T14:20:00+01:00"/></from>
+          <p eId="para_197">It is an interesting viewpoint. As the Deputy said, it is a personal viewpoint. We are here to represent a collective view. It is not something that has come up in any of our surveys, round table discussions or task forces with the broader membership of the business community.</p>
+        </speech>
+        <speech by="#PaulNicholasGogartyGP" eId="spk_114">
+          <from>Deputy Paul Nicholas Gogarty<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_198">To follow up on the points made about the airports, Dublin appears to be constrained in terms of Weston Airport, which is situated along the Liffey, just beside Dublin Airport. Then we have Baldonnel Airport. There are constraints. Given the way Ryanair operates, it would probably stick one down near Hook Head in Wexford and call it Dublin south airport.</p>
+          <p eId="para_199"> A valid point was raised. Why not have better rail links to Ireland West Airport or to Shannon Airport - high speed rail links - so the rest of the country to access them?</p>
+          <p eId="para_200"> I will throw this out to the witnesses again, but this is a slightly different question for Chambers Ireland. Its different constituent members go from the very small towns to the bigger cities. How does that operate in terms of the interaction of the members and their concerns? I have a similar question for Dublin Chamber. There is obviously Fingal and south Dublin, what are the interactions between them? Is Dublin Chamber primarily Dublin city or the whole of Dublin? How does that devolve or how is it more effective at a more localised county level with the other chambers?</p>
+          <p eId="para_201"> Finally, I have a general question. Childcare was mentioned. Have the witnesses any proposals? For example, there is a model that says that the community or State should supplement the private operators. There was nothing done to reduce the cost of childcare in the budget or to set up additional childcare places. Have the witnesses any best practice examples from talking to their colleagues?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_202">On the makeup of the chambers, it is one of the strengths of Dublin Chamber, in particular, that our members are drawn from all sectors across the greater Dublin area. We run over 100 events per year. Members attend for thought leadership, to learn from each other and to network with each other. We also run formal training programmes and all sorts of things. The business of business is business regardless of the size of it. We see a huge cross-fertilisation of ideas; businesses trade and provide services and goods to each other. That communication is quite dynamic within the business community. The issues we bring to the committee are not from any one sector. They are the ones that the businesses have collectively put into a hierarchy in terms of the most important ones. Individual businesses will of course have other specific issues but these are the ones that rose to the top and the business community agreed to prioritise.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_203">The fact that we have some small town chambers and some very large city chambers can be a challenge for us. We are well used to dealing with it. When one cuts through it most of our small towns have, for example, a big FDI multinational corporation. Most of our members across the country are in that large micro small business space and their issues are very similar. They understand that if they want a sectoral issue addressed, that is one thing, but the main thing we do for everyone is talk about infrastructure. Back to me reading out some of the things from 100 years ago, it is about education, skills, public transport and housing - all of the things that affect all businesses.</p>
+          <p eId="para_204"> We try to get our chambers together on things like our pre-budget submission. We encourage everyone to take the bits that matter to them out of it and rebadge it. I cannot remember meeting the Deputy at our lobby day a couple of weeks ago, although maybe he was there. Approximately 30 of our 36 affiliated chambers were there. We encouraged them to bring their local TDs. We collectively delivered our message. We talk about local, national and building bridges to bring the two together.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_205">I have a supplementary question about our connectivity in general, including the TEN-T routes, etc. There are two things I want to ask. The first is about the runway length at Cork Airport. Cork has a number of the top ten pharmaceutical companies. It has Apple and a very strong university input into the city through Munster Technological University, University College Cork and a number of other smaller higher education outfits. From a transatlantic point of view, Cork and the region around it have two options: you go to Shannon or Dublin. They are two very long journeys for people from Cork. One of the issues in Cork Airport is the length of its runway. It cannot handle aircraft that can do transatlantic travel coming in and out. The DAA is very watery on this. It says that there are certain aircraft that are capable but need to have a reduced load factor on them. I want to get the view of Chambers Ireland whether that is possible. It is something that Cork Chamber has raised. Has it any particular view on potentially extending the recently refurbished runway in Cork?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_206">I am aware Cork Chamber raised the issue. It has not specifically asked us for our view on that. We see that as one of the areas where one of our strongest chambers will go out and fight that fight very competently and capably itself. I do not particularly have a view on it but ultimately we support infrastructure. If Cork needs a longer runway, it needs to go on a list and be delivered in due course. If we do not need it now, we will certainly need it in a few years' time as we build up the plans we have in the NDP and so on to expand the population of the area.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_119">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_207">My last question relates to the whole process around spending Government money on capital infrastructure and all of the blockages that were put in place as a consequence. One can look over the years of the financial emergency measures in the public interest, FEMPI, legislation and the different changes that were made around Government expenditure in general. Where does Ms Burke see an opportunity for that to be streamlined further? We have seen the ceilings on the public spending code rising significantly. Is there a need for it at all when it comes to projects contained in the NDP? </p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_208">Part of the reform agenda is looking at all process and systems to see if they are still serving the ambition we have now to deal in a timely manner with the challenges facing us. There can sometimes be an inclination to learn lessons from previous crises. Are we still clinging on to ways of doing things that served us coming out of a crisis that do not serve us now at a time when we can afford to move faster and where it is going to cost us dearly if we do not? That is an internal one that has to happen in each Department within the reform agenda led by Minister Chambers. </p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_121">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_209">In its submission, Dublin Chamber states that in terms of the cost of business reducing legal costs, addressing labour shortages and administrative burdens, etc., are all essential in maintaining its members' competitiveness. Two weeks ago we sat here with the Alliance for Insurance Reform and had a very robust debate. The place was full and everybody had issues with insurance. I do not really see it mentioned in the submission. Is it something that the chamber's members have brought up as something that is really affecting them in terms of the cost of business? No one has the million dollar solution to it all, but what does the chamber think can be done to make insurance fair and allow all types of businesses to be able to obtain insurance?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_210">Insurance is certainly an issue. In our submission we tried to focus on issues that are issues for all companies. Everyone is worried about housing because the cost of accommodation is impacting on the cost and supply of labour as well as the whole dynamics of how enterprises work. I attended the cost of doing business advisory group's recent discussion and insurance comes up a lot, particularly for retail and hospitality. Defamation has come up as a big issue for retail and-----</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_123">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_211">We are discussing defamation in the Seanad tomorrow.</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_212">-----it is a massive concern. We discussed a range of issues. The insurance industry and other bodies were represented including the Personal Injuries Assessment Board, PIAB, which has a new name now.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_125">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_213">The Injuries Resolution Board.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Aebhric McGibney<recordedTime time="2025-10-08T14:30:00+01:00"/></from>
+          <p eId="para_214">A lot of it is around trying to ensure that people go through the correct process. There are issues around the options that people have when they are making claims. There are no easy answers but that group is looking some of the difficulties and trying to improve the speed of the judicial process to make sure that it delivers more effectively.</p>
+          <p eId="para_215">That group is looking at some of the difficulties and trying to improve the speed of the judicial process to make sure it delivers more effectively. However, it is an issue. We just did not get a chance to cover everything. There are many issues.</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_216">As an organisation, we encourage the use of alternative dispute resolution mechanisms, mediation and so on where possible to try to resolve disputes before they get out of hand. We support all the work that has been done to create the PIAB and now the injuries board to at least address the issue. We still need to keep working at it.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_128">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_217">Am I out of time?</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_218">Unfortunately, we are getting close as we have to move into private session before 3 p.m. Sorry about that.</p>
+        </speech>
+        <speech by="#EoinHayes" eId="spk_130">
+          <from>Deputy Eoin Hayes<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_219">I will go back to the question of protecting jobs. This was my first budget, so I did not really know what to expect going into the Chamber. I was given a big pack with different things, and one of them was a budget in brief document. One of the interesting things in it was that it projected an increase in unemployment. Those are the Government's own figures on its own budget day. I am not sure it actually is protecting jobs. I genuinely welcome the capital investment. I think that €19.72 billion is not quite the 20% of GDP that Ardnacrusha was, but it is nearly there. That is welcome and is the level of ambition required. However, the other thing not mentioned in the document and the speeches by the Minister for Finance or the Minister for public expenditure and reform was affordable housing. My fear is that, if the capital investment is disproportionately invested in a speculative housing model, it will actually drive wage pressures for the witnesses' members. That does not solve a lot of the major problems that businesses are experiencing with employees.</p>
+          <p eId="para_220"> I will end with two questions. The skills training question is a really important one. I want to turn the last bit of my contribution to the question of the future of Irish business. What does that look like? I hope multinationals will be a part of that mix long into the future, but we need to focus on the indigenous economy and growing the indigenous companies we have. I am a little concerned by the statement made about the difference between supply-driven and demand-driven skills. I would like a sense of how much interaction the organisations' members have with universities and the third level sector in crafting curricula. How do they think about that throughput? Due to the CAO system, the way the funding of the universities occurs is, unfortunately, demand driven.</p>
+          <p eId="para_221"> My second question is about access to finance. When you think about the domestic economy, which is an area this committee needs to go into further, there are banks, non-bank lending, equity investors, retail equity investors, non-retail funds and all of that kind of thing. Outside of the tax and the paperwork, what are the kinds of thing witnesses see that would improve access to finance for business in Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_222">On the skills agenda, most of the educational institutions are members of the chambers - we have large institutions in Dublin - so there is good engagement between industry and the institutions, both at third level and further education. We engage with SOLAS and other providers of training and skills as part of their enterprises. They are all part of the chamber network. When we look at skills, it is not so much at the CAO-driven undergraduate programme - we are putting out graduates that are being employed - but more at the task-specific and digital skills. Nobody who came out of college five years ago has the digital skills needed for the coming five years. It is on-the-job training and rapid turnaround. The area that has shown some success, and where we would like to see more traction, is the apprenticeship schemes. The apprenticeship programme is industry led and sector led, where the apprenticeships are designed with major input from employers on the skill sets they want to see developed. The educators then build to those programmes. There is good engagement, but in a tight labour market, on-the-job skills training is needed, particularly in the competitive digital area.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Ian Talbot<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_223">Companies potentially have plenty of options to borrow money at an interest rate. It is then about the need to balance. For example, a lender will say it is only prepared to put in 75% of the project and equity needs to be raised for the other 25%. There are things that might be relevant, such as the discussion in the budget yesterday about the review of the treatment of interest from a tax perspective. There is not much presence of private equity firms in Ireland in the way there might be in the UK or the US. That is because the market is not right for that sort of investment. That is why we keep talking about the need to look at things like capital gains tax, the ETF issue and so on. The equity component is really key. There has been too much focus on the banks and lending, but it is the equity component that is also important for fix, and there is not a lot of talk about that.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_133">
+          <from>Deputy Brian Brennan<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_224">I have taken three words from today, those being, "infrastructure", "costs" and "delivery". I will take a local example of each of those. On infrastructure, I spoke to an owner of the leading factory in Gorey. He is now of the opinion that he might have to leave Gorey because people are waiting for planning permission for a roundabout. It is the time and uncertainty that is killing him.</p>
+          <p eId="para_225"> On costs, I spoke to the owner of one of the biggest business retailers in Ireland. It has a premises on Grafton Street and a premises in Arklow, County Wicklow. The premises on Grafton Street is obviously doing a multiple of what is being done in Arklow, based on population, but the Arklow premises is making more due to costs. There are security costs and costs of wages. He has to increase the cost of wages.</p>
+          <p eId="para_226"> On delivery, the only thing I can assure the witnesses on is that every parliamentary party meeting I go to with Simon Harris, he says three words: "delivery", "delivery" and "delivery". We can talk until the cows come home, but if we do not have delivery on that over the coming few years, we will be under pressure and not support businesses.</p>
+          <p eId="para_227"> Last, but by no means least, I would like to congratulate the Arklow and Wexford chambers. When things were down, they stood up and were counted. There was Mr. Gary McKenzie in Arklow and Paula Roche in Wexford. All of their members are volunteers and giving their own time. Chambers of commerce play a huge part in the social fabric of Dublin, but also of rural Ireland.</p>
+          <p eId="para_228"> Those are the key points I have taken from today.</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Ms Mary Rose Burke<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_229">I thank the Deputy for the recognition of the importance of the chamber movement. It is nice to know it is not invisible. Our organisation employs 25 people, but all of our committees and boards are chaired and populated by volunteer businesses that give of their time to share their expertise with one another and with us to inform these debates. It is useful that we have a vibrant chamber network that is recognised and has access.</p>
+          <p eId="para_230"> The Deputy mentioned costs. What he said is exactly what we are hearing. There are the costs of doing business and the challenges of infrastructure, but there is also the indomitable spirit of business to keep moving forward and deal with those issues. Our ask of the political system, including the Government, is to get out of the way and deliver what business needs in terms of infrastructure, and business will then drive growth.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:40:00+01:00"/></from>
+          <p eId="para_231">I sincerely thank the witnesses for coming in to discuss these issues today. It is nice to see there is almost full attendance at the committee. Given the gravity and importance of the work all the witnesses do, I appreciate their time and input, as do other members. I hope the witnesses and their members find this was a fruitful engagement with the Oireachtas.</p>
+          <p eId="para_232"> That brings the public session to a conclusion. We will suspend to give the witnesses an opportunity to vacate the room.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> Sitting suspended at 2.49 p.m. and resumed at 2.51 p.m.</i>
+        </summary>
+        <speech by="#JamesOConnor" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-10-08T14:50:00+01:00"/></from>
+          <p eId="para_233">We will now go into private session. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i> The joint committee went into private session at 2.51 p.m. and adjourned at 2.59 p.m. until 12.30 p.m. on Wednesday, 15 October 2025.</i>
+        </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

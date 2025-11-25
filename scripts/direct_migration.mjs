@@ -1,0 +1,54 @@
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import pg from 'pg';
+
+// Get current directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+async function runMigration() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("DATABASE_URL is not defined");
+  }
+
+  // Connect to PostgreSQL database using standard pg
+  const client = new pg.Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false // Allow self-signed certificates
+    }
+  });
+  
+  await client.connect();
+  console.log('Connected to PostgreSQL database');
+
+  try {
+    // Read migration SQL file
+    const migrationPath = path.join(__dirname, '..', 'migrations', '0000_initial_schema.sql');
+    const sql = fs.readFileSync(migrationPath, 'utf8');
+
+    // Execute migration
+    console.log('Running migration...');
+    await client.query(sql);
+    console.log('Migration completed successfully');
+
+    // Clean up connection
+    await client.end();
+    console.log('Database connection closed');
+  } catch (error) {
+    console.error('Error running migration:', error);
+    await client.end();
+    process.exit(1);
+  }
+}
+
+runMigration()
+  .then(() => {
+    console.log('Schema migration complete!');
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error('Migration failed:', error);
+    process.exit(1);
+  });

@@ -1,0 +1,582 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-11-05/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-11-05/debate"/>
+          <FRBRdate date="2025-11-05" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_disability_matters"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-11-05/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-11-05/debate/mul@"/>
+          <FRBRdate date="2025-11-05" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-11-05/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-11-05/debate/mul@.akn"/>
+          <FRBRdate date="2025-11-11" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LiamQuaide" href="/ie/oireachtas/member/id/Liam-Quaide.D.2024-11-29" showAs="Liam Quaide"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="SeamusHealy" href="/ie/oireachtas/member/id/Seamus-Healy.D.2000-06-22" showAs="Seamus Healy"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM NITHE A BHAINEANN LE MÍCHUMAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Disability Matters</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-11-05">Dé Céadaoin, 05 Samhain 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-11-05">Wednesday, 05 November 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichealCarrigy">Micheál Carrigy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LauraHarmon">Laura Harmon.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SeamusHealy">Seamus Healy</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#LiamQuaide">Liam Quaide.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Senator Manus Boyle.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MauriceQuinlivan">Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Access to Work for Persons with Disabilities: Discussion<recordedTime time="2025-11-05T09:30:00+00:00"/></heading>
+        <speech by="#MauriceQuinlivan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T09:40:00+00:00"/></from>
+          <p eId="para_11">Apologies have been received from Deputy Gillian Toole and Senators Nikki Bradley and Margaret Murphy O'Mahony. The purpose of today's meeting is to discuss access to work for persons with disabilities. On behalf of the committee, I extend a warm welcome to Dr. Amy Hassett, co-chairperson of Disabled Women Ireland, and Ms Gillian Kearns, board secretary of Disabled Women Ireland, who are both joining us remotely. Here with us are Ms Avril Greham, disability advocate, and Ms Marie Killeen, service manager in EmployAbility Clare.</p>
+          <p eId="para_12"> Before we begin, I have a notice on privilege and housekeeping matters. All witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such directions that I may give. The evidence of witnesses physically present or who give evidence from within the parliamentary precincts is protected pursuant to both the Constitution and statute by absolute privilege.</p>
+          <p eId="para_13"> I remind members of the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House.</p>
+          <p eId="para_14"> A range of issues will be the subject of discussion today. If necessary, further, more detailed information on certain issues raised can be sent to the clerk to the committee for circulation to members.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T09:40:00+00:00"/></from>
+          <p eId="para_15">Disabled Women Ireland, DWI, wishes to thank the committee for its invitation to participate in this session so we can highlight the gendered barriers that disabled women face in accessing and sustaining employment. For context, Ireland has the lowest employment rate for disabled people in the European Union, at just 32.3%. When we look specifically at gender, the situation is even more concerning. The labour force participation rate for disabled women is only 25.8%. This, and other, factors mean disabled women are 25% more likely to live in poverty than disabled men. These figures underscore the urgent need to address the intersectional barriers impacting disabled women on the basis of gender and disability.</p>
+          <p eId="para_16"> The barriers faced by disabled women and minority genders are more pronounced where they are part of multiple marginalised groups, for example, Traveller and Roma communities, those experiencing homelessness, single parents, those in direct provision and LGBTQIA+ people. The additional cost Of disability was identified as between €488 and €555 each week earlier this year. DWI has reason to believe this cost is even higher for disabled people marginalised by gender. At our recent disabled women and poverty event, held in partnership with the Disability Participation News Hub, participants identified a number of additional costs related to gender differences in medical expenses, transportation and housing needs, among others.</p>
+          <p eId="para_17"> Our current system of means testing disability allowance and related supports creates a situation where many disabled women who would like to work cannot afford to. Removing means testing and using disability supports as a way to offset the additional costs of living while disabled would be an impactful leap forward in reducing the pervasive levels of poverty experienced by disabled women and in empowering them to access paid employment. Increasing options for remote, part-time and flexible work and education and improving access to reasonable accommodations without fear of retaliation would further solidify achievable pathways out of the sustained and disproportionate poverty disabled women suffer in Ireland.</p>
+          <p eId="para_18"> Disabled women and girls are less likely to receive support and interventions in education. Even at third level, prevailing attitudes around disability and gender often result in unequal outcomes. As just one example of how disability-related issues in education can have a very gendered impact, DWI has been receiving increased reports of reasonable accommodations being entirely denied to students on placements required to qualify in many specialisms with predominantly female students, such as in education, social work, healthcare and related fields.</p>
+          <p eId="para_19"> Disabled people often experience attitudinal or structural barriers in the workplace. Women encounter similar challenges on the basis of gender. However, disabled women face a combination of barriers specific to both aspects of their experience. This intersection makes entering the labour market particularly difficult, and progressing within it far less achievable. Even when we are able to access employment, we are more likely to work in low-paying and precarious roles. While data for Ireland is not available, research from the UK has shown that disabled women earn, on average, 22% less than non-disabled men, and 12% less than disabled men. These figures illustrate a double disadvantage for disabled women, who experience the compounding effects of gender and disability discrimination. As a result, work is often far less financially rewarding for disabled women than it is for others, especially if they are parents or in a caring role for others. We also risk losing essential supports such as the disability allowance, medical card or free travel pass when we take up paid employment, with means testing reducing supports as soon as earnings exceed €165 per week. A vicious circle has been created by policies which pull away support before one can attain the financial security or income needed to pay for replacement private medical services, childcare, accessible transport and other employment-related expenses.</p>
+          <p eId="para_20"> Multiple studies have identified increasing access to flexible, remote and-or part-time work as hugely beneficial to women's labour market participation. This is especially the case for disabled women who: often provide elder care and childcare within families, which is expensive to replace; are more likely to have fluctuating health needs and-or need to attend medical appointments during standard office hours; face significant difficulty in accessing public transport to work, including 35% of all disabled people and 70% of wheelchair users, and-or are unable to drive for medical reasons; are more likely to find workplaces inaccessible, or less accessible than working from home; and are disadvantaged when it comes to career progression in traditional employment.</p>
+          <p eId="para_21"> Self-employment can also offer a more sustainable and suitable form of work for disabled women in particular, enabling them to work around their health needs, caring responsibilities, and to create working conditions that suit their individual circumstances and access requirements. However, current social welfare rules make it extraordinarily difficult for disabled women to accumulate the capital needed to become self-employed or even to build a sustainable and secure career and create a system that penalises ambition, discourages entrepreneurship, and traps disabled women in cycles of poverty and underemployment.</p>
+          <p eId="para_22"> These financial and structural barriers to employment intersect with the heightened risk of poverty and social exclusion experienced by disabled women. For women, the consequences are particularly significant because a lack of financial independence can create power imbalances within family and intimate relationships which increases our vulnerability to exploitation and abuse. National employment strategies and policies for disabled people frequently overlook gender, and gender equality policies frequently overlook disability. The result is that disabled women remain largely invisible in both data collection and policy development, creating intergenerational poverty which leaves them unable to reach their potential, and our society much poorer for it.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T09:40:00+00:00"/></from>
+          <p eId="para_23">I thank the committee for the opportunity to contribute. I am speaking on behalf of the Mayo Disabled Persons Organisation, DPO, a cross-impairment, peer-led group run by and for disabled people. Mayo DPO is mandated under the United Nations Convention on the Rights of Persons with Disabilities, UNCRPD, to represent the collective voice of disabled people in our county and to promote equality, choice, and control in every aspect of our lives.</p>
+          <p eId="para_24">Our guiding principles are clear: nothing about us without us; and rights, not charity. We work from the social model of disability, which recognises that it is not our impairments that disable us, but the barriers created by society in attitudes, systems and environments. I am mandated by and am representing Mayo DPO. After going through a process with our members, we have identified the following key points on employment and the barriers that disabled people face in Mayo.</p>
+          <p eId="para_25"> Seeking and keeping a job is often more expensive for us. Mayo is a large, rural county with limited accessible transport. Many of us do not have our own vehicles, and public transport is unreliable or inaccessible. For example, a simple journey from Castlebar to Ballina for an interview can mean paying for two taxis, which is beyond the reach of most people. Even when we secure work, the ongoing cost and lack of accessible travel can make it impossible to stay in employment.</p>
+          <p eId="para_26"> We also fear losing essential supports such as disability allowance, the medical card or other benefits we rely on to live. If employment cannot be guaranteed, many of us face the impossible choice between security and opportunity.</p>
+          <p eId="para_27"> Few employers understand what reasonable accommodation means or how to access available grants. Some of us need flexibility around hours or hybrid working to balance our health and energy levels. The pandemic showed that flexibility works. We proved we can deliver, meet targets and perform when we are trusted. This same flexibility must now become the standard, not the exception.</p>
+          <p eId="para_28"> Too often, employers and co-workers still view disability through the medical model, assuming we are less capable, rather than recognising the barriers that exclude us. We need employers to invest in disability equality training, led by disabled people, to help build awareness and confidence in inclusion. Many of us have grown up in a society that expected little from us. Over time, those messages of pity and low expectations take a toll. When we rarely see disabled people in employment, we start believing there is no place for us in the workforce. Seeing our peers succeed is vital to changing that belief.</p>
+          <p eId="para_29"> Many workplaces in Mayo remain physically inaccessible. Steps, narrow doorways and inaccessible facilities still prevent full participation. Without accessible transport and buildings, qualified disabled people are routinely excluded before the job even begins. We often lack clear information about our rights, reasonable accommodation, and what benefits we can keep when working. Employers are also unsure about how to access supports or engage with DPOs. Better information on both sides would make employment inclusion possible.</p>
+          <p eId="para_30"> Regarding what must change, we need income thresholds under the make work pay initiative to be updated to reflect the real cost-of-living issues and the additional expenses that disabled people face. Medical cards and supports must remain in place for those entering employment so that work leads to independence, not hardship. </p>
+          <p eId="para_31"> Accessible transport is a foundation for employment. We need reliable public transport with accessible timetables and audio information. There must be more regulated, wheelchair-accessible taxis across Mayo and the motorised transport grant must be reinstated to support disabled people in rural Ireland.</p>
+          <p eId="para_32"> Transitioning from school to work is a critical moment. Disabled people should be employed in education and training roles to mentor others and share lived experience. Employment programmes designed for us should also employ us and not simply train us. We propose an annual employment forum co-created with Mayo DPO, employers, local authorities, education and training boards, and elected representatives. This forum would provide an honest space to discuss barriers, share solutions and take collective action for change.</p>
+          <p eId="para_33"> Our message is clear that we, as disabled people, want to work, contribute and belong. We bring skills, qualifications, creativity and resilience that strengthen every workplace and community. What disables us are not our bodies or minds, but the systems, structures and attitudes that continue to exclude us. By working in partnership with disabled persons’ organisations, Ireland can fulfil its obligations under the UNCRPD and make access to work a lived reality for all. I thank the committee.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T09:50:00+00:00"/></from>
+          <p eId="para_34">Thank you. I now call Ms Killeen to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T09:50:00+00:00"/></from>
+          <p eId="para_35">I thank the committee for the opportunity to speak today. My name is Marie Killeen and I represent EmployAbility Clare. We are a specialist employment support service that has proudly served County Clare for 22 years. We support those with disabilities and long-term health conditions to find meaningful work, and we help local employers to practically understand the long-term advantages of accommodating employees' needs.</p>
+          <p eId="para_36"> Our team are on the ground and at the forefront when a person with a disability reaches out and seeks help on their pathway to employment. We blast through as many barriers as we can in order to make the dream of employment a reality. Just for a minute, I ask the members to imagine that either they or someone they love has a disability or health condition such as scoliosis or chronic fatigue syndrome. You feel lonely, isolated and bored. You want to work and you need to work. You hear of these wonderful work support grants and subsidies, but they are all built for people who are capable of full-time employment. The thought of physically having to work full time terrifies you. This scenario is all too real for the majority of our clients.</p>
+          <p eId="para_37"> As a team, we feel - and many of my colleagues across the country will passionately agree on this - that one of the most pressing challenges we encounter involves the work placement experience programme, WPEP. This programme requires participants to complete 30 hours per week. Do not get me wrong, the WPEP is a truly fantastic scheme for incentivising the general labour market into employment. We use it all the time and we have great success with the people who can utilise it. It is a no-brainer for an employer that wants to take a chance on a potential staff member, without any cost or long-term commitment if it does not work out, as it is just six months in duration. However, the 30 hours per week threshold is unrealistic for many people with disabilities or health conditions. Even if they complete the programme, they face a cliff edge, namely, being unable to sustain full-time employment in the long term. A huge opportunity is being lost here. Our clients, who are people with disabilities, are often removed from the labour market through no fault of their own. Again, committee members should please imagine that it is them or someone they love in this situation. You want to work. You just need a foot in the door to prove what you can do. International best practice offers clear guidance. Sweden, with the highest disability employment rate in Europe, provides abundant part-time voluntary contracts as entry points. Ireland, with the lowest rate, must learn from this model. We are a proud country, and bottom place is far from where we deserve to be in terms of supporting those among us who have disabilities.</p>
+          <p eId="para_38"> The UN Convention on the Rights of Persons with Disabilities, particularly Article 27, obliges us to ensure an inclusive and accessible labour market. Inclusive workplaces unlock Ireland’s largest untapped talent pool, some 22% of the population. In the census in April 2022, over 1.1 million people reported having at least one long-lasting condition or difficulty. Most accommodations cost little to nothing, yet deliver big returns. Inclusion is not charity but a smart, strategic advantage for growth.</p>
+          <p eId="para_39"> EmployAbility Clare respects the current leadership team within the Department of Social Protection. In the past few years, they have proven their ability to recognise, champion and respond to changes that deliver meaningful impact for those we serve. The highest impact change our team can recommend is the creation of an eight-hour-minimum WPEP option. This model would allow people with disabilities to build confidence, retain essential supports and have a starting point to contribute meaningfully to the workforce. It is our goal in EmployAbility Clare that, by December 2026, the WPEP will be truly accessible to people with disabilities or health conditions. We are aware that this will involve policy and operational change but change can be good and in this case, change could be fantastic. Real transformation starts where the challenges are felt the most, which is on the ground. When we lead from the ground up, we create solutions that truly work for everyone.</p>
+          <p eId="para_40"> I thank the committee for its attention. I welcome members' questions and look forward to us working together to create lasting, worthwhile change. Go raibh maith agaibh. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T09:50:00+00:00"/></from>
+          <p eId="para_41">Thank you. I now invite members of the committee to put their questions. I remind them that they should adhere to the agenda items scheduled for discussion today. I also remind them to say the name of the witness their questions are directed to and to try to keep their questions short. First on the rota is Fine Gael's Senator Maria Byrne, who has seven minutes.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_7">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T09:50:00+00:00"/></from>
+          <p eId="para_42">I thank the witnesses for their participation today and their opening statements. I will start with Ms Killeen, if that is okay.</p>
+          <p eId="para_43">She highlighted that 30 hours is sometimes not realistic. I was dealing with a gentleman who had MS but also had other complications. Some weeks he was capable of working his 30 hours and others he was not. He could not get that balance. No employer was willing to take him on on that kind of up-and-down basis. Can anything be done to help somebody like that?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_44">We meet this all the time. When I brought it to my team that I was going to be here today, I asked them what is the biggest single problem that we could, with our influence, change and have some impact. That was the one resounding thing mentioned by each member of the team. They came at it in different words, but it came back to getting in the door. The wage subsidy scheme was reduced. That had been a full-time thing but was brought down to 15 hours, which is why we are saying this would be fantastic if the WPEP could also be brought down. We face a big dilemma as well. We want to try different things like work shadowing, work experience and all these things, but they are a very grey area because a lot of people face losing what they already have. The employer also faces different risks by bringing them on. The WPEP is a fantastic programme. It is very structured, but if we had a model that supported people with disabilities, it would be fantastic.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_9">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_45">In general, there are many challenges. What are the key challenges in terms of access to work for people with a disability? I am also interested in terms of the gender balance because research has shown that more males have been successful than females. What are the challenges there? What supports could be put in place to support this?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_46">This is something that we spend a lot of time thinking about. If I could recommend one key change, the programme for Government outlined that the Government intended to introduce a cost-of-disability payment. We did not see that come about in budget 2026, which is a real frustration for us. If I were to recommend one key change that we could implement in a very short period, it is introducing a cost-of-disability payment. Right now, we have a situation whereby disabled people want to get into work but there are additional costs. I think Ms Greham explained well the additional costs of transportation and things like this. It is a thing that the Government has expressed its intention to do. It would be a fantastic thing to do.</p>
+          <p eId="para_47"> The other thing that we have advocated for for many years, and will continue to advocate for, is a removal of means testing. Currently, as the situation stands, somebody's disability allowance begins to be reduced at the point at which they start earning in excess of €165 a week, which is very little money. The second thing we would advocate for is a removal of means testing, or, at the very least - and it can be done quickly - increasing the income disregard in excess of €165.</p>
+          <p eId="para_48"> Why is this a gendered issue? There are a lot of different explanations for that. Ms Kearns explained that pretty well. A huge part of this that we need to contend with, and this is a problem in general for women's participation in the labour market, is the need for flexibility in working arrangements. I lived in the Netherlands for two years. The thing I always say to people is that over there I had many colleagues who worked a four-day week and were able to afford to live independently in their own homes, irrespective of whether they were disabled or not. I do not know of anybody in Ireland who is able to work a four-day week and live independently. Perhaps if they are not the primary earner or if they have another earner in their household, it is possible. If we can create a more flexible work system, that is going to work for disabled people, but it is also going to work for those who have caregiving responsibilities and for parents, and very often these are the same people. The vast majority of disabled women are parents and have those caregiving responsibilities. Creating a more flexible work system whereby somebody can work four days a week or can work from home and things like this would make a massive difference. I do not know if Ms Kearns has anything to add to that.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_11">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_49">In terms of employment, there are work training programmes and education. Is there much collaboration between those organisations in terms of creating sustainable jobs for people with disabilities? Should there be more? That is a general question. I am not sure who wants to answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_50">From our own experience in Clare, we work closely with the Limerick and Clare Education and Training Board. We know the team well and we work all the time figuring it out on a person-by-person basis because every person who comes in our door has a different disability and is on a different pathway to employment. We work closely with them to figure it out. There are fantastic courses there. They are free and accessible. We work closely with getting the person to understand that they do not have to go from A to Z immediately. There is a pathway. It is about building hope and figuring out that a person can get training that will build them up to get where they want to. Sometimes it is the case that this is what they want. Sometimes they just want to start in employment and they are ready.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_13">
+          <from>Senator Maria Byrne<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_51">Ms Greham referred to the shortage of wheelchair taxis in Mayo. In general, there is a shortage of wheelchair taxis everywhere, regardless of whether it is rural or in the cities. I see it myself. I live in Limerick city and people tell me that they cannot get them. You would imagine that there should be enough in an urban area.</p>
+          <p eId="para_52"> Are sufficient supports in place at second level or third level for students?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_53">I will address the question on sufficient supports. Something that we are seeing in education is that there is much confusion about the idea of reasonable accommodations. That term is very problematic. Who gets to decide what is reasonable? They are access needs and access rights and they are being denied to people on a regular basis. One of the things that is coming up more and more, and on which more and more people are getting in contact with us, particularly our neurodivergent disabled people, is the difficulty with placement. This will obviously have the gendered aspect because, as I mentioned, these are mostly in courses that have predominantly female students, such as teaching, social care and these kinds of roles. What is happening is when people go on placement is nobody is taking responsibility for the idea of reasonable accommodations. The workplace is saying they are not working there so it is not its responsibility and the college is saying the students are not there so it is not its responsibility. This is leading to and has led to people having to drop out of courses, not being able to complete courses or having to go through a long and arduous appeals process where they get no support.</p>
+          <p eId="para_54"> This happens in employment as well. There is very little access if you are discriminated against on the basis of disability. Free legal aid is overwhelmed and is not able to take on these cases. IHREC used to give individual support. It no longer does. The NDA does not get involved in employment law and disability at all. When people are discriminated against, they are finding it extraordinarily difficult to get any support or help. It is extortionately expensive to find somebody who is specialised or well versed in disability law and employment law. It cost one person €500 just to talk to somebody.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_15">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T10:00:00+00:00"/></from>
+          <p eId="para_55">Cuirim fáilte roimh na finnéithe anseo inniu. I will start with what a number of people said to me about the budget and the fact that we do not have a cost-of-disability payment. The budget has not taken into account the cost of disability that exists across the board. If somebody wants to mention that at some point, that will be fine. We are dealing with access to work.</p>
+          <p eId="para_56">What engagement have the witnesses had with employers around the wage subsidy scheme and the work and access programme? A number of employers, the likes of Rehab and others, have spoken about the scheme. It increased by €1.20, from €6.30 up to €7.50. There is an added cost for employers who take on more than one employee. It was generally done on a percentage basis, anything from 10% to 50%, but that was changed with fixed prices. Employers have said they have come under more pressure, as all employers have at this point in time. Whereas they may have been anticipating an increase of €1.20 for multiple employees, what they ended up with was a 57 cent increase in cases of between three and six employees and a 55 cent increase where there were 23 or more employees. These are the major employers that we want to see more of. The increase was on a diminishing basis, I suppose. </p>
+          <p eId="para_57"> In 2019, the number of wage subsidy scheme employers was 1,979. In 2024, it was 1,504. It is going the wrong way. In 2019, there were 2,881 employees, but that has come down to 2,466. This does not work. The issues around reasonable accommodations have already been spoken about, and I do not think they work. Even if we were to talk to the Minister or her officials, no one would say the work and access programme is working correctly. I ask the witnesses to comment on those two issues.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_58">On the wage subsidy scheme, we obviously use it and we find it very successful for our clients. We would not be in the position where we would have employers who have 23-plus employees. It has not come as an issue for us. We are lucky to get one or two people into any one organisation.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_17">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_59">It has improved in those circumstances. In general, could Ms Killeen go through anything that could be done to improve the scheme? My view is we need a complete review because it is obviously not working.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_60">Off the top of my head, the one thing I can think of that would improve it relates to the fact that the starting point for many of the people we support is the work placement experience programme, WPEP, which leads nicely on to the wages subsidy scheme. The issue is getting people in the door and getting them trusted and secure in the environment they are in. The wage subsidy scheme then leads just so nicely on after that. If we can get more people availing of the WPEP, we would get more success out of the wage subsidy scheme.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_19">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_61">That would mean better engagement by the State with employers and facilitating them also so they can facilitate employees.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_62">Yes, exactly.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_21">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_63">Would Ms Kearns like to come in? </p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_64">I just want to raise a point one of our members raised. The work and access programme is proving very difficult, particularly for neurodivergent disabled people. It is a long process that can be extremely difficult. The result is that people disengage. It is not that people do not want to participate, but the processes are so long and complicated that they are extremely difficult for an awful lot of disabled people. As was mentioned regarding the other responsibilities and factors that impact us, there is no reflection of the dynamic nature of a lot of our disabilities. A lot of these supports, in and of themselves, can be very difficult for people to access because the processes are so long and quite complicated. If you have an intellectual disability or if you are dyslexic, there are a lot of reasons and barriers in people's way. The process should be more streamlined. The only way that is going to happen is if people actually listen to disabled people who are meant to be using these processes and start adapting and adjusting them, so they are not so onerous and difficult for the people they are meant to be supporting.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_23">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_65">It would be fair to say, therefore, that the work and access programme is not fit for purpose and needs to be reviewed. Reviewing it should involve talking to those people who need to get the right reasonable accommodations on how best they can be operated. It is then about dealing with employers from the point of view of facilitating them because they would also speak about the difficulty and bureaucracy involved.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_66">It is like everything and every support disabled people need to get. It is like talking about, for example, the process of applying for disability allowance. People in the event we had on disabled women in poverty spoke about it being a traumatic experience. Somebody said it took them 12 months to even begin the process because having to write everything down was so traumatic and difficult. I am a carer as well as being disabled and every parent I know speaks about how traumatic filling in the form for disability carer's allowance is. I do not want my child to ever see the form I had to fill in for them and what I had to write down. That is really difficult. The enormous amount of bureaucracy is the thing standing in the way of an awful lot of people. There is then no guarantee. As we mentioned before, people could lose all the other supports they have. There is a huge financial risk for a lot of people in accessing these supports after doing all this work. It is like a full-time job having to apply for a lot of these things, so definitely people need-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_25">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_67">It is difficult, but the big issue for a lot of people is they are afraid of losing benefits they had to fight tooth and nail to get in the first place.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_68">Yes. Unfortunately, a lot of the processes we are involved in are quite adversarial. We are allowed to cope; we are not allowed to thrive. Nothing in our systems is set up for us to thrive and that is what needs to change. We need to be seen as fully autonomous, rights-bearing human beings, just the same as our non-disabled peers, and not as recipients of charity or pity. We are not near there yet. The process is a huge part of what is creating so much difficulty for disabled in accessing employment.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_27">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_69">We have schemes that do not work for people and we need to review and overhaul them to get something that works. </p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_28">
+          <from>Deputy Liam Quaide<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_70">I thank all the witnesses very much. Their testimony is extremely sobering and stark. Much of what they shared should shame the political system. Hopefully, it will stimulate the political system to action and legislative change. The statistics Ms Kearns from Disabled Women Ireland outlined in relation to the lack of accommodations afforded to disabled people, and disabled women in particular, and the disadvantages they face generally in education and the workforce are really shocking. Ms Kearns mentioned increasing reports of reasonable accommodations being entirely denied to students on placements to qualify in many specialisms with predominantly female students, such as social work, education and healthcare. Does she have any thoughts on how this phenomenon can be brought to light more? I think many of these actions tend to flourish in obscurity. Ms Kearns mentioned that people may be fearful of retaliation if they raise these issues. How can we bring this discriminatory practice to light more and how can universities, service providers and employers be held accountable?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_71">I will answer this quickly and then let Dr. Hassett in. One thing that could help is clarity around whose responsibility it is and that would have to come from the top down. I am talking about clarity about who this applies to when a student is out in placement and who is responsible for ensuring those reasonable accommodations. The colleges and the employers do not have clarity on this, so as far as they are concerned, they are saying the right thing because they do not know. Clarity from the top down would help a lot and would allow students to say who has responsibility, who is meant to be looking after them and who has a duty of care. I will let Dr. Hassett come in because I cannot remember the second point I was going to make. Apologies.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T10:10:00+00:00"/></from>
+          <p eId="para_72">I think Ms Kearns has said it. A really concrete thing from the committee that would be very helpful would be to get clarification from the Government as to who has responsibility here. We are one of the organisations on the ground working on this issue and we can communicate with people and make it very clear.</p>
+          <p eId="para_73">The other thing that came into my mind when Deputy Quaide was talking was one of the things that came up at our event. When we have that final report written, we will share it with the committee as it may be useful for its future work. We currently have a system whereby if people are in part-time or temporary employment or on fixed-term contracts, they very often have a real fear of putting their heads above the parapet to ask for reasonable accommodations. Getting back to what Ms Kearns said about coping not thriving and the adversarial system, it makes it difficult for disabled people to advocate for what they are entitled to by right. </p>
+          <p eId="para_74"> What came up at our event was that those who are in permanent employment felt much more empowered to raise issues or problems, whereas those who were on temporary contracts could not do that. We need to look at how we can change the system so that it is not adversarial, and is easy and comfortable for disabled people to work with their employers to get those reasonable accommodations. A huge part of that is removing a lot of the bureaucracy that comes along with it and making it a little easier to access those supports.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_75">It would be really helpful if we changed the language. I know the language is in the law and is listed as "reasonable accommodations" in the law, but who is getting to determine what is reasonable? It is unfortunately not the disabled person who is getting to determine what is reasonable at the moment. That is a huge issue because people can be denied as it is an ambiguous term in a lot of ways. I know there is the stuff about nominal costs and things like that, but people are being denied things and they have no legal route. As I highlighted earlier, there is very little support or legal recourse for people if they are being discriminated against on the basis of disability. They cannot get support. They could have the clearest case that you could see, but there is nobody there to support them. Changing the language around the idea of reasonable accommodations and basing it on human rights and the denial of access rights would go some way to ensuring that people's rights are being met. That is what is happening. People's rights are being denied and we need to use language that reflects that. The term "accommodations" makes it sound as if it is at the behest of somebody and they are bestowing something upon the disabled person out of the goodness of their heart. That is not what is happening here. People are being denied their rights to work and education.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_32">
+          <from>Deputy Liam Quaide<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_76">Ms Kearns mentioned that the equality and human rights commission and the National Disability Authority do not represent individuals on issues like this. Is that a change in the state of affairs? Is there a body of that kind that needs to be more involved? It can be very isolating if it is one personpursuing a case. We know how demoralising and challenging it is to go through something like the Workplace Relations Commission, WRC. Is there are a possibility of group actions or a different way of supporting people with disabilities in this area?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_77">The Mayo disabled people's organisation is one of those organisations. We are ratified under the United Nations Convention on the Rights of Persons with Disabilities, UNCRPD. We are just getting started in Mayo, but bring us into the conversation from the very beginning. We have the lived experience and the expertise to shape the solutions that work.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_34">
+          <from>Deputy Keira Keogh<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_78">Good morning everybody and a special welcome to my Mayo colleague, Ms Greham. I thank the witnesses for their thought-provoking statements and contributions. Deputy Quaide is correct; it is stark. Our statistics on employment of people with disabilities is one of our great shames. I will direct this question to Ms Greham but everyone is welcome to come in. It relates to how remote and flexible working can be further developed. Covid brought a welcome new wave of working opportunities for disabled people, and what benefits disabled people benefits everybody. Remote and flexible working has made a huge contribution to family life and different things. How could it be used as a long-term measure to remove barriers and increase employment opportunities?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_79">Remote working offers an invaluable solution for those of us with cross-impairments. It allows for individualised and accessible working environments by enabling us to work in our homes. As the Deputy said herself, the pandemic proved that this approach not only works but works well. It should be the standard and not the exception. Remote work also has wider benefits. It supports rural towns and villages by keeping people living and working locally, which helps smaller communities thrive economically. In terms of employment, the public sector is definitely leading by example with its minimum employment target for disabled people of 4.5% in 2024 and it is rising to 6%. </p>
+          <p eId="para_80"> While we are not there yet, these are positive and practical steps. It is now time to build on this progress. As a DPO, we believe that expanding and supporting remote working is one key solution to achieving greater inclusion in employment.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T10:20:00+00:00"/></from>
+          <p eId="para_81">I am very much in favour of remote work as a concept. All of the benefits listed are bang on the money. However, there are a couple of things. One of the things we are seeing at the moment is a massive rowback on working remotely. People are being pulled back into offices, not just necessarily being encouraged or invited to go back. We are seeing that people are being mandated to go back to offices. Flexible and remote working was one of the few wonderful benefits that came about during Covid, but it is not as strong as it used to be. We are also seeing that many disabled people are having to justify why they need remote working, which can be a very medicalised system. I know of numerous people who have been asked to provide a doctor's note to prove they need remote work. There is a lack of flexibility in the system, but it can tolerate flexibility. One of things that came up for us shortly after Covid is that remote working is not a replacement to making sure that workplaces are accessible. We have seen it happen after Covid that a disabled person would be offered the opportunity to work remotely instead of the employer making sure the workplace was accessible. That is not inclusion. It is a different form of discrimination and it is not appropriate either. We are worried about that happening to a greater extent. </p>
+          <p eId="para_82"> Someone mentioned wheelchair-accessible taxis earlier. They are an important part for facilitating disabled people going into workplaces and I thought it might be useful to bring that to the committee's attention for a later day. It is very much related to disabled people's access to work. There are not enough wheelchair-accessible taxis. However, a bigger part of the issue and something the disability matters committee could look at directly is that some wheelchair-accessible taxis are not accepting wheelchair occupants. It has happened me multiple times that I have requested a wheelchair-accessible taxi and they have driven off when they see my wheelchair.</p>
+          <p eId="para_83"> It is very difficult to challenge those situations. We need to look at the system that is happening behind the scenes. That is something that the disability matters committee could take a lead on. It is also something that our sister DPO, Independent Living Movement Ireland, ILMI, has been working on. As a facilitator for ensuring that disabled people can access work, it is something worth considering looking at down the line.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_37">
+          <from>Deputy Keira Keogh<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_84">Both of the witnesses talked about access to work. In Mayo, there is a lack of efficient public transport. On Achill Island, TFI Anseo, which allow people to book transport, is being trialled for a year. It is proving very good so far. In general, a massive shift is needed in the context of transport for disabled people, particularly when we see the notice that needs to be given in respect of trains or when we are talking about taxi drivers pulling off. For people of school age, while the system is far from perfect, and there are huge challenges still with bus places, we understand that we really need to get everybody on a bus and to school. Some kids are travelling 20 to 40 minutes to get to school. However, when you leave school, you are on your own. Surely we should just carry on that system into further education and the workplace. A massive shift is needed. We need extra taxis, more accessible bus routes and for people to be able to book transport closer to their journey time. However, it is bigger than that. If we truly want equal access to work for people with disabilities, it has to carry on.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_85">This is not a new problem. It has always existed. Speaking from experience, it is very demoralising when you ring for a taxi and it is no problem until you say you are in a wheelchair. Then it is a case of "Oh, sorry", and the excuses are tenfold. It is the same scenario with public transport as well. Sometimes ramps are broken or there are blockages in the area that is safe for you to be in on a bus. With trains, we have to give at least 24 hours' notice. It might be the case that I need to travel at the drop of a hat. In such circumstances, giving that notice is not always possible. The Deputy is absolutely right that it is a wider national issue. As a disabled person, I can say that it is completely demoralising.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_39">
+          <from>Senator Laura Harmon<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_86">I thank all our guests for being here and for their really insightful contributions. What they said paints a stark picture of where we are as a country in terms of the full inclusion of people with disabilities in society and in employment. I am very struck by how far we lag behind our European counterparts in employment rates. I know we are 20% below the European average in the context of employment for people with disabilities, which is completely unacceptable. There was a missed opportunity with the recent budget in the context of not introducing a cost of disability payment.</p>
+          <p eId="para_87"> I attended the launch of the new human rights strategy for disabled people. Several disabled persons' groups have cautiously welcomed that. We really need to see action on it. On employment, there was mention of the broader benefits for employers and colleagues. What would be the big-picture benefits for society as a whole if we were to fully include the 1.1 million with disabilities in our society and in employment? How will that transform society at a big-picture level? Some of our guests mentioned public transport. A great deal of progress needs to be made in that regard. Where should we start? What needs to be done to make sure our public transport service is fully inclusive?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_88">Dr. Hassett and Ms Grehan are better placed to answer on the second point; I do not have the same access requirements. On the first point, the concept of universal design and making places and environments more accessible is well known. This is not new. We are not trying to reinvent the wheel. A rising tide raises all boats. I do training around neurodivergence. No non-neurodivergent person or, in this case, no non-disabled person is going to be harmed by us making our environments, workplaces and education systems more accessible. We know that neurodivergent and disabled people are actively being harmed by the way things are now. Everybody can walk up a ramp. Not everybody can go up stairs. Making environments more accessible for neurodivergent people and changing the ways we do things for disabled people benefits everybody. Most of the innovations we have nowadays were actually developed for disabled people in the first place. Sliding doors and rotating doors - all of these things - were invented for disabled people's access requirements. Texting was invented for disabled people's access. So many things that non-disabled people use and take for granted every day were initially invented to meet the access requirements of disabled people. There is no lack of benefit to making places more accessible, incorporating universal design and including disabled people's collaborative and co-creation approaches. It is what the State is mandated to do under the UNCRPD anyway. Including disabled voices from the get-go will improve outcomes for everybody. It has already been proven in the things we use every day. I will let somebody else come in on transport access.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T10:30:00+00:00"/></from>
+          <p eId="para_89">Ms Kearns has covered many of my points. The other invention that was created as a disability accommodation was the keyboard. I think the majority of us spend most of our time using keyboards. There are so many examples of accessibility devices that we now all benefit from. A report was released yesterday that I saw in passing. It was talking about how Ireland has an ageing population that will result in us having less tax revenue, something we need to prepare for in the future. It had me thinking about the fact that we do have an ageing population, which always sounds like a threat when we say it, and that non-disability is a temporary state. You will all be disabled if you are fortunate to live long enough. One of the things we have to think about, particularly in the next 20 to 30 years, is how we make Ireland more accessible and more inclusive with an ageing population. It is absolutely the case that we need to look at ways of keeping older people to be part of our society. A lot of older people are disabled, and many of the interventions and things we want for disabled people are equally applicable to older people. They are a cohort that we really do not think about enough in society. It happens a great deal in the world of disability where, often, once someone turns 65 they are not considered to be disabled any more, just elderly. It makes absolutely no sense, but I will set that aside.</p>
+          <p eId="para_90"> It has been well established across a bunch of different areas that bringing diversity into systems creates better solutions. It creates better teams and outcomes for everybody involved. If we can get disabled people into the workplace, it will bring a different element of diversity into our workplaces which will lead to better solutions, products, ideas and services. That is an economically focused outcome, but one we cannot disregard.</p>
+          <p eId="para_91"> On transport, Ms Graham has expressed some really great opinions. In terms of how we do that, she, Ms Kearns and I have shown here today the importance of engaging disabled people directly, particularly organisations led and organised by disabled persons. We can apply a really analytical perspective to various challenges. That is something that all disabled people contribute everywhere we go. We are excellent problem solvers.</p>
+          <p eId="para_92">In terms of how we actually get to that imagined future, it is by engaging with disabled people directly. </p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_93">To just add to what Dr. Hassett was saying, we need to change the narrative that it is them versus us because 22% of our population is us. It is our loved ones, our relatives, our neighbours, it is the people that we want the best for. Universal design, as Dr. Hassett and Ms Kearns said, is beneficial for our older population, who we will become in the time to come. It benefits everyone. We have people with disabilities, illnesses and long-term conditions in our team and it has made our team better. Our team is better because we come up with better solutions because we look at it from all angles, especially for the cohort of people we support. It benefits everyone to have more universal design in our workplaces. That is my take on it. We should be changing the narrative of them versus us. It is all us.</p>
+        </speech>
+        <speech by="#SeamusHealy" eId="spk_43">
+          <from>Deputy Seamus Healy<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_94">I thank the witnesses for being with us and for their opening statements. The level of employment among people with disabilities is completely unacceptable and obviously out of kilter with other countries. Most of the issues around this have already been raised by other members. However, there are two issues I wish to return to. The first is remote working. One would imagine that there are significant opportunities for people with disabilities to engage in remote working. Is there any indication that is the case? Are there barriers even in that area to people with disabilities? If there are, what are they? If there are barriers, there they should be highlighted urgently because remote working should be a significant opportunity for people with disabilities to engage in the workforce.</p>
+          <p eId="para_95"> In the traditional employment areas, so to speak, I raise the issue of transport to employment, access to public transport and access for basic things like wheelchairs. Are there specific actions the witnesses feel should be taken in those areas to ensure people with disabilities can actually get to work?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_96">It has already been said that remote working is invaluable. As Dr. Hassett has said, though, that can bring up other issues with positive discrimination by not making workplaces reasonably accommodating. The general feeling since the pandemic is there has been a rollback on remote working and people are being mandated back into workplaces. The solution would be to engage with DPOs. We have the lived experience. Disabled people are natural problem solvers. We are doing it every day of our lives. It is not just employment; there are other barriers. We have the solutions. Our guiding principle is "Nothing about us without us". Very often, it can feel that it is all about us, but it is rarely with us. Too often, consultation happens without remuneration. That does not happen in other sectors.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_97">One of the barriers we find for remote working is, as Dr. Hassett mentioned, people being mandated back into work and it not being understood, or them having to prove, that they need to do remote working. One of the things around the area of reasonable accommodations for someone who is working from home is access to things like screen-reading software and the other elements that might be needed. It is hard enough to get these things when people are in employment. It is hard enough to get employers to get these things and they stay with the employer rather than the employee an awful lot of the time. If someone moves roles or jobs, that screen-reading software or those other access tools often do not go with them. So, when they are at home and do not have these tools, it can prove extraordinarily difficult.</p>
+          <p eId="para_98"> We are coming back to the question of bureaucracy and having the onerous, extra labour of having to fight for things that should just be provided. That is obviously a huge barrier if someone feels that, even though it would be better to be working remotely from home, it would just be easier on balance to go into the workplace because the things they need to work would be easier to access if they were actually in an office. Having to use specific tools for their access can be a huge barrier to people.</p>
+          <p eId="para_99"> Another barrier is access to personal assistance, PA, support. This is a huge issue for all sorts of reason. There is very limited access to personal assistance in Ireland, which obviously creates huge barriers to being able to access education, which creates barriers to accessing employment in the long run. The lack of personal assistance also impacts people's ability to access work. This is an issue that really needs to be looked at. We have raised it in other areas across disability, but it is obviously a huge issue in accessing employment for those who need to use personal assistants. It impacts transport as well. Somebody may need personal assistance to use transport but only get 20 minutes of personal assistance a day, and I do not know many people who only have a commute of 20 minutes. All of these things compound and impact on people. Obviously, we can see why all of this compounds for some disabled people to a point where they cannot access work. They are literally shut out of employment because of all these barriers being put in their way.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_100">On remote working, we work with people on a case-by-case basis. We have had tremendous success with employers who have put the reasonable accommodation in place so someone can work remotely. Sometimes, it is a question of getting in the door with someone. Since Covid, there has been the mandate to come back into the office for everyone who is on the existing team. Someone coming in with a disability is are already on the lower foot while also trying to get access to remote working. It kind of sets the person up for a negative before they have even started. Sometimes, it is all about dealing with the employer and getting them to understand it is a very reasonable accommodation that someone else may not need but this person absolutely does.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_47">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_101">I thank the witnesses for coming in. I read the opening statements. I am on the health committee as well, so I apologise for being late to this meeting.</p>
+          <p eId="para_102"> We know about the difficulty around employability and the poverty associated with disability. There are obviously common issues among men and women living with disabilities, but what are the specific ones for women? What are the specific barriers to employability for women living with disabilities?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_103">I think Dr. Hassett and Ms Kearns would be best placed to answer that. </p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T10:40:00+00:00"/></from>
+          <p eId="para_104">To be really concrete, I will break it down into two main areas where women experience significant barriers to accessing employment. There are still barriers to employment for women more generally as well as certain attitudes and perceptions around women in the workplace. For example, there are ideas that a woman's income is not likely to be the primary income in a family or that it is supplementary to a different earner. There is a pay gap that exists between men and women that also exists between disabled women and either women or disabled men.</p>
+          <p eId="para_105">I would say that overall in the workplace disabled women are subject to a kind of double disadvantage. They are women and they are disabled people. The problem is that there are perceptions and attitudes, and the problems with that, that exist for both kind of cohorts of people and these come together and create even bigger issues for disabled women.</p>
+          <p eId="para_106"> The second set of issues I would identify is around the issue of flexibility in working. For example, there are certain conditions associated with chronic pain and chronic illness that women are more likely to have relative to men. Women are also more likely to have caregiving responsibilities and more likely to be responsible for maintaining a household, Unfortunately, that is still the case today. When we couple disability with those sorts of gendered expectations, the inflexibility of workplaces and the inflexibility of working hours and systems of working are creating massive barriers for disabled women. This double disadvantage of being a woman and being disabled comes together to create this situation where disabled women are earning less, are less likely to be employed and are over-represented in precarious part-time or temporary working arrangements.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_107">Does anyone wish to come in here?</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_51">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_108">There seems to be an overlap between the issues of living with a disability and being a woman, as Dr. Hassett pointed out very clearly.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_52">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_109">I believe Ms Kearns had asked to come in on that.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_53">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_110">My apologies; I did not mean to interrupt.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_54">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_111">It is my fault, in fairness.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_112">It is grand. Dr. Hassett has covered the issue, but I will just give the perspective of some of the people affected. As Dr. Hassett mentioned, we recently did an event looking specifically at disabled women and poverty. This was obviously a topic that came up and one we talked about it. At that meeting, people said that gender is fundamental in how they are experiencing inequality in employment and in other ways. One person said that she cannot work due to discrimination, not just because of her disability. It is part of the intersectional marginalisation. There was no divide. As Dr. Hassett said, having to choose between caring responsibilities and employment responsibilities is difficult for all parents but it is particularly difficult because disabled women, or women generally, tend to be the primary caregivers in a lot of situations. That gendered aspect really does impact on the way we experience discrimination in employment in a significant way. The figures speak for themselves. There is a reason the figures are lower. It is not just because disabled women are less capable of work. It is because of all these factors.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_56">
+          <from>Deputy Martin Daly<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_113">I did not mean to interrupt a moment ago. I apologise. I thank Ms Kearns for the answer. It was worth waiting for because she has pretty well enunciated what I had thought. It is good to hear it from her. How can we overcome some of these barriers? The gender part is a major issue. I have been talking about a lack of childcare and a preschool in Boyle in County Roscommon. There is a whole bunch of very well qualified women who cannot go to work because they do not have access to childcare in the area. This affects everyone from those working in factories to teachers and lawyers. The point I am making is that the witnesses are right about the crossover between the gender issue for women getting back into the workplace, or being enabled to go into workplace, and the double disadvantage - I hate using the word "disadvantage" - of living with a disability and trying to do that also. How can we overcome that? Does it need an educational piece or do we need to be pushing for a cultural piece much earlier in life in terms of how we deal with this? I know that is sort of esoteric and not practical but I do think attitudes are a lot to do with this.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_114">There are a couple of concrete things. Members will be sick of me saying this by the end of the session but I think the costs are a massive issue. Implementing a cost-of-disability payment would go some way to helping with this. It would help disabled people, particularly disabled women, to cover those costs associated with getting and staying in employment. That is a really concrete thing and it is in the programme for Government. It has been expressed that it is the Government's intention to do this. Again, we were disappointed it was not in the budget for 2026 but we are really going to continue pushing for that.</p>
+          <p eId="para_115"> The second thing we would encourage and which we want to see happen is the removal of means testing of the disability allowance or, failing that, an increase in the income disregards. That €165 is the point at which the disability allowance starts being diminished is not great. It is a particular challenge. We would also want to keep the supports needed by disabled people, such as the medical card and free travel pass. I know that we can now keep this for up to four years once we enter employment, but making that a permanent situation would be a massive help. Making sure that people can still access medical cards and those different supports irrespective of their income would be a massive support. The problem we have now is that it is very difficult for disabled people to enter a job and get to a point where they are earning enough to cover those costs themselves. There is an in-between area where disabled people end up being worse off for quite a while. The concrete measures for me are a cost-of-disability payment, income disregards and the removal of means testing.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_116">I will bring in the perspective of another person who was at our event and said they can only work 12 hours a week while receiving the disability payment and it is a real challenge. It is a real challenge because, as Dr. Hassett said, the financial risks of trying to access full-time employment make it extraordinarily difficult for disabled women to access that full-time employment. Removing means testing or, at the very least, increasing the disregard would help. Who can live on €165 a week? During Covid, there was a payment of €350 and that was considered the bare minimum people needed to survive. There is not a disabled person in this country who is in a receipt of a payment anywhere near to that. Yet, we know there is an increased cost of disability. We are expected to live on far less than non-disabled peers. These things have to be taken into consideration. Getting rid of means testing is necessary.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_59">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_117">I thank Ms Kearns. We are running out of time. We will bring in Ms Killeen and Ms Greham to briefly comment on those points.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_118">I will comment on the impactful point raised by Ms Kearns. A cost-of-disability payment has to be implemented. There is no question about that. The disability allowance should not be means tested. I do not know of a single person in receipt of the disability allowance who does not deserve it. It absolutely should not be means tested.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_119">I will just back up what my colleagues have said. A cost-of-disability payment must be implemented. It would give control back to the disabled person and give the disabled person autonomy.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_120">I thank the witnesses and everyone who has contributed so far. This concludes the first round of questions. We will move on to the second round. Members who wish to speak will have five minutes each.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_63">
+          <from>Deputy Liam Quaide<recordedTime time="2025-11-05T10:50:00+00:00"/></from>
+          <p eId="para_121">Ms Killeen mentioned Sweden as a country that has a much better record in upholding the rights of disabled people to work, with Ireland being at the opposite end of the spectrum in that regard. Across the full range of issues that impact on the disabled community, we see an egregious level of disadvantage, the abject neglect of services over many years, very high levels of poverty and dislocation of people with disabilities from their communities. Does Ms Killeen or any of the other witnesses have any thoughts on what might be underpinning how grave things have become for disabled people in Ireland compared with other countries that are doing things better? As somebody with a background in psychology, I am always very interested in trying to understand what are the deep-seated factors, sometimes conscious and sometimes unconscious, in society or in individuals that might be at play. Can those be overcome by policy changes or is there something more deep-seated that we need to address in this country?</p>
+          <p eId="para_122"> I also have a general question for anybody who wants to answer. I believe we have more of a political focus on disability at the moment but not on the action that is needed. Do the witnesses feel more or less hopeful or pessimistic now than they did five or ten years ago in respect of disability rights and where we are going in this country?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_123">From a psychology perspective, a huge problem we have had for a long time is that the care and support of disabled people have been outsourced to charity and treated as a charitable endeavour. We can trace our history back to hundreds of years of allowing, with the greatest of respect, the church to take care of our undesirables, as people are perceived to be. That has meant the State has chronically underfunded and under-resourced its support of disabled people and has essentially shipped the problem off to charities. Challenging the charity model of disability - the idea that we are people who are benevolently looked after - is something we are contending with day by day, particularly as we currently live in a situation where a lot of services that should be provided by the State are still provided by charitable organisations, which is not appropriate. Those services should be organised and supported by the State. The corollary is that we also have a situation where we are still struggling to embed a human rights model of disability into our perception of how we take care of, support and facilitate the involvement of disabled people.</p>
+          <p eId="para_124"> On the outlook, we have a new disability strategy, which includes much more extensive engagement structures with disabled people. Now is the time we are looking to see how disabled people will be supported and resourced to engage with those structures. It is easy to put structures in place. It is much more difficult to put in place the systems and supports needed to help disabled people to fully participate in those systems. We hope to be involved in those structures as much we can. We are not funded at all. We are not supported by any entity. We do this on the back of our members' time and energy. I am hopeful that situation will change because we need to get disabled people into those stakeholder structures to influence policy, but they need to be supported to do so. I am cautiously optimistic that those structures are in place and I am hopeful, but vigilant, that the supports will be put in place to facilitate it.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_125">I feel we are going in the right direction, compared with ten years ago. What is different between Ireland and Sweden boils down to part-time permanent positions not being available here. They are not available from the very start. For example, if work experience as a stepping stone to get in the door is available in a part-time capacity, it would lead nicely to the wage subsidy scheme in a part-time capacity, which would also lead to part-time permanent contracts being available. They are not. Many of the people we support are looking for positions, but they cannot work full time and are at risk of losing their disability allowance. For many people, that is not a risk they can take. The risk of losing the disability allowance and any other benefits they may have - they are not easy to get - means it is sometimes just not feasible for disabled people to work. In comparing Sweden and Ireland, the crux of the matter is the need to make part-time permanent positions available.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_126">On the current climate and looking forward, I am also a co-founder of Neuro-Pride Ireland, which is a cross-neurodivergence disabled person's organisation, so I will put that hat on for a minute. Looking forward in the neurodivergent community is quite scary geopolitically for us right now. All the advances in education and awareness and all the work we have been doing on advocacy for years are being undermined by people in positions of authority saying quite ill-informed things about neurodivergent people. That has an impact on us and on the supports we receive. It has a psychological impact so we are seeing more and more people come to us who are struggling with their mental health because of this geopolitical climate. For us, that is quite worrying. It is quite worrying we are being scapegoated and it needs to be addressed. The only way it can be addressed is by including our voices in policies and strategies and listening to us about the reality of our lived situations. I apologise for jumping over to that side of things, but it needed to be said.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_67">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_127">I apologise for being late. I got caught in traffic. A few things jumped out to me. I chaired the Joint Committee on Autism and we did work with Trinity College Dublin, which provided courses for young people with intellectual disabilities and autism and had a project where work experience was provided with the possibility of full-time employment after that, with about 30 companies. I am working on it and we now have universities providing specific courses. Ultimately, I want to get to a situation where we have companies that provide opportunities for people, first to get experience and ultimately job opportunities for people on an equal basis, whatever disability that person may have, with the proper supports in place in those companies to support people in their employment.</p>
+          <p eId="para_128"> The point was made that we are moving in the right direction from the situation ten years ago. However, what direction do we need to take for the future? What improvements do we need to make as a State? We met a lot of organisations, such as EmployAbility, about supports and so on. We found that the supports put in place by the Department are under-utilised by companies that could get financial support to support a person in employment. Where are we in those percentages now? Do we need to do a programme to promote what supports are available?</p>
+          <p eId="para_129"> We have a fantastic programme here in Leinster House. The Oireachtas work learning, OWL, programme gives opportunities and has led to full-time employment in the Civil Service for almost everyone who has taken part in it. It is a case of every Government Department and organisation needing to lead from the top. This is where changes are made. We have started that. Every Government Department, like society in general, needs to have a better understanding of the difficulties people have, regardless whatever disability they have. What do we need to do?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_130">Basically, it comes back to the fact that people employ people they know, like and trust. When people get to know other people, they get a chance to figure out what they can do, how to help them do it better and what they cannot do. As a starting point, the Deputy asked what direction we need to be going in. We need to be going in the direction of people being aware of all the schemes that are available. Employers for Change is doing great work in building awareness but more needs to be done in getting employers to fully understand what is available and how we can benefit their organisations and companies. It always comes back to getting people with disabilities or long-term conditions to get their foot in the door. How do we do that? It is about going red raw applying for a job where there might be a certain amount of "we employ people with disabilities", but do they really? It is about people getting the chance to get in the door and prove what they can do and sometimes that starts with a voluntary work placement, which leads to the wage subsidy, which leads to a contract that is sustainable for a person with a disability, which might be a part-time contract. Not everyone can work full time.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_69">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-11-05T11:00:00+00:00"/></from>
+          <p eId="para_131">The Government needs to lead. What is the witnesses' experience of Departments across the Civil Service? Is the Government doing enough in the Civil Service and public service? If we do not do it, we cannot expect society and other organisations to. We need to lead from the top. Are we doing what we need to do?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_132">Some are and some are not, but it would be brilliant to get more doing it.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_133">Dr. Hassett may make a brief comment. We are running out of time.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_134">The Deputy's point about the Civil Service needing to lead is incredibly important. There are two angles to this. The first is that there was an intention to have disabled people comprise 3% of the Civil Service. In the most recent strategy, that was increased to 6%. Some 22% of the population is disabled, and the Civil Service is only putting an expectation on itself to meet 6%. There needs to be more ambition within the Civil Service to increase the number of disabled people working within it. It does create different difficulties because certain structures and programmes like Work and Access are for private companies rather than the public service, so there is a lack of understanding. There is complexity around how to access different supports depending on which side of industry you are in.</p>
+          <p eId="para_135"> There needs to be much more focus not only on how we get disabled people into employment in the Civil Service but also on how we ensure those people are able to move up through the ranks. We have decent programmes for getting disabled people into employment in the Civil Service - I think they could be more ambitious - but there is no system to track the progress of these people upwards through the Civil Service. The problem is that disabled people are over-represented in the entry-level positions and they are not climbing the ranks. The Civil Service could be thinking about how it can do more and support disabled people more in terms of progressing through the ranks.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_73">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_136">Dr. Hassett said the ambition is 6%. What is it currently?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_137">I cannot remember. Off the top of my head, I think it is around 3% or 4.5%.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_138">I thank Dr. Hassett. We will more on to Sinn Féin’s Deputy Ó Murchú who has five minutes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_76">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_139">We finished there on the correct point, namely that we have a number of schemes which need a lot of work before they are fit for purpose. That was a really good point about the Civil Service and that it is not just a case of getting people in. We have to get people in and ensure that they have a right to a decent career trajectory.</p>
+          <p eId="para_140"> When we talk about the WPEP and programmes like that, there is probably a lot of ad hockery<i>
+						</i>going on in the context of how employers are contacted. We have some very good programmes run by third level institutes, but we really need the Civil Service and the State to take over in this regard. The committee may have gone into this more when I was not here. I am sorry I had to speak in the Dáil. Do the witnesses have a view about who that should be? Should it be run through Intreo and the Department of Social Protection? How exactly would that work? We do it properly rather than give someone a bit of an <i>ad hoc </i>job that is just added on rather than doing it significantly. We have seen best practice in operation; it is just a matter of doing it across the board and for the State to do the heavy lifting and then we improve the other schemes to help employers too.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_141">Many agencies are looking at this and are providing different schemes. A lot of it gets diluted. We have EmployAbility Clare, there is WorkAbility and the HSE has its IPS model. There are so many different agencies that are looking at it. Intreo is looking at the WPEP. I think Intreo could specialise in it and gave the support to everyone like EmployAbility Clare - we are pushing it. These things take time and money. You would hope that one entity would push it where its one task was to make sure every employer across the country understands the benefits of this and is obliged to avail of it. It is not just telling employers that this is a lovely thing to avail of but, rather, that it is something they are expected to avail of. There should be an expectation there as well.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_78">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_142">It is an expectation, and that we also make it easy for them to do it as well.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_143">Yes, and make it truly beneficial for them to do it.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_144">There are a lot of courses and schemes that provide training for disabled people, but they do not employ us. As a DPO we have established that there are many skilled and qualified disabled people who could and should be employed within the education and training sector. We have the skills and we have navigated the system. We need to be given those opportunities. That is the bottom line.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_145">Again, at the event in question, somebody raised the point that there is a need for mentoring from disabled people for people trying to access work. They have walked the path before. They said they were involved in a scheme. I think it was Working for You, but I am not 100% sure of the name. That was a huge part of it. It was person centred and based on their will and preference, and they were mentored towards that. As a neurodivergent person, I can say that many of the schemes aimed at neurodivergent people are aimed at the tech industry. I have no ability in that – I have dyscalculia. I have no ability to work in the tech industry. I can break technology in ways that developers have no idea how I do it. It is that type of thing. There is a need for the schemes to not just be focused on certain types of employment or industries because that is a huge barrier. Many neurodivergent people are not interested or do not have the ability to work in the tech industry and that kind of thing. There is a need for these schemes to be person focused and focused on people’s will and preference rather than simply saying, “You are disabled so these are the jobs that are available to you whether you want them or not.” That is a factor in people not being able to access these things.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_82">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_146">It is fairly straightforward. At this point, we are looking at Intreo as the body that can do this. We just need to make sure it has sufficiently trained staff, and then it is engagement with all types of employers. It has to become the norm or otherwise we will maintain our position of having the lowest percentage of employment for disabled people and we will keep having this conversation forever. We will have to take a run at the Department about coming up with an element of a plan. I have heard those in the Department speak about it before but I have never heard it move beyond the ad hockery<i>
+						</i>we have now. The people here are doing great work but we need this to be done and controlled centrally and for people there to engage and facilitate.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_147">I thank the Deputy. We will move on to Fine Gael and Deputy Keogh who has five minutes.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_84">
+          <from>Deputy Keira Keogh<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_148">I will go back to the conversation we were having on transport. I like the phrase “there is no stupid question”, so I will ask what could be a stupid and a blunt question. I will return to the private taxi drivers in cars that are wheelchair accessible. Why are they driving off when they see people in wheelchairs? Why are they turning people down when they realise they have a wheelchair? In my town, we have hackney services rather than taxi services. This means that they are not metered. On a Saturday night, they will pick up the people who are travelling 1 kilometre in order that they can get back out again and make as much money as fast as possible. However, metered taxis are different because the meter is just running. Is it a question of time, cost or what is the reason that private taxis are not taking the fares? Anyone can answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Avril Greham<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_149">In my town, we do not have very many metered taxis. That is a barrier in itself. It might come back to a lack of awareness and to attitudes around a potential customer that it might take a driver a little longer to take the ramps out and fix them into position. Then there is also the idea that a wheelchair taxi is bigger. As a result, the more persons in a bigger van, the bigger the fare might be for the driver. The driver may be able to make more money if they have more people in a taxi.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Dr. Amy Hassett<recordedTime time="2025-11-05T11:10:00+00:00"/></from>
+          <p eId="para_150">The Deputy is asking the question I have asked a number of my taxi drivers. I have explored this quite a bit, and I used various different services to try to elucidate this a little.</p>
+          <p eId="para_151">There are three main reasons.</p>
+          <p eId="para_152"> First, depending on the app or service, drivers either get told somebody is requesting a wheelchair taxi or that somebody is requesting a taxi. I will not say which is which but I have had much higher success rates when the drivers do not know I am specifically requesting a wheelchair taxi. The time it takes to load in as a single person is a massive issue. They are required, as far as I have understood from speaking to taxi drivers, to take one wheelchair passenger per week. I think what is happening is they are doing that but not going above and beyond that.</p>
+          <p eId="para_153"> Why are they turning us down? It takes a little bit more time, as Ms Greham said. That has a deterrent effect. Sometimes they have the taxis but do not have the required training to operate the ramp, yet they are still allowed to designate it as a wheelchair taxi. Another issue is sometimes they are borrowing or lending taxis. Different companies have facilities to allow that but they are still registered as wheelchair taxis because the registration is for the taxi, not the driver. Those folks are turning up and do not have the training or are not normally in that position, so they are turning us down on that basis. Time, training and borrowing taxis are big reasons.</p>
+          <p eId="para_154"> One way I can see this being addressed is not allowing taxi drivers to know whether somebody is requesting a wheelchair taxi or not. That is a simple solution and there is at least one company that does that. I have had the best success in getting wheelchair taxis from that company. We could create a system whereby that is across the board for all taxi companies. Alternatively, we could create a financial incentive for taking a person requesting a wheelchair taxi by offering an extra fee or subsidy covering the loading time. It is important that cost is not transferred onto the disabled person. That could be facilitated at State level if we wanted to make it a reality.</p>
+          <p eId="para_155"> We are subsidising people to get wheelchair taxis through different schemes available so it is something the Government is supporting. That is good and beneficial. Many of us who have vehicles will, when we sell them, sell them to become taxis. That is a good system but we need to stop falling at the last hurdle. Government intervention can do that, as can working collaboratively with those companies.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Gillian Kearns<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_156">This is also an issue for people using guide dogs or autistic support dogs. It is not purely a wheelchair-user issue. It is predominantly a wheelchair-user issue but is also faced when a taxi shows up and the driver sees a person with a support animal and drives off or refuses to take them in. That needs to be addressed when we talk about transport and access to employment.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Marie Killeen<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_157">Something I have heard a few times in relation to taxi drivers with the capacity to bring wheelchair users is that it is a fear thing. They have done the wheelchair clamp in training, technically, but the fear of God was put into them about doing it properly, or then they could get a different wheelchair from the one they trained on. It was a fear thing, which should not be an excuse if they are supposed to have capacity to bring someone with a wheelchair.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-11-05T11:20:00+00:00"/></from>
+          <p eId="para_158">I thank the witnesses and members. That concludes round two. We will wrap up. Does anyone want to come in for an extra minute? No. That concludes our contributions from witnesses. I propose we publish all opening statements to the committee website. Is that agreed? Agreed. I thank everybody for attending, those in the committee room and those who joined online, and for their insightful contributions on access and employability. We as a committee are working on that for the next couple of weeks and will do a report on it. Hopefully, the witnesses' contributions will assist us greatly and I believe they will.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 11.24 a.m. until 9.30 a.m. on Wednesday, 12 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

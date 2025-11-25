@@ -1,0 +1,251 @@
+/* Professional Constituency Map Tooltips */
+
+.leaflet-tooltip.constituency-tooltip {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin: 0;
+  opacity: 1 !important;
+  pointer-events: none;
+}
+
+.leaflet-tooltip.constituency-tooltip::before {
+  display: none;
+}
+
+.tooltip-content {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  min-width: 220px;
+  max-width: 280px;
+  animation: tooltipFadeIn 0.2s ease-out;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.dark .tooltip-content {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.98) 0%, rgba(20, 20, 20, 0.95) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari support */
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tooltip-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.dark .tooltip-title {
+  color: #f9fafb;
+}
+
+.tooltip-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  font-style: italic;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.dark .tooltip-subtitle {
+  color: #9ca3af;
+}
+
+.tooltip-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, #e5e7eb 50%, transparent 100%);
+  margin: 12px 0;
+}
+
+.dark .tooltip-divider {
+  background: linear-gradient(90deg, transparent 0%, #374151 50%, transparent 100%);
+}
+
+.tooltip-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 13px;
+  color: #374151;
+}
+
+.dark .tooltip-info-row {
+  color: #d1d5db;
+}
+
+.tooltip-label {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltip-value {
+  font-weight: 600;
+  color: #111827;
+}
+
+.dark .tooltip-value {
+  color: #f3f4f6;
+}
+
+.tooltip-party-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin-top: 8px;
+}
+
+.dark .tooltip-party-badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: #d1d5db;
+}
+
+.tooltip-party-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.tooltip-action {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.dark .tooltip-action {
+  color: #9ca3af;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tooltip-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+/* Smooth cursor following */
+.leaflet-tooltip.constituency-tooltip {
+  transform: translate(15px, -50%);
+}
+
+/* Ensure tooltip stays within viewport */
+.leaflet-tooltip-right.constituency-tooltip::before {
+  display: none;
+}
+
+.leaflet-tooltip-left.constituency-tooltip::before {
+  display: none;
+}
+
+.leaflet-tooltip-top.constituency-tooltip::before {
+  display: none;
+}
+
+.leaflet-tooltip-bottom.constituency-tooltip::before {
+  display: none;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .tooltip-content {
+    min-width: 200px;
+    max-width: 250px;
+    padding: 14px 16px;
+  }
+
+  .tooltip-title {
+    font-size: 15px;
+  }
+
+  .tooltip-subtitle {
+    font-size: 12px;
+  }
+
+  .tooltip-info-row {
+    font-size: 12px;
+  }
+
+  .tooltip-party-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .tooltip-action {
+    font-size: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  /* Adjust tooltip offset for touch devices */
+  .leaflet-tooltip.constituency-tooltip {
+    transform: translate(10px, -50%);
+  }
+}
+
+/* High-resolution displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .tooltip-content {
+    box-shadow: 
+      0 10px 40px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      0 0 0 0.5px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .tooltip-content {
+    animation: none;
+    transition: none;
+  }
+
+  @keyframes tooltipFadeIn {
+    from, to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+

@@ -1,0 +1,606 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-10-15/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-10-15/debate"/>
+          <FRBRdate date="2025-10-15" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_further_and_higher_education_research_innovation_and_science"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-10-15/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-10-15/debate/mul@"/>
+          <FRBRdate date="2025-10-15" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-10-15/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_further_and_higher_education_research_innovation_and_science/2025-10-15/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-21" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BrendanSmith" href="/ie/oireachtas/member/id/Brendan-Smith.D.1992-12-14" showAs="Brendan Smith"/>
+        <TLCPerson eId="DeeRyan" href="/ie/oireachtas/member/id/Dee-Ryan.S.2025-01-29" showAs="Dee Ryan"/>
+        <TLCPerson eId="DonnaMcGettigan" href="/ie/oireachtas/member/id/Donna-McGettigan.D.2024-11-29" showAs="Donna McGettigan"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="FionntanOSuilleabhain" href="/ie/oireachtas/member/id/Fionntán-Ó-Súilleabháin.D.2024-11-29" showAs="Fionntán Ó Súilleabháin"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="MaeveOConnell" href="/ie/oireachtas/member/id/Maeve-O'Connell.D.2024-11-29" showAs="Maeve O'Connell"/>
+        <TLCPerson eId="PaulDaly" href="/ie/oireachtas/member/id/Paul-Daly.S.2016-04-25" showAs="Paul Daly"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCRole eId="An_Leas-Chathaoirleach" href="/ie/oireachtas/role/office/an_leas-chathaoirleach" showAs="An Leas-Chathaoirleach"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM BREISOIDEACHAS AGUS ARDOIDEACHAS, TAIGHDE, NUÁLAÍOCHT AGUS EOLAÍOCHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Further and Higher Education, Research, Innovation and Science</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-10-15">Dé Céadaoin, 15 Deireadh Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-10-15">Wednesday, 15 October 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#PaulDaly">Paul Daly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#FrankFeighan">Frankie Feighan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DonnaMcGettigan">Donna McGettigan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MikeKennelly">Mike Kennelly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#MaeveOConnell">Maeve O'Connell</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#FionntanOSuilleabhain">Fionntán Ó Súilleabháin</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#BrendanSmith">Brendan Smith.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Jen Cummins.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#ErinMcGreehan">Seanadóir / Senator Erin McGreehan; Teachta / Deputy Erin McGreehan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Apprenticeships: Discussion (Resumed)<recordedTime time="2025-10-15T12:30:00+01:00"/></heading>
+        <speech by="#ErinMcGreehan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T12:30:00+01:00"/></from>
+          <p eId="para_14">Apologies have been received from Deputy Eoghan Kenny. Everyone is very welcome to the meeting. I ask those attending remotely to mute their microphones when not contributing in order that we do not pick up any background noise or feedback. As usual, I remind all those in attendance to ensure their mobile phones are in silent mode or switched off. Members attending remotely are reminded of the constitutional requirement that to participate in public meetings, they must be physically present within the confines of the Leinster House complex.</p>
+          <p eId="para_15"> As the witnesses are within the precincts of Leinster House, they are protected by absolute privilege in respect of the presentations they make to the committee. This means they have an absolute defence against any defamation action for anything they say during the meeting. However, they are expected not to abuse this privilege. It is my duty as Cathaoirleach to ensure that it is not abused. Therefore, if the witnesses' statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_16"> Members are reminded of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against a person or entity outside the Houses or an official of the Houses either by name or in such a way as to make him, her or it identifiable.</p>
+          <p eId="para_17"> On the agenda for today's meeting is a discussion on apprenticeships with Mr. Gerard Smith, director, Mr. Andrew Magee, engineering manager, and Ms Lynne Keery, apprenticeship training manager, from the Advanced Manufacturing Training Centre of Excellence. From Quality and Qualifications Ireland, we are joined by Dr. Jim Murray, director of development,and Ms Mairéad Boland, head of quality assurance. They are very welcome.</p>
+          <p eId="para_18"> I invite Mr. Smith to make his opening statement. He has five minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_2" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Gerard Smith<recordedTime time="2025-10-15T12:30:00+01:00"/></from>
+          <p eId="para_19">I am honoured to have served as director of the Advanced Manufacturing Training Centre of Excellence, AMTCE, for nearly a year now. Before joining the AMTCE, I built a career in the global manufacturing sector, working with international leaders across a wide range of industries. That experience strongly aligns with the AMTCE’s core mission to position Ireland as a global leader in advanced, sustainable and responsive manufacturing training. On behalf of the AMTCE and the Louth and Meath Education and Training Board, LMETB, I thank the committee for the opportunity to contribute to this important conversation on apprenticeships and advanced manufacturing. I am joined today by my valued colleagues Lynne Keery, apprenticeship manager, and Andrew Magee, our engineering manager.</p>
+          <p eId="para_20"> When the AMTCE was established in 2021 under the visionary leadership of the CEO of LMETB, Mr. Martin O’Brien, it was not just another training centre; it was a strategic response to a national and regional skills gaps, backed by evidence and rooted in a long-term vision to train and upskill locally and export skills globally. The vision is more relevant now than ever. At a time of global disruption from pandemics to trade realignments, resilience and adaptability are essential. The AMTCE is designed to deliver in preparing Ireland’s workforce not just for today’s jobs but for the future economy. What sets the AMTCE apart is the ecosystem approach we take to training. We do not operate in isolation. We bring together the Government, industry and education in a true partnership model. This is visible in our formal collaborations, such as through our memorandum of understanding with Catalyst Connection in Pittsburgh and in pioneering projects like Ireland's first 3D-printed concrete housing. This was made possible through collaboration with Harcourt Technologies, HTL, and other stakeholders in Dundalk.</p>
+          <p eId="para_21"> We are proud to be part of this living laboratory of innovation where learners are not just taught technical skills but are trained to lead the next wave of transformation in Irish manufacturing. Our model is built on flexibility and relevance. We deliver training through a blend of craft and post-2016 apprenticeships, traineeships and skills to advance programmes. Courses are led by seasoned practitioners and delivered either on site with state-of-art equipment or virtually through our online platforms. This dual approach allows us to respond rapidly to emerging industry needs and technologies. We are proud to be the co-ordinating provider of a level 6 robotics and automation apprenticeship that exemplifies our commitment to future-facing training. Through partnerships like that with Dundalk Institute of Technology, we ensure learners have clear progression pathways into higher education and lifelong learning.</p>
+          <p eId="para_22"> The AMTCE sits within a wider LMETB further education and training network, including the regional skills and training centre in Dundalk and the Drogheda training centre. Together, we deliver a broad and growing range of apprenticeships across sectors from traditional trades like electrical and motor mechanics to high-demand areas like cybersecurity and hairdressing. Our region is diverse and rapidly growing, with an 11% population increase. The latter is well above the national average. We serve urban centres, rural communities and the ever-expanding Dublin commuter belt.</p>
+          <p eId="para_23">These demographic shifts bring both opportunities and challenges, and the AMTCE is here to ensure the skills infrastructure keeps pace with the region’s growth.</p>
+          <p eId="para_24"> We are fully aligned with the Government’s Action Plan for Apprenticeship 2021-2025 and share the Department’s ambition to expand and modernise the system. At the same time, we strongly believe that a centrally co-ordinated and certified model, akin to the State Examinations Commission for the leaving certificate, ensures consistency, trust and international recognition. While we understand that this is not fully aligned with the current direction being explored by SOLAS, our experience on the ground tells us that centralised certification and quality assurance are essential for maintaining high standards with employers, learners and international partners. This is what they expect from Irish qualifications.</p>
+          <p eId="para_25"> To further enable our responsiveness, we are respectfully calling for a dedicated funding line for the AMTCE within the LMETB’s further education and training, FET, budget. A ring-fenced funding stream would give us the ability to meet industry needs at short notice and maintain the cutting-edge equipment, staff and resources that distinguish the AMTCE at national level. As manufacturing technologies evolve, so too must the infrastructure supporting skills development. Flexibility in funding is no longer a luxury; it is a necessity. I warmly invite members of this committee to visit the AMTCE and experience at first hand the energy and innovation taking place within our walls. From the factory floor to the virtual classroom, what will be seen is more than training - it is transformation. The AMTCE is not just a training centre, it is a national asset. It represents a bold investment in Ireland’s industrial future, and a model for how education, enterprise and Government can work together to build a resilient, future-ready workforce.</p>
+          <p eId="para_26"> I thank the committee once again for the opportunity to speak with it today. We look forward to working with the committee to shape the future of apprenticeships and advanced manufacturing in Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_3" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T12:40:00+01:00"/></from>
+          <p eId="para_27">I thank the committee for inviting Quality and Qualifications Ireland, QQI, to this meeting. QQI is the State agency that promotes the quality, integrity and reputation of Ireland’s further and higher education system. We are responsible for the external quality assurance of further and higher education provision in Ireland, although primary responsibility for quality assurance rests with the providers who deliver programmes of education and training. For apprenticeships, this is the co-ordinating provider, which works with employers and collaborating providers. QQI is also the national qualifications authority that oversees Ireland’s qualifications system. We advise on the quality assurance and qualifications dimensions of apprenticeship provision to support all entities that develop and provide such programmes.</p>
+          <p eId="para_28"> We work with all stakeholders to maintain a trusted, sustainable and adaptable infrastructure for apprenticeships. We worked intensively with the National Apprenticeship Council to rethink and expand the apprenticeship model in order that new apprenticeships could be offered in diverse sectors in the context of levels 6 to 10 of the national framework of qualifications. This included producing statutory quality assurance guidelines for apprenticeships to inform the governance and quality assurance of a new industry-led consortium model of apprenticeship. The guidelines cover the governance, curriculums and assessment of apprenticeships, and supports for apprentices in on- and off-the-job settings. They also address the traditional craft apprenticeships for which SOLAS is the co-ordinating provider. The guidelines provide assurances necessary for new, untested types and areas of learning and training to ensure they are relevant, sustainable and of high quality. They have paved the way for higher education institutions to deliver apprenticeships in areas such as insurance practice, polymer processing, advanced quantity surveyor, lean sigma, social care and logistics.</p>
+          <p eId="para_29"> In 2022, QQI reviewed the effectiveness and impact of consortia-led apprenticeships. The review highlighted the diversity of approaches to developing, managing and governing such programmes. This diversity is a strength, showing how the model is both flexible and adaptive to sectors and occupations. Since 2022, the range of apprenticeships has further expanded.</p>
+          <p eId="para_30"> As mentioned, QQI also leads the development of Ireland’s qualifications system. We develop standards for QQI qualifications and certify learners who have completed programmes leading to QQI awards. We validate, or approve, apprenticeship programmes, the curriculums and assessments for which are developed and maintained by the co-ordinating providers and their partners. To give an idea of the breadth of innovation in this area, we have validated apprenticeships for international financial services and retail supervision, accounting technicians, butchers and commis chefs. Through our programme validation work, we approve apprenticeship programmes and support their quality, currency and integrity. Programme validation processes are underpinned by trust, built by providers through successive programme- and institution-level quality assurance processes. They provide assurance that education and training standards are met, training and learning aligns with employer needs and apprentices have the necessary supports to enable them to achieve qualifications.</p>
+          <p eId="para_31"> The validation process, which is undertaken by independent experts on QQI’s behalf, takes time. Our work is demand led. To date, we have validated 25 new apprenticeships. In the period from 2022 to 2024, we managed between 15 and 30 distinct apprenticeship validation processes per year, of which seven were first-time applications. To put this in context, at any one time, we manage about 200 validation events. The average time from QQI’s formal acceptance of an application for a new apprenticeship to approval of that programme is about 16 weeks. We have streamlined and adapted our processes over time to ensure that they remain relevant and appropriate. Our validation work aims to ensure that providers regulated by QQI have the necessary structures and resources in place to maintain quality and uphold their primary responsibility for apprenticeship programmes. Validation is time limited. Providers are required to undertake a full-scale review of programmes and submit them for revalidation by QQI. Through our validation and monitoring, we capture information on the implementation of apprenticeships. We monitor providers and their delivery of programmes through annual reporting, provider-level reviews, dialogue meetings and through the investigation and review of matters of concern.</p>
+          <p eId="para_32"> We work in partnership with other entities that have responsibility for system oversight, including the national apprenticeship office, the National Apprenticeship Alliance, the HEA, SOLAS and the Department of Further and Higher Education, Research, Innovation and Science. As such, we will continue to play our part in further developing the apprenticeship system. We expect that our role in this system will change as responsibility for the development, delivery and quality assurance of apprenticeship programmes continues to evolve. Our role will increasingly focus on the effectiveness of quality assurance and advising our partner stakeholders on the appropriate qualifications structures to accommodate change and innovation. We will continue to be a core partner in a national system that ensures the development of relevant, meaningful and current apprenticeship programmes.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T12:40:00+01:00"/></from>
+          <p eId="para_33">I call Deputy Ó Súilleabháin.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_5">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-10-15T12:40:00+01:00"/></from>
+          <p eId="para_34">I thank the witnesses. It is very welcome that the range of traditional craft apprenticeships has expanded. I was on the Waterford and Wexford Education and Training Board, WWETB, for about a decade. We often spoke there about how far behind we are compared to places like Germany that have 300 to 400 apprenticeships in all sorts of areas. In the past, people would have looked down their noses at traditional apprenticeships, but we are left without basic skills now. Many people have moved towards university and college degrees, and the basics have been forgotten.</p>
+          <p eId="para_35"> Has there been much demand in areas like retrofitting? This is obviously a great career path for a lot of young people. There is great money and a great future in it. It is hard to get bricklayers now. We definitely need them as well. What is the demand for this type of apprenticeship and are such apprenticeships being developed?</p>
+          <p eId="para_36"> Bus drivers are also needed. We are still in the middle of a public transport crisis because it is not possible to get bus drivers. They have to be trained and certified. I know people who have three buses ready to go. Yes, in the middle of October, there is still no bus available to transport about 35 children in my constituency to school. The reason we are often given for this is that we do not have bus drivers. Can anything be done through SOLAS, with the ETBs, in this area? It is certainly a practical, basic thing that needs to be done. I would like to get the witnesses' thoughts on this point.</p>
+        </speech>
+        <summary eId="sum_6"><i>Deputy Maeve O'Connell took the Chair</i>.</summary>
+        <speech by="#" eId="spk_6" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T12:40:00+01:00"/></from>
+          <p eId="para_37">I thank the Deputy. The different functions in the system in terms of developing apprenticeships are distributed.</p>
+          <p eId="para_38">Our role is to respond to the programmes that have been developed. We do not play a particular role in generating ideas for new apprenticeships. That is for the broader stakeholder community, namely employers, industry and the State agencies that advise on policy. The Department is the policy director. It is a combination of all of those together.</p>
+          <p eId="para_39"> As far as I am aware, we do not have any applications in for bus drivers or retrofitting at the moment. There are clearly demands in this regard, but it does require the stakeholders to come together - employers, policy drivers and employer representatives - to push it. The National Apprenticeship Alliance and the national apprenticeship office are the bodies that would take stock of areas that need to be developed.</p>
+          <p eId="para_40"> Once decisions have been made, our role is to crank into action to validate the programmes and get them through the system quickly. It is a complex system in terms of the distribution of responsibilities. Our role is to make sure that once an idea has germinated, we engage on the technical side to get the programmes validated and make sure the appropriate qualification structure is in place.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_7">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_41">Does QQI work closely with the ETBs and State bodies?</p>
+        </speech>
+        <speech by="#" eId="spk_8" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_42">Very much so.</p>
+        </speech>
+        <speech by="#" eId="spk_9" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_43">I might just come in on that. We are currently in the middle of a round of quality dialogue meetings with the ETBs. We are visiting each ETB in person. We have been doing that for the past couple of months. That allows us to raise areas of strategic importance with the ETBs and for QQI to discuss areas of common interest and challenge, where relevant. We do engage very closely with the ETBs.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_10">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_44">Would I need to contact the national apprenticeship office to make the case for these areas?</p>
+        </speech>
+        <speech by="#" eId="spk_11" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_45">Indeed, and SOLAS and the drivers of delivery and demand. Industries have to play a key role as well. The Deputy mentioned retrofitting. For employers in this area, the idea is to make apprenticeships attractive and to get those areas to commit to apprenticeships to ensure that they have the necessary workers who are trained and skilled to deliver all these objectives.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_12">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_46">I thank Dr. Murray.</p>
+        </speech>
+        <speech by="#" eId="spk_13" as="#An_Leas-Chathaoirleach">
+          <from> Ms Lynne Keery<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_47">On nearly zero energy building, NZEB, and retrofitting and bus driving courses, ETBs already do a lot of those but not as apprenticeships. For example, in our training centre in Dundalk, we run multiple bus driving courses. Certain ETBs specialise in retrofitting, but no ETB has yet decided to offer a course as an apprenticeship.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_14">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_48">We had a great centre of excellence in the NZEB in Enniscorthy. It is mentioned in the same breath as Zurich and New York. It is not often we hear that. It is the best in Ireland and probably in Europe. It is definitely something to make use of.</p>
+        </speech>
+        <speech by="#" eId="spk_15" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Andrew Magee<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_49">Education and Training Boards Ireland, ETBI, recently asked the ETBs to increase the number of bus driver courses nationally to meet the demand to which the Deputy refers. Work has already been done there.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_16">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_50">Okay.</p>
+        </speech>
+        <speech by="#" eId="spk_17" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Andrew Magee<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_51">ETBI is an umbrella group that co-ordinates nationally with each ETB. I am not too sure where SOLAS sits in that regard. The Deputy would probably be better off getting information from it. We were asked to increase the provision to meet the challenge and we have been trying to do that.</p>
+        </speech>
+        <speech by="#" as="#An_Leas-Chathaoirleach" eId="spk_18">
+          <from>An Leas-Chathaoirleach (Deputy )<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_52">I thank Mr. Magee. I am sorry, but Deputy Ó Súilleabháin's time is up.</p>
+        </speech>
+        <speech by="#" eId="spk_19" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Andrew Magee<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_53">That is no problem.</p>
+        </speech>
+        <speech by="#" as="#An_Leas-Chathaoirleach" eId="spk_20">
+          <from>An Leas-Chathaoirleach (Deputy )<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_54">Perhaps Mr. Magee could come back to that in response to some of the other questions.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_21">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_55">I thank the witnesses very much for joining us and for their presentations and opening statements. I have some questions that may seem elementary, but I am trying to get my head around the ecosystem and trying to understand all of the different stakeholders who have to feed into achieving the common goal we all have of driving up the number of apprenticeships and their adoption, from both a student and an employer perspective.</p>
+          <p eId="para_56"> I might start with QQI. I am trying to understand what the validation process looks like for QQI by comparison to the validation of an equivalent level of QQI qualification in a full-time course or even in comparison with micro-credentials, which, I understand, are pretty easy for the technological universities and the traditional universities to roll out. What does the qualification process look like in comparison with the very new ones QQI is developing, and where does it start? Who comes forward with it?</p>
+        </speech>
+        <speech by="#" eId="spk_22" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_57">I should clarify that the development of an apprenticeship involves a ten-stage process. We come in at stage 6. As Dr. Murray stated, things are quite developed by the time they land with us. The first requirement is that the co-ordinating provider would need to come to us with an application. That would include a programme descriptor setting out the parameters for a programme, the proposed curriculum, learning outcomes and the supports in place for learners. That would have been fed into by the consortium, namely the industry, partners and the other providers who are feeding into the development of the programme.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_23">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_58">I used to work with Skillnet. Is it similar to any course development in that there must be demand from the sector? A substantial number of interested parties must make an approach. Does the process differ for the body providing the academic side versus what it would be doing for a full-time course or micro-credential?</p>
+        </speech>
+        <speech by="#" eId="spk_24" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_59">It is done in partnership with the industry through the consortium. Apprenticeships are very much industry led. Our statutory quality assurance guidelines set out clearly that there should be very clear lines of communication between the provider and the consortium to ensure that where there are updates or changes in the external environment, the programme has sufficiently flexible structures in place to feed into that.</p>
+          <p eId="para_60"> The development and design of an apprenticeship programme is also informed by the occupational profile that is developed by the consortium and approved by the National Apprenticeship Alliance. It is also aligned with QQI's professional award-type descriptors, which are designed to look at more professional-oriented qualifications, which, as the Senator can understand, is very appropriate for apprenticeships.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_25">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_61">Absolutely.</p>
+        </speech>
+        <speech by="#" eId="spk_26" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_62">In terms of how we arrange the evaluation-----</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_27">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_63">What I am getting at is whether there is a blockage or a difference in what the academic side has to do. I appreciate the response. I thank Ms Boland for everything that she has explained so clearly, but is there a difference for the academic side of it in terms of the application?</p>
+        </speech>
+        <speech by="#" eId="spk_28" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T12:50:00+01:00"/></from>
+          <p eId="para_64">One aspect that is very important is that apprentices are employed. Contracts of employment have to be arranged, so we must have committed employers who want to work this model. What has happened with the new apprenticeships is that these consortia come together and there is almost a sharing of all of the different dimensions. There is the quality assurance side, academic development and curriculum development, which is the education and training speciality. Employers are committed to the apprenticeship model – the earn-and-learn model – as a way of bringing in skilled workers into their firms. There are different cultures. Since the 2016 apprenticeships came online, there has been extensive engagement between different sectors and the education and training community, whether it is ETBs or technological universities.</p>
+          <p eId="para_65"> One of the big issues that remains is the attractiveness of apprenticeships. For all of the stakeholders in a particular sector, whether that sector is sufficiently organised to be able to put it together is a significant issue. We use the word "industry", but, of course, industry is amorphous; it is massive. There are so many different sectors. Sectoral organisation is a key aspect. Where you see success is where you have good cohesion and organisation and where those involved in a sector are able to come together and engage fruitfully with the education sector.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_29">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-15T13:00:00+01:00"/></from>
+          <p eId="para_66">I apologise; I am just keeping an eye on the clock and I have only a few seconds left. It was said that the validation is time-limited. Is the time limit different from that provided for a full-time course?</p>
+        </speech>
+        <speech by="#" eId="spk_30" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T13:00:00+01:00"/></from>
+          <p eId="para_67">No. We commit to validating within a 26-week period. As I have said, we are generally looking at 16 weeks for validation of an apprenticeship programme. That compares very favourably.</p>
+        </speech>
+        <speech by="#BrendanSmith" eId="spk_31">
+          <from>Deputy Brendan Smith<recordedTime time="2025-10-15T13:00:00+01:00"/></from>
+          <p eId="para_68">I apologise. I was at a meeting earlier and missed the witnesses' contributions. With regard to Gerard Smith's contribution on the Advanced Manufacturing Training Centre of Excellence in Dundalk, I am aware that people who have visited have been extremely impressed by it. I expect nothing less from Martin O'Brien, having known him when he was our ETB CEO. I congratulate all who have been involved in that particular development. I have two or three quick questions. Mr. Smith mentioned that a dedicated funding line was needed for the Advanced Manufacturing Training Centre of Excellence within the education and training board's budget. Are there any other such centres throughout the country? If so, are they under the direct remit of an ETB?</p>
+          <p eId="para_69"> Mr. Smith also mentioned that "it was a strategic response to a national and regional skills gaps, backed by evidence and rooted in a long-term vision to train and upskill locally and export skills globally." Will he explain the phrase "export skills globally"? If a person was to take that at face value, it would suggest that we would be losing people with skills rather than retaining them. Perhaps I have taken that up completely incorrectly. </p>
+          <p eId="para_70"> I am glad that it was mentioned that the centre does not operate in isolation. There are unfortunately too many silos in this country and that needs to be addressed. Collaboration with industry is hugely important. I assume the centre's access to Dundalk Institute of Technology is key to its success. Is it possible to have satellite centres or other centres working directly under Mr. Smith's centre in the whole area it covers? </p>
+          <p eId="para_71"> I am glad that Mr. Smith mentioned cybersecurity. That is a high-demand area. For the last few days, I was at a meeting of the British-Irish Parliamentary Assembly. The president of the Baltic Assembly, who is a member of the Latvian Parliament, was there and he indicated the huge problems those countries have with a certain neighbour to their east that is creating trouble morning, noon and night for those Baltic countries and other countries on the eastern side of the European Union. Based on the demand for cybersecurity courses being seen by the centre, is there a growing awareness of the need for us to invest more in cybersecurity? It is not just the big players that need it. I remember reading a statistic saying that most cyberattacks in this country were on small and medium enterprises. Will Mr. Smith give me some reflection on the whole area of cybersecurity and increasing awareness and the training of people in that particular skill?</p>
+        </speech>
+        <speech by="#" eId="spk_32" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Gerard Smith<recordedTime time="2025-10-15T13:00:00+01:00"/></from>
+          <p eId="para_72">I jotted down the Deputy's questions. I may need to come back to him if I have missed a couple. On the question of other centres, there is a national centre of excellence at Mount Lucas. While that is established under the Laois and Offaly Education and Training Board, it has a direct funding line that allows it to take more of an industry-led approach in terms of planning, upskilling and its work. It seems to have that independence. The Deputy referred to our comment that the AMTCE should adopt a similar model or at least understand it completely to see if there is a better model. My understanding is that is one national centre that is in existence.</p>
+          <p eId="para_73"> On upskilling globally, I have read that section again and it may come across as clumsy but it is not. It is about training people locally but we are not talking about exporting skills to lose them. We sit on the gateway of Europe as an English-speaking country. Our competitive advantage is that the ball is at our foot with regard to embracing automation. It is about capturing that advantage in terms of mastering automation, developing skills locally and having that within the island of Ireland.</p>
+          <p eId="para_74"> On access to DKIT, we work with DKIT but we also work with UCD and DCU and we are working on a tertiary programme for upskilling. As DKIT is our closer neighbour, we work very closely with it. We also work very closely with institutes within our own ETB such as Ó Fiaich Institute of Further Education, Dunboyne College of Further Education and Drogheda Institute of Further Education in respect of PLC students. We work to support these institutes to bridge the industry gap and to facilitate the upskilling of their students to allow them to enter DKIT or another institute or to place them within industry, where possible.</p>
+          <p eId="para_75"> On satellite centres, we leverage a centre within our own ETB. That is based in Navan and is dedicated to a pneumatics traineeship and an electrical traineeship. It is deliberately targeted at the Dublin commuter belt and some of the high-end American tech companies with a view to upskilling their maintenance people. We run traineeships through that centre regularly. That is a satellite centre to ours. It works. We also have the 3D concrete printing facility, for which we hire a facility in Drogheda. That is also a satellite of ours. We are also in the process of procuring a mobile rig under the direction of SOLAS and the Department. We will deploy that to help get early engagement with school leavers through pathway projects. We hope to deploy that across the entire island targeting different industries, different areas of education and different themes we need to go after.</p>
+          <p eId="para_76"> With regard to cybersecurity and growing awareness, this summer has been a horror story. You would hear more about it in the UK, where Marks and Spencer lost £320 million, Co-op lost £207 million and Jaguar Land Rover was also targeted. However, it is not about the big players but our own players. We currently have a post-2016 apprenticeship on cybersecurity. That is run with the LGMA, the county councils of Ireland. Some 14 county councils are involved. It is a blended learning approach. Current county council employees are being upskilled. Some of them have 20 years' experience and some have six months' experience but they are currently being upskilled in cybersecurity. It begins with awareness, the design of systems and the detection and mitigation of threats and moves on to the eventuality of - God forbid - an attack taking place and how to react and deal with that. That started in the summer. We have an event next week to promote that. It is a fantastic testament to the use of the apprenticeship model to upskill existing employees in a certain trade that did not exist five years ago.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> Deputy Erin McGreehan resumed the Chair.</i>
+        </summary>
+        <speech by="#MaeveOConnell" eId="spk_33">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-10-15T13:00:00+01:00"/></from>
+          <p eId="para_77">I apologise; I was in the Chamber earlier on. Dr. Murray highlighted the importance of apprenticeships being employer-led. One of the challenges that has been raised with us is the challenge of getting smaller employers to take on apprentices. I would appreciate the insights of the other members of the panel but what does Dr. Murray see as the barriers to those smaller employers taking on apprentices? What would he recommend to address those barriers?</p>
+        </speech>
+        <speech by="#" eId="spk_34" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:00:00+01:00"/></from>
+          <p eId="para_78">From my dealings in this area over the years, it seems that the core thing is how a sector organises itself. It is difficult for SMEs because their bandwidth to engage with this kind of technical stuff, particularly on the education and training side, presents problems. We need to come up with more creative ways to support that kind of engagement. It is a very finely balanced thing because, on the one hand, you want apprenticeships to be employer-led. However, there is always a temptation to lead it from the centre. Unless we build capacity from the bottom up, the dream and ambition of having employer-led apprenticeships across the board in all different sectors will remain a challenge.</p>
+          <p eId="para_79">We need more creative thinking in how we do it. In my experience, it has worked best where there is a very strong professional or sectoral body. An example that comes to mind, having been involved in the post-2016 apprenticeships, is insurance. The Insurance Institute has the confidence of the member companies. If that model could be replicated, it would not be identical to the Insurance Institute, but some kind of co-ordination function is needed. Otherwise, a group of employers might come and meet the ETB, TU or both, as well as various parts of officialdom, and be a little overawed. I would not blame them. Some things they are presented with on levels of the framework and learning outcomes would come from us. We need to find a way to mediate that both ways so the employer need can be articulated clearly and there is professional assistance in development of occupational profiles and then building those relationships on the ground with local ETBs or TUs. This goes on and is successful in certain areas but making it universal is the big challenge on which we have to redouble our efforts. Key players in driving those are the national apprenticeship alliance and the national apprenticeship office. We need to look at how engagement can come from employers to support them on that front.</p>
+        </speech>
+        <speech by="#" eId="spk_35" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Andrew Magee<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_80">Sometimes in craft apprenticeships the period of off-the-job release can be six months, which can be a deterrent for some employers. They may have one, two or three apprentices working for them and to allow the apprentice or apprentices to be trained off the job affects the employer's ability to keep trading. It is difficult for small employers; bigger employers have the resources to schedule apprentices for off-the-job release so the impact is less. Small employers have that challenge in craft apprenticeships and 90% of apprentices in the country are in those trades. Those trades have the same model: generally six months of phase two, three months of phase four and three months of phase six within four years of training. Can supports be put in place for employers? Working with apprentices is a difficult area because talent is being robbed from companies, if we go down that road.</p>
+        </speech>
+        <speech by="#MaeveOConnell" eId="spk_36">
+          <from>Deputy Maeve O'Connell<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_81">We have heard testimony here of a tradition of doing that.</p>
+        </speech>
+        <speech by="#" eId="spk_37" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Andrew Magee<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_82">It sounds good but is operationally very difficult.</p>
+        </speech>
+        <speech by="#" eId="spk_38" as="#An_Leas-Chathaoirleach">
+          <from> Ms Lynne Keery<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_83">The newer, consortium-led apprenticeships tend not to have that large block release piece. They might be a day or two days per week. Often, that comes from the employers involved in the development saying, "We are a small employer and we can't release our staff for six months at a time." They have a slightly more flexible model. The problem of deciding which model or what combination of both those models works best is very difficult. In some professions, you need those six months off the job because there is substantial training you need to do before you can be useful in your workplace; in others, it is supplementing it. It is a difficult one to answer and it is hard for small businesses.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_39">
+          <from>Senator Pauline Tully<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_84">I will start with the Advanced Manufacturing Training Centre of Excellence. Like Deputy Smith, I know Martin O'Brien from when he was CEO of the Cavan-Monaghan ETB. How did he see a gap for the training centre? It was said in response to Deputy Smith that there is another one in Laois-Offaly. If they are the only two, not all ETBs have such a centre. Was he approached to open the centre? I am sure there are gaps in other parts of the country where something like this would be useful. What prompted him to open the centre?</p>
+        </speech>
+        <speech by="#" eId="spk_40" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Gerard Smith<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_85">Maybe I did not explain it correctly. We have one, there is one in Laois-Offaly and I believe there is one to do with wind clusters in Cork-Kerry. I think it is those three.</p>
+          <p eId="para_86"> On what inspired Mr. O'Brien, I am not 100% sure. During his transition from Sligo through Cavan-Monaghan and into Louth-Meath, employers and industry were approaching him to say there needed to be something different in this phase, given the labour shortage that exists. Travelling all across the Border region probably brings a different complexity to the problem because there is a transient workforce coming across.</p>
+          <p eId="para_87"> The skills shortage has to be solved through automation and there was nothing in existence for that. The centre was set up to be different. I am 11 months in the role but 24 years in manufacturing so I still struggle with why we are trying to solve an industry problem with a preordained solution. We should understand the problem and then manipulate the solution to fit that. The centre is pro-industry. It is about getting industry in and then understanding and listening. We are fortunate to have the traineeships, apprenticeships and skills to advance. We have different ways to try to solve those problems for employers. We have the support of diverse equipment. Within an industry, you will take a digitised design and translate it to an output. That output could be a concrete print and a robotic welder, 3D plastic printing or the machining centres. It is how you manage the data, create and digitise the design, keep it safe in a cybersecurity world and then have an output. The output addresses the skills shortage. There is upskilling in all those aspects. When you come into the centre, you can see the flow of that. It represents more of what is real life to business, rather than a narrow focus on going in and learning a particular bit.</p>
+          <p eId="para_88"> We have to work hard - and I personally have to work hard - to keep that industry perspective in view. I talk quite a lot to Mr. O'Brien about that and try to keep it. What keeps us tethered and focused on that is continually working on relationships with the Dundalk and Newry chambers, Enterprise Ireland, IDA, regional skills and Skillnet. We are open to collaboration and that collaboration has to be about solving the industry problem.</p>
+          <p eId="para_89"> Forgive me if I have not answered the question fully but certainly he and I are quite aligned on that being the problem we are trying to solve. On the genesis of the idea for him, I am not 100% sure.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_41">
+          <from>Senator Pauline Tully<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_90">It could be replicated in other areas and fields. We are all familiar with the craft apprenticeship model and in recent years we have seen the industry-led consortium model. That is welcome. We often cite Germany as a country with a good apprenticeship model in all fields. Mr. Smith said a centrally co-ordinated and certified model needs to be in place. Given there is such a diverse range of apprenticeships, how does he see that working? He also stated that he has concerns about the direction being explored by SOLAS and is not fully aligned with it. Will he expand on that?</p>
+        </speech>
+        <speech by="#" eId="spk_42" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Gerard Smith<recordedTime time="2025-10-15T13:10:00+01:00"/></from>
+          <p eId="para_91">I will have a light go at this. The mechanism for the leaving certificate stands and it is internationally recognised. It is never questioned by employers, third level institutions or anyone. Since I have joined the LMETB and the institution, I have seen there is variation in how different apprenticeship or training outlets are managed and governed. I am not saying we should completely dismantle it but there is an opportunity to continuously improve and bring rigour at a national level to that outcome.</p>
+          <p eId="para_92"> There is too much effort and energy put into upskilling people to then have a question over output. There was an article about this yesterday. Green skills have been mentioned. The article stated 98% of houses retrofitted for external insulation in the UK feature poor-quality workmanship.</p>
+          <p eId="para_93">That does not mean the students were not taught properly or how to do it properly, but there has been a lapse in the quality governance of that. It would be poor if we lost that integrity, given the effort and energy that goes into upskilling people. If there was more centralisation or more rigour around that so levels were set across, that would help.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T13:20:00+01:00"/></from>
+          <p eId="para_94">I have to suspend the meeting because we have a double vote, which is an unusual thing for a Wednesday afternoon. We will resume when we are back from the vótáíl.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i> Sitting suspended at 1.20 p.m. and resumed at 1.42 p.m.</i>
+        </summary>
+        <speech by="#ErinMcGreehan" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_95">We return to Senator Tully. She has time for one brief question.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_45">
+          <from>Senator Pauline Tully<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_96">The number of women and disabled people involved in apprenticeships has always been low. What efforts are being made to increase the number of both groups? What supports are there on the job but also with off-the-job training? We have reasonable accommodations for students in schools and colleges, so are there reasonable accommodations for students who require supports?</p>
+        </speech>
+        <speech by="#" eId="spk_46" as="#An_Leas-Chathaoirleach">
+          <from> Ms Lynne Keery<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_97">There are reasonable accommodations for apprenticeship learners, the same as there are for any learners. We have a number of learners in the apprenticeship programmes we have who get additional help with exams, in that they could have a scribe or a reader.</p>
+          <p eId="para_98"> It is difficult to increase the number of women involved in apprenticeships. It is only my opinion but we should be starting right back at the beginning. It is too late to try to sell apprenticeships to people who are 18 years old and about to do their leaving certificate. The majority of women who are signed up for apprenticeships are on the new consortia-based apprenticeships because those tend to be in the traditional places women might work in, like insurance and sales. There is a big bit of work to do on that. It is about changing the mindset of employers and women, but also perhaps of parents and schools, about the traditional routes. Man or woman, if you are interested in working in a field, then that is the apprenticeship or area you should go into. It is very important we start at a really young age for that.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_47">
+          <from>Deputy John Connolly<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_99">I do not have many questions for the Advanced Manufacturing Training Centre of Excellence, save to say it seems the kind of response we would like to see from State agencies, in the sense that where there is a gap recognised through data and research, some State authority takes it on itself to fill that gap.</p>
+          <p eId="para_100"> I concur with the sentiment of Deputy Smith. The centre has been going since 2021 but other ETBs have not replicated the model. I do not want to be overly critical there because some of them might be offering some of the same programmes the centre is. It is doing it in a co-ordinated manner, however, and it seems the centre's success shows that others should be doing that as well. That is just a comment.</p>
+          <p eId="para_101"> My questions are mainly for Ms Boland and Dr. Murray on QQI. I will go back to Senator Ryan's question about the process of accreditation. On co-ordinating providers, do we have data on exactly who applies? How many are ETBs? Straying outside apprenticeships and the whole area of QQI in terms of course provision, who is applying for courses to be validated?</p>
+        </speech>
+        <speech by="#" eId="spk_48" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_102">The data is up. A list of apprenticeships, which is maintained by the national apprenticeship office, sets out the co-ordinating providers and the collaboration providers. On providers of programmes leading to QQI awards, there would be a strong number of ETBs among those but there are also some private higher education providers which would deliver those programmes.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_49">
+          <from>Deputy John Connolly<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_103">Again, I am sorry for straying a bit, but even on the English language ones, anecdotally, it seems there are a lot of private companies offering those. Does QQI approve those as well?</p>
+        </speech>
+        <speech by="#" eId="spk_50" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_104">I will come in on that. Is the Deputy talking about English language programmes generally-----</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_51">
+          <from>Deputy John Connolly<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_105">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_52" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_106">-----and not specifically apprenticeships?</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_53">
+          <from>Deputy John Connolly<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_107">I am sorry for straying, but we have not had the opportunity to meet before.</p>
+        </speech>
+        <speech by="#" eId="spk_54" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_108">No, it is okay. We are in the process of regulating the English language sector through a quality mark, TrustEd Ireland. We are coming to the close of the first window for applications. We have had 17 applications and they are for TrustEd quality. Those providers have to go through a quality assurance process where they comply with statutory quality assurance guidelines and also a code of practice. That is in process. There is a second window open now for applications and there are 61-----</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_55">
+          <from>Deputy John Connolly<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_109">I thank Dr. Murray for that. We might have an opportunity to come back to that at the committee some other time.</p>
+          <p eId="para_110"> On apprenticeships, I am a bit concerned that the role of QQI is light touch as regards quality, the curriculum and the examination, and that it is kind of being left to the provider to do its own assessment of that, with QQI not seeing any role or remit for itself in that regard. Is there any other body that does? Even with the quality of instruction, it is simply left to the provider. Is that the case?</p>
+        </speech>
+        <speech by="#" eId="spk_56" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:40:00+01:00"/></from>
+          <p eId="para_111">The model of quality assurance that has been adopted across Europe for the past few decades is very much based on the idea that the provider has the primary responsibility for quality assurance. Otherwise, we would have very centralised systems with big bureaucracies that become atrophied over time. There are experiences of that. It is a very fine balance but what you have to do is build the quality culture. The trust side of this is interesting. Do people distrust our universities and the quality of their degrees? We are trying to build a culture of provider quality assurance across the entire tertiary system. That does not come overnight and there is a very intense engagement between QQI and further education providers and the ETBs. We are working with them very collaboratively to build up that quality culture. We do the same with private providers. We do not accredit the self-awarding bodies in higher education, such as the technological universities, the institutes of technology and the traditional universities. There are various levels of supervision from us that change over time as those providers build up the capacity and capability.</p>
+          <p eId="para_112"> If we really think about having a very centralised system, we are talking about having an army of curriculum developers and assessors sitting in an office. The idea in tertiary education is to have responsible providers and a whole series of processes that build their capacity and capability to do this.</p>
+          <p eId="para_113">When things go wrong we do step in and we have all sorts of measures - I will not say punitive - that we can take for any lapses in quality assurance. </p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_57">
+          <from>Deputy John Connolly<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_114">The comparison is very fair but in the traditional universities, there is external input into the oversight of examination and curricula. </p>
+        </speech>
+        <speech by="#" eId="spk_58" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_115">There is external input into the QQI awards where curricula are developed and the same applies for assessment. These things are not static but are developed, revised and changed over time. We have quite a lot of documents out on consultation, for example, one of which is very germane to today's discussion, on work-integrated learning and statutory quality assurance guidelines. We have a suite of policies on assessment. Assessment is not static. It is now changing radically in the world that we are facing with technology and how it affects academic integrity measures. Generative AI is a reality. The idea that a centralised authority can be on top of all of this would need to be looked at very carefully if it was being considered. From my point of view and experience, I think it is not a reality but we have to keep working on the systems we have in place for quality assurance and ensure they are continually assessed. We look at the effectiveness of the quality assurance of providers, and we do that continually and periodically through a raft of institutional reviews and quality dialogue meetings and we pick it up in our validation work and certification and so forth. It is quite a sophisticated system and sometimes the evidence for light touch regulation is never brought forward. It is said a lot but I am not sure what exactly the light touch is. </p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_59">
+          <from>Senator Paul Daly<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_116">I have a couple of broad-ranging questions. I am a Whip in the Seanad and there a possibility of another vote so if I have asked the questions and I have to leave I will see the answers. Last night, I got a message in a WhatsApp group and it was one of those messages that says something will be organised if enough people are interested. Regarding apprenticeships, if some people are interested but not enough other people are how is a decision made on a particular apprenticeship? How feasible is it to provide an apprenticeship for one business or one manufacturer? Is there a cut off or can a training course be done for one person in one company? In that scenario, how are instructors for emerging technologies found? AI was mentioned a second ago. Where does AI fit into all this going forward? </p>
+          <p eId="para_117"> Regarding the international aspect, and recognition and upskilling in particular, do we have the resources to upskill someone who was trained outside of Ireland? Conversely, how recognised are Irish apprenticeships and qualifications for Irish people who decide to travel and work somewhere else? If there is an emergent technology in whatever their field is and they need to upskill elsewhere, how well are we tied in internationally? Lifelong learning is a buzzword nowadays. A person may have done their foundation studies in Poland but end up in Ireland, and then need to upskill. How compatible is the training from other jurisdictions? Will the witnesses make some broad comments on that? There is no real question in there other than observations, and I would like to hear the witnesses' views. </p>
+        </speech>
+        <speech by="#" eId="spk_60" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_118">One of the functions of QQI is qualifications' recognition and it is the ENIC-NARIC centre for Ireland which supports the recognition of international qualifications and outward recognition of Irish qualifications. We are linked in with all of these issues at a European level and we have structures in place to enhance the comparability of qualifications through our national framework of qualifications, which is linked in to the European qualifications framework. We are able to do level-to-level comparisons from the Polish framework or the Dutch framework. A challenge we have to work on is that vocational educational training, VET, systems across Europe are not as easily compared as higher education systems. The European Commission is working on methods and methodologies that we can use to further develop this and we are part of that system. VET systems tend to have national idiosyncrasies which make them more difficult in terms of qualifications' recognition than higher education. A lot of work is going on at European level, particularly through qualifications' frameworks and the use of various conventions and so forth on recognition, to keep improving this on an ongoing basis and we are very involved in this at a European level. </p>
+        </speech>
+        <speech by="#" eId="spk_61" as="#An_Leas-Chathaoirleach">
+          <from> Ms Lynne Keery<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_119">We can also offer RPL through procedures we have with QQI. This is for people whose certification may not be recognised or does not have a comparable certification in Ireland. They can do recognition of prior learning and show evidence of what they have learned and what skills they have. There are ways around the issues. </p>
+          <p eId="para_120"> Senator Daly's first question was about how we decide whether to do an apprenticeship if it is for only one company. Part of the validation process is that we have to be able to show that there will be a certain level of demand over time, which I think is stated as being five years in the validation document. Things have been validated without us being able to say that hundreds or thousands of people are going to take up a particular apprenticeship. It is possible to do it for smaller numbers and apprenticeships have been developed for just one company where there was a particular skill need. It is a question of weighing up the amount of work that goes into developing the curriculum validation and how long the programme would last. There was one for a combi-lift that became the OEM apprenticeship. </p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_62">
+          <from>Senator Paul Daly<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_121">In a scenario like that, where is the instructor found? If it is a new sphere, who is the expert? </p>
+        </speech>
+        <speech by="#" eId="spk_63" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Andrew Magee<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_122">We have a range of new types of courses at AMTCE. They are not apprenticeships but they present the same challenges. We have courses in robotics, for example and some in AI. There is a challenge with new technologies regarding the industries themselves. We are trying to train employees in companies who are working in those areas and it is difficult to get those employees as instructors because it a new technology. Through the contracted training framework and the skills to advance policy, we work with companies to provide training directly to employees. These are not apprenticeships but this is how we overcome the challenge of having to take an experienced person from industry, and train them to become an instructor who will train the learners. This is how we have got around the issue at AMTCE. We contract companies who provide industry professionals to do the training for us. Over time, the hope is that companies can train staff they recruit through the normal HR channels. There is no doubt that having instructors in front of classes to train people in new technologies is a massive challenge, but that is how we have overcome it. </p>
+          <p eId="para_123"> It is a longer journey for apprenticeships because they take so long to validate and we would hope to have a breadth of employers and people wanting to take a course. We try prepare that and get the staff complement in place before the class is called. </p>
+        </speech>
+        <speech by="#" eId="spk_64" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_124">On the approval of apprenticeships, there is also a stage where an industrial training order has to be developed. It has to go forward for approval through the national apprenticeship office as a preliminary before it would even come near curriculum development. That also involves an occupational profile being developed around the research on the numbers that are likely to take it. The idea behind the new apprenticeships is that they will be flexible and they may meet short-term needs and, if they change, they do not necessarily have to go on forever. The aspiration is that we can develop apprenticeships as and when the need arises and then perhaps retire them if a particular area no longer needs them. </p>
+        </speech>
+        <speech by="#" eId="spk_65" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T13:50:00+01:00"/></from>
+          <p eId="para_125">To follow on from Dr. Murray's point, QQI, as we mentioned, did a review of the consortia-led apprenticeships in 2022. An advantage of these is that there is greater flexibility in being able to incorporate change as needed, while retaining robust quality assurance and governance oversight.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_66">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_126">I have to agree with Deputy Brendan Smith regarding training and upskilling locally and exporting globally. That line can be concerning, particularly when we are trying to bring in building and healthcare sector workers. Opportunities and challenges in the demographic shift were mentioned. What would these be?</p>
+        </speech>
+        <speech by="#" eId="spk_67" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Gerard Smith<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_127">What we see across the different centres goes back to Dr. Murray's point on industry understanding what it requires and then going to the right place to get that answer. It is a bit like Senator Paul Daly's question in that if one company wants this and wants an apprenticeship, apprenticeship may not be the right answer. We are working across different delivery provisions, such as traineeships or skills, to advance. In respect of truly understanding the problem we are trying to solve and coming up with the correct product we should be delivering to the industry, geography or region we are trying to serve, the mix in the Dublin commuter belt takes in the bio industry, the medical industry, science and engineering, the traditional SME and the sole trader with one apprentice in the welding trade. It is about being able to navigate that and know where that point is. What is the problem they are trying to solve? How best do we leverage the other aspects of the ETB and use them across? We should not think in a siloed way about how we measure a reward based on a certain number and, therefore, that is how we want to solve it because we get measured on it. If we go down that route, we lose perspective on what we are trying to solve in terms of the learner. That brings difficulties. It is difficult to be all things to all people but having collaboration, having industry at the centre and having that dialogue really keep a focus on what the right answer is to be.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_68">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_128">Does the validation work for providers include a duty of care charter to ensure that trainees are not discriminated against regarding the pay and conditions under which they work?</p>
+        </speech>
+        <speech by="#" eId="spk_69" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_129">One of the validation criteria is whether learners are well cared for and whether supports are in place for those learners. That is part of what is considered. Regarding the specifics around payment, that may come into consideration as part of the process but the real focus of the validation process is looking at the curriculum, the supports for learners and the infrastructure that is in place.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_70">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_130">What about North-South qualifications and the lack of cohesion regarding A-Level and leaving certificate qualifications? </p>
+        </speech>
+        <speech by="#" eId="spk_71" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_131">We have an arrangement with the authorities across the five jurisdictions. Qualifications can cross boundaries. We meet annually to look at that. It basically compares the frameworks across all of the different jurisdictions - Wales, Scotland, England, Northern Ireland and ourselves. It is complex because quite a lot of change takes place across the water on an ongoing basis. It is challenging to maintain comparabilities but we have to work in terms of the regulatory authorities across the five jurisdictions. We maintain that dialogue on an ongoing basis to focus on qualifications across boundaries and to work to make sure it is as painless as possible across both islands, but there are differences.</p>
+        </speech>
+        <speech by="#DonnaMcGettigan" eId="spk_72">
+          <from>Deputy Donna McGettigan<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_132">I thank the witnesses for enabling us to have this discussion. Many of my questions have been answered.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_73">
+          <from>Senator Laura Harmon<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_133">My initial questions are for QQI. Representatives from unions, ICTU and student unions appeared before us last week. They raised concerns that consortium-type apprenticeships might lack the same robust governance we see in craft apprenticeships. Could the witnesses expand on how standards can be met so that all apprenticeships have the same levels of checks and balances? I have a wider question for all the witnesses concerning pay for apprentices and whether they should have the minimum wage. Could the witnesses comment on that? Would that ensure more retention?</p>
+        </speech>
+        <speech by="#" eId="spk_74" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_134">Dr. Murray has already alluded to the equal system of quality assurance around the approval of providers and the validation of programmes. That takes place within a system where trust is built as a provider undergoes QQI regulatory and quality assurance processes. All providers that come to us wishing to deliver a programme leading to a QQI award must undergo a provider approval process. They must undergo a pretty rigorous process in order to access the national framework of qualifications or be able to deliver programmes within the framework leading to QQI awards. They present their draft quality assurance procedures, which are considered by an independent expert panel and approved. Once they have gone through that process, there is a programme validation process that applies to all providers of apprenticeships. There is a series of engagements with all providers in terms of monitoring. There are regular dialogue meetings, which we referenced earlier, and annual reporting to ensure that policies are being implemented effectively. There are also measures in place where areas of concern are identified to take appropriate action and engage further with the provider. The consistency in terms of the application of those policies and procedures provides us with assurance in terms of the consistency of the programmes.</p>
+        </speech>
+        <speech by="#" eId="spk_75" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T14:00:00+01:00"/></from>
+          <p eId="para_135">There is no real evidence that consortium-led apprenticeships are less rigorous than craft apprenticeships. There may be preferences, including cultural preferences, for different approaches but we must put it in the context that craft apprenticeship arrangements date back a considerable period of time. They originate in the Industrial Training Act 1967, which has been amended consistently over time. We must bear in mind that the systems have changed radically since then. Regional technical colleges and institutes of technology have now gone. They are now technological universities. ANCO and FÁS have now gone while SOLAS is here. We have a qualifications framework and new quality assurance systems. The old systems cannot stay still. They cannot remain static. The thrust of current policy is to create a coherent system for all apprenticeships in the 21st century where there are new approaches to quality assurance. </p>
+          <p eId="para_136">There may be concerns and worries about that but I think we need to be more explicit about where the lack of rigour is, because it is not our experience as the quality assurance agency across the board that one system is weaker than another. I reiterate that when you question the quality assurance of providers that have primary quality assurance for their provision, you then have to ask whether that is the case for university provision in their own qualifications. That issue is not really fully considered when these kinds of statements are made. There is much work to do to bring the system together for the 21st century but there is huge commitment across all stakeholders to do that.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T14:10:00+01:00"/></from>
+          <p eId="para_137">The witnesses are very welcome. It is great to have them here. I have a question for the witnesses from the AMTCE. I am well aware of what they do. I have been in the centre several times. The technology and advancement is dripping off the walls. The ambition that the centre shows inside the walls to look after industry and the centre's students and staff is such that we should visit as a committee because it is quite remarkable. To maintain that standard of learning and the centre's ambition, since the centre's whole thing is that it is new and it is all about creating new opportunities in the environment, what would be the witnesses' ask for the centre to make sure that we are allowing it to maintain that standard of excellence to create the new opportunities and address those problems that we do not even know exist? How can this committee and indeed this Government support the centre? The witnesses mentioned the funding from Louth and Meath ETB. How can we support the centre in doing that? It is an important employer in north Louth, it is fantastic for our students and it is critical to our industry in north Louth and the region.</p>
+        </speech>
+        <speech by="#" eId="spk_77" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Gerard Smith<recordedTime time="2025-10-15T14:10:00+01:00"/></from>
+          <p eId="para_138">First, to support us, I encourage a tour for committee members to come and understand the centre. I have probably not represented the centre in my words or my opening statement as well as could be represented through members coming. We met earlier this year and we are currently revisiting it. That is where the strategy for funding came from. We are part of the ETB and there are robust strategies for procurement, finance and people. They are important, long established and well set up. We have had these conversations. Our goal is to be compliant, but it is not just to be compliant.</p>
+          <p eId="para_139"> We have developed driving strategies, as we call them. I am taking this from my background. It is a marketing strategy, a product strategy and an operational strategy. The marketing strategy is to ask what problem we are trying to solve. That drives us to have that industry voice. That has driven an agenda this year to try to get industry in and to support agencies to understand that the centre is there and what it is capable of. I have said that a number of times today but I think that is what will keep us on the right track. The product is whatever the training outlet that we need is and the operation is to ensure that the place is run efficiently, that it is safe and that we maximise the capacity of learners through it. All of this is for industry, including industry's challenges in attracting and retaining skill.</p>
+          <p eId="para_140"> The Cathaoirleach mentioned engagement. People talk about engagement in terms of money. I know the basic hierarchy of needs must be met, with secure things such as money, but then it starts moving up into people engagement and retention. I was fortunate enough to work for a business that invested heavily in its people and was able to retain them by ensuring that people were developed. We mentioned lifelong learning earlier. It is that and it is also about upskilling, either through apprenticeships, microcredentials or skills to advance. It is about continually investing in people to retain them. We get challenged in the centre about technology taking jobs away. It is not taking jobs away. There are robotic welders in our centre that, working with the Department of Social Protection and other aspects of the ETB, have helped the long-term unemployed. They have left our place being able to weld. We advanced that learning curve by putting the AR-VR headsets on them, and then they went through traditional welding and robotic welding. They have all been snapped up, and we are running that again. One might say it is an underrepresented group but there are a variety of people in that group. They have left with a skill for life. Rather than that welding cell having a team leader looking after five individual welders, that leader can look after five individual welding machines or robots. You still need the core trade of being able to weld but that is how technology has enabled that to be better and more productive, from a quality, output and safety perspective.</p>
+          <p eId="para_141"> How could the committee support it? It is about understanding that and ensuring that other agencies such as Enterprise Ireland and IDA Ireland understand it, and it is on us to push that as well. It is like everything in that when you understand and appreciate it, then you can see value in it. My view is that the centre needs to be seen more as a Department of enterprise support rather than as a Department of education support. I think there is a subtle difference in that. It tunes the mind slightly differently about what problem you are trying to solve.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T14:10:00+01:00"/></from>
+          <p eId="para_142">When you are met at the door by the robotic dog, you realise that you are talking into a different sort of educational environment. I thank Mr. Smith.</p>
+          <p eId="para_143"> I have a question for QQI. We are talking about quality assurance and ensuring that the integrity of courses is upheld at all times. During the summer, there was the release of SOLAS exam papers for student apprenticeships that had not been changed over the past period. Apprentices were getting the exam paper before the exam. What happens there? What does QQI do at that stage? It is a clear breach in the integrity of apprenticeships. I am a plumber's daughter. I know the importance of knowing what pipes are put where. If you are not learning in college, it cannot be confirmed that you actually did learn it. Where did QQI go there?</p>
+        </speech>
+        <speech by="#" eId="spk_79" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T14:10:00+01:00"/></from>
+          <p eId="para_144">That is obviously a serious matter, which QQI and providers take seriously. There is robust quality assurance infrastructure in place. When issues like that are identified, that is implemented to ameliorate the situation and put measures in place. When those kinds of situations arise, we engage closely with the providers in question. We would really investigate what has happened, what gave rise to it, what kinds of measures are in place to ensure that the same thing does not happen again, and whether any changes need to be made to the quality assurance infrastructure to prevent those kinds of things from happening again? It would be similar to engagement on any kinds of challenges or issues that might be identified with the provider of education and training that is delivering programmes leading to QQI awards.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T14:10:00+01:00"/></from>
+          <p eId="para_145">Have those things all been done? Have all the investigations been done?</p>
+        </speech>
+        <speech by="#" eId="spk_81" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T14:10:00+01:00"/></from>
+          <p eId="para_146">A process that is in place is nearly completed and the outcomes will be published in due course.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_82">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-15T14:10:00+01:00"/></from>
+          <p eId="para_147">I thank the witnesses for all their patience with us today.</p>
+          <p eId="para_148">I have a follow-up question on how we crack the nut when it comes to SMEs. Recognising that SMEs are the largest cohort of employers in the country, we want to engage with more of them in the context of upskilling their teams and bringing more people on board in the context of this apprenticeship model. I am not certain if it was Dr. Murray or Mr. Smith who mentioned the role of the professional bodies. My background is in communications and marketing; so, the Marketing Institute. However, I spent some time working with Skillnet on a general or mixed programme. In that time, I noticed the trend towards sectoral programmes. I was involved with Skillnet as part of my involvement with a chamber of commerce. The programme was mixed, as would be the case with the membership of the chamber of commerce. We were increasingly competing for funding with sectoral Skillnet programmes that had a lot of expertise in particular areas. Those programmes were national as opposed to geographical. Has Skillnet sponsored the development of an apprenticeships? Will our witnesses share their thoughts on this matter? I recognise that Skillnet is a State-funded agency and has a national remit to support SMEs to scale, if possible, and to be successful.</p>
+        </speech>
+        <speech by="#" eId="spk_83" as="#An_Leas-Chathaoirleach">
+          <from> Mr. Gerard Smith<recordedTime time="2025-10-15T14:20:00+01:00"/></from>
+          <p eId="para_149">I do not know if Skillnet has developed an apprenticeship. In terms of competing for funding, that could easily happen. We work with Dundalk Chamber, with which we have built a strong relationship over the current calendar year. We have also build relationships with Newry Chamber and Invest Northern Ireland. As regards Skillnet, we are not going to compete. It is good at certain aspects. In view of the equipment we have, Skillnet is not going to be able to duplicate our advanced manufacturing centre. What we are trying to do is to support members to upskill their people by utilising the centre and equipment there better, either through contractor training or by whatever means other means.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_84">
+          <from>Senator Dee Ryan<recordedTime time="2025-10-15T14:20:00+01:00"/></from>
+          <p eId="para_150">The AMTCE is very specialised and intensive, particularly in terms of the capital that goes into the equipment used for training purposes. It might be a useful model for other sectors in developing apprenticeships targeted at SMEs. Are Mr. Smith and Ms Boland aware of the development of any apprenticeships? The organisation I was involved with worked closely with industry and education providers to develop micro-credentials, but I have not heard about any apprenticeships.</p>
+        </speech>
+        <speech by="#" eId="spk_85" as="#An_Leas-Chathaoirleach">
+          <from> Ms Mairéad Boland<recordedTime time="2025-10-15T14:20:00+01:00"/></from>
+          <p eId="para_151">With Retail Ireland, there is a level 6 apprenticeship in retail supervision.</p>
+        </speech>
+        <speech by="#" eId="spk_86" as="#An_Leas-Chathaoirleach">
+          <from> Ms Lynne Keery<recordedTime time="2025-10-15T14:20:00+01:00"/></from>
+          <p eId="para_152">The sectoral-type Skillnet programmes mirror the centre-of-excellence model we have in Mount Lucas. It is the same type of idea. Specialising really does help to get a group together and build up the impetus to keep moving ahead with developing, whether it is an apprenticeship or a micro-credential. That sectoral piece is really important.</p>
+        </speech>
+        <speech by="#FionntanOSuilleabhain" eId="spk_87">
+          <from>Deputy Fionntán Ó Súilleabháin<recordedTime time="2025-10-15T14:20:00+01:00"/></from>
+          <p eId="para_153">Mr. Smith mentioned plans to regulate the teaching English as a foreign language, EFL, sector. The latter is a huge sector. A number of colleges have been reporting a decline in numbers as a result of negative publicity. I worked very briefly in one of the colleges. There are very poor working conditions for EFL teachers, with low-hours contracts and low pay. RTÉ and <i>The Irish Times</i> covered a few infamous cases in recent years of schools closing and students protesting outside those schools because they were ripped off. Those students were left high and dry. Many of them were non-EU students, so they lost all their money.</p>
+          <p eId="para_154"> ACELS, which has responsibility in this area, has indicated that it is short of the funds and staff necessary to allow it to regulate the sector. There have been a number of visa scams which have discredited the sector. There are fake colleges issuing acceptance letters to non-EU students in order to obtain residency permits. Will Dr. Murray expand on this, particularly as it is both illegal and is affecting the integrity of the genuine EFL providers? It affects everybody, really. It is a scam that is happening. Does Dr. Murray have any information on the regulation of it?</p>
+        </speech>
+        <speech by="#" eId="spk_88" as="#An_Leas-Chathaoirleach">
+          <from> Dr. Jim Murray<recordedTime time="2025-10-15T14:20:00+01:00"/></from>
+          <p eId="para_155">I am directly involved in this. It is good to be able to talk about it.</p>
+          <p eId="para_156"> We have a new scheme. There are a number of dimensions to it. First, we have a new due diligence system that looks at the capacity and capability of all private providers. The providers that have been subject to it are the first group of English language schools that have applied for the TrustEd Ireland quality mark. Essentially, this is a very rigorous process. It is used to look at the fitness of these schools to operate as businesses. That is one side of it. English language schools have to comply with statutory quality assurance guidelines around their delivery of programmes. They also have to demonstrate compliance with a new statutory code of practice. It is a voluntary scheme. However, if schools want to recruit international students, they must go through it. They will not be able to get visas for students unless they go through the scheme.</p>
+          <p eId="para_157"> The first 15 providers are coming to the end of the process. We hope to make the authorisations at the end of this year. A second application window has opened, and more than 60 providers from the English language side have applied for that. The TrustEd Ireland quality mark is for all providers of education and training programmes, both public and private, offered to international learners. The universities have the higher education pathway. The English language colleges offer a separate pathway. At the end of the process, any entity within the private sector that gets TrustEd Ireland authorisation or that engages with QQI in the context of its other statutory functions in the context of the provision of courses to international learners will have to enrol in a protection of enrolled learners scheme. Again, this is a statutory scheme that will be used as a last resort in cases where programmes cease to be delivered or a business goes under. Our role is to facilitate the transfer of students in those circumstances. If that does not prove possible, we will be in a position to refund tuition fees.</p>
+          <p eId="para_158"> There are different elements involved. We are at the stage where the first group of English language providers have done their due diligence and are being evaluated. They are being evaluated against the statutory code of quality assurance and the code of practice. We have engaged in site visits in this regard. The code of practice deals with all of the issues the Deputy mentioned and with due diligence. At the end of the process, there is the added piece around learner protection.</p>
+          <p eId="para_159"> It is a very robust scheme. It took some time to develop because the legal issues and so forth had to be worked through. We are in the first phase of implementation now. That is the plan.</p>
+          <p eId="para_160"> ACELS will disappear as soon as we come to the end of the second application window. Thereafter, any provider that wants to recruit international students will have to have the TrustEd Ireland quality mark to be able to do so. All the information in this regard is on our website.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-10-15T14:20:00+01:00"/></from>
+          <p eId="para_161">On behalf of the committee, I thank our witnesses for their time, insight and knowledge. As we all know, there are huge opportunities in this sphere. The ground we have covered today will feed into our final report. We are all very ambitious for apprenticeships. Personally, I am ambitious for the centre. I want to see it thrive and do the best it can.</p>
+          <p eId="para_162">I want to see it being the best it can be. There are great staff, great students and a great team there, so congratulations. Thank you for your time.</p>
+          <p eId="para_163"> We will suspend briefly to allow the witnesses to depart before moving into private session to deal with housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_9">
+          <i> Sitting suspended at 2.30 p.m. and resumed in private session at 2.33 p.m.</i>
+        </summary>
+        <summary eId="sum_10"> The joint committee adjourned at 2.39 p.m. until 12.30 p.m. on Wednesday, 5 November 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

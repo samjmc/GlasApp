@@ -1,0 +1,105 @@
+When you use signInWithPopup , the sign-in process happens in a little pop-up window, and when it's done, the result is returned directly to your main page's JavaScript context. That's why your signInWithPopup part works by awaiting the result.
+However, signInWithRedirect works differently! It literally redirects the user's browser away from your app to the sign-in provider (like Google), and then back to your app after successful authentication. Your JavaScript execution on the original page stops when the redirect happens.
+When the user is redirected back to your app, your app page loads fresh . It doesn't magically remember that a redirect was just initiated. You need to tell your app to check if it was just redirected back from an authentication flow. This is where getRedirectResult() comes in!
+You should call getRedirectResult() when your app loads (or when the relevant page loads) to see if there's a pending sign-in result from a redirect. If there is, getRedirectResult() will resolve with the UserCredential . If there isn't, it will resolve with null .
+How to fix the spinning: You need to add a block of code that runs when your app loads (or on the relevant page) to call getRedirectResult() .
+// In your app's initialization or on the page that handles sign-in:
+import { getAuth, onAuthStateChanged, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
+import { initializeApp, getApps, getApp } from "firebase/app";
+// Assuming googleProvider is defined elsewhere
+const googleProvider = new GoogleAuthProvider();
+
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_PROJECT_ID + ".firebaseapp.com", // Or your custom domain later
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_PROJECT_ID + ".appspot.com",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
+
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+export const auth = getAuth(app);
+
+// IMPORTANT: Add this block to handle the redirect result on page load
+getRedirectResult(auth)
+  .then((result) => {
+    if (result) {
+      // This is the UserCredential from the redirect
+      console.log("Redirect sign-in successful:", result.user);
+      // You can access the user, credential, etc. here
+      // e.g., const user = result.user;
+      // Then you might navigate the user or update UI
+    } else {
+      console.log("No redirect result found.");
+    }
+  })
+  .catch((error) => {
+    // Handle errors during the redirect result processing
+    console.error("Error getting redirect result:", error);
+    // You might need to handle specific errors like
+    // auth/account-exists-with-different-credential here
+  });
+
+
+// Google authentication with popup + redirect fallback
+export const signInWithGoogle = async () => {
+  const auth = getAuth(); // Get auth instance if not already in scope
+  const provider = new GoogleAuthProvider(); // Get provider if not already in scope
+
+  try {
+    // Try popup first
+    const result = await signInWithPopup(auth, provider);
+    console.log("Popup sign-in successful:", result.user);
+    return result; // Return the result from popup
+  } catch (popupError) {
+    console.error("Popup sign-in failed:", popupError);
+    // Check if the error is related to popup blocking or closing
+    if (popupError.code === 'auth/popup-blocked' || popupError.code === 'auth/popup-closed-by-user') {
+      console.log("Falling back to redirect sign-in...");
+      // If popup is blocked or closed, initiate redirect flow
+      // signInWithRedirect doesn't return a value, it just redirects
+      await signInWithRedirect(auth, provider);
+      // Execution stops here as the page redirects
+      // The result will be handled by the getRedirectResult block on page load
+    } else {
+       // Rethrow other errors
+      throw popupError;
+    }
+  }
+};
+
+// Your signIn function remains similar, just calls signInWithGoogle
+const signIn = async () => {
+  setLoading(true);
+
+  // 10-second timeout to prevent infinite loading
+  const timeoutId = setTimeout(() => {
+    setLoading(false);
+    toast({ title: "Authentication Timeout", description: "Sign-in took too long. Please try again." }); // Added description
+  }, 10000);
+
+  try {
+    // signInWithGoogle handles popup result directly,
+    // but for redirect it just initiates the redirect.
+    // The actual user object from redirect is obtained by getRedirectResult
+    // so you might handle the result differently depending on the flow.
+    // For simplicity here, we clear timeout if the signInWithGoogle call completes
+    // (either popup success or redirect initiated).
+    await signInWithGoogle();
+    clearTimeout(timeoutId);
+    // If signInWithPopup was successful, execution continues here.
+    // If signInWithRedirect was called, this line is not reached before redirect.
+  } catch (error) {
+    clearTimeout(timeoutId);
+    setLoading(false);
+    console.error("Sign-in process error:", error);
+    // Handle specific errors and provide user feedback
+    if (error.code === 'auth/unauthorized-domain') {
+      toast({ title: "Sign-in Error", description: "This domain is not authorized for sign-in. Please check your Firebase project settings." });
+    } else {
+      toast({ title: "Sign-in Error", description: error.message });
+    }
+  }
+};
+ Expand 
+By adding the getRedirectResult call that runs on page load, you ensure that when the user is sent back to your app after the redirect flow, the Firebase SDK processes the sign-in result.
