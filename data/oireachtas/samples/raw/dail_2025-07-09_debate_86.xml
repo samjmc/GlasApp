@@ -1,0 +1,785 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-07-09/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-07-09/debate"/>
+          <FRBRdate date="2025-07-09" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_agriculture_and_food"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-07-09/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-07-09/debate/mul@"/>
+          <FRBRdate date="2025-07-09" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-07-09/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_agriculture_and_food/2025-07-09/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-18" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AindriasMoynihan" href="/ie/oireachtas/member/id/Aindrias-Moynihan.D.2016-10-03" showAs="Aindrias Moynihan"/>
+        <TLCPerson eId="DannyHealyRae" href="/ie/oireachtas/member/id/Danny-Healy-Rae.D.2016-10-03" showAs="Danny Healy-Rae"/>
+        <TLCPerson eId="EileenLynch" href="/ie/oireachtas/member/id/Eileen-Lynch.S.2025-01-29" showAs="Eileen Lynch"/>
+        <TLCPerson eId="JoanneCollins" href="/ie/oireachtas/member/id/Joanne-Collins.S.2025-01-29" showAs="Joanne Collins"/>
+        <TLCPerson eId="JoeCooney" href="/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29" showAs="Joe Cooney"/>
+        <TLCPerson eId="MartinKenny" href="/ie/oireachtas/member/id/Martin-Kenny.D.2016-10-03" showAs="Martin Kenny"/>
+        <TLCPerson eId="MichaelFitzmaurice" href="/ie/oireachtas/member/id/Michael-Fitzmaurice.D.2014-10-10" showAs="Michael Fitzmaurice"/>
+        <TLCPerson eId="NatashaNewsomeDrennan" href="/ie/oireachtas/member/id/Natasha-Newsome-Drennan.D.2024-11-29" showAs="Natasha Newsome Drennan"/>
+        <TLCPerson eId="ParaicBrady" href="/ie/oireachtas/member/id/Paraic-Brady.S.2025-01-29" showAs="Paraic Brady"/>
+        <TLCPerson eId="PaulDaly" href="/ie/oireachtas/member/id/Paul-Daly.S.2016-04-25" showAs="Paul Daly"/>
+        <TLCPerson eId="PaulLawless" href="/ie/oireachtas/member/id/Paul-Lawless.D.2024-11-29" showAs="Paul Lawless"/>
+        <TLCPerson eId="VictorBoyhan" href="/ie/oireachtas/member/id/Victor-Boyhan.S.2016-04-25" showAs="Victor Boyhan"/>
+        <TLCPerson eId="WilliamAird" href="/ie/oireachtas/member/id/William-Aird.D.2024-11-29" showAs="William Aird"/>
+        <TLCRole eId="An_Cathaoirleach_Gníomhach" href="/ie/oireachtas/role/office/an_cathaoirleach_gníomhach" showAs="An Cathaoirleach Gníomhach"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM THALMHAÍOCHT AGUS BIA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Agriculture and Food</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-09">Dé Céadaoin, 09 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-09">Wednesday, 09 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#WilliamAird">William Aird</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#VictorBoyhan">Victor Boyhan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ParaicBrady">Paraic Brady</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#MichaelFitzmaurice">Michael Fitzmaurice</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#JoanneCollins">Joanne Collins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#DannyHealyRae">Danny Healy-Rae</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PaulDaly">Paul Daly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MartinKenny">Martin Kenny</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#EileenLynch">Eileen Lynch.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PaulLawless">Paul Lawless</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#NatashaNewsomeDrennan">Natasha Newsome Drennan.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#AindriasMoynihan">Teachta / Deputy Aindrias Moynihan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Farm Safety: Discussion<recordedTime time="2025-07-09T15:30:00+01:00"/></heading>
+        <speech by="#AindriasMoynihan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T15:30:00+01:00"/></from>
+          <p eId="para_15">As there were no apologies received, I will move onto privilege. Before we begin, I bring to witnesses' attention that witnesses giving evidence from within the parliamentary precinct are protected by absolute privilege in respect of the evidence they give to the committee. This means that a witness has a full defence in any defamation action for anything said at the committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at the Chair's discretion. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precinct are asked to note they may not benefit from the same level of immunity from legal proceedings as a witness giving evidence from within the parliamentary precinct and may consider it appropriate to take legal advice on the matter. Privilege against defamation does not apply to the publication by witnesses outside of the proceedings held by the committee of any matters arising from the proceedings.</p>
+          <p eId="para_16"> Members are reminded of the long-standing parliamentary practice to the effect that Members should not comment on, criticise or make charges against any person outside the House or an official, either by name or in such a way as to make him or her identifiable. Parliamentary privilege is considered to apply to the utterances of Members participating online in a committee meeting where their participation is from within the parliamentary precinct. Members may not participate online in a public meeting from outside the parliamentary precinct and any attempt to do so will result in a Member having their online access removed.</p>
+          <p eId="para_17"> The witnesses are very welcome. Cuirim fáilte roimh na finnéithe. We have a good and packed agenda. We will start with farm safety, move on to mental health and well-being and finish on the COM proposal afterwards. We will start with farm safety. We have approximately an hour on that. The committee will hear from officials from several groups. From Embrace FARM, we have Ms Norma Rohan, Mr. Brian Rohan and Ms Catherine Kenneally. From AgriKids, we have Ms Alma Jordan and Ms Tara Farrell. From FBD Insurance, we have Ms Kate Tobin, Mr. Ciaran Roche and Mr. Pat Gilligan. Cuirim fáilte roimh na finnéithe. They are very welcome. We look forward to the opportunity to discuss the issue with them.</p>
+          <p eId="para_18"> We have the submissions that were sent earlier and Members have had the opportunity to read through them. I ask that each group take two minutes to make a statement. At that stage, we will open to the floor where Members will have the opportunity to ask questions. I will take it in groups of five and people will have the opportunity to ask a couple of quick questions. We will then get updates and responses from the witnesses and move on to another group of five questioners. There will be approximately 15 minutes per group. I ask Members to ask their questions as quickly and concisely as they can so the witnesses have the best opportunity to respond. We will start with Embrace FARM, followed by AgriKids and then FBD. The opening statements have been provided and are taken as read into the record. We will begin with Ms Rohan, who has two minutes to make her contribution.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Norma Rohan<recordedTime time="2025-07-09T15:40:00+01:00"/></from>
+          <p eId="para_19">I thank the committee for the invitation. Brian sends his apologies as he is at the silage. That is the job of farming. Embrace FARM is a non-profit support network that stands beside farm families across Ireland who have experienced the unimaginable, that is, sudden death or serious injury on our farms. We honour the memory of those who have died and walk beside the loved ones left behind, ensuring they receive help where, when and how they need it most.</p>
+          <p eId="para_20"> Our journey began in 2014, born from personal grief on our own farm. In 2012, we lost Brian’s dad, Liam, in a tragic accident on our family farm. In the aftermath, we found that while statistics on farm fatalities were published each year, there was no voice for the families behind the numbers. That year alone, 30 lives were lost on Irish farms, and five of them were children under the age of five. We knew something had to change. With the support of Ireland’s farming community, a dedicated board and a passionate and dedicated team, Embrace FARM has grown. As of June 2025, we have supported more than 600 farm families affected by sudden death or life-altering injury, regardless of how or when it happened.</p>
+          <p eId="para_21"> What unites these families is the suddenness of the tragedy. There is no time to prepare, not emotionally, not practically, and certainly not for the continued running of a farm business. Every family's experience is unique, so our response must be too. From the moment a family reaches out, our family liaison officer connects with them to understand their needs. From there, we offer a tailored support plan that may include emotional and psychological supports, peer-to-peer support groups and practical assistance.</p>
+          <p eId="para_22"> What sets the needs of farm families apart is their complexity. A tragedy on the farm not only affects the individual, but also sends shockwaves through the family, the business and the entire rural community. Farming is not just a livelihood; it is a way of life, and when disaster strikes the entire ecosystem around it is shaken. Farm safety must be more than just physical safety. It must also embrace emotional, mental and relational well-being. Producing food and getting it onto the kitchen tables of Ireland is a national effort. Farmers, contractors, even politicians, and many more all play a part. So too must we all play a role in the safety and well-being of our farmers. It does not rest solely on the shoulders of farmers; it rests on everybody.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Alma Jordan<recordedTime time="2025-07-09T15:40:00+01:00"/></from>
+          <p eId="para_23">I thank the committee for the opportunity to speak here today. I am the founder of AgriKids, which was created following the deaths of two little boys in August 2014. Since I started it some ten years ago, through my own savings with no human resources or experience, I have managed to grow and create an organisation that has attracted 80,000 children to participate in farm safety workshops in schools and communities throughout the country. I have created resources, such as storybooks, training manuals and handbooks, which have gone as far afield as Canada and the United States as well as throughout Ireland and the UK. Our children are passionate learners. They are passionate about farming and they are passionate to share their learning in their homes and communities. Their influence cannot be underrated. If we want to see a change in behaviours and cultures let us start with our children. They have the capacity to influence and create this much-needed change.</p>
+          <p eId="para_24"> This topic needs common sense, compassion and compromise. We need to work with farmers. We need to listen to them and understand and appreciate the uniqueness of a farm as both a workplace and a home. We welcome the opportunity to speak before the committee and we believe we have unique insight and willingness to help to bring about change. Recent funding calls have shown a commitment by the Department of agriculture to invest in solutions to this issue and we are extremely grateful to be in receipt of these supports. However, it would be remiss of me not to offer some recommendations. After consulting teachers regarding an existing funding call for children and young people, we feel there is a missed opportunity. The rules state the projects are to be concluded between September and November in schools. This is what we consider to be the off-season. It will be challenging to achieve results when competing with back to school, mid-term breaks and pre-Christmas activities. It would be much easier and more cost-effective if the same effort were undertaken in spring and summer. It would also be of great benefit if the funding could support our core objectives and activities and allow us to do what we do, rather than having us divert resources and people away from our core activities.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Kate Tobin<recordedTime time="2025-07-09T15:40:00+01:00"/></from>
+          <p eId="para_25">I thank the committee for the invitation and the opportunity to participate in today's meeting on the important issue of farm safety, an area in which FBD Insurance is actively involved. I am joined today by my colleagues, Mr. Ciaran Roche and Mr. Pat Gilligan. I will take a moment to express our sincere sympathy to all individuals, families and communities who have been affected by farm accidents. These are not just statistics. Behind every incident is a life lost or altered, families changed forever, and communities deeply impacted.</p>
+          <p eId="para_26"> FBD's roots are deeply embedded in Irish farming. Founded by farmers for farmers, we have worked alongside the agricultural community for more than 50 years. Alongside our role as an insurer, FBD has long championed the importance of farm safety. For decades, in tandem with FBD Trust, we have invested in, supported and led campaigns aimed at encouraging practical steps to improve safety on farms.</p>
+          <p eId="para_27"> In recent years we have invested significantly in a wide range of safety initiatives, sponsored awareness campaigns and participated in national forums on farm safety issues. We have an annual programme of work, led by our dedicated team of experts to support farmer health and safety. This includes our annual mart safety campaign, our partnership with the IFA for farm safety week, safety seminars in agricultural colleges and Farm Safety Live at the Tullamore Show. We are a very active member of the farm safety advisory committee of the HSA. We fully endorse the committee's action plan and remain committed to its implementation.</p>
+          <p eId="para_28"> Our work in partnership with key stakeholders will continue. Collaboration is essential. Sustainable long-term change can only be achieved by working together. We at FBD remain fully committed to playing our part. Protecting our customers and supporting safer farms is not only part of our business; it is part of who we are. I thank the committee for the opportunity to contribute to today's discussion. We look forward to engaging with the committee and continuing to work together to improve farm safety in Ireland.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T15:40:00+01:00"/></from>
+          <p eId="para_29">When we set out our programme of work, members identified that there is always a focus on the animals and the schemes and that very often the focus leaves the farmers themselves. We very much want to make sure that the person at the heart of the operation gets a focus, including health and well-being. We want to focus on farm safety, including the farmers and their families.</p>
+          <p eId="para_30"> We will take a group of questions and the witnesses will then have an opportunity to respond, after which we will move on to the next group of questions. I ask members to put their questions quickly. A number of committee members are offering, including Deputy Healy-Rae, Senator Daly, Senator Brady, Deputy Kenny and Deputy Aird. I invite Deputy Healy-Rae to ask his questions.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_6">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-07-09T15:40:00+01:00"/></from>
+          <p eId="para_31">We are all glad to be here today. This is a very serious matter. As the witnesses are aware, we have had more than our share of farm accidents, including machinery accidents, in the recent past. It has been happening around me for the past 40 years. A local man lost his arm in a driveshaft. He was lucky enough and worked all his life afterwards. Another neighbour was mangled by the same thing. I have had accidents and close calls involving machinery and animals for more than 40 years. Our discussion today is crucial to highlight the dangers.</p>
+          <p eId="para_32"> I am very agitated about handbrakes. People should ensure they have a working handbrake on a tractor or other vehicle and ensure they pull it correctly. I ended up with the front wheel of a four-wheel-drive tractor going over both my legs and resting on my hip. On the first night of Covid I was in CUH. Luckily nothing was broken, and I appeared here afterwards as normal. I was fairly sore but I was lucky. </p>
+          <p eId="para_33">That is one thing. The power drives is the other thing, to ensure that you do not have loose clothes or that you are in a hurry around the unit, and to shut it off when you come off the seat of the tractor.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_34">The Deputy can ask a quick question and then we will move on to Senator Daly.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_8">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_35">All right. The last thing is children. It is easy enough to mind one child but I would advise all farmers and operators to be very choosy about bringing a second child with them. Have the witnesses recognised these issues and would they highlight them further? Those three things will stop lives being taken.</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_9">
+          <from>Senator Paul Daly<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_36">I welcome our witnesses. I have been very active in the area of farm safety. Some colleagues will be aware that I have a Bill in the system. It is well buried but it has not gone away. It provides for establishing a farm safety agency in the same way as we have a road safety agency. I do think that is the way to go but we will not waste any time on that today. To Ms Rohan, I cannot say enough about what you do. I knew Liam, as you know, go ndéanfaidh Dia trócaire ar a anam uasal. We see ourselves in the preventative role and when accidents happen, we say it is another statistic, one that got away on us and we are not doing our job. We move on to still try to prevent future accidents. You have taken up the mantle that support is needed for people who have suffered accidents. I have no question but want to compliment the great work you do. The annual remembrance service alone is very moving. </p>
+          <p eId="para_37"> Myself and Ms Jordan have done a bit of trucking in the past as well. I welcome her here. AgriKids is a major part of the solution going forward. It is education. No matter what problems are thrown at us, education is often given as the solution. If we teach children the awareness, they will teach Mammy, Daddy and the grandparents. It is no more than with smoking and I am a former smoker myself. The kids police it, if someone lights up a cigarette, if you get them anti-smoking. It is the very same with farm safety. If they see the dangers, they will highlight them to Mammy, Daddy, Granny and Grandfather. What AgriKids is doing is a major part of what needs to be done. Ms Jordan mentioned the money. I highlighted in the Seanad this morning that Farm Safety Week is the week after next but it is the wrong time of year. It should take place at the start of the summer holidays, the start of the busy season, not coming in the middle of it. As was said already, farmers are flat out. I feel the timing of Farm Safety Week is wrong. Maybe the witnesses would comment on that a little bit more. Everyone might comment on the role the media has to play in this. I do not think they play enough of a role.</p>
+          <p eId="para_38"> I have one question for FBD. There was a lot of talk in the last few weeks about the RSA introducing mandatory training for under-16s for tractor driving. How does that fit in with insurance? FBD would not insure someone to drive a car without training. Is there a policy or a feeling on the direction we should go for that mandatory training for under-16s who are stepping onto these enormous machines with no official training?</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_10">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_39">I am a farmer and attended a scene where a young lad lost his life in my area. I was the second person to be there. It could have been avoided, the same as everything else, all these other accidents. There were two in our local area. It is true what they say. It not only has a devastating effect on people's lives but also on communities. To this day, that farm is never going to be the same. I ran an event in Granard farmers' mart to educate kids. It was sponsored by AXA, Kiernan Milling and an agri-adviser. We brought sixth class to the mart and went through safety regarding what happens and where the dangers are. That is key to this whole thing. It needs to be rolled out throughout the countryside. Marts are there. Kids understand they are where the cattle come to be sold. They can also be used for safety events. Machinery operators even come there and talk about the shafts and the dangers. If we only saved 1%, which is very small but it is a huge difference. Regarding the statistics on farm safety, when a person takes out an insurance policy, is risk assessment done on farms? As Senator Daly said just now, 16-year-olds are getting up on 200 horse power tractors with 15 tonnes of silage going down the road.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_11">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_40">I need to give other members an opportunity, if the Senator could ask his question quickly.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_12">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_41">I would like FBD to comment on that, please.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_13">
+          <from>Deputy Martin Kenny<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_42">I thank all our witnesses for their opening statements. I grew up on a farm and we did a bit of contracting in a small way but it was 165s and 135s and smaller tractors than they have nowadays. We would put them in the link box with what they use today. I see youngsters driving very heavy machinery. I know they are probably a lot safer in the sense that they have better cabs on them and many more safety measures within them than were in the older machines we all grew up using. Sometimes I look back and wonder that more of us were not killed or hurt by the way some things went on. On that point about training for young people who are driving these very big tractors, the speed they can go at on the road even is quite dangerous. They can move very fast. We need to get clarity on that and see where it is at. </p>
+          <p eId="para_43"> The other issue is in regard to children. The point is well made that if children learn at the right age, they will become advocates for everybody. That is something we need to be doing more of. For most children who grow up on a farm, their big ambition is to do the work they see going on around them. They want to be the ones pushing in the silage, handling the cattle and doing these things. From a very young age they are trying their best to be that. I have had family members who were injured by machinery and it has been my experience that the thing they have done a thousand times and got away with catches them once. In regard to safety measures on vehicles and the mechanisms that are in place to ensure accidents cannot happen, what more can be done? What can be done to make older machinery and equipment more safe than it is at present?</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_14">
+          <from>Deputy William Aird<recordedTime time="2025-07-09T15:50:00+01:00"/></from>
+          <p eId="para_44">I welcome all our guests today and especially welcome Ms Rohan. I know Brian would have loved to be here today as well. You are from Laois the same as I am. I remember well getting a phone call about Brian's father Liam. I was young at the time. I clearly remember saying it could not be him because he was so safe. He was so tidy on his farm. He was just one of that type of people and he would be the last person you would expect it to happen to. Leaving that aside, on behalf of farmers out there and on my own behalf, I thank you for all the good work you are doing. Embrace FARM is creating great awareness and giving comfort to families. I go to the remembrance service and see the comfort and the sadness in people's eyes going up to put the name of their loved one on the list. I see the sadness going down and the relief coming back. I acknowledge the great work you do and long may you keep it on. It is not just for accidents. I was really taken aback to see my friend Tom Fingleton's wife there with a little baby. That was tough. I knew Tom. He died from an illness that caught him very quick. His wife was expecting a baby. The first time I saw her was with the little baby. That is really tough. </p>
+          <p eId="para_45"> I want to thank all our guests for every little thing they do. Every little bit of information or advertisement that the insurance companies do is a help to everybody. It is all change. When I was a little fella, I got tossed with a bull. I was lucky. I was somersaulted. That is how naïve I was. That is neither here nor there. The witnesses are in a position to call out things that they know are causing accidents.</p>
+          <p eId="para_46">It is difficult for us. We are chastised. I am not afraid to say I feel this is causing a lot of accidents. I have stopped it myself in the van and the tractor. I do not know what we can do. I am more afraid of young lads in tractors than I am at their age of driving. Every young fella is driving. It is a thing where fathers let their kids up and shove them in beside them, and they might be only ten or whatever. I am just making the point that we all wanted to drive as kids. I thank the witnesses for coming in today. </p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_47">The Deputy might want to give the witnesses a chance to answer. There is a lot to cover there and we will need to extend the time for it. </p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Norma Rohan<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_48">I will make one comment on everything that was said, which were all great ideas and examples of what happens on our farms today. In the vein of the Deputy saying we need to call out what is happening, from our point of view in this sector trying to help save farmers' lives and keep them going, the disjointedness of funding, regulation, legislation, whose responsibility it is, what Department it is in and which Minister has responsibility for it is our biggest frustration. I am calling that out in the sense of asking who will take it on and value the farmer's life and their family. Who will stand up and do that in the Government?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Tara Farrell<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_49">A common word I have heard in the past half hour is "luck", and that is not a word we should be using in the context of farm safety. Yes, it is an agricultural concern but we are talking about a rural development issue. This is about sustainability and community well-being. In this past half hour, we have already heard about the devastation preventable accidents cause in communities - psychological, financial and emotional devastation. I join in that call and echo what Ms Rohan is saying. We need ring-fenced, solid structures to be able to continue the work we are doing. </p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Alma Jordan<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_50">On the area of media, we talk a lot about changing the culture and the behaviour. What we need to do is denormalise our attitudes towards risk. The mainstream media and social media are key in all of this. All too often I see posts of children as young as nine and ten years old, sometimes three and four, left unaccompanied and driving high-end agricultural machinery as if it is some badge of honour. This social media vanity over sanity really needs to be called out. I also call on people within the media, when they are sharing videos and images, to comply with the safety rules and not undermine the work of us advocates, who are working so hard to denormalise these attitudes towards risks. Not only is it extremely frustrating and upsetting but this behaviour is also triggering people who have not been so lucky and have not got away with it. They are looking at this taking place and it is a slap in the face for these poor people to see it. If you cannot do it for the advocates working on this, think of the farm families who have been left behind and are dealing with this particular loss. </p>
+          <p eId="para_51"> Denormalising the risk is vital. I created a media charter on this, the farm safety media charter, which I have yet to launch. It is a set of guidelines the media can follow when putting images and visuals on an agricultural basis out there. We would love to launch it. It has been used for the past 20 years in the United States and I am on the child agricultural safety network leadership team there. Australia has just started doing it. We had the idea too but we are just waiting to launch it, which it is a pity. It would go a long way towards changing the culture and behaviour.</p>
+          <p eId="para_52"> To follow up on what Ms Rohan was saying, access to funding is crucial. I hear year on year that the work I do is great and that it is where it all needs to start. Our children are highly influential in this topic. I have had children as young as four years old participate in my events, explaining to their fathers why standing in the area of agitation is dangerous or what safety sign needs to go up and where, and saying, "No, Daddy, I am not allowed on that tractor; I am only four." They are extremely influential. Pester power is key. I worked for quite a while within the green schools programme and saw exactly how influential kids can be. Social change can happen with them. It is normal and normalises with them. When it is normal with them, it is in there forever. We are looking at a socially sustainable safer future on our farms just by engaging our children. The resources I have created are simple and fun. We even have a manual where I work alongside An Garda Síochána in its community outreach programmes. We are helping it to deliver farm safety events in their own locality. </p>
+          <p eId="para_53"> Tapping into what is already out there is key. There are many of us working in this space and bringing us all together to work in a much more fluid and proactive manner is not only cost effective but will help us see results. I was here in May 2015, very new into this game, and I was included in a Seanad report on farm safety. Many of us are still in this room today and are still having this conversation. We need to move this on. We have the ideas and resources. Help us fund what we do so the objectives and work we do, which benefits so many, can continue without any blockades or barriers. </p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Kate Tobin<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_54">To respond to a couple of questions directly put there, Senator Daly had a question about the introduction of mandatory training and younger drivers on tractors. For several years, and Mr. Roche can probably give more detail on this as he is a lot closer to it, we have been supporting the cost of FRS, which provides tractor training to young persons operating tractors. </p>
+          <p eId="para_55"> With regard to the broader context of this issue, we have to operate and provide insurance in line with licensing laws and the Road Traffic Act but were there to be any changes on that, we would have to look at that as part of our insurance offering. </p>
+          <p eId="para_56"> Regarding Senator Brady's comments on using marts for safety events, we completely agree on that. It has been one of the areas, particularly for older farmers, where we have found it useful to reach them for promoting farm safety issues. We agree there are things that could perhaps be done there. On whether we do risk assessments on farms, we have a dedicated risk management team within FBD that is concerned with farm safety. Mr. Roche leads that team and our 34-strong branch network is out meeting farmers on a day-to-day basis and consulting them on risk needs.</p>
+          <p eId="para_57"> On Deputy Kenny's feedback on training for young people, we have mentioned FRS but I might let Mr. Roche come in on other initiatives that are there. </p>
+          <p eId="para_58"> In respect of Deputy Aird's piece about the issues causing accidents, our own claims experience is very much in line with published statistics. We see that the most common serious accidents involve farm machinery, vehicles, falls, livestock and slurry.</p>
+          <p eId="para_59"> Mr. Roche might add to a couple of items there. </p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Ciaran Roche<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_60">Adding to that, there have been 171 fatalities within the sector in the past ten years, with 40% of those relating vehicles. It is a big focus for us. We work very closely with the farm safety partnership. We believe collaboration is important and we do this with all the initiatives we happen to be involved with. </p>
+          <p eId="para_61"> Behaviour change is key to making a real difference in this area. When we put our national plan in place every year, we go to all the agricultural colleges and run a campaign, "Champions for Safety", asking those students to be champions for safety going forward. We have a national mart farm safety and remembrance week, which remembers all those people who have lost their lives and makes people aware of the key risks. It is an opportunity to focus on older farmers because we know that is an area they go to. </p>
+          <p eId="para_62"> We also focus on signage. We have produced farm safety signage where the first key message it states is that the farm is not a playground. Too many children are fatally injured on Irish farms. To date, we have produced more than 100,000 of those farm signs, which are disseminated by our local offices. </p>
+          <p eId="para_63"> With any media campaigns or competitions we are involved in, we integrate safety into everything we do with all our safety guidance. </p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_21">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_64">I thank the witnesses. I need to bring on the next group of speakers, Deputies Lawless and Cooney and Senator Lynch. </p>
+        </speech>
+        <speech by="#PaulLawless" eId="spk_22">
+          <from>Deputy Paul Lawless<recordedTime time="2025-07-09T16:00:00+01:00"/></from>
+          <p eId="para_65">I thank the Cathaoirleach and welcome the witnesses here today. I thank them for coming for such an important topic. A neighbour of mine passed away two weeks ago. He was a man in his 70s who had farmed all his life, having grown up farming with his father. He lived just a couple of miles down the road and, sadly, he passed away.</p>
+          <p eId="para_66"> This is important for all generations. </p>
+          <p eId="para_67">I would love to explore the idea of farm safety campaigns at the marts, as Senator Brady mentioned. I was at a mart recently where Croí, the heart charity, had an awareness campaign in the form of taking assessments and different types of health metrics in relation to farmers. I think this is something we should absolutely do and I would be very interested in hearing the thoughts of the witnesses on it. I agree with Ms Jordan's point that it is important we start with the younger generation to normalise it. Regarding the funding Ms Jordan referred to earlier, if she could share more information on it, I would be very interested in working with her on it.</p>
+          <p eId="para_68"> The next point was mentioned already, but I have a major concern about tractors. There are extremely high-powered tractors with significant weight, especially during the silage season, and we see very young teenagers flying down the road. I have also seen young lads driving around with phones in their hands. I would be very interested in hearing the witnesses' thoughts on how we target those young people. It is very important they are working, but they must also realise there is such a responsibility on their shoulders because these tractors are so powerful. Sometimes, I think this fact is missed when we are working with such young people. I must go to the Dáil now, so I apologise, but I hope to return.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_23">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-09T16:10:00+01:00"/></from>
+          <p eId="para_69">I thank all the witnesses for coming in. I thank them for the briefing and compliment them on the fantastic work being done. In fairness to them, they are trying to save lives. Again, we are all working in this direction. Unfortunately, we have all seen farm accidents. It is something we never want to see, or any accident for that matter, but again, unfortunately, we all know there will be accidents. The main thing is to try to prevent them and keep people alert. Behavioural change was mentioned. We all know this is not easy, and there is no point saying it is. We must, though, put more emphasis on behavioural change. We must see how we can - we might get some ideas from the witnesses - get behavioural change instilled into people. I am talking especially about middle-aged and older farmers. We are well aware many in farming are now in their 40s, 50s and 60s.</p>
+          <p eId="para_70"> Farm Safety Week was mentioned too. We all know funding is involved in all these campaigns. To remind farmers and keep people alert, could doing this twice a year be looked at? Could it be done early in the year, perhaps, and then again when we come to the months of October and November, just to make people aware of safety when we are moving into the winter and they are dealing with cattle in sheds, etc.? Perhaps this could be something that could be looked at. In rural schools, as well, perhaps visits could be done once a year to students in transition year, many of whom we know will be coming from farming backgrounds. Maybe lessons could be taught to those young children who might then go home and talk to their parents and whatever.</p>
+          <p eId="para_71"> My final point concerns signage around farms. During Farm Safety Week, maybe farmers could be encouraged to put up signage to keep reminding people that the main issue is behaviour. We all know this, but, as I said, it would be good if it was possible to remind people to stay alert and focused. It is not possible to prevent all accidents, but it is possible to try to keep people reminded and alert. I again thank the witnesses for the fantastic work they are doing.</p>
+        </speech>
+        <speech by="#EileenLynch" eId="spk_24">
+          <from>Senator Eileen Lynch<recordedTime time="2025-07-09T16:10:00+01:00"/></from>
+          <p eId="para_72">I thank all the witnesses for being with us today and for their comprehensive statements. As my colleagues said, this is an incredibly important issue and affects every farm family and every farm, whether they have been directly affected or just from the perspective of the importance of safety on the farm. It was mentioned - this is not a phrase that should be associated with this - that it does happen to some people and not to others.</p>
+          <p eId="para_73"> I have a few questions. More generally, what do the witnesses believe is the most critical challenge facing farm safety now? How would we look at this from a legislative or national policy perspective? In terms of insurance, I note it was said that 41% of claims relate to vehicles. I am assuming this is the most common claim, but if it is not, the witnesses can clarify. Has a change been seen in terms of the most pertinent area of claims over the years? Has a change in the pattern been seen? Are people learning from accidents and are behaviour patterns changing in this way? I note it was said that assessments were carried out, but are there reduced premiums for farmers or farms where they have had safety training or have specific safety measures in place? Is this something that could be looked at?</p>
+          <p eId="para_74"> Regarding farm vehicle accidents, if a vehicle is seized after an accident, is there a statistic on how many of those vehicles seized after an accident failed their suitability tests? To all three organisations, I think a job of work is to be done in terms of liaising with the local authorities, joint policing committees, etc. How would the witnesses see this working? Are any initiatives being worked on in this regard?</p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_25">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-07-09T16:10:00+01:00"/></from>
+          <p eId="para_75">I thank everybody for coming in. I am on a farm with four children and farm safety is a major issue. Equally, I know many older farmers are living on their own. I see this as a major issue around calving season, etc. We now also have the situation where many farmers have to go to work a full-time job, especially with the state of the suckler industry, to make ends meet. This is what they must do. We are, therefore, dealing with people who may be a little bit tired and might take a little extra chance. I would love to see more targeted TV ads on safety before calving season, when, for example, the quiet cow that has just had a calf could turn into a lunatic. It is more about the visual aspect that ensures it is fresh in people's minds. It must= be targeted. It is like what Ms Jordan said when she commented about going into schools to see kids at certain times of the year. It must be targeted to when people will have information fresh in their minds. It is the same as any farmer, and could be about baling time or whatever. It is about safety around the heavy loads tractors are travelling with, being mindful of other traffic, etc. It is about the media and the TV aspect and getting the ads out at a time targeted for all the different months. Coming up to Christmas, for example, is when farmers are most under pressure because subsidies have not come through and people are knocking on their doors. I am referring to the mental health side of things as well and having help and support out there.</p>
+          <p eId="para_76"> Ms Rohan mentioned multi-annual funding. Has she got a figure for how much is needed? How is Embrace FARM being funded now? I pose the same question to Ms Jordan regarding funding. What funding does AgriKids need? How much would bring the organisation a step further? What is the blockage with getting into the schools, getting the story out and getting the education over to kids?</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:10:00+01:00"/></from>
+          <p eId="para_77">A lot of questions were asked. </p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Ms Alma Jordan<recordedTime time="2025-07-09T16:10:00+01:00"/></from>
+          <p eId="para_78">I will start with some of the questions asked by Deputies Lawless and Cooney. Regarding marts, Carnew mart in County Wexford reached out to me a couple of years ago to do an event for kids there. Between 9 a.m. and 1.30 p.m., we had 750 children who came in on a staggered basis. They did a 40-minute session with me on farm safety. They went on then and learned a little bit about how a mart works. They were bidding, vetting and having great craic and, importantly, learning enterprise. They went on and did a bit around tractor safety and mental health and well-being. George Graham was there from Awareness Head to Toe. After getting a goodie bag, they got on the bus and went home. The next group was then coming through. It is so easy and effective. I was there, along with representatives of the IFA and Carnew mart. FBD gave some prizes for the goodie bags, as did the <i>Irish Farmers' Journal</i>. It was the sector working together. This point is key. Everything is out there, it just needs to be packaged correctly.</p>
+          <p eId="para_79"> Turning to tractor driving, I have long said that we need - I have spoken about this on radio - competency-based testing before a 16-year-old gets into a 30-tonne tractor and trailer. End of story. I am never going to be okay with children in this context. </p>
+          <p eId="para_80">There is no point in raising the age. As it is, nine-year-olds, ten-year-olds and 11-year-olds are being given access to this machinery. The rules are that the 16-year-old gets a provisional licence and then he or she gets experience over a six-month period. They are driving the tractors legally since they were 14 years old. They have had the experience. Now we must get them to a certain standard so we at least can have some kind of appreciation that who is on the road has every right to be there. There are some kids that are pretty good drivers, I will give them that, so let us award those who can actually do it.</p>
+          <p eId="para_81"> With regard to my funding, I had nothing in the early days. I actually reached out to the sector and engaged with different corporates. If they profited from farming and farmers' produce, they had a corporate social responsibility to give that money back in. I approached various insurance companies. Flogas has been with me now for the last five years supporting the work I do. At the moment it is working out at €2 per child so I was able to bring a farm safety workshop to them. There are some 3,500 primary schools within Ireland. I also go into pre-schools. If three-year-olds and four-year-olds are very verbal and capable of talking about cattle, shearing sheep, dosing sheep, worming dogs and everything else, they are perfectly capable of getting this information. I have the structure. I have the programme. I just need the resources to get it. I am lucky to be under the umbrella of Irish Rural Link so now I am in a position where I have the structure to scale up and grow what I have done. I have been in Europe, in America and in Northern Ireland but I created this for Ireland first and foremost. I just need help and support to get it out there. We need core funding to help us to get the job done.</p>
+          <p eId="para_82"> On media, I always see it as a wasted opportunity. Why are farming ads not shown with each of the weather forecasts? That is the one time in my house when we are all told to shut up so they can hear what the weather is. They will not be fast forwarding, they will not be pausing and they will not be leaving the room or looking at their phones. They are engaged. That is what we need. Completely. We have it there. It takes just a little bit of common sense, dare I say, to get the message out there.</p>
+          <p eId="para_83"> On tractor driving being taught in transition year, I am reminded that in America they have driver education in schools. Why do we not have tractor driving education for transition year students? This would be something they can bring with them as they get into the next phase. We would have a whole wonderful league of farmers ready to tackle silage season, hay season, harvest season and every other season around it.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Norma Rohan<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_84">Senator Lynch asked what is the most critical challenge around this sector. I allude back to what Deputy Lawless said about the responsibility being on farmers' shoulders in the context of tractors. This is not just a farmers' problem. This is an issue for everybody in the sector, including legislators and private companies, as well as all of us sitting around here. It is about a joined-up and cohesive approach. Whose responsibility does it fall under within government to create the policies and to create the legislation? When we talk about tractor driving and safety, it goes from one to the other. Who is pushing it? Whose responsibility is it? That has to start at the top to work its way down. None of us down here can do it unless it happens up there.</p>
+          <p eId="para_85"> There was a question about our funding from Deputy Newsome Drennan. We rely on the generosity of companies like FBD, among many others in the corporate sector, who are giving back to their corporate social responsibility. Is that enough to keep us going? We operate on around €400,000 a year to run Embrace Farm. We currently we have €220,000 in the bank account so I have no line of sight after next January. That is how we operate. It is through the goodwill of our community fundraisers and all that kind of stuff. In order to keep going and provide the support we do when bad things happen on farms, I need core funding. I need sustainable funding and it needs to come from somewhere. We work hard at this. It is Ms Kenneally's primary job as our development manager. She works hard at that every day, but it takes away from our core work.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Catherine Kenneally<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_86">One thing I hear constantly is about tractor driving and safety, but what is being forgotten is the farmer and the farm family. It is a holistic problem. I am aware that mental health will be coming up in the next session today, but it and farm safety should really be addressed together and not separately.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_87">I want to give FBD an opportunity to respond on those issues. Senators have a vote.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Ms Kate Tobin<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_88">I will address some of the direct questions before Mr. Roche comes in on where we see the most critical challenges facing farm safety. The work of the farm safety partnership has highlighted those challenges and has a programme of work in place around them.</p>
+          <p eId="para_89"> Senator Lynch asked whether we have seen any changes in patterns over the years. Generally what we see from an insurance perspective are accidents. We saw very high levels of accidents and high numbers of claims around ten years ago with some 1,000 accidents a year. We have seen that reduce and it is now in the region of 800. Some of this is down to the work of the groups here today. That figure is still quite high. I am not saying that this is a full achievement but we have certainly seen a reduction over time.</p>
+          <p eId="para_90"> With regard to premium differentials relating to farm safety, we generally do not penalise farmers in terms of farm safety. We probably see it as a much more important investment to put the money into behavioural change in a more widespread perspective. Accidents can happen even on the most safe farms, so it is just about trying to address it in that way.</p>
+          <p eId="para_91"> There was a specific question around seized vehicles post accidents and if they had they failed their test. I would not have statistics on that in front of me. Perhaps this is something we can look at and revert to the committee on it.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_92">Will FBD forward this on to the committee?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Kate Tobin<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_93">Yes, if we have it. I will have to take a look and see if we have that information.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_94">If there are a large number of questions and we are very tight on time, the witnesses might send anything that is unanswered to the committee afterwards.</p>
+          <p eId="para_95"> I have just one very brief question, to take it in a slightly different direction, which is about skin cancer. We have all experienced the wonderful sunshine today. Farmers are working outdoors in all kinds of weather. Is any effort being made to promote safer and healthier skin care opportunities for farmers in the context of skin cancer and sunscreen? We very see sales reps going around to farms selling chemicals to the farmer for cleaning the parlour, but there is not necessarily any focus on the farmer. Is there any promotion, or have the witnesses seen it anywhere, on farm safety in relation to skin cancer and sunscreen?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Alma Jordan<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_96">When we attended the Teagasc dairy day in Fermoy last week, it was wonderful to see SPF dispensers. These were all around the field where farmers could actually put it on. It is about the normalisation of looking after your skin. The Irish Cancer Society is very active at this time of year giving statistics and tips. The Irish Cancer Society runs a safe sun campaign at these times of the year. Within AgriKids we have a module on farmer safety and well-being, including a lot around diet, rest and skin care. So we are starting them young.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:20:00+01:00"/></from>
+          <p eId="para_97">I thank the witnesses. I appreciate there are questions that members wanted to get answers on. We are tight on time. Will the witnesses please send to the committee information on anything that was unanswered? We will be able to take it into consideration in our deliberations. Our discussion on mental health and farmer well-being is scheduled for 4.30 p.m. I thank the witnesses for their contributions and insights. I thank members for their questions. We need to suspend the meeting to bring in the next group of witnesses.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i> Sitting suspended at 4.29 p.m. and resumed at 4.34 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Farmer Mental Health and Well-being: Discussion<recordedTime time="2025-07-09T16:30:00+01:00"/></heading>
+        <speech by="#AindriasMoynihan" eId="spk_37">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:30:00+01:00"/></from>
+          <p eId="para_98">Witnesses giving evidence from within the parliamentary precinct are protected by absolute privilege in respect of the evidence they give to the committee. This means that a witness has a full defence in any defamation action for anything said at the committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at the Chair's discretion. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precinct are asked to note they may not benefit from the same level of immunity from legal proceedings as a witness giving evidence from within the parliamentary precinct and may consider it appropriate to take legal advice on the matter. Privilege against defamation does not apply to the publication by witnesses outside of the proceedings held by the committee of any matters arising from the proceedings.</p>
+          <p eId="para_99"> The witnesses are very welcome. On the agenda is farmer mental health and well-being, and we will hear from officials from several representative groups. From Teagasc we are joined by Professor John McNamara and Dr. David Meredith, and from the Irish Farmers Association we are joined by Ms Alice Doyle, Ms Teresa Roche and Claire McGlynn. Tá fáilte romhaibh anseo. Their submissions have been circulated among members and will be taken as read. I shall give each group two minutes to make an opening statement, after which members will have an opportunity to ask questions. The Senators have had to go away to vote but we are expecting to have all the members present in a little while. We will take a group of questions and when the witnesses have taken the opportunity to answer them, we will move on to another group. I call the representatives from the IFA and Teagasc, in that order, to make their opening statements.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Alice Doyle<recordedTime time="2025-07-09T16:30:00+01:00"/></from>
+          <p eId="para_100">Buíochas ón IFA as an gcuireadh inniu. I am joined by the IFA's farm family and social affairs chair, Ms Teresa Roche, and its social affairs policy executive, Ms Claire McGlynn.</p>
+          <p eId="para_101"> Farming is more than an occupation in Ireland. It is a way of life that shapes our rural communities, economy and national identity; however, behind pride, tradition and hard work, there is a growing and pressing concern: the mental health and wellbeing of our farmers. Farmers face unique stressors: financial pressures, market uncertainty, isolation, regulatory complexity, unpredictable weather and the emotional weight of maintaining a family legacy. There is no clocking out and very little room for rest. Despite these challenges, many farmers are slow to seek help. Cultural norms around stoicism, combined with limited access to services in rural areas, mean that emotional distress often goes unspoken and untreated. When we talk about supporting agriculture, we often focus on prices, supports and trade, but the wellbeing of the person behind the gate is just as important. A farmer struggling with stress, anxiety or depression is more at risk of making unsafe decisions, more likely to withdraw socially and less likely to engage with services that could help improve their farm and their life. Good mental health leads to better judgment, stronger relationships and more sustainable farming practices. If we want a healthy farming sector, we need to support healthy farmers. A recent study conducted by University College Dublin has laid bare the extent of this crisis.</p>
+          <p eId="para_102"> Initiatives to raise awareness, train agricultural advisers in mental health literacy and provide better access to rural services are extremely important. However, we now need to move beyond recognition. We need action that is co-ordinated, properly funded and grounded in what farmers themselves are telling us. That begins with treating mental well-being not as an afterthought but as a core part of agricultural sustainability. It means ensuring that services are not only available but also accessible in terms of time, location and cultural fit. It means putting trained counsellors and peer support into the spaces where farmers already go, namely marts, discussion groups, co-ops and farm events. It means integrating psychological education and coping skills into rural training and community outreach programmes. Crucially, it means involving farmers directly in the design and delivery of those supports so nothing feels imposed or out of touch with their lived experience.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:30:00+01:00"/></from>
+          <p eId="para_103">We will take the rest as read. I want to give the next group an opportunity.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Professor John McNamara<recordedTime time="2025-07-09T16:30:00+01:00"/></from>
+          <p eId="para_104">Good afternoon. I thank the Chair and other members of the committee for giving us the opportunity to address them, particularly on our publication Sowing Seeds of Support: Positive Mental Health Guidance for the Farming Community.</p>
+          <p eId="para_105">As outlined in our statement of strategy, the Teagasc mission is to promote sustainability in all its forms. We are particularly anxious to assist farmers with health and safety management, including mental health. We use the Total Health model to promote health and safety, which involves health, mental health and injury prevention, which are all interrelated. Our Teagasc trainers and advisers deal with issues such as stress with farmers, including income inadequacy and excessive workload. We also signpost farmers towards health-promoting services and organisations. The Sowing the Seeds of Support leaflet describes health conditions; gives strategies to prevent poor mental health and to manage mental health; gives key contacts with mental health organisations; and is evidence-based. I will hand over to my colleague Dr. Meredith.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Dr. David Meredith<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_106">I am grateful for the opportunity to be here today. I will speak on the research side of things. The research tells us that while it is true that a large number of farmers experience stress, just like all other workers and all other people, this does not mean there is a mental health crisis within agriculture. The research we have conducted highlights that the wellbeing of farmers is generally good and in the latest data we have on this, 9% of farmers out of a sample of over 800 reported poor wellbeing. The other 91% are somewhere in terms of the rest of that spectrum. Mental health challenges are not unique to farming or disproportionately severe in terms of their impact on farmers. As Professor McNamara indicated, Teagasc advocates for targeted policy and strategic responses based on enhancing the resilience of farmers through education, training and advisory services that enable farmers to prevent stress to begin with, and the adoption of knowledge, practices and technologies that are relevant to them and their business. We do this through rigorous research that looks at the best means of providing these services and this education.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_107">Members have had an opportunity to read through the submissions. We will continue as we were earlier. Senator Boyhan is next.</p>
+        </speech>
+        <speech by="#VictorBoyhan" eId="spk_43">
+          <from>Senator Victor Boyhan<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_108">I welcome the IFA and Teagasc, and thank Ms Doyle particularly. I read the IFA's submission in detail although Ms Doyle did not have an opportunity to go through it in full. I congratulate Teagasc on the Sowing the Seeds of Support document. It is fantastic. There is clearly an overlap between the submissions of the two groups. We talk about farmers under stress. We did not need the OECD report to confirm what we already know. Those who are related to farmers and others in the agricultural world know what the issues are. We know there is an issue of uncertainty and isolation. There are a lot of complexities. Many farmers through no fault of their own live on their own. There is the burden of inheritance, the responsibility of keeping on the family tradition, not letting the place go to rack and ruin or not letting the place go out of the family, that famous expression. With that comes pressure. I spoke to a man recently who I thought was very lucky to have inherited 100 acres in Wicklow. He said that he was not and that all the rest of his siblings are gone, they have met partners, married and moved on. They have no responsibility. He felt he was left holding the can. He had an elderly mother who is now dead and he is alone, isolated and vulnerable. He feels that he cannot interact and that he really does not have social skills. What does that tell us? That is common. I have family members who are similar. There is no shame in all of that, because the one thing he could do was articulate it, and that is progress. </p>
+          <p eId="para_109"> There is no question inheritance and succession is a big issue. Fears around TB and TB itself are an issue. Taxation and the lack of tax compliance through not knowing or fear of raising their heads above the parapet with Revenue are issues of concern. There are the late payments for ACRES and the Department that reneged on commitments to farmers who had budgeted and expected the money to be paid in good stead. There are the greenways and cutting through farmers' lands. There are the issues around compulsory purchase. I could go on and on. On ACRES advance payments, a farmer told me he had received the advance payments only to have over 50% of them clawed back. Would that not give you nightmares, particularly if you had spent it? You are in real trouble then. We need good mental health for our farmers and for everybody. It impacts on our judgment and how we live and do our business. Just as we want for everybody else, we want our farmers to have the potential to be themselves, to be authentic, happy and content and to do the work they love on the land. </p>
+          <p eId="para_110"> The IFA and Teagasc to a lesser extent receive Government funding but I do not know how much they receive. I do not know how it is applied. The witnesses might share with me what the funding is, how it is distributed and whether they need more.</p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_44">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_111">I thank both organisations for coming in. The first thing we need to recognise is that seeing somebody now in the daytime is an unusual thing for a farmer. Farmers see no one from one end of the day to the other. They are on their own a lot of the time. Everyone has to try to get a speak here. I will ask a few straightforward questions. The IFA and other farming organisations would be in with the Department for the rights charter, say. Is there a section in that charter on mental health and wellbeing? If not, how was that never included for the farmers? Teagasc gets a good bit of Government funding. Has it a section that helps or deals with farmers who have mental health issues? We are looking at the genetics of cows and how to make a better calf and do everything but the person who produces all this food is the person no one seems to look at. What has Teagasc done on that?</p>
+        </speech>
+        <speech by="#PaulDaly" eId="spk_45" as="#An_Cathaoirleach_Gníomhach">
+          <from>Senator Paul Daly<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_112">I welcome Teagasc and the IFA. I am a client of Teagasc and a member of the IFA. For those of us who are neither, how do we get to those organisations? They are both doing great work and providing great information for their membership and clients. The vulnerable person out there is most likely someone who is not a member of an organisation, not going to IFA meetings and will not be a client of Teagasc. How do the witnesses propose we get to the people who are not engaging? The person who has the issue, who will need to engage, is the very one who is not going to engage. How do we get to the people who are not members, clients or whatever?</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_46">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_113">I concur with what all my colleagues have said. Stress seems to me to be number one, as a farmer myself. People have mentioned late payments. It is the anguish of the whole thing and the pressures that banks and co-ops have put on. A farmer will pay his bills when he gets his money, no problem at all. The problem is when he does not have that money to pay the bills yet he has to buy fertiliser and feed and look after his stock. The loneliness at night time in the winter months, when he is inside in the house looking out or when it is raining and one thing after another. There is a whole aspect there that is missing.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_47">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_114">There is a range of questions there.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Professor John McNamara<recordedTime time="2025-07-09T16:40:00+01:00"/></from>
+          <p eId="para_115">I will answer briefly and then hand over to my colleague. Senator Boyhan asked about the funding we get. I do not have the exact funding offhand. It is in our annual report, which is laid before the Houses of the Oireachtas. The funding is there. We have approximately 385 advisers in round figures. The focus of what we are doing is to maximise the contact between farmers and to target people towards mental health services. </p>
+          <p eId="para_116">Our role is to focus farmers in the right direction.</p>
+          <p eId="para_117"> The question on the charter of rights is something I will bring back to our senior management. We were asked what service we have. We mentioned On Feirm Ground in our statement. We are training up advisers. The Departments of Health and agriculture provide funding to assist farmers. We are integrating our service into advisory work.</p>
+          <p eId="para_118"> Senator Daly made a point about the hard-to-reach. About a third of farmers are clients of Teagasc, a third are clients of private consultants and a third are not in contact with anyone. Consultants are involved in On Feirm Ground as well, so we are seeking to maximise the reach. Farmers are self-employed and run their own affairs. We seek to encourage them through communications and events to come to talk to us. We are always trying to increase our numbers.</p>
+          <p eId="para_119"> Senator Brady mentioned the stress on farmers. I will hand over to my colleague on that matter. </p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Dr. David Meredith<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_120">I will pick up on a couple of issues and link one or two questions and statements that were made.</p>
+          <p eId="para_121"> Senator Boyhan mentioned the issue of TB as a key stressor, and Senator Daly asked a question about how we access farmers and hard-to-reach farmers outside of the representative organisations and Teagasc services. This is where engaging with others becomes very important. It is about involving vets in training programmes involving inspectors who are going out, from a range of different organisations, not just the Department, to work on farms with farmers to provide them with the skills and enable them to develop those skills through On Feirm Ground.</p>
+          <p eId="para_122"> Deputy Fitzmaurice asked whether there is a dedicated section within Teagasc working in this area. We have developed a dedicated research strand within the rural economy programme. I am the head of department for the agrifood business and spatial analysis unit. We have a dedicated research section within that, which comprises a number of researchers working on this issue. We collaborate very closely with our advisory and education colleagues in order to integrate the services we are developing into the day-to-day interactions we have with farmers. That is really important. We do not want to single out people or stigmatise mental health in any way. We want to integrate the supports we are providing into our day-to-day contacts with farmers.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mrs. Alice Doyle<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_123">My colleagues will answer some of the questions. I will take the first one, which came from Deputy Fitzmaurice, on the farmers' rights charter. I was not in on the drawing-up of that but I have read it numerous times. While I cannot say definitively there is anything about mental health in it or not, I can tell him that it obviously is not very clear in it because it is not coming to my mind at this point and if it were clear, it would be there. Having said that, a lot of the time, when we were trying to draw up the different conditions and terms within the charter, we looked at - I suppose covertly - how the Department pays us, the long time it takes to pay us and the stress that causes on farms. I am afraid we did not get much of a reaction on that. It is still a period fo 14 days for us to respond, but a lot longer for the Department to respond if there is an issue.</p>
+          <p eId="para_124"> My colleague Ms McGlynn will take the question from Senator Boyhan on funding.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Claire McGlynn<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_125">Last year, the IFA ran a successful farmer health check project, as members are all aware, in partnership with Croí and funded by the Department of agriculture. We thank the Department for this funding. We received €210,000 to carry out 1,000 health checks for last year's project. We carried this out very successfully. There was a huge uptake from farmers on the ground. We went back to the Department this year and have been funded with €250,000 for 2,000 health checks, which is doubling the scale of the project for this year. We committed to doing something different with our project. We wanted to meet farmers on the ground. We wanted to go to somewhere where they felt comfortable and where they felt they could engage with us. We set up in various marts throughout the country. This was not just for convenience. It was to meet the farmers there, so they felt comfortable, and where there was respect and trust between us as the IFA and Croí as the nurses.</p>
+          <p eId="para_126"> If we want to continue to reach vulnerable people and vulnerable farmers in these areas, something that we need to consider is whether funding is available to continue this project on a yearly basis. We have met these people on the ground. The recommendations and feedback from farmers have been exceptionally good. We have had a huge uptake. The IFA is very proud to have achieved such a successful project last year. We really look forward to carrying out this project again in the coming weeks.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mrs. Alice Doyle<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_127">Ms Roche, who is chair of the IFA farm family committee, will take the question on-----</p>
+        </speech>
+        <summary eId="sum_6">(Interruptions).</summary>
+        <speech by="#" eId="spk_53">
+          <from> Mrs. Alice Doyle<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_128">-----isolation and on how we got to these vulnerable people. </p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Teresa Roche<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_129">Our project has shown and identified that one of our most vulnerable sectors is agriculture. We have to accept and highlight that the mental health and well-being of our farmers is a priority in agriculture. For this most vulnerable sector, and the needs and challenges that farmers face, our project for the farmer health check programme highlighted at least 23 red flags that showed the challenges farmers face each day. These challenges can be anything from TB, which the Senator mentioned, and disease on farms, domestic issues, a lack of succession planning, accidents, illnesses that occur due to farm accidents and fatalities on farms, down to well-being issues. Those in this vulnerable sector are often the ones who do not access the services. We wanted to change behaviours and attitudes with our farmer health check programme. If you can change the behaviours and attitudes of farmers and families - this is open to men, women and their young adults - people can access this service in the most rural communities.</p>
+          <p eId="para_130"> As Ms McGlynn mentioned, we met people in the most isolated communities. We want to bring the services to them, so we can reach their needs. We are coming to them. We are offering a professional service and a full health check. We are all about preventative care and making people aware of their health, well-being and mental health. If we can improve their health and well-being, and their mental health, they will make better decisions on their farm, including better financial decisions and safer decisions on their farm through farm safety, and they will make a better income overall. Their farms will be productive in the long term. We want to show that farmers are very vulnerable to environmental factors. We can talk about storms and different issues on the ground that make us vulnerable. We have to protect our farming community overall.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_55">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_131">I will take the next group of four.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_56">
+          <from>Deputy Martin Kenny<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_132">I thank the representatives for their opening submissions. One thing that always strikes me----- </p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_57">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_133">The group is Deputies Kenny, Aird, Cooney and Newsome Drennan for the next four questions, in that order. </p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_58">
+          <from>Deputy Martin Kenny<recordedTime time="2025-07-09T16:50:00+01:00"/></from>
+          <p eId="para_134">One thing that always strikes me about agriculture and farming is we have this model within it where, for instance, there is social farming, whereby we bring people who have got mental health issues or are service users with intellectual disabilities out to a farm and out to nature, with animals and all of that, which is really positive for their mental health. Yet, we have this sort of contradiction within that whereby we have a crisis, or the elements of a crisis, for many people within the agricultural community who feel that farming is something that has negatively affected their mental health. I have often concluded, when looking at all of this, that it is really the aspect of trying to run the farm as a business that has the negative impact on farmers' mental health. It is the pressures of not being able to earn the kind of money they need to be able to earn, or the pressures of possibly a neighbour's farm going down with TB and "Am I next?" It is all of that that causes the pressure. The actual farming itself is very positive and very good for people's mental health because they are in nature. There is no clock to clock in and clock out. There are not the same pressures you have in other aspects of earning a living.</p>
+          <p eId="para_135">We need to recognise that there is a very positive element to it as well. Something I recognise and often is not talked about is the use or misuse of substances by farmers because of the stresses of all of that. Many farmers drink too much. Many farmers go on the bottle in the evening when they are home alone in order to quell the loneliness. Certainly within younger farmers there is a culture of substance misuse. The use of cocaine and all of these substances is rampant throughout the whole of our society and the agriculture sector and people who are involved in farming are not immune to it either. What research or what element have we looked at in the context of all of that and the impact it has on mental health?</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_59">
+          <from>Deputy William Aird<recordedTime time="2025-07-09T17:00:00+01:00"/></from>
+          <p eId="para_136">I welcome John, David, Alice, Teresa and Claire. I do not have a question for the IFA from the point of view of what it does because it does great work and if it was not for the IFA we would be in a lot poorer place than we are in at the moment. The IFA has monthly meetings and engages with farmers to try to encourage them to go in and we did the same in Macra. I started off in Macra and twice per year we went out with lists and knocked on doors. People did not have to be farmers. We were always trying to recruit people. Things like that were very positive.</p>
+          <p eId="para_137"> There are different issues that affect farmers out there and it will always be either the price or the weather, what is going well or what is going badly. The first thing I would always do during an engagement, whether it be with John or Mary, is to say to them the glass is half full. It is very difficult to do but we have to look at what happened and the history. Going back years when I was a little fella going to mass with my father, the marts were full. There was none of the hysteria of cattle tracing and everything. TB is worse today than it was then. With all the rules and regulations that came in, never mind statistics, I always ask the Department how many people exit when it brings in a new rule. Look at the statistics and there lies the problem. A cohort of farmers are robust and when the Department comes in, they do not give two hoots about it. If the Department does something, the farmers will stand up to the Department and take it on. However, many farmers roll over because they are quiet, honourable and decent people. I am telling you; there lies the problem. I have been a councillor since I was 18 years of age and of every farmer I have spoken to, when you drill down it always goes back to being terrified of the Department. A farmer gets a letter with the harp on it and the inspector goes into his or her yard with a green coat, spotless with the harp on it. It terrifies a lot of farmers. I want to say this because I believe in my heart that if we do not protect the vulnerable people out there, we will lose them. We have to surround them. I have done so, as have the witnesses, the IFA and Macra.</p>
+          <p eId="para_138"> I had an inspection approximately ten years ago. I would be robust enough. We finished up in the milking parlour. There was the inspector, myself and my dog. The inspector turned to me with his chart and told me I had a problem because the dog was not meant to be in the milking parlour. I told him he was wrong because it was a bitch. I told him the dog's name was Floss. I said to him, "You tell Floss not to be in the parlour." The inspector closed the chart and walked out through the door. Other people would have rolled over for that inspector.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:00:00+01:00"/></from>
+          <p eId="para_139">The Deputy needs to give the witnesses a chance to answer. Deputy Cooney is next.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_61">
+          <from>Deputy Joe Cooney<recordedTime time="2025-07-09T17:00:00+01:00"/></from>
+          <p eId="para_140">I thank the witnesses for coming in and compliment them on the fantastic work they do. We know farmers are self-employed. When one is self-employed, there is a lot of pressure. What needs to be looked at to help farmers and to help with their mental health issues is to simplify issues for farmers instead of complicating them. I do not know what influence the witnesses can have on this or how much they can do but that is what they should try to preach because that is important. We know farmers have enough to do without having to do all the paperwork as well. Red tape and criteria are getting a lot of farmers down. Another issue is payments being made on time. We are all well aware of the costs in farming nowadays. Farmers are self-employed and payments do not go in too often but it would help if payments were on time. Today, a farmer contacted me who is in his second year of waiting for ACRES payments and still has not received any. If issues such as this could be dealt with and sorted, it would help farmers' mental health in a major way. I thank the witnesses for coming today. </p>
+        </speech>
+        <speech by="#NatashaNewsomeDrennan" eId="spk_62">
+          <from>Deputy Natasha Newsome Drennan<recordedTime time="2025-07-09T17:00:00+01:00"/></from>
+          <p eId="para_141">I thank the witnesses for coming. The figure of one in four people being at risk of suicide is an alarming one. I can see how it happens. I have a farm at home and without Teagasc in Mullinavat most people would not have their paperwork done. For the older farmers it all just came in and was another headache. It was a headache they did not need. On a farm, one is isolated. There are financial worries. The costs of diesel, food and everything have increased and everything is a worry. As Deputy Kenny said, being on a farm is therapeutic. We all go down to the farm for a rest from everyday life but that can bring you down. Even though there is a TB helpline for ACRES, we need better helplines for people who have a problem so they can be calmed down and work through the problems. It might just be something as small as a helpline that will put people's minds at ease. </p>
+          <p eId="para_142"> In regard to the health checks operated by Croí, how did farmers react to them? I can imagine there are many farmers who do not call on the phone. They may be kind of stand-offish and say they do not have a problem and there is nothing wrong with them. How do we get more of those farmers to engage? Is there another way to target them by not calling it a "health check"? Can we engage with them in some other way so that they do not actually realise they are having this conversation? It is the farmers who are not picking up the phone who are the worry.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:00:00+01:00"/></from>
+          <p eId="para_143">I thank the Deputy. Who will field those questions?</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Dr. David Meredith<recordedTime time="2025-07-09T17:00:00+01:00"/></from>
+          <p eId="para_144">I thank the Deputy. Deputy Kenny highlighted a really interesting aspect to farming. On the one side, we see farming very positively but on the other side, it presents people with serious uncertainty. It is the uncertainty that causes the stress. Farmers are very good at managing what they know, their business and their stock but when we have uncertainty around things such as the weather and finances, these things can combine very quickly to cause fairly serious levels of stress. That is why, with Teagasc, we are very focused on preventing those situations arising. We are focused on identifying practical measures that could be put in place to help farmers to avoid situations where they get into financial difficulty.</p>
+          <p eId="para_145"> The issue raised by Deputy Cooney, which was farmers being self-employed, is really important because for the self-employed, access to social protection and healthcare can be very challenging. Improving access to social protection and healthcare can dramatically increase the health and well-being of farmers. We know this by looking at other countries where that has been put in place, such as France, Germany, Austria and so on. Within that, I include child and elder care. These are very important issues for farm households as well.</p>
+          <p eId="para_146"> Deputy Newsome Drennan asked how we will get farmers to engage. Teagasc ran the "Farmers have Hearts" programme which was a precursor to some of the work the IFA has been leading on during the past few years. That comes down to boots on the ground and people who are nurses being in a position to look at somebody and say that person is very flushed and is displaying symptoms that would indicate he or she needs a health check.</p>
+          <p eId="para_147">It was all about that personal interaction. That is important. It is great to see that there is continued support for that programme. </p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Professor John McNamara<recordedTime time="2025-07-09T17:10:00+01:00"/></from>
+          <p eId="para_148">I might add briefly to Dr. Meredith's comments. Deputy Kenny asked about substance use. I am involved in a farm mental health project in UCD. It has come up with figures for substance use and alcohol use. It is low, but excessive use is seen in a small minority. Farmers love being farmers and I agree it is the business aspect of farming that tends to lead to the issues.</p>
+          <p eId="para_149"> Moving on to Deputy Aird, I am delighted to hear that the glass is half full. Teagasc puts a lot of resources into supporting farmers on this and drawing down the maximum amount of funds. Recently, we established a specialised unit to deal with schemes. We are in constant dialogue with the Department of agriculture to make schemes more simplified and straightforward. Deputy Cooney made the same point about simplification.</p>
+          <p eId="para_150"> Regarding Deputy Newsome Drennan's point, one in four is an alarming figure. As I understand it, it is a study of 256 people on social media. If you read the study, on page 4 it talks about the representativity of the study. I wanted to make those points. </p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Alice Doyle<recordedTime time="2025-07-09T17:10:00+01:00"/></from>
+          <p eId="para_151">I will give a combined answer for all the members, while Ms Roche will take the specific question around substance abuse on farms, etc. On the first issue, the common thread is the great way of life it is on a farm. It is a great way of life if you can make an income but, unfortunately, the problem, as all the members have identified, is all the stressors resulting from not being able to make an income. The main cause for not having that income, which most of the farmers would identify, is the burden of regulation forcing them to have huge input costs, which reduces their income at the end of the day. Until we can reach some stage of simplification to reduce that burden on farmers, it is going to be very difficult for farmers to make an income. All the signs coming from the EU are not looking good on simplification for Irish farmers because we are not big farmers but we are a little bit bigger than the average European farmers when it comes to simplification. That is a huge burden for us, looking down the way.</p>
+          <p eId="para_152"> In regard to the irregular hours that farmers have, we can clock in and clock out, but we rarely clock out. That is the problem. Darragh McCullough had a good article this week in the <i>Irish Independent. </i>I do not always agree with him but this week he had a good article. He stated that the average farmer is very lucky if he or she can get 34 days a year off, out of 365 days, and that includes Sundays, whereas the average worker gets 163 days a year off. That highlights the burden of being tied to the farm. We can take a little time off but we cannot afford to take it off, and that is the problem. </p>
+          <p eId="para_153"> The delayed payments are a huge issue. That is again a common thread among all the members. I would throw it back to them and ask them, as Members, to put immense pressure on the Minister of agriculture and the Department in particular, so that when they are designing any more schemes, they ensure they are designed with the farmer in mind, with an income for the farmer, not bureaucracy and not designed on a laptop that has no relation to day-to-day living on the farm. If the committee could take back that message alone, it would be a great message to take back from us as farmers. </p>
+          <p eId="para_154"> In regard to social farming, no doubt Deputy Newsome Drennan is aware there is a very good social farmer close to where she lives. We have visited his farm on numerous occasions and it is a wonderful place to go to. We bring people with special needs there to give them relief. By going to visit his farm as an active farmer, I actually got a little bit of relief myself to see the way he looks after his clients. I wish to God we could do the same for all our farmers.</p>
+          <p eId="para_155"> Ms Roche will take the question on substance abuse. </p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Teresa Roche<recordedTime time="2025-07-09T17:10:00+01:00"/></from>
+          <p eId="para_156">Substance abuse is probably one of the main issues we hear about. Our farmer health check programme has highlighted the need for the most vulnerable group, as we have talked about, in agriculture. The programme is delivered by professional nurses from Croí. We were able to highlight any needs relating to substance abuse, whether alcohol or drugs, or domestic violence. We do a full mental health and well-being assessment as part of our criteria. We have a consent form and then a mental health assessment. In our assessment we are able to acknowledge any issues that are brought up. We have a referral service regarding any needs required by the individual and we follow them up within a month. We often follow them up twice or three times. It is not just a health check but a whole well-being check of the farmer. That goes for women as well. </p>
+          <p eId="para_157"> I am also chair of the health and vulnerable group for the Health and Safety Authority. We are able to highlight women's health in agriculture in that. Teagasc also deals with this, and Dr. Meredith will be able to bring this forward. We are partners also with Teagasc in the context of Coping with the Pressures of Farming. This is something that Teagasc has worked on very closely with the IFA. We modeled our farmer health check programme in partnership with the HSE and Teagasc. Everything is set up so that we are not working in silo but in partnership with other organisations that are all working in the best interest of the most vulnerable people. </p>
+          <p eId="para_158"> We cannot forget the young farmers out there. As was mentioned, this is a major issue. We want to be able to say that we are open to discussion on gambling, drug abuse and domestic violence. These farmer health check programmes need to be extended further. We need an umbrella resource or a Department working in partnership with all the other multisectors and stakeholders in place so that we can give the best services through counselling and well-being support, all under one umbrella. Funding just coming into one situation is not enough. We do not have access to enough services. People are coming forward and telling us their issues but it is all about us identifying the issues through changing behaviours and attitudes. We are meeting and acknowledging them and doing our best under the funding we have been given but we know there is a major issue out there. We are acknowledging it and we want the support of the Minister of State, Deputy Michael Healy-Rae, who has been a great support to farm safety. This is his portfolio and he is very interested in working with us on this. </p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_68">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:10:00+01:00"/></from>
+          <p eId="para_159">I am conscious that a vote has been called in the Dáil. It does not need to interfere with proceedings here if we get a Senator to run the remainder of the meeting. I will take a proposal from a Senator to take the Chair. There are ten or 15 minutes remaining and Senator Collins and Deputy Healy-Rae have not had an opportunity yet. Does Deputy Healy-Rae want to speak now before the Dáil vote? </p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_69">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-07-09T17:10:00+01:00"/></from>
+          <p eId="para_160">I will speak now. How long have I got? Two minutes, that is grand. I am sorry I was not here for the start of the presentation. I welcome the witnesses and thank them for coming in. It is important to have this interaction on behalf of farmers. </p>
+          <p eId="para_161"> I resent that an assertion was made that farmers were drinking too much at home and that was a big problem. I do not accept that they drink any more than people in any other sector. I am a publican myself and have been doing the bar for almost 50 years. I cannot say that farmers have more mind for drink than any other sector of the community. It is a bit unfair and we need to clarify that. I do not give into that. I very much resent the fact that Shane Ross housed many farmers for good because they cannot come and have the two or three pints that they used to have. I fought hard for them so that they could drink and drive on local roads and not on regional or primary roads. Sadly, that did not happen but I stand over that. Many things have been said here about farm payments. We have been here for the past three weeks asking Ministers and different people to do something about the ACRES payments. We still read today that 1,500 farmers have not received their ACRES payment for last year. As a committee, we should write to the Ministers and the Government involved and ask them please to pay these people half their money now and then sort out the difference after. There are people in a bad way, with 1,500 families waiting for their money. I am asking for support from the rest of the committee for that. </p>
+          <p eId="para_162">Farmers work on their own and that is the one thing against them. Many have stayed at home rather than coming out at all since Covid. The group of people I am talking about is aged 60 to 75 and they are very isolated. I feel very much for them. Teagasc is doing great work, and we need to do more for those people to ensure that they stay. They are very worried when they get a letter about not complying with rules and regulations. The Departments must do their job and be more approachable and treat the farmers better. If farmers are not there, and a lot of them are disappearing because the young fellas are not taking it on, towns and villages will suffer as well.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_70">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_163">Before I leave, I have one very quick question. I am glad the witnesses mentioned marts and using the mart as an opportunity and a platform. Many people are farming on their own. They come together from time to time with a discussion group or a farm walk. Is there a way of using those farm walks to engage with people to make sure they are made aware of the different services that are available? I will hand over to Senator Collins.</p>
+        </speech>
+        <summary eId="sum_7">
+          <i> Senator Paul Daly took the Chair.</i>
+        </summary>
+        <speech by="#JoanneCollins" eId="spk_71">
+          <from>Senator Joanne Collins<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_164">I thank the Cathaoirleach. He stole my line. It is great to hear about our witnesses meeting the farmers at the marts. Farmers are very sociable and the social side of it is a lot of what helps that helps them. I had a farmer on to me last week. He has a quad bike and he had an inspection on his farm. He got a bit of a grilling saying he had to have a licence and had to do a course. He was very worried about this, and questioning how and where he was going to do it. I am sure Teagasc does this already, but is there a way for farmers to engage in training at the marts where they are comfortable in their own environment and not on their own? Some farmers are straight down the line. For them, everything has to be according to the way it should be and others are a little bit more lax. One person might not need that but the neighbour is under stress and pressure thinking about it.</p>
+          <p eId="para_165"> Second, the filling out of forms seems to be a big issue that really burdens farmers. We have <i>mygov.ie</i> and <i>welfare.ie</i>. Why not have a <i>farm.ie</i> where everything is online? Many farmers might be in the older age group and not up to speed on technology, but they have sons and daughters and nieces and nephews or a neighbour who might be able to help. Could there be an organisation they could go to where they could go to get these forms done? If we could streamline these services it would take a little pressure off and farmers could go out and enjoy farming and not have to worry about all of this in the background.</p>
+        </speech>
+        <speech by="#PaulDaly" as="#An_Cathaoirleach_Gníomhach" eId="spk_72">
+          <from>An Cathaoirleach Gníomhach (Senator Paul Daly)<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_166">I will allow the remaining two members for two minutes each and our witnesses can answer everything in a wrap-up. </p>
+        </speech>
+        <speech by="#VictorBoyhan" eId="spk_73">
+          <from>Senator Victor Boyhan<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_167">I will follow up on what Ms Roche said about the IFA. If she does not have time here, she might furnish the committee with the information. She raised the issue of health checks and funding going up from €210,000 to €250,000, she might correct me if I am wrong, for this year. Ms Roche stated there were 23 red flags. She might send those on to us, as those are very important. What quantitative research has been done? We need value for money too. I am in the business of cutting money but that is a lot of bucks, and we need to be sure they are being used in the right way. We are following the cases Ms Roche identified, which are critically interesting, including the 23 red flags. I would like to get a better handle on them, so she might furnish them to the committee.</p>
+          <p eId="para_168"> Finally, last year the IFA held an event in the Fermoy mart, and I went down with a group of people as part of the green ribbon campaign. I ask the IFA and Teagasc to get behind that too. When we handed out hundreds of green ribbons, people looked at them and asked why they would want them. I told them they were for mental health awareness. There was a platform and big promotion outside it. It is an amazing mart. The witnesses will be familiar with the new one. Most of the people we met said they do not have mental health problems. I did not say they had, but there is a lot of denial involved. Eventually they would take the flag and stick it in their pocket. They were not even sure what they were talking about and wondered whether the flag could identify them in a certain way.</p>
+          <p eId="para_169"> There is real potential for the IFA to partner with the existing campaign, not to recreate it. That means IFA members, us, farmers, everybody wearing the green ribbon and identifying with it. It is very strongly promoted in the Houses of the Oireachtas. I ask that the witnesses reach out to the people involved, because that could be a big, bold initiative. It just needs to be expanded. </p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_74">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_170">I agree with Senator Boyhan about the ribbon. If farmers have a tractor run, they get a little sticker to put in the cab.. If every farmer could get even that sticker to put up on their tractor, the same as tax and insurance discs, that sticker symbolises what Senator Boyhan highlighted. It is about visibility when a person gets up on the tractor. There should be a helpline number on that sticker that is on the tractor, and it should be sent out with insurance every year. When a farmer insures his or her tractor, it should be part of the certificate that is sent through the insurance companies. When a person sticks up the insurance disc, he or she can stick it up. If he or she has a sticker up, so be it.</p>
+          <p eId="para_171"> I wish to through a couple of issues very quickly. The biggest event in the calendar of farmers, the national ploughing championships, is about to take place. Has the IFA a stand that is actually going to take farmers blood pressure and have a dedicated group of people to talk to them? Has the IFA supports in place at the ploughing championships to ensure that when he or she comes in the gate, every farmer needs to get his or her health checked? Is there going to be huge visibility around this and has the IFA the supports in place?</p>
+          <p eId="para_172"> The media has an awful impact on farmers’ mental health. This week a headline in one of the newspapers stated that that farmers could face jail regarding not appointing a supervisor when rebuilding their sheds. That headline in itself puts fear on top of the anxiety already there after losing a shed in the storm. Media play a role in the fear factor in this.</p>
+          <p eId="para_173"> The third question I have is about the new TB help forum. As part of the new TB task force, the Department said it is going to set up a helpline. Has Teagasc engaged with the Department regarding this helpline? Has it had an input into it? It is very important that all stakeholders should have an input into this.</p>
+        </speech>
+        <speech by="#PaulDaly" as="#An_Cathaoirleach_Gníomhach" eId="spk_75">
+          <from>An Cathaoirleach Gníomhach (Senator Paul Daly)<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_174">There were a number of questions there. We will have a final wrap-up because we are conscious of the fact we have another item to do and we have to be out of this room before 6 p.m.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Professor John McNamara<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_175">Deputy Healy-Rae is a publican. What he sees is what our research is showing, which is that farmers are low alcohol and substance users on average. Farmers are working in isolation. Excellent research has been done in the University of Galway regarding older farmers and meeting at marts. We are looking at ways to progress that work.</p>
+          <p eId="para_176"> Senator Collins talked about ATVs. There is competency-based training, based on QQI. There are numerous providers available. On filling out forms, there is a farm advisory service, with 800 advisers helping farmers personally to get them done..</p>
+          <p eId="para_177"> We are aware of the green ribbon campaign and we have supported it previously. We will certainly do it. Deputy Brady's point about a sticker is a follow-on from our leaflet. We would absolutely be happy to go with that.</p>
+          <p eId="para_178"> Regarding communications, we seek to help farmers to comply with relevant regulations. We never in any way wish to be alarmist from a Teagasc point of view.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Dr. David Meredith<recordedTime time="2025-07-09T17:20:00+01:00"/></from>
+          <p eId="para_179">Senator Collins made the point about improving accessibility to services or training, and that is really at the heart of a lot of what we are trying to do in terms of going to where the farmer is. It is about not putting any barriers or burdens in the way in addition to everything else farmers are trying to get on with.</p>
+          <p eId="para_180"> Senator Brady mentioned the TB helpline.</p>
+          <p eId="para_181">I cannot respond directly to it, but what I can say is that I and a number of colleagues within Teagasc have been working on looking at the human impact of TB. We are focusing in on how the inspection process works and the stresses that can bring into it. We are trying to identify ways of improving the communication skills of the various different people involved in that in order to provide farmers with the right knowledge at the right time and to take some of the uncertainty and stress out of this. We have an ongoing project in that area called COM TB, which is funded by the Department of agriculture, and we will have finished that up by the end of the year.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Alice Doyle<recordedTime time="2025-07-09T17:30:00+01:00"/></from>
+          <p eId="para_182">We will take a different issue each. On the first one, which I think Senator Brady mentioned, about partnership with other bodies, we partner with many other bodies all the time to try to get the work done. We have partnered with See Change on the green ribbon for years. We did it for 12 consecutive years. We did walks every year in the months of July, August and September, which we called the green ribbon walks. We have promoted that for a long time. We have people who sit on the RSA, so we work around the farm safety and how that links in with mental health and well-being. I think the committee spoke to some of the members earlier today. We deal with the HSE from time to time, when we make referrals and so on. We deal with Teagasc on an ongoing basis, with Professor McNamara and Dr. Meredith. We have dealt with Professor McNamara on numerous occasions.</p>
+          <p eId="para_183"> From an interesting point of view, the green ribbon was mentioned and tractor drives. Wexford, three weeks ago, had a green ribbon tractor drive across Mount Leinster, rising at dawn. It was similar to the walk into light. We drove into light, leaving Ballindaggin, driving across Mount Leinster and back to Ballindaggin. Every tractor had a green ribbon on it, and there was a social event afterwards. We have started the trend within IFA of having a tractor drive with green ribbons. I assure members we are in the space already.</p>
+          <p eId="para_184"> Ms Roche will deal with Senator Collins’s question about quads and quad training. She has been involved somewhat around that. She might like to take a number of other issues that have come up.</p>
+        </speech>
+        <speech by="#VictorBoyhan" eId="spk_79">
+          <from>Senator Victor Boyhan<recordedTime time="2025-07-09T17:30:00+01:00"/></from>
+          <p eId="para_185">The qualitative research.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Alice Doyle<recordedTime time="2025-07-09T17:30:00+01:00"/></from>
+          <p eId="para_186">She will deal with all that.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i>Deputy Aindrias Moynihan resumed the Chair.</i>
+        </summary>
+        <speech by="#" eId="spk_81">
+          <from> Ms Claire McGlynn<recordedTime time="2025-07-09T17:30:00+01:00"/></from>
+          <p eId="para_187">I can take the comment on the qualitative data. As part of our project, we wanted to come out at the end of it with statistics and figures to show how beneficial this was over the course of the project. I have a few statistics here that I can share. Some 41% of the participants had elevated blood pressures; 39% of the participants had not had their blood pressure checked in more than a year; and 2% stated that they have never had their blood pressure checked, which is a stark figure. Some 4.4% then required immediate medical attention. That requires the Croí nurses to send them directly to their local GP if they could get in or, if not, it was straight to the local hospital. Those were stark figures on our end. There were elevated blood pressure levels on the day when we spoke to the farmers on the ground. They were not aware that they had these underlying issues, so it was very important to have them there on the day. It was easy access for them to get that service. The importance of that project was that we had a follow-up on this. The nurses followed up with our participants three to four weeks after they had their checks. They made sure that the participant followed up with their doctor and there was this check. That is a very important part of our project and we want that to continue so that they get the full importance out of this check.</p>
+          <p eId="para_188"> Following on from that, we had the mental health assessment. There was a comment on how we get these vulnerable people to come into us to have a health check. To be honest, we did not have that issue. We had a huge demand for this service from day one. We had many different scenarios where wives were encouraging farmers - their husbands - to get in the queue. When they got into the queue, we had the consent form and the mental health questionnaire was part of their consent form. They were in the queue for their physical health check, which was their cholesterol and blood pressure check but, along with that, was their mental health assessment. That is where they felt comfortable in opening up and having that conversation with us, who were there are on the ground, and the farm family committee was there to help us. Some of the figures out of that are we had 58% of farmers who never or rarely felt relaxed; 49% never or rarely felt confident in themselves; and 46% never or rarely felt optimistic about the future. Those are figures we have taken from our project and we plan to build on this further as we progress this project throughout the year ahead. Those are the figures we have about that.</p>
+          <p eId="para_189"> On ploughing, we will be there in full force at the ploughing championship this year. We were there last year. It was actually our first event last year of the start of the project. We completed more than 350 checks during the course of the ploughing. We will be in full force again this year and we are looking forward to starting the project.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:30:00+01:00"/></from>
+          <p eId="para_190">I thank all for their contributions. It has been a wide-ranging discussion and we probed into many of the issues. Táimid an-bhuíoch díbh as an bplé a bhí againn agus as an eolas ar fad a chuir sibh ar fáil. Beidh an coiste ag breathnú air arís níos déanaí.</p>
+          <p eId="para_191"> I thank everyone for their contributions. We will now suspend the meeting to give an opportunity to move to the next stage of the meeting, the scrutiny of the COM.</p>
+        </speech>
+        <summary eId="sum_9">
+          <i>Sitting suspended at 5.36 p.m. and resumed at 5.41 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Scrutiny of EU Legislative Proposals<recordedTime time="2025-07-09T17:40:00+01:00"/></heading>
+        <speech by="#AindriasMoynihan" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_192">The agenda for this next session is a discussion on EU COM (2025) 236. Before I commence, I remind the witnesses that witnesses giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence they give to the committee. This means that witnesses have a full defence in any defamation action for anything said at the committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at the Chair's direction. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precinct are asked to note that they may not benefit from the same level of immunity from legal proceedings as witnesses giving evidence from within the parliamentary precincts and may consider it appropriate to take legal advice on the matter. Privilege against defamation does not apply to the publication of witnesses outside the proceedings held by the committee of any matters arising from the proceedings. </p>
+          <p eId="para_193"> We will now begin our discussion on COM (2025) 236, proposal for a regulation of European Parliament and the Council amending EU Regulation No. 2021/2115. The committee will hear from the following officials from the Department: Ms Sinéad McPhillips; Ms Gaëlle O'Flynn; and Mr. Cormac McGann. They have two minutes to deliver their opening statement and then we will proceed to questions and answers. </p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_194">I thank the Cathaoirleach for inviting us to discuss this proposal. </p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_195">Do the witnesses need five minutes for the opening statement? </p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_196">No. I can cut it, although it might be three minutes rather than two. I thank the committee for inviting my colleagues, Ms O'Flynn and Mr. McGann, and me to discuss this proposal. This is a relatively modest simplification proposal to the CAP following on from simplifications last year. The proposed amendments can be summarised as changes in the following broad headings: changes to the green architecture, including controls and eligibility; changes to include a crisis reserve and risk management tools within the CAP strategic plans; changes in relation to competitiveness and digitalisation; and changes to the administration of the CAP. In each of these four blocks, there are some mandatory changes that, if accepted, will automatically come into force. There are also voluntary adjustments and new measures, which member states can choose to implement if they wish. There are also changes to some CAP measures which are only implemented in certain member states. </p>
+          <p eId="para_197"> The focus of the proposals is on providing additional flexibilities to member states within the existing suite of CAP strategic plan, CSP, measures. However, it is important to note that there is no additional funding attached to this proposal. Therefore, the implementation of any new options would have to be funded from within the existing CSP envelope. As members will be aware, the financial allocation of €9.8 billion under the Irish CAP strategic plan is already fully committed for the current period of 2023 to 2027. Expenditure under the CSP amounted to €1.9 billion in CAP financial year 2024, for example. </p>
+          <p eId="para_198"> The proposal is proceeding through the ordinary legislative procedure involving the Commission, the Council, and the European Parliament. At present, the proposals are being discussed in the Council working group. When a general approach has been agreed at Council level, trilogues with the European Parliament will follow. We do not expect the final regulation to be adopted until the end of this year at the earliest. Any changes introduced will only be applicable for the last two years of the current CAP strategic plan, that is, 2026 and 2027. </p>
+          <p eId="para_199"> The Department has been engaging regularly with stakeholders, including the farm representative bodies, environmental NGOs and others, on this simplification proposal and will continue to do so as it progresses through the European system. We expect that overall, there will be limited changes for the Irish CAP strategic plan in the current round arising from this Commission proposal. Stakeholders are broadly in agreement that stability and certainty for farmers should be the priority for the final two years of implementation of the current plan.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_200">I will allocate four minutes per member. Is that agreed? Agreed. I call Deputy Fitzmaurice. </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_88">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_201">I thank the witnesses for coming in. In the context of this simplification, to put it simply, from everything I have read on what the Commissioner is on about, my understanding is that they are talking about smaller farms. There are lot of 5 ha and 10 ha farms in Europe. While there is this buzzword about making things simpler for farmers, it is not applicable to an awful lot of what we are at here in Ireland. There was talk about GAEC being looked at again, although I am hearing it will not be. There was also a piece in the newspapers today about a farmer extracting water under the water framework directive under an inspection with an inspector from the Department of agriculture. The inspector has to look to see whether more than 25 cu. m per day is being taken out of a private well under the BISS. It is said that that might be eliminated. What I am wondering-----</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_202">If the Deputy wishes, he can send that information into the committee. </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_90">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_203">My reading of this is that it is about simplifying things and not having inspections for farms of between 5 ha and 10 ha. Over that, in the witnesses’ opinion will any of the items that farmers are at today be simplified from their reading of the COM, to put it simply? I thank the witnesses for their time. </p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_204">I thank the Deputy. Overall, it is a fairly underwhelming simplification. I suppose it is good to get some ideas about what might be coming down the tracks in the next round of CAP. There is definitely a focus at European level on small farmers. Some 7 million of the 9 million farms in Europe are under 10 ha. There are some real simplifications for those farmers. Last year, there was a reform that meant those farms are no longer subject to conditionality and inspections, which is a much bigger deal for other member states than it is for us. In this proposal, there is a specific small farmers scheme payment, which was €1,250 but has now doubled to €2,500. While it would mean that the scheme is not introduced in Ireland, those farmers would get that payment instead of getting their direct payments of BISS and CRISS and so on. We do not think it is of major interest. </p>
+          <p eId="para_205"> With regard to the GAECs, there are some changes to the GAEC standards in the proposal. When we were being consulted by the Commission, we asked specifically that GAEC standards would take account of any national standards that are targeted towards the same objective as the GAEC. That has been included in the Commission's draft regulation. </p>
+        </speech>
+        <speech by="#MichaelFitzmaurice" eId="spk_92">
+          <from>Deputy Michael Fitzmaurice<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_206">What does that mean? </p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:40:00+01:00"/></from>
+          <p eId="para_207">It means that the proposal adds recognition of the national requirement when the conditionality standards are being set. We negotiated with the Commission for our own GAEC 2 standard in order that we could take account of national requirements for the protection of peat soils without having to duplicate that in the GAEC standard. We asked for more subsidiarity in setting our GAEC standards, including the ability to derogate from GAEC 2 on the basis that there were existing national and other EU regulations that covered those points, but the Commission made it clear that that was a red line and that GAEC 2 had to remain.</p>
+          <p eId="para_208">It has added this recognition of national standards when the GAEC 2 standards are being set.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_94">
+          <from>Deputy Martin Kenny<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_209">I thank the witnesses for their presentation. Following on from Deputy Fitzmaurice, my understanding is that much of this proposal is for small and minor changes. However, it indicates the direction of travel in respect of the new CAP and is, therefore, of some interest. Ms McPhillips mentioned GAEC 2 and there is talk of some eco schemes coming into that. There is also more recognition of organic farming. Organic farmers will automatically be considered for GAEC 1.</p>
+          <p eId="para_210"> Payments per animal or beehive were mentioned. In respect of all these simplifications, as they are called, will farmers have to do anything or is it just a process that happens at a level out there?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_211">I thank the Deputy for the questions. In many of those cases, these are optional measures for member states. Each member state has its CAP strategic plan, CSP, and has chosen from the toolbox of CAP measures. Some of the changes will allow them to do something slightly different within that toolbox. Some member states organise organic payments on a livestock unit basis. We do not. Instead, we do it on a per hectare basis. There will be some change options in that regard. There will be some compulsory changes and some optional changes. There are also some changes to measures that we in Ireland do not implement. Overall, the impact will be fairly modest.</p>
+        </speech>
+        <speech by="#MartinKenny" eId="spk_96">
+          <from>Deputy Martin Kenny<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_212">It is really giving an indication of what the menu may be in the next CAP rather than what will be implemented. Member states can work out the elements of it that they wish to embrace or leave.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_213">That is correct. There are probably some nuances. We are not at the end of the legislative process yet. My colleague, Mr. McGann, is attending working group parties in Brussels on a regular basis to discuss the details. The European Parliament will share its views. As I have said, we have heard the strong view of stakeholders that in the two years left in the current CAP strategic plan, we want to ensure the schemes work effectively with no delays and farmers understand well what is being asked of them by the current CSP. Any major change now would be disruptive.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_98">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_214">I was not here at the start of the meeting so I am not fully versed. I am sorry. I am interested but was held up.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_215">Will I move to the next speaker and come back to the Deputy?</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_100">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_216">Yes.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_101">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_217">I also missed the start of the meeting. We have all looked for simplification. Whether you are farming 10 ha or 70 ha, it should apply across the board. Unfortunately, it seems to be set up for the lesser farmer. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_218">I thank the Senator. There is certainly an emphasis on smaller farmers and reducing their administrative burden. I do not think it is fair to say that the whole thing is focused on farmers with a very small number of acres. This simplification follows from a significant simplification - I apologise for the repeated use of that word - package last year. These are technical tweaks. They allow member states some additional options within their CSPs. One of the main points is that they do not have any additional budget attached. Member states are free to choose to do some of these optional extras but it will involve cutting money elsewhere.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_103">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_219">Will the environmental aspect come as a single budget or will it be tied in? Are there two pillars?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_220">This proposal relates to the current CAP strategic plan and regulations. We expect before the end of July, and probably next week, proposals for the CAP post 2027. That will be a Commission communication giving its view on what should be in the CAP post 2027. The COM we are talking about now relates to the current strategic plan, which only runs until 2027. As I have said, if this goes through the legislative procedure, it will come into law at the end of this year and will apply for 2026 and 2027 only.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_105">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_221">Come 2028, will it need to be regulated, going forward?</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_222">We expect the Commission to come forward with proposals for the CAP post 2027. That will be done in parallel with the proposals for the next EU budget or multiannual financial framework, which will govern the period from 2028 to 2035.</p>
+        </speech>
+        <speech by="#ParaicBrady" eId="spk_107">
+          <from>Senator Paraic Brady<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_223">It will run until 2035.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_224">That will be a whole new legislative framework for the EU budget and the CAP. What the Minister has advocated for is a stable and robust CAP with as little overall change as possible because we believe we have a good CAP strategic plan and want the possibility of using those measures again. We will wait to see the proposal in that regard but that is a separate process from this COM.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_109">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_225">To be helpful to the Senator, the committee has scheduled a third meeting for September at which the CAP post 2027 will be on the agenda. We will have the opportunity to drill deeper then. There is an expectation that there will be another related COM.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_110">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_226">I am getting worried. Ms McPhillips mentioned that money would come out of some other scheme to be put into the small farmers' scheme. I remember that kind of carry-on at the council when we would ask to put in a road. The gun was put to your head to decide what road to take out. I am not in favour of this at all. I would not want to take money out of some other fellow's pocket so we could give it to the so-called small farmers. The opening statement from Ms McPhillips states, "Participants in a small farmer scheme would not be eligible for [basic income support for sustainability] BISS, [complementary redistributed income support for sustainability] CRISS or other direct payment schemes under the current rules." I am very worried about all of that. I cannot see that it is of benefit to many. I cannot visualise any fellow around me who falls into that category. I am worried. Perhaps Ms McPhillips would expand a little.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_227">I thank the Deputy. To explain, the small farmer scheme is an option in the current CSP. It is optional for member states to choose to implement it. We have not chosen to do so and the change under this COM will not make it compulsory in Ireland. It would be an option. As the Deputy said, taking the option would involve cutting funding elsewhere. That is the difficulty.</p>
+        </speech>
+        <speech by="#DannyHealyRae" eId="spk_112">
+          <from>Deputy Danny Healy-Rae<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_228">I say we should forget about it.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_113">
+          <from>Deputy William Aird<recordedTime time="2025-07-09T17:50:00+01:00"/></from>
+          <p eId="para_229">I thank the witnesses for coming in. There are 20,000 farmers in Ireland with less than 10 ha. Those 20,000 farmers are in those schemes. If those 20,000 farmers were offered something else, the money would have to come out of it. We will leave that as it is. Ms McPhillips can answer that question in a moment.</p>
+          <p eId="para_230"> I would like to ask Mr. McGann a question. He is out there on the front line. I am confused about why this is coming out at this stage. Does this have something today with the CAP Pillars 1 and 2 eventually coming down? We were told at one stage that we would know what will happen by July. Why this far into the current CAP is there a proposal for a simple change such as this? I am worried.</p>
+          <p eId="para_231">I cannot see what benefit it is to a farmer to change from where he is at present. There is certainly no financial gain. I am just learning in this, the same as everybody else. There was mention of beehives. My neighbour keeps a good few beehives. I have them on the farm but they are not mine. Is it something like that, so people could switch but the money would stay the same? Are they giving people an opportunity to do something like that? Is that what it is about? I would love if the officials were able to tell us because they have information and they know things we do not know about what is coming down the tracks. They are over there and getting it all from those people. I would be a little bit nervous. I would love to know their thoughts about what is going on over there.</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Sinéad McPhillips<recordedTime time="2025-07-09T18:00:00+01:00"/></from>
+          <p eId="para_232">There are around 20,000 farmers in Ireland with less than 10 ha, as the Deputy said. The simplification package last year meant that those farmers are now not subject to inspections or penalties on their basic payments and so on. The proposed change this year in respect of the small farm scheme, as I mentioned in reply to Deputy Danny Healy-Rae, is optional. We do not have to implement that in Ireland. Those farmers under 10 ha are currently qualifying for BIS, CRISS, eco-schemes, ACRES and so on. There is no barrier to them being in those schemes. Our view when we were setting up the CAP strategic plan was that farmers were better off in that full range of schemes rather than getting a single payment of €1,250, which has now moved to €2,500. We will certainly examine it but on the face of it, we do not think there is any advantage in moving to that system. On the proposals for the next round, as the Cathaoirleach said, there will be a fuller discussion when we have those proposals. Talking about it now would be speculation. I will bring Mr. McGann in now, particularly on the beehives point because he is the expert on that.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Cormac McGann<recordedTime time="2025-07-09T18:00:00+01:00"/></from>
+          <p eId="para_233">The first question was really why now for this particular simplification package. This is actually the second one and it has been part of a longer process that the Commission has been running since the start of this CAP. Some emergency measures were brought in during the first year of the CAP. Last year we had the omnibus simplification, derogating farmers on less than 10 ha from controls for conditionality. This is the next step in the process, additional measures that can be introduced within the current CAP for simplification. As to how they come up with what is in it, a long public consultation has been going on which the Commission has been running over the past two years. There were open public consultations where anybody could fill in the survey. There were expert interviews, including with members of our Department as well as the IFA and other experts in Ireland and across the European Union. There is also the European CAP network, which has been running thematic expert working groups to work through the problems, identify where they are and put forward solutions.</p>
+          <p eId="para_234"> On the beehives, that is just one of the many requests that have come from those stakeholder consultations, with people asking for more flexibility in how the current suite of tools are operated. People who are currently bound to take their payments on an area basis are saying it would be useful if they could make the payments per livestock unit or per beehive for certain types of intervention. That is the reason behind it. I hope that is helpful.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T18:00:00+01:00"/></from>
+          <p eId="para_235">The recommendation from our own adviser is that we are happy to move ahead with no need for further scrutiny on it. Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#WilliamAird" eId="spk_117">
+          <from>Deputy William Aird<recordedTime time="2025-07-09T18:00:00+01:00"/></from>
+          <p eId="para_236">I will just say that it is agreed with caution. That is all I will say.</p>
+        </speech>
+        <speech by="#AindriasMoynihan" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-07-09T18:00:00+01:00"/></from>
+          <p eId="para_237">I thank the officials for their contribution and information on the measures.</p>
+        </speech>
+        <summary eId="sum_10"> The joint committee adjourned at 6.04 p.m. until 3.30 p.m. on Wednesday, 16 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

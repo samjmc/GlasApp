@@ -22,6 +22,7 @@ import { eq, desc, asc, sql } from 'drizzle-orm';
 import { DailyNewsScraperJob } from '../../jobs/dailyNewsScraper';
 import { UnifiedTDScoringService } from '../../services/unifiedTDScoringService';
 import { convertELOToPercentage } from '../../utils/scoreConverter';
+import { getCachedOrFetch, CACHE_KEYS, CACHE_TTL } from '../../utils/serverCache';
 import fs from 'fs';
 import path from 'path';
 import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector } from '../../constants/ideology.js';
@@ -84,136 +85,140 @@ router.get('/widget', async (req, res, next) => {
       throw new Error('Database not connected');
     }
 
-    // Get all ACTIVE TDs from td_scores table, sorted by ELO
-    const { data: allTDs, error } = await supabaseDb
-      .from('td_scores')
-      .select('*')
-      .eq('is_active', true)
-      .order('overall_elo', { ascending: false });
-    
-    if (error) throw error;
-    
-    const validTDs = allTDs || [];
-    
-    // Debug logging
-    console.log(`Widget: Retrieved ${validTDs.length} TDs from database`);
-    if (validTDs.length > 0) {
-      console.log(`Sample TD:`, {
-        name: validTDs[0].politician_name,
-        elo: validTDs[0].overall_elo,
-        party: validTDs[0].party
-      });
-    }
-    
-    // Top 5 performers
-    const topPerformers = validTDs.slice(0, 5).map((td, idx) => ({
-      id: td.id,
-      name: td.politician_name,
-      constituency: td.constituency || 'Unknown',
-      party: td.party || 'Unknown',
-      image_url: td.image_url,
-      overall_elo: td.overall_elo || 1500,
-      overall_score: convertELOToPercentage(td.overall_elo || 1500),
-      score: convertELOToPercentage(td.overall_elo || 1500),
-      rank: idx + 1,
-      baseline_modifier: td.baseline_modifier || 1.00
-    }));
-    
-    // Bottom 5 performers
-    const bottomPerformers = validTDs.slice(-5).reverse().map((td, idx) => ({
-      id: td.id,
-      name: td.politician_name,
-      constituency: td.constituency || 'Unknown',
-      party: td.party || 'Unknown',
-      image_url: td.image_url,
-      overall_elo: td.overall_elo || 1400,
-      overall_score: convertELOToPercentage(td.overall_elo || 1400),
-      score: convertELOToPercentage(td.overall_elo || 1400),
-      rank: validTDs.length - idx,
-      baseline_modifier: td.baseline_modifier || 1.00
-    }));
-    
-    // Biggest movers - Calculate from td_score_history (last 30 days)
-    const thirtyDaysAgo = new Date();
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-    
-    const { data: recentChanges } = await supabaseDb
-      .from('td_score_history')
-      .select('politician_name, elo_change, article_title, created_at')
-      .gte('created_at', thirtyDaysAgo.toISOString())
-      .order('created_at', { ascending: false });
-    
-    // Aggregate changes by politician
-    const changesByPolitician = new Map<string, { totalChange: number; articles: string[] }>();
-    
-    (recentChanges || []).forEach((change: any) => {
-      const existing = changesByPolitician.get(change.politician_name) || { totalChange: 0, articles: [] };
-      existing.totalChange += change.elo_change || 0;
-      if (change.article_title && !existing.articles.includes(change.article_title)) {
-        existing.articles.push(change.article_title);
-      }
-      changesByPolitician.set(change.politician_name, existing);
-    });
-    
-    // Get TDs with biggest absolute changes
-    const moversArray = Array.from(changesByPolitician.entries())
-      .map(([name, data]) => {
-        const td = validTDs.find(t => t.politician_name === name);
-        const currentELO = td?.overall_elo || 1500;
-        const previousELO = currentELO - data.totalChange;
+    // Use cache for widget data (5 minute TTL)
+    const widgetData = await getCachedOrFetch(
+      CACHE_KEYS.TD_WIDGET,
+      async () => {
+        // Get all ACTIVE TDs from td_scores table, sorted by ELO
+        const { data: allTDs, error } = await supabaseDb
+          .from('td_scores')
+          .select('*')
+          .eq('is_active', true)
+          .order('overall_elo', { ascending: false });
         
-        // Convert ELO change to /100 scale change (preserve decimals)
-        const currentScoreUnrounded = (currentELO - 1000) / 10;
-        const previousScoreUnrounded = (previousELO - 1000) / 10;
-        const scoreChange = currentScoreUnrounded - previousScoreUnrounded;
-        const currentScore = Math.round(currentScoreUnrounded);
+        if (error) throw error;
+        
+        const validTDs = allTDs || [];
+        
+        // Debug logging
+        console.log(`Widget: Retrieved ${validTDs.length} TDs from database`);
+        
+        // Top 5 performers
+        const topPerformers = validTDs.slice(0, 5).map((td, idx) => ({
+          id: td.id,
+          name: td.politician_name,
+          constituency: td.constituency || 'Unknown',
+          party: td.party || 'Unknown',
+          image_url: td.image_url,
+          overall_elo: td.overall_elo || 1500,
+          overall_score: convertELOToPercentage(td.overall_elo || 1500),
+          score: convertELOToPercentage(td.overall_elo || 1500),
+          rank: idx + 1,
+          baseline_modifier: td.baseline_modifier || 1.00
+        }));
+        
+        // Bottom 5 performers
+        const bottomPerformers = validTDs.slice(-5).reverse().map((td, idx) => ({
+          id: td.id,
+          name: td.politician_name,
+          constituency: td.constituency || 'Unknown',
+          party: td.party || 'Unknown',
+          image_url: td.image_url,
+          overall_elo: td.overall_elo || 1400,
+          overall_score: convertELOToPercentage(td.overall_elo || 1400),
+          score: convertELOToPercentage(td.overall_elo || 1400),
+          rank: validTDs.length - idx,
+          baseline_modifier: td.baseline_modifier || 1.00
+        }));
+        
+        // Biggest movers - Calculate from td_score_history (last 30 days)
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        
+        const { data: recentChanges } = await supabaseDb
+          .from('td_score_history')
+          .select('politician_name, elo_change, article_title, created_at')
+          .gte('created_at', thirtyDaysAgo.toISOString())
+          .order('created_at', { ascending: false });
+        
+        // Aggregate changes by politician
+        const changesByPolitician = new Map<string, { totalChange: number; articles: string[] }>();
+        
+        (recentChanges || []).forEach((change: any) => {
+          const existing = changesByPolitician.get(change.politician_name) || { totalChange: 0, articles: [] };
+          existing.totalChange += change.elo_change || 0;
+          if (change.article_title && !existing.articles.includes(change.article_title)) {
+            existing.articles.push(change.article_title);
+          }
+          changesByPolitician.set(change.politician_name, existing);
+        });
+        
+        // Get TDs with biggest absolute changes
+        const moversArray = Array.from(changesByPolitician.entries())
+          .map(([name, data]) => {
+            const td = validTDs.find(t => t.politician_name === name);
+            const currentELO = td?.overall_elo || 1500;
+            const previousELO = currentELO - data.totalChange;
+            
+            // Convert ELO change to /100 scale change (preserve decimals)
+            const currentScoreUnrounded = (currentELO - 1000) / 10;
+            const previousScoreUnrounded = (previousELO - 1000) / 10;
+            const scoreChange = currentScoreUnrounded - previousScoreUnrounded;
+            const currentScore = Math.round(currentScoreUnrounded);
+            
+            return {
+              id: td?.id,
+              name,
+              image_url: td?.image_url,
+              change: data.totalChange,
+              change_out_of_100: parseFloat(scoreChange.toFixed(1)),
+              overall_elo: currentELO,
+              overall_score: currentScore,
+              score: currentScore,
+              party: td?.party || 'Unknown',
+              reason: data.totalChange > 0 
+                ? `Positive news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})` 
+                : `Negative news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})`,
+              articles: data.articles.length
+            };
+          })
+          .sort((a, b) => Math.abs(b.change_out_of_100) - Math.abs(a.change_out_of_100))
+          .slice(0, 6);
+        
+        const biggestMovers = moversArray;
+        
+        // Stats
+        const totalArticles = validTDs.reduce((sum, td) => sum + (td.total_stories || 0), 0);
+        
+        // Get news count from database
+        let newsCount = totalArticles;
+        try {
+          const { count } = await supabaseDb
+            .from('news_articles')
+            .select('*', { count: 'exact', head: true });
+          if (count) newsCount = count;
+        } catch (e) {
+          // Use fallback
+        }
         
         return {
-          id: td?.id,
-          name,
-          image_url: td?.image_url,
-          change: data.totalChange,  // Keep raw ELO for backend reference
-          change_out_of_100: parseFloat(scoreChange.toFixed(1)),  // /100 scale with 1 decimal
-          overall_elo: currentELO,
-          overall_score: currentScore,
-          score: currentScore,
-          party: td?.party || 'Unknown',
-          reason: data.totalChange > 0 
-            ? `Positive news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})` 
-            : `Negative news coverage (${data.articles.length} ${data.articles.length === 1 ? 'article' : 'articles'})`,
-          articles: data.articles.length
+          top_performers: topPerformers,
+          bottom_performers: bottomPerformers,
+          biggest_movers: biggestMovers,
+          stats: {
+            total_tds: validTDs.length,
+            articles_analyzed: newsCount,
+            last_update: new Date().toISOString(),
+            sources_active: 11
+          }
         };
-      })
-      .sort((a, b) => Math.abs(b.change_out_of_100) - Math.abs(a.change_out_of_100))
-      .slice(0, 6);  // Top 6 biggest movers
-    
-    const biggestMovers = moversArray;
-    
-    // Stats
-    const totalArticles = validTDs.reduce((sum, td) => sum + (td.total_stories || 0), 0);
-    
-    // Get news count from database
-    let newsCount = totalArticles;
-      try {
-        const { count } = await supabaseDb
-          .from('news_articles')
-          .select('*', { count: 'exact', head: true });
-        if (count) newsCount = count;
-      } catch (e) {
-        // Use fallback
-    }
+      },
+      CACHE_TTL.MEDIUM
+    );
     
     res.json({
       success: true,
-      top_performers: topPerformers,
-      bottom_performers: bottomPerformers,
-      biggest_movers: biggestMovers,
-      stats: {
-        total_tds: validTDs.length,  // Count of active TDs
-        articles_analyzed: newsCount,
-        last_update: new Date().toISOString(),
-        sources_active: 11  // Updated to 11 sources!
-      }
+      ...widgetData
     });
   } catch (error) {
     console.error('Widget endpoint error:', error);
@@ -282,22 +287,33 @@ router.get('/td-scores', async (req, res, next) => {
 
     const limit = Math.min(parseInt(req.query.limit as string) || 200, 500);
 
-    const { data: tds, error } = await supabaseDb
-      .from('td_scores')
-      .select('id, politician_name, party, constituency, image_url')
-      .eq('is_active', true)
-      .order('politician_name', { ascending: true })
-      .limit(limit);
+    // Use cache for TD scores (5 minute TTL)
+    const tdData = await getCachedOrFetch(
+      `${CACHE_KEYS.TD_SCORES}_${limit}`,
+      async () => {
+        const { data: tds, error } = await supabaseDb
+          .from('td_scores')
+          .select('id, politician_name, party, constituency, image_url')
+          .eq('is_active', true)
+          .order('politician_name', { ascending: true })
+          .limit(limit);
 
-    if (error) {
-      console.error('Error fetching TDs:', error);
-      return res.json({ success: true, scores: [] });
-    }
+        if (error) {
+          console.error('Error fetching TDs:', error);
+          return { scores: [], count: 0 };
+        }
+
+        return {
+          scores: tds || [],
+          count: tds?.length || 0
+        };
+      },
+      CACHE_TTL.MEDIUM
+    );
 
     res.json({
       success: true,
-      scores: tds || [],
-      count: tds?.length || 0
+      ...tdData
     });
 
   } catch (error) {

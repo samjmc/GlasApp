@@ -1,0 +1,971 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-16/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-16/debate"/>
+          <FRBRdate date="2025-07-16" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_education_and_youth"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-16/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-16/debate/mul@"/>
+          <FRBRdate date="2025-07-16" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-16/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-07-16/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-24" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="JoeConway" href="/ie/oireachtas/member/id/Joe-Conway.S.2025-01-29" showAs="Joe Conway"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="RuthCoppinger" href="/ie/oireachtas/member/id/Ruth-Coppinger.D.2014-05-23" showAs="Ruth Coppinger"/>
+        <TLCPerson eId="SharonKeogan" href="/ie/oireachtas/member/id/Sharon-Keogan.S.2020-03-30" showAs="Sharon Keogan"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCRole eId="An_Cathaoirleach_Gníomhach" href="/ie/oireachtas/role/office/an_cathaoirleach_gníomhach" showAs="An Cathaoirleach Gníomhach"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM OIDEACHAS AGUS ÓIGE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Education and Youth</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-16">Dé Céadaoin, 16 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-16">Wednesday, 16 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RuthCoppinger">Ruth Coppinger</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoeConway">Joe Conway</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JenCummins">Jen Cummins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ShaneCurley">Shane Curley</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LindaNelsonMurray">Linda Nelson Murray</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarethScahill">Gareth Scahill</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Senator Sharon Keogan.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#CathalCrowe">Teachta / Deputy Cathal Crowe sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i> The joint committee met in private session at 12.32 p.m., suspended at 12.59 p.m., and resumed in public session at 1.03 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>School Transport Scheme: Discussion<recordedTime time="2025-07-16T13:00:00+01:00"/></heading>
+        <summary eId="sum_7">
+          <i> Deputy Peter Roche took the Chair.</i>
+        </summary>
+        <speech by="#PeterRoche" as="#An_Cathaoirleach_Gníomhach" eId="spk_1">
+          <from>An Cathaoirleach Gníomhach (Deputy Peter Roche)<recordedTime time="2025-07-16T13:00:00+01:00"/></from>
+          <p eId="para_15">I have received apologies from Deputy Ryan O'Meara. Everyone is most welcome. I ask all who are attending remotely to mute themselves when not contributing so that we do not have any background noise or feedback. I remind all those attending to ensure their mobile phones are on silent mode or switched off. Members attending remotely are reminded of the constitutional requirements that in order to participate in public meetings members must physically be present within the confines of the Leinster House complex.</p>
+          <p eId="para_16"> As witnesses are within the precincts of the Leinster House complex, they are protected by absolute privilege in respect of the presentations they make to the committee. This means that they have an absolute defence against any defamation action for anything they say at the meeting. However, witnesses are expected not to abuse the privilege and it is my duty as an Cathaoirleach Gníomhach to ensure that this privilege is not abused. Therefore, if their statements are potentially defamatory in relation to any identifiable person or entity, witnesses will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> Members are reminded of the long-standing parliamentary practice that they should not comment on, criticise or make charges against a person outside the Houses, or an official, either by name or in such a way as to make him or her identifiable.</p>
+          <p eId="para_18"> On the agenda today is a discussion of the school transport scheme. I welcome from the Department of Education and Youth, Mr. Tomás Ó Ruairc, assistant secretary general, Ms Laura Leonard, acting principal officer, and Ms Sarah Heneghan, acting assistant principal officer; and from Bus Éireann, Mr. Stephen Kent, chief executive officer, and Ms Miriam Flynn, chief schools officer. I call Mr. Ó Ruairc of the Department to make his opening statement, for which he will have five minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T13:00:00+01:00"/></from>
+          <p eId="para_19">Ba mhaith liom mo bhuíochas a ghabháil leis an gCathaoirleach agus le baill an choiste as an gcuireadh labhairt inniu. Tá mo chomhghleacaithe in éineacht liom ón rannóg iompar scoile. I thank the Chair and members of the committee for the invitation to appear today. I am joined by my colleagues from the Department, Ms Laura Leonard, acting principal officer, and Ms Sarah Heneghan, acting assistant principal officer. </p>
+          <p eId="para_20"> The school transport scheme was established in 1967 to support children and young people in accessing education at a time when post-primary education had been made free to all. That remains a core benefit of the service. Today, its benefits extend to support parents and guardians who are accessing employment. It continues to support pupils living in rural and remote areas, children and young people with special educational needs, SEN, as well as supporting our national sustainability and climate goals.</p>
+          <p eId="para_21"> The scheme has expanded significantly over the past six years. In that time, the numbers of children and young people using the service have grown from under 120,000 pupils in 2018 to 173,000 pupils in 2024. This equates to an increase of almost 50%. More than 144,000 pupils travel on mainstream services, of whom just over 98,000 are eligible for transport and over 45,500 are concessionary or ineligible ticket holders. Over 22,000 pupils are travelling to and from school on services for children with special educational needs and under 7,000 pupils from Ukraine are also facilitated on school transport services. This growth has been especially marked in the area of special educational needs transport, which now represents almost 60% of the scheme’s total costs, while serving around 13% of pupils. This reflects the Department’s continued commitment to inclusive access and tailored supports.</p>
+          <p eId="para_22"> In relation to the school year 2025-26, applications closed on 25 April, with a final deadline of 6 June for payment or valid medical card details. In relation to new applications received for the coming school year, just under 35,000 were received on time and under 10,000 were received late. Over 162,000 pupils registered for mainstream school transport and have paid for transport for the 2025-26 school year. Eligibility for the scheme remains unchanged. Pupils are eligible if they live at least 3.2 km from their nearest primary school or 4.8 km from their nearest post-primary school. Concessionary tickets are issued where capacity permits, after all eligible pupils are accommodated. Where services are not available, remote area grants are offered. The temporary alleviation measures, TAMs, remain in place at post-primary level for pupils attending their second nearest school.</p>
+          <p eId="para_23"> Since 2018, expenditure has more than doubled, from €200 million in 2018 to €512 million in 2024. In budget 2025, the total allocation for school transport was €383 million. An additional €58 million under the cost-of-living supports was provided in order to maintain reduced fees. Despite this investment, however, the scheme continues to face growing cost pressures. These pressures are driven by increasing pupil numbers, the expanding SEN scheme and increases in transport costs. The school transport 2030 review, published in early 2024, represented the most comprehensive assessment of the scheme since its establishment in 1967. It was informed by extensive consultation with families, pupils, including those with special educational needs, and key stakeholders. The review outlines a path to expand access to an additional 100,000 pupils by 2030, while promoting sustainable transport and improving integration with the wider public transport network. A key outcome is to reduce the number of individual car journeys to school, supporting local communities and the national climate objectives.</p>
+          <p eId="para_24"> A phased implementation approach was adopted to manage increased demand in a planned and sustainable manner. This commenced with 14 pilot projects in the 2024-25 school year, developed in partnership with the Department of Transport and Bus Éireann. These pilots are being actively evaluated and will inform the national roll out of a reformed scheme.</p>
+          <p eId="para_25">Planning is also under way for additional pilot sites in 2025-26. We continue to roll out enhancements to technology and customer service and improvements have been made to enhance the customer experience, particularly during peak summer months. Work is under way on smart ticketing, digital route planning and improvements to the SEN transport process.</p>
+          <p eId="para_26"> In regard to capacity issues, as with other transport sectors, the school transport scheme continues to experience driver recruitment and fleet availability challenges. As part of a national focus on driver requirements, the Department facilitated a working group between the Department of Education and Youth, the Department of Transport, Bus Éireann and Education and Training Boards Ireland to increase the availability of drivers within both the school transport scheme and other public transport areas nationally through existing and potential training schemes. As a result of the work undertaken by that working group, a transport task force, chaired by the Department of Transport, has now been established. The aim of the task force is to work collaboratively to identify contributing factors to recruitment issues and put forward recommendations and measures to create a pipeline of workers to address these issues. I thank the committee again for the opportunity to discuss the school transport scheme and look forward to questions.</p>
+        </speech>
+        <speech by="#PeterRoche" as="#An_Cathaoirleach_Gníomhach" eId="spk_3">
+          <from>An Cathaoirleach Gníomhach (Deputy Peter Roche)<recordedTime time="2025-07-16T13:10:00+01:00"/></from>
+          <p eId="para_27">I thank Mr. Ó Ruairc. That was very efficient. I call Mr. Kent.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T13:10:00+01:00"/></from>
+          <p eId="para_28">I thank the Cathaoirleach and committee members. I am glad to be here today to update the committee on the school transport scheme. I am attending today with Ms Miriam Flynn, chief schools officer.</p>
+          <p eId="para_29"> Bus Éireann, as Ireland’s national bus company, operates the most extensive and varied public transport network in the country, and we do so with an unwavering commitment to safety. For more than 57 years, the company has operated the school transport scheme on behalf of the Department of Education and Youth, in accordance with its policies and guidelines on a cost recovery basis. Our dedicated and hard-working school transport team are located nationwide, operating out of 11 local offices, from Stranorlar in Donegal to Tralee in Kerry. They provide the local focus and knowledge of the network required to deliver services throughout Ireland, especially as the scheme continues to grow and diversify. Our school transport call centre handled more than 40,000 calls and an additional 21,600 webchats in 2024. We also work to support the crucial work of elected representatives in their representation of their constituents through the <i>reps@buseireann.ie</i> dedicated contact point, and our proactive and direct engagement with stakeholders at local level.</p>
+          <p eId="para_30"> For context, the school transport scheme, the largest such scheme in Europe, safely delivered 58 million student journeys in 2024, representing approximately 173,000 pupils per day, of whom 22,000 were special educational needs students. This was an increase of 9% on the previous year. Bus Éireann has delivered an increase of more than 43% in pupil numbers in the past five years alone. The scale and breadth of the scheme are unique. For instance, on a daily basis, the scheme now incorporates 8,200 vehicles across 10,600 routes, involving 1,400 transport operators. This summer, we have received more than 10,000 applications from pupils with special educational needs to attend the summer programme. The overall increased demand for further expansion across the scheme mean these figures will be surpassed in the coming years. This means further investment in the fleet and infrastructure, including support for private operators, is crucial and requires urgent consideration.</p>
+          <p eId="para_31"> Above all else, the safety of passengers is Bus Éireann’s greatest priority, especially when it comes to bringing schoolchildren to and from their education every day. Adhering to this priority, and with respect to our obligations, we processed 10,260 vetting applications in 2024 alone. Our immediate focus is to ensure services are in place for the new school year when school transport services recommence on 25 August. We have commenced issuing tickets which will continue for the period of the summer. I can confirm that, as of the end of last week, we had already issued 84,500 tickets for the coming school year, and we continue each week to issue more. We are at more than 90,000 at this point. Our teams are also planning new routes for mainstream and special educational needs services and procuring services to respond to additional demand.</p>
+          <p eId="para_32"> Looking forward, we are focused on working with the Department of Education and Youth as it progresses to deliver on the aims of the Department’s school transport 2030 review published last year, especially the goal of expanding the service by 100,000 students by 2030. The current scale of the scheme and the planned future expansion will result in a requirement for increased compliance and governance that will need to be supported by enhanced technology systems and associated investment in resources.</p>
+          <p eId="para_33"> Bus Éireann’s commitment to delivering its services in a more sustainable manner and supporting the Government’s 2030 decarbonisation goals will also require specific investment. Moreover, achieving this ambitious growth in the context of an already expanded service requires us to innovate and support solutions such as smart ticketing. This vital national service is crucial to the lives of many families and communities all over rural Ireland. It provides an opportunity to improve local communities by decongesting our roads, directly demonstrating the benefit of public transport to a new generation, provides a boost to local economies and facilitates all forms of workforce participation. This is, of course, subject to the availability of resources and continued investment to support the growth of the scheme is always necessary.</p>
+          <p eId="para_34"> I close by acknowledging all of the stakeholders and partners in the delivery of the scheme, including the Department of Education and Youth, the Department of Transport, the National Council for Special Education, the Garda National Vetting Bureau, the National Transport Authority, private contractors, our local schools team and representatives and, last but not least, the students and their families we serve each day. I thank the Cathaoirleach. I hope this statement has been of assistance to the committee.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i>Deputy Cathal Crowe resumed the Chair.</i>
+        </summary>
+        <speech by="#CathalCrowe" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T13:10:00+01:00"/></from>
+          <p eId="para_35">I thank our witnesses for their opening statements. Apologies; I had to nip out to speak in the Dáil Chamber. I thank Deputy Roche for filling the role of Chair in my absence. We will now proceed to members' questions. There are six minutes per member. We will allow 20 or 30 seconds of additional time to wrap up but please try to allow time for responses to questions within that speaking time. I call Deputy Currie.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_6">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-16T13:10:00+01:00"/></from>
+          <p eId="para_36">Sorry Chair, I swapped with Senator Scahill.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T13:10:00+01:00"/></from>
+          <p eId="para_37">That is fine. We will come back to you in a short while. I call Deputy Dempsey.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_8">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-16T13:10:00+01:00"/></from>
+          <p eId="para_38">I thank the witnesses for their presentations. They are much appreciated. It is fantastic to see an increase of almost 50% in such a short space of time. If we get to 270,000 pupils by 2030, what percentage of our primary and post-primary population will that be? Would that amount to about a quarter of children travelling on the school bus system? I do not think the witnesses will be able to tell me just yet, based on this year's figures, but in the previous school year, how many children were refused a place on a bus?</p>
+          <p eId="para_39"> The Minister for education announced the need for the NCSE to be notified by 1 October of pupils who want to be in a special class or special school. Are there plans to do the same with the school transport scheme? In most homes where there are two parents, they both go out to work. To find out in the middle of July, or well into August in some cases, whether a child has a bus place can be difficult when planning for work and transport. I hope that will be done much sooner in the year, so that parents can make plans.</p>
+          <p eId="para_40"> I will mention a local route, namely, Rathcore to Trim, for which people have campaigned for a long time. Concessionary tickets will no doubt issue, leaving some pupils and parents disappointed, as happens every year. The school transport review was published in early 2024, 18 months ago. I do not see a proper timeline for implementation other than by 2030. Those children will be out of school at that stage. There are 28 families on that route, including the O'Raffertys and the Connollys - I could name them all. The main issue is the recommendation that parents be allowed to choose where their kids go to school. They should not be penalised by this scheme. The 14 pilots that ran were mostly a success, I believe, and will probably run again. The Minister confirmed at the committee a couple of weeks ago that more will be added. There were none in Meath, which has one of the fastest growing populations in the country.</p>
+          <p eId="para_41">Does Mr. Ó Ruairc know whether Rathcore to Trim will be one of those routes? I know of another bus route operating in the Clonard-Killyon area that goes to Rochfortbridge and, again, there are 20 pupils on that route. Will they be part of the pilot as well?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_42">I will go through the questions and my colleagues may then deal with some points in more detail. In terms of the proportion of children, if it is 160,000 and there are about 900,000 children in the school system currently, it works out at roughly one in five. We are hitting peak demographics in the school system this year or next year at post-primary, and the peak is currently moving through primary. We would anticipate that the proportion will probably be slightly higher than the one in five figure. To be clear, those are estimates and we have to get more reliable data, but that is the current position.</p>
+          <p eId="para_43"> I was asked about the number refused. Working from memory, I think it is just over 2,200, which would include approximately 1,300 who are ineligible applicants. There are just under 900 eligible families for whom a route was not available, although they would have been given the remote area grant in that instance.</p>
+          <p eId="para_44"> Ms Heneghan might address the notification process if time allows. I would point out that the SEN application process is a rolling year-round application process, unlike the mainstream service, which creates challenges in terms of the notification that the Deputy is reasonably asking for. On the other position, which Ms Heneghan may also clarify, we have to know the school that the child will be in before we can allocate or even work on a school transport route. I appreciate that from the parents’ point of view, that seems like an extra timeline after waiting for the school place, but we have to know where they are going to be. Ms Heneghan might clarify that further.</p>
+          <p eId="para_45"> With regard to the pilots, we cannot get into the detail of commitments on specific routes here and now. Our ambition is to grow the number of pilots. The Government’s ambition is to increase the number of children on the scheme by 100,000 by 2030, as the Deputy noted. There are a number of factors impinging on that. In each given area where a pilot has been identified, a key factor has been the availability of contractor drivers and buses to actually follow through on the potential of the scheme. Where there is alignment with the PSO route, for example, the PSO route has to be amenable to that alignment, as happened in the Shannon-Limerick case as well.</p>
+          <p eId="para_46"> Those are the factors that we have to take into consideration. If we are not in receipt of the data already, we will happily take that and see what can be done in that context.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_47">With regard to SEN applications, the deadline for notification for enrolments has been announced by the Minister, as the Deputy said. We do not put a deadline on applications for SEN pupils applying for transport for the reason that the diagnosis sometimes comes in mid-year. They would not be eligible until they get their diagnosis and they would then send in the application form. They sometimes would not get a school place until mid-year. We would like to have all the applications in sometime in April to be in line with the mainstream, and that would give Bus Éireann more time to find the services. However, for the purposes of allowing the children to apply all year round, it gives more scope for parents to be able to apply. If the school places are being pushed back and pupils are getting their places earlier in the year, the applications for transport will come in earlier in the year and we will then be able to deal with them. We sanction them as quickly as we can, as soon as the applications come in.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_11">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_48">Gabhaim buíochas leis na finnéithe. Táimid an-bhuíoch. I have a question about a particular condition of the school transport scheme. A parent in my constituency of Kildare South emailed me. I have sent on the emails to the Department but have yet to receive an answer. She is in a particular situation where her two children are going to two separate schools, and one child is eligible for the school transport scheme but the other child is not because the school is further away. The school bus is going in that direction anyway but, as far as she is aware, both of her children cannot access the scheme. Maybe we are getting it wrong. Can the witnesses clarify why both children are not eligible for the scheme?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Miriam Flynn<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_49">It is hard to answer without knowing the exact individual detail. I am happy to look into it in more detail for the Deputy and revert back. The scheme is based on eligibility guidelines, so it is important to know whether it is a primary or a post-primary pupil that the Deputy is talking about. If it is primary, the pupil needs to be within 3.2 km and attending their nearest school, and if it is post-primary, it is 4.8 km.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_13">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_50">We are aware of that. When the children are not accepted into the same school and cannot get a place in the nearest school, can they then apply for the next closest school, even if it is outside the criteria?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_51">If someone applies for the closest school and there are no places, they can contact the school transport section of the Department - the details are on our website - and let the Department know they were refused a place in the school. We will deem the pupil eligible for the second-closest school. That pupil will be eligible under the school transport scheme for the second-closest school if the parent can provide confirmation that she did apply by the deadline dates for enrolment.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_15">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_52">That is brilliant. I have emailed a few times but have not had any answer.</p>
+          <p eId="para_53"> Tá ceist agam maidir leis na páistí atá ag freastal ar scoileanna T1. I am looking for clarification. As we are aware, the demand for Irish language-medium schools is increasing. I know of situations where children have not been accepted into their closest Gaelscoil, although I understand this is under a different rule. If they are not accepted and can prove that, are they eligible for school transport to the next school? Are the criteria different for Gaelscoileanna? Is there a set number of kilometres or anything like that?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_54">No, it is the same. We have a case management system that is on our website. If they want to submit a query through the case management system, it will get to the correct person.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_17">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_55">Is there an update regarding the progress on the programme for Government commitment to remove the age requirement for bus drivers? Is that part of the work agenda of the transport task force? Can we expect the findings of the task force on driver recruitment to be published?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T13:20:00+01:00"/></from>
+          <p eId="para_56">Within Bus Éireann, we know it is part of the programme for Government and, of course, we will be collaborating and co-operating with any of the research that is going to be required. It has not been specifically called out within the task force but, as the remit has gone, at the moment, the task force typically has been more focused on recruiting. It has a lot of individual members, including people from the NTA, the private operators, the Department of justice and the RSA. We have been focusing in the meetings in the last couple of weeks on how to unlock all of the issues that might lead to the generation of people who can get D licences. That has been the remit.</p>
+          <p eId="para_57"> In terms of our own remit, and given the Deputy is asking the question in relation to the research, this is always under review from our perspective. We looked at it in 2022. There are two aspects that need to be considered from our perspective. One is demand. At the moment, we are trying to deal with the issue of demand through the task force. We see that as a better mechanism at the moment because there are a lot of things that we can unlock. We are growing. We are aware that BusConnects is coming, Connecting Ireland is coming and the school transport scheme is coming. We are working through all of that with the Government, so we are not on our own on that. In fairness, we are getting a lot of support. We also have national campaigns. We are doing that across our own sector, through our own business, and that is moving.</p>
+          <p eId="para_58"> The second part of it is trying to manage the areas of risk and safety. We are continuing to air those issues, particularly with the Departments, so that everybody is fully aware of the issues. In 2022, when our board reviewed this whole issue, given there was some demand for drivers, we had to be aware that there were at least four studies out there explaining to people that there is a risk when you extend the age. We took that on board and we held to our policy. In 2024, we liaised with the Department of Transport again and, through the auspices of the RSA, it a separate piece of research was undertaken by Professor O'Neill. Again, the conclusions indicated that there is a high risk once you extend the age and, to a large extent, that was probably supporting the strategy that we had. We have that study, and there are also other studies.</p>
+          <p eId="para_59"> The Deputy can imagine seeing this through the perspective and lens of bus operators or the boards that make the decision. There was nothing in any of the evidence that was presented to us that would suggest we should move our policy in the short term. In 2025, however, as part of what Professor O'Neill did, he looked in particular at the fact that the research referred to large buses and school bus drivers. Of course, one of the issues that we are currently aware of is that over one third of the school transport scheme is delivered by taxis or vehicles that carry fewer than eight people. What we are doing with the board is trying to see whether there is an opportunity to address demand by looking at that cohort, given there may be risk. However, that is not going to be without its own risk assessment or consideration, so that is a piece of work that we are doing.</p>
+          <p eId="para_60"> There is a moving piece in looking at this. We are all trying to make an informed decision. Ultimately, it is about safety and, from my perspective, particularly with regard to oversight of the scheme and everything we are doing in the operation, we are simply trying to make sure that it is as safe as possible.</p>
+          <p eId="para_61">I am glad that I am able to say that there have been no incidents to date. Equally, we are trying to make sure that if we make any change in policy, we have good evidence and a lot of supporting things to move so that we do not create endangerment for anybody.</p>
+          <p eId="para_62"> The last piece is what I opened with. If there is a further piece of work that is going to be done with the Department of Transport, or with the Department of Education and Youth, to look at anything that would move this forward, we will participate in that as wholly as we can.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_19">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_63">The €58 million cost-of-living support package has been mentioned. If the Department cannot find that money in the budget this year, are school transport fees or charges likely to increase from next September?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_64">In a word, yes.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_65">The Estimates are very much part of the budget process. It is the Government's decision as to whether cost-of-living measures will be implemented and we must manage the overall scheme in that context.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_22">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_66">The Parliamentary Budget Office, PBO, has supplied the committee with a note that says it is projected the Department will transport 180,800 students this year. Is that the Department's figure as well? </p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_67">That is the initial estimate, yes. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_24">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_68">How many applications has there been overall? </p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_69">As many as 162,000 applications have been submitted and paid on time. On how many of those applications will turn into seats or tickets, it depends on whether there are services available in that particular area.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_26">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_70">Does the Department know what the trajectory to 2030 will look like year on year? It is great to see an increase in recent years and to hear there is a hope we might get beyond that this year, but the aim is 260,000 by 2030. Can the Department officials indicate what that will look like year on year?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_71">Yes. As part of the review process, a business case was conducted and then as part of the business case, there are projections year on year to have 260,000 pupils on transport by 2030.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_28">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_72">Will 181,000 seats be provided this September? </p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_73">The number is slightly above that amount. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_30">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_74">Does Ms Leonard have the exact figure? </p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_75">I do not have it off the top my head. Sorry, Deputy. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_32">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_76">Is the figure somewhere above 181,000? </p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_77">Yes. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_34">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_78">I wish to draw attention to the fact that school transport is being discussed here, and I dare not be in the shoes of the Department officials, because it dominates our world for the number of weeks when people receive or do not receive tickets. There have been 4,500 calls and 21,600 webchats, and it is welcome to have that facility. I would say that there is a lot of frustration in those calls and, in my experience, they largely relate to eligibility versus concessionary. We appreciate that people must pay and register on time but I have not seen movement on the significant piece of eligibility criteria. One out of three applicants to the scheme does not meet the eligibility criteria. It was one of the key pieces in a review that started in 2021. It is now 2025 and 18 months after the review was published, yet there has been no movement on that piece. There are 10,500 routes but only 14 pilot schemes, the appointment of a consultant and the establishment of a working group. To me, all that does not seem like a system that is changing and meeting the proposals of its own review. Why is progress so slow? What, if anything, will change for this September and in the short number of years ahead?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_79">I will draw on both of the questions, build on the answers provided by my colleague and address the second question as well. The Government's big ambition was very clearly set out in the decision made last year to increase numbers by 100,000 by 2030. When the Minister was before this committee some weeks ago, she spoke about how it is a multi-annual process to get to that point. Growth will be challenging in terms of the availability of drivers in particular areas and alignment with the PSO routes that are needed with school transport, which is a project in and of itself and the Department of Transport is leading on that. Yes, 14 pilot schemes might seem like a small number but there is also the increase of approximately 12,000 since the benchmark started, which is not insignificant.</p>
+          <p eId="para_80"> The first step to reduce the eligibility criteria to 1 km for primary schools and 2 km for post-primary schools has been the pilot schemes. As part of the Estimates process each year, including this year, our goal is to get the maximum possible resources to support further growth in the number of pilot schemes, further alignment and the further role of technology that Bus Éireann will always be responsible for implementing.</p>
+          <p eId="para_81"> The challenges are very real. The resources are one challenge in terms of the current budgetary context. In addition, there is the labour market supply challenge, which the task force has been established to address, particularly end to end. For example, the RSA, I think, is part of that task force as well. It is not just a matter of increasing the provision of training programmes, increasing the numbers on training programmes or enhancing the eligibility for those training programmes. It is about making sure that when people complete training programmes, they wind up driving buses here in Ireland. Given the labour market challenge that we are experiencing, those are real challenges.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_82">In one word, what is the key pinch point? Is it drivers, fleet issues or resources?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_83">It is a number of factors, not just one. They are all part of the equation.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_38" as="#An_Cathaoirleach_Gníomhach">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-16T13:30:00+01:00"/></from>
+          <p eId="para_84">I welcome the witnesses. I have a scenario that I want to put to Mr. Kent. We all have individual cases, demands and representations. In my neck of the woods, east Galway, there is a young child who is moving on to secondary school. For all of his childhood years attending national school, he was collected at a point 2.8 km from his family home. The parents applied for school transport and were advised recently that the collection point is being discontinued. As a consequence, that child is now forced to walk or cycle 5.1 km one way or 10.2 km a day to get to school. Regrettably, the family do not have access to a car, which is a pretty prevalent situation. That is an anomaly for them. To reach school, the child will have to travel on quite a lot of unsafe, rural roads and a main regional road. What this family are being forced to do is completely unsafe and unsustainable. I am looking at this issue from an inclusion point of view and wondering how children in that scenario can be facilitated. Our offices were contacted in this regard. On 5 June, we contacted Bus Éireann but got no response to our query or request. We followed up in July but we still did not get an acknowledgment. I can understand the volume of requests and demand and how the Department is trying to square all of these things to provide transport to a very high standard, which involves dealing with and managing people and private operators. I compliment the Department on its very high standards. The case I cited may not be isolated but I plead for support on behalf of the family concerned. Why would that collection point have been discontinued? Why is a child expected to travel 5.1 km to get to school?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_85">Ms Flynn will talk about the individual case in a moment, but I will make two points first. If inquiries came in and the Deputy did not get a response, we will address that immediately. He is entitled to a response, and we will have to get it if it is outstanding. I preface this by saying that because of the timeframe in which the Deputy brought it in, the last response is usually "No". That is because they are always trying to find a solution. I say that genuinely. It goes around the business. Rather than saying "No" at a particular point, we try to figure out whether there is emerging demand, whether there are more children on a route or whether it would be possible to bend the route and go a slightly different way in order to accommodate a child. Sometimes, we do not know until we have information on all the demand in and processed. Therefore, in the period the Deputy made his inquiry, the portal would have been closed and it is now that we are putting the routes together. That may be a partial defence but the Deputy should still have got a holding statement. We will ensure that is done.</p>
+          <p eId="para_86"> I am not familiar with the individual case. I do not know whether Ms Flynn is. Does she want to add anything to what I said? Home pick-up is always problematic because we do not guarantee it under the scheme.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_40" as="#An_Cathaoirleach_Gníomhach">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_87">This would not be a home pick-up. It would be 2.8 km from the home.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_88">That is another issue.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Miriam Flynn<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_89">I reiterate Mr. Kent's comments and apologise if there was a delay in responding to the Deputy's query. We do not always have the information about what way the routes will go, what the capacity is and what the level of demand is for particular routes. I do not know the exact details of this route, but I am happy to look at the details. Routes are planned to facilitate pupils who are deemed eligible under the scheme, and that is what would drive a change to a route. If there is an increase in the number of eligible pupils, the route may need to be looked at in that context and reconfigurated to ensure pupils are given a service within the guidelines. I am certainly happy to look at this particular one, as I said, with the local manager to see whether any configuration of local routes is ongoing. In some cases, we may be looking at additional capacity and that could be the reason the Deputy has not received a definitive response at this time. We will certainly look at it.</p>
+          <p eId="para_90"> To answer the Deputy's general point about what would result in a change in pick-up point or a change to a route, it would be if a rerouting was required to cater for pupils who were deemed eligible under the scheme. That would be the primary reason for something like that. We get these requests and I commend the local team. They really do look at every option, such as trying to swap people from one service to another or to find some kind facilitation to provide services for people as close as possible to a pick-up point.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_43" as="#An_Cathaoirleach_Gníomhach">
+          <from>Deputy Peter Roche<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_91">I can send the detail to Ms Flynn.</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_92">Will the Deputy also clarify whether the child is ineligible or if it is a concessionary ticket, because that can have some bearing on the routing?</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_45">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_93">I thank the witnesses for being here. I acknowledge the scale of the work they are managing between Bus Éireann, the Department of Education and Youth, the NCSE and all stakeholders. I welcome the review that has been undertaken. It is my understanding that it will lead to a reduction in the distance criteria and an increase eligibility, but I think the witnesses are saying that the challenges they are outlining today are important for meeting that demand.</p>
+          <p eId="para_94"> I get a lot of emails about school transport, more than I used to. They relate to special education or children with additional needs, but also to a particular area in my constituency, Tyrrelstown and Mulhuddart. I understand why. It is because, at the moment, in that school planning area there is a capacity deficit of more than 1,200 post-primary school places and 60% of the students leave the area to go to school elsewhere. This paints a picture of a lot of student mobility within my constituency. That area is growing rapidly, so students are facing long commutes and they do not have the public transport links to get to the schools in which they are securing places.</p>
+          <p eId="para_95"> I bring to the witnesses' attention to a matter I have raised on several occasions. It is that there are 11 families currently in that area who did not get places in the local school and are travelling to the Ongar school planning area, which is 9 km away. However, they have not been deemed eligible for school transport on the basis that it is not technically their closest school. The school they are attending in Ongar is earmarked to move to their area in 2027. I do not agree that the school in Ongar should be kept and that a separate one should be opened in their area, but that is what is planned. There does not seem to be any forward thinking to accommodate those parents. There is no public transport link to bring them to the school they are attending, which is earmarked to move into their community in two years' time. For the students who are attending that school, if it does move to the new area, there is no forward planning. No assurances are being given to those parents that there will be a school bus going in the opposite direction. All this is leading to unnecessary anxiety among families. We should be accommodating those 11 families on the 9 km school route from Tyrrelstown and Hollywoodrath to Ongar. Assurances should be given that if the school is moved, there will be a route going in the opposite direction.</p>
+          <p eId="para_96"> I will make one other point about the pressure on special schools to manage all the bus escorts and various routes arriving to their schools. Could there be more administrative support for doing? It currently falls to the principals and primarily deputy principals of those schools? More support would be good. There are things that come up consistently from parents such as differences of opinion as to whether things have been paid or not from an administrative point of view and that seems to get in the way of securing concessionary tickets. How can we make this more efficient for parents? It seems to become another thing, especially for parents of children with additional needs, where there is more pressure on them.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_97">As Ms Heneghan outlined, if there is a capacity issue in the nearest school and a pupil has to go to another school, there is recourse to the Department. That is what we have opened up to say to the first question. That is an avenue that can be explored. Whether it meets the criterion of being the next nearest school is the question. I do not know whether the school 9 km away is the third or fourth nearest school. It might have to be clarified if that is the question.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_47">
+          <from>Deputy Emer Currie<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_98">I believe it is. However, at the same time we are talking about children from that area going to all the different kinds of schools just to get a school place. It should not get in the way of those 11 families. When there are 11 families from the same area going to the same school, it makes sense that there would a link. There is resistance all the time, and it feels like a bureaucratic resistance rather than a commonsense solution.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T13:40:00+01:00"/></from>
+          <p eId="para_99">Under the rules of the scheme, children are eligible for transport to their closest school. If it is full or they have not been able to get into it, there is an avenue. As I said previously, this is on our website. They can make contact with the Department to say their closest school is full. If they can prove they enrolled on time and were not accepted, they will be deemed eligible for transport to the second closest school. We can definitely follow up on that. I agree about the schools moving. We are seeing that in different areas, where schools move into a temporary location and then move back to a permanent location. If, however, children are deemed eligible for transport to a school and the school moves, they will retain that eligibility for the rest of their years in the school.</p>
+          <p eId="para_100"> A 5% administration fee is paid to the schools for the number of bus escorts they get.</p>
+          <p eId="para_101">We understand it is a huge administrative burden for them. However, that administration cost for school bus escorts is paid to them when the remittance is made.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_49">
+          <from>Senator Joe Conway<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_102">I thank Mr. Kent and the team. I want to address a couple of questions to Mr. Ó Ruairc. Earlier, he referred to 10,000 late applications. Will he provide a brief resumé on how applications are processed and what the final implication usually is?</p>
+          <p eId="para_103"> Will someone enlighten me as to the remote area grant scheme? I am not familiar with it. Afterwards, I will address a couple of other matters.</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_104">I will lead off on both of those and my colleagues will add further detail. The 10,000 applications are a cause of concern for us on an ongoing basis. This is notwithstanding the fact that there is a comprehensive communications campaign. We had a session in the audiovisual room here in the Leinster House complex on the matter.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_51">
+          <from>Senator Joe Conway<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_105">It seems a huge number.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_106">The figure last year was similar, if I remember correctly. We do not want late applications. The communications campaign we ran last year and this year was designed to try to draw people's attention to the deadlines relating to applications and payments. Going back to Deputy Currie's question on whether it is possible to do it within the timeline, it can be confusing sometimes in terms of applications having to be made on one date and payment on another. For the first time this year, it is now possible to apply and pay at the same time. That was not possible before. Applications that are eligible and paid on time are top of the queue. I will ask my colleagues to speak in more detail on applications that come after the other categories and on the remote area grant. Will Ms Heneghan add to that in regard to the late applications?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_107">Ms Flynn might come in on this as well, but late applications for eligible pupils are assessed after all other eligible and concessionary pupils who have paid on time have been facilitated. Bus Éireann is onboarding children who have applied and paid on time. Once this has been done, it will start to look at the late applications from eligible pupils. Those who apply and pay on time should be given precedence. As Mr. Ó Ruairc said, we have a huge communications campaign in the newspapers and on radio and social media. Bus Éireann will e-mail families nine times over the period. It will also send text messages to remind them that they need to pay by the deadline date. They have been given more than enough information and time to pay.</p>
+          <p eId="para_108"> The remote area grant relates to people who are eligible and who apply for transport in circumstances where there is no service in their area. If a person lives in a remote area and it is not possible to put a service on for them, they will be deemed eligible for the grant, which is paid on the basis of on the number of days on which a pupil attends school. At the end of the school year, we send a list of pupils who are eligible for this grant to schools. A school will indicate the number of days on which a child attended and we will pay the family on that basis.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_54">
+          <from>Senator Joe Conway<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_109">What do they use that money for?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_110">It is to go towards the cost of transporting their children to school during the year.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_56">
+          <from>Senator Joe Conway<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_111">Mr. Kent and I are neighbours in Tramore. There is no conflict of interest because I will be just as mean to him now. I am probably unique among those in the room. I was principal of a country four-teacher school in Dunmore East for 19 years, from 1986 to 2005. From 2005 until I was elected to the Seanad in January, I was an elected representative on the city and county council in Waterford. I saw the scheme in operation from both sides - pretty much from its inception - in rural areas. I just marvel at it because, probably quite illegally, I used to travel from time to time on the bus from my school back to Tramore where I live. I was always told about horror stories that went on. Admittedly, when the principal of the school gets on the bus in the evening, the behaviour graph rises dramatically. Notwithstanding that, the capability of the drivers to keep the bus between the ditches and then ord agus eagar a choinneáil sa bhus chomh maith was quite inspiring. The senior pupils were a great assistance in that. Three buses served my school. All three drivers have since gone ar shlí na fírinne in the past 20 years, but they were great guys. The buses were venerable, but they always turned up on time. It was an amazing service. Books should be written about it because the school transport service, for all the brickbats it gets, is amazing. As public representatives, we should be much more forthright in talking it up. We tend to hear about the negatives. Watching the system over the past 20 years, it has become so much slicker and more responsive to information technology and is now far more flexible. It was so inflexible in my day. The witnesses go through hoops to facilitate people in all parts of the country. Mr. Kent, a fhoireann agus na daoine sa Roinn oideachas a bhíonn ag plé le hiompar scoile, I want to record my appreciation of what has happened over the past 40 years. I am sure everybody in rural Ireland would say the same, beagnach.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_57">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_112">I thank the Senator. I am sure the committee would concur with that. We experience frustrations. Overall, there is an appreciation that there are many cogs in the wheel that make it happen, in particular the drivers who bring children to and from school. That is appreciated. The Senator's appreciation is recorded here today.</p>
+          <p eId="para_113"> The next speakers will be Deputy Ruth Coppinger, Senator Linda Nelson Murray and Deputies Aisling Dempsey and Cummins. I will speak last.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_58">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-16T13:50:00+01:00"/></from>
+          <p eId="para_114">I thank the witnesses for their presentations. There are two matters I wish to raise. The first relates to the query Deputy Currie raised. It is about how the transport system serves busy suburban areas. I am not blaming the witnesses for that, but it really is not meeting people's needs. I will provide a couple of examples. The first is the 11 families in Tyrrelstown who could not get places in the local school, which is a very strict Catholic school located in a multidiverse area. In any event, they could not get places regardless. Most of them had to go to Hansfield Educate Together in Ongar, which as has been stated, is 9 km away. The families have contacted all the public representatives in the area. We have all traded emails with the witnesses. Those involved do not conform with the criteria of ethos or language and could not get into the local school. They should be entitled to school transport. Most of them do not have cars. Not everybody in Dublin has a car. They have been trying to carpool and juggle their work commitments. Will the witnesses look into this matter? It is not their fault that they have sent their children to a school in which they could get places for them. I do not know whether they tried every school <i>en route</i>, but I assume they did. Ms Heneghan mentioned that they can go to the Department of Education. Nowhere in the correspondence they received was that pointed out. It just says that they did not meet the criteria; it does not say that they had the option of going to the Department of Education. If this had been pointed out, I would have done that on their behalf. I did not know that this was the position. Perhaps the witnesses will agree to contact our offices after this meeting in order that we might try to get this matter resolved? What is happening is causing the people involved much stress. It is unfair that they happen to live in an area where there are not enough schools.</p>
+          <p eId="para_115"> The other issue I wish to raise is very interesting. We have a problem whereby there are many Catholic schools at one end of the constituency and where there are many people who do not want their children to be forced to go to such schools. Yesterday, I was contacted by a parent whose child has been refused school transport.</p>
+          <p eId="para_116">She lives in Ashtown, in the Dublin 15 area. Her child is non-binary. I see everyone wearing all the Pride lanyards. The local school in the area is a girls' secondary school and the parent, because the child is non-binary, believes it would not be appropriate for the child to attend. It would not be meeting her needs. She got into a school in Coolmine but was told by the Department it could not fund that. If ethos is a criterion cited to the other parents I have mentioned, why is school transport not paid for to allow her to get from Ashtown to Coolmine? There has to be recognition of ethos, and the ethos of the Ashtown school is such that she cannot go to it.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_117">Unfortunately, the application process at the minute determines that you do have to say whether you are male or female. The reason, which Bus Éireann can confirm, is obviously the calculation done that would have a female bypass a boys' school. Obviously, these types of situations will arise more often. The case in question is not one we are aware of but we will look into it specifically if the Deputy gives us more details.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_60">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_118">It is interesting that Ms Heneghan should say that because I have actually raised the issue that there is no recognition in this State for non-binary people or intersex people, who actually make up a percentage. The intersex people are born such anyway. We need to change the Department's position. Here we have a classic example. Do the representatives not agree that even if your child were not non-binary, and you did not want them to have to attend a Catholic school and instead wanted a more multidenominational school, ethos would be the criterion that would justify transport in any case?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_119">It would depend on the circular or whether the school is primary or post-primary. The criterion applies to primary school but not post-primary school. There is also the issue of capacity. Without more detail of the cases raised by Deputies Currie and Coppinger, we are assuming every school in between the ones in question has been applied to. We would have to check because we have to work very closely with the planning and building unit of the Department in making sure full use is made of existing capacity in schools and on the approval of routes, tickets and so on. In the absence of more detail, I do not know the answer, but what I have described may be a factor in both situations in respect of spare capacity, the sector of the schools and the question of whether ethos applies.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_62">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_120">We can see how the transport system, great as it is, is not necessarily meeting the needs of people in urban and suburban areas. We are told people should be able to choose their school in any case. If I had my way, everybody would be using school transport rather than getting lifts. It seems unfair that the system really only caters to the needs of people in rural areas or those with special needs. It is not actually working for so many parents who do not have transport and who live in underserved public transport areas.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_121">As I said earlier, there are challenges with capacity, the driver situation and bus contacts. There are clear distinctions between the two sectors in terms of the application of ethos. Given the pressures overall in the system in terms of capacity and the budgetary context, we have to work very closely with our colleagues in the planning and building unit to ensure full use is made of existing capacity, including, for example, where the nearest school is full. All factors have to be taken into account in considering these situations, but we will examine them further and determine what is possible.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_64">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_122">I thank the guests for coming in. I apologise for being late. I am also on the enterprise committee and was at a meeting of that committee. However, I read the written submissions yesterday.</p>
+          <p eId="para_123"> I am a mam of two kids who use the bus. I am very lucky in that the bus goes from the top of my lane. It is fantastic. We have an amazing bus driver, also called Linda. I would like to mention her because she is not only a bus driver. She makes sure every child gets on and off the bus and she makes sure schoolbags are not forgotten when children are getting off the bus. If they are, she puts a picture up on a WhatsApp group to let us know. She ensures the children have their football gear. If every child gets on in the morning with a camogie stick and helmet and Linda sees a child without these, she will ask that child whether they need them that day. She is like an extra parent in the mornings and afternoon. I give recognition to Linda. She is on the Bective–Bellinter–Kilmessan route in County Meath.</p>
+          <p eId="para_124"> What Linda deserves is a decent bus. I looked at the app and saw a message from her on 19 June stating the bus was broken down and apologising for not being able to go. On 13 November, there was also message stating the bus could not go and that parents would have to bring the children themselves. It was the same on 17 November, 28 November and 30 May. Linda is a gem. I am sure many bus drivers around the country are gems but this lady is the only one I deal with. Our children are our precious cargo and future and they deserve to be able to go to school in proper buses.</p>
+          <p eId="para_125"> Three weeks ago, I recorded my daughter talking about how all the children had to sit at the back of the bus because the door would not close on it and in case someone fell out at the front. I will not play the recording to protect her privacy. The journey was from Kilmessan back to my lane. That is not good enough. I totally appreciate that the Department is under budgetary constraints but that is not good enough for our kids. I urge those concerned to ensure schoolchildren get better quality buses. I know we have a rule that buses should not be older than 20 years but they do not need to be that old. We need more mechanics. I know the Department is looking for mechanics. I have first-hand experience of this matter and realise things need to change.</p>
+          <p eId="para_126"> In my opinion, school transport is unbelievable value, although I realise everybody has different means. As far as I am aware, the school bus fee is €50. If this went up by €10, €15 or €20, how many more buses could be added or how much more could be done to improve buses? I never really advocate increasing the cost of anything and have just come out of an enterprise committee meeting at which I was trying to reduce costs for businesses, but I just wonder whether it would help with getting more buses if those who could afford it spent a little more.</p>
+          <p eId="para_127"> My last point is one I have made to the Minister for education and the Minister of State with responsibility for special education. I am on the board of a special school in Navan and see what the principal and vice principal do every morning co-ordinating the buses and bus escorts. It is a job in itself. Literally from 6 a.m., messages come in, sometimes about bus escorts being sick. There are children who cannot go to school until a bus escort is on the bus. I have requested that we run a pilot scheme for a transport manager within a certain area to co-ordinate buses for special schools. St. Ultan's School, Navan, has 21 buses going to it in the morning and St. Mary's Special School, Navan, has 20. If there were one person who could do the co-ordination even just for those two schools, taking the responsibility away from the principals and vice principals, it would be great. I am aware that the principals get a percentage towards co-ordination but they would probably appreciate what I suggest rather than the money.</p>
+          <p eId="para_128"> I had a really good conversation in my office with a guy who drives one of the buses and who has a bus escort on his bus. He absolutely loves his job. Of all the jobs he has done in his life, this is his favourite. When a school breaks up for summer, Easter and Christmas, it can take up to five weeks for a driver to get social welfare. I realise the representatives present are not from the Department of social welfare but I wonder whether they need to have a little chat with that Department to see whether we can get social welfare or the jobseeker's allowance quicker for the drivers, who do a vital job, so they will not have to wait for five weeks. Do they have to be means-tested every year? Every year, they must fill out forms requesting the exact same information.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_129">I will answer a couple of questions and leave it to Mr. Kent and Ms Flynn to talk about the details of the fleet, vehicles and so on.</p>
+          <p eId="para_130"> On the fees, as I said earlier in response to a query, any potential increase in fees one way or another and the whole cost-of-living aspect are matters for the Government to decide upon. Therefore, I cannot comment on them here. However, the Government decision last year and school transport 2030 fixed the fees at the current level for the last school year and this one. That is the position going into the next school year.</p>
+          <p eId="para_131"> The vital role of bus drivers, bus escorts and everybody else in ensuring our 173,000 children and young people go to school safely and happily has been a common theme in the contributions of all members of the committee. As acknowledged, there is a grant of 5%. The issue of administrative supports for school leaders and deputy principals is a wider one, obviously, and there are several pressures in that context that colleagues in the Department will be well aware of. As the schools are the employers of the bus escorts, the question of how it would work if an individual school were to employ a person on behalf of other schools would go back to the complexity of administrative supports. These are not insurmountable challenges, to be clear, but things have to be worked through.</p>
+          <p eId="para_132"> On social welfare, I note the delay in the jobseeker's allowance over the summer period. I am sure it is a subject of ongoing discussion. Maybe we can talk to our colleagues in social welfare again to determine what can be done in this regard.</p>
+          <p eId="para_133"> Mr. Kent will talk about the vehicle context.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_66">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:00:00+01:00"/></from>
+          <p eId="para_134">I thank Mr. Ó Ruairc.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_135">First, thanks for the comments for Linda. Our drivers are the unsung heroes every day. We have thousands of them out there and they do a great job. It is always important to recognise them so I thank the Senator for doing that.</p>
+          <p eId="para_136"> I could not agree more on the buses. The issue at the moment is that in the business we are in, which is trying to convince more young people to use public transport, I would love them to have better experiences on more comfortable and more modern buses. However, we are where we are. Some of what we are doing is to try to change that. In relation to Bus Éireann itself, there are two aspects to this. One is the fact that we operate about 5% of the scheme directly, with our own fleet and our own drivers, and the other 95% is contracted in. In the case of our own fleet that is directly involved, part of our policy is to operate all vehicles up to the age of 20 years. That is the maximum age and we cut it off at that level. There are challenges there because to a large extent we are operating on the PSO side of the house with a younger age than that. On the contractor side, they are running with an average age of about 12 years. That is the average age of their vehicles. Of course, everybody is always trying to make sure that all of the buses run because we want the service to be reliable. We do not get a huge number of breakdowns. Considering that we deploy 8,200 vehicles every morning, it is remarkable how few fail but that is because a huge amount of maintenance is done. Part of the way to avoid maintenance is to continue to renew the fleet. In the case of the Bus Éireann fleet we have an average age of over 17 at the moment and are in dialogue with the Department in relation to replacing some of the fleet. We have some new buses coming on towards the end of the year and are in the process of completing a business case for another bunch that need to arrive in 2027. Some of our fleet urgently needs to be replaced and there is a conversation going on with the Department of public expenditure on that. They are the two issues on that front.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_68">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_137">I had to leave to speak in the Seanad so I apologise in advance if I ask questions that have already been put to our guests. The opening statement refers to the fact that 162,000 people have registered and paid so far. That figure was 173,000 last year. I acknowledge that 10,000 applications were received late. Is the figure for this year actually 172,000 or will it be greater than that?</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_138">The figure of 173,000 was for the school year just closed.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_70">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_139">Yes, but this year 162,000 have registered and paid for mainstream-----</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_140">So far.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_72">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_141">There were 10,000 late applications.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_142">Yes.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_74">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_143">Is that the total then for this year?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_144">They are the final figures in both of those categories. They are figures for late applications and the numbers who have registered and paid to date.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_76">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_145">They should all be accommodated this year. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_146">I will ask my colleague to clarify the position in relation to late applicants and how they are treated.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_147">Late applications are only looked at when all of the on-time, eligible and concessionary pupils have been facilitated. There will be another batch of late applicants that will be examined by Bus Éireann to see if it can facilitate them on its services. The size of the service will be contracted on the basis of the number of eligible pupils who have applied and paid on time. Those 10,000 eligible pupils who have not applied and paid on time will have a knock-on effect on the size of the service. We cannot say that those 10,000 pupils will be accommodated because the same number of pupils were accommodated last year.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_79">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_148">That could mean that more students who are concessionary ticket holders could also be affected. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_149">Just to say that the 162,000 figure is for mainstream services only. The 173,000 figure relates to mainstream and special educational needs, SEN, services added together. There are 22,000 SEN-----</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_81">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_150">That is significant-----</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_151">There are 22,000 SEN pupils included in the 173,000 figure overall. It is a significant increase.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_83">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_152">Does Ms Leonard know yet what the breakdown is between eligible and concessionary pupils in that 162,000 figure?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_153">I cannot recall. Off the top of my head, I do not have that figure.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_154">It is typically 40,000 concessionary pupils but we would have to work it out. That is what it was in previous years. That is typically what we are looking at.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_155">Typically, the ratio is two to one. </p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_87">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_156">A total of 144,000 pupils last year were mainstream and this year the figure is 162,000. That is a significant increase. </p>
+          <p eId="para_157"> A school transport review took place that took quite some time. It was published over a year ago but the Department has not adopted any of the changes recommended. The eligibility criteria for the scheme this year are the same as for last year and previous years. The review recommended that we change some of the eligibility criteria around distance and attending the nearest school. The Department has said that it wants to increase the number of pupils by 100,000 over the next five or six years but there will be no increase this year based on the school review because the Department has not changed any of the criteria.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_158">The ambition is to increase the numbers on the service by 100,000 by 2030. The eligibility criteria are due to be reduced, with full implementation, from 3.2 km and 4.8 km to 1 km and 2 km for primary and post-primary, respectively. As we were discussing earlier, the growth is going to be challenging. The Minister appeared before the committee some weeks ago and spoke about the fact that it will be a multi-annual process. The review report made clear that it would always be implemented on a phased basis for a number of different reasons, not least of which would be budgetary challenges but also the issues of challenges in the supply of drivers in particular areas, fleet supply, as outlined by Mr. Kent earlier, and of course, the whole area of PSO integration. That is a body of work in itself for which the Department of Transport is responsible. Ideally, where possible, we want to be able to integrate the school transport service with a PSO route. We identified one example in the Shannon-Limerick area last year but those factors have to be lined up for our pilot to be implemented. Notwithstanding those challenges, we have implemented 14 pilots in the last school year which has just closed and they will continue into the next school year. We want to increase the number year on year towards the overall target of 100,0000 by 2030. However, additional to the facts I have just outlined, that will always be subject to the Estimates process in the budget as well.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_89">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_159">I am quite shocked to learn that only 5% of the school transport is provided by Bus Éireann's own fleet and 95% of the buses are contracted in. Is there going to be an increase in investment in Bus Éireann's school bus fleet? I remember the day when the vast majority of school buses were owned and run by Bus Éireann but maybe I was wrong about that. When the bus driver that used to bring my children to school reached 70 he had to retire. When he retired, the run was taken over by a private contractor. It is a pity to see that happening. Our guests spoke about driver recruitment. Are they going to address the issue of drivers having to retire at 70? That same bus driver is still driving around in his car and is quite capable of driving and would be able to drive for a private bus contractor. I do not know why he cannot drive on a public route.</p>
+          <p eId="para_160"> The registration process this year did not take place any earlier than in other years. Every year I talk to the regional manager in Bus Éireann for my area and every year he or she is scrambling at the last minute to try to get buses for mainstream services and especially for SEN services. If the registration process took place earlier, the managers would have more time to find contractors, buses and drivers. Is there going to be an investment in the fleet and is the Department going to change the rule about drivers aged over 70?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_161">My colleagues will want to respond to some of those questions but I will respond to the question on the registration process. Bus Éireann can give more details on this but we must remember that the scheme is massive in terms of volume. Approximately 172,000 children and young people availed of the scheme in the last school year alone. There are significant challenges in terms of procurement timelines to be observed in the context of the kick-off of the school year. Notwithstanding all of that, it all happens in the year preceding the new school year. The procurement process that is required speaks in part to the Senator's first question on the 5% and 95% but Mr. Kent will add further clarity on that.</p>
+          <p eId="para_162"> On the question of the over-70s, that was discussed earlier. The position is that there is a commitment in the programme for Government to conduct an independent review of that. We are liaising with our colleagues in the Department of Transport and in Bus Éireann in relation to that commitment. The Senator will be aware that there is a report from the Committee of Public Accounts on the review conducted previously by the Road Safety Authority, RSA, written by Professor Desmond O'Neill, an expert in the area of elder drivers. That report highlighted a number of risk factors that are absolutely critical in considering the issue of drivers aged over 70 more broadly. I assume that will add further to the work that has happened in the meantime. I will ask Mr. Kent to add to my comments now.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_163">I am allowing an overrun on all speaking slots but I am conscious that we have more speakers to come in and we also want to get everyone in for a second round of questions. We might get the remaining answers in a little while if that is okay with Senator Tully. I am sorry but I am trying to get everyone in before we conclude and am also aiming to get everyone in for a second round of two minutes each. Deputy Jen Cummins is next.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_92">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:10:00+01:00"/></from>
+          <p eId="para_164">I apologise for being in and out like a yo-yo. It is a really busy day here today.</p>
+          <p eId="para_165">I have two different scenarios for parents. Somebody told me that we were supposed to be getting rid of the nearest school rule, and I am sorry if this has already been covered, but I thought that was supposed to be done two years ago. There are two particular places it has impacted where I have been working with people, one of which is Inchicore in my own constituency of Dublin South-Central. There are a number of parents whose children have gone to a Gaelscoil and who are in a Gaelcholáiste, but the problem is basically that they are passing many schools on the way and they cannot get a bus to Gaelcholáiste an Phiarsaigh in Rathfarnham. They have been refused again. What that means is that one parent's child is taking three buses to get there. That is a huge commitment as a family if they want their children to go through education in that particular language. It really means a lot to them, so they find it very difficult. Others are taking two buses. We are talking about many hours of being on buses to get to school every day.</p>
+          <p eId="para_166"> The other area where it has been made known to me is west Wicklow where there are children who are going to Blessington Educate Together National School, but they live closer to Brannoxtown Community National School. Bus Éireann has told them that it cannot go. Basically, the difficulty is that it is the same ethos, but the parents would argue that it is a different patron and, therefore, they are choosing an educate together school. They are not choosing a community national school. Those are two different scenarios of where the rule is proving quite a difficulty for that cohort of parents. I just want to have an understanding. Again, I apologise if that was already covered when I was not here.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_167">That is no problem, Deputy. In a nutshell, the ambition is to grow the school transport capacity by 2030 to have full implementation by that point. However, the challenges are real in terms of the budgetary context, the supply of drivers and the supply of vehicles.</p>
+          <p eId="para_168"> With regard to the nearest school rule, that was kind of foreseen at the time of the report's publication in February 2024. We acknowledged at the get-go that those challenges were even there at that point. We have to do the implementation on a phased basis. That is the reason we have not had a full roll-out of the reduction in the distance criteria and the elimination of the nearest school rule. That is the reason it is not in place, for example, in that particular area. We had the 14 pilots in the last school year, which are a first step in the right direction.</p>
+          <p eId="para_169"> Language is taken into account. The medium of instruction - múineadh trí mheán na Gaeilge - is taken into account. However, there may be local factors on which further detail would give us more insight. For example, for a new service to be established, there has to be a minimum of ten eligible pupils. We are aware, particularly san earnáil lán-Ghaeilge - the Irish medium sector - that this can be a particular challenge within the overall numbers in the school, the numbers who need to avail of school transport and where they are living in relation to the school. They might not actually cross that threshold sometimes or there might not be the minimum number of ten eligibles.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_94">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_170">That was one of the points they raised. I am trying to remember if the number was seven, but they were saying that if the bus was there, more people would choose it. However, because there is no guarantee of the bus, parents are choosing to send their children somewhere else. Therefore, it is like the chicken and the egg; which comes first? There definitely were expressions of interest from up to 12 children who would have used that bus but, unfortunately, because it was not there, the parents chose to send their children somewhere else.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_171">That is a fair point. What we would say is that we need everybody who has a desire and interest in availing of such a service to apply and pay on time. That is the data we have to work off of. It still might not mean we are able to accommodate or provide a service for the other reasons I outlined a few moments ago, but people must apply and pay on time. We can then ask Bus Éireann to look at that and process that data. That is the crucial piece. It is a familiar enough scenario, I have to say, where there would be seven or eight children. Others, if they had applied and paid on time, might have tipped that number over in terms of looking at various possibilities in that context.</p>
+          <p eId="para_172"> With regard to west Wicklow, I know exactly what the parents are saying in terms of the same sector but different patrons. Essentially, if I understand it correctly, that issue of ethos does not apply at post-primary in terms of the application of criteria, whereas it does apply-----</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_96">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_173">These are primary.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_174">Exactly. It does not apply at post-primary.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_98">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_175">No, these are primary.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_176">These are primary; I apologise. </p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_100">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_177">Yes. They are national schools.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_178">I must look further into that and maybe get further details and inform the Deputy.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_102">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_179">That is perfect. I thank Mr. Ó Ruairc very much. I appreciate that.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_180">I am next on the roster, and I have a few questions. At the outset, I thank the witnesses. I will just mention Stephanie. Do people know who she is? I will not mention her surname, but she is outstanding in the Department's Limerick office covering County Clare as well. I think she is tuned in, so if she is watching, we appreciate everything. She is working flat out, and we really appreciate everything she does. She went beyond the call of duty for parents and elected representatives last summer.</p>
+          <p eId="para_181"> I want to pick up on that point because a lot of what Stephanie and her colleagues had to deal with last summer was the pilot scheme in Sixmilebridge. How much did that cost? It seemed to me, as a public representative, that Bus Éireann and the Department had to make this work. Sometimes, when a policy has been decided and piloted and it has gone so far down a road that it has to work and it has to be proven to work but it is then pulled at the eleventh hour, it may as well have never been tried. As the pilot scheme was being unrolled, it looked to me that the manpower, resources and money to make it work were colossal. Could someone tell me what the monetary cost of that pilot scheme in Sixmilebridge was?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_182">I do not have that figure to hand in terms of the people time. I presume that is not the question the Cathaoirleach is asking, but we can get back to him on the figure for that.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_183">We would love to know the figure because, although people will say it worked and led to efficiencies, it did not in many ways, if you ask me. There were three or four colossal public meetings in the local hall. We had 400 or 500 parents attending one of them. RTÉ was out. There were protests. The buses eventually ran like clockwork, but only after a lot of teething problems. It was no fault of the drivers or anything like that. It was just that so much had to be lined up. We were a week or two into the service being operational with meetings still going on about where the stops were going to be and whether there were signs for those stops. It was just chaotic. I would love to know what the cost was. The service did work eventually despite huge reservations in the area, but at what cost? I really would like that communicated to this committee. We often ask for information and get promises that the information will come, but very often it does not, so I would like that in the next few days, if it could be emailed to the committee at <i>education@oireachtas.ie</i>. Very simply, what is the figure? What was spent on that scheme was alarming.</p>
+          <p eId="para_184"> I also want to ask about a pocket of south Clare. I am a Clare representative. I am very close to Limerick city; I am a puck of the ball from the city boundary. That whole area is under a sphere of influence wherein a lot of children will apply to Limerick secondary schools - I went to Ardscoil Rís - and some to Clare secondary schools. There is a whole catchment area of 20,000 or so people who apply to both areas. It is unique, although maybe it is starting to creep into other parts of the country where we have a common application system for secondary schools. People in sixth class in secondary school do not automatically go to their local schools; they fill in this big form - it is like applying to colleges - with their school of first choice, second choice and so on. They are told to mark the list the whole way down. I used to teach sixth class for many years. I used to put these forms in front of children. They used to go home with their parents and fill in school No. 1, school No. 2 and school No. 3 all the way down to No. 17. Sometimes, I saw it happen that children were allocated school No. 17, which could have been 18 km or 20 km from where they were living. That is how that works. It is problematic in its own right, but then the problem in the Department of education is that the officials are looking at that through a different lens and saying a child has passed over loads of schools that were perfectly fine and acceptable. What kind of congruence is there where one policy is telling people to pick schools Nos. 1 to 17 and the other policy is saying that children should be going to their local or second-nearest schools?</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_185">I am sorry; could the Chair clarify the question again, please?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_186">There is a system whereby children have to apply for 17 schools, yet the Department's requirement is that they should be attending their local or second-nearest schools. What if a child ends up with the school that is furthest away? This is happening by way of how that policy unfolds.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_187">I will ask my colleague to take that.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_188">In the Limerick area, there is a specific central application system. We are aware of that system and we would follow that in line with school transport when we are offering places on the school transport scheme. That is a unique situation to that particular area.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:20:00+01:00"/></from>
+          <p eId="para_189">Yes, and that is how it should work but, unfortunately, it does not. I can think of many examples. I will not get into it at this meeting, but there needs to be cognisance of the fact that children may be attending school A, B or C but it may not have been their first choice or it may not be their local school. I know of kids who lived in Ardnacrusha, yet they got Pallaskenry secondary school way out in west County Limerick, which makes no sense. The Department needs to have cognisance of that.</p>
+          <p eId="para_190"> I will ask my last question about all of these pilot schemes and innovations and changing the qualifying criteria.</p>
+          <p eId="para_191">Has the Department ever looked at just flipping all of this and coming up with something new? Has it ever looked at piloting a school having its own bus or having dedicated school buses, like the iconic yellow buses they have in the United States? Has the Department ever looked at the role of caretakers? If the Department is taking on more school caretakers, maybe it could pilot a scheme whereby a certain number of new school caretaker appointments could have, in the recruitment criteria, a requirement for the individuals to have a driving licence. In this way, these people could drive a school bus during the day. Has the Department ever looked at innovating in that regard or is it still welded to the idea of having contractors in Bus Éireann fulfilling all school transport?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_192">We are engaged in a review of the administration of the scheme overall and the fleet itself. I appreciate the points the Chair has made but the watchword on all of this work is "integration", which is vital here. By this I mean the integration between ourselves, the Department of Health and the Department of Transport and the various services under our respective remits. There is huge pressure on the supply of drivers and vehicles. One of the elements of the full roll-out of the "School Transport 2030 - Review of the School Transport Scheme" report is that, where possible and feasible, alignment and integration, as happened in the pilot situation, should be achieved.</p>
+          <p eId="para_193"> To go back to the earlier question, the Chair is fully aware of the challenge we are experiencing there. I attended some meetings myself with parents in that situation. There was a challenge regarding communications in one particular instance and we worked very hard to turn that around, address those challenges and make sure that the pilot was established as successfully as possible. We will come back with the figure for the monetary costs as well.</p>
+          <p eId="para_194"> I appreciate the thought behind the Chair's ideas but given the overall demands for public services in those different contexts, which at local, regional and national levels are drawing on effectively the same supply of drivers and vehicles, we have to work better together to make sure that the public gets the service it needs. Driver supply is also a subject for the task force that has been established under the auspices of the Department of Transport. Our own working group that we established on an <i>ad hoc</i> basis led to the task force being established. We are very keen to look at the end-to-end process to make sure that more people across all age groups apply for driver training, complete it and then complete those stages afterwards, namely, certification, licensing and so on, that feed into actually driving on buses. The task force is also looking at those. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_195">Senator Sharon Keogan is next. We have built up a customary practice of three minutes for non-members and then we will go back to members for a second round.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_113">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_196">Perhaps this question has been answered already, but it has to do with the remote area grant. Many people do not know about this. I remember the then Minister of State, former Deputy Joe O'Brien, being in the Seanad on a Commencement matter in relation to this. It was the first time he had ever heard about it and I was shocked, to be honest. Maybe that is the way that Ministers and Ministers of State from Dublin actually operate. This particular grant is of value to people who are living in rural Ireland. However, I asked at the time why there was no online application form for the grant. There is a remote area grant information notice, but there is not an online application form for it. Is anything going to be done about this?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_197">People cannot actually apply for a remote area grant. They apply for school transport.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_115">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_198">That is right. </p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_199">From that application, if Bus Éireann or the Department find that there is no transport in the person's area or there is no service that the person can be facilitated on, then the remote area grant will be offered to the family.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_117">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_200">But families are not offered it. They are actually not offered this grant if they are turned down for school transportation. They are not given the option to apply for the remote area grant. There is no dedicated service. A person has to actually email the Department to get an application for this particular grant.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_201">No, there is no application form for the remote area grant, so-----</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_119">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_202">Why is that?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_203">It is not a grant that people can apply for. It is offered to a person in the absence of transport.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_204">Where eligible.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_122">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_205">People who are turned down for transportation via the normal school bus application and who are living outside the relevant areas are not being offered it. They are just told that they have been turned down for school transportation. As part of being turned down, they do not get a letter saying that they can apply for this remote area grant.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_206">They may well be ineligible.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_124">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_207">If they are living farther away than the 3.2 km or the 4.8 km limits, then they are eligible.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_208">Then they should be offered the grant.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_209">No, they have to be attending the closest school.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_127">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_210">Yes, but they might not be for various reasons. This could be for reasons of language, ethos or whatever.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_211">The ethos and language criteria would automatically kick in. However, if for any reason a family feels they have been deemed ineligible in error, they can contact us and we will look into the matter. Generally, applications come in and Bus Éireann will assess them. If people are eligible and there is no service, I think they can see on the system that they are eligible and there is no service. They will automatically get a letter stating this and that they will now be deemed eligible for the remote area grant. If they are concessionary, that is, if they are not eligible for transport because they are either below the distance criteria or they are not attending their closest schools, they will get a letter to say that they are not eligible for transport. If they feel that they are and that an error has been made, they can contact us or Bus Éireann and we can look into the matter.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_129">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_212">It is a grant that very few people know is available.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_213">There are quite a number of people who know of it.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_131">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_214">There are, and the number of people applying for it has grown over the past three or four years. In general, though, a lot of people do not know the grant is available if they are living beyond the limit of 3.2 km for primary school and 4.8 km for post-primary school. The Department needs to do a little bit more marketing and advertising of this grant.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_132">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_215">I will give members three minutes each, because we could yet have a couple of members returning to get questions in. Deputy Aisling Dempsey is next.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_133">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_216">We talked about the pilot routes earlier but I do not think a date was given for when the next tranche of them would be announced. Obviously, the two plus for Meath would be most welcome.</p>
+          <p eId="para_217"> I concur with my colleagues who mentioned the removal of the ban on drivers over the age of 70, which is really important. A number of drivers contacted me before their 70th birthdays about the loss of their jobs on turning 70. They have since lost those jobs. It is really important that we get on with removing the ban. It is a commitment in the programme for Government. I apologise if this has already been given but if not, is there a timeline for it?</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_218">The roll-out of the pilots is very much a phased implementation. It was decided at the outset and approved by the Government in School Transport 2030. There were 14 pilots in the last school year, which will run on into next year. We are working to see where this can be grown, in line with available resources and as part of the Estimates and budget process. It also depends on the availability of drivers and fleet in the areas we identify for pilots. We are in receipt of data, as is the Deputy, regarding potential areas. We look at all of that in the round and see what can be done in the next school year.</p>
+          <p eId="para_219"> Regarding the removal of the ban on over-70s, Mr. Kent might want to add a bit on this in terms of the work Bus Éireann has done. There is the report for the RSA, done by Professor Desmond O'Neill, an expert in the area, on the website of the Committee of Public Accounts. This notes that a number of risk factors have to be taken into consideration. The task force established by the Department of Transport and our own working group will look at the broader opportunities and challenges in relation to driver supply. We have to look across the age groups in making sure as much as possible that we not only maximise the supply of drivers, but also that they actually take up employment and drive buses. Does Mr. Kent want to add to that regarding the work of Bus Éireann in terms of the review so far?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_220">The review is there and we have to make sure we balance the risk assessment between safety and representations for people to maintain their jobs. We have to continue to make sure that we prioritise safety. The research we have up to now is all pointing to the fact that there is much more risk for the scheme, passengers, customers and drivers as the thing is extended. In the face of the compelling research we have at the moment, we would need new research that points us in a different direction. Otherwise, it is very hard to change position. We would be knowingly taking on much more risk and then we would all rue the day. From that point of view, we recognise that it is part of the programme for Government to undertake independent research and we will of course participate in that process.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_136">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_221">It was mentioned that 5% of the school bus scheme was run by Bus Éireann and 95% by contractors. Is that correct? The yellow buses are the school buses, are they not? </p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:30:00+01:00"/></from>
+          <p eId="para_222">Yes, they are our buses. We run all of the procurement guidelines for the contractors and we set up the routes and do the administration.</p>
+          <p eId="para_223">Our supervisors supervise all the routes. We then have independent assessments done on the safety of the scheme. In terms of our own delivery of it, about 5% is made up of our own drivers and vehicles through our own depots.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_138">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_224">Right, okay. This might be a bit impossible, but just again thinking of my own area, it is quite a fast road where the kids are picked up. There is no official bus stop anywhere along the road. The kids are just picked up at the side of the road. Is there a plan to do something with that in the future? </p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_225">The Senator is raising a big question, which is around infrastructure-----</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_140">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_226">Yes, this is why I said it might be impossible before Mr. Kent started.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_227">-----and this becomes a bigger question when the scheme is expanded.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_142">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_228">Of course.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_229">As the Senator said, there can be stops. The scheme is rural in nature and we have many hail and rides. They are there without any particular infrastructure. As the Senator knows, there is a governmental programme to continue putting proper infrastructure in across the State, but that is a long-term process. Those issues there, though, would always be safety assessed by our own team of supervisors. Where we put this in, we just try to make sure we are doing it with the lowest risk possible.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_144">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_230">I think every county gets €500,000 for bus stops for public buses, so I appreciate it is difficult to get a lot of spots. It is something I would consider to be another part of the health safety aspect.</p>
+          <p eId="para_231"> Turning to Mr. Ó Ruairc, when it comes to the bus escorts and working with the Department of Social Protection, I ask that we see if we can help to get jobseekers there quicker during summer, Easter and Christmas. That would be very much appreciated.</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_232">We will circulate that query.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_146">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_233">I thank Mr. Ó Ruairc.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_147">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_234">I call Deputy Darren O'Rourke.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_148">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_235">I recognise the regional manager in that area too. I flag this area. There are hotspots where these issues arise, largely because of the nature of where people are travelling to school and have done so traditionally for whatever reasons. These would include routes such as from Laytown and Bettystown to Drogheda, north County Meath to O'Carolan college, Moynalty, Skryne, Rathfeigh and Tara into Navan and Stamullin to Balbriggan. I am expecting calls from July onwards in relation to those areas, or certainly in early August.</p>
+          <p eId="para_236"> I looked at the review. It said that from this September the distances were supposed to change. I want to drill down into this issue. To be honest, I wonder what the point of the review was that we waited so long for, when we are seeing so little. Like others said, I am a fan of this fantastic scheme and its potential to deliver for the environment, communities and people. Can we get some more details, outside the generalities of challenges, of why this is not happening this year?</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_237">I will focus on some of the operational complexities. It is an interesting insight. We will be on the receiving end of whatever comes in once those rules are relaxed. The first question we are always keen to deal with in the dialogue is if we relax the 2 km, do we have a good knowledge of what the level of demand could be? If we do it, we need to know if 200 are going to present for a bus instead of 20 and if we will be able to handle that number. The value of the pilots in the first instance is to try to advance this understanding. We heard about Sixmilebridge being progressed. The operational understanding for us was really important. We had a route there that went from roughly 200 using the service to about 450 presenting on the Monday morning. It was quite significant in terms of the scale of the uplift needed. We then had to ensure we could get the drivers and buses.</p>
+          <p eId="para_238"> Equally, though, we heard mention made of stops. The questions in this regard included where these children were going to meet, how we were going to congregate them and how we were going to supervise them so everybody would be able to do it. Regarding all those additional aspects the Deputy and Cathaoirleach spoke about, we had to supervise all those processes to ensure the service was still going to be delivered safely. I guess what we have is not so much even trying to work out the costs and the resources there, but, ultimately, if we can deliver the service, and deliver it safely, and if the infrastructure is behind it. Equally, when those buses arrive into the school, can the school accommodate the number of buses that might be arriving? There are things in the pilots that are very helpful for all of us to tease out and work through with the Department in respect of our understanding. That informs the next step forward.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_150">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_239">I do not doubt that. At the same time, it is a four-year review. We are two years into the implementation. I know there was a 2030 target, but at this rate, we are not implementing a fraction of these changes. How long will it take to implement these proposed changes?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_240">The 2030 target remains and we are working towards that. As Mr. Kent said, there are the detailed challenges on the ground. The broader challenges are also very real, especially the budgetary context and securing the resources for the funding of those pilots.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_152">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_241">I thank Deputy O'Rourke. I call Deputy Pauline Tully.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_153">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_242">I would like to get an answer to the question I asked previously about investment in the fleet, if this might be possible. Mention was made of the recommendations from the review not being implemented or the start of them not being implemented. I come from Cavan. There was a situation in my area last year, in Rahoran, where 18 students were told about two weeks before secondary school started that they had no school transport. They were concessionary ticket holders. Some of them had concessionary tickets for four years prior to this happening. Suddenly, two weeks from school starting, they were going into fifth and sixth year and had no transport. It was such a shock. It was resolved, although it took weeks to do so. I think this was done by moving people from one bus route to another and things that should have been done prior to telling people there was no transport for their sons or daughters. Parents who were working or who had younger children were caught and had no way of getting their children to school. It would be good if we could avoid situations like that. Eighteen students is a big number.</p>
+          <p eId="para_243"> Regarding the 10,000 people applying late this year, is this reflective of every year? Would this number of people be applying late or not paying on time every year? I know this year there was the portal and it was possible to pay at the same time, which is welcome. Before that, it was necessary for people to register and then go back, and they sometimes forgot to do the second part. Perhaps there might be a way of notifying people earlier. These are new applicants, so they are not familiar with the system.</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Ms Miriam Flynn<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_244">I thank the Deputy. We have looked and continue to look at the school year every year in conjunction with the Department to see if there are things we can do to improve the process for the following year. The Deputy is correct in that we have looked at advancing our payment deadlines over the last three years and we have found this very successful because it gives us a little bit of extra time to try to start issuing tickets earlier.</p>
+          <p eId="para_245"> In relation to the late applications, we undertake a great deal of communications. I refer to the Department, and Mr. Ó Ruairc has already referred to the significant media campaigns that take place in the weeks leading up to the closing deadline. We have sent out more than 270,000 emails directly to families to try to encourage them to pay by the deadline. We sent over 20,000 SMS messages targeting people directly who had school transport last year. The Deputy is right that the critical thing for us is to try to have the applications in on time. Our procurement is significant as part of our school year planning. We have over 1,500 routes that went out to tender as part of our five-year procurement process. We actually start that planning in local offices in October and November because we put the routes out to tender in February. This year, we were actually earlier in awarding some of those routes as well, and we issued our first round of awards at the end of May.</p>
+          <p eId="para_246"> As I said, all these endeavours are to try to contribute to helping the process. We have 90,000 tickets issued to date. We find the earlier we can get tickets issued - going to the Deputy's point - the more certainty it provides for our customers, so we are still working to try to get tickets as early as possible. There are always challenges, unfortunately, in terms of trying to figure out exactly how much capacity we have available. I think it is recognised that our local offices and our planning teams do a huge amount to see if anything else can be done and that they have left no stone unturned in terms of trying to facilitate people before they would turn them down.</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_155">
+          <from>Senator Pauline Tully<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_247">This is why I think investment in the fleet would make absolutely sense in the context of this reliance on private operators all the time. I know there is going to have to be a reliance on private operators, but should we not be building up the fleet?</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_156">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_248">Okay. I call Deputy Jen Cummins.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_157">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_249">As a new TD, I will probably learn how these things go. I probably should not have said, "Oh that is grand, I will get back to you". Could what was said about the primary schools and the patronage not being an issue for school transport be explained a little bit more? I ask because what I was explaining was that there are two primary schools, one of which is an Educate Together school and the other is a community national school. Bus Éireann is saying it is necessary to go to the closest one, which is the community national school, but the parents concerned want their children to go to the Educate Together school. Is it that it should not be this way at the primary school or-----</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_250">It is at post-primary level that ethos and denomination does not apply. It does apply at primary level. There are, I think, the categories of multidenominational, interdenominational and religious schools. </p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:40:00+01:00"/></from>
+          <p eId="para_251">They would fall into the same denomination in relation to the scheme.</p>
+          <p eId="para_252">They are not seen as being any different. If a person wishes to bypass a Catholic school to go to an Educate Together school, they can do so. Similarly, if people wish to bypass an Irish-speaking school to go to an English-speaking school, or <i>vice versa</i>, they can do so. Educate Together community national schools are deemed as being under the same ethos, however. </p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_160">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_253">Parents would probably say they are not the same ethos. As someone who comes from that sector, they are different, and beautifully different. It is good that we have diversity. It is a challenge for parents when they make those decisions. I understand the need for rules and regulations because otherwise people would drive all over the place. What I am hearing from this conversation today is that it suits the many but not the few. That is the difficulty when trying to cater for those children who are looking for an inclusive education. Although that is offered by both schools, there may be a preference for one over the other. Those schools should be treated as separate.</p>
+          <p eId="para_254"> The witnesses referred to Catholic schools. If someone wishes to send his or her child to a Church of Ireland school, is it put in the same category as the Catholic school?</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_255">No. That is a different religion.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_162">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_256">It is a different category again.</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_257">It is a minority religion.</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Ms Sarah Heneghan<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_258">With the review, we will be taking out the closest school rule. If there is a route and enough pupils interested in travelling that route, we will look to set up a new route there. We will be taking out that closest school issue.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_165">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_259">Okay. I have provided information on two areas. Is there a roadmap as to when they will be addressed, or how will it be done? I know this will be done on a phased basis between now and 2030. Do the witnesses know what geographical areas will be started? Is it being done in that way?</p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Mr. Tomás Ó Ruairc<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_260">We are in the process of looking at it. We have our own GIS data mapping going on. There is a route not being conducted by Bus Éireann as well. Mr. Kent spoke a bit on that earlier. That will give us further data on those kinds of areas.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_167">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_261">In getting rid of the closest school rule, will that then eliminate ethos or language considerations?</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Ms Laura Leonard<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_262">Ethos and language will remain. No change is recommended in that regard.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_169">
+          <from>Deputy Jen Cummins<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_263">I thank all the witnesses. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_170">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_264">I have the final speaking slot. I have three minutes. I wish to return to Sixmilebridge and the pilot scheme there. While it may seem parochial, it is not. Everyone in here needs to be tuned into this pilot scheme because it could be somewhere else in the country next. I have asked for the costs of the scheme. After posing all of those questions, the response I will get will outline extra costs of €40,000 or whatever but state that it was a success. When the witnesses report back to the committee on this, I really want them to elaborate on this scheme. The manpower involved was huge. I know they will say that those workers were all on the payroll anyway and that HR inputs cannot be quantified. I get that. I ask them to please elaborate a little bit on that scheme when they report back to the committee.</p>
+          <p eId="para_265"> I refer to the number of people from the Department and from Bus Éireann and the number of contractors who were on site morning and afternoon, some of whom rode on the buses to supervise how they were driving while others were at the stops and the pick-up points. There were Zoom meetings at night. It was crazy. If this is to be replicated throughout the country, it is just not sustainable for the witnesses and the organisations they represent. With the new Minister in the Department of Education and Youth, Deputy McEntee, as well as the Minister of State, Deputy Moynihan, I am sure the witnesses will have to go in to report to them. While on one metric they can say the scheme works because people are being picked up and brought to school on time, it is everything else. At the end of the day, we are lawmakers and policymakers and we manage the public purse to some degree. There must be some scrutiny at this committee. I would love the witnesses to encapsulate the scheme, warts and all. We know the eventual outcome was successful, but collecting and dropping off is just one lens to look at this. In my eyes, it was everything else that did not work. I can say no more on it other than to ask the witnesses to report back on it. The Minister cannot simply be told that the scheme was a success when the cost of it was colossal.</p>
+          <p eId="para_266"> To make a final point, I mentioned earlier that innovative ways of transforming school transport are being looked at. It is a fact – I have made this point repeatedly over the years – that in any town or city in Ireland, you can get from A to B today with relative ease because the schools are closed and 1.5 million children are not being brought to the school gate and hugged in the queue. We are all guilty of it at some point in our life. School transport, when done right, really works and unlocks so many other things. The more money thrown behind this, the better. We are not really having that lightbulb moment unless we are dealing with school transport. We can talk about EV charging points and all sorts of new fandangle transport and everything in between, but unless we are somehow taking all these cars off the road and having that July and August experience of traffic every month of the year, we are not going to get to the bottom of it. Sometimes, the joined-up thinking does not happen.</p>
+          <p eId="para_267"> My last question is to Mr. Kent. There is a school bus that goes out every morning to Parteen National School in County Clare from the Limerick depot. It is a Bus Éireann bus. It comes out full of children, drops them off at the school gate and leaves that village. Having fulfilled its contract to the Department of education, it turns around and goes back to the Bus Éireann depot again. It leaves empty. All the people of the village are saying that it would be lovely to get the bus and go into Limerick city, but they cannot because that bus is on a Department of education contract on the way out and becomes a Bus Éireann bus on the way back in. There must be some joined-up way to say that when the bus turns around, it can pick people up in that village at 9.05 a.m. and bring them into Limerick. That joined-up thinking is not there, however. Maybe Mr. Kent can join up that thinking for us today.</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Mr. Stephen Kent<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_268">To go back to the Cathaoirleach’s first question, to look at the costs associated with the Sixmilebridge project in itself is to look through a singular lens. That project was the amalgamation of three Connecting Ireland routes and an extension into the airport. The Cathaoirleach knows Shannon and all the rest. There was a huge amount of PSO opportunity being planned by the NTA on one side. When that was being planned, there was the opportunity, at the same time that the other scheme was being expanded, to see whether all of the capacity that was being put into the market could be availed of.</p>
+          <p eId="para_269"> Similarly, with regard to the bus issue at Parteen, I do not disagree with the Cathaoirleach. If the bus is going out to Parteen as a school bus run or as a public service run, the question is whether there is an opportunity for integration, which is what the Cathaoirleach is asking. There are greater opportunities for integration. Without integration, the target of 100,000 school transport places may not be delivered. It may not be delivered with capacity in the market unless we are looking at integration. I know the Department of education and the NTA believe that. To go back to the Cathaoirleach’s point, it requires a couple of agencies to come together to share information. Costs might be one lens in the context of school transport, but all the benefits that are being delivered must be looked at. I refer to the PSO end as well when that comes back to you. That is the other part of it. I am for it because we want to move more people on buses. That is why we are here and exist. The Cathaoirleach will have no truck with me on that. If we can do it, we will always make sure that we participate in those discussions for integration.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_172">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T14:50:00+01:00"/></from>
+          <p eId="para_270">I thank Mr. Kent. Before we conclude, this is our final committee before the summer recess. If anyone wants a good summer read, the book written by former Minister, Mr. Eoghan Murphy, <i>Running from Office,</i> is quite good for all of us to read. It starts off about his personal journey in politics, which is similar to all of our own experiences, but approximately three quarters of the way through the book, he talks about how he wanted to transform housing. He knew he had to speak to Uisce Éireann and others in that regard. It is a good read. Basically, the joined-up thinking, in his eyes, never happened. He felt it was not his fault, maybe, nor that of the institutions. Rather, it was just systemic. The stuff we need to co-ordinate and work does not work because even politically and institutionally, as agencies we all tend to go back to working in silos. If the witnesses can stay chatting beyond this committee and solve some of those issues, this committee, children and parents will be hugely grateful.</p>
+          <p eId="para_271"> For those who have tuned in this morning to watch the committee, although I do not know whether many watch this, we thank those who work in this sector. We thank the witnesses for coming in here today for their fantastic engagement and for all the troubleshooting they do beyond this committee. They do an awful lot to help public representatives and the public. We thank the bus drivers and school bus escorts who do a tricky job. Senator Conway summed it up rightly when he said that we were all at one stage in our lives bold pups on the back of the bus. I can only imagine what it is like for the person driving that vehicle. It is a tough job. We want them to stay safe. We want those students to be back safely in classrooms in September. We thank them for their fantastic service. I thank the witnesses for coming before the committee today for their engagement and for taking the time to answer members’ questions.</p>
+        </speech>
+        <summary eId="sum_9"> The joint committee adjourned at 4.59 p.m. <i>sine die.</i></summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

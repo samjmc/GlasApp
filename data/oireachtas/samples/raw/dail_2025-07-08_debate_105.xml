@@ -1,0 +1,897 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-07-08/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-07-08/debate"/>
+          <FRBRdate date="2025-07-08" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_justice_home_affairs_and_migration"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-07-08/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-07-08/debate/mul@"/>
+          <FRBRdate date="2025-07-08" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-07-08/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_justice_home_affairs_and_migration/2025-07-08/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-12" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <analysis source="#source">
+        <parliamentary>
+          <voting eId="vote_1" href="#sum_13" outcome="#lost" refersTo="#sum_12">
+            <count eId="vote_1-count_1" href="#qty_1" refersTo="#ta" value="4"/>
+            <count eId="vote_1-count_2" href="#qty_2" refersTo="#nil" value="6"/>
+          </voting>
+          <voting eId="vote_2" href="#sum_25" outcome="#lost" refersTo="#sum_24">
+            <count eId="vote_2-count_1" href="#qty_3" refersTo="#ta" value="4"/>
+            <count eId="vote_2-count_2" href="#qty_4" refersTo="#nil" value="6"/>
+          </voting>
+          <voting eId="vote_3" href="#sum_31" outcome="#lost" refersTo="#sum_30">
+            <count eId="vote_3-count_1" href="#qty_5" refersTo="#ta" value="4"/>
+            <count eId="vote_3-count_2" href="#qty_6" refersTo="#nil" value="6"/>
+          </voting>
+          <voting eId="vote_4" href="#sum_36" outcome="#carried" refersTo="#sum_35">
+            <count eId="vote_4-count_1" href="#qty_7" refersTo="#ta" value="6"/>
+            <count eId="vote_4-count_2" href="#qty_8" refersTo="#nil" value="4"/>
+          </voting>
+          <voting eId="vote_5" href="#sum_42" outcome="#lost" refersTo="#sum_41">
+            <count eId="vote_5-count_1" href="#qty_9" refersTo="#ta" value="4"/>
+            <count eId="vote_5-count_2" href="#qty_10" refersTo="#nil" value="6"/>
+          </voting>
+        </parliamentary>
+      </analysis>
+      <references source="#debates">
+        <TLCConcept eId="#lost" href="/ie/oireachtas/ontology#DeclaredLost" showAs="Declared Lost"/>
+        <TLCConcept eId="#carried" href="/ie/oireachtas/ontology#DeclaredCarried" showAs="Declared Carried"/>
+        <TLCConcept eId="#staon" href="/ie/oireachtas/ontology#StaonVote" showAs="Staon Vote"/>
+        <TLCConcept eId="#nil" href="/ie/oireachtas/ontology#NílVote" showAs="Níl Vote"/>
+        <TLCConcept eId="#ta" href="/ie/oireachtas/ontology#TáVote" showAs="Tá Vote"/>
+        <TLCPerson eId="AlanKelly" href="/ie/oireachtas/member/id/Alan-Kelly.S.2007-07-23" showAs="Alan Kelly"/>
+        <TLCPerson eId="CatherineCallaghan" href="/ie/oireachtas/member/id/Catherine-Callaghan.D.2024-11-29" showAs="Catherine Callaghan"/>
+        <TLCPerson eId="GaryGannon" href="/ie/oireachtas/member/id/Gary-Gannon.D.2020-02-08" showAs="Gary Gannon"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="JimOCallaghan" href="/ie/oireachtas/member/id/Jim-O'Callaghan.D.2016-10-03" showAs="Jim O'Callaghan"/>
+        <TLCPerson eId="MarkWard" href="/ie/oireachtas/member/id/Mark-Ward.D.2019-11-29" showAs="Mark Ward"/>
+        <TLCPerson eId="MattCarthy" href="/ie/oireachtas/member/id/Matt-Carthy.D.2020-02-08" showAs="Matt Carthy"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="TomBrabazon" href="/ie/oireachtas/member/id/Tom-Brabazon.D.2024-11-29" showAs="Tom Brabazon"/>
+        <TLCEvent eId="bill.2025.34.dail.3" href="/ie/oireachtas/bill/2025/34/dail/3" showAs="Criminal Justice (Terrorist Offences) (Amendment) Bill 2025: Committee Stage (Dáil)"/>
+        <TLCRole eId="An_Cathaoirleach_Gníomhach" href="/ie/oireachtas/role/office/an_cathaoirleach_gníomhach" showAs="An Cathaoirleach Gníomhach"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Justice,_Home_Affairs_and_Migration" href="/ie/oireachtas/role/minister/justice__home_affairs__migration" showAs="Minister for Justice, Home Affairs and Migration"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM DHLÍ AGUS CEART, GNÓTHAÍ BAILE AGUS IMIRCE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Justice, Home Affairs and Migration</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-08">Dé Máirt, 08 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-08">Tuesday, 08 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 03:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 03:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#TomBrabazon">Tom Brabazon</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#CatherineCallaghan">Catherine Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#GaryGannon">Gary Gannon</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#AlanKelly">Alan Kelly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#JimOCallaghan">Jim O'Callaghan (Minister for Justice, Home Affairs and Migration)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PadraigOSullivan">Pádraig O'Sullivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MarkWard">Mark Ward.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Paula Butterly.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MattCarthy">Teachta / Deputy Matt Carthy sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Select Committee<recordedTime time="2025-07-08T15:00:00+01:00"/></heading>
+        <speech by="#MattCarthy" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T15:00:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Deputy Butterly. I understand Deputy Boland will attend in substitution for her. I remind members to turn off their phones. As indicated, we are dealing with the Criminal Justice (Terrorist Offences) (Amendment) Bill 2025. As I have submitted a number of amendments I propose to vacate the Chair and ask for a proposal for a temporary Chair.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_2">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T15:00:00+01:00"/></from>
+          <p eId="para_13">I nominate Deputy Callaghan.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-08T15:00:00+01:00"/></from>
+          <p eId="para_14">Is that agreed? Agreed. We will suspend for a couple of moments while the Minister and his officials come in.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Sitting suspended at 3.04 p.m. and resumed at 3.07 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" refersTo="#bill.2025.34.dail.3" eId="dbsect_3">
+        <heading>Criminal Justice (Terrorist Offences) (Amendment) Bill 2025: Committee Stage<recordedTime time="2025-07-08T15:00:00+01:00"/></heading>
+        <summary eId="sum_7">
+          <i>Deputy Catherine Callaghan took the Chair.</i>
+        </summary>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_4">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T15:00:00+01:00"/></from>
+          <p eId="para_15">I welcome the Minister and his officials. It is important to note that in order to participate a division in committee, members must be physically present, in other words, they cannot vote from a remote location.</p>
+        </speech>
+        <speech by="#JimOCallaghan" as="#Minister_for_Justice,_Home_Affairs_and_Migration" eId="spk_5">
+          <from>Minister for Justice, Home Affairs and Migration (Deputy Jim O'Callaghan)<recordedTime time="2025-07-08T15:00:00+01:00"/></from>
+          <p eId="para_16">I am pleased to present this Bill to the committee. It will amend the Criminal Justice (Terrorist Offences) Act 2005 to allow for a broader category or prosecutable offences in respect of terrorist activity. These include terrorist acts with a cross-border element and cyberattacks where the aim is to cause widespread harm. The legislation aims to give full effect to the 2017 EU directive on combating terrorism and provide for those provisions not already covered in our national counterterrorism laws. On this point, I advise the committee I may bring forward amendments on Report Stage. There are a number of anti-terrorism provisions contained in the directive and I am seeking further legal clarification of whether existing national laws fully satisfy their requirements. This includes potential technical amendments and a potential amendment regarding corporate liability where such a corporate is engaged in terrorism. Where gaps in our national laws are confirmed amendments to cover these areas will be proposed for consideration on Report Stage.</p>
+        </speech>
+        <summary eId="sum_8">SECTION 1</summary>
+        <summary eId="sum_9"> Question proposed: "That section 1 stand part of the Bill."</summary>
+        <speech by="#JimOCallaghan" eId="spk_6" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T15:00:00+01:00"/></from>
+          <p eId="para_17">Section 1 is a standard provision that defines the principal Act as the Criminal Justice (Terrorist Offences) Act 2005.</p>
+        </speech>
+        <summary eId="sum_10"> Question put and agreed to.</summary>
+        <summary eId="sum_11">NEW SECTION</summary>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_7">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T15:00:00+01:00"/></from>
+          <p eId="para_18">Amendments Nos. 1 to 7, inclusive, and 10 to 13, inclusive are related and may be discussed together.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_8">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:10:00+01:00"/></from>
+          <p eId="para_19">I move amendment No. 1:</p>
+          <p class="indent_1" eId="para_20">In page 3, between lines 13 and 14, to insert the following:</p>
+          <p class="indent_2" eId="para_21">
+            <b>“Amendment of section 3 of Principal Act</b>
+          </p>
+          <p class="indent_2" eId="para_22"><b>2.</b>Section 3 of the Principal Act is amended by the insertion of the following new definitions:</p>
+          <p class="indent_3" eId="para_23">“ ‘crime against humanity’ means any of the acts specified in Article 7 of the Statute of the International Criminal Court;</p>
+          <p class="indent_3" eId="para_24">‘genocide’ means any of the acts specified in Article 6 of the Statute of the International Criminal Court;</p>
+          <p class="indent_3" eId="para_25">‘war crime’ means any of the acts specified in Article 8.2 of the Statute of the International Criminal Court.”.”.</p>
+          <p eId="para_26"> I welcome the Minister. There are a number of amendments to this section and they are necessary to ensure that terrorist offences that are committed by what might be described as established or governmental organisations that nevertheless are engaged in terrorism are captured in both the spirit and the effect of this law. The truth is that this Bill and indeed existing legislation in this area ignore what is probably the most vicious terrorist organisation on the planet at this moment, which is the IDF, and its operations in Palestine. Current laws do not prevent people from joining a military that is literally engaged in a genocide or gross human rights violations. In the context of this debate, I think minds will turn to the actions of the IDF, but the purpose of these amendments is to deal with future issues that arise as regards armed forces of other states engaged in war crimes that recruit what are in fact mercenaries. We know that the IDF recruits foreign fighters, just as others who are targets of this legislation do. The EU directive dates from the period when ISIS was at its peak and when there was a significant problem with people travelling from Europe to join ISIS. While it might not be the case that many Irish people join the IDF, it is important that, as a State, we make it clear that participating in the actions of armed forces of other states that are engaged in war crimes and genocide is unacceptable and that those who do so will be held accountable for their actions. The failure of this State to have in place any sanctions or restrictions against those travelling to participate in war crimes and genocide as part of an armed force leaves the State open to the allegation of complicity in genocide.</p>
+          <p eId="para_27"> We have to remind ourselves what we are dealing with and why we as a State simply cannot stand by and allow citizens of the State to serve in the IDF or other armed forces engaged in war crimes. In addition to what I think most people have become familiar with in terms of the destruction in Gaza and the killings of tens of thousands and indiscriminate bombings by the IDF, we know it has been engaged for several years in the arbitrary killing of civilians. Members of the IDF are on record admitting to this going back several decades, in fact. They are shooting unarmed starving civilians queuing for food, with more than 500 killed at food distribution centres in recent weeks. They are shooting children. So many children were killed in May. UNICEF has estimated that at least 50,000 children have been killed or injured in Gaza. We should remember Hind Rajab - 335 rounds shot into a car where a six-year-old girl was alone, terrified by her dead family members, while the Palestinian Red Crescent tried to rescue her. The IDF is shooting pregnant women, blocking aid, food and medicine from getting to a starving population, and raping and sexually assaulting Palestinians, including teens, who have died as a result. None of this is disputed; this is well documented and justified in Israel. They are targeting health staff, attacking hospitals and ordering health staff to leave patients, including newborn babies in incubators, to die. They are targeting journalists, with at least 181 journalists killed, according to the Committee to Protect Journalists, and we know that as matters stand, Israel is preventing international news teams from even entering Gaza to report on what is going on.</p>
+          <p eId="para_28"> If those things do not constitute terrorism, I do not know what will but as it stands, this legislation does not provide for the explicit inclusion of those types of acts.</p>
+          <p eId="para_29"> The amendments I have brought forward are designed to outlaw citizens of this State travelling or training to participate in genocide and war crimes. They also outlaw recruitment by the armed forces of such a state, so our amendments would also have the effect of preventing the IDF or any other armed force engaged in genocide or war crimes from training with the Irish Defence Forces. That is really important in the context that last year the publication <i>The Ditch</i> revealed that IDF military personnel had trained in the Irish Military College over the previous six years. This will not be permitted if our amendments are accepted. The amendments I have tabled, I would argue, are no less important than the introduction of the occupied territories Bill in the stance this State takes against genocide and war crimes. I hope that the Minister will accept them and that members of the committee will support them.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_9">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T15:10:00+01:00"/></from>
+          <p eId="para_30">Before I go to the Minister, would anybody else like to contribute? Deputy Ward has already indicated. Then I will call on Deputy Brabazon and Deputy Gannon.</p>
+        </speech>
+        <speech by="#MarkWard" eId="spk_10">
+          <from>Deputy Mark Ward<recordedTime time="2025-07-08T15:10:00+01:00"/></from>
+          <p eId="para_31">I reiterate what my colleague Deputy Carthy has said about the exclusion from the Bill of militaries that are engaged in a genocide. This is wrong, and our amendments go towards correcting this. We can see what the IDF is doing daily. It is committing war crime after war crime. There is the mass displacement and the ethnic cleansing of the population of Gaza, using mass starvation as a weapon of war. There are countless dead, injured and missing children in Gaza at the hands of the IDF. This Bill does not prevent anyone from being recruited to the IDF or other genocidal armies. The Bill does not prevent people from Ireland from travelling to engage in the war crimes of the IDF or to join the IDF. I would hope that not many people would look to do that.</p>
+          <p eId="para_32"> I want to share my experience of the IDF. In 2022, I took part in a sporting and cultural exchange in Palestine. We visited Ramallah and the greater West Bank. We were lucky enough. We had a Palestinian bus driver with us. The abuse that man got at every checkpoint we went through was absolutely inhumane. He was taken off the bus and searched. When we protested the treatment he was being subjected to, we had guns pointed directly at us and the IDF roaring at us. "There is no Palestine, only Israel," they roared at us as they pointed guns at us. One of the young men who was with us was a young boxer from Belfast. He got very nervous. He was smiling at them but smiling through his nerves more than anything else, and they subjected him to a reign of terror. After that, when we were leaving, because I had been on Palestinian television and documented my experience when I was over there, they stopped the bus about a mile or two from the airport in Israel just to make sure I was leaving the state. They then subjected me to treatment that pales into real insignificance compared with what the people of Gaza are experiencing, but this was pre-7 October and this was a group of Irish citizens visiting the West Bank with the support of the Irish consulate over there, and we were subjected to that from the IDF.</p>
+          <p eId="para_33"> This amendment Deputy Carthy has put forward and the other amendments we are speaking on now are really relevant, and I would like to think we would be able to support them at this stage.</p>
+        </speech>
+        <speech by="#TomBrabazon" eId="spk_11">
+          <from>Deputy Tom Brabazon<recordedTime time="2025-07-08T15:10:00+01:00"/></from>
+          <p eId="para_34">I have a lot of sympathy for what the previous two speakers have said but I am concerned that this legislation is being tailored for a particular international situation rather than being a wider provision in respect of terrorism in general. I would just caution about that. I will leave it at that for the moment.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_12">
+          <from>Deputy Gary Gannon<recordedTime time="2025-07-08T15:10:00+01:00"/></from>
+          <p eId="para_35">I add my support to Deputy Carthy's amendments. They are vital. While the Bill might have been tailored for a very specific situation, we do not get to separate which forms of terrorism we consider allowable, almost, in an international context and which ones we do not. There are now members of armed forces prohibiting baby formula from getting to groups of people, starving people and then shooting them while they queue for food.</p>
+          <p eId="para_36">That is terrorism by any definition. I think a line in our own legislation regarding the International Criminal Court and the ICJ is entirely appropriate for a terrorist offences Bill and that we should be seeking to support this insofar as we can and getting in front of it by allowing the amendments today.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_13">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T15:20:00+01:00"/></from>
+          <p eId="para_37">I have a similar amendment. It is not grouped with these. It is probably slightly different but not very much different. I support these amendments for all the reasons my colleagues have given. It would be more problematic for us as a country if we do not do this. I think the Minister would be asked why not. The public are not really interested in the intricacies of a Bill and an amendment but they are interested in humanitarianism, genocide and the way in which the world sees what is going on. Here we have important legislation where we have an opportunity to say that if an army in any part of the world acts in a genocidal way, that, under our Bill, means they are declared as terrorists. They are terrorists, as I have said numerous times in the Dáil.</p>
+          <p eId="para_38"> For the general public looking in on all of us, I accept there is quite a degree of sympathy within the Minister's own party and probably all other members of the coalition relating to this, but sympathy does not achieve anything. What a State decides through its legislative process is what is on the table and says what we believe in. I am not hung up on whether it is the Labour Party's amendment or Sinn Féin's amendment, but I am hung up on doing the right thing. If the Minister is willing to work with us on some other amendment, even if he has some technical reason to oppose these ones but indicates that he is willing to do this in spirit and tables a Report Stage amendment that we would all work on, I am not speaking out of turn but hope that we would all be able to work with the Minister. Thousands of people in the public are watching this committee and I have been inundated with people contacting me about this. If it is a blanket case of saying that we are not doing this, then from a Government and State point of view, the Minister is in a bad position and is not representing the views of the Irish nation.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_14" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T15:20:00+01:00"/></from>
+          <p eId="para_39">I thank all members of the committee for their contributions. I share their revulsion at the indiscriminate violence ongoing in Gaza, perpetrated by the Israel Defense Forces. Many of us in this room believe those acts of violence constitute crimes against humanity, genocide and war crimes. It is important to point out that if they are crimes against humanity, genocide and war crimes, as all of us to believe them to be, they are criminal acts in domestic Irish law at present. They have been criminalised since the enactment of the International Criminal Court Act 2006, which had the effect of transposing into Irish law the Rome Statute of the International Criminal Court. All those actions that revolt us, which are ongoing in Gaza at present, are criminal acts in Ireland. We have criminalised them if they meet the standard of crimes against humanity, genocide or war crime. Obviously that is a matter to be determined by the court.</p>
+          <p eId="para_40"> The purpose of this Bill, which is going through Committee Stage today, is to transpose into Irish law the EU directive from 2017. I am conscious of the fact that when you look at that directive, particularly the definition of terrorist group contained in Article 2, it is a very broad definition. It states:</p>
+          <p class="indent_1" eId="para_41">'terrorist group' means a structured group of more than two persons, established for a period of time and acting in concert to commit terrorist offences; 'structured group' means a group that is not randomly formed for the immediate commission of an offence and that does not need to have formally defined roles for its members, continuity of its membership or a developed structure."</p>
+          <p eId="para_42"> That is a very broad definition within the directive. I think it is broad enough to cover groups that we were discussing earlier.</p>
+          <p eId="para_43"> Members will be aware that the directive expressly excluded from the directive and the ambit of the terrorist offences legislation our state forces or police forces but only where they are carrying out lawful activity. Any police force or military force aligned or representing a state that is involved in criminal activity or activity which we have criminalised in this country, such as through crimes against humanity, genocide or war crimes, does not get the protection of the exemption provided for in the directive.</p>
+          <p eId="para_44"> I thank Deputy Carthy for his proposed amendment. I note that amendments Nos. 1 to 7, inclusive, relate to new terms to be included as part of the definition of terrorist-linked activity in section 2. These new terms are further defined in proposed amendments Nos 10 to 13, inclusive to section 5. Combined, they create new offences in the terrorist-linked activity category. The effect is to criminalise travel, organising travel, receiving training and recruitment for the purposes of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide. I understand the intention behind these proposed amendments is to ensure that those who partake in or facilitate acts that contribute to the commission of breaches of international law, including war crimes, crimes against humanity and acts of genocide at the behest of a state via its armed forces can be convicted of terrorist offences.</p>
+          <p eId="para_45"> The principal Act excludes the activities of armed forces during an armed conflict in the exercise of their official duties from being categorised as terrorist offences insofar as those activities are governed by humanitarian or other rules of international law. This was a requirement of the original underlying EU measure underpinning this legislation, the 2002 EU Council framework decision on combating terrorism. That same requirement remains in the 2017 directive that will now underpin the primary Act on foot of the Bill. The aim of the Bill is to give full effect to the 2017 EU directive on combating terrorism and therefore these proposed offences will fall outside the scope of the Bill.</p>
+          <p eId="para_46"> On that, I wish to emphasise that a commitment to the rule of international law is enshrined in the Irish Constitution. This is one of the core principles of Irish foreign policy and includes both customary international law and international agreements that Ireland is party to. These include the Genocide Convention and the Geneva Conventions, which established international legal standards for humanitarian treatment in war. In relation to international criminal law, most significantly, Ireland gave effect to the Rome Statute of the International Criminal Court via, as I said, the International Criminal Court Act 2006. This enables punishment by the Irish courts for breaches of international law that fall within the jurisdiction of the ICC, namely, genocide, crimes against humanity and war crimes. It also makes it an offence to facilitate the commission of these offences, including aiding, abetting or otherwise assisting in their commission. It allows for the prosecution of such offences in Ireland while also empowering Irish authorities to assist the International Criminal Court in the investigation or prosecution of such offences.</p>
+          <p eId="para_47"> The 2006 Act also provides for universal jurisdiction over war crimes constituting grave breaches of the Geneva Conventions, such that an individual accused of such crimes can be prosecuted in Ireland regardless of his or her nationality or where the offence occurred. A similar form of universal jurisdiction is provided for in respect of certain offences under the Geneva Conventions Act 1962, as amended by the Geneva Conventions (Amendment) Act 1998. I regret to say that for those reasons, I cannot support the amendments put forward by Deputy Carthy.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_15">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:20:00+01:00"/></from>
+          <p eId="para_48">To be clear to the committee, as the Minister has touched on with regard to the purposes of the amendments, amendments Nos. 1 to 7, inclusive, in my name, are essentially a foundation for later amendments to define the circumstances of when it would be an offence to join, train or recruit for an armed force that is engaged in crimes against humanity, war crimes or genocide. Amendment No. 2 provides a definition for organising or facilitating travel for the purpose of serving with such a force. Amendment No. 3 provides a definition for providing training in the armed forces of a state engaged in war crimes. Amendment No. 4 provides the definition of receiving training in the armed forces of a state engaged in war crimes. Amendment No. 5 is a definition for the recruitment for the purpose of recruiting into armed forces of a state engaged in war crimes.</p>
+          <p eId="para_49">Amendment No. 6 is a definition of travel for the purpose of serving in the armed forces of a state engaged in war crimes. Amendment No. 7 furthers that definition. Amendment No. 10 is a substantive amendment to outlaw training for the purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity and genocide. Amendment No. 11 is the provision to outlaw recruitment for the purpose of serving in such armed forces. Amendment No. 12 is the provision to outlaw serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide. Amendment No. 13 is the substantive amendment to outlaw organising or facilitating travel for the purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity and genocide.</p>
+          <p eId="para_50"> It is important we are very clear that none of those things are illegal in Ireland. If they were, any member of the IDF who set foot in this country would be arrested under such provisions, and those provisions do not exist. The difficulty with the legislative frameworks the Minister has outlined is that the law, as it stands, does not prevent or make it illegal to be engaged with an armed force engaged in the things I have described. The provision is quite cleverly worded from a particular viewpoint, because what it excludes is armed forces and state actors, insofar as those activities are governed by the rules of international law. Israel will state its actions are governed by the rules of international law, and that is why it is before the ICC and the ICJ. It makes the argument that what it is doing does not constitute war crimes, crimes against humanity, or genocide. Despite what we can see, we depend on rulings from the ICJ and the ICC, and we know that in such instances, these things take an awfully long time. At the moment, a person can actively recruit for the IDF or organise travel for members of the IDF. An Irish citizen can leave Ireland and train with the IDF, return to Ireland, shrug their shoulders and experience no consequences whatsoever. The purpose of these amendments is to ensure that we are very clear that terrorism is terrorism, regardless of whether it is carried out by a non-state actor or a state actor. We need to be entirely clear.</p>
+          <p eId="para_51"> I agree with Deputy Kelly that if the Minister were to give any inference whatsoever that he was open to find a different formula of words, that would be acceptable. However, the amendments that we have put forward very clearly set out the definitions and I do not think anybody would dispute any of the definitions we have submitted.</p>
+          <p eId="para_52"> Amendments Nos. 1 to 7, inclusive, are clear and precise along with the specific rules in amendments Nos. 10 to 13, inclusive, as they have been defined. In his follow-up, will the Minister indicate how many individuals have actually been charged with offences under the International Criminal Court Act 2006 he cited a number of times, in order that we might have a compare and contrast scenario? Will he give a sense as to the jurisdictions of origin of those who have been charged in this State under the 2006 Act? We want to avoid the charge that has been rightfully levelled against states all over the Western world of hypocrisy and duplicity. We need to ensure this is in place.</p>
+          <p eId="para_53"> The EU directive counts for nothing when it comes to the IDF. There are EU states financing and arming Israel as it conducts the most horrendous acts an established state actor has committed in decades, and it has done so with the support of EU states, to their shame. Ireland has always been strong in comparison with our EU neighbours in rhetoric, but we have yet to actually take meaningful steps to ensure we can say with hand on heart we have no hand, act nor part in what is being done, particularly to the Palestinian people. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_16">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T15:30:00+01:00"/></from>
+          <p eId="para_54">Before I return to the Minister, does any member of the committee wish to speak again?</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_17">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T15:30:00+01:00"/></from>
+          <p eId="para_55">I asked earlier, and the Minister did not respond in his comments, whether he is willing to work with this committee on some form of compromise that we as a justice committee, on behalf of the Oireachtas, could go to the Irish people with to state that we all feel the same way about this matter and that what we are willing to put into the legislation to ensure it reflects what the Irish people actually want. Will the Minister work with us on that? If he is willing to come forward with something on Report Stage, many of his own colleagues would also welcome that.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_18">
+          <from>Deputy Gary Gannon<recordedTime time="2025-07-08T15:30:00+01:00"/></from>
+          <p eId="para_56">I agree with points previously made, and I wish to go further. The Minister referenced international law as a reason why we do not need these amendments. I would hold very strongly that we can see what is happening in the realms of international law, where certain states, and Israel in particular, are in absolute violation and breach, and simply say they act in accordance when we know they do not. Scenes we have witnessed every single day for the past two years demonstrate that. This is an opportunity for Ireland to demonstrate the powers of its own law. I see no reason not to do that. We have all said the same thing, the Minister included, that something like this might be necessary. I see this as an area where we can work together and demonstrate a bit of leadership. I do not think any of us find fault in the amendments submitted, some simply feel they may not be needed because of international legal law. However, clearly, that is not working at the moment.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_19" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T15:30:00+01:00"/></from>
+          <p eId="para_57">I will address Deputy Gannon’s point. It is true that international law is not working at present. If it was working, we would see the organs of the international community responding to the slaughter going on in Gaza, but that points to failings within the international system.</p>
+          <p eId="para_58"> Deputy Carthy referred to what Ireland has or has not done for the Palestinian people. My own view is that Ireland has been to the forefront in seeking to speak up for the Palestinian people, certainly in terms of the European Union. There has not been a European Union country more outspoken in seeking to stop the slaughter in Gaza. One may state that is just words but there is a limit to the things we can do other than responding politically. We are not a big military force. When we look at this what is astonishing is the silence of the Arab countries, which do not seem to speak out about it in the same way as countries such as Ireland. </p>
+          <p eId="para_59"> I wish to address the substance of the legislation as this is legislation that is going to cover all types of situations that arise in respect of terrorist activity. We cannot only focus on it on the basis of what is happening contemporaneously. It is important I remind Deputy Carthy that in Irish law, aiding and abetting genocide or war crimes or crimes against humanity is a criminal offence. The Deputy pointed to the exemption in the directive which states that the armed forces or police forces of a state or state actor, where they are governed by international law, are exempt. However, implicit in that is that when they are not governed by international law they are not exempt. The Deputy referred to waiting for the ICC and the ICJ to determine whether war crimes or genocide or crimes against humanity have occurred but if these amendments are accepted, some court still has to determine whether crimes against humanity or genocide or war crimes were committed. At present, if that matter goes before the ICJ and the ICC and there is a determination, the IDF will not be covered by the exemption because it will not be operating while governed by international law. It will be acting outside international law.</p>
+          <p eId="para_60"> The Deputy asked how many individuals have been charged under the 2006 Act, which is the International Criminal Court Act. I do not know but I will check. I suspect, from my recollection, that there have not been any prosecutions in respect of it but that does not mean that that is not worthwhile legislation. It shows that Ireland has transposed into its domestic law important international laws to ensure that war crimes, genocide and crimes against humanity are domestic offences in Ireland.</p>
+          <p eId="para_61"> Deputy Kelly asked will I work with the committee. Of course I will work with the committee. I respect what the Deputy is saying and agree with a lot of what he is saying but there are certain mechanisms to advance what has been said here. I do not believe this terrorist offences Bill is the mechanism to do that. The offences that we find reprehensible are criminal offences. Anyone acting outside international law is not protected. So rather than distorting the parameters of this directive by trying to shoehorn into it a size 13 foot into something that is much smaller, I do not think this is the appropriate mechanism to deal with it and for that reason I cannot accept the amendments.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_20">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:40:00+01:00"/></from>
+          <p eId="para_62">I am not sure what the reference was to Arab states. I am sure the Minister was just being flippant because I would not be trying to follow the standards set by Arab states, quite frankly, particularly those who have remained either silent or complicit in what Israel has been doing in Palestine.</p>
+          <p eId="para_63"> The truth of the matter is that the term "governed by the rules of international law" is a get-out clause for virtually every state actor in the world. We know that is what Israel has been doing and arguing. The truth of the matter is that a member of the IDF who is in Gaza today could get leave next month, come over to Ireland on their holidays or whatever the case may be and, to use the term of the debate on section 3 that we are using later on, can glorify the actions of the IDF. That person could actually be on every broadcast media channel celebrating the actions of the IDF and there is nothing in our domestic legislation that would lead to a prosecution. If a person did the same, coming from a non-state terrorist organisation, they would be held liable under the Act and that is the reason I will press my amendments.</p>
+          <p eId="para_64"> Again, I ask the Minister to consider either adopting and supporting my amendments at this Stage, and then if there is need for further amendment on Report Stage I am sure that the committee, and its members, will be willing to work with him on that. Otherwise, what we basically have is the transposition of an EU directive that kowtows to a narrative that terrorist activities are actually conducted by non-state actors alone. If anyone should know better then it should be the Irish Houses of Parliament in terms of how we approach that because we know that very oftentimes, state actors can actually be the greatest terrorists of them all.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_21">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T15:40:00+01:00"/></from>
+          <p eId="para_65">Unless the Minister has something else to add, I am going to put the question on amendment No. 1. For the record, is Deputy Carthy pressing his amendment? </p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_22">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:40:00+01:00"/></from>
+          <p eId="para_66">Yes.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_4">
+          <summary eId="sum_12">Amendment put: </summary>
+          <summary title="division" eId="sum_13">The Committee divided: Tá, <quantity refersTo="#ta" normalized="4" eId="qty_1">4</quantity>; Níl, <quantity refersTo="#nil" normalized="6" eId="qty_2">6</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_5">
+            <p eId="para_67">Tá</p>
+            <p eId="para_68">
+              <person refersTo="#MattCarthy">Carthy, Matt.</person>
+            </p>
+            <p eId="para_69">
+              <person refersTo="#GaryGannon">Gannon, Gary.</person>
+            </p>
+            <p eId="para_70">
+              <person refersTo="#AlanKelly">Kelly, Alan.</person>
+            </p>
+            <p eId="para_71">
+              <person refersTo="#MarkWard">Ward, Mark.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_6">
+            <p eId="para_72">Níl</p>
+            <p eId="para_73">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_74">
+              <person refersTo="#TomBrabazon">Brabazon, Tom.</person>
+            </p>
+            <p eId="para_75">
+              <person refersTo="#MichaelCahill">Cahill, Michael.</person>
+            </p>
+            <p eId="para_76">
+              <person refersTo="#CatherineCallaghan">Callaghan, Catherine.</person>
+            </p>
+            <p eId="para_77">
+              <person refersTo="#JimOCallaghan">O'Callaghan, Jim.</person>
+            </p>
+            <p eId="para_78">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_14"/>
+          <summary title="decision" refersTo="#lost" eId="sum_15">Amendment declared lost.</summary>
+        </debateSection>
+        <summary eId="sum_16">SECTION 2</summary>
+        <speech by="#MattCarthy" eId="spk_23">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_79">I move amendment No.2:</p>
+          <p class="indent_1" eId="para_80">In page 3, between lines 21 and 22, to insert the following:</p>
+          <p class="indent_2" eId="para_81">“ ‘organising or facilitating travel for the purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide’ shall be construed in accordance with section 4F;”.</p>
+        </speech>
+        <summary eId="sum_17">Amendment put and declared lost.</summary>
+        <speech by="#MattCarthy" eId="spk_24">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_82">I move amendment No. 3:</p>
+          <p class="indent_1" eId="para_83">In page 3, between lines 25 and 26, to insert the following:</p>
+          <p class="indent_2" eId="para_84">“ ‘providing training in the armed forces of a state engaged in war crimes, crimes against humanity or genocide’ shall be construed in accordance with section 4F;”. </p>
+        </speech>
+        <summary eId="sum_18">Amendment put and declared lost.</summary>
+        <speech by="#MattCarthy" eId="spk_25">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_85">I move amendment No. 4:</p>
+          <p class="indent_1" eId="para_86">In page 3, between lines 27 and 28, to insert the following:</p>
+          <p class="indent_2" eId="para_87">“ ‘receiving training in the armed forces of a state engaged in war crimes, crimes against humanity or genocide’ shall be construed in accordance with section 4F;”. </p>
+        </speech>
+        <summary eId="sum_19">Amendment put and declared lost.</summary>
+        <speech by="#MattCarthy" eId="spk_26">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_88">I move amendment No. 5:</p>
+          <p class="indent_1" eId="para_89">In page 3, between lines 27 and 28, to insert the following:</p>
+          <p class="indent_2" eId="para_90">“ ‘recruitment for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide’ shall be construed in accordance with section 4F;”. </p>
+        </speech>
+        <summary eId="sum_20">Amendment put and declared lost.</summary>
+        <speech by="#MattCarthy" eId="spk_27">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_91">I move amendment No. 6:</p>
+          <p class="indent_1" eId="para_92">In page 3, between lines 27 and 28, to insert the following:</p>
+          <p class="indent_2" eId="para_93">“ ‘travel for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide’ shall be construed in accordance with section 4F;”.</p>
+        </speech>
+        <summary eId="sum_21"> Amendment put and declared lost. </summary>
+        <speech by="#MattCarthy" eId="spk_28">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_94">I move amendment No. 7:</p>
+          <p class="indent_1" eId="para_95">In page 4, between lines 6 and 7, to insert the following:</p>
+          <p class="indent_2" eId="para_96">“(f) organising or facilitating travel for the purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide, </p>
+          <p class="indent_2" eId="para_97">(g) providing training in the armed forces of a state engaged in war crimes, crimes against humanity or genocide, </p>
+          <p class="indent_2" eId="para_98">(h) receiving training in the armed forces of a state engaged in war crimes, crimes against humanity or genocide, </p>
+          <p class="indent_2" eId="para_99">(i) recruitment for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide, or </p>
+          <p class="indent_2" eId="para_100">(j) travel for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide;”. </p>
+        </speech>
+        <summary eId="sum_22"> Amendment put and declared lost.</summary>
+        <speech by="#AlanKelly" eId="spk_29">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_101">I move amendment No. 8:</p>
+          <p class="indent_1" eId="para_102">In page 4, between lines 13 and 14, to insert the following:</p>
+          <p class="indent_2" eId="para_103">“(f) by the insertion of the following subsection after subsection (3):</p>
+          <p class="indent_3" eId="para_104">“(4) For the purposes of this Act and notwithstanding any enactment (other than sections 5 and 6 of the Diplomatic Relations and Immunities Act 1967) or rule of law— </p>
+          <p class="indent_4" eId="para_105">(a) the fact that a group is or forms part of a military or armed force or a police force maintained by or under the authority of the State or another state does not prevent the group from being a terrorist group, and </p>
+          <p class="indent_4" eId="para_106">(b) no privilege or immunity attaches to a person in relation to his or her actions by reason of the person having acted in the service of a state.”.”.</p>
+        </speech>
+        <summary eId="sum_23">This was not grouped with the earlier amendments and I am mandated to press this. It is something the Labour Party feels strongly on. I listened intently to what the Minster had to say earlier on. I accept and understand that he has a position. His argument seems to be that we cannot provide for it in this legislation. I think the phrase he used was "shoehorn it". If he is not willing to work with us on some form of joint amendment to ensure that the spirit of what all of us in the Opposition are trying to achieve by these amendments, could he give us an indication of where will he put it, if it is not going to be shoehorned in here? What is he going to do that is in any way different? We are trying to ensure that an armed force acting in a certain way, or parts of an armed forced acting in a certain way, can be designated as a terrorist organisation or group. What is he going to do that will in any way support what the people of Ireland believe? He is not going to shoehorn it in this legislation but he has not said he will work with us on any amendments. That is gone as well. What is he going to do? Is he going to do anything? Here is the opportunity for him to declare what he is going to do to meet the requirements of the Opposition and, dare I say it, the spirit of the overwhelming majority of the members of his own Government to ensure that this is dealt with.</summary>
+        <speech by="#MattCarthy" eId="spk_30">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T15:50:00+01:00"/></from>
+          <p eId="para_107">I support this amendment, which captures participation by state bodies, such as the IDF, in a different way to our own amendments but in a way that does not contravene them. All of this is necessitated by the fact that EU domestic law excludes armed forces from states, such as Israel, being designated as a terrorist group regardless of what they are involved in. It is deeply troubling that there has been such resistance in moving to this position. I do not understand how we can say on one hand that this new legislation is so necessary when the acts of violence we need to end right now, the sources of all other types of terrorism in many respects come from states being able to act with impunity and disregard for humankind, never mind international humanitarian law. The world has turned a blind eye to a set of terrorist activities that include murdering children while they are in incubators in hospital and starving then, as well as shooting children as they queue for food. If we do not define that as terrorism, I would argue that meaning of terrorism has no meaning whatsoever. It is just a charge that is used against political opponents. That is a dangerous place to go.</p>
+          <p eId="para_108">I commend Deputy Kelly on his amendment and I want to indicate our full support for it.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_31">
+          <from>Deputy Gary Gannon<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_109">What we are really debating here is the idea of what constitutes terrorism, who gets to define it and who gets to throw that at another person. The definition of terrorism is really important because it has evolved over the centuries. I think if first came from the regime that did the terror in the French Revolution, under Maximilien Robespierre, which is very state-identified terrorism. This legislation seems to absolve a very particular of terrorism offence, and I know this is not the Minister's personal belief, which are the ones we witness on our screens every day, namely, the starvation, the eradication of people, including medics, their journalism and the culture of a particular state. That is a form of terrorism and I question the idea that someone who participates in that can still come to our country and be absolved of that. I understand that the Minister says it is still a criminal offence but it has not been judged in that way. I take what he says about the idea of a criminal offence under the ICC and ICJ but Israel does not operate in accordance with that and we have not applied those standards. They are not being applied across the world. There still will be people who come here who have been complicit in atrocities like that who will not be held to account by our courts. That simply will not happen. It does not and will not happen and this legislation does not create anything by which we have greater strength to do that. </p>
+          <p eId="para_110"> Enforcing the descriptions, as Deputy Kelly advocates and as Deputy Carthy's earlier amendment outlined, would give us legal strength but in their absence, we do not have the power. We will just have words and nothing else. People who have been involved in atrocities like those we are witnessing on our screens can still come here and have free rein to advocate for, promote or champion the slaughter in which they have been complicit. We have an opportunity with this legislation to strengthen our own hands. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_32">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_111">Do any other members wish to say anything?</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_33">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_112">I will wait for the Minister to reply. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_34">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_113">Everyone will have a chance to come back in after the Minister's response. </p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_35" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_114">I thank Deputy Kelly for putting down this amendment. It is not dissimilar to the previous group but what Deputy Kelly seeks to do is to state one cannot be excluded from this legislation simply on account of membership of the military, armed force or police force of a state. </p>
+          <p eId="para_115"> If a member of the IDF who committed a war crime or crime against humanity in Gaza came to Ireland, he or she could be prosecuted in Ireland for the commission of that war crime or crime against humanity. At present the domestic laws we have in Ireland enable us to prosecute war crimes and crimes against humanity committed in other jurisdictions whether they are committed by a state entity or not. </p>
+          <p eId="para_116"> Amendment No. 8 seeks to amend the definition section by seeking to ensure that state authorities, like a military or armed force or police force, are not excluded from the definition of a terrorist group and to ensure that persons cannot rely on the fact that any terrorist act they committed were at the behest of a state authority in order to escape prosecution. The Bill inserts into the principal Act the definition of terrorist group from the 2017 EU directive. I read that out earlier and I want to read it out again because it does not limit the definition of a terrorist group in this legislation to groups which are not state actors. It says "'terrorist group' means a structured group of more than two persons, established for a period of time and acting in concert to commit terrorist offences”. A military or armed or police force of the state or any other state appears not to be excluded from that definition. As previously noted, the principal Act excludes the activities of armed forces during an armed conflict and in the exercise of their official duties from being categorised as terrorist offences insofar as those activities are governed by humanitarian or other rules of international law. Where the activities fall outside the scope of humanitarian or other rules of international law, they could fall to be prosecuted under the Act subject to meeting the necessary requirements of the offence. If people, state forces or police forces are committing acts which are outside the scope of international law, they could be covered by this legislation.</p>
+          <p eId="para_117"> I have already discussed why provisions not reflective of the 2017 directive are outside the scope of this Bill. For those reasons, I do not support these amendments, I regret to say.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_36">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_118">I am very disappointed. The Labour Party brought this forward to bring absolute certainty that members of the Israel Defense Forces could and would be prosecuted and declared as a terrorist organisation for the atrocities they are conducting in Palestine every day, every night and every hour, almost. We really hoped this Government would support us. The amendment is in the spirit of what the Irish people want. It is also very necessary. We cannot have any form of fluff on this. We cannot have a situation whereby the people of Ireland feel this Government, which has an opportunity through this legislation, will not say very clearly that we feel the IDF or any similar types of organisation are committing terrorist offences. It is quite shameful we are sending out that message by it not supporting the amendment. I encourage the Minister to support it. Ultimately, he as Minister for justice needs to reflect what the Irish people believe. My amendment, which would ensure that such an organisation would be declared a terrorism organisation could be prosecuted individually or collectively for what they are doing. I believe that is what the Irish people want. </p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_37">
+          <from>Deputy Gary Gannon<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_119">Can I try to understand the Minister’s position in not supporting the amendments? He has rightly referred to what is happening in Gaza as a genocide, as have the Taoiseach and Tánaiste. Is he saying that there are laws on the Statute Book that mean a member of armed forces who have been complicit in that genocide can already be arrested if they are here today?</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_38" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_120">As I said earlier, aiding and abetting war crimes or crimes against humanity or genocide is a criminal offence in Ireland. </p>
+          <p eId="para_121"> On what Deputy Kelly said, I am sure our views on what is happening in Gaza are very similar. I know the revulsion the Deputy shares with me on what is happening there but when it comes to legislation I have to look to see what is necessary. In terms of what is necessary, at present any state entity acting outside of international law could come within the parameters of this legislation. For that reason, it is not necessary. </p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_39">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_122">For clarity, to follow on from Deputy Gannon’s question, the Minister said aiding or abetting genocide would be considered a criminal act. Would he consider membership of the IDF as aiding or abetting genocide?</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_40" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_123">Much as Deputy Carthy is an effective cross-examiner, I am not going to start going down the line of being cross-examined in respect of the legislation. The law is clearly stated. It is obviously there to be interpreted by the courts, not by us. In the International Criminal Court Act 2006, we have made certain offences, domestic offences in Irish law - war crimes, crimes against humanity, genocide and aiding and abetting them – and it is a matter for a court to determine. There can be prosecutions made in respect of it. </p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_41">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_124">My difficulty is that if I had asked the Minister the same question in respect of ISIS, quite rightly he would have been able to answer in a heartbeat. The truth is one terrorist organisation is considered as such by law but another, the IDF, is not.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_42" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T16:00:00+01:00"/></from>
+          <p eId="para_125">I would not. It depends. Each prosecution will depend on the facts of the case no matter what the name of the entity alleged to have perpetrated the act is. It is not for us to determine the guilt or innocence of individuals prosecuted under legislation that we enact of those offences.</p>
+          <p eId="para_126">That is a matter for a court. All we can do is draft the legislation. We take into account what we want to include and what type of situations we want to cover.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_43">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T16:10:00+01:00"/></from>
+          <p eId="para_127">I thank the Minister. I come back to Deputy Kelly to make any final contribution.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_44">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T16:10:00+01:00"/></from>
+          <p eId="para_128">I think I have said everything in relation to this issue. I am disappointed that the Minister is not in a position to work with us even on this issue, so I will be pressing my amendment.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_45">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T16:10:00+01:00"/></from>
+          <p eId="para_129">That was just the question I was going to ask. </p>
+        </speech>
+        <debateSection name="division" eId="dbsect_7">
+          <summary eId="sum_24">Amendment put: </summary>
+          <summary title="division" eId="sum_25">The Committee divided: Tá, <quantity refersTo="#ta" normalized="4" eId="qty_3">4</quantity>; Níl, <quantity refersTo="#nil" normalized="6" eId="qty_4">6</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_8">
+            <p eId="para_130">Tá</p>
+            <p eId="para_131">
+              <person refersTo="#MattCarthy">Carthy, Matt.</person>
+            </p>
+            <p eId="para_132">
+              <person refersTo="#GaryGannon">Gannon, Gary.</person>
+            </p>
+            <p eId="para_133">
+              <person refersTo="#AlanKelly">Kelly, Alan.</person>
+            </p>
+            <p eId="para_134">
+              <person refersTo="#MarkWard">Ward, Mark.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_9">
+            <p eId="para_135">Níl</p>
+            <p eId="para_136">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_137">
+              <person refersTo="#TomBrabazon">Brabazon, Tom.</person>
+            </p>
+            <p eId="para_138">
+              <person refersTo="#MichaelCahill">Cahill, Michael.</person>
+            </p>
+            <p eId="para_139">
+              <person refersTo="#CatherineCallaghan">Callaghan, Catherine.</person>
+            </p>
+            <p eId="para_140">
+              <person refersTo="#JimOCallaghan">O'Callaghan, Jim.</person>
+            </p>
+            <p eId="para_141">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_26"/>
+          <summary title="decision" refersTo="#lost" eId="sum_27">Amendment declared lost.</summary>
+        </debateSection>
+        <summary eId="sum_28"> Section 2 agreed to.</summary>
+        <summary eId="sum_29">SECTION 3</summary>
+        <speech by="#AlanKelly" eId="spk_46">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T16:10:00+01:00"/></from>
+          <p eId="para_142">I move amendment No. 9:</p>
+          <p class="indent_1" eId="para_143">In page 4, between lines 29 and 30, to insert the following:</p>
+          <p class="indent_2" eId="para_144">“(2) Proceedings for the offence of terrorist-linked activity consisting of public provocation to commit a terrorist offence shall not succeed unless there is material evidence as to an intention on the part of the accused, formed prior to the distribution or publication concerned, to incite persons by those means to commit a terrorist activity.”.</p>
+          <p eId="para_145"> As the Minister is aware, the other controversial issue in the Bill concerns "public provocation to commit a terrorist offence". We are in a situation here where there is great concern regarding this component of the Bill. I have been inundated with people contacting me about it. I am seeking to bring in this amendment to insert the following provision:</p>
+          <p class="indent_1" eId="para_146">Proceedings for the offence of terrorist-linked activity consisting of public provocation to commit a terrorist offence shall not succeed unless there is [and this is the important part] material evidence as to an intention on the part of the accused, formed prior to the distribution or publication concerned, to incite persons by those means to commit a terrorist activity.</p>
+          <p eId="para_147"> We all know there is huge concern regarding what is happening in Britain with Mo Chara and Kneecap. We also know there is concern that could drift into this jurisdiction. My Labour Party amendment is trying to ensure that in our version of the legislation, some form of material evidence would be available that it was the intention of somebody accused of going to proceed in some form of terrorist activity. We think this is extremely necessary and the legislation as currently drawn is too broad and vague. There is also concern about the language.</p>
+          <p eId="para_148"> We also wish to ensure that the authorities that will have to interpret this legislation will do so in a way with clear guidance. This guidance is that phrase, "material evidence". I ask the Minister to support this amendment. I think it gives certainty and a great deal of confirmation regarding language in relation to this whole area. I believe it is very much necessary. As the Minister will know, there is deep public concern out there about this whole area.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_47">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T16:10:00+01:00"/></from>
+          <p eId="para_149">Before we go to the Minister, would any other members like to contribute? I call Deputy Carthy.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_48">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T16:10:00+01:00"/></from>
+          <p eId="para_150">I am sure this will come as no surprise to the Minister but I wish to indicate we will be opposing this section because it is this section that makes this legislation not fit for purpose. The most significant problem with the legislation, as we articulated it during the debate on Second Stage, is the widening of the definition of the "provocation" of terrorism contained in section 3. As I said, we are opposing this section. We will support the Labour Party amendment because it brings a little bit more clarity, but this entire section is deeply problematic.</p>
+          <p eId="para_151"> To be clear, nobody is suggesting there should not be a provision outlawing the provocation of terrorism. In fact, such provision is already in place and the removal of this section would simply bring about reversion to that provision in respect of provocation. The 2005 Act, as amended, describes it in this way:</p>
+          <p class="indent_1" eId="para_152">public provocation to commit a terrorist offence means the intentional distribution, or otherwise making available, by whatever means of communication by a person of a message to the public, with the intent of encouraging, directly or indirectly, the commission by a person of a terrorist activity.</p>
+          <p eId="para_153"> The Minister has not given any rationale for broadening this definition. In fact, in his contribution on Second Stage, he was at great pains to point out what this Bill will not do. He said it will not do any of the things anybody has expressed a concern about. The Minister went to great lengths to explain that the legislation will not do any of that. He will accept, however, that he has not actually given what the rationale is for this broadening in a way that has caused serious concern, especially in relation to the term "glorification" of terrorism, but also regarding the general vagueness and broadness of the language, which could be wide open to misuse. We have seen very similar language being used in other jurisdictions to suppress freedom of speech. I indicated on Second Stage that we would oppose what we have called the "Kneecap clause", especially in relation to the provocation of terrorism. We fear its inclusion could lead to charges against political activism and legitimate freedom of expression, similar to the manner in which Mo Chara from Kneecap is currently facing terrorism charges in Britain.</p>
+          <p eId="para_154"> As I said, the Minister went to great lengths in saying it absolutely could not be the case. In response to a question I asked the Minister today, however, he indicated it is not for him to decide what a court may provide for or decide. The truth is that a court, a police service or other statutory bodies could make a decision in relation to actions very similar to what Kneecap engaged in. Whether we agree with them or not, the fact is what the Kneecap members were doing was political expression and artistic protest, which is something we must be at pains to protect, particularly in the modern era when those very things are under attack in so many places.</p>
+          <p eId="para_155"> I reiterate that the provisions in this section are too broad and are wide open to abuse. Public provocation charges can be brought - and I have not heard the Minister dispute this - where no terrorist offence has ever been committed and the person against whom the charges have been brought could be subject to ten years' imprisonment. What is being indicated in this legislation, therefore, is that a person could be guilty of a terrorist offence in relation to provocation where they distribute or publish messages "that could reasonably be construed as inciting" terrorism or "that glorifies ... a terrorist activity", and that glorification includes "praise or celebration". We know, because we have seen it here, how provisions such as this can actually be used. </p>
+          <p eId="para_156">I mentioned how, during the 1980s, people might have celebrated Bobby Sands or Nelson Mandela and that could have fit the criteria of glorifying terrorism. The language in this is exactly the type of language that has been used by parties such as the DUP and others in trying to curtail or criminalise any celebration of republicans from any generation going back to Wolfe Tone, the Easter Rising or whatever the case may be.</p>
+          <p eId="para_157"> We cannot discuss this section without recognising the backdrop against which this debate is taking place. What we have seen across Europe, Great Britain and the US is this type of legislation being used against legitimate political protests, particularly in respect of Palestine. We cannot just pretend that what is going on in the world is not going on and that this is just simply a benign section in a Bill that is just covering ordinary circumstances. This was the context in which the EU directive and other similar legislation was brought in. It was brought in with a hand from the Israeli lobby to try to criminalise and outlaw anyone who protested in support of Palestine.</p>
+          <p eId="para_158"> This weekend, we heard that An Garda Síochána was investigating chants at a protest. That is without this legislation being in place. More worryingly, where this type of legislation is in place, we have seen Palestinian Action proscribed as a terrorist organisation, we have seen elderly peaceful protesters arrested and we have seen a Jewish protester in Germany arrested for holding a sign saying "Jews against genocide".</p>
+          <p eId="para_159"> A clear rationale has not been forthcoming and I do not believe one is possible. The purpose of Committee Stage is to ask questions about what type of future event could happen if we include this type of broad provision in law. The Minister has gone to great lengths to tell us all the things this will not be used for but it would be helpful if he could give us an example of some action that is included in this Bill but was not covered by the particular definition used in the 2015 Act. That would be very useful because if one were to listen to the Minister's defence of this section, it would seem to be the most pointless section of any legislation ever, given that there is no logic to it other than us wanting to be in line with the EU directive. If there is a particular type of action that is not covered by the 2015 Act, it would be helpful to this committee if the Minister would spell that out. Otherwise, I would strongly argue that this section has to be opposed. Its provisions are essentially authoritarian. They are uncalled for and unnecessary. Worse than all that, they are wide open to abuse. If the Minister cannot see that, he should talk to some of the legal practitioners who have been contacting my office to express a lot of concern about what such a provision might mean.</p>
+        </speech>
+        <speech by="#MarkWard" eId="spk_49">
+          <from>Deputy Mark Ward<recordedTime time="2025-07-08T16:20:00+01:00"/></from>
+          <p eId="para_160">The definition of "provocation" is too broad, as is the definition of "glorification". They are wide open to interpretation and abuse. As has already been stated by Deputy Carthy about what he termed the Kneecap clause, the broad definition of "provocation" could be used to target freedom of expression, an issue that I raised with the Minister in the Dáil. We have also seen how international groups like Al-Haq have been treated. It is a human rights group in Palestine that was pointing out the atrocities happening in Palestine before 7 October, yet it was deemed to be a terrorist group by Israel.</p>
+          <p eId="para_161"> The last time I spoke with the Minister in the Dáil, I asked him whether he would attend commemorations of people who had been deemed to be terrorists at the time, such as Seán Lemass and Michael Collins. Deputy Carthy mentioned others who were considered terrorists at the time, such as Nelson Mandela, Bobby Sands and Che Guevara. I wear an Easter lily every year and wear it proudly to honour Ireland's patriot dead and I attend commemorations. Could this be considered glorification?</p>
+          <p eId="para_162"> I was taken with something said by Deputy Farrell in the Dáil. I do not think it is being thrown at the Minister to open this up to interpretation, but we must future-proof this. If the Minister is not taking this as the interpretation we are giving him, then there is nothing to stop justice Ministers further down the line from having their own interpretations of this legislation. We need to future-proof this legislation because if we do not, it could be wide open to abuse in the future.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_50">
+          <from>Deputy Gary Gannon<recordedTime time="2025-07-08T16:20:00+01:00"/></from>
+          <p eId="para_163">My question concerns glorification. Read in isolation, it seems bizarre but then one sees what is happening in Europe and the rest of the world and one thinks this is more than that. Can the Minister point to examples where a lack of glorification offences has directly impeded a terrorism prosecution? Is there something we have lacked to this point that the Minister is now solving with this provision on glorification? Given how the Minister spoke about not wanting to interpret the cohort of pre-existing laws, it is incumbent upon us to define words as we seek to put them in the Statute Book. What legal definition would the Minister use for glorification, praise or celebration under section 4A? What distinguishes those terms from political commentary or artistic expression?</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_51" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T16:20:00+01:00"/></from>
+          <p eId="para_164">I agree with one thing. We have to look at the language that is being used in our legislation. There is no point in trying to breathe into the wording of legislation things we know simply cannot apply. Deputies Kelly and Carthy referred to the ongoing prosecution in the UK of Mo Chara from Kneecap. As I said on Second Stage, the legislation in England and Wales is legislation - I have to be polite to another jurisdiction - that would never get through the Houses of the Oireachtas. I remind people of the provision under which Mo Chara is being prosecuted. It is section 13 of the Terrorism Act 2000. It reads:</p>
+          <p class="indent_1" eId="para_165">A person in a public place commits an offence if he—</p>
+          <p class="indent_2" eId="para_166">[...]</p>
+          <p class="indent_2" eId="para_167">(b) wears, carries or displays an article,</p>
+          <p class="indent_1" eId="para_168">in such a way or in such circumstances as to arouse reasonable suspicion that he is a member or supporter of a proscribed organisation.</p>
+          <p eId="para_169"> That is an extraordinarily wide piece of legislation that has resulted in him being prosecuted because he had a flag of a proscribed organisation on the stage behind him. That gave rise to a reasonable suspicion that he was not a member but a supporter of the proscribed organisation. That legislation is extraordinarily wide and is not similar to what is being provided for in this provision.</p>
+          <p eId="para_170"> The most important thing about the proposed new section 4A is that it does not get off the ground unless one has an intention to incite people to commit terrorist activity. Deputy Ward asked what would happen if I went to a Seán Lemass or Liam Lynch commemoration or if he wanted to go to a Bobby Sands commemoration or any commemoration. This is not within the parameters of the criminal offence because there is no intention on the Deputy's part to incite people to commit terrorist activity. If he goes to a commemoration for a member of the Provisional IRA, he is not doing anything wrong but if he is there and is trying to incite others to commit a terrorist offence, which is a serious Scheduled offence, then it is triggered in terms of putting out into the public domain a message, whether it be by glorifying terrorist activity or inciting others. The purpose is that he would be trying to get someone else to commit a criminal offence, which is a terrorist act. Deputy Ward spoke about singing songs on the last occasion we spoke about it. This is not interference in freedom of expression. People can continue to sing songs and glorify activity that some people may find reprehensible.</p>
+          <p eId="para_171">The only time the trigger is turned on for this behaviour is if it is being done with the intention of inciting people to commit a terrorist act. If we look at Deputy Kelly's amendment, he recognises that the provision is not triggered unless there is an intention to incite the commission of a terrorist activity. He is concerned that the level of evidence required should be at a sufficiently high level. He suggests there should be "material evidence" establishing that the person is trying to incite others to commit terrorist activity. I do not think that amendment is necessary. The provision as drafted states, "He or she, with the intention of inciting persons to commit a terrorist activity". When a court comes to interpret whether an accused person intended to incite people to commit terrorist activity, there will have to be material evidence - that is what the Deputy calls it, but evidence must be material - establishing that he or she was trying to incite others to commit terrorist activities.</p>
+          <p eId="para_172"> We are replacing the existing provision in section 4A, which has been in place since the enactment Criminal Justice (Terrorist Offences) Act 2005. The law at present states:</p>
+          <p class="indent_1" eId="para_173">For the purposes of this Part, public provocation to commit a terrorist offence means the intentional distribution, or otherwise making available, by whatever means of communication by a person of a message to the public, with the intent of encouraging, directly or indirectly, the commission by a person of a terrorist activity.</p>
+          <p eId="para_174"> Anyone here can see that is an awkwardly worded provision. Inherent within it is that there must be the incitement of a person to commit a terrorist offence. The provision in this Bill offers more clarity.</p>
+          <p eId="para_175"> As I mentioned, I note that the 2005 Act already provides for the offence of public provocation to commit a terrorist offence. People commit such an offence when they share public messages aimed at provoking the commission of terrorist activity. I have proposed a new definition for this offence to provide that it can be committed by the distribution of messages that glorify terrorist activity, as required by the 2017 EU directive.</p>
+          <p eId="para_176"> In response to Deputy Carthy, that 2017 EU directive was not, as he said, brought in by the Israeli lobby. It was brought in by European Union member states. Whether we like it or not, there is an issue in respect of trying to combat people who are trying to use violence to effect political change. Intent to provoke the commission of terrorist activity was already an integral part of the original offence that I read out. In this new definition I have retained the intent requirement, explicitly requiring the intention of inciting persons to commit terrorist activity. There also must be reasonable apprehension that the commission of a terrorist activity could result. Furthermore, terrorist activity only encompasses those activities which fall within the definition of "terrorist activity" in the 2005 Act. In that Act, terrorist activity is defined as an offence listed in Part 1 of Schedule 2 that is carried out with the intention of "seriously intimidating a population", "unduly compelling a government or an international organisation to perform or abstain from performing an act" or "seriously destabilising or destroying the fundamental political, constitutional, economic or social structures of a state or an international organisation". Therefore, sharing messages that glorify and provoke activity that does not fall within this definition would be outside the scope of this offence. People can continue to glorify and provoke certain activity but unless it is combined with the intention to get somebody to commit terrorist activity, they are immune from prosecution. There is a high standard of proof crafted into this provision to ensure that a person's fundamental rights, such as freedom of expression, are safeguarded and situations do not arise whereby lawful activities are considered as falling within the scope of these offences.</p>
+          <p eId="para_177"> I know what is happening in other parts of the world. Deputies have talked about the UK. If they are going to start suggesting this is a Mo Chara clause, they have to look at the clause under which Kneecap is being prosecuted in the UK. Any fair, reasonable or honest assessment of section 13 of the 2000 Act in the UK will establish it is nothing like what is being proposed here or what has been on the Statute Book here since 2005. We need to be careful not to mislead people into thinking something is being put into law when it is not. For that reason, I am opposed to Deputy Kelly's amendment. As I said, the amendment recognises the fact that there has to be incitement to commit terrorist activity but it is unnecessary to include the words "material evidence". They are already implicit.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_52">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T16:30:00+01:00"/></from>
+          <p eId="para_178">Are there any final remarks from Deputy Kelly?</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_53">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T16:30:00+01:00"/></from>
+          <p eId="para_179">Yes.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_54">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T16:30:00+01:00"/></from>
+          <p eId="para_180">I will allow Deputy Carthy to come in again before we finish with section 3.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_55">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T16:30:00+01:00"/></from>
+          <p eId="para_181">The Minister might say this amendment is not dealing with the same things as the UK legislation. It is dealing with what we have in Irish legislation. He is right. He was also right in describing the legislation that is being changed by this legislation as clunky. He has used the word "trigger" quite a bit. What is the test? What triggers incitement? That is the reason I put in this amendment. The legislation the Minister is proposing is too loose. The previous legislation that this Bill is amending is too clunky. The Minister agrees with that. I would describe it as "wordy".</p>
+          <p eId="para_182"> What we are trying to do here is to put in conditionality. While we are dealing with our own legislation, we must remember that the Minister will not always be the Minister but this legislation will be on the books. Under the law of unintended consequences, while what is happening in the UK may not happen here, the interpretation of this Bill has to be absolute. We cannot have the scenario of the issues relating to Kneecap and Mo Chara, and possibly a number of other instances, here in Ireland. That is why I have included this conditionality to require "material evidence" of an intention. The Minister is saying that is implicit. Every legal person I have dealt with in drafting this amendment does not agree. It is not implicit, sacrosanct or guaranteed. That is why we think it is a reasonable amendment to include actual material evidence rather than depending on the view of a chief superintendent or anyone else, depending on the circumstances. Material evidence, and not opinions, would require to be produced in order for somebody to be prosecuted. That is the difference. That is why we submitted this amendment. Otherwise, we could have a Kneecap and Mo Chara situation. I do not want that to happen. We could have a variation of that scenario.</p>
+          <p eId="para_183"> I repeat that my amendment reads, "Proceedings for the offence of terrorist-linked activity consisting of public provocation to commit a terrorist offence shall not succeed unless there is material evidence as to an intention on the part of the accused". The way in which the Bill is drafted is not absolute. It is potentially open to being misunderstood and, dare I say it, abused. That is the key concern. We talk about artistic and political expression. I am with all of that, and people must be allowed to express themselves. It may not be to everyone's taste but that is beside the point. We must put in place good legislation.</p>
+          <p eId="para_184"> I certainly believe that the Minister needs to reflect on this amendment. If he is not going to accept it, he needs to reflect on it for Report Stage. We are not short of legal opinions in our party. We have lots of them. We are hearing that the particular requirement I have included is necessary. Otherwise, the legislation is far too loose.</p>
+        </speech>
+        <speech by="#MattCarthy" eId="spk_56">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T16:30:00+01:00"/></from>
+          <p eId="para_185">The Minister described the existing Act as clunky. I think it is one of the clearest provisions one could see. It is fairly straightforward. It speaks of "public provocation to commit a terrorist offence". What does that mean? It means "intentional distribution ... by whatever means of communication ... of a message to the public, with the intent of encouraging, directly or indirectly, the commission by a person of a terrorist activity".</p>
+          <p eId="para_186">That is actually as clear as day. I know what that provision means. I can see where the Garda, the DPP and the courts would fall on any given act in respect of that. What is it being replaced with? The Minister likes repeating the first part of the new section 4A:</p>
+          <p class="indent_1" eId="para_187">... he or she, with the intention of inciting persons to commit a terrorist activity, distributes or publishes ... to the public ... a message—</p>
+          <p class="indent_2" eId="para_188">(i) inciting, or that could reasonably be construed as inciting, persons to commit [an activity] ...</p>
+          <p eId="para_189"> What would the Garda, the DPP or the courts consider to be reasonably construed as inciting? Can we say with absolute certainty that what they would consider to be reasonably construed is the same as what the Minister intends?</p>
+          <p eId="para_190"> There is a second way in the Bill that someone can be considered to have the intention of inciting persons: "that glorifies (including by praise or celebration) a terrorist activity". We have already had a long discussion as to what exactly is a terrorist activity and what would, therefore, be considered to be praise or celebration. The second part of this section reads: "... such distribution or publication gives rise to the reasonable apprehension that the commission of a terrorist activity could thereby result." Not "is likely", "is possible" or "has", which is probably how the law would define it. Rather, it is "could thereby result". We have spoken about what is implicit in the legislation. This provision is implicit, as a person does not actually have to have committed a terrorist activity. Rather, there just has to be a reasonable apprehension that it might incite, on the basis of a message being pursued, or could "reasonably be construed" as inciting. Does the Minister not see the red flags in all of this and the gaping potential abuses that could arise from it? Does the Minister not see where the dots could be joined to bring us to precisely the type of situation where, for political purposes, bands like Kneecap or others are arrested because of what they do or say on stage or for what could be chanted by people at a protest? I accept that some of the things could be absolutely deplorable or disgusting to us all, but would such words being uttered warrant a ten-year term of imprisonment, which this Bill would allow for?</p>
+          <p eId="para_191"> Without continuing to repeat myself, I do not believe the Minister has set out in any clear terms that members of the public would understand the rationale for having such a gaping piece of legislation before us. The Minister has indicated nothing that would ease my concerns in respect of this section. I will continue to oppose it.</p>
+        </speech>
+        <speech by="#GaryGannon" eId="spk_57">
+          <from>Deputy Gary Gannon<recordedTime time="2025-07-08T16:40:00+01:00"/></from>
+          <p eId="para_192">I have listened to the Dáil and committee debates and I still have no idea as to what the Minister is trying to solve with this section 3. I asked the last time but the Minister did not answer the question. What problem is the Minister trying to solve here? Will he point out to me one example of where a glorification offence directly impeded a terrorism prosecution? I have heard the Minister tell me all the things it is not, but I still do not have a clue as to what he is trying to achieve with this and what exactly it is doing. How will we be better off for it?</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_58" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T16:40:00+01:00"/></from>
+          <p eId="para_193">My apologies. I was listening to the Deputies but I was also trying to look up the debate on the 2015 amending legislation that introduced section 4A. I am not sure what the view of Deputies and parties was at the time as regards section 4A.</p>
+          <p eId="para_194"> I will reflect on Deputy Kelly's amendment, but the difference is that Deputy Kelly is saying we should include the words "material evidence as to an intention ... to incite", whereas I have "the intention of inciting persons to commit a terrorist activity". Generally, if we look through our legislation on incitement, it does not really talk about having material evidence. It is assumed that we are going to have to have evidence of intention in order for such a prosecution to take place.</p>
+          <p eId="para_195"> On what Deputy Carthy said, I do not see this being used. We have had legislation before where we have assumed terrible things are going to happen. We do not live in a draconian state. In my opinion, to date we have not seen prosecutions before the courts in circumstances where people are saying that it is real interference in freedom of expression and it is outrageous that somebody is being prosecuted for that when he or she was just expressing a political opinion.</p>
+          <p eId="para_196"> Everyone here abhors terrorist activity. If there are people out there who are seeking to incite vulnerable and malleable people to get involved in terrorist activity, I know that everyone in this room is supportive of ensuring that that is criminally sanctioned. However, in order to do that, we have to have some language in place. The difficulty with section 4A of the 2015 Act was its use of the words "with intent of encouraging". My understanding from the officials and the Office of the Parliamentary Counsel, OPC, is that there was a vagueness to "encouraging". The OPC said it was not fit for purpose. That is why the word "inciting" is being used as opposed to "encouraging".</p>
+          <p eId="para_197"> Deputy Gannon asked what it was we were trying to talk about here. I do not really like giving specific examples of a type of group of people that is going to be covered by legislation, although we did spend the earlier part talking about it. The type of thing we are talking about, broadly, is somebody online encouraging people to get involved in terrorist activity, such as blowing up people, killing people and getting involved in that type of terrorist activity on the basis of saying these were previous terrorist acts that were carried out, they were legitimate and they were justified, and wanting people to all proceed and get involved in fighting for whatever it is. That is the purpose of the legislation. There are a lot of malleable and impressionable people out there. Again, I do not like to use examples but if someone from, say, the far right was out there and inciting people online to go down and get involved in what are terrorist activities, Deputy Gannon would say that person should be prosecuted. In fairness to the Deputy, when the far right is encouraging and inciting people to engage in criminal activity - this example is not about terrorist activity - he is the first person to say, correctly, that it should be prosecuted for that. The type of situation we are dealing with here is where somebody is trying to incite people to commit terrorist activity. This is reprehensible. This is what we are trying to cover.</p>
+          <p eId="para_198"> It can get confusing. We all come with our own political prejudices but if we look at legislation purely from the point of view of our own political perspectives - it is a difficult thing not to do and I do it as well - as opposed to looking at it objectively, then we can read too much into legislation and we can see dangers when in fact there are no dangerous.</p>
+        </speech>
+        <speech by="#AlanKelly" eId="spk_59">
+          <from>Deputy Alan Kelly<recordedTime time="2025-07-08T16:40:00+01:00"/></from>
+          <p eId="para_199">I will press the amendment with a sense of hope that the Minister will reflect. There is a reason legislation was drafted without the word "material" over the decades when it comes to incitement. There is now a reason in the more modern world for interpretations to be more defined because of the advent of technology and the disintermediation of some other mediums. We probably need to be more specific. This is why that word "material" is now required.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_10">
+          <summary eId="sum_30">Amendment put: </summary>
+          <summary title="division" eId="sum_31">The Committee divided: Tá, <quantity refersTo="#ta" normalized="4" eId="qty_5">4</quantity>; Níl, <quantity refersTo="#nil" normalized="6" eId="qty_6">6</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_11">
+            <p eId="para_200">Tá</p>
+            <p eId="para_201">
+              <person refersTo="#MattCarthy">Carthy, Matt.</person>
+            </p>
+            <p eId="para_202">
+              <person refersTo="#GaryGannon">Gannon, Gary.</person>
+            </p>
+            <p eId="para_203">
+              <person refersTo="#AlanKelly">Kelly, Alan.</person>
+            </p>
+            <p eId="para_204">
+              <person refersTo="#MarkWard">Ward, Mark.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_12">
+            <p eId="para_205">Níl</p>
+            <p eId="para_206">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_207">
+              <person refersTo="#TomBrabazon">Brabazon, Tom.</person>
+            </p>
+            <p eId="para_208">
+              <person refersTo="#MichaelCahill">Cahill, Michael.</person>
+            </p>
+            <p eId="para_209">
+              <person refersTo="#CatherineCallaghan">Callaghan, Catherine.</person>
+            </p>
+            <p eId="para_210">
+              <person refersTo="#JimOCallaghan">O'Callaghan, Jim.</person>
+            </p>
+            <p eId="para_211">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_32"/>
+          <summary title="decision" refersTo="#lost" eId="sum_33">Amendment declared lost.</summary>
+        </debateSection>
+        <summary eId="sum_34"> Question proposed: "That section 3 stand part of the Bill."</summary>
+        <speech by="#MattCarthy" eId="spk_60">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T16:50:00+01:00"/></from>
+          <p eId="para_212">The point has been made forcefully. I do not think that the Minister has fully presented any rationale, or something that could be reasonably construed as a rationale, in terms of the need for this change. If the word "encouraging" is the problem with the 2015 legislation, an amendment should be brought forward to change that word. I think that the Minister would probably get the support of the committee on that basis.</p>
+          <p eId="para_213"> As I have said repeatedly, section 3, as it stands, is wide open for abuse. We cannot accept the Minister's assertion, based on his experience, that the courts, the guards or the DPP have not abused legislation in the past as an excuse for putting in a provision that could so easily be abused in the future. Therefore, I will oppose this section and encourage all other members to oppose it. I especially encourage the Minister to reflect on the language contained in this section ahead of Report Stage.</p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_61" as="#Minister_for_Justice,_Home_Affairs_and_Migration">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T16:50:00+01:00"/></from>
+          <p eId="para_214">I formally dispute what Deputy Carthy says. It is not wide open to abuse. If the Deputy reads the proposed wording that I am putting forward to the committee, he will see that it is completely different from what is contained in the UK legislation. I refer to section 13 of the UK Terrorism Act. It is not that dissimilar from the provision that has been in force here for ten years now, in the 2005 Act as amended in 2015. As I said, it simply requires that there is an intention of inciting persons to commit terrorist activity. That is something that I think we all agree we should not permit to occur.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_13">
+          <summary eId="sum_35">Question put: </summary>
+          <summary title="division" eId="sum_36">The Committee divided: Tá, <quantity refersTo="#ta" normalized="6" eId="qty_7">6</quantity>; Níl, <quantity refersTo="#nil" normalized="4" eId="qty_8">4</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_14">
+            <p eId="para_215">Tá</p>
+            <p eId="para_216">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_217">
+              <person refersTo="#TomBrabazon">Brabazon, Tom.</person>
+            </p>
+            <p eId="para_218">
+              <person refersTo="#MichaelCahill">Cahill, Michael.</person>
+            </p>
+            <p eId="para_219">
+              <person refersTo="#CatherineCallaghan">Callaghan, Catherine.</person>
+            </p>
+            <p eId="para_220">
+              <person refersTo="#JimOCallaghan">O'Callaghan, Jim.</person>
+            </p>
+            <p eId="para_221">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_15">
+            <p eId="para_222">Níl</p>
+            <p eId="para_223">
+              <person refersTo="#MattCarthy">Carthy, Matt.</person>
+            </p>
+            <p eId="para_224">
+              <person refersTo="#GaryGannon">Gannon, Gary.</person>
+            </p>
+            <p eId="para_225">
+              <person refersTo="#AlanKelly">Kelly, Alan.</person>
+            </p>
+            <p eId="para_226">
+              <person refersTo="#MarkWard">Ward, Mark.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_37"/>
+          <summary title="decision" refersTo="#carried" eId="sum_38">Question declared carried.</summary>
+        </debateSection>
+        <summary eId="sum_39"> Section 4 agreed to. </summary>
+        <summary eId="sum_40">NEW SECTIONS</summary>
+        <speech by="#MattCarthy" eId="spk_62">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T17:00:00+01:00"/></from>
+          <p eId="para_227">I move amendment No. 10:</p>
+          <p class="indent_1" eId="para_228">In page 7, between lines 32 and 33, to insert the following:</p>
+          <p class="indent_2" eId="para_229">
+            <b>“Training for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide</b>
+          </p>
+          <p class="indent_2" eId="para_230"><b>4F. </b>(1) For the purposes of this Part, training in the armed forces of a state engaged in the commission of war crimes, crimes against humanity or genocide means intentionally providing instruction or training in the skills of—</p>
+          <p class="indent_3" eId="para_231">(a) making or using, for the purpose of committing, or contributing to,</p>
+          <p class="indent_3" eId="para_232">the commission of war crimes, crimes against humanity or</p>
+          <p class="indent_3" eId="para_233">genocide—</p>
+          <p class="indent_4" eId="para_234">(i) firearms or explosives,</p>
+          <p class="indent_4" eId="para_235">(ii) nuclear material,</p>
+          <p class="indent_4" eId="para_236">(iii) biological weapons, chemical weapons or prohibited weapons,</p>
+          <p class="indent_4" eId="para_237">or</p>
+          <p class="indent_4" eId="para_238">(iv) such other weapons, or noxious or hazardous substances, that may be used in the commission of war crimes, crimes against humanity or genocide as the Minister may prescribe,</p>
+          <p class="indent_4" eId="para_239">or</p>
+          <p class="indent_3" eId="para_240">(b) such other techniques or methods for the purpose of committing, or contributing to the commission of, war crimes, crimes against humanity or genocide as the Minister may prescribe, knowing or believing that it is likely that the skills provided are intended to be used by a person receiving the instruction or training for the purpose of committing, or contributing to the commission of, war crimes, crimes against humanity or genocide.</p>
+          <p class="indent_2" eId="para_241">(2) The Minister may, if he or she considers it appropriate to do so, make regulations for the purposes of subsection (1) and he or she shall—</p>
+          <p class="indent_3" eId="para_242">(a) before making such regulations, consult with the Minister for Foreign Affairs, the Minister for Defence, the Commissioner of An Garda Síochána, and such other Minister of the Government as the Minister considers appropriate having regard to the weapons, substances, techniques or methods concerned, and</p>
+          <p class="indent_3" eId="para_243">(b) in making such regulations, have regard to the following:</p>
+          <p class="indent_4" eId="para_244">(i) the capability of the weapon, substance, technique or method concerned to cause the death of or serious bodily injury to persons or substantial material damage to property;</p>
+          <p class="indent_4" eId="para_245">(ii) the capacity of the weapon, substance, technique or method concerned to be used for the purposes of committing war crimes, crimes against humanity or genocide and the likelihood of it being so used;</p>
+          <p class="indent_4" eId="para_246">(iii) the extent to which instruction or training—</p>
+          <p class="indent_5" eId="para_247">(I) in the making or use of the weapon or substance concerned,</p>
+          <p class="indent_5" eId="para_248">or</p>
+          <p class="indent_5" eId="para_249">(II) in the use of the technique or method concerned, is required for the making or use, as the case may be, of that weapon, substance, technique or method for the purpose of committing, or contributing to the commission of, a war crime, a crime against humanity or genocide.”.”.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_16">
+          <summary eId="sum_41">Amendment put: </summary>
+          <summary title="division" eId="sum_42">The Committee divided: Tá, <quantity refersTo="#ta" normalized="4" eId="qty_9">4</quantity>; Níl, <quantity refersTo="#nil" normalized="6" eId="qty_10">6</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_17">
+            <p eId="para_250">Tá</p>
+            <p eId="para_251">
+              <person refersTo="#MattCarthy">Carthy, Matt.</person>
+            </p>
+            <p eId="para_252">
+              <person refersTo="#GaryGannon">Gannon, Gary.</person>
+            </p>
+            <p eId="para_253">
+              <person refersTo="#AlanKelly">Kelly, Alan.</person>
+            </p>
+            <p eId="para_254">
+              <person refersTo="#MarkWard">Ward, Mark.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_18">
+            <p eId="para_255">Níl</p>
+            <p eId="para_256">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_257">
+              <person refersTo="#TomBrabazon">Brabazon, Tom.</person>
+            </p>
+            <p eId="para_258">
+              <person refersTo="#MichaelCahill">Cahill, Michael.</person>
+            </p>
+            <p eId="para_259">
+              <person refersTo="#CatherineCallaghan">Callaghan, Catherine.</person>
+            </p>
+            <p eId="para_260">
+              <person refersTo="#JimOCallaghan">O'Callaghan, Jim.</person>
+            </p>
+            <p eId="para_261">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_43"/>
+          <summary title="decision" refersTo="#lost" eId="sum_44">Amendment declared lost.</summary>
+        </debateSection>
+        <speech by="#MattCarthy" eId="spk_63">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T17:00:00+01:00"/></from>
+          <p eId="para_262">I move amendment No. 11: </p>
+          <p class="indent_1" eId="para_263">In page 7, between lines 32 and 33, to insert the following:</p>
+          <p class="indent_2" eId="para_264">
+            <b>“Recruitment for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide</b>
+          </p>
+          <p class="indent_2" eId="para_265"><b>4F.</b>For the purposes of this Part, recruitment for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide means the intentional recruitment of another person to serve in the armed forces of a state which is engaged in, or is reasonably suspected of having engaged in, a war crime, a crime against humanity or genocide.”.”.</p>
+        </speech>
+        <summary eId="sum_45"> Amendment put and declared lost. </summary>
+        <speech by="#MattCarthy" eId="spk_64">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T17:00:00+01:00"/></from>
+          <p eId="para_266">I move amendment No. 12: </p>
+          <p class="indent_1" eId="para_267">In page 7, between lines 32 and 33, to insert the following:</p>
+          <p class="indent_2" eId="para_268">
+            <b>“Travel for purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide</b>
+          </p>
+          <p class="indent_2" eId="para_269"><b>4F.</b>For the purposes of this Part, a person travels for the purpose of serving in the armed forces of a state engaged in war crimes, crimes against humanity or genocide if he or she travels from the state to a place other than the state for the purpose of participation in the armed forces of another state which is engaged in, or is reasonably suspected of having engaged in, genocide, crimes against humanity or war crimes.”.”.</p>
+        </speech>
+        <summary eId="sum_46"> Amendment put and declared lost.</summary>
+        <speech by="#MattCarthy" eId="spk_65">
+          <from>Deputy Matt Carthy<recordedTime time="2025-07-08T17:00:00+01:00"/></from>
+          <p eId="para_270">I move amendment No. 13: </p>
+          <p class="indent_1" eId="para_271">In page 7, between lines 32 and 33, to insert the following:</p>
+          <p class="indent_2" eId="para_272">
+            <b>“Organising or facilitating travel for purpose of participation in the armed forces of another state which is engaged in genocide, crimes against humanity or war crimes</b>
+          </p>
+          <p class="indent_2" eId="para_273"><b>4F. </b>For the purposes of this Part, a person organises or facilitates travel for the purpose of participation in the armed forces of another state which is engaged in genocide, crimes against humanity or war crimes—</p>
+          <p class="indent_3" eId="para_274">(a) if he or she—</p>
+          <p class="indent_4" eId="para_275">(i) does any act—</p>
+          <p class="indent_5" eId="para_276">(I) consisting of the making of an arrangement for the travel by any person to the State from a place other than the State, or</p>
+          <p class="indent_5" eId="para_277">(II) that would facilitate the travel by any person to the State from a place other than the State,</p>
+          <p class="indent_4" eId="para_278">or</p>
+          <p class="indent_4" eId="para_279">(ii) causes any person to do such an act,</p>
+          <p class="indent_4" eId="para_280">knowing that such travel is for a purpose referred to in section 4F,</p>
+          <p class="indent_4" eId="para_281">or</p>
+          <p class="indent_3" eId="para_282">(b) if he or she—</p>
+          <p class="indent_4" eId="para_283">(i) does any act—</p>
+          <p class="indent_5" eId="para_284">(I) consisting of the making of an arrangement for the travel by any person from the State to a place other than the State, or</p>
+          <p class="indent_5" eId="para_285">(II) that would facilitate the travel by any person from the State to a place other than the State,</p>
+          <p class="indent_4" eId="para_286">or</p>
+          <p class="indent_4" eId="para_287">(ii) causes any person to do such an act, knowing that such travel is for a purpose referred to in section 4F.”.”</p>
+        </speech>
+        <summary eId="sum_47"> Amendment put and declared lost. </summary>
+        <summary eId="sum_48"> Sections 5 and 6 agreed to. </summary>
+        <summary eId="sum_49"> Amendment No. 14 not moved. </summary>
+        <summary eId="sum_50"> Sections 7 to 9, inclusive, agreed to. </summary>
+        <summary eId="sum_51"> Schedule agreed to. </summary>
+        <summary eId="sum_52"> Title agreed to.</summary>
+        <summary eId="sum_53"> Bill reported without amendment. </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_19">
+        <heading>Message to Dáil<recordedTime time="2025-07-08T17:00:00+01:00"/></heading>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_66">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T17:00:00+01:00"/></from>
+          <p eId="para_288">As consideration of the Bill has been completed, in accordance with Standing Order 110, the following message will be sent to the Clerk of the Dáil:</p>
+          <p class="indent_1" eId="para_289">The Select Committee on Justice, Home Affairs and Migration has completed its consideration of the Criminal Justice (Terrorist Offences) (Amendment) Bill 2025 and has made no amendments thereto.</p>
+          <p eId="para_290"> On behalf of the committee, I thank the Minister and his officials for their attendance at this meeting today. </p>
+        </speech>
+        <speech by="#JimOCallaghan" eId="spk_67">
+          <from>Deputy Jim O'Callaghan<recordedTime time="2025-07-08T17:00:00+01:00"/></from>
+          <p eId="para_291">I thank the Cathaoirleach Gníomhach and committee members for the consideration given to the Bill. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" as="#An_Cathaoirleach_Gníomhach" eId="spk_68">
+          <from>An Cathaoirleach Gníomhach (Deputy Catherine Callaghan)<recordedTime time="2025-07-08T17:00:00+01:00"/></from>
+          <p eId="para_292">As there is no other business, this meeting of the select committee is adjourned <i>sine die</i>. </p>
+        </speech>
+        <summary eId="sum_54"> The select committee adjourned at 5.05 p.m. <i>sine die</i>. </summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

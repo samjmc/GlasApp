@@ -1,0 +1,649 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate"/>
+          <FRBRdate date="2025-06-25" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@"/>
+          <FRBRdate date="2025-06-25" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-06-25/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-01" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="EmerHiggins" href="/ie/oireachtas/member/id/Emer-Higgins.D.2020-02-08" showAs="Emer Higgins"/>
+        <TLCPerson eId="GeraldNash" href="/ie/oireachtas/member/id/Gerald-Nash.D.2011-03-09" showAs="Ged Nash"/>
+        <TLCPerson eId="JackChambers" href="/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03" showAs="Jack Chambers"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="PearseDoherty" href="/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23" showAs="Pearse Doherty"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" href="/ie/oireachtas/role/minister/public_expenditure__infrastructure__public_service_reform__digitalisation" showAs="Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" href="/ie/oireachtas/role/minister_state/public_expenditure__infrastructure__public_service_reform__digitalisation" showAs="Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM AIRGEADAS, CAITEACHAS POIBLÍ, ATHCHÓIRIÚCHÁN SEIRBHÍSE POIBLÍ AGUS DIGITIÚCHÁN, AGUS AN TAOISEACH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-25">Dé Céadaoin, 25 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-25">Wednesday, 25 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JackChambers">Jack Chambers (Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#PearseDoherty">Pearse Doherty</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#EmerHiggins">Emer Higgins, (Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GeraldNash">Ged Nash</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MaireadFarrell">Teachta / Deputy Mairéad Farrell sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Estimates for Public Services 2025<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vote 11 - Public Expenditure, Infrastructure, Public Service Reform and Digitalisation (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Vote 12 - Superannuation and Retired Allowances (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_5">
+        <heading>Vote 14 - State Laboratory (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_6">
+        <heading>Vote 15 - Secret Service (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_7">
+        <heading>Vote 17 - Public Appointments Service (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_8">
+        <heading>Vote 18 - National Shared Services Office (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_9">
+        <heading>Vote 19 - Office of the Ombudsman (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_10">
+        <heading>Vote 39 - Office of Government Procurement (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_11">
+        <heading>Vote 43 - Office of the Government Chief Information Officer (Revised)<recordedTime time="2025-06-25T15:30:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:30:00+01:00"/></from>
+          <p eId="para_10">Níl aon leithscéalta faighte againn. We have received no apologies.</p>
+          <p eId="para_11"> Is mian liom na riachtanais bhunreachtúla seo a leanas a mheabhrú do chomhaltaí. Agus páirt á ghlacadh acu i gcruinnithe poiblí, caithfidh siad a bheith i láthair go fisiciúil laistigh de theorainneacha shuíomh Theach Laighean. Ní cheadófar do chomhaltaí páirt a ghlacadh i gcruinnithe poiblí nuair nach bhfuil siad ag cloí leis an riachtanas bunreachtúil seo. Mar sin, má dhéanann aon chomhaltaí páirt a ghlacadh ó lasmuigh den suíomh, iarrfaidh mé orthu an cruinniú a fhágáil. Maidir leis seo, iarraim ar chomhaltaí a dheimhniú go bhfuil siad i láthair laistigh de phurláin Theach Laighean sula ndéanann siad aon ionchur don chruinniú ar Microsoft Teams. Fiafraítear de chomhaltaí cleachtadh parlaiminte a urramú nár chóir, más féidir, daoine nó eintiteas a cháineadh ná líomhaintí a dhéanamh ina n-aghaidh ná tuairimí a thabhairt maidir leo ina ainm, ina hainm nó ina n-ainmneacha ar shlí a bhféadfaí iad a aithint. Chomh maith leis sin, fiafraítear díobh gan aon rud a rá a d’fhéadfaí breathnú air mar ábhar díobhálach do dhea-chlú aon duine nó eintiteas. Mar sin, dá bhféadfadh a ráitis a bheith clúmhillteach do dhuine nó eintiteas aitheanta, ordófar dóibh éirí as an ráiteas láithreach. Tá sé ríthábhachtach go ngéillfeadh siad leis an ordú sin láithreach.</p>
+          <p eId="para_12"> I advise members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via Microsoft Teams to confirm that he or she is on the grounds of the Leinster House campus prior to making his or her contribution to the meeting.</p>
+          <p eId="para_13"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if members' statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_14"> The committee is meeting today to consider the Revised Estimates for Votes 11,12, 14, 15, 17, 18, 19, 39 and 43. The Estimates process is Dáil Éireann's method of allowing the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation to seek to withdraw funds from the Exchequer to meet most Government spending obligations. Articles 17.1.1° and 28.4.4° of the Constitution provide for the presentation to and consideration of Estimates by Dáil Éireann, respectively. Standing Order 217 requires Estimates to be considered in committee. It is well established practice that they are referred to the relevant sectoral select committees. Once the hearing is concluded, the committee sends a message to Dáil Éireann, which generally approves Estimates without debate. Committees cannot amend Estimates and have no formal role in approving them. However, Standing Order 223 provides that committees may make a report to the Dáil in respect of their consideration of Estimates. The Revised Estimates Volume for public services provide considerably more detail at subhead level, as well as performance metrics. Revised Estimates are the revised final proposed spending for the next year and form the basis for parliamentary scrutiny of allocated expenditure. I now invite the Minister, Deputy Chambers, to make his opening statement.</p>
+        </speech>
+        <speech by="#JackChambers" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" eId="spk_2">
+          <from>Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation (Deputy Jack Chambers)<recordedTime time="2025-06-25T15:30:00+01:00"/></from>
+          <p eId="para_15">I am pleased to be with the committee today to present the 2025 Revised Estimates for my Department's group of Votes. I am joined by the Minister of State with responsibility for public procurement, digitalisation and egovernment, Deputy Higgins. As this is my first time to appear before this committee, I wish to say I look forward to working with all of the members collaboratively and constructively in the period ahead. </p>
+          <p eId="para_16"> There are ten Votes under the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation Vote group. These are: Vote 11 - Public Expenditure, Infrastructure, Public Service Reform and Digitalisation; Vote 12 - Superannuation and Retired Allowances, which covers Civil Service pensions; the Votes for a number of offices under the aegis of my Department including Vote 14 - State Laboratory; Vote 17 - Public Appointments Service; Vote 18 - National Shared Services Office; Vote 19 - Office of the Ombudsman; Vote 15 - Secret Service; Vote 39 - Office of Government Procurement; and Vote 43 - Office of the Government Chief Information Officer.</p>
+          <p eId="para_17"> The final Vote in the group relates to the Office of Public Works, OPW, and the Minister of State, Deputy Moran, will present the Revised Estimate for the Vote to the committee at a later date.</p>
+          <p eId="para_18"> On the Votes under the group that are the subject of the meeting, both myself and the Minister of State, Deputy Higgins, are happy to address various questions and the Minister of State, Deputy Higgins, will address questions relating to the Office of Government Procurement and the Office of the Government Chief Information Officer.</p>
+          <p eId="para_19"> In the overall context, the 2025 total gross estimate for the Public Expenditure, Infrastructure, Public Service Reform and Digitalisation Vote group, excluding the OPW, is €1.22 billion, an increase of 5% on the 2024 allocation. The overall gross figure for 2025 compares with €1.16 billion in 2024, inclusive of Supplementary Estimates. It is largely driven by an increased Estimate provision to Vote 12 - Superannuation and Retired Allowances, targeted increases to enable delivery of essential services and additional salary costs associated with the public service pay agreement. </p>
+          <p eId="para_20"> Vote 11, for the Department of public expenditure, aims to drive the delivery of better public services, living standards and infrastructure for the people of Ireland by enhancing governance, building capacity and delivering effectively. For 2025, the gross Estimate is €64.4 million and €61 million in net terms. This is an increase of €5 million over the 2024 allocation after Supplementary Estimates. The additional funding requirement is primarily driven by an increase in the administrative pay subhead to provide for pay agreement increases and the transfer of 28 corporate and HR staff from the OGP and OGCIO as part of an internal transformation programme. </p>
+          <p eId="para_21"> Vote 12 provides for superannuation and pension and retirement lump sum costs for civil servants, including prison officers, and pension payments for dependents. Year-to-year variation in expenditure on this Vote is primarily driven by the number of individuals who will opt to retire before reaching their compulsory retirement age, and whose years of service and grade or pay level are variable and uncertain. The gross Estimate of €933.4 million I am outlining today represents an increase of €41.7 million, or 5%, on the 2024 gross Estimate. This increase reflects the higher number of pensioners on the fortnightly pension payroll.</p>
+          <p eId="para_22"> Other bodies under the aegis of the Department, such as the Public Appointments Service, the National Shared Services Office and the State Laboratory, provide important services to large numbers of clients across the Civil Service and public service.</p>
+          <p eId="para_23"> In regard to Vote 14, the State Laboratory provides a high quality, innovative and responsive chemical analysis and advisory service to Government Departments and offices. The 2025 Estimate will provide €15.5 million in gross funding and €13.8 million in net terms. This allocation will facilitate the State Laboratory to respond to evolving requirements from clients.</p>
+          <p eId="para_24"> Regarding Vote 17, the Public Appointments Service is the key provider of recruitment and selection services across the civil and wider public service. The 2025 Estimate proposes funding of €25.2 million in gross terms and €25 million in net terms for the Vote. This will allow the Public Appointments Service to continue to source the highest quality candidates for positions in the civil and public service across over 600 recruitment campaigns and to manage the attraction and assessment of candidates for appointment to State boards. A key aim of Public Appointments Service will be to focus on attracting and retaining a diversity of people to the public service through delivering its equality, diversity and inclusion strategy and supporting initiatives.</p>
+          <p eId="para_25"> In regard to Vote 18, the National Shared Services Office delivers HR, payroll, pensions and financial management services to clients across the civil and public service.</p>
+          <p eId="para_26">The 2025 Estimate for the NSSO is €82.2 million in gross terms and €75.3 million net. This funding will enable the continued provision of services. Part of the focus for 2025 is to deliver greater efficiency and integration of services through a number of transformation projects. </p>
+          <p eId="para_27"> The funding provided through Vote 19 - Office of the Ombudsman, provides for a number of different bodies including the Office of the Ombudsman, the Office of the Commission for Public Service Appointments, the Office of the Protected Disclosures Commissioner, the Standards in Public Office Commission, the Office of the Information Commissioner and the Office of the Commissioner for Environmental Information. The 2025 Estimate proposes an allocation of just under €17.5 million in gross terms and some €17 million in net terms across its programmes. This will provide an increase of 17% over the 2024 allocation and responds to a significant uplift in demand for the services provided by the office. </p>
+          <p eId="para_28"> I will hand over now to the Minister of State, Deputy Higgins, who will deal with the Office of Government Procurement and the Office of the Government Chief Information Officer.</p>
+        </speech>
+        <speech by="#EmerHiggins" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" eId="spk_3">
+          <from>Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation (Deputy Emer Higgins)<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_29">This is my second time before this committee. I thank members for their collaboration thus far but I do not think we will be quite as quick as we were the last time.</p>
+          <p eId="para_30"> Vote 39 covers the Office of Government Procurement, OGP. Procurement is a key element of the Government’s public service reform agenda. The State procures goods, services and works costing in the region of €18.5 billion each year. In this context, it is essential that the public service operates in a co-ordinated and efficient way and delivers Government’s objectives, enabling better, sustainable and more transparent public procurement. An Estimate of €21.1 million in 2025 will allow the office to continue to: support clients in availing of central solutions; develop and implement a roadmap towards a national public procurement strategy; manage and maintain the national procurement platform, eTenders; lead on the development and delivery of a public service strategy for the digitalisation of public procurement processes; and continue to enhance the supports to promote SME access to public procurement. The delivery of value for money, transparency and accountability through greater and more consistent usage of centralised procurement arrangements remains the OGP’s core area of focus. The OGP is also in the process of delivering of the State’s first ever national public procurement strategy.</p>
+          <p eId="para_31"> Vote 43 is for the Office of the Government Chief Information Officer, OGCIO. The OGCIO drives the Government’s digital agenda across the public service. Working collaboratively, it develops and delivers pan-public service digital platforms, making Ireland an exemplar in the delivery of high quality digital public services. In addition, it provides a suite of common applications, services and supports to Government Departments and agencies under its build to share initiative and is currently in the process of engaging with prospective client public bodies that seek to on-board during 2025. The Estimate for the OGCIO in gross terms in 2025 is €57.7 million, a 9% increase on 2024. The main driver of the increase in 2025 relates to a €5 million allocation to support the development of the Government data centre. This includes a proposed allocation of €10.5 million for the digital transformation fund. This fund will allow the OGCIO and the public service transformation team in my Department to increase the focus on delivery of citizen-facing digital services under the life events programme. This programme will focus on assisting at scale the roll out of new digital Government solutions in line with several key strategies, including Connecting Government 2030, Better Public Services 2030 and Harnessing Digital 2030. This programme of work is focused on delivering against targets defined in the EU digital decade. I am happy to discuss this further with members but will hand back to the Minister for now.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_4" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_32">I am pleased to present our Estimates and look forward to engaging with the committee on them.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_33">As mentioned earlier, we are under time constraints. Everyone will have an opportunity to speak again at our second session. I have had five indications already, beginning with an Teachta Cian O'Callaghan.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_6">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_34">There is just one issue that I want to ask about which is related to Vote 12 - Superannuation and Retired Allowances. Specifically, I refer to the An Post pensioners who were transferred to An Post in 1984. At that time, as I am sure the Minister is aware, under the Postal and Telecommunication Services Act, they were guaranteed that they would not have less favourable pension conditions than if they had remained in the Civil Service. However, that has not transpired and has not been the case. As the Minister knows, he has a role every year in approving an increase in their pension but when that request comes in January, very modest increases in their pension do not materialise until November and that creates more hardship. Why is section 46 of the Postal and Telecommunication Services Act 1983 not being applied with respect to this group of workers? They should have the same treatment, guaranteed by law, as if they had remained in the Civil Service. </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_7" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_35">As the Deputy may be aware, An Post wrote to the then Department of the Environment, Climate and Communications in January of this year looking for authorisation for a 1.4% increase to pensions and deferred pensions in the An Post superannuation scheme effective from 1 January 2025. The Department then requested concurrence for that on 13 May and that was consented to on 27 May. Any further request will have to be assessed by the new Department of Culture, Communications and Sport which oversees An Post now. It will have to seek consent from my Department, following that.</p>
+          <p eId="para_36"> In relation to pre-1984 employees, my Department has not, as yet, received a similar request in that regard.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_8">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_37">I have one very quick follow-up question. Is there anything that can be done to speed up the process and to ensure their rights under the 1983 Act are upheld?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_9" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_38">As the Deputy knows, in the first instance the Minister for communications receives and assesses the request. Following the recommendation of the line Department, consent is then sought from me. That is the process that is under way. The turnaround from the request to concurrence from me was quick. It took two weeks in May of this year. It is for the Minister for communications to assess any further request received, which I will then consider.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_10">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_39">I thank the Minister and Minister of State for their presentations and for managing the budget. I want to touch on one issue which is not being dealt with today, namely, the OPW, and the decision-making process. After the OPW has taken a decision on a project it then goes back to the Department of public expenditure. I know of one project, which predates the current Minister's term, where, as a result of a delay, the environmental impact study done for the project was out of date by the time the Department made the decision to go ahead with it. Therefore, it had to go back to the drawing board and that has delayed the project by three years. The information I am getting from people who are doing environmental impact studies is that in a lot of cases they end up doing anything up to three different studies. Every time a study goes in but by the time a decision is made, the study is out of date and they have to go back to the drawing board. What process has now been set up within the Department to make sure that does not arise again?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_11" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_40">I will speak more generally in response. We are all cognisant of the delays that are happening with many public projects, whether in the OPW or elsewhere. We are currently examining every aspect of the project life cycle to try to limit delays and accelerate delivery. That is something that I take very seriously. I know there is broad frustration, both within the political sphere and outside of it, with the pace of delivery as a project moves through its life cycle. That is the work we have stood up in the infrastructure division in my Department. We want to properly examine each aspect of the project life cycle. That will impact the OPW and every other State body, agency or Department and how-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_12">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_41">Is the Minister satisfied that there is a mechanism in place to make sure that a decision is made before any environmental impact study goes out of date? For instance, the project to which I refer has been going on since 2013 and nothing has happened yet because the most recent environmental impact study has been approved by the OPW but is now with the Department, awaiting a decision.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_13" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:40:00+01:00"/></from>
+          <p eId="para_42">If the Deputy sends on the details of the specific project, I can check where it sits.</p>
+          <p eId="para_43">What specific project is the Deputy referring to?</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_14">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_44">I am referring to the Blackpool flood relief scheme.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_15" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_45">I am happy to take that away and follow up with the Deputy on it. If there are any specific aspects of the process, we are happy to revert to the Deputy.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_16">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_46">It also concerns other projects to make sure that reports that are produced are not allowed to fall and be out of date by the time decisions are made because there is a huge cost factor to the OPW and the Department of public expenditure.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_17" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_47">I hear the Deputy. I will revert to him and the committee on that particular project. I acknowledge the issues around some of the decision points, which are not quick enough in the context of delivery. That has been a real focus of mine since I entered the Department.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_18">
+          <from>Deputy Ged Nash<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_48">I have a couple of questions to ask in the limited time available. On Vote 18, the National Shared Services Office, I have some questions relating to the pensions deduction issue and how that matter has been handled. The Minister announced on 4 June that he had an update, having originally been informed of an issue in the NSSO and the discovery that there have been issues around pensions deductions over a number of years for a number of retired public and civil servants and, indeed, former and current officeholders. The Minister mentioned at the time, if I am reading his statement correctly, that 13,000 retirees had been checked and he went on to say-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_19" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_49">I said that they had to be checked.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_20">
+          <from>Deputy Ged Nash<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_50">Yes. The Minister went on to say that the likelihood was that the number might be smaller. Has the Minister an update with regard to the scoping exercise and where we are at in terms of the number of individuals the Department believes at this point in time to have been affected? How does the Minister anticipate this process being rolled out over the next period?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_21" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_51">The pool that has been identified as potentially being affected is the 13,000 that have to be checked. The expectation in the NSSO is that it will be a much smaller number than that. The scoping exercise is under way. The NSSO is trying to automate some of the scoping exercise. Some of this goes back 20 years and some of it relates to paper records and records that pre-existed the NSSO itself. I and my officials have highlighted the absolute urgency to check that but it is a significant number so we do not yet know the number affected. What is most important is that whoever is owed a particular liability is paid for that. That is what the priority has been in the context of what was discovered. It is still very much a live issue.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_22">
+          <from>Deputy Ged Nash<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_52">Can the Minister elaborate a little more? This is the first time he has had the opportunity to appear before the committee. Can he elaborate on how the issue was identified? He was at pains to say, of course, that no individuals who are affected are themselves at fault. Was this identified by an outside audit or by a number of individuals in a certain section of the NSSO? We see here in black and white that there are processes that the NSSO uses that are automated by robotics. Is the Minister familiar with how the issue was identified? Were robotics or a form of AI used to identify the problems? The Minister may not be aware of that, which I can understand.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_23" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_53">It was not an automated issue. The Department last year was contacted by the NSSO regarding the approach that should be applied to all allowances. That followed an appeal by a particular person involved. The Deputy asked about the methodology. There was a period of interaction over a series of months last year and then, in quarter 1 of this year, the broader issue evolved to become what it now is. At the end of April, I was informed about an issue relating to the scope of this, which actually expanded in number through the month of May. Even in the week before I outlined this publicly, the pool had increased to 13,000. That is the number as it is right now, and that is what the NSSO said is the pool that has to be checked. This related to an individual who questioned their particular pension entitlement and it evolved from there.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_24">
+          <from>Deputy Ged Nash<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_54">The contact was made with the NSSO a number of months ago or last year, and this then prompted a wider investigation or an audit, for want of a better description, by an individual in the NSSO to see if there were other people who were similarly affected. Is that it?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_25" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_55">No. What happened was that a pension appeal decision was issued to the NSSO in 2017 and that determination was made at that point. It took the NSSO until July 2024 to query if the approach following the appeal in 2017 should apply to a broader group. There was then interaction between the NSSO and the Department last year on the application of the allowances, which concluded earlier this year. The gap between that is of concern and that is why we need to have an external audit.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_26">
+          <from>Deputy Ged Nash<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_56">There was a seven-year gap between the issue first coming to the attention of the NSSO by way of that particular appeal and somebody deciding in the NSSO that this is a bigger issue that warrants further investigation. Now, we are where we are and there are potentially, at the upper end, 13,000 retired civil and public servants and, potentially, officeholders who are affected by this. Who is going to take responsibility for this in the NSSO? I accept it is not necessarily an issue for the Minister.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_27" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_57">It is for me to deal with.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_28">
+          <from>Deputy Ged Nash<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_58">Yes, it is for the Minister to deal with. I do not hold him personally accountable. That is what I am saying.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_29" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_59">I take my responsibilities seriously. It is a body under my aegis. That is why, when I became aware of this at the end of April, we scoped out what the extent of this would be through the month of May. That is why it was important to set out publicly the three issues as they are, and also very clearly to have an external audit of all the processes, systems and issues that we know about, but also to sample all of the other elements that the NSSO is responsible for. That is why this is fundamental. I know that, separately, the Committee of Public Accounts will engage with the NSSO, and accountability will be an important part of the issues that have been brought to light.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_30">
+          <from>Deputy Ged Nash<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_60">Accountability should not begin and end with the Committee of Public Accounts. We need to do accountability better in this country, and I hope the Minister will accept that. Bringing a public servant or two in front of the Committee of Public Accounts to have them interrogated is not where accountability should begin and end. Certainly, that is not where it should end. Moving beyond the concept of lessons being learned is a very serious issue.</p>
+          <p eId="para_61"> I appreciate that we are under time pressure so I will be brief. Who is undertaking the external audit?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_31" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_62">We are finalising the terms of reference this week. I received the draft terms of reference yesterday. They will be finalised this week and I expect the external audit to start within the coming weeks. It should not take more than a number of months. It is important, as part of the broader accountability and oversight, but also transparency around what other issues could be identified in the context of the three that we are now aware of, to have that happen quickly. That will be reflected in the breadth of the terms of reference that we establish.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_32">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_63">I thank the Minister and Minister of State for attending and for their preparation and statements, and I extend the same to their departmental colleagues.</p>
+          <p eId="para_64"> My first question is for the Minister of State, Deputy Higgins. With regard to Vote 39 and Vote 43, which concern Government procurement and IT services, why are the costs of these not charged back to the relevant Departments?</p>
+        </speech>
+        <speech by="#EmerHiggins" eId="spk_33" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Emer Higgins<recordedTime time="2025-06-25T15:50:00+01:00"/></from>
+          <p eId="para_65">It depends. In terms of sourcing, they often are. If the Deputy can imagine it, we have two different wings of the Office of Government Procurement. One is in relation to policy and one in relation to sourcing. From a policy perspective, our officials work to devise frameworks, guidelines, circulars and a lot of support for Government Departments and agencies to be able to understand the bandwidth and how best to tender, for example, how best to utilise tendering documents and how best to use eTenders.</p>
+          <p eId="para_66">Part of what our Vote will be covering is the likes of eTenders, for example, which is the platform that most of our Government Departments and agencies would use for their larger and particular tenders.</p>
+          <p eId="para_67"> The other side of what we have is our sourcing division, which is where we source on behalf of public bodies. That is where we have devised contracts already. If you can imagine all of the most commonly sourced items that happen right across the public service, whether that is tables, computer equipment or whatever, that is all sourced at the best possible price using economies of scale. The Office of Government Procurement does not pay for that; that happens within each Department. What we are doing is providing them with the opportunity to use us and our already agreed sourcing partners who have come through a framework. We advertise our frameworks publicly and very clearly, and people come to tender through a transparent process for them. It is our way of being able to provide other Departments across the Civil Service with the opportunity to purchase at a better price, usually, items that are commonly used and without having to go through their own individual competition. We remove that bureaucracy and unnecessary hurdle and providing them with, usually, a better price. It is a value for money proposition.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_34">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_68">I have a question on a similar topic for the Minister, Deputy Chambers. Vote 18 is on the National Shared Services Office and most of it does not seem to be charged back but the HR section does appear to be charged back. What is the consideration behind that?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_35" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_69">I will have to revert on the historical nature of why the HR component is and why other elements are not. There are core elements of the service which are under the auspices of the Department of public expenditure itself but I can provide a factual position on why there is a division on the cost allocation in terms of its core functions.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_36">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_70">On the same Vote, Deputy Nash mentioned robotics here. I am curious what that actually means. Is that mechanical robotics being used to pack envelopes, etc? If so, then why is there not a similar line for processes automated by software or AI?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_37" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_71">One thing that I and the Minister of State, Deputy Higgins, have sought to prioritise since we came into the Department is the greater use of AI and automation, where possible, but obviously with the proper safeguards and guardrails around how it could or should operate. There are some good examples across the Civil Service where there has been good innovation in the use of AI and automation for the better delivery of services. I know that they are examining the utilisation of that to see how can they accelerate the manual checking of 13,000 individuals and their records, for example. That is something else I can detail further in terms of what additional usage they are providing.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_38">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_72">That makes sense. I presume there is nothing that the Minister can tell us about Vote 15. My only comment is that I have been doing these Revised Estimates in committee for a couple of weeks now and I know everything else goes up year on year but the allocation for this Vote has not gone up year on year.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_39" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_73">My understanding is the requests are not scheduled but are received on an as needs basis. I suppose that is the response by my Department. Obviously Vote 15 is managed sensitively and appropriately in the context of the submissions which are received, and the Department does respond accordingly.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_40">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_74">Is there anything else the Minister wants to tell us about secret service? Okay.</p>
+          <p eId="para_75"> Vote 11 is the main one and we can see that the number of public service employees rose steadily. The latest confirmed figure in the Revised Estimates 2023 is 397,000 employees. Does the Minister have projections for this over the coming years? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_41" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_76">That is something we will have to consider in the context of the medium-term fiscal plan. Pay and numbers policy is a core part of the broader medium-term expenditure framework, which we will have to consider in the next number of weeks. We have had significant growth in the numbers of civil and public servants in the last number of years in light of strong investment in public services, in health and education in particular. That is something we will have to consider. They are factors that set out the broader expenditure matrix in the medium term and that is something the Government is actively considering as we set out the medium-term position in July.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_42">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_77">The broad composition of capital expenditure is split between economic and social. I see that is reasonably steady over the past three years reported. Is that a policy target?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_43" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_78">As the Deputy will know, the capital expenditure is decided across every Government Department in the previous national development plan. The Minister, Deputy Donohoe, when he was in my position, set out windfall allocations for a two-year period. What we are presently engaging in is exactly to the Deputy's point about what the allocation will be over the next five-year period, in particular. That is something that is being actively considered. We are seeking to prioritise energy, water and transport in particular as growth enabling infrastructure for housing, but that is something we are presently engaged with. As I said, there is ambition in every Government Department around increased capital allocations, but part of what I have to try to create is real prioritisation, where possible, in areas that really need that infrastructure investment while managing the social and community infrastructure, for which I know there is demand in many communities in the country. That is part of the process that is under way. The outworking of that will set out the nature of what is possible in the next five years.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_79">Go raibh maith agat. We have to wrap up so everybody can contribute.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_45">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_80">I have a brief final question. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_81">Very briefly, one word.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_47">
+          <from>Deputy Shay Brennan<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_82">The World Bank aggregate indicator of Government effectiveness has a 94th percentile. That seems pretty good. What is that measuring the effectiveness of?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_48" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_83">I think if you look at the growth or outputs in terms of public services, economic growth, the distributional model from the budgetary allocations that have been made in recent years, and even our PISA scores from education, for example, there are really strongly metrics and even growth in jobs and the enterprise economy. There are lots of metrics which speak positively. The one deficit we have in different metrics is in infrastructure and I know part of that is the stop-start cycle which we have had over previous decades. It is something we need to fix in the medium-term and longer term economic cycle, and I think we are all agreed on that. but I am happy to go into further detail on that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_49">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_84">Go raibh maith agat Aire. It is just that not just I, personally, will not get in but that not all of us will get in. I call an Teachta Doherty.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_50">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_85">I welcome the Minister and Minister of State to the committee. Will the Minister confirm that the NSSO was not tax compliant from the years 2015 to 2024?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_51" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_86">The Deputy will be aware of the issue that the Comptroller and Auditor General set out.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_52">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_87">Yes.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_53" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_88">The issue was remedied in the appropriation accounts of 2024.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_54">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_89">Yes. The NSSO is under the remit of the Minister's Department. Was it tax compliant between the years 2015 and 2023 and including a portion of 2024?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_55" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_90">It had not calculated the tax liabilities of 21 civil servants at the time.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_56">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_91">Was it tax compliant? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_57" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_92">It owed liabilities during that period, so for a small portion of civil servants, it was not.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_58">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_93">So the office was not. If it were an individual, it would not have got a tax clearance cert because it owed millions in tax, did it not?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_59" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_94">It was not compliant for 21 individuals who were involved.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_60">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_95">How did it miss €2.3 million in taxes that it collected from retired civil servants but forgot, was it, to pass it on to Revenue? How did that happen?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_61" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_96">That is why we are doing a full external audit.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_62">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_97">No, because your Secretary General actually wrote to Comptroller and Auditor General saying that they investigated that matter, they provided the €2.37 million to them plus interest of nearly half a million euro and then confirmed that they carried out a further full review to ensure the corrective measures were put in place and that Vote 12 was tax compliant going forward. That is an historic issue; it was last year.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_63" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_98">It preceded my time in the Department. The Deputy is correct, yes.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_64">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_99">So how did the NSSO collect €2.3 million tax from retired civil servants for a period of nine years before that and forgot to hand it over to Revenue? Did the Secretary General ever get to the bottom of that?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_65" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:00:00+01:00"/></from>
+          <p eId="para_100">As I said, it preceded my time in the Department.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_66">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_101">Does anybody at this committee know? The Secretary General carried out a review.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_67" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_102">I can provide the information on it.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_68">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_103">When the Minister found out then that there were another 13,000 individuals who had not paid their proper tax - Ministers, former and current, and senior civil servants - did he not ask the issue of-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_69" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_104">I have said this publicly. This is unacceptable. That is why there is a need for a full external audit of the NSSO, its functions, its systems and its processes. That is what I have undertaken to do as a new Minister in the Department.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_70">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_105">That follows the full review that was carried out by the Department last year into the NSSO to ensure it was tax compliant. Sorry, was there a full review carried out by the Department last year to ensure that the NSSO was tax-compliant?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_71" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_106">Twenty-one cases out of 20,000 were examined in that.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_72">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_107">Was a full review carried out in relation to these issues to ensure that the NSSO was tax compliant going forward?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_73" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_108">The NSSO reviewed the 20,000 cases, and 21 cases were identified in that review.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_74">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_109">So a full review was carried out.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_75" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_110">Of the particular cases involved. That is my understanding but, as I said, it preceded my time in the Department.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_76">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_111">That is not what was said in terms of the Secretary General of the Department. It was said that a full review is being carried out with corrective measures to put in place to ensure that Vote 12 is tax compliant going forward. We now find out they are far from that. Even though they paid the €2.3 million plus €500,000 in interest, we now know that loads of other people had their taxes wrongly calculated.</p>
+          <p eId="para_112"> Let us go to this here. On the statement and from the information the Minister has, how many Ministers were overpaid and how many were underpaid?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_77" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_113">Deductions were not made in respect of 32 and there was a much smaller number in respect of those who are owed money from the NSSO.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_78">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_114">Thirty-two Ministers were overpaid. Basically, the tax was not deducted properly.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_79" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_115">It was not deducted properly.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_80">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_116">They have more money in their salary than they were supposed to, basically, in layman's terms - 32 Ministers. Is that just from the current Ministers? I am not asking to individualise it.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_81" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_117">Yes, current.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_82">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_118">Was it just the previous Government, or does this go back further?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_83" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_119">As I said at the time and what I outlined in my statement is that this could go back further. They have yet to-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_84">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_120">Of the 32, because we know that 32 were overpaid-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_85" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_121">Current.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_86">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_122">So 32 current Ministers?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_87" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_123">Correct.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_88">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_124">Were overpaid.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_89" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_125">Are involved in this. That is my understanding.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_90">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_126">Some of those are up to €30,000, we are told.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_91" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_127">Correct.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_92">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_128">Of the former Ministers, how many-----</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_93" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_129">I do not yet have that information.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_94">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_130">But we know that there are former Ministers, do we?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_95" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_131">We know there is likely to be, but I do not have that full information. That is still being bottomed out by the NSSO.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_96">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_132">Do we have any indication how far back this goes?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_97" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_133">It goes back to 2019. However, again, that is why we need a full external audit of how far it goes back and why there should be an audit of all aspects around this.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_98">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_134">These are four items that are not linked. This is what is crazy about this. What we have in the NSSO is a basket case with regard to financial procedures. What is going on here is crazy. Let us focus on one of them. The chargeable excess tax only applies when the pension pot is more than €2 million. One individual had a chargeable excess that was not deducted from them of €280,000. That means that is a whopper of a pension. We are talking Secretaries General with swings and roundabouts here. Can I ask this?</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_135">Last question.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_100">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_136">This is the last question. Of these individuals who were so overpaid - these individuals obviously will be Accounting Officers for their own Departments - did any notify the Department that they got this bonanza, or did all of them stay schtum? None of them miscalculated. It was not their error.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_101" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_137">I am not aware of that.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_102">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_138">The reason I ask this is, how did that come about? Was it that somebody said, "Hey, folks. You are paying me €280,000 too much here", or was it somebody else who said "You actually gave me €150,000 too much here"? How did this come about? That is the last question.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_139">I ask the Minister to be succinct.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_104" as="#Minister_for_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Jack Chambers<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_140">On the back of what the Deputy outlined around last year and the issues relating to CET - the Deputy referenced public documentation - Revenue then asked the NSSO to check other aspects of CET within its auspices, and that uncovered the issues that I have outlined publicly. That broader issue crystallised earlier this year around where they had not identified the scope or scale of it internally. I think it established a new pensions structure within the organisation. That combined with the Revenue audit, following the issue of last year, which the Deputy referenced, identified the issues, which are unacceptable. That is why we need a full external audit. The fact that different and distinct issues have emerged independently of each other is why we need to see, first of all, whether this is the extent of it on the issues themselves, but also to check and sample all of the other aspects of the systems and processes.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_141">We have a second committee meeting where we can discuss issues again, so I will leave my own questions to the second meeting because I want us to try to adhere to time. I thank the Minister, the Minister of State and their officials for assisting the committee with our consideration of the Revised Estimates. The meeting stands adjourned until later today, when the joint committee will meet at 4.30 p.m. in committee 3 to engage with the Minister, Deputy Chambers.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_12">
+        <heading>Message to Dáil<recordedTime time="2025-06-25T16:10:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T16:10:00+01:00"/></from>
+          <p eId="para_142">In accordance with Standing Order 110, the following message will be sent to the Clerk of the Dáil:</p>
+          <p class="indent_1" eId="para_143">Tá an Roghchoiste um Airgeadas, Caiteachas Poiblí, Athchóiriúchán Seirbhíse Poiblí agus Digitiúchán, agus an Taoiseach tar éis breathnú ar na Meastúcháin Athbhreithnithe seo a leanas i gcomhair seirbhísí poiblí le haghaidh sheirbhís na bliana críochnaithe ar an 31 Nollaig 2025: Vótaí Uimh. 11, 12, 14, 15, 17, 18, 19, 39 agus 43.</p>
+          <p class="indent_1" eId="para_144">The Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach has completed its consideration of the following Revised Estimates for public services for the year ending on 31 December 2025: Vote 11 - Public Expenditure, Infrastructure, Public Service Reform and Digitalisation (Revised); Vote 12 - Superannuation and Retired Allowances (Revised); Vote 14 - State Laboratory (Revised); Vote 15 - Secret Service (Revised); Vote 17 - Public Appointments Service (Revised); Vote 18 - National Shared Services Office (Revised); Vote 19 - Office of the Ombudsman (Revised); Vote 39 - Office of Government Procurement (Revised); and Vote 43 - Office of the Government Chief Information Officer (Revised).</p>
+          <p eId="para_145"> Under Standing Order 102(1), this message is deemed to be the report of the committee.</p>
+        </speech>
+        <summary eId="sum_5"> The select committee adjourned at 4.17 p.m. until 3.30 p.m. on Wednesday, 3 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

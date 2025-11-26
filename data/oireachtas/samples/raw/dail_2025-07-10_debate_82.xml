@@ -1,0 +1,697 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-07-10/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-07-10/debate"/>
+          <FRBRdate date="2025-07-10" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_defence_and_national_security"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-07-10/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-07-10/debate/mul@"/>
+          <FRBRdate date="2025-07-10" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-07-10/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_defence_and_national_security/2025-07-10/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-16" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BrianStanley" href="/ie/oireachtas/member/id/Brian-Stanley.D.2011-03-09" showAs="Brian Stanley"/>
+        <TLCPerson eId="CatherineCallaghan" href="/ie/oireachtas/member/id/Catherine-Callaghan.D.2024-11-29" showAs="Catherine Callaghan"/>
+        <TLCPerson eId="DiarmuidWilson" href="/ie/oireachtas/member/id/Diarmuid-Wilson.S.2002-09-12" showAs="Diarmuid Wilson"/>
+        <TLCPerson eId="DonnchadhOLaoghaire" href="/ie/oireachtas/member/id/Donnchadh-Ó-Laoghaire.D.2016-10-03" showAs="Donnchadh Ó Laoghaire"/>
+        <TLCPerson eId="EamonScanlon" href="/ie/oireachtas/member/id/Eamon-Scanlon.S.2002-09-12" showAs="Eamon Scanlon"/>
+        <TLCPerson eId="GerardPCraughwell" href="/ie/oireachtas/member/id/Gerard-P-Craughwell.S.2014-10-10" showAs="Gerard P. Craughwell"/>
+        <TLCPerson eId="RobbieGallagher" href="/ie/oireachtas/member/id/Robbie-Gallagher.S.2016-04-25" showAs="Robbie Gallagher"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCPerson eId="SeanKyne" href="/ie/oireachtas/member/id/Seán-Kyne.D.2011-03-09" showAs="Seán Kyne"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM CHOSAINT AGUS SLÁNDÁIL NÁISIÚNTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Defence and National Security</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-10">Déardaoin, 10 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-10">Thursday, 10 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CatherineCallaghan">Catherine Callaghan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MaeveOConnell">Maeve O'Connell</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#GerardPCraughwell">Gerard P. Craughwell</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DonnchadhOLaoghaire">Donnchadh Ó Laoghaire</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#RobbieGallagher">Robbie Gallagher</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#EamonScanlon">Eamon Scanlon</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#SeanKyne">Seán Kyne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#BrianStanley">Brian Stanley.</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#DiarmuidWilson">Diarmuid Wilson.</person>
+                </p>
+              </td>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Senator Alice-Mary Higgins.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#RoseConwayWalsh">Teachta / Deputy Rose Conway-Walsh sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>General Scheme of the Defence (Amendment) Bill 2025: Discussion (Resumed)<recordedTime time="2025-07-10T09:30:00+01:00"/></heading>
+        <speech by="#RoseConwayWalsh" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T09:30:00+01:00"/></from>
+          <p eId="para_13">Apologies have been received from Deputy Tom Brabazon.</p>
+          <p eId="para_14"> The joint committee is continuing its pre-legislative scrutiny of the general scheme of defence (amendment) Bill 2025. Joining us today are members of the Representative Association of Commissioned Officers. I welcome, on behalf of the committee, Lieutenant Colonel Conor King, general secretary, Lieutenant Colonel Derek Priestley, deputy general secretary, and Lieutenant Colonel Martin Ryan, president. The witnesses are here with us today to discuss the general scheme of the Bill.</p>
+          <p eId="para_15"> The format of the meeting is that I will invite Lieutenant Colonel King to make an opening statement with Lieutenant Colonel Priestly. This will be followed by questions from members of the committee. Each member has a seven-minute slot to ask questions and for witnesses to respond.</p>
+          <p eId="para_16"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member participating via Microsoft Teams to confirm formally prior to making a contribution to the meeting that he or she is on the grounds of the Leinster House campus.</p>
+          <p eId="para_17"> Both members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that may be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory regarding an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_18"> Lastly, as the witnesses will probably be aware, the committee will publish their opening statements on its website following the meeting.</p>
+          <p eId="para_19"> I now invite Lieutenant Colonel King to make his opening statement. He will be followed by Lieutenant Colonel Priestley.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T09:40:00+01:00"/></from>
+          <p eId="para_20">We thank the committee sincerely for the invitation to appear before it today and participate in the pre-legislative scrutiny process of the general scheme of the defence (amendment) Bill 2025. I am accompanied by the RACO deputy general secretary, Lieutenant Colonel Derek Priestley, and the RACO president, Lieutenant Colonel Martin Ryan.</p>
+          <p eId="para_21"> RACO represents all commissioned officers and cadets across the Army, Naval Service and Air Corps on a wide range of topics, primarily focusing on remuneration, superannuation and conditions of military service, such as pay, promotion arrangements, working time and health and safety matters. Our members are the decision-makers and leaders of the Defence Forces. They are not just managers; they are commanders, junior and senior leaders, mentors, instructors, civil, mechanical, aeronautical, marine and electrical engineers, doctors and dentists, band conductors, pilots and ships captains, to name but a few.</p>
+          <p eId="para_22"> While we acknowledge that discipline and disciplinary matters are not ordinarily encompassed in the scope of representation, amendments to the Defence Acts and Defence Forces regulations that affect the pay and conditions, welfare, physical and mental health of our members undoubtedly are. As a consequence, timely consultation through the conciliation and arbitration, C&amp;A, scheme is something on which RACO places a very significant emphasis and value.</p>
+          <p eId="para_23"> Turning to today's order of business, RACO would have legitimately expected that any changes to legislation impacting on the terms and conditions of members' service within the Defence Forces would have been the subject of timely and meaningful consultation through the conciliation and arbitration structures. However, despite the scheme being reviewed recently, it remains unproductive, suffering from a lack of resourcing, long delays in resolving issues, little accountability and, therefore, most regrettably, an inability to address the issues it was created to resolve. An effective, well-resourced and well-supported scheme would most likely have avoided the necessity for us to appear before the committee today to participate in the pre-legislative scrutiny process.</p>
+          <p eId="para_24"> We find it unacceptable that legislation is drafted by our employers and sent to Cabinet without any consultation with supposedly valued stakeholders. This is the second occasion on which RACO finds itself before this committee participating in a pre-legislative scrutiny process rather than in an early and timely consultation with our employer under the confidential veil of the scheme. The C&amp;A scheme is entirely designed to bring issues and problems to a mutually satisfactory conclusion. A lack of consultation and exploitation of our employer's dominant position is something we continue to encounter on a regular basis, and we continue to be frustrated by our treatment under the scheme.</p>
+          <p eId="para_25"> The matters coming before the committee today address some very salient and serious issues. To be clear, RACO is fully in favour of a robust and effective suspension policy that is grounded in the principles of natural justice and fair procedures but is concerned with aspects of the proposed primary legislation currently under scrutiny.</p>
+          <p eId="para_26"> In July 2024, RACO wrote to our employer, the Department of Defence, seeking clarity and guidance regarding the de facto suspensions that were being implemented without any transparent policy or legal underpinning. This followed a series of incidents of members of the Defence Forces being posted away from their home station into non-existent appointments some distance from their parent units, or being placed on a form of special leave, all in the aftermath of a highly publicised and publicly commented upon criminal case involving a member of the Defence Forces. Regrettably, despite numerous follow-up attempts, this essential guidance and clarity has still not been provided.</p>
+          <p eId="para_27"> As the committee will be aware, heads 1 to 20, inclusive, of the general scheme of the 2025 Bill cover deployment of military personnel and the triple lock, among other issues. RACO accepts that such matters are outside the scope of representation, notwithstanding the fact that deployment of Defence Forces personnel in sufficient numbers and with sufficient support to ensure their safety and mission success is undoubtedly a welfare matter, as much as it is operational. It is the Government's prerogative to legislate as it sees fit regarding the deployment of military personnel overseas and we assume that military advice has been sought and received on such matters. Therefore, it remains heads 21, 22 23 that RACO wishes to mainly focus on today.</p>
+          <p eId="para_28"> Head 21 proposes the introduction of section 46A to the 1954 Act, granting a designated authority the power to suspend officers below the rank of major general under certain conditions, including where it appears that the public interest, national security or serious misconduct may be at stake. It also allows for regulations to govern procedure, pay and review during such suspensions.</p>
+          <p eId="para_29"> As the recent Government-commissioned report from Mr. Peter Ward SC clearly sets out, there is a lacuna in the Defence Acts and an urgent need for an equitable and fair mechanism, in line with best HR practice, to suspend members of the Defence Forces. However, we remain very concerned by the loose, vague and subjective language in the current drafting, in particular where "it appears to the suspending authority that the public interest or national security might be prejudiced by allowing the officer to remain on duty" or "the suspension is, in the opinion of the suspending authority, required in the best interests of the Defence Forces". Another example is that the suspending authority may suspend if "it appears to the suspending authority that the officer has engaged in behaviour that may constitute grave misconduct or grave irregularity warranting disciplinary investigation". Such phrasing lacks the thoroughness and rigour needed to protect members' rights to the presumption of innocence and opens the door to interpretation without robust oversight or even an appeal mechanism.</p>
+          <p eId="para_30"> We also highlight the welfare dimension. Suspension, particularly in advance of due process, carries real consequences for an individual's mental health and professional reputation. The principle of "innocent unless and until proven guilty" must be protected, not just legally but through fair process and proper supports. A balance must be struck between operational discipline and the dignity and safety of those who serve.</p>
+          <p eId="para_31"> We note that suspension is an embedded feature of many other public sector organisations and are aware of a concerning reported trend of seemingly endless, elongated suspensions without regular review or due process, where the suspension in fact becomes the punishment. We can learn from these examples and introduce a robust but fair process that caters for the needs of the organisation without prejudice to any Defence Forces member.</p>
+          <p eId="para_32"> Cognisant of the influence that the military chain of command can have on subordinate decision-making, this legislation and any subsequent Defence Forces regulation must tighten up procedures, providing strict checks and balances to include thresholds, with proper fit-for-purpose appeal mechanisms. Military personnel have become accustomed to being denied certain statutory employment protections, and we ask that this committee, when advising the Government, not allow this practice to reoccur here.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T09:40:00+01:00"/></from>
+          <p eId="para_33">Head 22 proposes an amendment to section 50 of the 1954 Act, thereby allowing for the dismissal of an officer by the President "for any prescribed reason." This marks a shift towards a more open-ended basis for dismissal, with the criteria to be set out in future regulations rather than clearly defined in primary legislation.</p>
+          <p eId="para_34"> While we recognise and accept the need for the Defence Forces to maintain high standards and the capacity to address serious misconduct, the phrase "any prescribed reason" is too broad even for primary legislation and again lacks the clarity and safeguards necessary to protect members from arbitrary or disproportionate action. It risks undermining the principle of natural justice, especially in a military context where members already have limited access to industrial relations mechanisms or an ability to go to the courts to exercise normal employment rights. We urge the committee to ensure that any grounds for dismissal are more clearly defined, transparent, and subject to procedural fairness, including appeals, possibly outside of the chain of command. Our members deserve to know the standards by which they will both be judged and be required to judge others. They must have confidence that those standards will be applied consistently, with due regard for their rights, welfare, and service.</p>
+          <p eId="para_35"> Head 23 proposes the insertion of a new section 52A into the 1954 Act, requiring officers to inform their commanding officer, CO, if they are under investigation by An Garda Síochána or if they are charged with a criminal offence. It also places an ongoing duty on the officer to keep their commander informed of any significant developments, including court dates. Speaking from experience as a former military police officer, Defence Forces members already have an obligation to inform their CO of a criminal civil court appearance.</p>
+          <p eId="para_36">While we acknowledge the importance of accountability and transparency, especially where serious allegations are involved, this head places significant obligations on the individual member who, depending on the nature of an alleged offence or An Garda Síochána sensitivities about the operation of a criminal investigation, may or may not be even aware of such allegations or investigations. Furthermore, there is no formal or informal data-sharing mechanism between An Garda Síochána and the provost marshal regarding such investigations. Again, from experience, investigations may progress to a certain point before a suspect may be informed, either formally or informally, by An Garda Síochána that the investigation has commenced. There is no obligation on the investigating garda to keep the Defence Forces member updated or to indicate a likely court date or timeline for conclusion. It is submitted that a definitive occurrence such as a member being detained or arrested, interviewed under caution, or even charged is a more appropriate decision point for when the member must inform the commander. Also, Garda procedures dictate that An Garda Síochána will inform the local assistant provost marshal and this should be followed through. Following any of the above occurrences, a fair and balanced suspension could follow which is not simply as a result of "the commencement" of an investigation. To not amend the legislation in this manner could see a significant and unnecessary increase in total suspensions of members where lesser or more considered action would be appropriate. Such action could include a relocation within a barracks, re-tasking to a different unit or branch within the same location, remote working or restricting certain operational duties, but with certain built-in deadlines and commitments to prioritise the conclusion of investigations so that members who are ultimately exonerated can remain positive and committed members of the Defence Forces. All of these measures should naturally consider the rights of potential victims or other members of the organisation.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_37">In conclusion, the publication of the general scheme of the defence (amendment) Bill 2025 without any prior consultation with the representative associations is most regrettable. It leaves RACO, yet again, with no option other than to seek amendments to the heads of Bill through the pre-legislative scrutiny process, external to the conciliation and arbitration scheme. In that regard, we are grateful for the opportunity to come before the committee today.</p>
+          <p eId="para_38"> At the heart of any sound defence policy lies meaningful consultation with those who serve. We learned a harsh lesson during the passage of the Defence (Amendment) Act 2024 that sidelining those most affected is neither efficient nor wise and yet that lesson appears to have gone unheeded. We respectfully contend that the draft heads as they currently stand are overly vague, even for primary legislation, and lack crucial detail on appeals mechanisms, and checks and balances, which could lead to a wave of unnecessarily unreasonable and protracted suspensions. We suggest that more detail is required to ensure clarity and support for our members who will be required to operate and administer a suspension policy, and that essential safeguards are necessary for all Defence Forces members who may be the subject of suspension or indeed dismissal into the future, in keeping with the principles of natural justice and fair procedures. We thank committee members for their time and consideration of this opening statement today. We are happy to address any questions or comments members may have.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_39">Before I go to the members, I thank our guests for their comprehensive statement. I am really pleased that we were able to facilitate this meeting today. To date, most if not all of the discussion on this general scheme has been taken up with the triple lock but what our guests have outlined today has very serious consequences. I look forward to the discussion with members. I am really grateful for RACO's statement today. Our guests have outlined the wide range of members of the Defence Forces that RACO represents. One of our primary functions as a committee is to ensure that we have Defence Forces that are fit for purpose. It does alarm me to hear about a lack consultation with RACO on the preparation of the heads of Bill and I hope we can put right what has not happened heretofore.</p>
+        </speech>
+        <speech by="#RobbieGallagher" eId="spk_6">
+          <from>Senator Robbie Gallagher<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_40">I welcome all three gentlemen here this morning and thank them for their opening statement which was very comprehensive. As they alluded to, in an ideal world they would not be here. It is disappointing that they feel there was a lack of consultation in relation not just to this issue but to other issues as well.</p>
+          <p eId="para_41"> I take this opportunity to thank our guests and the membership of RACO for their service and loyalty to the State. I am sure I speak for everyone here when I say that we very much appreciate that and thank them for it.</p>
+          <p eId="para_42"> I will confine my contribution to a number of questions relating to the suspension policy as currently proposed here. From a Garda Síochána perspective, gardaí would tell us that they have serious concerns about their policies in relation to suspensions and never-ending investigations in relation to alleged offences. Are there any learnings we could take from that and stitch into this proposal for the Defence Forces? As they outlined themselves, when someone is accused of something, rather than it being a case of innocent until proven guilty, in many ways it can appear that the person is guilty until proven innocent. That is very disappointing. Reputational damage is done when somebody is suspended because people wonder if they did it or not. I can only imagine the stress that brings on the individual and his or her entire family circle. If there are issues that other organisations like An Garda Síochána have alluded to it is important that we take learnings from that. Do our guests wish to comment on that?</p>
+          <p eId="para_43"> I am interested in the working time directive and how it is being implemented within the Defence Forces. How is that working out? Are there any impediments or barriers in relation to that? Finally, I do not know whether any of our guests had an opportunity to tune into the committee proceedings since we started our fairly extensive hearings. We have been fortunate to get a wide range of witnesses on both sides of the argument in relation to the triple lock. I fully appreciate that they may be constrained in what they can say but if they have had an opportunity to tune in, do they have any general comments to make on our hearings to date?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_44">I thank the Senator for his attendance and his questions, which I will address in turn. We are fortunate to have very good relationships with our fellow Garda representative associations of all ranks, from the GRA all the way up to the chief superintendents. We have noted the degree of frustration that seems to exist towards the Garda model of suspension policy. We are aware that a new suspension policy has been rolled out in the very recent past. We are also aware that the GRA does not currently recognise that suspension policy due to a lack of consultation. That is all too familiar to us and is why we always stress that early and timely consultation is so important. We are the people who have to feed into the policy and ensure that it is fit for purpose but more importantly, our members are the people who will have to implement it. We need to have buy-in from the membership to ensure that the suspension policy is fit for purpose. We have all heard the horror stories, anecdotally, of suspensions in An Garda Síochána that have gone on interminably. We have all heard the media reports of a Garda who gave a bicycle to an elderly pensioner during Covid and was suspended for a number of years. We have seen other examples across the public sector, mainly in the HSE, of protracted suspensions of a decade or more. What we want to achieve here is to shine a light on the requirement to consider two issues. First, there must be clarity in relation to the implementation of the suspension policy so that those people, namely our members, who are required to recommend and implement suspensions are legally covered and are clear in their rights and obligations. Second, for the members who may find themselves, for whatever reason, potentially the subject of a suspension, that suspension must be clear, unambiguous and in keeping with natural justice and fair procedures. A member who is to be suspended should know exactly why he or she is being suspended but that is not always the case. Furthermore, suspensions must be subject to regular, frequent and periodic review. </p>
+          <p eId="para_45">It cannot just be a roll-over, where the suspension becomes the punishment. There has to be a timely and quick investigation. As we hopefully touched on in our opening statement, suspensions can have a devastating effect on someone's career regardless of whether they are innocent or guilty. When a suspension drags on for years and years, the psychological contract that the soldier, the sailor or aircrew member in Óglaigh na hÉireann has with the State can only be damaged. That is where we are at with the suspensions.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_46">As Mr. King alluded to in his opening statement, we welcome the introduction of suspensions first and foremost. We are currently operating in a vacuum where we do not have the powers of suspension. That has led to a lot of anomalies. We are following practices where we have been asked to ignore our regulations, which should never happen in the Defence Forces. We are not following regulations as they should be, because our employers have left us in a place where we do not have modern HR practice when it comes to suspensions. When this is introduced, there is no mention of the oversight of suspensions afterwards. That is something lacking in other locations. It is something that could be introduced as a role in the external oversight body, now that it must be statutorily established in the Defence Forces. They are concentrating on HR practices anyway, so it could be a role for someone like that. I think that once something is introduced it must avoid what Mr. Ryan has alluded to, which are the protracted and elongated suspension practices that seem to happen elsewhere. If we are to learn from them, having proper oversight of the mechanism afterwards would be welcomed.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_47">I will take the working time directive question. The Senator asked how it is being implemented. Following a long period of upwards of seven or eight years, three years ago we got into a series of consultations with the Department and PDFORRA was involved. They turned out to be very productive. There is what we call a three-strand approach at the moment. Strands 1 and 2 have more or less been implemented. We are in the process of briefing members and seeing delivery and positive moves. Members are being informed that when they work for extensive or extended periods, they now have a time-off in lieu provision. That has been set out in various directives and guides. Certain changes in regulations have to come. Without a doubt, after a long campaign some positive moves are happening. The third strand is the strand we felt should have happened first. It was about recording working time. While we have a personnel management system, it does not record time <i>per se</i>. It will record a day's or a half day's attendance. That is still problematic because it does not define the working day, working week, working month or even working year. For the working time directive 17-week reference period, we do not know where members stand on that. There is a trial project, and a procurement process has commenced to bring in a system, but we are a bit away from that. We would have liked to have seen that strand going. There is still a fair amount of work to be done, particularly around defining the working day and week, so the reference period in the working time directive can be apparent. We have urged the Department to move on that as quickly as possible to get that action done. As we said, we felt that would have been first.</p>
+        </speech>
+        <speech by="#EamonScanlon" eId="spk_10">
+          <from>Deputy Eamon Scanlon<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_48">I thank the witnesses for their presentation. I note from it, and I am surprised to hear, that they had no prior consultation with the representative association. They say it is regrettable and I agree with them. It leaves them with no option, yet again, other than to seek amendments to the heads of the Bill. You would think the first people a discussion would take place with would be them. They also state that no lessons have been learned from the last Bill in 2024. People were sidelined at that time, and it seems no lessons have been learned from that either. Will they expand on those two things?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_49">I thank the Deputy for the question. Timely consultation is hugely important in the industrial relations area, particularly in a disciplined, uniformed service like the Defence Forces that has restricted rights in the industrial relations sphere. You will not see us taking industrial action or going on strike, so we basically have to talk our way into our rights. Therefore, we have to be very strong in demanding and insisting on those rights as enshrined under Defence Forces regulation. We have disappointingly seen time and again, particularly in recent years, what is almost lip service paid to the right of consultation under Defence Forces regulation. That is the Minister's regulation, as the Deputy is surely aware, and is written by the Department of Defence. In the Defence (Amendment) Act 2024, we had the fortunate privilege to be in front of the joint committee on defence, foreign affairs and trade, as it was at the time. That was again only necessary because we were not consulted and there were serious changes afoot under defence forces regulations and under the Defence Act to comment on matters of service that affected our members. When I say that lessons were not learned, it is clear that there was so much debate and, I would say, controversy about that Bill that even Uachtarán na hÉireann decided there was a potential question over its constitutionality and referred it to the Council of State. We are firm in our belief that had consultation and engagement taken place in a more timely fashion in advance of the pre-legislative scrutiny phase, that would never have been necessary.</p>
+        </speech>
+        <speech by="#EamonScanlon" eId="spk_12">
+          <from>Deputy Eamon Scanlon<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_50">There is no doubt there are lessons to be learned. I thank Mr. King.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_51">I will explain that the view of the officials’ side would have been that this was a disciplinary matter, which we recognise as being outside the scope of representation. However, as we clearly say in our opening statement there are further impacts here that relate very much to health and safety. For that reason, we sought consultation on it. It is also just simple, good industrial relations practice to consult. As we say in the start of our statement, as the managers, leaders and decision makers of the organisation, you want us to be consulted, engaged and behind the process that will ultimately be there. We are the folks who will have to implement it. We are trying to avoid a situation where we cannot come out in support of this policy. Clearly, early consultation under the veil of the conciliation and arbitration scheme would avoid such unnecessary conflict. Our desire and hope is to put it in the right place. The conciliation and arbitration scheme, which was set up to resolve issues of mutual concern to the officials’ side and the representative side, is being avoided.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_14">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_52">I thank the witnesses for presenting this morning and for their submission. I will cut straight to the chase. This is the second time we have had the representative body here, and the second time we have heard negative reaction with respect to conciliation and arbitration. Conciliation and arbitration is the lifeblood of representation. Will Mr. King describe what they expect from conciliation and arbitration and what they are getting from conciliation and arbitration ? I am concerned that there appears to be no consultation. This is the second piece of legislation to come before a defence committee where there had been no previous consultation. The last time it was rammed through despite the concerns of this committee. That is something we need to be careful of.</p>
+          <p eId="para_53"> On the issue of suspension, I am aware of a person who was suspended for 25 years and retired from suspension. They were on gardening leave for 25 years. Local leave has been misused in the Defence Forces. I am conscious that the witnesses are anxious to have a proper suspension system in place, but from the reading it appears extremely vague. What is prescribed and what is not prescribed? Will the representational bodies be involved for an officer or enlisted person, who I know the witnesses cannot speak for? Will an officer be provided with an opportunity to have their representation body with him or her when he or she is about to be suspended? Will there be clear instructions as to why he or she is being suspended? As Mr. King pointed out a few minutes ago, will there be an end date or end time?</p>
+          <p eId="para_54">The witnesses mentioned Defence Forces regulations, DFRs. Most people prior the Ward report castigated the young officer who was sent to court in the Crotty case. I would like somebody to explain what the function of that officer was and who is responsible for the DFRs there.</p>
+          <p eId="para_55"> This is the final question in this first round. We had the oversight body before the previous committee. There is an oversight body looking at changes in the Defence Forces. We have been assured that there would be engagement with the representative bodies. How often have the witnesses met with them? What has the engagement been like? Have some of their concerns been dealt with? I will leave it at that, and the witnesses can choose themselves who will answer.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_56">I thank the Senator very much for the questions. In preparation for today's meeting, we did review, obviously, some of our recent appearances with previous committees. Going back to 2022-23, a common trend was a concern regarding dysfunctionality within the conciliation and arbitration structures. That was manifest in a number of manners. Principally, it was a lack of progress, very slow progress and a lack of accountability on issues that affect the men and women of Óglaigh na hÉireann. This could be anything from basic stuff like allowances and pay to employment rights. They are all kind of housed under this lack of consultation we keep talking about, and I am sure the Senator is tired of hearing. If I could give a quick example, we have on paper a very robust mechanism that includes third-party adjudication and arbitration. We have an arbitration board in place, which is appointed by Government. We willingly submit to that and adhere by the rulings of those.</p>
+          <p eId="para_57"> In 2020, we had a case where a member of ours was disbarred from membership of RACO by virtue of his appointment to director of military prosecutions. We fought that case with gusto because it struck at the heart of representation. The Senator might recall in the previous Oireachtas committee when we were debated the defence amendment Bill and subsequent Act, that was actually in the Bill and was taken out afterwards. That still has not been resolved, even though the then Tánaiste and now Taoiseach said he wanted to see it come to a conclusion and said on the record in Dáil Éireann that he was quite satisfied that the appointment of a member of the Defence Forces and the independence of that appointment is not affected in any way by the membership of a representative association, which we would say is common sense. Even though the arbitration board has backed up that opinion, the Department has still sat on it and not moved. That shows dysfunctionality.</p>
+          <p eId="para_58"> With regard to meetings of the conciliation council, which are quite structured, we feel conciliation and arbitration within the Department has taken a back seat. They work hard, by the way. When they seek updates from other areas of the Department of Defence in the same building, they are not forthcoming. That is a serious problem for us because if they are being sidelined, that means we are being sidelined and our members are being sidelined. They are just a couple of examples with regard to the conciliation and arbitration scheme. What we want to see from that is a better resourcing of it and better support for it. At our last conference, we would have called on the then Tánaiste, now Taoiseach, Micheál Martin, to pay more attention to the conciliation and arbitration scheme. That kind of neatly comes on to the oversight body. I will hand over to my colleagues in a second, but I will just talk about that. We are having good engagement at the moment with the oversight body. We are meeting with its representatives next week, for example. They have told us their primary role is to look first at the recommendations of the Commission on the Defence Forces with regard to HR matters, and there are a lot. However, what we have asked them to do, and what they have readily agreed to do, is to provide oversight over the conciliation and arbitration scheme. We are waiting to see the outcome of that oversight because it is badly needed.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_59">The Senator asked about the Defence Forces regulations and who is responsible for that. A DFR is similar to a statutory instrument, SI, and the Minister ultimately is responsible for that. However, with the scope of representation, there are areas on which we should be consulted. I think that is really the point the Senator is alluding to that where amendments are being made to the DFRs, there should be some form of consultation. However, it is the Minister's responsibility, to answer the Senator's query on that.</p>
+          <p eId="para_60"> The role of the court liaison officer was the other question. It may be a little bit historical but back in the day, it was always a requirement that the officer was attending court when a member of the Defence Forces was involved. The officer went down on the day as such to record the outcome of the case and then report back through the chain of command. Over time, that role has kind of evolved and more and more often, defence counsels would have called the court liaison officer to the stand because they would know that officer would have the personal HR file of the individual and would look for narratives in it that were positive. This would then be portrayed as a character witness for the defendant. That would be in our eyes a misappropriation of that file in a sense that it was not meant for that purpose. The officer was following instructions in that regard. It is unfortunate then post trial that this is shown as the Defence Forces coming out in support of someone who has been convicted of a serious offence, but that was not the intent. That is probably enough to say on that.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_61">To add to that, thankfully, the Ward report addressed, and made some recommendations that we fed into on, the attendance of officers at court in the future. First and foremost, the requirement to wear a uniform going to court was always probably drawing unnecessary attention and that was a concern. That has been flagged in the report and it has been recommended that would no longer continue. There is the practice then as well of having to take the stand. A person was actually required to take the stand, and that was to give the conduct rating of the Defence Forces member who was facing the court on the day. By the very nature of giving what the conduct rating is and what it was at their last conduct rating, say, in their last annual appraisal report, that is what led to the speculation that we are defending someone. Again, it has been recommended that that practice would no longer continue. The function now is not about that. The reporting record of the court of the day is what is required. It is not actually the report that the officer used to give when he or she was attending. That should be the report of fact. We look forward to hopefully seeing that implemented and more recommendations from the Ward report, which might avoid that scenario that was very unfortunate for one of our members last year having to face such criticism publicly.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_62">Go raibh maith agat. Senator Kyne will be followed by Deputy Ó Laoghaire.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_19">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_63">I welcome the witnesses here this morning. They have talked about the prescribed reasons in head 22. Section 50(1) of the existing Defence Act states simply: "The President may dismiss any officer." That has now been amended to, "An officer may, for any prescribed reason, be dismissed by the President." Is that not actually a strengthening of the process? There are no prescribed reasons in the existing legislation, so is that not actually a strengthening in favour of the members?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_64">The Senator has probably hit on something very important there. The word "any" is quite strong from our perspective, but there is also an opportunity here that the reasons can be prescribed, but they must be prescribed in detail. We noted from the rest of the defence (amendment) Bill that there is great detail put into it regarding the dispatch of troops overseas, for example, but there is very little detail with regard to the stuff that actually matters to Defence Forces personnel on the ground. What we are trying to do here is highlight the fact that, first, there has not been consultation and, second, it is not too late for consultation to occur. When we shine a light on head 22, for example, and we talk about "any prescribed reason", we note that there is potential for regulations to be written, but we are not confident that we will be consulted on those either so for that reason we do shine a light on it. We agree that maybe there is a strengthening, but it lacks in detail and there is an opportunity there. Second, we would ask potentially and with the greatest of respect, a Chathaoirligh, that perhaps that might be a role for the committee to look at with regard to the regulations when they are written in terms of oversight.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_21">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_65">Has Mr. King suggestions or can he come forward with suggestions in the next number of days on what might be included in such a request?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_66">I would be loath to come forward with them off the top of my head-----</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_23">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_67">No, absolutely.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_68">-----but we would certainly take the opportunity to suggest any reasons potentially, noting that the legal experts in Óglaigh na hÉireann and the Department of Defence, I am sure, will come up with their own as well that might be a little more legally sound than we would be able to.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_25">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_69">I thank Mr. Priestley for that. Head 23 states that an officer under investigation or charged before a civil court shall, as soon as practicable, inform his or her commanding officer of the investigation. I imagine if someone is under investigation and is due to appear in court on a particular date, that would be stressful on any member. It may affect his or her performance. Is it not actually to the benefit of a member to inform the commanding officer as soon as possible? Is that something that would be beneficial?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_70">Potentially, yes. I do not disagree with the Senator but the issue for us is that a presumption is being made in legislation that the individual actually knows that this is happening. One might say that of course the individual will know because he or she will have been involved in an incident and so on but we would point to certain types of offences or potential offences where the last thing any member of An Garda Síochána is going to do is tell the suspect that he or she is now under investigation. There is a period of uncertainty there but this legislation puts the onus on the individual to keep his or her commander informed but he or she may not be able to do that. We are pointing to the fact that there is a lack of any formal data sharing mechanism between An Garda Síochána and the military police----- </p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_27">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_71">Should there be?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_72">Of course there should be. The latest Bill prescribed that any offences around sexual assault or rape will be investigated by An Garda Síochána, yet the military police may not be aware of that. Under this Bill we are going to ask the individual to tell his or her employer that he or she should be suspended on the back of this but the individual may not know. It is timing and the mechanism that are wrong. </p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_29">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_73">I see where Mr. Priestley is coming from. They are valid points. Obviously, members cannot inform their commanding officer if they do not know themselves. </p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_74">That is correct.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_31">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_75">However, if they do know-----</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_76">That is fair enough. I imagine in an offence involving an assault or some kind of affray, of course the member will know because he or she was there. That is fine but the focus previously, and the basis for this legislation is complaints of sexual assault being made. That is our concern. In one sense the pendulum has swung from no reaction to overreaction by the organisation. We are looking to rebalance that in terms of procedural processes. We are suggesting that if certain offences are going to be investigated only by An Garda Síochána, gardaí will not inform the suspect because there is a risk that evidence will be tampered with or destroyed, for example. Gardaí have powers of arrest for questioning. In that period, the investigation will move very fast. Gardaí will seize evidence and so forth. The military police have no such role, function or statutory power. A garda might discreetly say to a local assistant provost marshal that there is a concern about somebody but is he or she legally entitled to do that? There is a doubt about that. That is what we are pointing towards there. Members of the Defence Forces who are responsible for suppressing crime, as it is called in the Act, are not being told that gardaí are investigating people. How can we then expect the individual to inform his or her commanding officer of that? That is the area we are pointing to. We are not suggesting for one second that a suspect who is fully aware should not keep his or her commanding officer informed. Of course, we would support that. We are just saying it may not be possible. The way the legislation is written puts the onus directly on the individual rather than the investigating authority, whoever that might be, and that is wrong.</p>
+        </speech>
+        <speech by="#SeanKyne" eId="spk_33">
+          <from>Senator Seán Kyne<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_77">Head 21 relating to the suspension of officers is quite explicit in the reasoning, which includes serious criminal offences. Our guests believe in the need for an appeals mechanism to be specified as part of this head. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_78">Undoubtedly a robust, fair and transparent appeals mechanism is the cornerstone of any fair suspension policy. I reiterate that we are in favour of, and welcome clarity on, a robust suspension policy. We are also in favour of the Chief of Staff having those powers but they must be accompanied by the requisite checks and balances, one of which is obviously an appeals policy. The others are almost equally important and include welfare checks, personnel support services, and mental health services being made available. The onus should be on the organisation to ensure that the suspension is kept under very frequent and periodic review and that lip service is not being paid, with suspensions being rolled over while the organisation takes its time. As committee members themselves have mentioned, the impact on members' personal and professional reputation, mental health, family circumstances, not to mention pay, career progression, pension and so on, can be huge so proper checks and balances should be included in the regulations.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_35">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_79">This has been a really useful engagement. A number of committee members were keen to hear from RACO because there was a need for the discussion on this legislation to be broader than simply the triple lock because it has significant implications. I will take this opportunity to thank our guests and their members for their service. I also want to thank retired members of the Defence Forces for their service during peacekeeping missions. It is appropriate to recognise that RACO represents people who are currently on peacekeeping missions and who have been on them in the past, and to thank its members for their contribution and service to the State, to the UN and to peace internationally.</p>
+          <p eId="para_80"> The lack of consultation, as a number of members have said, is quite extraordinary given that there is such a well established mechanism there. It is particularly concerning to hear that the conciliation and arbitration section within the Department is not as central to these issues as it should be. That is very concerning. This is an issue that is raised consistently. Are there other examples that are relevant? I know there is a service commitment scheme for air traffic control, for example. Was RACO consulted on that? Are there other areas that might require similar initiatives on which RACO needs to be consulted?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_81">I thank the Deputy for the question. It is hugely important that the conciliation and arbitration scheme is properly functioning. The Deputy is right that there have been incidences, if not a trend, in the recent past of conciliation and arbitration as a cornerstone of the defence apparatus being de-prioritised. That is clear to us. Even within this, I alluded to the fact that through the conciliation and arbitration mechanism, as general secretary I wrote to the Department's conciliation and arbitration branch in July 2024 seeking guidance and clarity in the administration of local leave because our members were literally screaming down the phone at us, asking us how they could put someone on suspension with no regulations in place. We were also asking for clarity on the attendance of an officer at a civil court hearing, to which Senator Craughwell alluded previously. To this day, I have received no guidance from my employer, on behalf of my members. That is simply not good enough. </p>
+          <p eId="para_82"> The Deputy mentioned other initiatives. We had, for example, the Public Service Pay Commission in 2017 and 2019 and so many recommendations came out of that. In 2019 we had a high-level implementation plan which had a roadmap for sorting out the Defence Forces retention difficulties. We were asked to make submissions in relation to various projects that we thought would be good for retention. We made something like 12 or 13 fully costed submissions over the course of a year and a half and got no feedback whatsoever on them. Then we were told that all of those projects were closed. They were simply closed. The Secretary General unilaterally closed many of them or rolled them into the Commission on the Defence Forces. Some of them actually called for service commitment schemes for technicians in the Naval Service, for example, and on the enlisted side, for engine room artificers, radar technicians and on the officer side, for marine engineers, electrical engineers and obviously, the aforementioned air traffic control. The Deputy asked if we were consulted on air traffic control and the answer is "No". We were not consulted on the air traffic control service commitment scheme until it was agreed and locked in. At that stage we pointed out that the scheme was in no way fit for purpose. The pilot officer or flying officer service commitment scheme had literally just been dusted down and applied to air traffic control. </p>
+          <p eId="para_83">The pilot scheme called for members who were availing of the scheme to be fully rated on aircraft as pilots and to have a 12-year undertaking, and also to conduct operational flying on a regular basis. None of that applied to the air traffic controllers. We pointed that out and got no response.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_37">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_84">As Mr. King said to me, it was just a copy-and-paste job and parts of it have no application whatsoever to air traffic control. It was simply lifted and applied even though the terms and conditions are completely different, as are the qualifications.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_85">Yes, that is what happened. We pointed that out in writing and received no response. There may have been an amended service commitment scheme. I hope there has been. The Department and also military management were before the committee talking about it recently. There are still members of the Defence Forces in air traffic control who are excluded from the scheme. I refer to those who are considering retirement. Therefore, despite the Tánaiste's strenuous efforts in getting it across the line, it is still not fully fit for purpose. We have not seen the new terms and conditions of the air traffic control service commitment scheme.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_39">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_86">That is absolutely extraordinary – really remarkable. To be totally frank, it sounds quite shoddy. I worked with community organisations and I have been on the board of community organisations. These organisations have two to seven people involved in them and the charity regulator would be on top of a community organisation for not having clear suspension policies. That is quite extraordinary in an organisation with almost 8,000 people.</p>
+          <p eId="para_87"> I have a brief question on head 22. There was an interesting exchange between Mr. King and Senator Kyne. The 1950 Act is 75 years old. I presume many officers have been suspended. What is the custom? I assume that what is in the 1950 Act is broad, and that there is at least a convention or custom in terms of how it applies. In the history of the Act, what is the approach if the President were to dismiss an officer? Is there an understanding or a custom even if it is not laid down in a regulation?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_88">Yes, first on suspension, there is nothing in the Act on it. I am sorry, we are talking about dismissal. It is on the recommendation of the Chief of Staff and the President may dismiss. Senator Kyne is right. This has the potential to strengthen and provide more clarity on the reasons for a potential dismissal. We welcome that clarity. The Chief of Staff should have the powers to recommend a dismissal to an tUachtarán for anyone who is found guilty of prescribed actions warranting dismissal.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_41">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_89">I will ask a very brief supplementary. I do not know how often this has applied in the past but has there been any understanding at any stage of even a customary criterion or is it entirely open ended?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_90">What we are pointing towards there is that any dismissal in the past was centred around national security interests or concerns around the probity of an individual. It would not be disciplinary or HR related. This is moving it into a more modern context where somebody might have been found guilty of whatever offence, and then it is deemed going forward, because of the conviction, that a person would then be dismissed. It is moving from a national security focus whereby we have all been security vetted to come in and serve, and something has happened where that is no longer appropriate, to a wider format, as suggested by Senator Kyne, to allow for a normal HR and disciplinary process. We would expect it to be fleshed out further in the regulation but, as we point out, our concern is that we will not get an opportunity to be consulted on that either.</p>
+        </speech>
+        <speech by="#DiarmuidWilson" eId="spk_43">
+          <from>Senator Diarmuid Wilson<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_91">First, I welcome all three witnesses here and thank them for their presentation. I put on record my thanks to you, a Chathaoirligh, the secretariat and our colleagues for facilitating RACO to discuss this very important legislation that is before us. As we are all aware, the timescale is now limited. I am delighted that we had the opportunity to facilitate RACO. Thank you, a Chathaoirligh, for doing that.</p>
+          <p eId="para_92"> I am disappointed that RACO was not consulted on this piece of legislation. Mr. King said it is not the first time this has happened. I hope it is the last time.</p>
+          <p eId="para_93"> The committee is here to facilitate the Department of Defence on any defence matters and also national security, limited and all as it is in that regard. If members of RACO ever want to consult us, all they have to do is ask. I speak for every member here, from all sides. That goes for their colleagues in PDFORRA as well. I want to put that on the record.</p>
+          <p eId="para_94"> I have a very brief question for Mr. King, Mr. Priestley and Mr. Ryan, whoever wishes to comment. Could they elaborate on the concerns RACO has and the considerations they would like to see in any legislation or regulation regarding suspensions, first for commanders and senior members, who may have to recommend or implement suspensions or dismissals and, second, for Defence Force members, including their own, who may be subject to suspension or dismissal from a welfare, natural justice and fairness perspective?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_95">I thank Senator Wilson very much. We sincerely thank him for his kind offer on consultation with the committee. We have always found the committee to be extremely welcoming and knowledgeable on defence matters. We have felt the benefit of good engagement with the committee.</p>
+          <p eId="para_96"> From the point of view of the chain of command, I might pass over the question to our president, who is fulfilling such a role at the moment.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_97">What we want is clarity. We want to know that what is being enacted is clear. What any commander wants is proper and fair procedures. At the moment, as has been alluded to, we are in a vacuum. We are utilising mechanisms that are not fit for purpose. They were never meant to be for suspensions. As we have said many times, we welcome the introduction of a mechanism, but we cannot have vagueness. As has been pointed out, it should not be as subjective as it is. I am conscious that it is primary legislation and we may see greater detail in the secondary legislation, but as Mr. King alluded to already, if that is the case, we need to be at the table for that. It is no harm to have more prescriptive guidance than what exists in the current heads and in primary legislation. That is all any commander wants to be able to do. They do not want to be dealing with any terms of ambiguity when it comes to administering suspension policies in the future.</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_98">The concern in regard to suspensions is that we seem to be just giving a kind of a polar option – to suspend or not to suspend. We need to break that down a little bit. That would not normally be the case in a civilian employment. A civilian commercial entity would be very slow to suspend somebody and then not get any productive work out of them. From an organisational point of view, there are other options. I am not saying a person should not be suspended, but there are other options. There should be a high bar to suspend someone. You can relocate somebody within a barracks or perhaps to a different location if that is appropriate. We would not have thought about it pre-pandemic, but working from home is a regular enough feature now which is being facilitated for members of the Defence Forces. That is also an option. If someone is suspended, he or she remains productive if they are doing that. It could also be said that it is not appropriate for a person to do the full range of duties. I am talking about the more sensitive security-based ones. You could place somebody on restricted duties. There are other options that are not referred to.</p>
+          <p eId="para_99">Ultimately, our fear is that if in the environment in which we work and under the chain of command, commanders believe a person must be either suspended or not suspended, we will end up with an overabundance of suspensions. The fear, as we have stated in respect of other public sector areas, is that this tends to run on a bit. We are trying to suggest alternatives, the first being that the bar would be high, giving commanders options. That would be appropriate within regulations set out; however, again, our fear is that there will be no consultation on that, just a rush to suspend and to leave it at that.</p>
+          <p eId="para_100"> On checks and balances, we feel there should be some form of appeal. It might not be obvious to a person outside the Defence Forces but the chain of command can be quite linear in the way it thinks. If one commander makes a recommendation and it goes to a more senior commander for appeal, there is not really a re-evaluation of the facts. The same things are considered. In our considerations, we said it may be appropriate to have some form of external appeal of a suspension on that basis. That appeal would have timelines to drive it on and get the right balance, rather than just having the polar choice between suspending and not suspending.</p>
+        </speech>
+        <speech by="#DiarmuidWilson" eId="spk_47">
+          <from>Senator Diarmuid Wilson<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_101">I thank our guests.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_48">
+          <from>Deputy Brian Stanley<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_102">I welcome our guests. It is useful for us, as lay people, to get their perspective on the Bill. However, the committee has several members who were formerly military people, including Deputy Callaghan and Senator Craughwell.</p>
+          <p eId="para_103"> I read the witnesses’ opening statements very carefully and noted some of the issues raised. It is very disappointing that there has been not only a lack of meaningful consultation but also a lack of consultation of any kind with the witnesses on what has been proposed. They have highlighted several risks and dangers related to the wording. Heads 21, 22 and 23 were mentioned specifically as areas of concern. If in any organisation there is vague language or something left fairly open-ended, it can be abused. Mention was made of the use of vague and subjective language, but vague procedures can also be an issue. Concrete evidence can be put into the bin and even personal agendas can come into play. I can speak with a little bit of authority on that matter, suffice it to say. The existing legislation clearly requires amendment in several areas. This issue has been highlighted already and I do not intend to go over it in any detail, but I am particularly concerned about heads 21 and the associated areas.</p>
+          <p eId="para_104"> Reference was made to the length of the appeals process, in particular, and the length of suspensions. Are we talking about months or years, typically? Obviously, there is a huge effect on a dismissed member of the Defence Forces if he or she has a suspension or appeals process hanging over him or her for months. It was said that a suspension can become a form of punishment. Could Mr. King state from his experience roughly what timeframe we are talking about?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_105">I thank the Deputy very much for the question. On the lack of consultation, it is important to reiterate that today presents an opportunity because, in fairness to the drafters, the general scheme refers to regulations that may be made. However, we have bitter experience of being excluded from the drafting of regulations, the secondary legislation that is supposed to provide the detail following on from primary legislation. Indeed, one of our adjudications decried the notion of secret laws. A Government-appointed adjudicator criticised the Department of Defence for making secret laws, whereby it made a Defence Forces regulation that excluded a member of the Defence Forces from being a member of RACO and did not tell us about it until about a year later. Therefore, based on experience, we have no confidence that we would be involved in the drafting of the regulations. That is why we are here today, unfortunately.</p>
+          <p eId="para_106"> On appeals, the fact of the matter is that it is difficult to state the duration of a Defence Forces suspension because there are no suspensions in the Defence Forces. There is local leave, special leave, gardening leave and orders not to come into the barracks, but there is nothing on paper. That is why this legislation is going through the Houses. I could not tell the Deputy how long a suspension is.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_50">
+          <from>Deputy Brian Stanley<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_107">I understand that one is moved or shoved out of the picture. When somebody is put on gardening leave, for example, is it for years?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_108">It could be. As long as the organisation-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_52">
+          <from>Deputy Brian Stanley<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_109">One or two years. </p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_110">As long as the organisation wants to take to conclude the investigation. That could be anywhere from six months to two years, depending on a couple of factors, including the speed of the military and civilian justice systems.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_54">
+          <from>Deputy Brian Stanley<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_111">I am happy enough with that answer. I realise the witnesses are anxious to answer, for which I thank them, but there are a couple of other areas in the Bill I want to refer to.</p>
+          <p eId="para_112"> We have thrashed out at length the idea of deployment as part of a regional force with witnesses both for and against it. It is clear it is provided for within the proposed Bill. Where 100 or 200 Irish troops are deployed as part of a larger force, be it a NATO-led force, a regional force, an EU force or another force, is it correct that the senior Irish officer in command of the Irish troops is subject to the senior command of the higher authority? Could our guests answer that based on their experience as military leaders? The Irish State is subject to international law. If the most senior Irish officer felt that the action his troops were being asked to carry out was in breach of international law and UN regulations, would he or she be in a position to refuse to carry out the order? I want a brief answer and do not want to pin down the guests too much on it. As a layperson, I am trying to understand the matter.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_113">I thank the Deputy. As I said at the outset, it is largely outside the scope of representation to talk about these policy matters; however-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_56">
+          <from>Deputy Brian Stanley<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_114">I understand that, but from Mr. King’s experience and knowledge-----</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_115">From experience and having served on several overseas missions, I would say the senior Irish officer is the commander of Irish troops. Irish troops are under operational command. They can be under the operational control of other nations’ commanders but, when it comes to rules of engagement, we can actually put caveats in place in relation to the conduct of Irish troops overseas on international missions as part of an international force.</p>
+          <p eId="para_116"> With respect, the Deputy’s second question is quite hypothetical. I do not know of any situation where a refusal has occurred but, as I stated, the operational command of the senior Irish officer remains extant and any Irish member of an international force would be under the command of that officer, and actually under the command of the Defence Forces Chief of Staff and the Minister.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_58">
+          <from>Deputy Brian Stanley<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_117">The senior Irish officer could refuse if he or she felt that what was being asked for was outside international law.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_118">It would be very unusual to have a direction in contravention of international law. Is it not actually a question of Irish national law and the caveats and rules of engagement we are actually bound by? Any senior Irish officer would be compelled to check with his headquarters in this regard.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_60">
+          <from>Deputy Brian Stanley<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_119">Could I have a yes-no answer to one more question? Has the restriction whereby only 12 members of the Defence Forces may be deployed overseas without the approval of the Dáil inhibited or stopped a rescue mission or similar type of mission? I do not have any great problem with the proposal to increase the number to 50 or fewer. What is the number required? A platoon is 32 or 33.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_120">To answer the first part, under our scope it is a health and safety concern to us that we are limited to a planning figure of 12. At the end of the day, we have been tasked by the Government. That is a limitation that is placed on things. Whether that has hindered anything or how it has impacted on operations, from a planning perspective it will always have an impact. This is because we are operating within the caveat of knowing we can deploy 12 people on such a mission. That raises health and safety concerns for us. Military personnel or military planners do not have the freedom to plan for a mission that is required by the State by utilising the correct numbers required. Setting on numbers of 33 or 50, the Deputy is right a platoon is of that size. A total of 50 is more incumbent of what the size of a ship might be. It might be combined operations they are thinking of in the future or whatever that might be. I wonder if there should be a limit on the number of people who could be deployed. This is because if it is an evacuation situation, as the Deputy referenced, why are we putting a limiting number on it might be a question to ask. </p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_121">It is our understanding that in an evacuation situation, there is not any limitations on the numbers that can be sent. That was clarified by the Department. We will move on to Deputy Callaghan, followed by Senator Clonan.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_63">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_122">I thank the lieutenant colonels for attending. Given the value of the witnesses' expertise, I will concentrate on the questions I have previously asked. This is my third time in the committee asking these questions. My questions focus on recruitment, retention and looking after our veterans in terms of issues such as pay and conditions.</p>
+          <p eId="para_123"> My first question relates to recruitment and cadet pay. When a cadet joins, he or she is on approximately €25,000. I am rounding up the figures. The first part of their cadetship during the military part in the Military College is up to the standard of a three-star private. A three-star private is quite rightly paid in excess of €40,000 to €41,000 after six months, but the cadet is not getting remunerated in the same way. I put the point that this did not seem fair and equitable to the Minister of State at the Department of Defence, who was before the Select Committee on Defence and National Security last week. The response I have received from the Department of Defence, and I would like the witnesses' opinions on this, is that all of the cadetships are already fulfilled and there is no problem recruiting cadets. It is unfair, however. I understand there has been a business case with the Department since 2024. What is the response on that? </p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_124">I thank the Deputy for raising this and for her advocacy on it over the past number of weeks. It is heartening to see. On the other side, it is disappointing when she hears a response from our employers to the effect that there is no problem and we are getting the applicants instead of looking at, as the Deputy has rightly pointed out, addressing a fair pay issue. Something that has been alluded to that would assist in solving the problem is local bargaining. A total of 1% of a cadet's pay is €250 per person, so that is what we would be looking at in the context of an increase. It is disingenuous to give that answer to how we should address cadet pay. The Deputy has hit the rates correctly. The business case that was submitted by the Defence Forces has been sitting with the Department since September or October last year. This followed on from a motion we had in conference about increasing cadets' pay to parity with a three-star private after six months. As the Deputy rightly alluded to, it is similar qualifications, or they should be as qualified. That would require a 40% increase in pay at the moment. </p>
+          <p eId="para_125"> On the age profile of a cadet, we increased the ages to 39 years of age for all inductions. The cadet of today is not like the cadet of yesteryear when we joined a long time ago. We are now talking about people with families and we are paying them €25,000 , rising to €27,000 in their second year. The cadetship lasts for 18 months for the Army and up to two years for Air Corps and Naval Service equivalent. They are an outlier now based on pay. It is as a simple as that. Rightly - and it was great to see - the anomalies regarding three-star pay were addressed. They got rid of the apprentice rank and brought them into correspond with the three-star pay after six months. At present, everyone else in the Defence Forces after six months, if they fulfil their training criteria, is on approximately €43,000 per year, while the cadet is still stuck on €25,000. We are in the era of post 2013 and career average earnings and pensions. They are absolutely getting doubly punished. It is impacting on their future and how they can provide for their families and pensions. It is amazing this sort of stuff is not being considered by our employers when they look at this. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_65">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_126">I apologise for interrupting. That was going to be my next question relating to retention, specifically the post-2013 environment. Do the witnesses think they would hold on to more personnel in the Defence Forces if there was a regularisation of pre-2013 and post-2013? Does they have any numbers?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_127">The data is starting to come through. We did survey a number of years ago on post-2013 personnel. A total of 78% indicated that they did not feel they could stay in the Defence Forces. That is alarming and concerning. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_67">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_128">A total of 78% said they could not stay, even if they wanted to stay. </p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_129">Yes, even if they wanted to stay. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_69">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_130">Is that specifically to do with the pension arrangements? </p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_131">It is do with the lack of a supplementary pension if they were to go to retirement age. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_71">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_132">They need to retire at 62 but they do not get the pension until they are 66. There is a four year gap there. </p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_133">Correct. </p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_73">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_134">Could there be a case for having a special provision for uniform services in that regard? Would that help? Has that been considered? </p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_135">Lieutenant Colonel King can allude to a campaign to which he is central on this. </p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_136">We have campaign in place with our colleagues in An Garda Síochána, PDFORRA, the fire brigade through SIPTU and the prison officers. They have all recognised the clear and present danger to retention among uniformed services in this country that a single pension scheme provides. We were alone in beating the drum on this. We had engagement peripherally with the Department of public expenditure on this. The mantra came back that the single pension scheme was brought in to save money for the Exchequer and to increase sustainability of pensions. We accept all of that, but uniformed services are different for a number of reasons. First, the mandatory retirement age is less than the rest of public service sector. They cannot serve to 70 years of age like other post-2013 pensioners. Second, the nature of service for uniformed services is more robust. There is more night work. There is more shift work. It is more debilitating going into the future. Therefore, the requirement to retire early exists to a far greater extent in those aspects of the public service than in other aspects with the greatest of respect to all other public servants. That is why a pension was brought in and the facilitation for an occupational supplementary pension was brought in after 1995. However, it was done away with unilaterally in 2012.</p>
+          <p eId="para_137"> Everybody who has come in since then is not only on, as Lieutenant Colonel Ryan said, career average earnings, which means the longer they are held at a lower grade the worse it is for their pension, but when they come to a certain age when they could have children, dependents or a mortgage and other ancillary costs based on their demographic, they will not be able to afford to stay. What they are going to do, and we are informed they are doing is making the decision to leave earlier than they need. The Chief of Staff of the Defence Forces has noted this as a catalyst for premature departures. He has been strong in front of this committee and at our conference in advocating for reform of the post-2013 single pension scheme for uniformed services.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_76">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_138">That would be a welcome thing. I have questions on the topic of retention and the service commitment scheme. I mentioned at the committee last night about the benefit of extending that to technical personnel. The Air Corps was mentioned at one of our previous committees and for some reason, 11 July sticks in mind. I do not know if the officers who are involved in it have until tomorrow if they decide to go for it. From the previous meeting, it was not a copy and paste of the pilots' one. Initially it might have been but work was being done on that. Would it be a good thing to expand the service commitment in respect of retention to other technically based officers? </p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_139">There is an opportunity to arrest the collapse of a system that is central to Air Corps operations, and this collapse is documented. We cannot snatch defeat from the jaws of victory. We have a service commitment scheme sanctioned by the Department of public expenditure and reform and it is no easy task for the Tánaiste or Minister of the day to get this. Therefore, it must cover everybody who is fully qualified. If they do not have an undertaking, which most of them do not, they can walk for better conditions. There are better conditions out there and let us call a spade a spade. The service commitment scheme is to ensure the gap between the pay and conditions in the Air Corps and those offered at Dublin Airport, Weston and so on is met. Lieutenant Colonel Ryan might want to speak on other schemes.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_140">If we had been engaged on this on an early stage we could have given critical information. We are subject matter experts. We are long-standing members of the professional staff of RACO who understand how a service commitment scheme should work. Some of the errors made in trying to transpose the pilot scheme to the air traffic control scheme would not have been made. To make it simple, we are trying to get from the handcuffs of an undertaking to the handcuffs of a service commitment scheme. This is how it should work. When they do not exist, or when people operate outside of an undertaking or are finished their undertaking, then we need to look at the timeframe as to when we introduce the service commitment scheme. Lieutenant Colonel King has rightly alluded to the fact the opportunity was there. If we want to maintain a service, and this is a matter of national resilience, and everyone acknowledges it is vital we have our airfield open-----</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_79">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_141">We have the EU Presidency next year.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_142">It is all coming on board, no doubt. The Tánaiste has achieved something significant in gaining permission and sanction for a service commitment scheme. It is disappointing, even in terms of the urgency since he received the sanction. This should have been negotiated and done quickly. If we had been involved in it, I guarantee it would not have run into some of the problems it has.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_81">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_143">I hope we learn from this and credit to the Tánaiste for doing that.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_82">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_144">I welcome the witnesses and it is great to see them. They are former colleagues. I am proud to say I was a member of RACO and I was a barrack representative in the independent republic of Magee Barracks, Kildare, back in the day. Sadly, like myself, it has been retired.</p>
+          <p eId="para_145"> We have mostly discussed the triple lock and what might replace it. We have not really got to grips with these heads. I thank the witnesses for their comprehensive presentation. It is very disturbing. The witnesses might find it reassuring to know that four members of this committee have been subject to either military law or the Garda code. We understand what it is like to be in that subordinate position. As Conor King rightly said, it is a set of circumstances where we really have to articulate very strongly for our basic rights in the workplace.</p>
+          <p eId="para_146"> I am very conscious of the suspension of officers or members of the Defence Forces and summary dismissal for any prescribed reason, as set out under head 22. This is unacceptable. We should know this from what happened in the past, such as the cases of Captain James Kelly or Lieutenant Dónal de Róiste. I know these were by different means and mechanisms but we cannot have a repeat. I am very taken by the discretion and power it gives to unnamed and unaccountable persons.</p>
+          <p eId="para_147"> With regard to the suspension under head 21, I know it is commonplace in An Garda Síochána and it has become quite controversial. The current Commissioner has faced a lot of criticism from his representative associations. The imperative for these suspensions seems to come from the Commissioner and the senior leadership team of An Garda Síochána. If this were passed, I do not imagine the general staff would have an appetite for suspending officers. Is this pressure coming from the Department? Conor King cited in his statement a high-profile court case around which there was a lot of negative and ill-informed commentary. Does he think some of this is being framed in the context of that court case?</p>
+          <p eId="para_148"> With regard to the dismissal under head 22 of an officer by the President, it is obviously outside the direct chain of command, albeit he is the Commander in Chief. Would it be a political decision then to dismiss an officer? Where would this decision-making come from? I agree that the wording is very vague.</p>
+          <p eId="para_149"> With regard to head 23, in his presentation Derek Priestley pointed out there is no informal or formal data sharing mechanism between An Garda Síochána and the provost marshal regarding investigations. I assume there is sharing of information between An Garda Síochána and the Defence Forces on intelligence matters and I ask the witnesses to clarify this.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_150">I thank Senator Clonan for his questions, and for his service and his kind words. With regard to the suspension of an officer or, indeed, an enlisted person but as we do not represent enlisted personnel we can only speak to head 21, Senator Clonan is right. We have learned from, and spoken to, colleagues in An Garda Síochána who have severe concerns about the suspension policy. It comes from the Commissioner we are told, and it goes down to the districts and divisions. We are also advised that the regular and periodical review is not fit for purpose and potentially rolls over. This is why we are concerned that, potentially, the suspension itself can form a punishment. We want to make sure that we get it right. We welcome a suspension policy that is fit for purpose and clear for people who will implement it, and also has checks and balances and is congruent with natural justice and fair procedures.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_151">We would not see it as a set up or a fix up. It is something that has been lacking. Our employers did not have a robust HR policy in place for suspensions. We do not have suspensions in the organisation at present as they would be recognised elsewhere. As Mr. King has alluded to, we very much welcome it but it is about getting it right.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_152">I will discuss head 22. I thank the Senator for his support on it. The words we find offensive, to focus in on them, are "any prescribed reason". This seems very broad and unnecessary. With regard to dismissal by the President, the Senator might remember one's commission goes all the way up from the Department of Defence to the Minister, to Cabinet and then the office of An tUachtarán. There is a piece of paper that we all share, which is the commission itself. The process of dismissing somebody must involve this commission. To use the phrase, and not to be in any way flippant, you are commissioned and you are decommissioned, as such. This is why when any of us retire or resign or, after the enactment of the Bill, are dismissed, there is a process involving An tUachtarán. This is historical and I would not draw too much inference into it, to be perfectly honest. It is just the way the process works. Because it is already referred to in the Act that one receives one's commission from An tUachtarán, there is continued reference to it.</p>
+          <p eId="para_153"> With regard to data sharing, I draw a distinction again between the idea of intelligence and national security. In answer to an earlier question, I pointed out there is a very different focus. As the Senator might know, intelligence is very different to something we can act on. It is information, and where we get it and how actionable it might be is questionable. We are speaking about more criminal matters. There are data protection issues in this regard. We are pointing towards the lack of a mechanism that is formally shared.</p>
+          <p eId="para_154"> As we said in our opening statement, we require a mechanism so that An Garda Síochána can legitimately talk to the provost marshal. This is what we are pointing towards. To read into Senator Clonan's question, we are not talking about intelligence. There is a national intelligence committee in place now.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_86">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_155">Yes, I just wanted to clarify the distinction. I am aware of it.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_156">Absolutely, and we would not be in any way familiar with that or prone to talk about it. It is more the idea that in a criminal investigation where there are concerns about an individual, that a member of An Garda Síochána can legitimately pick up the phone to share information with the provost marshal, so it can be shared with the chain of command and an appropriate decision can be made.</p>
+          <p eId="para_157">We would have concerns at the moment about at what point that might happen. The Garda code says that if someone has been arrested or charged, an assistant provost marshal should be informed. Whether that happens or not, I would say, is down to local connections. In my experience when I was first appointed as an assistant provost marshal, it took me quite a while to build up local contacts with An Garda Síochána such that I would be trusted. However, the ability to formally share information is dubious as it currently stands and that is the only point we are making.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_88">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_158">I would like to make one last request. We worked with RACO on the previous Defence (Amendment) Act. We argued the case vocally in the Seanad and laid down amendments we had drafted in consultation with RACO. We seemed to get some traction with the then Tánaiste and Minister for Defence - it was Micheál Martin at the time - but then everything was just guillotined. While we in the committee might disagree to some extent on such issues as the triple lock and what might replace it, I imagine we are all in agreement about the necessity for redress and the right of appeal - natural justice - within the organisation. There is a social contract with society. Army personnel put themselves in harm's way and the minimum they should expect is to be treated fairly.</p>
+          <p eId="para_159"> I will be in contact with RACO or I hope its representatives will reach out to me to see how we can work on this legislation. I ask my colleagues, if they have influence with the Cabinet, that at their parliamentary party meetings they highlight the deficiencies in the heads of the Bill because it would be a mistake for them to proceed in the manner in which they have been set out.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_160">I thank the Senator and all members of the committee for their kind offer of assistance in this. The Senator correctly referred to the previous Defence (Amendment) Bill. If I recall correctly, the pre-legislative scrutiny process was significant and detailed, but the report of the pre-legislative scrutiny process was not issued prior to the Bill moving through the Houses. They did not wait for the committee at the time. It is very important that does not occur again.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_161">Before I move to the second round starting with Senator Craughwell, I assure the witnesses that the report will be done before then. It will be out in the next few weeks and all the points RACO raised today will inform the recommendations in it. We may not agree about everything here - we do not; there are a lot of contested opinions about the triple lock - but we are all singing from the same hymn sheet on this.</p>
+          <p eId="para_162"> I will ask two brief questions before I call Senator Craughwell. Why does RACO think the consultation has not happened before now? It does not make sense, especially as we have had the other experience. We often use the phrase "lessons are learned". It does not seem that lessons were learned from the previous Bill. Why? Is there a reason?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_163">It is a cultural issue. It is as simple as that. We hear a lot about the word "culture", but culture has many forms and the culture in the defence sector at the moment with respect to consultation is that it is not consultation. It is information at a time of their choosing and that has suboptimal outcomes. It has been shown time and again that it has suboptimal outcomes. We will continue to call for consultation whether we get it or not, because that is what our members expect and it has been proven that timely consultation is important.</p>
+          <p eId="para_164"> We got to it eventually on the working time directive, for example, which will be hugely transformative for the Defence Forces, the men and women of Óglaigh na hÉireann, their personal lives and their families' lives. We got there eventually, but it was a hard slog. A cultural shift is required on consultation and engagement, particularly in light of the restricted rights of Defence Forces personnel. The conciliation and arbitration scheme is where it is at. Culturally within the Department, conciliation and arbitration have taken a back seat, and that is a leadership issue.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_165">What will it take to change the culture? In any organisation - we have had it before in banking and everything else - changing culture is most challenging. How does RACO think it can be done? Has there been an examination of how to change culture?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Martin Ryan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_166">We are talking about accountability and resourcing the scheme correctly. That is the thing at face value. As Lieutenant Colonel King already alluded to, this is the Minister's scheme. It is not RACO's scheme. If it is not being adhered to, followed or utilised as it should be, there is a problem. At the end of the day, the Department should be resourcing it and advocating strongly for engagement through the conciliation and arbitration scheme.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_167">RACO has the support of the committee in that. I will ask a question about pensions because there is an important point on the occupational supplementary pension. When people are forced to retire at 62, what happens until they reach the age they can avail of the pension?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_168">If people are forced to retire at 62, they have the occupational element of the pension. The pension is integrated, which means it comprises in part the occupational element from the Department of Defence or Department of justice as the case may be, and the other half is supposed to be the State pension. Prior to 2012, the State pension was paid to bridge the gap. It should all come in at approximately 40% of salary, but it is a combination. It recognises a long career in service of the State, but it also recognises, which is punitive to some degree, that people cannot work another job. They must engage with the social welfare system. They cannot work in any other insurable employment and must stay fully engaged with the system. Then and only then can they avail of the pension. If they go back to work, for example two days per week, they lose those two days of pension. It is very tight.</p>
+          <p eId="para_169"> Gardaí have had an issue with the post-1995 pension, which we are also bound by, with respect to difficulties even in engaging with the social welfare system, but that is another story. The single pension scheme which came in on 1 January 2013 is so punitive that it removed the occupational element which means, as I said, that members of the Defence Forces and other uniformed services are considering their options far earlier than they ordinarily would. That is very concerning for retention in the future.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_170">I can see why that would happen. When we get past this Bill, this is an area we need to do a deeper examination of to try to address it in some way.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_97">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_171">On the issue of pensions, there is evidence of senior gardaí having to go to the local welfare office and stand behind people they brought to court three weeks before they retired. We need a whole session on pensions and I ask that that be arranged.</p>
+          <p eId="para_172"> Given the meeting we had on the Air Corps with the Department of Defence and what we have heard today, our report must point out the dysfunction of the Department. The Department of Defence was aware in 2017 that a problem was coming down the line with air traffic controllers and again in 2019. In 2021, the Secretary General of the Department adverted to that problem in a letter to the Department of Transport. At this committee she pointed out that they were working 24 hours per day and that there was no need to worry. It was coming down the line. Everyone was telling the Department it was. The Minister was not advised. I do not want to put the representative body on the carpet. It can refuse to respond to this. The dysfunction that exists in the Department of Defence is affecting the retention of good officers in the Defence Forces. They are aware of the dysfunction and they want to walk away from it.</p>
+          <p eId="para_173"> Second, there has been a lot of talk about overseas service and how the Irish hold a premier position because of the neutral status of Ireland. The witnesses serve overseas with NATO countries and people from all walks of life. Has there ever been a case where a particular problem can only be dealt with by Irish troops because they are respected more than anyone else?</p>
+          <p eId="para_174"> Senator Clonan and I disagree about my third point, the issue of peace enforcement. I think Senator Clonan would refer to it as war fighting, now that it has moved from peace enforcement to war fighting. It is very emotive language when it comes to our report. The witnesses have all served overseas. They are all seasoned officers and commanders. I would be interested to hear their view on that.</p>
+          <p eId="para_175"> A battalion or unit commander will presumably at the end of this have the power to suspend a member of the forces.</p>
+          <p eId="para_176">Because there is no appeals mechanism in place, that suspension could ultimately become subject to a judicial review. What impact is that likely to have on the officer who takes the decision to suspend an individual? Even if there were an appeals mechanism in place, there could still be a judicial review. The witnesses should feel free to answer any of those questions or none of them, as the case may be. I thank them very much for their time.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_177">I will do my best. With regard to the scheme, the consultation and so on, it is quite clear that we have issues but they are not insurmountable. We remain open for business as regards dealing with the Department to get to the level we need to reach. In relation to consultation and engagement with the Department, we conduct regular surveys of our members, asking them about various things. There is certainly a feeling that consultation and engagement could be better.</p>
+          <p eId="para_178"> The Senator spoke about the issue with air traffic control and asked whose fault it is. We are not playing a blame game here. In her opening statement to the committee, the Secretary General of the Department of Defence alluded to not having received a business case from the Defence Forces in respect of air traffic control. That was in the opening statement. It is not for us to apportion blame. What we are concerned with is ensuring that the service commitment scheme is implemented in a timely fashion to prevent the collapse of a significant service.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_99">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_179">Forgive me if I cut in on this for a moment. On the issue of the business case the Secretary General adverted to, the study group that was put together to look at the air traffic controllers consisted of her own staff. If a business case was needed, and the report was a business case in itself, her own staff could have produced it very quickly. We need to bear that in mind. I am sorry for interrupting.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_180">No problem. On the neutral status or otherwise of Ireland, it is the professionalism and training of our soldiers that empowers us to do the job when we are overseas. I do not have any other comment on that.</p>
+          <p eId="para_181"> War fighting is not really a term I am familiar with as a commissioned officer in the Defence Forces. I do serve and have served on Chapter VII peace enforcement missions. I would not have described it as war fighting. That was with KFOR in Kosovo on two occasions. I looked at Major General Kieran Brennan's testimony to the committee with great interest. He spoke about his experience as a commander in Chad, which was also a Chapter VII mission. I defer to experts who have greater knowledge than I do in respect of that definition.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_101">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_182">May I raise a point of order?</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_183">I will take the point of order but then I will have to move to the next speaker.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_103">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_184">Senator Craughwell characterised my description of war fighting as a personal opinion. In fact, there is very comprehensive military journal literature written by professional officers that demonstrates quite clearly that peace enforcement can become war fighting. I gave the examples of the UN mission to Korea and the UN mission to Afghanistan, ISAF, which evolved into a full war fighting mission. I just wanted to make that point. It is not a subjective opinion. It is based on evidence.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_185">I thank the Senator for clarifying that. I am going to move on to Deputy Ó Laoghaire. Because nobody had indicated when Senator Craughwell was speaking, I allowed him to speak for a little longer but I ask Deputy Ó Laoghaire to keep his contribution as short as possible so that we can get Deputy Callaghan in afterwards.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_105">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_186">On the head regarding informing superior officers about potentially facing a criminal charge that may be investigated and so on, I am not offering a firm view but I am trying to tease out how this is envisaged as operating. Lieutenant Colonel Priestley spoke about how the military police are currently not informed by the Garda Síochána where an investigation is taking place. Is that something we should be looking at in the legislation, that it becomes routine for An Garda Síochána to contact the military police and bring it to their attention, for the military police's own purposes and for the purposes of disciplinary procedures within the Defence Forces, that the Garda is investigating or has charged, as appropriate, a member of the Defence Forces? An Garda Síochána might object to that from an administrative point of view; I do not know. I understand there is a degree of personal responsibility when people are clearly under investigation or when they have been charged or interviewed under caution, but is there potentially a feasible mechanism that the military police would be officially informed by An Garda Síochána in appropriate circumstances?</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_187">To clarify, I am not saying that local contact does not happen between, let us say, a Garda superintendent and an assistant provost marshal, but it would be my experience that the formality or probity of that and how it might come about is down to personal relationships. The obligation in the Garda code is that, if an individual is arrested or charged, it is at that point there would be contact made, but that is it. It is very limited. What this would suggest is that, at an earlier point in an investigation, the individual is required to inform their CO. We are suggesting, and I would believe any APM or provost marshal would be in favour of this, that there would be a data-sharing mechanism, a formal statutory basis on which that information could be shared. I also appreciate that, if particular types of investigations are ongoing that could involve mobile phones, PCs or laptops or there are sensitive investigations into sexual offences in particular, a local garda is not necessarily going to trust an APM they do not know with this information. The question, ultimately, for the policymaker is at what point and with whom should this information be shared so that an appropriate decision regarding suspension can be made. We are trying to point out that, as the legislation stands, there is no data-sharing mechanism. Does it happen? I imagine it probably does, but what can an APM do if the information is shared in confidence, discreetly or for their information? Is it legal? I do not know. That is a problem policymakers have to decide on.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_107">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_188">I am very lucky to represent Carlow-Kilkenny and we have our military barracks there, Stephens Barracks, in Kilkenny. The medical aid post, MAP, there needs to be moved. It is in Boyd House. It is somewhat small. It might have been fine in the seventies and eighties but there is a desire to move it to another building on the barracks grounds, the old church. Does RACO have a role in advocating for facilities? Does it have a view on the standard of medical aid posts throughout the Defence Forces? Great work is being done at Casement Aerodrome. A brand-new facility is being put in there, which is really welcome. Does RACO have a view on the issue in general or on Stephens Barracks in particular? Is there anything it can do to help?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Conor King<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_189">It is a great question. We do have a great interest in infrastructure and facilities because they are fundamental to the well-being of our members and all members of the Defence Forces. On a more strategic level, there is an ongoing review of medical services that has not been finalised yet, and it should have been finalised for at least a couple of years at this stage. It is one of the recommendations in chapter 8 of the report of the Commission on the Defence Forces that the ongoing review of medical services be concluded without delay and before the end of 2022, and it has not happened yet. The external oversight body for the Defence Forces has it as its mandate at the moment to ensure the implementation of the recommendations of the medical services review among other recommendations in chapter 8.</p>
+          <p eId="para_190"> Moving to more tactical issues as regards proper facilities, it is certainly something we take a great interest in. I compliment not only the engineers but also the Department of Defence and the rest of military management on the manner in which they try to upgrade facilities. We have all seen some of the facilities in the Defence Forces.</p>
+          <p eId="para_191">There has been a policy of managed decline in some areas such as, for example, the Defence Forces training centre, DFTC, at the Curragh Camp. However, when we get it right, we do a fantastic job and we can get it right. A new facility will be built in Baldonnel, hopefully soon, to replace St. Bricin's hospital. There is a fantastic new facility for student officers in Galway, in the university service administrative complement, USAC,. Barracks are improving throughout the country. We are getting there. We could do with some more married quarters for personnel of all ranks. I think that policy has been discontinued but it proved its worth in the past. When you are proud of the conditions you are living and working in, you do a better job. There is a lesson for all of us in that.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_192">I point to the number of medical officers in the Defence Forces. We are about a third understrength. We have 20.5 full time equivalents, so that is 20.5 doctors in the Defence Forces. They do a wide range of jobs. They do not just see patients. They also do medical legal work and management work. If we could push that number up, it would follow that the medical aid posts, MAPs, would be enhanced as there would be people in place. In the case of the Army nursing service-----</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_110">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_193">I was going to mention nurses.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Derek Priestley<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_194">-----I think we have something like one out of 35 on that. It really needs an injection of life. If the personnel and leadership are put in place, the facilities and focus will follow. In light of what happened the year before last and the ability of the Defence Forces to refer enlisted personnel out into private practice for necessary medical treatment or tests, if you do not have managers, that will not happen either. The key to all of this success is medical personnel in the right place and situation. As representatives for the medical officers, we would expect the facilities to follow if we can get the medical and Army nursing service numbers up.</p>
+        </speech>
+        <speech by="#CatherineCallaghan" eId="spk_112">
+          <from>Deputy Catherine Callaghan<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_195">There seems to be a focus, quite rightly, on investing in facilities and equipment. We can have all of those lovely things but if we are not properly investing in our personnel, everything else is for nothing. I will keep my focus in this committee on personnel. I thank the witnesses for their contributions and their expertise.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_196">I thank the witnesses for their time and for the material which they circulated in advance of the meeting. I thank them for their attendance, contributions and statements. I assure them that they will be reflected in the report the committee will produce in the next two weeks. We will break for five minutes.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Sitting suspended at 11.33 a.m. and resumed in private session at 11.40 a.m.</i>
+        </summary>
+        <summary eId="sum_7"><i>
+					</i>The joint committee adjourned at 12.08 p.m. until 11 a.m. on Thursday, 24 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,755 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-07-02/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-07-02/debate"/>
+          <FRBRdate date="2025-07-02" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_disability_matters"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-07-02/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-07-02/debate/mul@"/>
+          <FRBRdate date="2025-07-02" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-07-02/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-07-02/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-10" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ClaireKerrane" href="/ie/oireachtas/member/id/Claire-Kerrane.D.2020-02-08" showAs="Claire Kerrane"/>
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="HildegardeNaughton" href="/ie/oireachtas/member/id/Hildegarde-Naughton.S.2013-07-19" showAs="Hildegarde Naughton"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LiamQuaide" href="/ie/oireachtas/member/id/Liam-Quaide.D.2024-11-29" showAs="Liam Quaide"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality" href="/ie/oireachtas/role/minister_state/children__disability__equality" showAs="Minister of State at the Department of Children, Disability and Equality"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM NITHE A BHAINEANN LE MÍCHUMAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Disability Matters</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-02">Dé Céadaoin, 02 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-02">Wednesday, 02 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichealCarrigy">Micheál Carrigy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LauraHarmon">Laura Harmon.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#LiamQuaide">Liam Quaide</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#GillianToole">Gillian Toole.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputies Michael Cahill and Claire Kerrane.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MauriceQuinlivan">Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Progressing the Delivery of Disability Policy and Services: Discussion (Resumed)<recordedTime time="2025-07-02T09:30:00+01:00"/></heading>
+        <speech by="#MauriceQuinlivan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T09:30:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Deputy Seamus Healy and Senators Nikki Bradley and Margaret Murphy O’Mahony.</p>
+          <p eId="para_13"> Before we begin, on behalf of all members of the Joint Committee on Disability Matters, I extend our sympathy to the Browne family on the very sad passing of Jacqui. Jacqui Browne was chair of the Disabled Persons Organisation Network and played a key role in contributing to many disability policies and initiatives over the years, including many contributions to this committee in the past. Jacqui was a powerful advocate for people with disabilities and shone a very necessary light on disability issues. May she rest in peace. Ar dheis Dé go raibh a h-anam.</p>
+          <p eId="para_14"> The purpose of today's meeting is continuing the discussion we have been having about progressing the delivery of disability policy and services. In that regard, on behalf of the committee, I extend a warm welcome to the Minister of State, Deputy Hildegarde Naughton, who is Minister of State at the Department of Children, Disability and Equality with responsibility for disability. The Minister of State is accompanied by the following officials from the Department of Children, Disability and Equality: Mr. Niall Brunell, principal officer, PO, of the disability equality team; Ms Margot Loughman, PO of disability finance oversight and reform; and Ms Sarah O'Halloran, assistant principal, AP, for the disability children's services team. Ms Jenny Anderson is here as well. Sorry, Jenny. Gabh mo leithscéal.</p>
+          <p eId="para_15"> Before we begin, I will read a notice on privilege and housekeeping matters. All witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction that I may make. I also remind members of the constitutional requirement that, in order to participate in public meetings, members must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that, in order to participate in public meetings, members must be physically present within the confines of the place where Parliament has chosen to sit, and in that regard, it is Leinster House. I assume everyone who is joining is in the Leinster House complex.</p>
+          <p eId="para_16"> The Minister of State may call on her officials to speak briefly for clarification during the meeting where a specific or technical point arises. The officials can clarify issues for the committee. Any follow-up questions should be put directly to the Minister of State because she is the accountable person before the committee. I am aware that a wide range of issues will be subject to discussion today and, if necessary, further and more detailed information on certain issues raised can be sent to the clerk to the committee for circulation to members.</p>
+          <p eId="para_17"> I call the Minister of State to make her opening statement.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality" eId="spk_2">
+          <from>Minister of State at the Department of Children, Disability and Equality (Deputy Hildegarde Naughton)<recordedTime time="2025-07-02T09:30:00+01:00"/></from>
+          <p eId="para_18">I thank members of the committee for their invitation to come before them to detail the wide range of work being undertaken within the Department of Children, Disability and Equality with regard to improving service provision for people with disabilities. I wish to express how pleased I am to attend this committee and I wish members well in their work. I look forward to engaging with them.</p>
+          <p eId="para_19"> I follow the Chairman's sympathies by extending my condolences to the Browne family following the passing of Jacqui. She was a very valued chair of the Disabled Persons Organisation Network. She played a key role in contributing to many disability policies and initiatives, including the forthcoming national disability strategy. I sincerely thank her for that. I extend my condolences to her family.</p>
+          <p eId="para_20"> At the outset, it is important to reiterate that the Government is committed to delivering a step change in the delivery of services for disabled people and their families. Since being appointed as Minister of State with responsibility for disability, I have travelled the country and met disabled people, their families, stakeholder groups and experts in this area, where I have learned what is working well, what is not working and areas that need improvement.</p>
+          <p eId="para_21"> It is important to acknowledge what we all know: services are not where they need to be. Too many people are waiting for an assessment of need. We do not have enough therapists in the system, meaning people are not getting the help they need in a timely manner. Not enough respite is being provided. We need more homes to allow people live full and independent lives. It is important to note that we are making good headway in this regard. Just last week I was in Cork, where I joined the Tánaiste, Deputy Simon Harris, in opening two respite homes for adults and children. However, we need much more of this across the country.</p>
+          <p eId="para_22"> Ministers across all Departments are committed to working to ensure that people with disabilities can live full lives with the same rights and access to services - access to education, transport, sport, culture, a career and the means to live independently - as every other citizen enjoys. As a collective, the Government is keenly aware that there is a need for improvements in a variety of areas, and I assure members that this Government is absolutely committed to a step change in disability service provision.</p>
+          <p eId="para_23"> Ensuring that robust and dynamic services are available for all, including those with disabilities, is of course the responsibility of more than just the Department of Children, Disability and Equality. It requires an all-of-government response if the needs of all citizens are to be met. I will be very focused on ensuring that all Departments are aware of, and act on, their commitments in this space. I have been engaging with my colleagues across Government in this regard since being appointed as Minister of State with special responsibility for disability and will continue to do so going forward.</p>
+          <p eId="para_24">It is also worth noting that, in addition to this committee, there is also a dedicated Cabinet committee focused on disability, on which I sit as Minister of State with responsibility for disability, alongside my colleague, the Minister, Deputy Foley. Having these two committees with a clear focus on disability clearly highlights the cross-party recognition for the importance of this area. The establishment of a dedicated unit within the Department of the Taoiseach will also help to drive the reforms and the changes disabled people and their families so desperately need. Perhaps the most important crosscutting piece of work currently under way is the finalisation of the national disability strategy, the national human rights strategy for disabled people. This strategy is the successor to the national disability inclusion strategy and I am pleased to say it is now at a very advanced stage, with publication expected very shortly. The strategy will operate as a framework for the co-ordination of policy across Government that affects the lives of disabled people, ensuring a whole-of-Government approach to the advancement of the United Nations Convention on the Rights of Persons with Disabilities and collaboration on crosscutting issues. To ensure this strategy met the needs of disabled people, my Department undertook an extensive consultation process that included 34 focus groups, more than 80 written submissions, almost 500 responses to a national survey, and five town-hall events around the country. Based on this feedback from disabled people, their families and communities, the strategy is set upon five thematic pillars that capture the range of experiences affecting disabled people in their daily lives. The strategy will take ambitious action across these pillars to better support them to access good education, meaningful employment and to access arts, culture and sport, healthcare and reliable transport, which are the foundational elements we all need to support us in living independent lives of our own choosing. The voices and the lived experience of disabled people have shaped this strategy and its commitments. I look forward to continuing the partnership through this implementation.</p>
+          <p eId="para_25"> Speaking of the engagement with disabled people, I am also personally aware of the need to meet with and hear the perspectives of advocacy groups in the disability space. As previously mentioned, since taking up my position I have made it a priority to visit services, to meet people with disabilities and to sit down with advocacy groups to hear their views on what is working well and what needs to be improved. These meetings have been of immense value, as understanding the lived experiences of people with disabilities is the key to improving service provision, and I will continue to work with advocacy groups to achieve the best outcomes.</p>
+          <p eId="para_26"> Of course, we know adequate resourcing is required to meet our ambition and deliver better outcomes. With this in mind, some €3.2 billion has been allocated by the HSE disability services in budget 2025. This increases the overall budget by €1.2 billion since 2020 and providing an 11.5% increase compared with 2024. This represents an increase of €333 million, the largest ever increase in the disability services budget, highlighting the commitment to a step change in service provision. Through this budget the Department funds, via the HSE, specialist community-based disability services, which are designed for the 90,000 people with a significant intellectual disability, autism or a complex physical disability. These services include multidisciplinary therapies for children, adult day-services, personal assistance, home support, respite and residential services.</p>
+          <p eId="para_27"> While much progress has been made in specialist disability services, I am aware that much more needs to be done to address the unmet need. This will require additional investment. In this regard two pieces of work are under way. The first involves increasing the capital allocation for specialist disability services in the context of the review of the national development plan. Simply put, we are not spending enough on specialist disability services. We need more respite services, homes, provision of day services and upgrades of existing buildings and facilities. We also need to increase revenue funding through the Estimates process. As the committee will be aware, the programme for Government commits to considering the development of a multi-annual approach to disability services. This is essential in order to provide clarity and certainty for service providers who do so much good work but currently find it difficult to plan to expand their services. As part of this work, we must look at the substantial investment already being made in services and assess how best we can maximise the impact of the €3.2 billion in the budget. This will require input from all stakeholders, including service users, service providers and the HSE.</p>
+          <p eId="para_28"> The Department will also be progressing the Action Plan for Disability Services 2024-2026. We have set ambitious targets in the plan to provide for unmet need and demographic change. This ambition is important to generate commitment to the vision we have for disability services in Ireland. To date, the Government has supported the plan with approximately €116 million in new development funding - €74 million in 2024 and €42 million in 2025 - with some funding from the existing level of service allocation also funding service expansion to accommodate demographic change. While this is only a quick overview of some of the work being undertaken by the Department with regard to the wider disability agenda and the investment made in services, I look forward to engaging further with the committee.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T09:40:00+01:00"/></from>
+          <p eId="para_29">I thank the Minister of State. I now invite the members of the committee to put their questions. I remind them to adhere to the agenda items scheduled for discussion today. We have decided our slots will be seven minutes per person for the first round. The first speaker is Deputy Quaide from the Social Democrats.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_4">
+          <from>Deputy Liam Quaide<recordedTime time="2025-07-02T09:40:00+01:00"/></from>
+          <p eId="para_30">I thank the Minister of State and her colleagues very much for being here today. It is very good to have them. Neurorehabilitation, both pediatric and adult inpatient and community, is an area that requires a great deal of investment and service development. I urge the Minister of State to look at a service that originated in the US and has recently set up in London. That service is the Neurological and Physical Abilitation Centre. It offers intensive rehabilitation to children with neurological and developmental disabilities and the outcomes can be far-reaching and very significant. There has been a long-identified need for a second National Rehabilitation Hospital outside Dublin. I have been told the current wait times for the NRH are between six and 18 months and we know timely rehabilitation following a traumatic brain-injury is critically important. Does the Government have a position on this potential project and on the need for it? Are there plans to develop our inpatient neurorehabilitation services, both pediatric and adult, that the Minister of State could speak to today?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_5" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T09:40:00+01:00"/></from>
+          <p eId="para_31">I thank the Deputy for his question. We have a neurorehabilitation strategy and that is the development of neurorehabilitation services to improve inpatient outcomes by providing safe, high-quality, person-centred, neurorehabilitation at the lowest appropriate level of complexity. That straddles acute hospitals and primary care, as well as specialist community-based disability services. We have seen consistent funding in the last few years being provided to advance the roll-out of this strategy and the Department of Children, Disability and Equality, as well as the Department of Health, aim to jointly continue this important work to ensure there is a fully integrated service available to those who need it. As part of that strategy, the HSE is in the process of expanding the number of community neurorehabilitation teams across the country. The current position is that there are four new teams that have been recruited. They will be operational this year. This will add 48 specialist posts to community rehabilitation and approximately half of these posts are already in place, with the rest recruited and awaiting an imminent start date. The locations of the CNRT teams are: Dublin South and Wicklow; Dublin South West, South City and West; Kildare West Wicklow; and Galway, Roscommon and Mayo. From my engagement with many of these groups and people who have an acquired brain injury, I know the importance of these. People might have gone to Dún Laoghaire and had their intensive engagement there, which was very positive but the call is for community-based services and that is the importance of the roll-out of these hubs right across the country.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_6">
+          <from>Deputy Liam Quaide<recordedTime time="2025-07-02T09:40:00+01:00"/></from>
+          <p eId="para_32">As to a second NRH and, more specifically, inpatient neurorehabilitation, are there any particular plans or proposals around that?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_7" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_33">What we are doing from this strategy is the community-based aspect. The big call from people after they go through a trauma like that and get their intensive neurorehabilitation in the likes of the NRH is that they would have community-based access. I am open to that as regards the needs there. The strategy looks at regional step-down beds. It is important that people can get access to the care in their local community where they do not have to be always travelling to Dún Laoghaire for their intensive service provision.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_8">
+          <from>Deputy Liam Quaide<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_34">There is quite a burden on families for that initial period of rehabilitation in terms of travel and quality of life and often having to spend extended time in Dublin. Also, the waitlist for the NRH is very long at the moment and that can have knock-on impacts on outcomes if there is not timely intervention.</p>
+          <p eId="para_35"> I had the good fortune of working in the Peter Bradley Foundation, now ABI Ireland, for several years in my 20s. This is a service that has transformed the lives of many people with an acquired brain injury, allowing them to live in their community instead of in nursing homes and yet so many people referred to ABI Ireland have to be told by staff that their residential placements are oversubscribed. The organisation was originally set up in Glenageary by Barbara O’Connell because there was no HSE service available to her brother Peter who had sustained an acquired brain injury. Adults who are diagnosed with a mild intellectual disability are still further neglected within our system. They are often in need of intensive support and residential care but they fall between services because some of the services have moderate intellectual disability as their inclusion criteria. Some can spend prolonged periods misplaced in psychiatric settings where their psychological state can deteriorate further resulting in over-medication and tragically some are prematurely placed in nursing-homes. As we know, nursing homes for a young person are a psychological and social dead-end for people with considerable potential for rehabilitation. In May of last year, there was in excess of 1,200 people with disabilities under 65 living in nursing-homes. The Ombudsman, Ger Deering, has warned that Ireland will look back with regret at how it has treated these citizens. His office has authored the report, Wasted Lives: Time for a better future for younger people in Nursing Homes. He has appealed to the Government to increase the funding to implement the recommendations of this report. He said he was "deeply unhappy" with the funding allocated in budget 2025. What commitments will the Minister of State give that would ensure people with an acquired brain injury or intellectual disability will not end up prematurely in nursing homes? Only a small fraction of those people are supported by organisations like ABI Ireland or may get placements with Horizons.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_9" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_36">I thank Deputy Quaide. First, regarding NRH, that would come under the Department of Health. This is where our national disability strategy will come into play. I have certain levers within my Department but it is through working with my Cabinet colleagues that we can ensure we are providing the acute services as well as the community and step-down services. The Deputy is absolutely correct. We all appreciate the inappropriateness of somebody being placed in a nursing home. I have also seen examples in my visits around the country where a young person with an acquired brain injury was housed through the local authority. This was a result of forward-planning and we need to have that as well as part of our strategy. When building homes in estates, which is one of our top priorities in terms of housing and disability, there should be an obligation on the Department of housing to ensure that part of it goes to persons with disabilities. There are some really good organisations out there around the country for people with acquired brain injuries. I am visiting them. There are some really good practices and models, which I would like to see replicated across the country.</p>
+          <p eId="para_37"> In response to the Deputy's reference to the Ombudsman report, from 2021 to 2025, the Government provided funding of €21.4 million to enable people under the age of 65 to transition to an alternative community-based placement and to provide <i>in situ</i> supports, as appropriate. We need to increase that. To date, 104 people have transitioned to homes in the community since the start of that programme in 2021 but we need to do much more. That is not a defence; it is just saying that is the direction of travel. We need to ensure people can live as independently as possible, in a way of their choosing and that is normally in their own home in their community.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_38">We will move on to the next slot which is Fine Gael's. Deputy Keira Keogh has seven minutes.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_11">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_39">I welcome all our witnesses. I also wish to pass on my condolences to the Browne family on the passing of Jackie.</p>
+          <p eId="para_40"> The Minister of State is very welcome to the committee. It is fantastic that in this committee we have the first Minister of State for disability. It highlights the step change and the whole-of-Government focus that is on disability. We are going to be judged in this term on housing and disability and we need to deliver that step change. I also welcome that 11.5% increase in the HSE disability services budget. I was listening to the radio this morning and just across the pond in the UK they are cutting disability payments and there is uproar about that. We have a long way to go but it is great to see we are increasing the funding and are now at €333 million.</p>
+          <p eId="para_41"> First, I go to something that may not be under the Minister of State's remit. In the conversation around this being a whole-of-Government approach and it going across Departments, one of the issues I am having is regarding the primary medical certificate and the disabled drivers and disabled passengers scheme. I briefly brought this to the Minister of State's attention a couple of months ago. I have a constituent whose foot is at a 90 degree angle. It does not allow her to walk very long distances at all. Yet, in her assessment she was asked to prove that she could walk by walking from one side of the room to the other, which really is without dignity. When I asked where we were on the review of this scheme, I was told the Department of Finance is where it currently lies. The new scheme will be with the Department of Transport. Neither of those Departments have the remit of disability policy but this is a disability matter. When I asked for an update in March, I was told it was a matter for Government. Then just this week we have heard it is progressing through a senior officials' group. This particular girl - I am just using her as an example but there are many people waiting for this review - wants to drive to work, to her appointments and for her independence. I have been advised she can appeal. There is no point in her appealing; she does not meet the criteria currently there. She is in limbo while this scheme goes between the Departments of Finance and of Transport and we do not know where it is going to go. However, it is firmly a disability matter and I would love the Minister of State to take a look at that. I will pause to give the Minister of State a chance to answer that.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_12" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_42">I thank Deputy Keogh for her question. Yes, I think we have all been in situations in our constituency office where somebody has come in looking for a primary medical certificate and sometimes you just know they are not going to eligible although they really need the service. That is why the Department of Finance was reviewing this scheme. It will be with the Department of Transport. The Deputy makes a very important point. It is a disability matter. From a Cabinet point of view, when this national disability strategy is published over the next few weeks it will not just be up to me or to the Minister, Deputy Norma Foley, as Ministers with responsibility for disability. It will involve every single Department and that step change will be needed. The Deputy will ask how we can make sure that will happen. To follow up on that, there is a disability unit within the Department of the Taoiseach and a special Cabinet committee on disability on which I sit along with the Minister for Finance, the Minister for public expenditure, the Minister for Social Protection and the Minister for Health. All the key Ministers are in that disability Cabinet committee. When issues like this come up we want to make the step change that will enable the Deputy's constituent to be able to live an independent life, go to work and do the things we all take for granted. I know how frustrating it is. That is why we have reviewed the primary medical certificate. It is under review but as part of the national disability strategy we will have to make changes to that. I do not want to pre-empt it but I can sincerely say we have to change it to make sure people like the Deputy's constituent can access supports and be able to drive themselves.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_13">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-02T09:50:00+01:00"/></from>
+          <p eId="para_43">I thank the Minister of State. The urgency with that would be really appreciated. I know as a committee we have written to all of the committees asking them to engage with people with disabilities. When the Minister of State is in her meetings, that dignity aspect has to come through and every Department needs to be aware of how we treat people with disabilities.</p>
+          <p eId="para_44"> On a more positive note, I recently met the Minister of State in Mayo where she was with Mayo Autism Camp and Manulla Football Club delivering a mobility trike on behalf of Variety Ireland. I know her Department funds them.</p>
+          <p eId="para_45">These trikes allow families who support children with disabilities to do the everyday things that many families may take for granted, like going out for a cycle. So many families find it difficult to go to a swimming pool or restaurant. These trikes make a real difference to families and to camps like Manulla Football Club, which has a waiting list of about 80. Does the Minister of State have plans to increase funding for that charity?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_14" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_46">I thank the Deputy. We had a great day in Mayo. I saw the faces of those young children when they had access to mobility trikes to be able to go for a walk and enjoy the greenways in Mayo with their families, which they could not do before. It is absolutely transformative. I thank those organisations for the work they do. I have Estimates and a budgetary process to go through but I see the value of these facilities for young people, not just for them but also their families. Now, for the first time ever, children can engage in activities that they could not do with their family. That is transformative. Funding for that is being finalised in my Department. These are the kinds of innovations that I am looking at around the country. They are sometimes things that I would never have thought of until I am out there to see it and its impact in action, not just for that child and family but from the point of view of a cultural shift where people see somebody with a disability living an active life, getting out in the fresh air and enjoying leisure activities, just like everybody else.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_15">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_47">With the last 30 seconds, I will also highlight in the same domain that therapy dogs make a huge difference too. There are huge waiting lists for them. There are sometimes lotteries to even get on the waiting list. Families are doing fundraisers to try to train dogs. I know the Minister of State will not have much time to answer, but from looking at her Estimates, we have to provide more funding for medical dogs too. Between the trikes, primary medical certificate and therapy dogs, it is all about allowing people with disabilities to gain access to independence and to society.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_16" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_48">Another real good example is that I was in Cork where I visited Autism Assistance Dogs Ireland and My Canine Companion. I will give a really good example. A principal in a school said to me that the school has one of these dogs that is specially trained to work with children with autism or disabilities. She said she used to have to coax the child into school in the morning. The dog in the yard is a magical creature that has such a positive impact, not only on the person with the disability but on the whole school community. For a child who might need to be regulated, the dog knows to sit on that child when he or she is reading a book to give him or her the comfort and regulation that he or she needs. They are really powerful examples of how we can help people with disabilities.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_17">
+          <from>Senator Laura Harmon<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_49">I welcome the Minister of State to the committee. We look forward to working with her collaboratively. I thank everyone here this morning. I know the Minister of State mentioned Cork a couple of times and that she has been to Cork recently. We had the HSE chief at the committee recently. He said he has a particular concern about waiting lists in Cork. I know there are 30-month autism waiting lists for some in Cork recently. We saw recently that more than 1,200 people were waiting for an assessment of need. Would the Minister of State share his concern about Cork? Can she commit that the legislation for the six-month period in the Disability Act will not be changed? Is that being looked at? I know that currently only 7% are being done within the required six-month timeframe for assessments of need. We also had Cara Darmody here recently, as the Minister of State will be aware. Was there any engagement with her on her campaign about this?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_18" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_50">I thank the Senator. There are issues in Cork but there are other counties and people listening in around the country saying that they have issues in their area too. We need to ramp up the funding and the forward planning for respite, day services, residential care, independent living and ensuring that it works not just for those areas but to enable people so they do not have to go into residential care. It is all about that preventative early stage intervention.</p>
+          <p eId="para_51"> The Senator talked about access to assessment of need and the backlog there. To be frank and categorical about this, the assessment of need process is not working. It is broken. I have met Cara Darmody on a number of occasions. I absolutely agree about her campaign. It is just not addressing the needs of young people who want to access these services, get the assessment and access these therapies. With my Government colleagues, I have been looking at the assessment of need process. Work on that is under way. It may require legislative change. We have not figured out the detail of that, but there are a number of things that we need to look at.</p>
+          <p eId="para_52"> This is not just about dealing with the waiting lists. Just dealing with the waiting lists will not solve this problem. We need to look at the provision of therapists, particularly occupational therapists and speech and language therapists. We have recruitment and retention issues. The HSE is carrying out recruitment drives domestically and internationally. We are looking at the provision of more assistant therapists and at innovative ways to ramp up the number of therapists across the system within our children's disability network teams. When I was in special education previously, I would have done work that my colleague, the Minister, Deputy Helen McEntee, is doing, putting therapists into special schools, including speech and language and occupational therapists. They go into the special schools that need this therapy most and then roll it out to special classes and mainstream schools.</p>
+          <p eId="para_53"> We have bursaries for postgraduate students to encourage them to stay on in the CDNT system. I want to see more student therapists as they are going through their third level experience getting experience working in CDNTs and acute settings. They would get a wide range of experience as a therapist so that they get a real sense of it. If I am quite honest, some of the feedback that I am getting is that it is a difficult space to work in, and it is. It takes a particular type of person with experience. If you have never worked in CDNTs and the community, there may be a fear around it. It gives students that exposure to this through their third level training on this. We are working on a number of things. If the Senator has any suggestions, I am wide open to ensuring that we get the recruitment and retention, and that children and adults get the therapies they need.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_19">
+          <from>Senator Laura Harmon<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_54">I thank the Minister of State. She has led me to my next question about CDNTs. I know the HSE mentioned that work is being done on a single-door policy, concerning access to referral pathways. Could the Minister of State give an update on that? If it is a priority, how will that improve things? Is there any update on where we are with unfilled positions in CDNTs across the country? Do we have any updated statistics on that? How many positions may be vacant at present?</p>
+          <p eId="para_55"> I have questions on a third issue as well, which I may as well ask while I have the opportunity. I know a new unit is being set up. The Minister of State mentioned the Cabinet committee. Is there a timeframe for a new unit to support that? What will its functions be? How will that improve effectiveness?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_20" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:00:00+01:00"/></from>
+          <p eId="para_56">I have figures for the Senator's question relating to the data. This is derived from the children's disability network teams workforce survey that was carried out on 9 April 2025. The HSE is finalising the report but the preliminary data has been shared with my Department. The survey assessed staffing levels across various disciplines and grades, offering a comprehensive snapshot across the 93 CDNTs. The data report illustrates the progress made in the 18 months since the October 2023, noting that there has been a nationwide increase of 26% in staffing in the CDNTs. It is moving in the right direction. Of those onboarded, the largest growth was in the health and social care professionals. That accounted for 296.5 of the 1,440 whole-time equivalents. As of 9 April, the national vacancy rate within CDNTs stands at 18%. That reflects a decrease from the 29% reported in October 2023. The vacancy rate for Cork, from the workforce profile, is 10%.</p>
+          <p eId="para_57"> The Senator asked about the new unit in the Department of the Taoiseach. The Cabinet committee has been meeting very regularly. We have had many items on our agenda but assessment of need is right up there.</p>
+          <p eId="para_58">We have had many items on our agenda, but the assessment of need is right up there and so a lot of work is happening on that. The new unit in the Department of the Taoiseach supports the work of that Cabinet committee. The Cabinet committee on disability oversees the implementation of the programme for Government commitments in the area of disability, with specific focus on children's disability services as well as disability services more generally, including the forthcoming national disability strategy. When that is published the real work, the action plan, will happen. A ministerial meeting and two Cabinet committee meetings have been held to date. In addition, the unit is supporting the Department in driving cross-government, interagency and interdisciplinary work and collaboration, ensuring there is accountability. That is what that unit will do. The Taoiseach is in the process of setting up that unit. I am sure he can give the committee an update on that, but work is under way.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_21">
+          <from>Deputy Gillian Toole<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_59">I thank the Minister of State and her departmental officials for meeting with us this morning. I will try not to overlap with colleagues. Two or three weeks ago, the committee met with the Disabled Persons Organisation Network and discussed co-creation of policy, interdepartmental collaboration, etc. Are there any plans to formalise the consultation process with DPOs and especially to resource them to carry out their work and enable them to be in a position to collaborate with the Department and other Departments?</p>
+          <p eId="para_60"> I will list the questions I have. I may hop backwards and forwards between assessments of needs, CDNTs, etc., so I hope it will not be too confusing. The HSE produced a report in 2022. This may be something that is now conflicting with the hiring of therapists by the National Council for Special Education as well as the HSE. There is a limited pool of professionals. I understand the importance of accelerating that. How might that conflict, which was highlighted as a risk in 2022, be overcome? There is a suggestion to include collaboration with the education and training boards to support therapists. I know the training boards in Louth and Meath and Cavan and Monaghan, in particular, offer therapist-support courses. The possibility of work experience in the short term could be explored. I have tentatively begun the process in my own area involving Enable Ireland and Dunboyne College of Further Education. I hope we will have something that can commence in September if all parties agree. It is purely on a trial basis but I can update the Minister of State further.</p>
+          <p eId="para_61"> Regarding assessment of need and Part 2 of the Act, what might the changes look like? How long is the process expected to take? As the Minister of State has identified, the section 38 and section 39 organisations all tell us that multi-annual funding is critical for future planning. Even though discussions on budget 2026 are at a very early stage, might I be so bold as to ask if there is white smoke in this area or any indication that the Minister of State could give us?</p>
+          <p eId="para_62"> In the area of neurorehabilitation, some excellent work is being done by our third level colleges. I do not want to express any preference, but DCU is doing particular work in the area of robotics and the exoskeletal programme there. Is there any scope for collaboration with third level institutions? Access to technology would help with community rehabilitation.</p>
+          <p eId="para_63"> While this may seem unrelated, some people from my county have experienced catastrophic accidents abroad. Might funding for repatriation of those people be a consideration? I will leave it at that to allow time. I have other questions but we might not get to them.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_22" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_64">I thank Deputy Toole for that. She spoke about the NCSE, CDNTs and the lack of therapists. That is the elephant in the room here. We have full employment in this country. We are looking at innovative ways to hire more people. It is about retention and recruitment. That is why we have the domestic and international recruitment work happening.</p>
+          <p eId="para_65"> The Deputy mentioned the ETBs and therapist-support courses. She is spot on in what she says about work experience. We need to give young people who are thinking of careers access to see what it is like to work as a therapist, even in the school setting or the community. I know there our drives in secondary schools throughout the country to speak to students about future careers. I would be interested to hear if there is potential to expand on what is being done with the ETBs. These are exactly the areas I want to push. Where something is working well and there is a model and a structure set up, there is no point in reinventing the wheel in order for us to get access to more therapists. It is not just speech and language therapists and occupational therapists; sometimes we need a dietitian or a social worker. We are aware of all those requirements.</p>
+          <p eId="para_66"> The Deputy mentioned robotics. I believe assistive technology will be a real innovator, not only in the world of disabilities but in all our lives. We constantly need to keep up to date with the changes in this area and how we can help people live independently in their own homes.</p>
+          <p eId="para_67"> The Deputy is correct that there is a commitment in the programme for Government on multi-annual funding. It is my job to ensure we increase the amount in the budget right across the disability sector, including in day respite. We need to ensure the HSE knows the funding it has so it can plan and that is even before we get to multi-annual funding. We are looking at that and work is under way. As we know, there are certain legislative restrictions on entering multi-annual funding agreements for current expenditure. Current expenditure is not like capital expenditure where there are multi-annual commitments linked to the national development plan. For current expenditure, my Department is required to adhere to public financial procedures. However, the Programme for Government 2025: Securing Ireland's Future commits to considering multi-annual funding, which must be linked to productivity, staffing levels and the delivery of disability services. My Department is working with the HSE and other stakeholders to explore options to take that forward.</p>
+          <p eId="para_68"> Options for planning service delivery and for workforce on a multi-annual basis will be explored in the context of the HSE's pay and numbers strategy and other national service plans. That important work on the pay and numbers strategy is under way. That process also requires consultation with the Department of public expenditure and reform. After that, we could potentially be looking at multi-annual funding. If we want to ensure we are delivering services over the next five years as part of the national disability strategy, we need to be planning now. The HSE needs to have the data on what is coming down the track. It needs to have its costings on things like the cost of a bed in Galway versus Louth. We need to get all that data, which will also help me when I go into the budget and Estimates processes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_23">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:10:00+01:00"/></from>
+          <p eId="para_69">Cuirim fáilte roimh an Aire Stáit. The Minister of State spoke about the need for respite housing and disability housing in general. I have spoken to Bernard Gloster, the local authorities and the Minister about this. While they accept there is an issue, nobody has exactly come up with a solution yet. Approved housing bodies such as St. John of God used the capital assistance scheme to buy houses.</p>
+          <p eId="para_70">The organisation rented the houses and when the landlord decided to sell them they wanted to use the CAS to purchase them or alternative housing. The organisation was looking at three purchases, two of which were in County Louth and one of which was in County Meath. It was at that point the local authority explained that CAS funding is thrown in with the tenant in situ scheme and all the acquisitions of social housing by the local authority, and that they just do not have the money for it. I get this issue does not fall within the remit of the Minister of State but it needs to be addressed because there is a huge number of residents in disability housing who might have nowhere to go. Whatever about the wider housing issues, CAS funding and funding for the tenant in situ scheme, we need a solution. St. John of God is considering buying a house in County Meath and is dealing directly with the HSE. Again, we just need a protocol and a methodology because the process has changed very fast. Is the Minister of State aware of this case?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_24" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_71">Not of that particular case but I will respond in general because as I have travelled around the country I have heard about how long it takes for CAS to work in the disability sector. I have seen examples of lovely housing but it just took too long and it is very cumbersome. As part of our meetings within the Cabinet committee on disability, which is attended by the Minister for housing, these issues have to be addressed as part of the national disability strategy. The HSE is responsible for the operational side of this on the ground and it needs to be able to plan.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_25">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_72">Yes.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_26" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_73">The HSE needs the funding so there is not an emergency situation, of which we all know about, where somebody needs housing at the last minute. The HSE must be able to forward plan and work these structures with the Department of housing. It is important that we make it easier for the HSE to work with local authorities to plan this housing and these specialist types of housing. The Brothers of Charity, for example, are considering a residential model that works. There is lot happening in this space but I take the point that the Deputy has made about the issues around this.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_27">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_74">Yes, 100%, It has got worse. I ask the Minister of State to raise the issue with the Minister.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_28" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_75">Yes.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_29">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_76">I ask because the Minister of State might have more clout with the Minister when it comes to getting this dealt with.</p>
+          <p eId="para_77"> To return to the issue of assessment of need, I accept what the Minister of State has said in that the focus must be on providing therapies. There is a fear that the Government plans to remove the one right that somebody has, which is for the delivery within six months of an assessment. I get that this does not provide therapies but I ask the Minister of State to update us on it and outline the timeline for any changes that will happen.</p>
+          <p eId="para_78"> My next question relates to CDNTs. I want to make sure I have this right because I may have got it slightly wrong before. Are there still 445.4 positions unfilled within the CDNT service?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_30" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_79">The first issue is the assessment of need. Everyone will continue to have a statutory right to an assessment of need.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_31">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_80">So that is not going anywhere.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_32" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_81">No. Everyone agrees that the process is not working. Everyone can have a statutory right but the process is broken.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_33">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_82">I completely agree that it is not working. Everyone is open to a better way of providing them once the stakeholders have been dealt with, and then we can ensure therapies are provided. No matter what the number is concerning the number of positions unfilled in CDNTs, the answer we got here last week was that even if all those positions were filled we would still not be able to offer what needs to be offered. That is why school-based therapies are so important.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_34" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_83">The work we are doing on the assessment of need has not been finalised. However, the aim is to ensure people are provided with assessments in a more timely and efficient manner. We must also ensure the processing time is more efficient. We can reduce the waiting time for assessment of need applicants. The legislative focus on Part 2 of the Disability Act will be supported by operational and administrative actions. All of these issues are being considered. It is a matter of how we ensure people gain access to the assessment or the therapies they need in a timely fashion. The assessment of need process needs to be done more efficiently but it is not. In many cases, once a person gets an assessment, he or she is put on another waiting list so the process is not working.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_35">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_84">I accept that. I welcome the promise that there will be no change in the legislative right people have to access an assessment of need.</p>
+          <p eId="para_85"> When Bernard Gloster was before the committee, he said that people had a different view about CDNTs. He said that the people who had a better experience of CDNTs had a link worker or a direct contact person, which is the issue. We also heard here last week about another issue. We keep talking about a single point of access or a single door, but that would require a considerable amount of staffing and reworking. Where are we with the delivery of that? Link workers are important but the option is not available across the board.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_36" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_86">To answer the Deputy's question on the number of unfilled whole-time equivalents, there are 445.4 unfilled positions. We have provided additional posts year on year in order that the actual vacancy rate would be reduced. We have provided additional posts and we have never had more in post. We have more people working in CDNTs now than ever before but we must ensure we can cope with demographic changes and demands. I ask the Deputy to remind me of his other question.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_37">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_87">I want to know about the introduction of a single door and having more link workers.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_38" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_88">Does the Deputy mean a link worker to support families?</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_39">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_89">Yes, a direct contact person.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_40" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_90">Bernard Gloster and the HSE are looking at both issues. These are operational matters for them. I know that Mr. Gloster is working on that single point of access. Regardless of whether a person needs to access CAMHS, primary care or a CDNT, there will be one point of entry and it will be signposted so that people are not just put on waiting lists. The HSE has commenced its work on assessment hubs across the country. Bernard Gloster will update the Cabinet committee on that aspect.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_91">Deputy Michael Cahill has joined us and he has seven minutes. </p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_42">
+          <from>Deputy Michael Cahill<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_92">I welcome the Minister of State and her officials. Recently she visited St. Mary of the Angels and St. Francis special school in Beaufort, County Kerry. The site is a very special place in the heart of mid-Kerry. The site was originally donated by the Doyle family to provide facilities for children with profound disabilities and special needs. We are no different from any other county, but there is a chronic shortage of respite care in County Kerry. I have met parents individually and collectively who told me their harrowing stories about trying to get a break once or twice a year. It seems a no-brainer to almost everyone that there are unused buildings on the campus in Whitefield in Beaufort. The site is comprised of 30 acres of prime development land and there are existing facilities, yet there seems to be a stand-off. Since our last committee meeting I attended a meeting on Monday about the site and I am very concerned that the wishes of the Doyle family will not be followed through.</p>
+          <p eId="para_93"> The place has been visited by a number of Ministers now, including the Minister of State present. The Minister, Deputy Norma Foley, has visited. The Minister of State, Deputy Michael Moynihan, has visited. Other Ministers plan to visit. There is some momentum but I am concerned that nothing will happen. We have been told that the Government will prioritise the disability sector so this is an opportune time to raise this issue. Any help that the Minister of State, her colleagues and this committee can give to this issue would be greatly appreciated. We need to bring all the sides together on this issue. As I keep saying, it is the location in the heart of the county, more than anything else, that makes this worth pursuing, especially in light of the shortage of respite care everywhere in County Kerry. There is only a handful of beds available and there are many families and individuals involved who beg for help. I am making a plea for assistance on their behalf.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_94">The Minister of State may not be aware of the specific details of the case but it is up to her if she wants to comment.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_44" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:20:00+01:00"/></from>
+          <p eId="para_95">I visited the site. </p>
+          <p eId="para_96">I met fantastic service providers and users at St. Mary of the Angels and was so impressed with the work at the site, in addition to that at St. Francis Special School. Elected politicians sometimes take different sides but it is great that we have a unified voice on this. It is important to state, however, that it is the board of St. Mary of the Angels that will ultimately decide on the development. At our meeting on the day, a commitment was made. A working group was set up and there is funding for it to consider the scope of what is possible, not just at the site but also right across Kerry. There is a focus on community-based respite but, as has been said, there is great potential at the site considering that there is a special school there. I hope people can work constructively together because it is all about children, adults and access to services. While we want to promote independent living, for which we have been planning, as colleagues have outlined, a fantastic amount of work is happening at the site and there are really good staff there. We must have an open mind. We do not know what is possible at the site. It will only be by discussing it and scoping out the possibilities for the whole county of Kerry that we will find out. My understanding of the meeting was that the conversations will happen, and I will be happy to assist in any way possible. I am aware that funding is a huge issue right across the country. These conversations need to happen and my door is certainly open, as I know is that of the Minister, Deputy Norma Foley.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_45">
+          <from>Deputy Michael Cahill<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_97">I thank the Minister of State. The working group will be up and running shortly, in the next couple of weeks. We discussed that the last day. The working group asked me to raise several issues but I am going to raise just one now, namely, transport. The group is struggling to provide transport and telling me it is getting no assistance. The Department might consider this. Transport represents a major cost and it is so necessary.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_46" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_98">I will come back to the Deputy on that. Transport in the context of disability is an issue right across the country.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_47">
+          <from>Deputy Michael Cahill<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_99">I thank the Minister of State.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_48">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_100">I apologise for being late but I logged in for the opening statement. I welcome the Minister of State. I have a few specific points. The Minister of State mentioned in her opening statement that we will have the national disability strategy in the near future. Could she be more definitive on when it will be published?</p>
+          <p eId="para_101"> The Minister of State and I met only recently on the autism innovation strategy. She met the all-party group, which I continue to chair. I have a copy of our report and the 12-month review we conducted on the 109 recommendations. It is on our agenda at this committee to conduct a 24-month review, hopefully over the recess, and publish it in the autumn to ensure as many of the recommendations as possible, if not all, are legislated for. The number one recommendation in the report, a cross-party report, was to legislate for an autism innovation strategy. The former Government published the latter in August 2023 but it is due to expire next February. It was time-limited for 18 months. There is a commitment in this regard in the programme for Government and we will see where we are with regard to legislation on the strategy. There is legislation at Second Stage in the Seanad that would give effect to the strategy. What is the Department's current position on this?</p>
+          <p eId="para_102"> The Minister of State has engaged extensively across the sector since taking up her role and I compliment her for that. From that engagement, what are the top three issues we need to deal with? I am a parent of a young autistic son and have been in the system. I hear anecdotally from parents that many children are now being moved from CDNT to primary care if their needs are lesser, but are the staffing levels matched in primary care? From what I hear on the ground, the answer is "No". We are understaffed at CDNT level and moving kids into primary care, which is completely understaffed and unable to deal with the numbers. The Minister of State might make a few comments on that. I apologise for asking so many questions in one go.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_49" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_103">If I forget any of the questions, the Deputy should remind me of them.</p>
+          <p eId="para_104"> The Government recognised, having regard to the autism innovation strategy, that there is a need to review and update the existing disability legislation, or consider where a need for new legislation may exist. This is particularly true following our ratification of the UNCRPD. My priority is to ensure the policy structures and frameworks are in place to make progress on disability issues across the board so we can advance legislatively and strategically.</p>
+          <p eId="para_105"> On the national disability strategy, the work is nearly finalised, so I am very hopeful that it will be published in the next couple of weeks or in very few months. As part of that, work will intensify on a legislative programme that will have to be set out in this regard.</p>
+          <p eId="para_106"> The Deputy is correct that there is a commitment in the programme for Government to put an autism strategy on a statutory footing. We will be working on that. As I have said previously, there are other disabilities, as we are aware, but a commitment has been made in the programme for Government. I want to get the strategy right and that is why it is really important to have a few more weeks with my Government colleagues to ensure the required ambitious step change is in the strategy.</p>
+          <p eId="para_107"> The Deputy mentioned CDNTs and primary care. It is in respect of these that the strategy is going to work, hopefully with the Department of Health, which is over primary care, and my Department, the Department of children and disability, which is over CDNTs. Staffing is a huge issue right across the country when there is full employment. Therefore, we need to have recruitment drives, but there is a need for structure. My Department deals with specialist disability services but what happened previously was that children who might not have had complex needs were referred from primary care or CAMHS, for example, to different waiting lists. That is inappropriate and unworkable, and that is why we need the one-door structure Bernard Gloster is working on. This will mean that if a person goes into primary care, CAMHS or a CDNT, he or she will not be bounced around from waiting list to waiting list but instead get signposted and treated. This is part of the big mountain of work we have to do. I am aware that Bernard Gloster updated the Cabinet committee on disability on this recently. I will be looking for follow-ups on the roll-out. However, if there are particular issues arising in the Deputy's area, we can come back to them and deal with them separately.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_50">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_108">I would like to see a commitment to implementing the strategy. The timeline for the national disability strategy legislation the Minister of State is talking about could stretch beyond February but the autism innovation strategy and its recommendations for various Departments will fall at the end of February, so we need to have legislation in place prior to that.</p>
+          <p eId="para_109"> Several members of the autism committee and I went to Scotland and met the Scottish minister for health and officials from Scottish Autism. We came back and met the former Minister of State, Senator Rabbitte, in relation to one-stop shops. One-stop shops are in the programme for Government. Funding was allocated by the HSE for two one-stop shops, one in Dublin and one in Galway. We want to see these regionalised. I want to be sure the funding is in place for these for this year. Will there be a commitment in budget 2026 to providing funding to roll out the one-stop shops across the country, as recommended in the programme for Government? Doing so would reflect best practice, which we brought back from Scotland. It is tried and tested, working and making a massive difference for families on the ground. That is what we need here.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_51" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:30:00+01:00"/></from>
+          <p eId="para_110">On the one-stop shops, AsIAm has proposed to establish a new model of support called a one-stop shop. This, as the Deputy stated, was successfully implemented in Scotland in 2005. One-stop shops provide a focal point in the community for autistic people and their families to access guidance and support. AsIAm has signed a lease at Swift's Alley for the one-stop shop east premises.</p>
+          <p eId="para_111">That serves Dublin south, west Wicklow and Kildare. It is finalising a lease in Galway. The one-stop shop west is now operational in a temporary premises provided by Ability West in Tuam. It is actively meeting the community on co-designing future offerings in its permanent premises. It is in training and service development. We funded two CHOs in relation to that.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_52">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_112">So fully committed funding is in place for those two one-stop shops. Is there a commitment going into the HSE budget for 2026 for the other regional one-stop shops that we have committed to in the programme for Government?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_53" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_113">AsIAm was funded. It got €204,500 from the HSE under a section 39 grant aid agreement in 2022. In 2023, it received €250,000 under a section 39 grant aid agreement with the HSE. In 2024, it received €542,974 from the HSE under a service arrangement. In 2025, it has received €642,974 in funding from the HSE. Discussions on that are ongoing. As these are rolled out, they are then ready for funding. It is like everything else: when there are plans in place, we can fund it.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_54">
+          <from>Deputy Micheál Carrigy<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_114">Once there is a commitment in place to fund them-----</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_55" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_115">There is, yes.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_56">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_116">I thank the Minister of State for her opening statement and briefing documents and for being here this morning. Assessments of need and the workforce relate to an issue I have raised before. A pathway has been made available for people who train in England to be occupational therapists. It is typically a quicker pathway to register and be recognised by CORU when they return to Ireland. That has not been done for speech and language therapists. I gave the example of a young woman who studied, got a master's degree and became a fully qualified speech and language therapist in Scotland. She came back to Ireland in June 2024; by March 2025 she still had not CORU recognition. She came to me at that point. Unfortunately, she has since gone to London.</p>
+          <p eId="para_117"> I ask that the same pathway be looked at for speech and language therapists. It is a shame they come home fully qualified and willing, ready and able to work but are left sitting at home and end up leaving when we really need them.</p>
+          <p eId="para_118"> On the assessment of need and the detailed needs it gives for a child going to school, I appreciate it relates to the Department of Education and Youth and to special education but the children with additional needs suffer. I have had several calls from parents who get an assessment of need, are told their child needs a one-on-one SNA, the SENO makes the recommendation and then they do not get the SNA. I have had several cases of that. I ask that the Minister of State engage with the Minister for education on that, please.</p>
+          <p eId="para_119"> There are huge issues with accessing the primary medical certificate. The parameters and criteria are extremely rigid and mean people with genuine need are not able to access it. That has detrimental impacts on their independence, particularly when they live in rural areas and have extremely limited access to transport. I understand this is with the Department of Transport and it is developing the new scheme but I ask if the Minister of State has fed into that and can provide an update on it.</p>
+          <p eId="para_120"> In our healthcare area, we met with HSE management last week and they raised an issue regarding respite for children, which is at capacity in Galway, Mayo and Roscommon. They have made a business case and I want to flag that with the Minister of State. When I met the Brothers of Charity's Galway and Roscommon manager, she sat there going through the list. The Brothers of Charity has had a cut in funding of about €8 million nationally, I am told, and it is having a serious impact in Galway and Roscommon. She was going through the list to see where she could give a little bit of respite here and there. That is no way to deal with respite. Ahead of the budget, I ask that a focus be put on respite for children and adults.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_57" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_121">The first issue the Deputy raised was around occupational therapists, speech and language therapists and CORU. These are some of the conversations we are having at meetings of the Cabinet subcommittee on disability. The Minister for Health, Deputy Carroll MacNeill, has met with CORU on speech and language therapists and occupational therapists because it all feeds into the assessments of need and access to therapies. Work is under way on that. It is a huge issue. The Deputy is absolutely right we need to expedite the process of qualification for somebody well qualified from another country when they are ready to engage and work in CDNTs, schools, etc.</p>
+          <p eId="para_122"> The primary medical certificate was raised earlier and the Deputy is correct. I think we all have examples of people coming into our constituency offices who want to live independently, drive themselves to work and do the normal things everybody else does. It was reviewed by the Department of Finance and is with transport now. As part of our national disability strategy - I come back to that all the time - there are certain levers I, as Minister of State with responsibility for disability, can pull. That is where the Cabinet committee will work. The action plan will be implemented alongside the national disability strategy. Every Minister has disability in his or her area, whether it is the Minister for Finance, Minister for justice, Minister for Health or Minister for education. We need to see that level of ambition. It includes the primary medical certificate, which is not working as efficiently and appropriately as it should. Work is happening on that.</p>
+          <p eId="para_123"> I want to say generally on the assessment of need that people do not need an assessment to get an SNA. These are examples of unnecessary demand on the assessment of need process. That is feeding into the waiting lists. People feel it is required when it is not. That is another area we are looking at within the assessment of need process. It is about recruitment drives and getting more speech and language therapists and dieticians, but it is also looking at which Departments are inadvertently or indirectly asking for an assessment of need when it is not required. That is putting unnecessary pressure on the system. Therapists are carrying out the assessment and not spending their time doing therapies, which is what people ultimately want.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_58">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_124">On that, I have specific examples. I met a parent last Friday in my office in Ballaghaderreen. Her child got the assessment and it recommended a one-on-one SNA. The SENO also recommended that and then the school did not get the SNA. People go to the trouble of getting the assessment, which is not easy, and the assessment says X, Y or Z and then it is not provided. There is an issue there and I asked that the Minister of State look into this with the Minister.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_59" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_125">The Minister will be engaging in her own Estimates process for extra resourcing around this. The NCSE has been resourced but I absolutely take the Deputy's point. Have I answered all the Deputy's questions?</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_60">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_126">The last one was on respite.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_61" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:40:00+01:00"/></from>
+          <p eId="para_127">Respite has grown steadily in recent years. I know we have issues across the country. There was a year-on-year increase of nearly 10,000 overnights and 20,000 day sessions in respite in 2024. Some 7,000 people were supported by over 65,000 day respite sessions and over 160,000 respite overnights. We still have a very large unmet need. Respite is in many cases interconnected with residential care. Parents in our constituencies are burned out and they want a break for one or two nights. It is not just for the parents; it is for the person with the disability as well. It gives them independence and a change of scene where they learn new life skills. They have an opportunity to get away. I was in Cork at a fantastic respite facility. I met a lovely young man who said it was like a holiday for him. I could just see the benefit for him, but also for families across the country.</p>
+          <p eId="para_128"> To answer the question, as part of my Estimates process, I want to continue to increase funding for respite and residential care. It is not just alternative respite. The overnight side of this is really important. Alternative is really good and I agree with it but the Deputy and I know that plenty of people want to attend a family wedding. That is an overnight event so we need to make sure we are forward planning across the country.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_62">
+          <from>Senator Maria Byrne<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_129">I was not here when the Minister of State made her opening statement but I did read it. I was next door at the health committee, which sits at the same time unfortunately. I want to follow up on a few things. I want to continue the conversation on the primary medical certificate. I know of a lady in her late 80s who sought it recently. There was a hold-up to do with there being no board or chair at that time and she was refused. The lady walks with a stick. She has multiple difficulties. I believe there needs to be a review of the entire primary medical certificate process and who should qualify for it. I do not know what people have to do to qualify for it. There are people who are very deserving of it.</p>
+          <p eId="para_130"> The Minister of State mentioned assessments of need and the shortage of therapists in her opening statement. Are there plans to address this? How will the number of therapists be increased. In the CHO area I am from, which is CHO3, there is a huge shortage. Recently I met a lady who has been permanently in a wheelchair for many years. There seems to be a waiting list for getting wheelchairs repaired. There is also a waiting list for access to a disability wheelchair. These are things we would think should be a priority for people, especially if they are dependent on a wheelchair to get around. The Minister of State may not have the answer today but maybe it is something she could look at.</p>
+          <p eId="para_131"> Another issue raised with me is the shortage of disability taxis. The Department of Transport gives grants to people to convert their taxis for people with a disability but I have had queries from people in Limerick and in Louth on the shortage of disability taxis. Someone in the midlands also brought it up with me. It seems to be an overall problem.</p>
+          <p eId="para_132"> With regard to long-term disability care and residential care, I know a family where a young person who has a disability was living with their mother but can no longer do so because the mother has ended up in a permanent home due to illness. There is nobody else to look after this person. The person was going to work and learn every day in a centre. They were very happy in their circle of friends. Now they have been moved to a long-term disability care centre in Tipperary. No offence to Tipperary but this person does not know anybody there. I know we cannot have a full-time residential care centre on every street corner but if we could keep people in the area in which they are accustomed to being, they could go to work every day and attend the services they are used to attending. Having to pull out somebody in their early 30s and change their whole pattern of work and living is something that needs to be looked at.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_63" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_133">I thank Senator Byrne. On the primary medical certificate, the position is that disabled drivers, including primary medical certificates, are a matter for the Department of Finance. It has carried out a review, which will be progressed under the national disability strategy. The Department of Transport will also look at this. Senator Byrne is absolutely correct. As we have all said earlier, we all have examples from our constituency offices where we feel somebody should be getting this to empower them and to ensure they have their independence like anyone else.</p>
+          <p eId="para_134"> The Department participated in a senior officials' group which examined transport supports for persons with a disability. This will be taken forward under the national disability strategy by the Department of Transport and the Department of Finance. This is what the strategy is about. It is not just one Department of disability doing things. The levers are with other Departments also. The Cabinet committee on disability will make sure these silos are starting to work together.</p>
+          <p eId="para_135"> I am doing a number of things on the assessment of need process. We are trying to make the process more efficient and that we have more therapists coming into the system. An extra 150 therapists went through our third level colleges last year and we want to ramp up the number again this year. This is a whole-of-Government approach to making sure we are including everything we can to increase supply. We want to stop the demand for assessments of need where they are not required. At times there are certain Departments that inadvertently or potentially ask for an assessment of need for a service when it is not needed. This needs to be eliminated.</p>
+          <p eId="para_136"> Senator Byrne mentioned issues regarding disability taxis for transport. Again, this is an important issue. I know the challenges with changing the existing fleet through regulation. Incentives were provided to encourage more taxi drivers to take up accessible taxis. This will also be part of the strategy with regard to transport issues for persons with disabilities. It is an area we need to look at for them.</p>
+          <p eId="para_137"> Senator Byrne mentioned a very important issue, which is someone going into long-term residential care who should not really do so. They should be prevented where they have their own lives and a day service in their local community. Because of an emergency situation they were sent to residential care, away from their own community where they do not know people. This is exactly the type of issue I want to deal with, regarding forward planning, to ensure we budget for residential respite and day services to keep people out of residential care. We do this through empowering them through transitions.</p>
+          <p eId="para_138"> I previously had responsibility for special education, and there are transitions from primary to post-primary and then onwards. This raises the question of a special school, training, a day service if that is what people want, or education. It is about enabling and empowering young people to live independent lives and to move into education, training or whatever it is they want to do. This keeps people living independently for longer. The Department of housing will have a role in this to ensure we provide more housing for persons with a disability. It is also empowering our service providers, including the HSE and section 38 and section 39 organisations in the voluntary sector, to be able to plan. We need to fund this to keep people out of long-term residential settings if they do not need to be there.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_64">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_139">I thank the Minister of State for coming before the committee and I thank her officials and advisers. I apologise for having to leave as I had to go to the health committee. I am sorry if the Minister of State has addressed in her previous contributions some of the points I will make. I ask her to forgive me in advance for this. I congratulate the Minister of State on her appointment.</p>
+          <p eId="para_140"> On the situation for disabled citizens, if ten was Utopia and their needs were adequately met, and if one was a crisis of international proportions, where does the Minister of State with responsibility for disabilities think our disabled population is on that spectrum?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_65" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_141">We have increased funding over the years but it is coming from a low base. We have €3.2 billion in the 2025 budget for disability but, as I said, we have so much more to do and so much more to fund. This is a top priority for the Government and we need to make sure we get it right. The only way we are going to get it right is to make sure we continue to engage with those disability groups and those with lived experience. The national disability strategy, which is at the final stages of its development, is not just a strategy that will sit on a shelf. There will be implementation, oversight and accountability on it.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_66">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T10:50:00+01:00"/></from>
+          <p eId="para_142">In terms of funding, the metrics and all of the statistics going with it, and the lived experience of disabled citizens, from the Minister of State's consultations with disabled persons' organisations, service providers and disabled people, how would she describe their everyday conditions of living and their experience of being a disabled person in Ireland?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_67" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_143">The DPOs and the disability groups are good and constructive advocates. They have helped me in my role and they have had huge engagement with the Department before I came into the role.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_68">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_144">What kind of language or adjectives would the Minister of State use to describe the experience of being disabled in Ireland?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_69" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_145">As I travel around in this role, and in previous roles, I know there is a lot of frustration, for example, in families. I meet parents in particular who speak to me about getting access to services. I am acutely aware of that.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_70">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_146">I thank the Minister of State. So she appreciates that parents and carers are in crisis in almost every measure of our lived experience. I am glad she got that sense.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_71" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_147">Absolutely, yes.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_72">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_148">Mention has been made of the budget of €3.2 billion. The committee had a presentation from the Australian National Disability Insurance Scheme. Australia has a population of 22 million and it spends A$22 billion on disability. When we covert Australian dollars into euro, they are probably spending the equivalent of €4 billion per annum in Ireland. Every disabled citizen in Australia gets not just one assessment of need but an assessment every 18 months, in particular during the adolescent years or as their condition changes. They get a repeated assessment of need and personalised budgets. It is not perfect by any means but their needs are met and they can live independently and autonomously.</p>
+          <p eId="para_149"> Does the Minister of State think we are getting value for money for the spend of €3.2 billion, given all of those sub-optimal outcomes for disabled citizens in Ireland?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_73" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_150">It is funny that Senator Clonan mentions Australia, as I met with the Australian minister and the minister from New Zealand at the United Nations conference on disability in New York. We had conversations about what was working well over there and what we can learn. I travelled to the UN with many DPOs. The representatives of the disability sector in Ireland who were part of the conference were excellent.</p>
+          <p eId="para_151"> We must ensure we get value for money. What I found when I came into the Department was that in order for me to deal with the Department of public expenditure I need to know the cost of a residential bed. We all know that we need to do more and invest more. I will pre-empt my budgetary negotiations: I will be increasing the budget for disability. We must also make sure that we get value for money on the ground. For example, if we take the cost of a residential bed in Cavan, we need to know why it is different in Cork. We must also make sure we get value for money.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_74">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_152">I thank the Minister of State very much. Given a similar spend for Irish disabled citizens, the outcomes are dramatically different from the outcomes for disabled citizens in other jurisdictions. The Minister of State sits at the Cabinet table. My Disability (Personalised Budgets) Bill, which would move us more in the direction of autonomy and empowerment for disabled citizens, has been time delayed by 18 months on the recommendation of the Cabinet. Could the Minister of State tell me what is the reason for that?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_75" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_153">The Minister, Deputy Foley, dealt with the Bill in the Seanad. A review is taking place at the moment. It is not that we object to the Bill. In fact, that was part of my conversations when I was at the UN with the Australian minister. We want to do this, but a review is under way. A pilot was put in place and we want to see how it is has worked. We want to make sure that we get it right.</p>
+          <p eId="para_154"> In my discussion with the Australian minister, there were positives and negatives, and what might work in one country might not work here. We want to make sure that we get it right. There is a commitment to it.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_76">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_155">Is the reason for the delay that there is a review? As I said to the Minister, Deputy Foley, last week, 18 months is unreasonable. Six months or even a year should be sufficient time for a review to take place. A delay of 18 months is nothing to do with the actual timeline of the review on the ground but it is more to do with a conservative ideology in the Departments of public expenditure and reform and Finance that does not see a role for the State in financially supporting disabled citizens on a rights basis. Subsequent to the referendum, the legal advice of the Attorney General was not to give disabled people socioeconomic rights. Why is there this conservative ideology in Ireland? It does not exist in other jurisdictions in the EU.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_77" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_156">Disability is a top priority. At our first Cabinet meeting in Áras an Uachtaráin, the Taoiseach and the Tánaiste said to all the Cabinet Ministers around the table that they have disability in their brief and if they do not know what it is they should go away and find out. That is the priority the Government has given to this issue. I sit on the Cabinet committee. The Minister for Finance is also on it, as is the Minister for public expenditure. This is not going to work with just one Minister. We need the financing behind this. We have increased the budgets. I am not for one minute saying this is perfect. What I am sincerely telling Senator Clonan is that there is a concerted effort across the Government. It will not be easy, because sometimes if it was just about funding it would be easy, but it is about the structures and about Departments from the top down and bottom up working together to ensure that children and adults with disabilities have access to the services they need so that they can live independently. This is not going to happen in the next six to 12 months, but the national disability strategy is a plan out to 2030. I have no doubt it will be challenging, but the Senator has my absolute commitment that it will be funded. It will not be all the funding we need straight away but it will be increased to make sure we roll out the strategy.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_78">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_157">I thank the Minister of State very much for her responses. I apologise that I was not here earlier. I know that there is pushback from members of the Cabinet. I am reassured to hear the Taoiseach is advocating this because the people are ahead of the more conservative elements in Cabinet. The result of the referendum on care in particular shows that there are votes in this. Apart from-----</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_79" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_158">This is about doing the right thing.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_80">
+          <from>Senator Tom Clonan<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_159">Apart from the altruistic reasons for doing this, I would say to the Minister of State's more conservative colleagues that there are utilitarian reasons for doing this as well. That is not personal to the Minister of State. I really appreciate her frank and candid responses.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_81">
+          <from>Deputy Martin Daly<recordedTime time="2025-07-02T11:00:00+01:00"/></from>
+          <p eId="para_160">I also apologise for being late. Unfortunately, the health and disability committee meetings clash, which is a pity because they are equally important.</p>
+          <p eId="para_161"> The figures for Ireland in relation to disability in terms of poverty, health, mental health, employment and housing do not make good reading based on international comparisons. We are starting from a very low base. I missed the Minister of State's statement, but I fully accept her commitment and that of the Government to improving things. The Taoiseach, Deputy Martin, has put this at the heart of things, as has the Minister, Deputy Foley. I know it is going to take a multidepartmental approach.</p>
+          <p eId="para_162"> One of the areas I am increasingly concerned about is people living with disability who are getting older, whose parents have been literally abandoned by the system. I do not know if the abandonment is done with intent but it is certainly done with neglect, which I know is a strong word. I refer to parents who have willingly committed their whole lives, sometimes with minimal support from the State, to look after their children with disabilities. As they advance in years, they have no certainty or pathway to plan for a seamless transition into either independent living or sheltered living. We have learned from the nursing homes debacle that too often there is a binary choice: one is either at home or in full-time care in a nursing institution. We know people have been in inappropriate nursing home facilities because there was nowhere else for them to be.</p>
+          <p eId="para_163"> Do we have any plan for the ageing parents who might be watching this meeting, who live in daily anxiety as they get older? Their children with a disability may have been easy enough to manage when they were younger but it is less easy now. They may have behavioural problems and the parents may not be able to do it any more, physically or emotionally. What pathways are we going to provide to those people? In my experience as a GP I have about four or five pressing cases where we have older parents being pushed back by the agencies that should be engaging with them. Even if they cannot provide a pathway, they should at least show some sympathy for their position.</p>
+          <p eId="para_164">They were being pushed back to different doors and being asked to write letters repeatedly. The most stark example of that was an 80-year-old patient of mine who had her child, as he was, in five-day care. With high-dependency needs, he want into a community programme and was asked to leave it in the 1990s. They were told that residential care would be available if the budgets fell through. Budgets fell through after seven years. She was told eventually that the problem of residential care would be sorted out when she would die. That is exactly what happened. She broke her hip. She died on the operating table. The extended family, who had a 95-year-old father, came to me, and I told them they needed to stand back and hold up their hands. In ten days, it was sorted with residential care. Why are we not planning properly for this eventuality?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_82" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_165">Deputy Daly has given a really good example that we would have all had. I have parents coming to me in my constituency office of an older disabled child wondering what is going to happen to their child when they pass away. We cannot answer that question but we know they will be housed. It will become an emergency situation, which is not good. There is no clarity for the parents. That is why this national disability strategy will be so important.</p>
+          <p eId="para_166"> It will not just be a strategy. It is about transitions and there is work under way. When I was in special education, for example, transitioning from a special school or secondary school, if you have a disability, to education and to work - this is all related to what the Deputy is saying - somebody is not just in day care or residential after he or she reaches the age of 18 where he or she just falls off the cliff. We need to be working earlier with young people so that they are transitioning into whatever it is they choose, for example, a job. We have done work on the employment wage subsidy recently with the Minister for Social Protection, Deputy Calleary. This comes back in to every Department working on this where we are incentivising employers to employ people with disabilities and provide the supports there for them.</p>
+          <p eId="para_167"> We need to be forward planning in relation to residential care because we are all growing older. I am telling Deputy Daly things he knows well. We may all acquire a disability in time. People are living longer and we are not out of the woods in relation to that. We need to be looking at our housing for older people that will accommodate us all, including people with disabilities. As part of our special committee on disability, the Minister for housing is present. What I would like to see, for example, as we are building new estates, is that a part of those estates will be allocated for people with disabilities. This is the forward planning needed for service providers, who have the data, know who is coming down the track and know there will be a certain amount of independent living accommodation required in their particular area, that they could be planning now and we could be funding it now, and not putting it out always to the private sector where it is far more costly in many instances.</p>
+          <p eId="para_168"> To answer Deputy Daly's question in a roundabout way, he is absolutely on the money in relation to what needs to happen. Transitions from primary to secondary, the special school, the day centre into training will be important. Respite, giving parents a break, will be important too because sometimes it falls apart because they are burnt out and they have not had even the respite and overnights.</p>
+          <p eId="para_169"> This is the whole-of-government approach that we need to fund as part of this strategy. I would be happy to work with the Deputy in relation to particular issues that, as I know, are live right across the country.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_83">
+          <from>Deputy Martin Daly<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_170">I thank the Minister of State for her answer. The stark example was a mother at this present time who said that if I could check her into an acute psychiatric unit, would they look after her 45-year-old son? That is stark.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_84">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_171">I thank the Deputy and the Minister of State. Before we move on to round 2 if people want to come back in, I will make some very brief comments.</p>
+          <p eId="para_172"> Deputy Kehoe mentioned the issue of therapy dogs in schools. That is something we should be progressing as best we can. My local school, Corpus Christi, has a dog called Uni. It is fantastic to see how the dog interacts with everybody who comes into the school, especially the children and those with special needs. It is positive. It would be good to see that rolled out. I understand St. Michael's school in Limerick has one as well. I understand that is working really well there.</p>
+          <p eId="para_173"> The Minister of State also said, on the issue of assessment of needs, that it is broken and I agree with her. I think I speak for most people on the committee, if not everybody, when I say that the review that is taking place must ensure that the guarantees that families and children have are protected. I would imagine, without pre-empting anything we put into any of our documents or reports, that will be a feature in that. Unless the Minister of State wants to comment briefly on that, we will move on to round 2.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_85" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_174">In relation to the assessment of need, that will remain a statutory right for people. That is guaranteed. What we need to do is look at the process, make it more efficient and make the waiting times more efficient as well. We need to also look at hiring of speech and language therapists and occupational therapists, OTs, and also dietitians and social workers. It is not just therapists. There is a range. There are multidisciplinary teams required because at present we have the therapists in many cases carrying out the assessments and not enough time is being put into the therapies. I know the Cathaoirleach is aware of this. There is a lot of work happening around the assessment of need process to see how we can make is more efficient. I raised the point earlier about other Departments indirectly looking for an assessment of need where it is not required; where a person is eligible for a particular service and an assessment of need is not needed. We need to look at that area as well.</p>
+          <p eId="para_175"> The Cathaoirleach is correct on the therapy dogs. I have seen that in action. In a school, for example, it is not only that child; it is about the whole school community, the staff and other parents. I met one parent who has a therapy dog at home. Previously, they could not go out into a public setting, for example, to go shopping, because, unfortunately, the child was getting a negative reaction from the public. I am being very honest here. Once they got that the therapy dog, it was a lovely buffer for that child. They can just go out and enjoy social and cultural activities and people understand that dog is there for that child. It is a powerful example of other innovative ways that we can be looking at helping, not only children but people with disabilities. We have guide dogs for the blind and we can do the same in this space as well.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_176">I thank the Minister of State. We will move on to round 2 and go back to the rota the way we had it. The first person is Deputy Liam Quaide from the Social Democrats.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_87">
+          <from>Deputy Liam Quaide<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_177">The Minister of State mentioned retention issues in children's disability network teams, CDNTs, quite a bit and this was focused on by senior HSE management and the National Disability Authority in the committee's previous two sessions as well. I keep trying to draw attention back to the elephant in the room, which is primary care services for young people. It has not been about retention there. It has been about chronic under resourcing over many years. What is the Minister of State's understanding of the staffing problems in child and adolescent primary care services, how serious are they, how do they interplay, or not, with the challenges in CDNTs, and what are the solutions?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_88" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_178">One of the solutions is the one-door approach where no matter where you go, in through primary care, CAMHS or CDNT, you are not just referred over to another waiting list. That is something that Bernard Gloster is working on.</p>
+          <p eId="para_179"> This comes back to the strategy and the whole-of-Government approach. Primary care is the responsibility of the Minister for Health. I and the Minister, Deputy Foley, are responsible for CDNTs. Mental health and CAMHS is under the Minister for Health. That is where we need to be making sure that these multidisciplinary teams are behind that one door you go through and you get the services that you need when you need them in the timely manner.</p>
+          <p eId="para_180"> That is a very short answer to a really big issue. Part of it is staffing and access to these multidisciplinary teams. We talked about Coru earlier and for somebody who is coming from abroad, that we can make sure that they are qualified, upskilled quicker and it is not taking as long.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_89">
+          <from>Deputy Liam Quaide<recordedTime time="2025-07-02T11:10:00+01:00"/></from>
+          <p eId="para_181">I appreciate that it comes under health but there is such a close interplay between primary care and CDNTs because primary care has very large numbers of young people with disabilities.</p>
+          <p eId="para_182"> The reason I asked the question was because I raised the crisis in primary care waiting lists with the Minister of State's colleague, the Minister, Deputy Carroll MacNeill, in the Dáil yesterday. I raised the fact that children are being passed from one waiting list years' long to another with no intervention in sight, the fact that there has been a stranglehold on recruitment in primary care services for young people due to the pay-and-numbers strategy and the recruitment embargo prior to that, and even before that, at least in some parts of the country, for years. I also raised the fact that, in Dublin and the North East health region, the situation is so bad that the longest wait time currently is that of a child initially referred to disability services nine years who now faces another wait of unknown duration for primary care psychology.</p>
+          <p eId="para_183">I set that out and the Minister's response was to quote figures referring to general increases in primary care staffing in the context of the pay number strategy. If I was a clinician working in one of these services in Dublin or Cork where the waiting lists are particularly grave and where recruitment has been so restricted for years - that is an objective fact - or if I was a parent whose child was on one of those epic waiting lists, it would not be an exaggeration to say that the response would have felt like either a form of total detachment from this crisis or a kind of gaslighting. It was almost as if, what are people complaining about we have had such an increase in staff? Meanwhile, in Cork and Kerry, the waiting list figures grew for young people in primary care in psychology from 5,000 in May 2024 to 6,500 a year later. The 5,000 figure was strongly highlighted by my colleague, Deputy Cairns, at the time. The reason that waiting list grew was largely because the service was prevented for much of that time by the pay number strategy from recruiting. I agree single point of access has merit, but it will not paper over the cracks of a failure to resource. The problem now is primary care services are so gutted in some parts of the country that there will be a retention crisis as well. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_184">If the Deputy wants a response-----</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_91">
+          <from>Deputy Liam Quaide<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_185">Clinicians will not be attracted into it. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_186">It is going to be particularly tight in the second round if the Deputy wants the Minister of State to respond.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_93" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_187">This is a matter for the Minister for Health but we are all connected when it comes to that single point of access. I wish to point to the topic of therapists in schools for children. We are now ramping this up. I would like to see that connection between the in-school therapists, the CDNTs and the multidisciplinary team when we are going into schools with the highest needs. This will start in special schools and then rolling it out to the mainstream schools. I am now jumping ahead a few hurdles. Children will have access to the services they need. It might not be a speech and language therapist. It might be a psychologist. It might be a dietician. It might a social worker. People think it is a speech and language therapist, but I have spoken to therapists and they might go into a school but it is a social worker that is needed here initially. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_94">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_188">I welcome Councillor Donna Sheridan from County Mayo, who is one of our local authority disability champions. Her interest is appreciated.</p>
+          <p eId="para_189"> Today, I am meeting Carol Brill, who is chair of Usher Syndrome Ireland, which is commonly known as deafblindness. This is a life-altering condition that has unique needs. It affects between 260 people to 350 people in Ireland. Going back to 2015, Ms Brill came to Leinster House and spoke with the joint committee on health and children. At the time, they were seeking that deafblindness would be recognised as a unique disability. The committee under the Acting Chair, Mary Mitchell O'Connor, at the time, committed to writing to the then Minister for Health, Leo Varadkar, seeking recognition of issues on the provision of hearing aids. There has not been any movement since 2015. It states in the UNCRPD that deafblindness has unique difficulties given its dual sensory loss. It impacts communication, inclusion, accessibility and equity given that its sufferers can experience tunnel vision, night blindness, hearing loss and balance issues. I am meeting them today. I understand the Minister of State might not be overly familiar with this but by recognising Usher syndrome as a unique diagnosis it would give people better access and tailored supports. It would also strengthen the case if they needed to bring any issues under the new optional protocol that we have ratified. Are there any plans to include this in the national disability strategy? Does the Minister of State have any general comments? I understand that I am springing this on her. </p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_95" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_190">I am happy to engage with the Deputy relating to that. At a general level, where a person has a disability, and I have different groups coming in to me, we want to see they have access to those multidisciplinary teams. If there is something specialist - I am not an expert in the area and maybe something else is required in that space where if a person needs the services - they get access to them within the community. We assess disability status on functional need. That is the basis. It is not a prescriptive list of conditions. There is no impediment for conditions and access to supports. What the Deputy and the group wants is the access to the supports they need when they need it.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_96">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_191">They specifically want recognition as a unique disability. That is also echoed within the UNCRPD. We maybe can work with them after I meet them today and follow up on that commitment.</p>
+          <p eId="para_192"> Tusla is not necessarily under the Minister of State's remit as regards to disability. However, it does have children in its special care beds who are struggling with different disabilities and are not getting access to therapists. It is supposed to be a short-term placement. Their rights are very much stripped away when they go there. It is a last resort. Going back to that whole-of-government cross-departmental work, it would be good to take a look at that. Tusla will be attending the Joint Committee on Children and Equality in a couple of weeks. It is worth considering what support it might need for the children in its care who have disabilities.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_97" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_193">That would be a good opportunity to raise with Tusla and ask what the issues are. We can feed that up the line. The Minister, Deputy Foley, has responsibility over Tusla, as well as disability. It is about identifying the issues for Tusla and the access to what services to ensure we are aware of it. That would be helpful. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_98">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_194">I mentioned universal design last week. I feel like we have a long way to go. When I was setting up my own office, it is an afterthought or a special need if we want to put in an accessible toilet or other things. Where are we with the national disability strategy with changes to planning regulations or guidelines for universal design? </p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_99" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_195">Housing in the disability space is going to be part of this strategy. The Minister for housing, Deputy Browne, will be involved in that section of the strategy where there is going to be a step change on disability matters. There will be all kinds of housing there. The Deputy is right. At the moment, if your house is accessible it is accessible for a visitor, but not for someone who is living in the house. We need to be looking at all these areas. It is under discussion at the moment. It is near finalisation.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_100">
+          <from>Deputy Keira Keogh<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_196">It is important. Last week, I had a group up from County Mayo. For the changing place toilet, one of the members had to wait to go to the National Gallery because there was an issue with ours. It is a top priority. </p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_101">
+          <from>Deputy Gillian Toole<recordedTime time="2025-07-02T11:20:00+01:00"/></from>
+          <p eId="para_197">Is there a formal process for engagement with disabled persons' organisations and the follow-up across Departments? How might they be resourced?</p>
+          <p eId="para_198"> There was a matter of insourcing within the HSE that came out on the news this morning. Will that announcement affect the delivery of services if there is to be any investigation or suspension of services? I appreciate it is early in the day and the Minister of State may not be able to give any information.</p>
+          <p eId="para_199"> Are respite and alternative respite entirely at the HSE's discretion? Alternatively, if they provide data on the importance, suitability and positive outcomes of, for example, music therapy, equine therapy, drama, art therapies, etc., can the Department direct based on data that the funding it receives for respite must be provided for certain areas?</p>
+          <p eId="para_200"> One of pillars of the disability strategy relates to transport. Has there been engagement with the transport providers such as, for example, Bus Éireann? I happen to have a meeting organised for councillors from County Meath with Bus Éireann tomorrow.</p>
+          <p eId="para_201"> Can I get feedback on recruitment and retention? The CORU fee is seen by some as a barrier. It is €500 for speech and language. Is there anything that can be done on that? Something that I flagged previously is that Ulster University by comparison with the bursary scheme here, offer rent free and a relocation package.</p>
+          <p eId="para_202">There is a substantial amount in sterling for students from ETBs to move forward to pursue their college courses. I am just flagging it to add to the wish list.</p>
+          <p eId="para_203"> We discussed the possibility of a toolkit in the Oireachtas Joint Committee on Autism while the recruitment drive takes place and to support parents, children and teenagers to pull all of the resources together. The resources include the Enable Ireland website, the spelling to communicate method, applied behaviour analysis, ABA, the partnering in occupational therapy telehealth services, POTTS, programme, which is for dyspraxia and was developed with the University of Ulster, etc. For the previous five or six years, I have funded things locally myself out of my salary such as workshops for parents with OTs, dieticians and for emotional well-being, etc. Is there scope for something like that to be mainstreamed to gather data to provide evidence? I have said to anybody who I have worked with that they should gather their evidence, build anonymous case files and have it ready in the event it might be sought. Where can we go with that?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_102" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_204">I thank the Deputy. On alternative respite and who decides, data is really important but the HSE decides in conjunction with the Department. Alternative respite is really important. I am of the view that we also need overnight respite and we cannot just have one over the other. To answer the question, it is the HSE in conjunction with the Department. Respite is largely provided by section 38 and section 39 organisations, as the Deputy knows.</p>
+          <p eId="para_205"> On transport, we engaged with the National Transport Authority, NTA, which works closely with providers. It is in that context we work on transport. We will also work on it as part of the national disability strategy. The Minister for Transport will be engaging in this regard. When the national disability strategy is published, that is not the end of it. It is a living document and will be updated constantly. It needs to be flexible to respond to the needs of the day. It will be a plan out to 2030 but we need to constantly change it and engage with the disability sector.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_206">The Minister of State might come back to the Deputy with the other answers as she has run out of time.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_104">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_207">I also add my voice to what was said by Deputy Keogh on Usher syndrome. I recently met representatives of Usher Syndrome Ireland myself. There are obvious, very specific issues that relate to deafblindness and it is something that has to be built into planning. They need a voice and to be provided with a forum for their particular issues to be addressed. Some of them are very obvious, but planning is not always taken into account.</p>
+          <p eId="para_208"> To return to the assessments of need, I get what the Minister of State says about it has to be beyond dealing with the waiting list. However, on the waiting list specifically, the fact is we are looking at the possibility of 25,000 being on the waiting list, having failed on the delivery of the six-month timeline, the breach of law and all those other particular issues. On how this is being addressed, will 25,000 on the list be the case at the end of the year or is there a possibility it will be rectified to some degree?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_105" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_209">Work is ongoing with that. As the Deputy knows, the backlog of assessments of need is growing. It has increased from a low of just under 2,000 in 2021, when the preliminary team assessments were used, to almost 15,300 at the end of March of this year. The HSE has estimated the backlog could reach almost 24,800 applications by the end of this year.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_106">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_210">It has not moved?</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_107" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_211">That is their estimation. We have been looking at recruitment and retention issues, putting more therapists through our third level institutions, looking at therapy assistance and putting therapists into our special schools. We also have looked at recruitment drives, both domestically and internationally. Some Departments ask for assessments of need, indirectly or not, and drive that demand where there are people who potentially are on that list who do not need it to access the services.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_108">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_212">It is the figure that remains at the minute but obviously, it is the answer the Minister of State has given there and given previously. We all welcome everything that is being done from the point of view of-----</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_109" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_213">There has been an increase in the number of assessments of need carried out. There was a 30% increase of completed assessments of need in 2024 compared with 2023. Similarly, in the first quarter of this year, there was a 65% increase in the completed applications compared to the same period last year. Part of that is due to the private sector coming in and helping to carry out the assessments, which we have funded in the budget.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_110">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_214">We will use the private sector as much as possible.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_111" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_215">I cannot see a situation where we are not using the private sector. We have to use everything we can on this. We will resource our CDNTs and carry out recruitment drives but we will certainly need the private sector.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_112">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_216">I get that. I know some of this relates specifically to the HSE but have we any idea of a timeline for the single door scenario? What is the general timeline across Government for school therapies? It will be special schools and then autism units and so on.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_113" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_217">I am not trying to fob it off but on the single door access, that is a matter for Bernard Gloster. He will be reporting back to our Cabinet committee on where that is at. On therapists in schools, the Minister, Deputy McEntee, is rolling that out. I have an update here for the Deputy with figures on that one because the pilot is under the Department of education. I will come back to the Deputy on it as I cannot find it and I do not want to eat into the Deputy's question time. I can give him the education figures separately afterwards, if that is okay.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_114">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_218">That is fine. Obviously, we need delivery as soon as possible, along with the piece on assistive technologies. I know DCU are others are looking at it but all of that needs to be done. It goes without saying. Transitions cross multiple Departments and not just with schools. It is about reasonable accommodations for employment and all the rest of it and there is then the huge cost in relation to those with disabilities. Where does the Minister of State see that at the minute? I get that is a difficult question to answer in 30 seconds.</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_115" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_219">Employment will be a big priority in this disability strategy. We have already increased the wage subsidy scheme for employers. That is to incentivise them to take on more people with a disability. A culture change is needed there. From my travelling around the country and talking to employers who have employed somebody with a disability, it has transformed the culture within their business, as long as they feel they are getting the supports. Sometimes, there is a fear around it and that the placement might break down but there are support structures and good models there that we want to continue to roll out. I forget the Deputy's other question.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_116">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_220">Very quickly, on neurorehabilitation teams-----</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_221">No, that is a new question.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_118">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_222">I do not need a general one. I am talking about the north east-----</p>
+        </speech>
+        <speech by="#HildegardeNaughton" eId="spk_119" as="#Minister_of_State_at_the_Department_of_Children,_Disability_and_Equality">
+          <from>Deputy Hildegarde Naughton<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_223">I answered it earlier. There have been four rolled out across the country in the community.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_224">Nice try, Deputy.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_121">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_225">We need it in the north east. We are missing out on that.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T11:30:00+01:00"/></from>
+          <p eId="para_226">We have come to the end of round two. I propose we publish the opening statements to the committee's website. Is that agreed? Agreed. I thank the Minister of State and everybody for attending today and for their insightful contributions. We will now go into private session to deal with housekeeping matters. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee went into private session at 11.38 a.m. and adjourned at 11.56 a.m. until 9.30 a.m. on Wednesday, 9 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

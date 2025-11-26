@@ -1,0 +1,1322 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-01/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-01/debate"/>
+          <FRBRdate date="2025-07-01" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_foreign_affairs_and_trade"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-01/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-01/debate/mul@"/>
+          <FRBRdate date="2025-07-01" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-01/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_foreign_affairs_and_trade/2025-07-01/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-10" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="DonnchadhOLaoghaire" href="/ie/oireachtas/member/id/Donnchadh-Ó-Laoghaire.D.2016-10-03" showAs="Donnchadh Ó Laoghaire"/>
+        <TLCPerson eId="DuncanSmith" href="/ie/oireachtas/member/id/Duncan-Smith.D.2020-02-08" showAs="Duncan Smith"/>
+        <TLCPerson eId="FionaOLoughlin" href="/ie/oireachtas/member/id/Fiona-O'Loughlin.D.2016-10-03" showAs="Fiona O'Loughlin"/>
+        <TLCPerson eId="FrancesBlack" href="/ie/oireachtas/member/id/Frances-Black.S.2016-04-25" showAs="Frances Black"/>
+        <TLCPerson eId="GarretAhearn" href="/ie/oireachtas/member/id/Garret-Ahearn.S.2020-03-30" showAs="Garret Ahearn"/>
+        <TLCPerson eId="JoeOReilly" href="/ie/oireachtas/member/id/Joe-O'Reilly.S.1989-10-01" showAs="Joe O'Reilly"/>
+        <TLCPerson eId="JohnLahart" href="/ie/oireachtas/member/id/John-Lahart.D.2016-10-03" showAs="John Lahart"/>
+        <TLCPerson eId="MichaelMcDowellPD" href="/ie/oireachtas/member/id/Michael-McDowell.D.1987-03-10" showAs="Michael McDowell"/>
+        <TLCPerson eId="NoelMcCarthy" href="/ie/oireachtas/member/id/Noel-McCarthy.D.2024-11-29" showAs="Noel McCarthy"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="RodericOGorman" href="/ie/oireachtas/member/id/Roderic-O'Gorman.D.2020-02-08" showAs="Roderic O'Gorman"/>
+        <TLCPerson eId="SeanOFearghaillFF" href="/ie/oireachtas/member/id/Seán-Ó-Fearghaíl.S.2000-06-09" showAs="Seán Ó Fearghaíl"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM GHNÓTHAÍ EACHTRACHA AGUS TRÁDÁIL</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Foreign Affairs and Trade</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-01">Dé Máirt, 01 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-01">Tuesday, 01 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CathyBennett">Cathy Bennett</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#GarretAhearn">Garret Ahearn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#BrianBrennan">Brian Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#FionaOLoughlin">Fiona O'Loughlin</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#NoelMcCarthy">Noel McCarthy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JoeOReilly">Joe O'Reilly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh,+</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#KenOFlynn">Ken O'Flynn</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#SeanOFearghaillFF">Seán Ó Fearghaíl</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#DonnchadhOLaoghaire">Donnchadh Ó Laoghaire</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_16">
+                  <person refersTo="#DuncanSmith">Duncan Smith.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">+ In éagmais le haghaidh cuid den choiste / In the absence for part of the meeting of Deputy Cathy Bennett.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#JohnLahart">Teachta / Deputy John Lahart sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>General Scheme of Israeli Settlements in the Occupied Palestinian Territory (Prohibition of Importation of Goods) Bill 2025<recordedTime time="2025-07-01T15:00:00+01:00"/></heading>
+        <speech by="#JohnLahart" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:00:00+01:00"/></from>
+          <p eId="para_17">Apologies have been received from Deputy Bennett. Deputy Ní Raghallaigh will be substituting for her.</p>
+          <p eId="para_18"> I advise members of the constitutional requirements that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any members partaking via MS Teams to ensure that prior to their contribution to the meeting they confirm they are on the grounds of the Leinster House campus. Members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction. As witnesses will probably be aware, the committee will publish the opening statement on its website following this meeting.</p>
+          <p eId="para_19"> The way in which we operate in this committee with the timing is we have list. Witnesses will speak first. Members will then have seven minutes each, including questions and answers, which provides us with the opportunity for a second round. With the agreement of the committee, I will allow non-members in after the first round for three minutes and then we will go for a second round. Is that agreed? Agreed.</p>
+          <p eId="para_20"> I warmly welcome officials from the Department of Foreign Affairs and Trade for the pre-legislative scrutiny of the Israeli settlements in the occupied Palestinian territory (prohibition of importation of goods) Bill 2025. We are joined by Mr. Gerard Keown, assistant secretary and political director, and Mr. Declan Smyth, assistant secretary and legal adviser. We will hear Mr. Keown's opening statement, followed by a question-and-answer session with the members. I ask members to be concise to allow all members the opportunity to participate. We look forward to hearing from the witnesses on this important legislation.</p>
+          <p eId="para_21"> I remind our audience that pre-legislative scrutiny is an important parliamentary procedure that provides for the scrutiny of Government legislation and legislative proposals before the complicated drafting process is completed. It allows the Oireachtas, through its committees, to scrutinise draft legislation, to hold the Government to account and to make recommendations for improvements at an early stage in the drafting process. I invite the officials to make their opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:00:00+01:00"/></from>
+          <p eId="para_22">I am political director in the Department of Foreign Affairs and Trade. I am joined by the Department’s legal adviser, Mr. Declan Smyth. We welcome the opportunity to engage with the committee during its pre-legislative scrutiny of the Israeli settlements in the occupied Palestinian territory (prohibition of importation of goods) Bill 2025, the general scheme for which was approved by Government this day last week. The Bill, if enacted, will deliver on the commitment in the programme for Government to progress legislation prohibiting the import of goods from the settlements in the occupied Palestinian territory, following the International Court of Justice's, ICJ, advisory opinion. This is a matter of considerable interest in both Houses of the Oireachtas and to the Irish public as a whole. As the Tánaiste said in the Dáil, the Government is committed to delivering on this commitment. The programme for Government also sets out a commitment to pursue appropriate action at European Union level.</p>
+          <p eId="para_23"> Before coming to the general scheme of the Bill, I note at the outset that the Government’s view is that an optimal policy scenario would be appropriate action at EU level. This has been, and continues to be, a focus for engagement. The Tánaiste regrets that action at EU level has not yet been possible and that, in the circumstances, it has been necessary to move ahead of EU partners on a matter of such importance. The Tánaiste does, however, welcome that a growing number of EU partners share Ireland’s perspective that the European Commission needs to take concrete action to ensure that the EU’s approach to trade with Israeli settlements is compliant with international law. This was made clear in a letter addressed to the High Representative and the European Commission by the Tánaiste and eight of his EU counterparts on Thursday, 19 June. The Tánaiste also reiterated this point at a meeting of the Foreign Affairs Council in Brussels on 23 June. The Tánaiste will continue to press for follow-up action at EU level as a matter of urgency. Pending an adequate response at EU level, the Government has been prepared to advance measures at a national level.</p>
+          <p eId="para_24"> This Bill is intended to make provision in domestic law for the obligation on Ireland and all states to take steps to prevent trade relations that assist in the maintenance of the illegal situation created by Israel in the occupied Palestinian territory an obligation identified by the International Court of Justice in its advisory opinion of 19 July 2024.</p>
+          <p eId="para_25">The main purpose of the Bill is to prohibit the importation of goods into the State from Israeli settlements in the occupied Palestinian territory, including East Jerusalem. Any such importation will thereby become an offence under the Customs Act 2015, and the prohibition created by the Bill will also then engage the customs powers under that Act, including those relating to search, seizure and forfeiture.</p>
+          <p eId="para_26"> The scheme proposes to use the Israeli settlement postal code system currently employed by the European Union in differentiating Israeli goods from settlement goods in order to identify goods of settlement origin for the purposes of the new Bill. Under the scheme, these postal codes will be prescribed by way of statutory instrument to be made under the Bill by the Minister for Foreign Affairs and Trade, following consultation with the Minister for Finance. The scheme has been prepared having regard to the exclusive competence of the European Union in the field of external trade and the very limited basis on which an EU member state may adopt measures in that field.</p>
+          <p eId="para_27"> We look forward to engaging with the committee in further detail on the general scheme. The Tánaiste is acutely aware of the deeply held concerns in both Houses of the Oireachtas, and those of the public, regarding the Israeli-Palestinian conflict and the exceptionally high level of public interest in this proposed legislation. We are aware that this Bill may be viewed differently by some international partners.</p>
+          <p eId="para_28"> The Government is mindful of those views and concerns. However, this must be balanced against our international law obligations. The Government is clear that this is not a boycott or sanctions measure. It is about compliance with international law. As this legislation is progressed, pursuing an adequate response at EU level and communicating the Bill's purpose and motivation to external partners will continue to be priorities for the Tánaiste.</p>
+          <p eId="para_29"> I thank the members for their attention. My colleague, Mr. Smyth, and I will be happy to respond to the members' questions in our respective areas of competence.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_3">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-01T15:10:00+01:00"/></from>
+          <p eId="para_30">I thank the witnesses for their time. In my career before I entered politics, I did a lot of travelling and encountered a lot of problems. I was at the coalface when the tsunami came. I was out in Sri Lanka working in that area. I was also there when the Government there was overthrown. I was on the ground and saw the killings, the lootings and everything going on at first hand, but what is happening in Gaza is simply on a different level. It is complete genocide. It is mass murder. It is mass starvation. It is mass destruction of a state. Let us be clear, this is not a war. A war has two parties. We are talking about 76,500 deaths. We are talking about the deaths of 17,500 children, including 1,500 children under the age of one; 1,500 children who were born and shot before they could walk. This is ethnic cleansing at the highest level. It is easy for us all to say here today that we are all against this, but we have to take the lead. That is why this Bill is so important. We all know in a monetary sense this Bill will have a minimal impact but the optics and the support the people of Palestine need to be shown is simply priceless.</p>
+          <p eId="para_31"> I am new to politics. I am in it months rather than years, but the most engaging conversation I had in my life were the two-a-half-hours in this room and outside with a delegation of Palestinian people and their ambassador to this country. I was heartened by it. I will not say I was surprised, but it was great to see they recognised the lead Ireland was taking and the support Ireland was giving. However, we cannot just stop there. What we do about Gaza will define us, every member in this room and every Member in Leinster House. We must continue to put the pressure on.</p>
+          <p eId="para_32"> When we spoke to the delegation they had five issues. The first was a ceasefire and to get food and medical supplies in there. Second, they want us to continue to keep the pressure on the EU at the highest level and to look at the EU-Israel trade agreement. I know this Bill deals with the occupied territories and it is a tiny factor in that, but it is about keeping pressure and awareness there. The third issue related to the settlers and is important. They are moving into East Jerusalem, Gaza and the West Bank daily and the way they are moving in is horrific. The fourth issue they wanted us to address is the tariffs in their country. The have tariffs of 3% but realistically they are getting charged 66%. They used a great quote when in this room that now they are being taxed on everything by a multitude of what they were being taxed before. The only thing they are not being taxed on is the air. Those are their words. Finally, please God when it comes to this stage, they will need help with the rebuild.</p>
+          <p eId="para_33"> I am all for this Bill. I would love to see services included. We are taking about amounts of money, but we have to respect legal opinion. There is no point in producing anything unless it is legally watertight or else we are going to be back here in six months and will have wasted our time. We need help from everyone, including the witnesses, to see how we can include services. We have one go at this. How we do this will define us. It is a small step for us but it is a huge step for the Palestinian people. I read the newspapers published in Jerusalem. This meeting is being reported on. Let us stand up and be counted. I am looking for the witnesses' help on how we can try to get this through and, I hope, include services, if it legally possible.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:10:00+01:00"/></from>
+          <p eId="para_34">What is Deputy Brennan's question?</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_5">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-01T15:10:00+01:00"/></from>
+          <p eId="para_35">How can we legally include services? I know it is with the Attorney General. If that is rejected, have the witnesses any advice on how we can proceed?</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:10:00+01:00"/></from>
+          <p eId="para_36">I will address the legal issue in relation to both services and goods. As my colleague, Mr. Keown, explained, we are operating in both fields, goods and services, which, as regards external trade with states and territories outside the European Union, fall within the exclusive competence of the European Union. There is a very limited scope for member states to take measures in either field. The Treaty on the Functioning of the European Union is clear that where the Union has exclusive competence in a field, the member states are not entitled to adopt legislation or legally binding measures without being empowered to do so by some European Union legal Act. In the case of goods, there is an opening. We have identified a public policy exception in European Union regulation which controls imports of goods and allows member states to adopt prohibitions on the import of goods for public policy reasons. It is on that basis that this scheme proposes to prohibit the import of settlement goods. There is no similar broad public policy exception relating to external trade in services.</p>
+          <p eId="para_37">For that reason the Tánaiste has asked the Attorney General to look at that question. When the Tánaiste, who at the time was Taoiseach, asked the Attorney General to look at Senator Black's Bill last year, his advice was that if that Bill were limited to the prohibition of importation of settlement goods, it was a much more defensible basis on which to act at the level of European Union law. While there still remained a legal risk of infringement proceedings being taken against the State, it was a much more defensible proposition for the Government. On that basis, the Government has now come forward with this present scheme. The Attorney General is looking at what basis, if any, there may be in European Union law to deal with the question of services and he will have advice for the Tánaiste as soon as possible.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_7">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_38">I wish to pick up on Mr. Smyth's last point. Has the Department provided an opinion to the Attorney General on services? Has it provided its own internal departmental legal advice to the Attorney General for him to make his own opinion on or to feed into those deliberations?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_39">The short answer to that is "No". Our role in the legal division of the Department is to identify legal issues. The Attorney General, when he provided advice before Christmas, advised that there was a public policy exception in respect of goods and that if Senator Black's Bill were narrowed and limited to the prohibition of importing goods from settlements, that was a more defensible basis on which we could act having regard to EU law. As the Deputy knows, the programme for Government commits to introducing legislation to prohibit the importation of settlement goods and this scheme delivers on that commitment. Since the scheme has been prepared, the Tánaiste also asked us to look at the question of services. The Department has identified a certain number of legal issues that require consideration in relation to services and those are now with the Attorney General.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_9">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_40">The ICJ advisory ruling of last year certainly precipitated a shift in how the previous and current Governments have dealt with this issue. Last July, the ICJ found that states were under an obligation to prevent trade with the settlements. In September, Ireland co-sponsored a resolution at the UN General Assembly that recognised this obligation and that was passed. Does Mr. Smyth accept that the obligation on Ireland under international law to prevent trade would cover trade in general and would not make a distinction between goods and services? Much of the language of the ICJ ruling is included in the general scheme.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_41">There are two aspects to that. Not all states agreed that in order to prevent trade, it was necessary to actually prohibit it. That is a discussion we have with our partners internationally. Even those who are most keen to take action in this field have issued guidance or instructions to state-owned enterprises not to engage and trade with the settlements. There is a discussion as to whether the obligation to take steps to prevent trade requires a state to actually prohibit it. The Government's view is that the most effective way of doing that is to prohibit it. In Ireland's case and the case of all EU member states, exclusive competence in the field of external trade both in goods and services rests with the Union. In order to act lawfully within the Union's legal order, we need to find a basis on which to do that at a national level. As Mr. Keown has said, the Government's preference and view is that it would be a far more effective method of dealing with this for us to act at the level of the European Union.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_11">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_42">Would Mr. Smyth accept that the heads of Bill may not be fully compliant with the obligations to prevent trade as per the ICJ ruling?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_43">I would not. We are subject to a number of legal obligations, including our obligations as an EU member state. The Bill tries to find a path between those obligations. The fact that we are taking certain measures at the domestic level does not preclude action at the level of the European Union.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_13">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_44">I thank Mr. Smyth and I might turn to Mr. Keown. In answering my previous question, Mr. Smyth mentioned that the Government believed this was the more defensible way to move forward. While it may say that decision is based on legal advice, is this more of a political decision to go this way? Is it something that the political division of the Department of foreign affairs has fed into in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_45">I thank the Deputy for his question. The Government has always been clear that it will pursue two tracks in parallel. It would pursue action at EU level on the basis that action encompassing all 27 member states would have a much greater impact than that of a member state acting alone. For that reason, the Government has consistently called on the European Union and, in particular, the European Commission to bring forward proposals to bring the Union as a whole and its member states collectively into compliance with international law as clarified by the advisory opinion. The week before last, the Tánaiste was party to a joint letter by nine member states - a tenth one joined in the room at the Foreign Affairs Council - calling on the European Commission to bring forward detailed proposals as to how the EU as a whole and its member states could be in compliance with the recommendations in the advisory opinion. It made specific reference to trade with illegal settlements in the occupied Palestinian territory. At the Foreign Affairs Council meeting on 23 June, this was discussed and the High Representative said that she would ask the European Commission to carry out a review on the basis of that letter. The Tánaiste and the wider Government will be following this extremely closely and will be pressing the European Commission to do this. The Government has consistently called on the Commission to do this for many months. We look forward to seeing the outcome of that review, including proposals for concrete action that can be taken at EU level. Then the question will be as to how that can be agreed at EU level. In the meantime, the Government has been clear that pending an adequate response at EU level, it is prepared to take action at a national level, and the way it is doing so is the draft Bill before the committee today. The Bill has been framed in the way that has been explained by my colleague Mr. Smyth because of the need for us to comply with two different sets of legal obligations.</p>
+        </speech>
+        <speech by="#DuncanSmith" eId="spk_15">
+          <from>Deputy Duncan Smith<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_46">I have a really quick question that may have a short answer. In this area in recent months, have any other foreign diplomatic services contacted Mr. Keown at his level or grade to seek advice as to how they could develop a Bill?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_47">We have been contacted by and have been in contact with a number of EU member states and like-minded countries to share information on the approach the Government is taking in the general scheme, which of course is now a public document. As the Tánaiste has said, including this morning in remarks to the media, it is the Government's hope that other countries will follow the lead that Ireland has taken in pursuing measures of a similar nature in their own jurisdictions. We have to wait to see if that happens.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_17">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_48">The next speaker is Senator Stephenson, whose voice is a little challenged today. If she cannot throw it substantially, she may be ably assisted by Senator Higgins. We will give it a go.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_18">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_49">I would like to ask about the Attorney General's advice. I want to make a clarification. The Attorney General's advice was actually leaked and he did not say that goods were more defensible. I just want to make that point. Can the witnesses understand me?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_19">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_50">I ask the Senator to repeat that.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_20">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_51">He did not say that goods were more defensible. Does trade as per the ICJ ruling, meaning goods and services in the opinion Ireland-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_21">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_52">Senator Higgins might repeat that.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_22">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_53">Under the ICJ ruling, does trade mean goods and services in the opinion of Ireland? I think it is a question.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_23">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_54">There are two questions.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:20:00+01:00"/></from>
+          <p eId="para_55">Sorry. I wanted to let the Senator finish.</p>
+          <p eId="para_56">Yes, trade is trade in goods and services.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_25">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_57">In that context, does Mr. Smyth accept that the heads of Bill are not fully compliant? They cannot be compliant because they do not include services.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_58">No. As I explained to Deputy Smith, there is an obligation, in our view, to prevent trade in goods and services but, as a member of the European Union, we are subject to EU rules and so-----</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_27">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_59">With regard to EU law and international law, does EU law trump international law or is there a hierarchy with regard to whom we are beholden?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_60">The European Union is bound by international law, so the objective is to reconcile the two. This is what the Government is trying to do.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_29">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_61">So, international law trumps EU law.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_62">No, they have to be reconciled. The European Union is required under the treaties to comply with international law.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_31">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_63">The Long Title of the Bill lifts language directly from the advisory opinion of the ICJ. It states that the Bill is to provide compliance by the State with its international legal obligation. It reads: "... to take steps to prevent trade relations that assist in the maintenance of the illegal situation created by Israel in the Occupied Palestinian Territory". However, two specific words have been deleted from the ICJ's wording. The ICJ held that states were obliged "to take steps to prevent trade or investment relations that assist in the maintenance of the illegal situation created by Israel in the Occupied Palestinian Territory". I am interested to know why the word "investment" was deleted from the ICJ's finding. Was this deliberate in the heads of Bill or was it accidental?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_64">The purpose of the Bill is to deliver on the Government's commitment in the programme for Government to prohibit the import of goods from settlements in the OPT. The purpose of the Long Title of a Bill is essentially to provide a Minister, and the courts ultimately, with information as to the purposes, principles and policies of the Act. The purpose here is to prohibit the import of goods.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_33">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_65">It is my understanding that the purpose of the Bill is to make us compliant with the ICJ ruling on our commitments under the UN convention on genocide.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_66">The convention on genocide was not considered by the International Court of Justice. The International Court of Justice advisory opinion identified a series of obligations on all states in respect of the prolonged Israeli occupation of the occupied Palestinian territory. States have had identified for them by the ICJ a series of obligations with which they should comply. It is not necessary for states to produce one single measure that will allow them to comply with all of the obligations identified.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_35">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_67">May I get clarification? The Long Title states that the Bill is to deliver on the ICJ obligations. It is an "Act to provide for compliance by the State with its international legal obligation, as identified by the International Court of Justice in its advisory opinion of 19 July 2024". This is in the heads of the Bill.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_68">Yes.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_37">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_69">How does it relate if the Bill is not supposed to be bringing us into compliance with the advisory opinion?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_70">It will bring the State into compliance with the obligation to prevent trade in goods with the settlements in the OPT and that is-----</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_39">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_71">The advisory opinion included the word "investment", which was deleted in the Bill. I am interested to know why that word "investment" was deleted from the ICJ finding when it was interpreted in the Bill.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_72">It is because, as my colleague Mr. Keown has said, the Government is pursuing two tracks to achieve compliance with the various obligations identified by the ICJ at national level and, preferably, at EU level. This is something that is being pursued at EU level.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_41">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_73">The Bill will make us just partially compliant with the ICJ ruling as opposed to fully compliant.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_74">That may be temporary but the objective-----</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_43">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_75">Will it make us partially or fully compliant with the ICJ advisory opinion, as it stands, if it were to be passed in its current form?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_76">It will bring us towards compliance.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_45">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_77">Towards compliance. I thank Mr Smyth.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_46">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_78">To follow on from the core question of services in terms of law, an EU regulation on implementing the principles of public policy has been mentioned. To be clear, the principles of public policy allow for states to take individual action. This is not only in the EU regulation, but in the treaty. Is it not the case that throughout the treaty there are, for example, at Articles 36 and 52, a number of points where the same language is clearly used again and again, which is that there may be different public policy actions on grounds of public morality, public policy, public security or protection of lives of humans? This is a principle within the treaties, is it not?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_79">The treaties regulate trade in the Internal Market of the Union. What we are speaking about at present is external trade. For instance, the reference to public policy on the freedom to provide services, which is regulated by the treaty, is a freedom to provide services within the Internal Market of the European Union.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_48">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_80">Public policy as a principle in terms of the operation of the EU is in the treaties. It is set out in the same language.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_81">Yes, in relation to those areas of Internal Market regulation.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_50">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_82">Going to the case law, the suggestion is that we might face a case if we were to try to include services. There is a case on the prohibition externally of trade in goods and services. This is the Rosneft case. It is a European Court of Justice case on restrictions on trade in goods and services connected to Russian breaches of international law in Ukraine. In this case, the court found those restrictions in trade in goods and services would be justified on grounds of public policy. Is the Rosneft case something the Department has looked at?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_83">The case law has been examined. The public policy reference in the treaties has been interpreted by the Court of Justice and has been applied in relation to external trade, for instance, in goods and-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_52">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_84">Services.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_85">-----by replicating it in relevant Union legal Acts. We have to find a relevant Union legal Act within which-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_54">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_86">The relevant Union legal Act is downstream. It is just a matter of whether there are regulations on how the EU might apply it. In terms of the right of a state to act, the public policy is the ground. That is the slim legal ground on which the Department is leaning on, is it not? It is the public policy principle.</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_87">In a specific regulation, yes.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_56">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_88">The public policy principle, which has been found to apply to goods and services by the European Court of Justice, is the same principle the Department is planning to lean on in this legislation. Is this not the case?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_89">That is right, because it is in the regulation on common rules for imports.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_58">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_90">There is the treaty, the European Court of Justice precedent, and the question of whether there is already a regulation for how we might apply it. With regard to the legal principle, which is the core, it has been shown by the European Court of Justice that the public policy principle applies in relation to goods and services. Is this not the case?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_91">I would have to look at the case Deputy Higgins is citing. It does not, so far as I am aware if we are speaking about Russia and Ukraine-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_60">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_92">The Rosneft case.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_93">The restrictions on trade in goods and services there had a different legal basis. They were imposed on the basis of restrictive measures adopted-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_62">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:30:00+01:00"/></from>
+          <p eId="para_94">The key point is the public policy principle and what it applies to.</p>
+          <p eId="para_95"> Mr. Smyth is aware of Professor Tridimas and anarchists who have been very clear that public policy provides a derogation not only from the free movement of goods, but also from the freedom to provide services.</p>
+          <p eId="para_96">They take the view that the prohibition on settlement services is justified by reasons of public policy. Do they have a statable case?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_97">As I said, the Attorney General has been asked to advise on the question of services. I cannot pre-empt the attorney's view on that so I-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_64">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_98">In the context of what those professors said, is there a reason there is not a case, if this were to be tested, as Mr. Smyth said, and perhaps challenged?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_99">The reference the Senator read out related to free movement of goods and freedom to provide services. As I said, these are freedoms that operate within the Union's Internal Market.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_66">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_100">They are also derogations. Public policy is the key derogation that allows states to act differently from the competency sitting within the Commission.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_101">Where it is provided for in a relevant legal Act.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_68">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_102">If a case were taken, would the legislation not still stand? If we included goods and services and a case were taken, and eminent lawyers are saying they believe we would win that case, the consequence would simply be we would be given a period of time in which to amend and then apply legislation.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_103">There would be an obligation on the State to bring the law here into compliance with Union law instead of-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_70">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_104">The law would not fall, however. There would just be a period of time in which, if our legislation were found to have overreached, perhaps by the ECJ, which seems-----</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_105">There would be serious difficulties if any person were to be prosecuted under a law that was found by the Court of Justice to be contrary to Union law.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_72">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_106">The language used indicates that the State would be given the opportunity to repeal or amend the relevant part of the Act to comply with the decision. That is provided for under section 3 of the European Communities Act 1972. Is that not the case? It would not be the end of the world.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_107">It depends. Of course, Parliament cannot be expected to legislate immediately to give effect to a court judgment.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_74">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_108">We have something that is not necessarily determined legally, we have a principle that includes goods and services in terms of EU law and we have cases where it has been clear that it so applies. That is the principle this legislation is based on. The key difference, as I understand it from what Mr. Smyth said, is an EU regulation is already in place for how that goods piece might be applied. Is that the key difference?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_109">No. It is quite clear that the relevant legal provision is in Article 2 of the Treaty on the Functioning of the European Union. Where the European Union has exclusive competence in a given field, it is not open to a member state to adopt legislation, unless it is empowered by a Union legal Act to do so.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_76">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_110">The derogation is based on public policy though. That is the key point.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_111">I would not accept that. That is not quite what the court said in that case, as far as I am aware.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_112">Can Mr. Smyth tell us what the court said?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_113">The derogation in relation to public policy in the areas set out in the treaties relates to the freedom of member states to regulate trade in goods, services and so on within the Internal Market. The public policy derogation that applies in those fields has been extended by specific legal Acts to, for instance, external trade, which is an area of exclusive competence of the Union. An internal market in goods, however, is not an exclusive competence of the Union unless the Union has adopted a legal Act to occupy the field. It is a different concept of, or approach to, exclusive competence.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_80">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_114">That extension has been in the interpretation of the ECJ.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_115">I will move on.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_82">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_116">I thank the witnesses for attending and for being forthright in their answers. Much of the discussion has been about the inclusion of services and the potential for including services in the final Bill. From a personal point of view, I sincerely hope we can find a way to include services, but we are on a tight timeline. The answer given regarding the Attorney General providing an opinion does not seem in any way to tie in to a tight timeline. I sense that the answer given was he will be back to us when he is back to us, but if we are to try to do this in this parliamentary session, that will not work. There must be some communication between the Department and the Attorney General, at least regarding timing around outcomes.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_117">The Attorney General is working to produce his opinion as soon as possible.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_84">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_118">Okay. There is no way to get any further information as to-----</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_119">I cannot pre-empt what the Attorney General will advise. We await his advice.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_86">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_120">I am not talking about the actual advice or the outcome. I am just talking about when that will be delivered.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_121">The Attorney General is well aware of the time pressures in relation to this.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_88">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_122">It could come any day. In preparing the Bill, is the Department preparing for a situation that would also include services, again, in light of the tight timeframe?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_123">We will be in a position to respond to the advice when we see it. As I said, we cannot pre-empt the advice of the Attorney General.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_90">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_124">Okay. More broadly on timing around the final implementation of this, it seems a lot of contingencies are coming from elsewhere that are out of the hands of the Department. Is there any sense of pressure within the Department to try to get this done in this session?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_125">I assure the Deputy the Tánaiste has been clear that this is a priority for the Government. This meeting is taking place a week after the Government approved the general scheme. We are here to clarify the points raised by members of the committee and we are happy to do so. The Tánaiste is on record as saying that the Government wishes to pursue this as expeditiously as possible. Obviously, the timeline for the committee's work is for the committee to determine. It will then come back to the Oireachtas and the Government will take that forward. I cannot give the Deputy a timeline for that because it partly depends on the committee's own work, but the Tánaiste has said that the Government will move as expeditiously as possible with this legislation.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_92">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_126">It was mentioned that the Department had been in contact with some other states, or they had reached out to it. Will the officials shed any light on what states are closest to or most likely to follow us should we get this Bill enacted?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_127">A number of countries have approached us, or we have chosen to share with those we consider to be like-minded members on this issue, within the European Union and with some countries outside the European Union that have shared similar policy positions to us going forward. I do not have any information at this time I can share as to whether those countries are going take action similar to what we have undertaken. We have encouraged them to do so to see whether the approach the Government is pursuing here is an approach that could be taken forward within those jurisdictions and their individual legal frameworks. We have said that we are available to provide any further information or clarification for them. As I mentioned, the Tánaiste has said that Ireland is the first country in the European Union to take action at national level in this way. That is important for the reasons he and the Taoiseach have made clear, some of which I referenced. The Tánaiste has also said he hopes this will be another example of leadership and that by Ireland going first it might encourage other governments to consider doing so as well. We have to wait and see whether that will be the case. We will stay in close contact with those countries and be available to answer any questions they may have.</p>
+          <p eId="para_128"> As I mentioned, in parallel, there is a group of ten members of the EU that have now called on the Commission to prepare proposals on bringing the EU as a whole into compliance with the advisory opinion, including references to trade with illegal settlements. We remain in contact with that group of nine other member states on that issue as well. That will be one of the issues that will be discussed at the next meeting of the Foreign Affairs Council, in the middle of this month, on 15 July.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_94">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_129">Of course. We all also hope we will be at the vanguard of encouraging other states to follow. Key to that is delivering timely and all-encompassing legislation that includes services.</p>
+          <p eId="para_130"> As a corollary to my previous question, has the Department detected or received any pressure from any countries, within the EU or outside it, where there has been push-back against Ireland enacting this Bill?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:40:00+01:00"/></from>
+          <p eId="para_131">There has been contact at official level from the United States on this, under the previous Administration, to inquire about the intentions around this legislation at the time. Those contacts took place.</p>
+          <p eId="para_132">The Tánaiste has said, in a recent reply to a parliamentary question, that he has not had any recent engagement with political counterparts in the US on this issue. As I mentioned, a number of countries have expressed interest in it from different perspectives.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_96">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_133">Could Mr. Keown give an assessment of the diplomatic - he has probably done that - and economic consequences of enacting this Bill?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_134">The volume of trade with the occupied territories is relatively small. The importance of this measure is, as has been explained, about compliance with our obligations under international law. As both the Taoiseach and Tánaiste have said, it is also about showing leadership and it is, therefore, of political importance as well as the measures that it is designed to advance.</p>
+          <p eId="para_135"> An analysis will be required as to whether there are potential economic implications, more broadly, for the State. I mentioned in my opening remarks that we are aware that not all countries may view the legislation in the same way that the Government does and that may, therefore, lead to consequences in a number of areas. We have to wait and see what those may be in terms of whether there is an impact for the posture of companies from other countries which are located here.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_98">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_136">I know we are over time. Mr. Keown mentioned an analysis. Is that something he could share with us ultimately?</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_137">We are reviewing legislation in the United States, in particular, to see the impact that may have for companies which operate here, but that has not yet been done.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_100">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_138">Further to the questions from my colleague Senator Stephenson and the reference to competing legal obligations, if we believe the EU position is in breach of international law and it is refusing to move, would the correct course of action not be to open infringement proceedings at the European Court of Justice?</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_139">We are very much in a political process at present. The question then of taking action against an institution is regulated by the treaties and there are very short timeframes within which to do that. In this case, it would be something called an action for failure to act. A formal request to act would then have to be made to the institution concerned, which, in this case, would be the Commission. The case law is not terribly favourable to member states in that respect. The requested action is not necessarily the action that the institution needs to take. It just needs to demonstrate, at least according to the court's case law, that it has considered the request and taken what it regarded as the appropriate action. That has to be done within a limited timeframe. Generally, so long as the institution - the Commission in this case - can demonstrate that it has considered the request and taken what it regards as the appropriate action, which is rarely the action requested by the member state, it will not be found by the court to have infringed the treaties for failing to act.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_102">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_140">The European Commission challenges member states in the European Court of Justice. Do we not have the right to challenge the European Commission?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_141">We do. As I said, a member state may take an action against, or seek to take an action against, an institution - the Parliament, the Commission or any other institution - for failure to act.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_104">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_142">Following the opinion from the World Court, a resolution was brought forward by Palestine in the United Nations General Assembly on the implementation of the court's opinion. Mr. Smyth's colleagues in the Department who work for the United Nations, under the direction of the Department's Secretary General and the leadership of the then Minister, Deputy Micheál Martin, now Taoiseach, worked on that resolution, it having been co-sponsored by Ireland. That resolution reiterated the language of the court on trade, not distinguishing between goods and services. If we are in any doubt as to their intentions at the time, a month later, in advance of the general election, during a televised leaders' debate, the then Taoiseach, now Tánaiste, Deputy Harris, who is the Minister at the Department, stated that he would support the legislation that complied with the International Court of Justice ruling. Fine Gael social media accounts helpfully tweeted, thereby removing any doubt, that "Fine Gael are in support of passing the Occupied Territories Bill." Can Mr. Smyth tell me at what exact point concerns arose in relation to the inclusion of services? The Minister was not concerned during the election and the Department clearly was not concerned in September when drafting the UN resolution?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_143">We are officials. We are not going to comment on what was said during the course of an election campaign. As we have made clear, the purpose of the scheme of the Bill is to deliver on the Government's commitment in the programme for Government. The Tánaiste has indicated that he wants to have services now examined for inclusion in the Bill, and that is what is happening.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_106">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_144">In the Attorney General's advice to the Government last October, he stated that the choice as to whether to progress the occupied territories Bill or have the Government draft a new Bill was a political one. Is the decision not to proceed with a prohibition on the trade of services at this time an operational or policy decision that the Department has made and stands over or is it a political decision?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_145">The officials are not politicians. They are civil servants, so they are restricted in what they can say. They may answer the parts they can answer.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_146">As I said in response to an earlier question, the Government is pursuing a two-track approach to this. Action at EU level is being sought in respect of services while also, at national level, the question of what can be done there with regard to services is being examined.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_109">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_147">I will go back to a question I had. I arrived a bit late, so I do not know if it has been asked. The opening statement highlighted that the Bill will meet the programme for Government commitment to ban the import of goods from the occupied territories. The witnesses cite this as following from the ICJ advisory opinion, which is a matter of considerable interest to both Houses of the Oireachtas and to the Irish public. Do they accept that the ICJ advisory opinion did not distinguish between the trade in goods and services and that the original occupied territories Bill prohibited trade in both goods and services? Do the witnesses have any reason to believe that prohibiting the trade of services is not important to the Irish people? Are they not allowed answer that question either?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_148">I am trying to be objective but these are political questions and the witnesses are civil servants. They may answer the parts they can answer.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_149">As we explained earlier, the question is what can be done having regard to our obligations as a European Union member state. Certain things can be done at the national level. Others may only be possible at the level of the European Union. It does not mean that only one is being pursued. Both are being pursued.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_112">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_150">I will leave my other question because the witnesses are public servants and probably will not want to answer it either. Gabhaim buíochas leo.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_151">You can chance it, Deputy.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_114">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_152">We will move on.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_153">As Senator Garrett Ahearn has left momentarily, I call Senator O'Loughlin.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_116">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_154">I thank Mr. Keown and Mr. Smyth for being here. I honestly believe that we are all on the same page here. We want to have robust legislation that will make an impact and show the way for other European countries to follow. I also pay tribute to Senator Frances Black. I know we are not discussing the Senator's Bill but she put a lot of work into her occupied territories Bill and led the way in terms of what we are doing now.</p>
+          <p eId="para_155"> Many members spoke about the whole area of services. The current draft excludes services, tech and tourism in particular. As to what it would take to include services, I am conscious the witnesses stated that the Attorney General is examining this issue. If is important that we have a timeline for the Attorney General's response. This is genuinely not a political question. What would it take to include services?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T15:50:00+01:00"/></from>
+          <p eId="para_156">In other words, what is the difficulty with services?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_157">To begin with, when the Department was examining Senator Black's Bill, the provisions relating to services would have created a criminal offence of supplying a service within a settlement, where the service is supplied by an illegal settler. This created certain legal problems, which we explained at the time. The exercise of the State's criminal jurisdiction extraterritorially is generally very limited. It is limited to Irish nationals committing serious offences abroad or where there is a requirement under an international agreement that we extend our criminal jurisdiction to acts committed by non-Irish citizens in a place outside Ireland. The offence that would have been created by that Bill was legally problematic, not for reasons relating to the European Union but from an international law perspective.</p>
+          <p eId="para_158"> We have looked at the question of services now as more a question of trade in services, much as we have looked in the general scheme at goods as a question of a trade in goods. The legal difficulties that we identified with Senator Black's Bill in relation to the prohibition of services are different from those that exist in relation to cross-border trade in services between an EU member state and a third country or territory outside the EU. That is a question of the exclusive competence of the European Union, and what would be necessary for a member state to legislate in that field is to find an empowerment in Union law entitling it to do so.</p>
+          <p eId="para_159"> It might be useful to mention that services, of course, are quite different from goods. All goods entering a territory have to pass through customs in some way, so they can be easily identified. Services, by contrast, are very diverse in nature. The WTO, for example, divides services into 12 separate sectors and 150 subsectors. Within the European Union, all those sectors will be regulated to different extents and be the subject of different bodies of law. There is, then, quite an extensive review exercise required into establishing precisely how they are regulated within European Union law and the extent to which, if at all, there is a public policy exception that would allow a member state to regulate external trade in services between that member state and a third country.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_119">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_160">I thank Mr. Smyth. I think it is something we need to explore if at all possible. I note the Tánaiste has said he would be open to services being included, obviously pending the advice from the Attorney General. The timeline in this regard is very important. I note that Mr. Smyth said an analysis is ongoing now of the impact on the Irish economy should this Bill go through. Would that analysis take into account the possibility of services being included as well? I refer to there being two different types of analysis going on.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_161">The Department is required to prepare a regulatory impact assessment, which is an assessment required for all legislation. That regulatory impact assessment is currently in preparation. It is required to look at the potential impacts that legislation may have in a number of domains, direct and indirect. It will, therefore, need to look at a wide range of factors as to what the impact might be on the political objectives set by the Government for the legislation. We will need to look at how it will be implemented, and the impact assessment in this regard. It will also need to look at whether there are any indirect impacts that may arise from the implementation of this legislation, if enacted. This would include any potential economic impacts and would also include, as required, an SME test. This is a pretty standard framework set out for regulatory impact assessments for any legislation. Work is in hand to advance that regulatory impact assessment in parallel with the pre-legislative scrutiny phase of the Bill.</p>
+        </speech>
+        <speech by="#FionaOLoughlin" eId="spk_121">
+          <from>Senator Fiona O'Loughlin<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_162">I thank Mr. Keown. Finally, how would customs officers enforce the ban and what penalties would there be in respect of its violation? I am referring to what is in front of us now, the goods aspect.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_163">Perhaps I can answer that question. The framing of this Bill has been challenging because it requires the interruption of the trade, to a certain extent, of goods that may be in free circulation within the internal market of the European Union. There are two ways in which goods from the settlements might arrive in Ireland. One is goods coming directly from the settlements via a third country, presumably Israel, into Dublin Port. Those goods would then be imported and would be required to file an import declaration, which would have to indicate the origin of the goods. They would, therefore, come to the immediate attention of the customs authorities and can be dealt with in that way.</p>
+          <p eId="para_164"> Alternatively, goods may arrive into another port in the European Union and be distributed. Once they clear customs there, they are then in free circulation within the European Union and it may be more difficult to detect their arrival in Ireland. In any event, once goods clear customs and if and when they go on sale, there are other means of detecting. Obviously, there will be private individuals who may very well report their appearance in supermarkets, for example. There is also, though, market surveillance, in which relevant agencies conduct checks in retail units of what is up for sale to detect customs infringements. We are in discussion with our colleagues in the Customs and Revenue Service as to how the Bill would operate if enacted. It is confident it can be implemented in the form in which it has been drafted.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_165">I thank Mr. Smyth. I call Deputy Noel McCarthy.</p>
+        </speech>
+        <speech by="#NoelMcCarthy" eId="spk_124">
+          <from>Deputy Noel McCarthy<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_166">I welcome the witnesses. I thank them for the information. I think most of the questions I have written down have been answered. The one that is really concerning me is the timeframe and the Attorney General's response to us. Deputy Brennan outlined this a while ago. It is definitely a concern. The Tánaiste has been positive in saying he wants services to be included. This is very positive. I think the timeframe in this regard and getting the legal information is vital to us as a committee being able to make a decision on the legislation and relay it back to the Dáil. I know an exact date cannot be given, but it is so important that we can have this information as fast as possible. I think every member of the committee is in favour. As others have said, this legislation is so important to us all in the context of what is happening. Deputy Brennan outlined the concerns we all have at the start of his contribution. I would like to know if we could get an idea of the date for the timeframe. I know it is not possible to get an exact date and the witnesses cannot comment for the Attorney General. I refer to the information from this committee being taken back to emphasise how important that timeframe and the response are and the time they take to get back to us.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_167">I assure Deputy McCarthy that the Attorney General is very well aware of the time pressures and of the political priority attached to this Bill.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_168">It is actually my slot, but I will swap with Deputy Ó Fearghaíl, who has been very patient.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_127">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-01T16:00:00+01:00"/></from>
+          <p eId="para_169">I thank the Chair. I will be brief. I welcome Mr. Keown and Mr. Smyth and thank them for their assistance. I welcome that the Government is adopting this twin-track approach of trying to influence matters at European level and enact what the public will see as Senator Frances Black's legislation, no matter what we produce at the end of the day. I cannot remember any occasion over the years I have been here when I have had more intensive and passionate lobbying by members of the public on any issue as I have had on this one. They want to see this Bill enacted and they want to see goods and services covered. This is why it was very positive to hear from the Tánaiste that he has an open mind and has no problem with services being included. </p>
+          <p eId="para_170"> I want to ask the witnesses a couple of very specific questions. Given the background work that has been done on all of this - God knows it has been a very long time in gestation - could Mr. Keown tell us what is the value of the goods that we import on an annual basis from the occupied territories?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_171">I thank the Deputy for his question. As I mentioned in response to an earlier question, the volume of goods imported from the occupied Palestinian territories is low. On the basis of CSO statistics published by the Department of Enterprise, Tourism and Employment in reply to a recent parliamentary question, it was approximately €214,000 last year.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_129">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_172">So we are talking about €214,000 worth of goods. Are they made of up fruit, vegetables and other items? Do we know the nature of the goods?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_173">The largest component in that figure is fruit and vegetables.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_131">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_174">Do we know the value of services that would be envisaged by this Bill, were they to be included? Reference was made to the opinion of the Attorney General. We have a very eminent Attorney General, and we have had many very eminent Attorneys General over the years. I am not looking in any particular direction. It is very frustrating, given the length of time this Bill has been in the offing, that we are here today discussing the Bill and we are still without the definitive opinion of the Attorney General. The witnesses are not in a position to give that to us, but it would be no harm if the Attorney General was aware of our frustration at the fact that we have not got that essential bit of information. From everything that has been said, it seems that the Attorney General and the powers that be feel that it is safe to proceed with the goods but it is less safe to proceed with services, because if we proceed with services there is the risk of an infringement appeal. Who would take an infringement appeal against us and what form would it be likely to take?</p>
+          <p eId="para_175"> My two questions are what is the value of services that are not included, but might be, and how would the infringement process work.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_176">I might reply to the first question, with the Deputy's agreement, and I might ask Mr. Smyth to address the second question, which is more legal in nature.</p>
+          <p eId="para_177"> The figure I gave for goods imports is from the OPT. We do not have 2024 figures for services but in 2023 it was zero. We do not have reliable figures for imports of services from the settlements.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_133">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_178">If the value was only €10, the symbolic value of the legislation is still absolutely enormous in terms of the leadership role it allows this country to take on this particular matter.</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_179">I will answer the second of the Deputy's questions. There are two ways in which the matter could come before the Court of Justice: one is if the Commission itself instituted infringement procedures against Ireland for having breached European Union law. A series of correspondence would be exchanged between the Commission and Ireland, and assuming an infringement procedure was initiated, it would involve a request that the legislation would be repealed or at least suspended or not applied.</p>
+          <p eId="para_180"> The other way in which the matter might come before the Court of Justice is, if having passed, and a person was then, for instance, to be prosecuted or goods were to be stopped at customs, the owner of the goods or the person to be prosecuted might challenge that and it may then ultimately end up by way of preliminary reference for a ruling on a point of European Union law before the Court of Justice. That may have the same consequence.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_135">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_181">How frequently are such infringement proceedings taken?</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_182">Infringement procedures are regularly taken against member states. There are league tables. It is called an infringement procedure initially because it includes at the end an infringement proceeding, which is before the court, but the Commission would prefer if a mere exchange of correspondence was enough to resolve the matter. That does not always happen.</p>
+        </speech>
+        <speech by="#SeanOFearghaillFF" eId="spk_137">
+          <from>Deputy Seán Ó Fearghaíl<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_183">I thank the witnesses.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_184">There is a minute left and I will ask a question for the public watching and for me also. Mr. Keown has given us the value in goods, which is close to €250,000 annually. The value in traded services from the OPT is zero. Could he explain a little bit more about the source of that information?</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_185">That is a CSO figure.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_186">Could he please say a little bit more?</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_187">Perhaps I could provide a note on it. I am not an expert on how the CSO calculates its figures.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_188">That is the Central Statistics Office.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_189">Yes. There are no reliable data at EU or national level on the volume or flow of items coming from settlements. We do not have reliable data.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_190">Do we have it for every other country and trading partner?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_191">Yes, we have figures for items coming from the OPT and we can use the postcode system to identify items coming from settlements where they are, hypothetically, routed directly from that settlement for export. If they are routed via a third party, we would not necessarily have that figure.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_192">How might that work in the case of something being routed by a third party?</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_193">As I explained earlier, it is much less challenging to monitor trade in physical goods than it is to monitor services. The European Union has-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_148">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_194">I am sorry for stopping Mr. Smyth, but there is a huge amount of interest in this and this is a really key piece. Why is it more complicated? Is part of it the intangible nature of services?</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_195">A great many services are provided over the Internet by email or Zoom call and they are not monitored or even necessarily subject to any declaration. That is the nature of modern services.</p>
+          <p eId="para_196"> Goods, on the other hand, have to be physically presented to customs. In the case of goods originating in the settlements, they are not covered by the EU's agreement with Palestine, nor are they covered by the European Union's agreement with Israel, which only applies to the territory of Israel.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_197">Could Mr. Smyth please repeat that?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:10:00+01:00"/></from>
+          <p eId="para_198">The European Union has two association agreements with the states concerned. It has an association agreement with Israel, which regulates trade in goods and services between Israel and the European Union, and it has an association agreement with Palestine - at the time it was with the PLO – which regulates trade in goods. Under the EU-Israel association agreement, the European Union has agreed to confer preferential tariff rates on certain goods coming from Israel. These are rates that are lower than the rates it charges WTO members with which it does not have these types of association agreements. They would be slightly higher. If an Israeli producer or manufacturer of goods wants to avail of a lower tariff rate in sending goods to the European Union, he or she must make a declaration in order to avail of the lower tariff rate. A technical arrangement has been developed between the European Union and Israel, which agreed a set of postcodes for the identification of goods originating in the settlements. Because an import declaration is required to accompany goods coming from Israel, it must indicate if it is a good coming from the settlements by using the postcode, which means it is not entitled to the preferential tariff rate. The way the European Union has implemented its WTO obligations is essentially to make trade in goods with all states, regardless of whether they are WTO members, eligible for what are called "most-favoured nation tariff rates", which are the highest rates the Union charges, regardless of whether the state from which the goods are being sent is a WTO member. </p>
+          <p eId="para_199">For instance, due to the way the European Union has implemented its WTO obligations, goods coming from Belarus, Iran or North Korea, which are not members of the WTO, are nevertheless entitled to the most-favoured nation tariff rate on goods. As it happens in reality, that does not come to pass because there are various sanction regimes applying to all of those countries, which suspend the most favoured nation rates for those goods.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_152">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_200">Mr. Smyth said that goods were easy to treat of but for services, there are 12 sectors and 150 subsectors. I do now want to put words in his mouth, but I got the impression that we were moving in a direction that suggested some services would be a little less complicated to deal with and a little more visible. Is that a shard of light?</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_201">We cannot pre-empt the advice of the Attorney General. I mentioned that just to give the committee a sense of how complex the question of services is.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_154">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_202">We all grasped that. What I am taking out of it is the sense that we might be moving towards potential consideration of services, even if not all services. Mr. Smyth is obviously not going to be drawn on that point, and I respect that, given his position as a civil servant. It is a matter for us to ponder. I interpreted that.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_155">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_203">I welcome the witnesses and thank them for being here. I apologise that I had to leave to go and speak in the Seanad. If I repeat a question, I apologise.</p>
+          <p eId="para_204"> When Mr. Smyth was answering Deputy Smith, he talked about the discovery of possible legal issues while putting the heads of the Bill together and that the Department had raised no concerns with the Attorney General, who would make his own decision independently. What were the possible legal issues that the Department discovered?</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_205">The fundamental legal issue is that external trade in goods and services is an exclusive competence of the European Union. The treaties are quite clear that, where the Union has exclusive competence in a given area, the member states are not entitled to adopt legislation or binding measures in those areas unless empowered to do so by a Union legal Act. We must find a Union legal Act that empowers the member state to do that. We have found one in the case of external trade in goods. That is not the case to date in respect of external trade in services. That is the basic legal issue we have identified.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_157">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_206">When the witnesses say that we are trying to put a Bill together that provides a pathway between obligations under the International Court of Justice and our EU legal obligations, is this what they are talking about?</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_207">Yes. There is a public policy exception. It must be understood that the concept of "public policy" has been interpreted very narrowly by the ICJ. To date, the public policy grounds permitted by the court have been unique to a single member state. We will be arguing that this matter of public policy should be of concern to the entire European Union. As the Attorney General has said, there remains legal risk with this approach when a member state seeks to legislate in an area of exclusive competence, and there is no avoiding that. However, because of the helpful clarification provided by the ICJ as to the legal obligations, not just on-----</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_159">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_208">Mr. Smyth said something earlier about the exact working in the ICJ's ruling but I cannot remember how he phrased it. We have an "obligation" or we are "prohibited". Mr. Smyth used certain words to the effect that it did not mean we must bring in legislation to ban trade in services.</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_209">To prevent.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_161">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_210">We prevent it. There are different ways of doing that.</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_211">"Take steps to prevent" is-----</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_163">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_212">When people say we are not following an ICJ ruling, technically that is not the case, as the Department sees it.</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_213">I was trying to explain that there was some discussion and difference of opinion among states as to what that obligation involved. Some states have taken the view that taking steps to prevent trade can be done by way of issuing guidance to, for instance, private operators, informing them of-----</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_165">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_214">Some states would see themselves-----</p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_215">As having met their obligations.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_167">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_216">That by doing that, they have met their obligations to the ICJ.</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_217">Yes, exactly.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_169">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_218">It is hard for me to see that. It is really a group of lawyers coming together to ask how they can get around it. However, I know what Mr. Smyth is saying.</p>
+          <p eId="para_219"> In his opening contribution, Mr. Keown mentioned a number of times that the Tánaiste was working with his EU colleagues to try to get agreement. A group of Palestinian officials were before the committee a number of weeks ago. They strongly focused on two priorities, which were the recognition of Palestine as a state and the EU association agreement. How are those discussions going? I was in Strasbourg for the Council of Europe last week and it is sometimes depressing listening to some member states speak. They are so pro-Israel, it is shocking. How are those powers of persuasion going at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_170">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_220">In February last year, Ireland and Spain wrote to the Commission and the High Representative to ask for a review of Israel's compliance with its human rights obligations under Article 2 of the EU-Israel association agreement. Article 2 sets out the human rights obligations of Israel as a partner of the European Union and there is a similar clause in other agreements between the EU and third countries. That letter asked for a review based on what Ireland and Spain were observing of what was happening in Gaza and the occupied Palestinian territories. The Government consistently called for that review to take place. At the May meeting of the Foreign Affairs Council, there was a discussion of whether a review should take place. A majority of member states expressed the view that such a review should take place, so the Higher Representative said she would undertake it.</p>
+          <p eId="para_221"> That review was presented by the High Representative at the meeting on 23 June. The finding of the review, which has been reported in the media, was that Israel was in breach of its human rights obligations under the agreement. At the Council meeting, Ireland and a number of other member states made clear, and the Tánaiste said at the meeting, that the finding and outcome of the review was significant and it was important that there would then be discussion of what appropriate measures would be taken in response. The High Representative has said publicly that she will communicate the outcome of the review to Israel. She has asked the Commission and the European External Action Service, EEAS, to prepare options for possible appropriate measures. It is intended that there will be a discussion of that at the next meeting of the Council. The Taoiseach and Tánaiste were clear, going into the review and after its results became known, about the importance of appropriate measures and follow-up action taken by the EU and its member states in response.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_171">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_222">I have only a few seconds left. I am sorry for interrupting Mr. Keown. In response to Deputy Brennan, he said that countries made contact with Ireland while this process was happening. He mentioned the US. The Deputy asked which countries had made contact but I do not think Mr. Keown named the countries in his response. He said the US under the previous Administration had made contact, which was obviously prior to our general election. Who from the US made contact? Was it the previous ambassador? Who has been in contact with the Department? What exactly did that person say? What were that person's concerns? Can the witnesses provide the committee with the correspondence between the Department and the US officials?</p>
+        </speech>
+        <speech by="#" eId="spk_172">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:20:00+01:00"/></from>
+          <p eId="para_223">I mentioned that there had been contact. That contact was at official level. It was to explain the intent and purpose of the draft Bill being prepared. I did not mention the names of the countries that had engaged because they approached us privately and so we have shared that information. It was a number of EU member states and it is for them to decide if they will act upon the information we have given them.</p>
+          <p eId="para_224">As the Tánaiste said, we encourage as many EU member states as possible to give positive consideration to doing something similar to the Bill we have before us.</p>
+        </speech>
+        <speech by="#GarretAhearn" eId="spk_173">
+          <from>Senator Garret Ahearn<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_225">Is it possible to get the correspondence from the Department with the US? We are surely entitled to that, I would have thought. It would be very interesting to see the pressure the US is putting on certain countries. We can see it when politicians around the world are speaking. There is clear pressure put on by the US. I would be interested to see what sort of pressure would be put on Irish politicians, which, obviously, has not worked, and what sort of dialogue they are having. I do not know if it is possible. It is up to Mr. Keown, really.</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_226">I will have to take that back to the Tánaiste.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_175">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_227">I join with colleagues who paid tribute to our colleague Senator Black for her pioneering work in this area. I do not think we can lose sight of that in the discussion.</p>
+          <p eId="para_228"> I will make a comment initially and then ask a couple of questions. I strongly believe that the benefit of this legislation is in the areas of moral leadership and optics. That is borne out by the witnesses' response to questions in terms of the volume of trade. It is, therefore, about the optics and moral leadership. It is about us being able to pressurise the EU with regard to the EU-Israel trade agreement. It is also important that the Tánaiste is open to including services. That is purely a logistical or operational issue, so that is how it should be.</p>
+          <p eId="para_229"> The witnesses might elaborate on the legal basis. How is the legal basis different for the Russian-Ukraine sanctions? What is the difference in layman's terms for those listening? As the Chair said, a lot of this is of great interest to the public, which is a great tribute to the Irish public. They are very engaged with this, as all of us are who received volumes of emails this week.</p>
+        </speech>
+        <speech by="#" eId="spk_176">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_230">There is a different approach taken with regard to Russia and other sanctioned regimes. There is provision in the treaties for this. It involves a different procedure to the interruption of trade measures generally, which would be covered by the common commercial policy, and results in legal Acts that are subject to the ordinary legislative procedure, that is, a Council decision and subject to Parliament<b>
+						</b>approval.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_177">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_231">Sanctions are different. Is that what Mr. Smyth is saying?</p>
+        </speech>
+        <speech by="#" eId="spk_178">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_232">Sanctions are different. With sanctions, there are two steps involved. First, there must be a unanimous decision taken by the Council acting under Title V of the Treaty on European Union, which is the Common Foreign and Security Policy chapter of that treaty. Once a unanimous decision is taken under that to, for instance, interrupt trade relations with Russia or suspend certain trade activities with a particular country, the Council is then entitled to adopt a regulation without the involvement of Parliament by qualified majority voting, QMV. It can effectively only happen when there is unanimity within the Council on a particular issue,-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_179">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_233">Which it would not achieve in this.</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_234">-----which will not ever realistically be the case for this.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_181">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_235">It will not be achieved here. Mr. Smyth has answered that question.</p>
+          <p eId="para_236"> Mr. Smyth made the obvious point that trade was the exclusive competence of the EU and that it was only in very limited circumstances where that could be breached, as it were. I will come to the ICJ, which Mr. Smyth talked about, but will he please elaborate in layman's terms on the limited conditions that we can breach or where we can go on an independent exercise on trade in any instance?</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_237">With regard to the import of goods from a third country, for instance, there is a 2015 regulation on common rules for imports. That permits a member state to prohibit trade or impose certain restrictive measures on certain goods for public policy reasons.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_183">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_238">And this would constitute that.</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_239">Yes. We would be availing of the public policy importance. It should not really be a question of public policy in the Government's view, but it is a question of public policy importance to ensure compliance with the obligation identified by the International Court of Justice.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_185">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_240">I take Mr. Smyth's point. He might correct me if I am wrong, but if I understand him correctly, we are really relying here on the ICJ ruling.</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_241">The ICJ ruling has strengthened the argument-----</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_187">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_242">With that small competence.</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_243">-----that this is a matter of public policy.</p>
+        </speech>
+        <speech by="#JoeOReilly" eId="spk_189">
+          <from>Senator Joe O'Reilly<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_244">I thank Mr. Smyth. I think I have it there, Chair. The question everyone is asking has been well asked, but my question was only to re-emphasise it.</p>
+          <p eId="para_245"> I would also say to colleagues that the big issue here is actually speed if we consider the overall geopolitical context at the moment. We need to go for speed here, even if we do something less than what would be the ideal or what we would all aspire to. We would love to do more, of course. To do something and show moral leadership immediately is necessary.</p>
+          <p eId="para_246"> I will make one last point. We are losing sight, or we can lose sight, in the midst of the revolting horror that is Gaza that there are illegal settlements progressing at a great rate in the West Bank, and therein lies a huge issue. Speed is of the essence. As Mr. Smyth said, he might bring that point back, and it us up to us to say it to our respective political leaders as well.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_190">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_247">I appreciate the witnesses giving their time to be here. We received the statements in advance with regard to this particular issue. The issue of goods and services has been a subject of public debate for six or seven months now. It has been longer than that really, but I mean in an intense way. We are only now fleshing out, as we are in this meeting, what the issue is with regard to goods and services.</p>
+          <p eId="para_248"> We received two statements - a briefing note and an opening statement - and neither of those documents outlined what the legal difficulty was. I do not think that is satisfactory. Given the nature of the public debate, the fact that we do not yet have a view from the Attorney General is unsatisfactory. I have great respect for the witnesses' own legal experience and qualifications but, obviously, the Attorney General reflects the established legal position of the Government.</p>
+          <p eId="para_249"> Mr. Smyth said that the Attorney General had made a distinction between goods and services. There was advice that was leaked in February; it predated that. At no stage was any distinction made in that document with regard to goods and services. At what stage did the Attorney General make a distinction, in what exchange or in what form?</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_250">I am not sure I would agree with that characterisation. The Deputy will have seen the advice-----</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_192">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_251">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_193">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_252">-----and it concluded by saying, and the Deputy has to remember that this was advice that examined Senator Black's Bill-----</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_194">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_253">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_195">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_254">-----that if the Bill was amended to limit it to a prohibition of import of settlement goods, the legal risks attaching to Ireland acting on that basis would be reduced. I understand that it was on that basis that the programme for Government commitment was framed. The scheme before the Deputy today is intended to deliver on the commitment in the programme for Government.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_196">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_255">The position of the Government on the previous legislation - I know we are discussing the current legislation - hung very significantly on the International Court of Justice decision. Is that not fair to say?</p>
+        </speech>
+        <speech by="#" eId="spk_197">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_256">On the reliance on the public policy exception with regard to external trade and goods, yes.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_198">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:30:00+01:00"/></from>
+          <p eId="para_257">Would Mr. Smyth agree that the judgment of the International Court of Justice is binding on Ireland individually as well as on the EU?</p>
+        </speech>
+        <speech by="#" eId="spk_199">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_258">It is an advisory opinion so, technically, it is not binding on anyone. What it is, however, and is rightly regarded as being, is an authoritative statement of international law in this particular area. Therefore, to the extent that it identifies international legal obligations on states, that is regarded as an authoritative statement of the obligations on those states.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_200">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_259">Those are obligations on individual states as well as on the EU as a whole. Is that fair to say?</p>
+        </speech>
+        <speech by="#" eId="spk_201">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_260">That is right. As the Deputy knows, the European Union's member states have pooled their competence in certain areas of activity into the European Union so, to the extent that those obligations are on member states, they are also on the European Union.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_202">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_261">Sure, but the International Court of Justice's view would be that the obligation falls on the member state as well as any associations they-----</p>
+        </speech>
+        <speech by="#" eId="spk_203">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_262">It would be a member state through, in this case, the European Union.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_204">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_263">Okay. There is this issue of reconciling international law and EU law and it seems to me that the position of the Department is that international law needs to be reconciled to the international law position rather than the reverse. The Attorney General, as I understand it, received in advance of that legal opinion some detailed legal opinion from Professors Takis Tridimas and Panos Koutrakos. This was referenced by the Attorney General in that advice. The advice stated that the public policy derogation applies equally to services and goods. Did Mr. Smyth consider that opinion, which was shared with the Department, prior to him and his team reaching their current position?</p>
+        </speech>
+        <speech by="#" eId="spk_205">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_264">I cannot comment on the Attorney General's advice. The Attorney General's advice is-----</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_206">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_265">I am not asking Mr. Smyth to do that. Did he consider the advice that was received by the Attorney General, which, I believe, was also received by the Department? Did he consider that advice, the legal opinion, offered by those two legal academics?</p>
+        </speech>
+        <speech by="#" eId="spk_207">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_266">We, of course, consider those opinions in the Department but the Attorney General has been asked to advise. The Attorney General's advice, which the Deputy has seen, concludes-----</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_208">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_267">Okay, but that relates to previous legislation. On this legislation, the Department has offered a legal basis for proceeding in one area and not proceeding in another one. We do not have the Attorney General's position but Mr. Smyth has offered a legal position on behalf of the Department, at least in some sort of interim way. In coming to that position, which he has articulated here, namely, that we have enough landing ground on an EU side on goods but not on services, did Mr. Smyth consider the advice provided by those two particular academics?</p>
+        </speech>
+        <speech by="#" eId="spk_209">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_268">Yes, we did. To clarify, we have not advised. We have identified legal issues were the Bill's scope to be extended to cover services and the Attorney General has been asked to advise on those issues. Among them is the question of the extent to which a member state can adopt an Act itself in the field of services. The case law examined by the two professors the Deputy referenced deals mainly with the public policy exception in relation to goods and the free movement of goods within the Internal Market. The court has obviously construed the extent to which public policy can be used in those circumstances and it has applied it where there is a similar legal basis in other areas, for instance, the external trade of goods. It has considered most recently the exception this Bill will rely on with regard to external trade in goods and the common rules on imports regulation in the Confédération paysanne case, which I think was last year.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_210">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_269">The position of the two professors, as outlined, is that the public policy obligation would apply equally to services and goods. Does Mr. Smyth take issue with the argument they make?</p>
+        </speech>
+        <speech by="#" eId="spk_211">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_270">They have asserted that but the authorities they have cited for that deal with the freedom to provide services within the Internal Market of the European Union. They are advancing, I understand, an argument that, by analogy, the same could apply in relation to external trade in goods but they have not actually said that in their opinion.</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_212">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_271">It seems to me that this flows to the logical conclusion that somebody will potentially take infringement proceedings, as people can do in respect of any legislation. That is the position that applies. I know it is said sometimes that we risk infringement proceedings but anyone can take infringement proceedings provided it is non-trivial. The defence of the Irish Government to infringement proceedings, if it were to enact the legislation as broadly envisaged here, is to say that the International Court of Justice advisory opinion was very strong on the illegality of trade in goods and services with the occupied territories. Surely the defence will be the same with regard to services? The defence of the State-----</p>
+        </speech>
+        <speech by="#" eId="spk_213">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_272">The difference is-----</p>
+        </speech>
+        <speech by="#DonnchadhOLaoghaire" eId="spk_214">
+          <from>Deputy Donnchadh Ó Laoghaire<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_273">I will let Mr. Smyth in in a second. The defence would be relying on the same judgment, and the judgment makes no distinction between goods and services. It is very clear that such trade, as far as the court is concerned, is illegal under international law. The defence would be precisely the same. Why would it be good enough for one and not good enough for the other?</p>
+        </speech>
+        <speech by="#" eId="spk_215">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_274">It is a two-pronged test, if you like. One is that there has to be an express empowerment in a European Union legal Act, which is not the case in services whereas it is in goods, and that empowerment is public policy. Once you find the empowerment, which is public policy, then you also have to convince the court that it should be interpreted broadly to include concern with compliance with international law. There are two elements to it. The difference between goods and services is that the empowerment I mentioned has not yet been identified in relation to services.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_216">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_275">There will not be a second round. This committee will go into private session at 5 p.m. The members present who are not members of the committee have three minutes each. We will start with Senator Frances Black.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_217">
+          <from>Senator Frances Black<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_276">I will pass over to Senator Michael McDowell, if that is okay, and come back in after him.</p>
+        </speech>
+        <speech by="#MichaelMcDowellPD" eId="spk_218">
+          <from>Senator Michael McDowell<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_277">I am happy to leave the final words from those who are not members of the committee to Senator Black. As I understand it, what Mr. Smyth saying is that, as between member states of the European Union, there is a treaty entitlement to prevent the importation of goods from one country to another on public policy grounds. That is a treaty right. Am I right in also thinking that with regard to this particular set of circumstances, it is agreed that it is not the nature of the goods but the origin of the goods, having regard to the ICJ advice, that is an issue?</p>
+        </speech>
+        <speech by="#" eId="spk_219">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_278">It could be either. In any kind of-----</p>
+        </speech>
+        <speech by="#MichaelMcDowellPD" eId="spk_220">
+          <from>Senator Michael McDowell<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_279">I know, but I am saying that in this particular case, an orange grown in Jaffa is in Israel and would not be covered by this, whereas an orange grown in the occupied territories would be covered by it.</p>
+        </speech>
+        <speech by="#" eId="spk_221">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_280">I accept that.</p>
+        </speech>
+        <speech by="#MichaelMcDowellPD" eId="spk_222">
+          <from>Senator Michael McDowell<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_281">Can we take it then that the public policy relates to the origin of the goods and not their nature? That is the second point.</p>
+          <p eId="para_282"> I understand Mr. Smyth's point that we do not have the regulatory platform that we do in relation to goods expressed in European law and regulation. Can I put the following proposition to him? It seems to me to be utterly devoid of common sense that Ireland could say, in relation to a service coming from Luxembourg, that it cannot come into Ireland or be supplied in Ireland - it could be assisted suicide or anything like that - on public policy grounds but that it is open to the EU to say to Morocco in an agreement that it can forget about Irish public policy and it can supply that exact same service to Ireland. Does that not strike Mr. Smyth as highly unlikely as an interpretation?</p>
+        </speech>
+        <speech by="#" eId="spk_223">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_283">If there were an agreement with Morocco, in those circumstances, yes.</p>
+        </speech>
+        <speech by="#MichaelMcDowellPD" eId="spk_224">
+          <from>Senator Michael McDowell<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_284">Yes. Suppose there was an agreement for the supply of services and no mention of the nature of the services, and Mr. Smyth says that Ireland is not in a position to say "No" to the supply of the service that it could say "No" to from Luxembourg, Holland or France because this is an EU competence under a general power under the treaties. Does that not strike Mr. Smyth as extremely contrived and highly unlikely?</p>
+        </speech>
+        <speech by="#" eId="spk_225">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:40:00+01:00"/></from>
+          <p eId="para_285">The Senator could present it in that way. The way in which these things generally operate is that we are talking about trade in services with other states. This is an exceptional case.</p>
+          <p eId="para_286">Obviously we do not recognise the settlements as part of the state of Israel. Trade in services is generally regulated under the World Trade Organization's General Agreement on Trade in Services, GATS. Each party to that agreement will set out a schedule of services the other states are entitled to access.</p>
+        </speech>
+        <speech by="#MichaelMcDowellPD" eId="spk_226">
+          <from>Senator Michael McDowell<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_287">I heard that but regardless of the categorisation, I am suggesting to Mr. Smyth that this is a contrived, artificial distinction without any basis in common sense.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_227">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_288">Thank you, Senator. We run our meetings in a particular way here. I am sorry we do not have more time. Senator Black is next.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_228">
+          <from>Senator Frances Black<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_289">Mr. Smyth and Mr. Keown are both very welcome. As they are probably aware, the Tánaiste has said publicly that the Government is willing to include services in this final Bill if we get the detail right. I am 100% certain that we can do so. Inserting services is absolutely crucial and there is no legal barrier to doing it. I have published detailed legal advice from some of the most eminent lawyers in the world making clear that we can include services in the legislation if the political will is there. Recently, over 400 of Ireland's high-profile lawyers wrote to the Government saying that we can include services. Those eminent lawyers include Professor Takis Tridimas, a leading scholar in the field of European law, Professor Panos Koutrakos and Professor James Crawford. I am really confused as to why we cannot have services when so many people are saying that they should be in there. The general public wants services to be included. Do the witnesses accept that there is, at the very least, an arguable case, as set out by Professors Takis Tridimas and Panos Koutrakos, that both goods and services could be justified by public policy? Is that an arguable case at all? That is my first question. Do the witnesses accept that it is ultimately a political choice as to whether we want to do a full ban on goods and services and test the public policy principle at EU level? Do they agree that this is a political choice?</p>
+        </speech>
+        <speech by="#" eId="spk_229">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_290">With respect, the Attorney General has been asked to advise on that matter so I am not going to pre-empt his advice on it. As to whether it is a political decision, the Tánaiste himself has indicated that he is open to examining or including services within the scope of the Bill, depending on the advice that he receives. That is a political decision that will be made on the basis of the advice received.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_230">
+          <from>Senator Frances Black<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_291">The reality is that when one looks at the legal details, the three top lawyers who will come before this committee next week are saying that we can do this. In his personal opinion, does Mr. Smyth think it is possible to do from a legal perspective?</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_292">Again, with respect, I am not going to provide the Senator with a personal opinion on a matter on which the Attorney General has been asked to advise.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_232">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_293">That is fine, in fairness. Just for the viewing public, Senator Black and her team will be here in the committee tomorrow evening from 6.30 p.m. until 9.30 p.m. Deputy Gibney is next.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_233">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_294">I thank Mr. Smyth and Mr. Keown for being with us today. The EU has enacted a ban on the trade in goods and services to and from occupied Korea since 2014. That was separate from the sanctions that were placed on Russia because these were viewed as the proceeds of crime. Has that been considered in light of the drafting of this Bill?</p>
+        </speech>
+        <speech by="#" eId="spk_234">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_295">As I explained to Senator O'Reilly, the legal basis on which that was done was the Common Foreign and Security Policy. It required a unanimous decision of the Council followed by a regulation, which was then adopted by qualified majority voting under Article 207 of the treaty.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_235">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_296">Would it give Mr. Smyth comfort in a situation where infringement procedures were to happen, for example? Does that offer a precedent or a comfort for Mr. Smyth? If we were to include services and it did get as far as infringement proceedings, would that be something we could rely on as precedent?</p>
+        </speech>
+        <speech by="#" eId="spk_236">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_297">Insofar as it represents an interruption in trade in services, obviously that is what was achieved by it but the legal basis on which it was done was at EU level, in accordance with-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_237">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_298">I appreciate that. I understand the legal picture but I am asking if it was considered. We have talked about infringement proceedings but I will dial back a bit. The concern I have with what is being presented here today, including the twin track referenced by Mr. Keown, is that while we understand it, we also know that there has been absolute paralysis at European Union level. It is very unlikely that any of the pursuits of the Government at EU level to achieve action on the genocide and on historical occupation will progress, as it stands. My concern is that if that is what we are relying on, and this would only bring us into compliance with the ICJ ruling, we will set that semi-compliance in perpetuity. I would have thought we should test the legal boundaries as much as we can. As Mr. Smyth has said already, there is a risk of infringement procedures anyway if it covers only goods and a slightly greater risk with services included. Infringement procedures happen all the time so should we not just go for broke, as it were, try to get the whole lot included and test that at EU level?</p>
+        </speech>
+        <speech by="#" eId="spk_238">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_299">Infringement procedures happen all of the time but they are generally in relation to a failure to implement a Union legal Act. For instance, the Union may have adopted a directive which requires transposition among member states. Those sorts of infringement procedures do happen all of the time but it is not because states are refusing to-----</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_239">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_300">I just have one tiny question on the 0% figure-----</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_240">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_301">Please make it very tiny.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_241">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_302">We know that Airbnb has publicly addressed the fact that it has rental accommodation services in the occupied territories. Does that 0% figure jar with our guests? This applies to other platforms too, not just Airbnb. We know that they let properties in the occupied territories at the moment. Do the witnesses have an issue with that CSO figure of 0%?</p>
+        </speech>
+        <speech by="#" eId="spk_242">
+          <from> Mr. Gerard Keown<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_303">I can only go by the CSO figure, as published. In response to an earlier question, I said there is a difficulty with regard to figures on anything originating from a settlement. Therefore, we do not know, accurately, the volume of goods originating from settlements that may be in circulation in the EU market. As Mr. Smyth has been explaining, when it comes to services, which, by definition, are intangible and can often involve multiple inputs from different locations, it can become even harder to identify where they come from. We do not have an accurate picture.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_243">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_304">I thank Mr. Keown and Mr. Smyth for being here. One of the conclusions of the ICJ opinion of July of last year was that states should abstain from entering into economic or trade dealings with Israel concerning the occupied territories or parts thereof. On the balance of probability, in the witnesses' legal view, is that reference to economic or trade dealings in the ICJ opinion more likely to refer to trade in goods alone or is it more likely to refer to trade in goods and services?</p>
+        </speech>
+        <speech by="#" eId="spk_244">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_305">It is a general reference to trade so it has to be understood as being both. It is directed at states, whereas the other finding it made was to take steps to prevent trade generally. That would obviously-----</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_245">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_306">The reference is to both trade in goods and services, yes?</p>
+        </speech>
+        <speech by="#" eId="spk_246">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_307">We interpret the reference thus.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_247">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_308">That is really helpful. If we enact this Bill, it is likely that Ireland will face infringement proceedings. We would have to defend it and would probably use Article 36 of the Treaty on the Functioning of the European Union and the reference to public policy therein. The witnesses have said that the public policy ground is interpreted very narrowly by the Court of Justice. Is there a risk that by passing a Bill that only restricts trade in goods with the occupied territories and does not restrict trade in services, when we know the value of that trade in goods is low and the value of trade in services is unquantifiable, as we have discussed, we actually undermine our own argument that this Bill represents a manifestation of Ireland's public policy? Are we damaging that argument if we pass a Bill that has a massive hole in it, that only bans trade in goods but not in services?</p>
+        </speech>
+        <speech by="#" eId="spk_248">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_309">It is a question of finding the legal basis on which to act and at what level. If we are not competent to act at the national level, then the appropriate level for action is at EU level.</p>
+        </speech>
+        <speech by="#RodericOGorman" eId="spk_249">
+          <from>Deputy Roderic O'Gorman<recordedTime time="2025-07-01T16:50:00+01:00"/></from>
+          <p eId="para_310">When the court looks at the interpretation, as in the UK case about the minting of coins or the L'Église de scientologie case, it speaks of public policy regarding "the fundamental interests of the State".</p>
+          <p eId="para_311">I believe that was what was said in the minting case and again in the L'Église de scientologie case about a sufficiently serious threat to a fundamental interest of society. We have to demonstrate that the legislation we are passing actually manifests that. Where a state puts forward a Bill that has clear inconsistency in terms of banning trade in one part of trade as in good but not services, is that something the International Court of Justice is likely to look at and say that Ireland's public policy on this is not so strong because we are omitting such a large part of trade in our restriction?</p>
+        </speech>
+        <speech by="#" eId="spk_250">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_312">As I said to Deputy Ó Laoghaire, there is a two-step element to this. This first is to find an empowerment in Union law which allows a member state to act on the basis of public policy. The second is to demonstrate that in this case the ICJ's advisory opinion gives rise to a genuine issue of public policy in Ireland, for instance. We are talking about the two separate elements.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_251">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_313">Deputy McGuinness will be the final speaker.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_252">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_314">A lot of this conversation and discussion has been about whether this is legally permissible and about awaiting the Attorney General's opinion. Is it legally permissible not to do this? The International Court of Justice ruling requires states to prevent trade or investment relations with the illegal settlements. If 70% of trade with the occupied territories is in services are we at risk of contravening that ruling and the requirement on states? Are we at risk of breaking international law by not legislating for services to be included in this?</p>
+        </speech>
+        <speech by="#" eId="spk_253">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_315">I am not sure about the figures the Deputy has cited there. The question is to find the correct legal level at which to act. As I said earlier, there are states that regard the finding of the ICJ, that states should take steps to prevent trade, as not requiring prohibitions in law but to take other steps which might prevent trade. There is a discussion taking place among states as to what is the appropriate response to this finding. The Government is clear that it should be done legislatively. Where there is a clear basis on which to act that is what is being proposed here.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_254">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_316">I do not necessarily think this is the best response we can give as a State, that states are talking about this and discussing this. We need to legislate here. We need to legislate for Irish trade. I understand there will be European law as well but we are a signatory to the ICJ treaty. We are part of that, are subject to its jurisdiction and participate in it. It is saying that states need to prevent trade. That can only mean one thing in reality, which is trade in goods and services. Rather than looking at the permissibility of what we legislate for I believe we could be in danger of being in contravention of our own legal obligations in international law.</p>
+          <p eId="para_317"> I have a second question. Some of the reticence behind the inclusion of trade in this stems out of the fact that a lot of the trade that does exist in services with the occupied territories forms part of bookings on Airbnb and similar platforms. These are homes that have been stolen from Palestinian people that are being rented out for a killing, pardon the pun. Is part of the reticence because this trade in services actually passes through Irish offices of Airbnb here? Is that part of the consideration that may be at play here?</p>
+        </speech>
+        <speech by="#" eId="spk_255">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_318">The question we have asked the Attorney General to look at is the legal basis on which action can be taken in the field of services regardless of the service.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_256">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_319">If the Attorney General's response is to come back and say, "Go on ahead there is no legal issue here", is the Department ready to legislate? Has it the legislation, which would include services, drafted and ready to go? Would there be no issue?</p>
+        </speech>
+        <speech by="#" eId="spk_257">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_320">We cannot pre-empt the Attorney General's opinion but my understanding from the Tánaiste is that the Attorney General's opinion will then be reviewed by Government and the decision then taken on-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_258">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_321">I understand the message from Mr. Smyth that it is a legal question not a political one but pardon me for not feeling that there is a great level of political will on the part of the Government to drive this on.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_259">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_322">I did not get a chance to echo the thanks to Senator Frances Black. We look forward to her testimony tomorrow, and that of other witnesses. I thank the Senator for all the work she has done in bringing us to this stage. This is the calmest discussion I have experienced in many a year on the topic of what we have come to know as the occupied territories Bill. I thank everybody for the respectful way in which they have conducted themselves and particularly in relation to keeping it civil. There will be lots of opportunities to ask political questions of other witnesses. As civil servants, and as very senior civil servants, the witnesses' chief job is to be apprised of as many of the facts the Government needs. In that sense I was very impressed with the manner in which they have conducted themselves, so I thank them. I may not agree with everything they have said. The witnesses will take away to their Minister - he knows this already - a number of things. There is a wide and strong view in the committee that services should be included. Speed is a piece also. We are also cognisant that the Irish Government is the first government to propose such legislation. This is not lost on the committee either. Mr. Smyth and Mr. Keown have our thanks for giving so much of their time so professionally. There is lots of food for thought. There are complicated issues here and very clear issues the committee has to consider.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_260">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_323">Will it be possible to get in writing some of the points made because they were not in the opening statement?</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_261">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_324">One of the things I would have liked was about the prevention and prohibition piece. Perhaps the witnesses could do a note to elaborate on that for the committee. Is there anything else we need a note on?</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_262">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_325">Could we have a note on those legal points that were only made verbally? For those of us who did not get in for a second round of questions, perhaps we could submit follow-up questions through the clerk. if that was possible.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_263">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_326">Are the witnesses open to follow-up written questions?</p>
+        </speech>
+        <speech by="#" eId="spk_264">
+          <from> Mr. Declan Smyth<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_327">I have to emphasise that the Attorney General has now been asked to advise, so seeking my opinion on something is really not something I am able to provide. The Attorney General's opinion is essentially the only opinion that counts. He is the legal adviser to the Government. We have identified the legal issues that we have asked him to look at.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_265">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_328">It is the little things like the customs stuff that we did not really get to tease out. Maybe we could submit written questions and the witnesses might answer them if they can.</p>
+        </speech>
+        <speech by="#JohnLahart" eId="spk_266">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T17:00:00+01:00"/></from>
+          <p eId="para_329">I hope we get more opportunities. This just emphasises the need for speed on the Attorney General's opinion as well. Again, I thank our witnesses for appearing before the committee today and for their contributions. I thank the committee members. The committee will now go into private session.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee went into private session at 5.08 p.m. and adjourned at 5.50 p.m. until 6.30 p.m. on Wednesday, 2 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

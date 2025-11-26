@@ -1,0 +1,785 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-10/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-10/debate"/>
+          <FRBRdate date="2025-07-10" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_children_and_equality"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-10/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-10/debate/mul@"/>
+          <FRBRdate date="2025-07-10" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-10/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_children_and_equality/2025-07-10/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-19" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AidanFarrelly" href="/ie/oireachtas/member/id/Aidan-Farrelly.D.2024-11-29" showAs="Aidan Farrelly"/>
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="ClaireKerrane" href="/ie/oireachtas/member/id/Claire-Kerrane.D.2020-02-08" showAs="Claire Kerrane"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="MikeKennelly" href="/ie/oireachtas/member/id/Mike-Kennelly.S.2025-01-29" showAs="Mike Kennelly"/>
+        <TLCPerson eId="NessaCosgrove" href="/ie/oireachtas/member/id/Nessa-Cosgrove.S.2025-01-29" showAs="Nessa Cosgrove"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="SharonKeogan" href="/ie/oireachtas/member/id/Sharon-Keogan.S.2020-03-30" showAs="Sharon Keogan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM LEANAÍ AGUS COMHIONANNAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Children and Equality</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-10">Déardaoin, 10 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-10">Thursday, 10 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#NessaCosgrove">Nessa Cosgrove</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MikeKennelly">Mike Kennelly</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#AidanFarrelly">Aidan Farrelly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SharonKeogan">Sharon Keogan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#ClaireKerrane">Claire Kerrane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#KeiraKeogh">Teachta / Deputy Keira Keogh sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Engagement with Tusla<recordedTime time="2025-07-10T09:30:00+01:00"/></heading>
+        <speech by="#KeiraKeogh" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T09:30:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Senator Bradley and Deputy Charles Ward. The joint committee, at a private meeting on 3 July, agreed the minutes of a private meeting on 29 May and of the public meetings on 12, 16 and 23 June 2025. The agenda item for consideration today is engagement with Tusla, the Child and Family Agency. We are joined this morning by Ms Kate Duggan, chief executive officer, Mr. Gerry Hone, interim director for services and integration, Ms Rosarii Mannion, national director for people and change, and Mr. Pat Smyth, national director for finance and corporate services. They are all very welcome and I congratulate them on the launch of their annual report yesterday. </p>
+          <p eId="para_13"> The purpose of the meeting is to give Tusla the opportunity to provide some insight for members into priority topics and issues facing the organisation. As this is our first engagement with Ms Duggan, I want to say that this committee welcomes the opportunity to work closely with her to effect change and influence legislation that will help to ensure that our systems of care, support and protection are effective, compassionate and grounded in the rights and dignity of every child in Irish society. All of the members will agree with me when I say that we look forward to ongoing engagement with the agency and to working closely with it in the term ahead. </p>
+          <p eId="para_14"> Before we begin, I have a few housekeeping matters to go through. I wish to advise everyone that the chat function on MS Teams should only be used to make the team on site aware of any technical issues or urgent matters that may arise and should not be used to make general comments or statements during the meeting. I would also like to remind members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Therefore, any member who attempts to participate from outside the confines of the precincts will be asked to leave the meeting. In this regard, I ask members participating via MS Teams to confirm that they are on the grounds of the Leinster House campus prior to making a contribution to the meeting. </p>
+          <p eId="para_15"> In advance of inviting our witnesses to deliver their opening statement, I advise them of the following in relation to parliamentary privilege. Witnesses and members are protected by absolute privilege in respect of the presentation they make to the committee. This means that they have an absolute defence against any defamation action for anything they say at the meeting. However, they are expected not to abuse this privilege and it is my duty, as Cathaoirleach, to ensure that this privilege is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such direction.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T09:30:00+01:00"/></from>
+          <p eId="para_16">I thank the Chair and the committee for the invitation to appear here today. As the Chair has said, I am joined this morning by my colleagues Gerry Hone, Rosarii Mannion, and Pat Smyth. We are very grateful for the opportunity to meet committee members today, many for the first time, to discuss our work, the progress made and the challenges faced. </p>
+          <p eId="para_17"> In the 11 years since Tusla’s establishment, the agency has grown exponentially, with a 100% increase in child protection and welfare referrals. In 2024, we received 96,666 child protection and welfare referrals, 5,823 young people were in our foster care, residential care and aftercare services and 8,659 young people were referred to our education support services for the current school year. In responding to this growth and the scale of demand in recent years, we have expanded our services and implemented new services in line with changing policy and legislation, such as the birth information and tracing service and childminding registration We have risen to the challenge of unprecedented situations such as Covid-19 and the HSE cyberattack and rapidly scaled up services to respond to an almost 500% increase in separated children seeking international protection. We are proud of the agency’s achievements to date and of the positive work we have done with children, families, and communities all over Ireland in response to a changing landscape and level of need. </p>
+          <p eId="para_18"> Many of the challenges we are facing have been widely documented, including the increasing demand for all of our services, an inadequate supply of emergency and alternative care placements, workforce supply issues, particularly in social work and social care, and the challenges we face in providing timely access to special care beds to the most vulnerable cohort of young people in our care. We have also seen increased scrutiny and criticism from the Judiciary of the impact of our capacity challenges on children and young people in the care of the State who are under the oversight of the courts. </p>
+          <p eId="para_19"> As well as the increase in demand for our services, we have noted a marked increase in children and young people with more complex needs, particularly those with disability, mental ill-health, addiction, and those at risk of exploitation or involvement with the youth justice system. Wider societal issues such as global movement, poverty, homelessness, domestic, sexual and gender-based violence, drugs, criminality, exploitation and social media continue to significantly impact the demand for our services. We continue to engage with other State agencies to promote interagency working to better meet their needs. We look forward to the review of the Child Care Act and the commitment to place inter-agency co-operation on a statutory basis. We also welcome the commitment in the programme for Government to whole-of-government support for the delivery of alternative care services. Further strengthening of interagency working and support across Departments is pivotal to enabling better outcomes for children and young people with more complex needs. </p>
+          <p eId="para_20"> Internally, we are currently implementing our Tusla integrated reform programme, which is an ambitious transformation programme across five key pillars to ensure that children and young people receive the right response from the right professional in the right place at the right time and that our staff are supported and valued. Over the last 18 months, with the support of our staff, executive, board, departmental colleagues and Ministers, we have made significant progress. We have opened the first of four Tusla residential centres since 2018 and we are on track to open a further eight centres across 2025 and 2026. We have provided an additional 800 placements for separated children seeking international protection and have increased the number of Tusla foster carers recruited. </p>
+          <p eId="para_21">For the first time since 2022, we have ensured that, today, any young person requiring special care has been allocated a placement. We have, for the first time, reached our funded workforce, with the most social workers and social care workers ever employed in the agency, and increased our staff retention. We have launched new supply routes for social work and social care professionals into the agency, most significantly a new social work apprenticeship scheme with 35 social work apprentices commencing in 2024 and 75 places for 2025. We have published the first Tusla outcomes framework, achieved statutory compliance with birth information and tracing legislation and launched the childminding registration service across Ireland.</p>
+          <p eId="para_22"> Tusla continues to make significant progress in our digital transformation, which aims to maximise the use of innovation in supporting the delivery of our services. Central to this transformation is our Tusla case management, TCM, system, which was used by 4,000 staff last year in managing 140,000 cases. This system was developed by our internal technical team in 2022 and has expanded each year to now provide a single integrated view of a child’s case file across 25 services our agency provides for children and families. We are preparing for the launch on 1 January 2026, for the implementation of the final phase of the transformation of our community services, restructuring our regions, areas and services to ensure equity in access, integrated service delivery, more focused governance and oversight, and more efficient services, to enable better outcomes and more positive experiences for children, families and communities.</p>
+          <p eId="para_23"> I believe that the work we do is one of the most important roles in the State. It is a privilege for us to work for this agency. We are extremely proud of our staff who work tirelessly each day and of our partners in community and voluntary services across the country supporting children, young people, families and communities on our behalf. Together, we have made progress. We know from external oversight that we use our resources to ensure that those who are most at risk and in need are responded to. However, significant challenges remain and if we are to achieve our ambition of providing the right response at the right time to all of the children, young people and families referred on a daily basis, we need further investment in our child protection and welfare, therapeutic, alternative care, educational support and early intervention services, in line with demand.</p>
+          <p eId="para_24"> I thank the committee for the interest members have shown in the crucial work the agency does in helping some of the most vulnerable children and young people in our society. I look forward to working with members further over the coming months. We are happy to answer any questions members may have.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T09:40:00+01:00"/></from>
+          <p eId="para_25">I thank Ms Duggan for affording me the opportunity, as a new Chairperson, to meet her earlier in the year to receive an overview of the agency. When I was at the launch of the report yesterday, I was thinking of the 96,666 referrals. That would fill Croke Park, with 15,000 more outside. It is a huge number. I thank Ms Duggan for her opening statement.</p>
+          <p eId="para_26"> It is proposed to publish the opening statement to the Oireachtas website. Is that agreed? Agreed. I remind members that they will be allocated seven minutes of speaking time and this allocation must include the response from the witnesses. If time permits, at the end, I will allow a brief second round of questioning. However, members should indicate to me if they wish to ask additional questions. I ask members, when they are putting their questions, that they strictly adhere to the agenda topic under consideration at this meeting. I will call members in accordance with the speaking rota circulated. I ask any members participating via Microsoft Teams to confirm they are on the Leinster House campus before putting their questions.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_4">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-10T09:40:00+01:00"/></from>
+          <p eId="para_27">I thank the witnesses for being here and for the opening statement. It was difficult to choose what topics to raise with them because their remit is so broad and important. We will see how many I get through. I might take the questions one by one, allow the witnesses to answer and then move on.</p>
+          <p eId="para_28"> It is clear to everyone that early intervention is key for child care and welfare. Early intervention here means pre-birth in many cases, where vulnerable, pregnant women need intervention. I think much of that can be done through family resource centres. I know Tusla works with resource centres. Could the witnesses expand on that? Do they see increased funding being given to family resource centres to provide services like counselling? Trim Family Resource Centre is fantastic. It is basically in every element of the community. It is trusted and well positioned to offer services such as counselling. We all know that is a priority area for anyone working in the child services sector. Access to mental health, CAMHS waiting lists and so on are difficult issues. I ask the witnesses to expand on those issues.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T09:40:00+01:00"/></from>
+          <p eId="para_29">I share the Deputy's view and commitment. All of my clinical background over 20 years ago was in early intervention services across a range of disability and mental health services and in supporting and working with families. A cornerstone of our reform programme is increasing and expanding our early intervention services. The Deputy talked about the support that is required pre-birth. That is critical. We are proud to fund more than 121 family resource centres with the core funding they are provided through Government. We also work with many of those centres on individualised programmes that meet the needs of those communities, so where further additional funding is required for a specific intervention, that is very important. We work with colleagues in the HSE on pre-natal and post-natal care.</p>
+          <p eId="para_30"> I will let Mr. Hone come in with more detail but from my perspective, I am proud of one initiative that we have started working on. We are working with an organisation called Inniu on the provision of residential care to pregnant, vulnerable homeless women. We have recently funded, with the council, work on step-down, transitionary accommodation to allow them to step down and move towards independent living. I visited that centre recently and was delighted to see the impact that we can make. Through the budget this year, we also have funding to launch five new family resource centres. The process is under way. We had 49 applications. We are working through all those applications to prioritise the five new locations. I expect that will be announced in the next week or two. We are very committed to the work of family resource centres and the difference they make in communities across the country.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T09:40:00+01:00"/></from>
+          <p eId="para_31">We have lots of social workers, social care staff and family support staff supported by able administrative workers, providing a full range of early intervention services across all our pathways. Early intervention is crucial for providing support at the earliest stage to stop problems from developing into something that becomes critical and more acute for families. Through our commissioning programme in all the areas, we look at needs in local communities. For example, if there is a need for early intervention relating to parenting, teen pregnancy and support for teens who get pregnant, we fund those programmes directly through our commissioning processes. Several programmes around the country do that.</p>
+          <p eId="para_32"> The other aspect of our reform programme related to early intervention will be standing up 90 family support teams across the country as part of that. We will be taking a family support pathway with clear referral processes and clear assessment of need, benchmarking our interventions against the need that we identify and creating outcomes to achieve for people who are vulnerable. We have a single care plan that we hold ourselves and other agencies accountable to delivering to meet those needs. I agree entirely with what the Deputy is saying.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_7">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-07-10T09:40:00+01:00"/></from>
+          <p eId="para_33">My next question is about the school completion programme. Navan is one of six pilot sites. All of the feedback there is excellent. The pilot is in its second year.</p>
+          <p eId="para_34">What is Ms Duggan's view on its success? Will it become a national scheme?</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_35">Often people do not associate the educational support service with Tusla in terms of the wider work we do around child protection and welfare but our educational support service is a pivotal service within the agency from the perspective of early intervention and responses to that service. The most recent published figures for 2023 show that one in four children in primary school is absent for more than 20 days, while over one in five, or 20%, of children in post-primary school is absent for over 20 days. The significant increase in demand for services in our educational welfare service is an area on which we are working very closely with colleagues in the Department and getting support from them. I know the Minister is launching, with our support and that of colleagues, a much wider programme on a new campaign for school attendance. That is a pivotal part.</p>
+          <p eId="para_36"> The second part of that service is our home school liaison service. Again, this is a very important programme for supporting and engaging families and working with families in need identified by a school. The third part is our school completion programme, which is in place in 500 or 600 schools and works on lots of different initiatives across the spectrum. With the support of the Department, our commitment is to mainstream as many of those programmes as possible.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_9">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_37">The work of Tusla is incredibly important. It has a huge remit. I am not sure the State has been exactly where it needs to be regarding delivery. We will talk about early intervention, some of the chaotic circumstances and making sure we catch these and that we intervene, even if that is a nuclear intervention. While we do everything to avoid that, it will always be necessary. Ms Duggan put it very clearly. It involves poverty; homelessness; domestic, sexual and gender-based violence; drugs; criminality; exploitation; and social media combined with the astronomical numbers of cases with which Tusla must deal.</p>
+          <p eId="para_38"> With all the good work and projects that are out there, there is significant need, particularly where drugs meets poverty and chaos. It is about a number of things. It is about the facility to catch the issues. We have all heard about tragic cases such as that of Kyran Durnin but we all know of plenty of cases where sometimes we are too late to the table. Specialist public health nurses who could catch issues to make sure referrals happen early were mentioned. Sometimes as early as possible means pre-birth. The other piece involves ensuring we have the correct intervention and that it happens early enough. We have all come across cases where the intervention took too long. I get the idea of keeping families together but children have been left in really precarious circumstances. In the past week or two, I have dealt with constituents who spoke about drug-dealing party houses. There is a child protection issue regarding children being brought up there - if that is even the correct term. I have a feeling that we fail to take enough action.</p>
+          <p eId="para_39"> There is no way that Tusla has the facilities for foster care to be able to deal with the need that is there. Could Ms Duggan talk about the need, the capacity Tusla requires and any issues it has in dealing with other Government agencies because, obviously, it does not all fall solidly on Tusla?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_40">When we talk about the Tusla reform programme and transformation programme, they can sound like empty words. Just over 18 months ago, we sat down to look at what our data is telling us. What our data was telling us was that we needed to restructure our services to make sure that when a referral comes to our service, it is responded to in the right way. Today, all referrals that come to our agency, whether they involve very significant evidence of harm or abuse or a mother who needs support to parent her children, go through the same process. This has created the issues described by the Deputy where there have been delays in accessing the right service and issues we do not want, for example, referrers receiving correspondence saying that something "does not meet the threshold". That is factually correct. It may not meet the threshold for a child protection response but the response is something different.</p>
+          <p eId="para_41"> We have designed our new operating model. We must wait until 1 January to go live because it involves significant changes across our finance and reporting systems. We are going live on 1 January 2026 with a new way of having a single point of entry within a smaller network area where the child will be screened by a more multidisciplinary team, needs are identified immediately and the child does not have to go through a social work child protection response if that is not what is indicated. If a child needs a protective response, he or she will get it quicker. If a child needs to go to a family support response, he or she will get that more quickly. That is now enabled because, for the first time, we have a single child digital record. We are one of the only child protection systems in Europe to have this. We will now be able to have a single point of contact to see what a child's needs are and the interventions across the agency. The programme's ambition is to get to cases, catch issues sooner and make sure children are not too late coming to the table for the particular intervention.</p>
+          <p eId="para_42"> There is restructuring within our resources and structures but we are seeing increased demand for our services year on year. Based on what the data is telling us today, we expect to tip over 104,000 referrals in 2025. That increase in demand for services does mean that we also need additional investment in those front-line early intervention family support and child protection services.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_11">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_43">I know this is a difficult question but could Ms Duggan talk numbers in respect of what Tusla needs to deal with what it assumes it will be dealing with?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T09:50:00+01:00"/></from>
+          <p eId="para_44">It is important to recognise that for 2025 we received a 14% increase in investment, or almost €145 million. That was in response to the recognition by the Department and Government that we are a demand-led service. Two thirds of our budget is spent on placements - foster care placements, residential placements, after-care placements and special care placements. Much of that budget went towards this new and growing demand for separated children seeking international protection. I gave an example involving 800 placements. This is a young person who could turn up with literally a backpack with nobody else who is eligible for services under the Child Care Act. Where the person turns up at an office, we have to find a placement for that young person that night so the demand-led part has been well recognised by Government.</p>
+          <p eId="para_45"> Any information that is out there talks about the fact that we are running a deficit of about €60 million this year. This figure relates to current expenditure costs in terms of the provision in particular of placements in foster care and residential care. As we look into 2026, we are in significant negotiations with Government. We need that €60 million to stand still. When we look at costs related to separated children seeking international protection, we are not seeing a reduction in our numbers. We are seeing an increase in our numbers on this time last year. We need increased investment to meet that. In terms of increased demand, we talk about an increase of almost 10% on last year. That will straightaway give one a figure that we are talking about of at least an additional 10% to 15% just in terms of that front door - responding to that need we spoke about in terms of referrals. </p>
+          <p eId="para_46"> On what the Deputy spoke about regarding-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_47">I thank Ms Duggan. We might leave it there and go to the next member. She will get a second round.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_14">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_48">I welcome Mr. Hone, Mr. Smyth, Ms Duggan and Ms Mannion. I thank them for giving up their time to come before the committee. Well done to them on their work. Their workload is unreal. It is so broad.</p>
+          <p eId="para_49"> What specific actions are being taken to address Judiciary concerns about delayed placements and service capacity?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_50">I will let Mr. Hone come in as my answer will be short.</p>
+          <p eId="para_51"> First, I will set a context for people to understand. Nearly 5,800 children are in the care of the State. Every one of those children has a care order and is under the oversight of the court. The court sees at first hand on a daily basis the impact on a child if a registered placement is not available for him or her. It is important to recognise that 87% of the nearly 5,800 children are in foster care. We know that 95% of children in care today are in full-time education. We have reached the highest level of children and young people transitioning to aftercare for those over 18. A total of 78% of them are in education or training. Many of those remain living with their foster carers. Many of those remain in or are transitioned or supported to accommodation.</p>
+          <p eId="para_52"> We also know that a number of children have very complex needs and vulnerabilities where they may not be able to be matched with foster care placement or where the foster care placement may break down. These children may go into residential care placements, some of which may break down. They are the children and young people we discussed in our statement who need the whole-of-government and interagency support because their needs extend beyond a mainstream residential care placement. Their needs extend to needing disability services, mental health services and addiction services.</p>
+          <p eId="para_53"> Equally, when it comes to reunification, it is important for us to advocate as an agency on behalf of the parents who need support. Children may have to be taken into care at a certain point because of a parent's vulnerability, particularly when it relates to addiction or mental health difficulties. We also think it is important for this committee to advocate for support services to birth parents. We have established a new advocacy service for them. Their access to mental health supports and addiction supports is important. If children have to come into care, we want them to be taken in at the right time and to receive a stable and regulated placement. Equally, we want work done to support reunification or to make it available to parents.</p>
+          <p eId="para_54"> Mr. Hone might want to add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_55">I thank the Senator for her question. We are under pressure in terms of placements - she is right - and that does lead to delays in placing children appropriately. Often, we have to place children further away from their families and community of origin, mainly due to the demand on the agency at the moment. We have provided more than 800 placements for separated children in recent years - maybe even in the last year. There is huge demand. The providers are the same ones that provide placements across the board. That creates a type of pressure cooker in terms of what is available.</p>
+          <p eId="para_56"> We are working very hard to increase our own internal capacity regarding residential care, as Ms Duggan outlined. I attend lots of estates meetings at the moment, where we are looking at properties, buying them, trying to get them staffed and opened quickly. It takes, on average, approximately two years to buy a property and get it up to speed in terms of fire regulations and health and safety issues that have to be done before it can be opened and staffed. That creates further delays in the system in terms of our ability, but we are working hard in those spaces to get that done.</p>
+          <p eId="para_57"> Our priority is safe care for children. Whether that is an acute case or an early intervention case, safety is the key. We have to assess safety all the time. All of our systems are geared toward assessing safety and ensuring safe care for young people, including our assessment process and the training of our staff. All of our staff are trained very well under Children First in order that we can recognise where children are at risk of significant harm and need something else, while prioritising the support of families to keep children at home. We should prioritise that at all times. It should be a last resort to remove children.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_17">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_58">I thank Mr. Hone. Tusla gathers a lot of sensitive information. Given digital transformation efforts, how is Tusla safeguarding sensitive data, especially in light of past cyberthreats? It would be awful if the information Tusla has were released into the public realm. How does it safeguard that?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_59">People know the challenges and data protection issues that have been in place over the years since the establishment of this agency. We have undertaken a significant programme of wider reform with regard to GDPR compliance. What we have seen over the last two years is a significant reduction regarding any breaches and greater compliance with GDPR legislation.</p>
+          <p eId="para_60"> The Senator raised the HSE cyberattack. For clarity, Tusla was born out of the Health Service Executive. It was established in 2014. Tusla's systems remained on the HSE ICT system. When the HSE cyberattack happened, our systems were impacted by that. That is well-documented. We took it as an opportunity and Tusla has now established its own ICT systems. We have a stand-alone system. We have established significant safeguards in terms of cybersecurity. We must fully and continuously review this. We cannot become complacent in that regard. Any of the assurances or validations we have received regarding this have been very positive.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_19">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T10:00:00+01:00"/></from>
+          <p eId="para_61">The witnesses are all very welcome this morning. This is a subject I hold very closely to my heart. All the children in care in this State deserve the utmost attention from the State to make sure they get the best possible care. I believe we have let them down. I believe Tusla has let them down. There are so many issues I want to bring up with Tusla today. I ask the witnesses to please bear with me on them.</p>
+          <p eId="para_62"> Thirty-eight children in Tusla care were reported missing last year, 29 of whom were separated children. How many have been located? What concrete steps are being taken to prevent further disappearances, especially when we have concerns about potential trafficking?</p>
+          <p eId="para_63"> HIQA inspections earlier this year found that Tusla had failed to follow national protocols in cases involving unaccompanied minors, delayed strategy meetings and failed to liaise effectively with An Garda Síochána or international agencies. Considering the number of missing children, among other issues, what has Tusla done to fix these serious safeguarding gaps? How can we ensure that these children are not being lost to trafficking or exploitation?</p>
+          <p eId="para_64"> A person was told that Tusla no longer uses the term "reunification". It is now called "permanency planning". How many children were actually returned to their families in 2024? How many reunification plans were dropped or reclassified? The whole idea is to work with families at early stages when a child is taken into care and how to support that child in certain circumstances. I understand very well that Tusla may not be ever able to place that child back in that household again, but with support from Tusla and the different multidisciplinary teams, there are families that may be the best environment for the child, rather than him or her hopping from house to house for years and becoming one of the 13% not in education.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_65">I will discuss reunification and permanency planning in a moment. On young people missing from care, it is important that we address that issue and share that concern. It is absolutely critical for us that any child or young person whose whereabouts is unknown be recorded and that that record be kept alive and open until the Garda locates that child and confirms to us that their whereabouts are known. We have joint protocols and working protocols with the Garda in that regard. On our mainstream services, that is, children in residential and foster care services, every child has an absence management plan and has to have one as part of our services being regulated. For some children, where we are very concerned about their behaviour, that absence management plan might indicate they have to be reported as missing if they are more than 15 minutes away from their expected return time. The missing data includes those children reported as missing but whose whereabouts are actually known. They are children who have not returned to their residential unit but have made contact with their social care leader or social care worker to say they are in X house or in Dundrum and ask whether they can be sent pocket money. They are children we work with and respond to. They are still counted as missing because they are not where they should be, in their residential unit, at a point in time when we collect the data. We work really hard on this and they are reported as missing straightaway. It is the Garda's responsibility to seek to locate them. We give the Garda all the information available to us.</p>
+          <p eId="para_66"> On separated children seeking international protection, I have described young people who turn up in our offices, many of whom are over 16. Most are around 17 years of age. When they are met by the International Protection Office under the Department of justice, if they are believed to be a minor or state that they are a minor, they are immediately referred to Tusla for a child protection response. They come to us for an assessment under eligibility. There were more than 800 of those young people last year alone for whom we had to provide a placement. Many of them indicate to us at that point their intention to travel on and that Ireland is not the destination they want to be in. Many say they are making their way to meet their families. We still take all of that information seriously. As the Senator said, on the figures we spoke about, most recently there are 28 young people who remain reported as missing. We have ensured the Garda, through its engagement with colleagues in the UK, Northern Ireland and Interpol, have the names and details of those young people on their books. Twelve of those young people have been reported missing in 2025. The whereabouts of 13 of those young people are unknown since 2024 and the others are just over that. We continue to count them as missing because the Garda has not located them. Our worry for all of those young people is any risk of trafficking or exploitation. A significant action we have taken over the past two years is partnering with MECPATHS, the not-for-profit organisation we rely on for the best in practice in relation to exploitation and trafficking. We now fund MECPATHS to provide training to our staff and staff in our community, voluntary and residential services. More important is the work it does across the State training people in hospitality, working at airports-----</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_21">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_67">I am sorry; I would like to hear from Mr. Hone about reunification. It is important.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_68">I could not agree more. It is important for our systems to be designed around reunification. Every child in care has an annual child-in-care review. A key question in that review, even if it is long-term care, is the question of reunification.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_23">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_69">How many families?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_70">I cannot say how many today but I can get the number for the Senator. I am happy to provide that.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_25">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_71">I thank Mr. Hone.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_72">I thank Senator Keogan. I am a hard taskmaster with the time. We will get to a second round.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_27">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_73">I thank the witnesses for coming in this morning. It is wonderful to have an opportunity to learn about the work of Tusla. I was a professional youth worker for about 20 years and worked in communities as Tusla emerged. I commend the work of the staff on the ground right up to senior management on the missions in transforming the idea or reputation of the service. That is true and it has happened in many of the communities I worked in. I commend everybody involved. Notwithstanding that, I and the families I have worked with have concerns that go beyond the individual or one-off towards a structural incompetence. That is based on the context in which Tusla has to work, which is in a society in Ireland that continues to fail a significant portion of children and young people. Some 100,000 children are experiencing consistent poverty and there is record child and youth homelessness. I acknowledge that the workers in Tusla are having to firefight all the time. It made me scratch my head yesterday when I saw the media reporting that the chair of Tusla's board said Tusla has never been better equipped to do its job. If I was a member of Cabinet, Tusla would suddenly become not a priority for me in funding. There is a €60 million deficit, yet the chair of the board said Tusla is equipped to do its job. Is there something wrong there?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:10:00+01:00"/></from>
+          <p eId="para_74">What the Deputy said in his opening remarks means a lot to us and our staff. There is no doubt they are working tirelessly with organisations such as Foróige and other community and voluntary organisations and youth workers, without which we could not do our work in responding. I thank the Deputy on their behalf for saying that.</p>
+          <p eId="para_75"> I agree; we are seeing the impact of poverty, homelessness, drugs and addiction. We know they are leading to the increase in referrals and demand for our services. When I spoke yesterday at the launch of our annual report, it was around the fact that we judge a society by how it treats its children. We hold that belief. We are an agency that is proud to talk about the work we do and the progress we have made but we will be very honest and open that we do not get it right all the time. There is more we need to do and there is a responsibility on us in terms of what I explained in response to other members around having to transform our structures and how we do our business. What the chair referred to yesterday in his wider words and interviews afterwards was that we are an agency that is still immature in that we are better equipped than we were ten years ago with investment, new supply routes around apprenticeships, digital enablement and the wider understanding of individuals, Deputies and Government parties of the work we do. Through hard lessons, we know what needs to be done. Some of the frustration for our staff on the ground is that when we set about identifying our reform programme, we were clear to say it cuts across five key pillars. We need more placements, more staff, more and wider multidisciplinary staff and to look at programmes like digital enablement. We are more equipped because we know what needs to be done. We have made progress. There are still challenges. I spoke about some of the more positive outcomes we have seen. We are starting to see the tide turn through the work Ms Mannion and her team are doing. More staff are coming to us and staying.</p>
+          <p eId="para_76">We are getting better outcomes. We are more equipped to deliver but the two things we need are, as we said, for us to restructure to ensure we are as efficient and productive as possible and that we are getting productivity and value for money but we also need investment in statutory services and we need that interagency work.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_29">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_77">I do not doubt that for a second. I have seen that first-hand and I completely agree that the competence on the ground is there. It frustrated me to see that yesterday, when we see such regular briefings about 400 children potentially going without a social work allocation or see continuous news cycle pieces about under-resourcing. We just need to make sure that the-----</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_78">The messaging.</p>
+        </speech>
+        <speech by="#AidanFarrelly" eId="spk_31">
+          <from>Deputy Aidan Farrelly<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_79">-----the messaging is very clear. There is a €60 million deficit to stand still, when we know that Tusla is going to have far in excess of 100,000 referrals next year. I am really conscious of that. We spoke with the Ombudsman for Children a couple of weeks back on the day of a reported plan to hire security personnel with regard to the health and safety of children in placements. That fundamentally concerned me. I do not want to speak on his behalf but I think the ombudsman shared his concerns. What evidence is informing that decision? What checks and balances are Tusla putting in place to ensure that the health and safety of those children and young people are of paramount importance when any security personnel are in their presence?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_80">I will start and will ask Mr. Hone to speak on some of the detail. It is important to us that, behind the headlines, the story is there and people are aware of special care and the very vulnerable young people. There are young people in our special care services and at a much lower level in our residential care services who, because they may be going through a very traumatic period, may hit out. Their behaviour is quite significant. Staff have had their noses broken, have had broken bones, have been kicked and punched in the stomach and on the ground, and have been pulled to the ground by their hair. We have a duty of care to protect our children but we also have a duty of care to make sure that our staff have a safe place to work.</p>
+          <p eId="para_81"> We are a service regulated by HIQA. One thing we looked at, because it has been used in other jurisdictions, is the use of close protective personnel for the specific and infrequent purpose whereby, where there is a significant risk to the staff in a particular unit at a particular point of time, we have a different professional in there who can safely remove staff from a very violent episode. We had to make sure that we worked with HIQA to make sure that this new grade of staff did not in any way affect our registration. We worked with HIQA to make sure that our policies and procedures reflected and stayed compliant with our registered services. HIQA obviously has full oversight of us with regard to inspection, monitoring and registration of our special care services. Those types of incidents or outbreaks of volatility from young people are in a very small number of situations but we have to understand there is health and safety legislation to protect our staff.</p>
+        </speech>
+        <speech by="#MikeKennelly" eId="spk_33">
+          <from>Senator Mike Kennelly<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_82">I thank Ms Duggan for her statements and her colleagues for being here. I acknowledge the scale of what Tusla is managing. It is enormous, even just in my county of Kerry, where more than 2,500 child protection and welfare referrals were dealt with last year, while more than 2,000 young people were referred to family support services. To be honest, this has to be commended. We also have to speak about the poor narrative relating to management and getting it right.</p>
+          <p eId="para_83"> As the witnesses outlined, Tusla is dealing with more than 96,000 children. The resource is increasingly strained. Numbers will keep climbing if we are looking at them properly. Have we enough resources to manage more of a workload for the staff? In life, you learn nothing from your victories. You learn more from losses. There has already been reference to the tragic case of Kyran Durnin. I still believe that this should haunt us all. A young boy was failed by the very system meant to protect him. His death was not just a tragedy; it was an indictment. It exposed gaps in accountability-----</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_84">I ask the Senator to be careful with something that is a live investigation.</p>
+        </speech>
+        <speech by="#MikeKennelly" eId="spk_35">
+          <from>Senator Mike Kennelly<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_85">I know it is under a live investigation but my question is about what specifically Tusla has changed since that incident. Two years have gone since his disappearance was reported. That is one of the serious things that has really affected me. I wanted to join this committee to see that the gaps are closing and that no child falls through those gaps.</p>
+          <p eId="para_86"> The witnesses also mentioned the increasing complexity of cases involving children with disabilities or mental health challenges or who face addiction and exploitation and of taking in these children and people with disabilities in special cases. We have an issue in Kerry at the moment where respite care is not available to any person with disabilities. Hopefully, these people are being carefully looked after in these special respite homes.</p>
+          <p eId="para_87"> The witnesses pointed to digital progress and the Tusla case management system, with 140,000 cases across 25 services. That is very impressive but no technology can replace proper staffing, face-to-face care and urgent decision-making. It must be a tool, not a shield. I am coming back from the time of Covid, when every national service we had in State agencies was shut down and there were interviews over the Internet and so on. That was a breakdown, as far as I was concerned, because you learn more from face-to-face engagement rather than digitally. If it takes more staff to retrofit, we should still go back to that style and recover that, and to make cases for people presenting much easier, rather than doing it digitally. I do not agree with it.</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_88">The Senator raised respite, disability and those aspects. I have answered the question about the need for further resources already. As the Chair referenced, we obviously cannot talk about the Kyran Durnin case because it is a live investigation. We completed two reports regarding the review of any involvement that Tusla had in that case. It is horrific. It has shocked all of us to our core. Both of those reports are with the Ministers. I know they will be published once the live investigation is over, and we continue to work with the Gerda on an ongoing basis. It is also about the fact that it is important to reference and highlight the fact that everybody needs to be mindful of child protection or risks, whether that is family members, extended family members, communities or neighbours. If there are concerns, they should be raised at all times with Tusla to respond.</p>
+          <p eId="para_89"> I will refer quickly to the digital matter. We are looking at digital systems and digital enablement to, first of all, have one record of a child and one point of visibility that promotes safety. We developed that in-house. It is a system that has been absolutely stress-tested with regard to cybersecurity and the use of the cloud, and all of those things that I am not the technical expert to answer, but certainly our chief information officer, board and external assurance can. One thing that is doing is increasing face-to-face time. We talk about how, when this agency was established, people had to go out to do a home visit and get a bus back to the office to be able to update the file. What this means now is that staff will have more time for face-to-face contact because of the use of the digital system that is available to them.</p>
+          <p eId="para_90"> I will let Mr. Hone come in on the issues the Senator raised about mental health and disabilities.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T10:20:00+01:00"/></from>
+          <p eId="para_91">I thank the Senator for his question. There is no doubt but that responding to families where there are children with disabilities is a real challenge for us as an agency. Our systems are designed to assess where need exists for any family.</p>
+          <p eId="para_92">If disability is a need, we work closely with our colleagues in the HSE to try to address it and advocate for the child and family to get access to HSE services. We have often developed services jointly with the HSE. We have many co-funded placements for young people with disabilities that have been funded 50:50 with the HSE.</p>
+          <p eId="para_93"> Where we run into difficulty is in the whole area of complex need, which could include a mild intellectual disability or a moderate learning disability. If we cannot reach a diagnosis on the HSE side, we are left to find services that are suitable for those young people and families. That is a real challenge for us. We purchase services where we can. We are working within the Department. I am a part of a vulnerable children's group in the Department that crosses the boundaries between us, the HSE and the Garda, to see how we can combine our resources to provide a joined-up and integrated response for those families rather than getting into rows with one another about who should be providing what.</p>
+          <p eId="para_94"> Autism, and the lack of services in that area, is a particular problem for us around the country. I see a lot of referrals into the system that we struggle to provide services for. Those services do not exist consistently in different areas of the HSE to respond to that cohort. That is a particular challenge.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_38">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_95">The witnesses are very welcome and I thank Ms Duggan for her opening address. I worked in a Tusla-commissioned service for many years and many of my closest friends work for Tusla or in a commissioned service. That is why I must talk about section 56 workers. We talk about restructuring. I worked in the Sligo-Leitrim home youth liaison service for 17 years. Many of us did. We called it the Hotel California at one stage because we could never check out. We all loved our jobs so much but the pay was so bad. We did not get a pay rise after 2008. I am a big advocate for trade unions and through them, I know that there will be 5% and 8% increases in wages. The amount of trust we had built up with families locally and the amount of knowledge we had, as professional social care workers, was gone because we could not stay there any more. Our wages were not even in line with inflation.</p>
+          <p eId="para_96"> I am a huge advocate of the Meitheal model. It made my job of co-ordinating services much easier. A lot of my daily job was making child protection referrals and Meitheal was the nice face of Tusla. I wonder about the restructuring. The prevention, partnership, and family support, PPFS, programme was a great model. I am wondering why it is going to change. That was the soft side of Tusla. For someone like me who worked on the front line, that was an easy win. Meitheal was an easy sell.</p>
+          <p eId="para_97"> The child and family support networks, CFSNs, and children and young people's services committees, CYPSCs, are wonderful. I think those structures are fantastic. All the time, you are relying on people who are delivering the work on the ground. If anything comes out of this conversation, can increments be included in the budget allocated for commissioned services? Can that be a part of the package people are delivering? I used to often be chairperson of a Meitheal process. I was a lead practitioner when there was an identification of need, ION, approach. As the lead practitioner, I would be holding a table attended by people who might be earning triple my salary. I would be the lead practitioner bringing the families in.</p>
+          <p eId="para_98"> It is frustrating when we consider the work that the front-line services are doing. We sometimes used to say that people had taken the soup by working directly with Tusla because they would get incremental scales and pensions, unlike the people on the front line. Many of my colleagues and closest friends have done that. The alternative is not sustainable. People will not stay in the sector. Not only are we losing the trust that has been built up with families but we are losing the professional knowledge that has been there for so long. The people who work in the area of social care do so because they love their jobs and care about the families. We would promote Tusla. That is what we would have been doing. We would have been very comfortable making child protection referrals because we had built up trust in communities. Is there anything we can do to ensure that pay is in line with direct employees and that pensions and annual increments are available, even if they are just in line with inflation? People on the ground and in front-line services, such as home liaison services, family resource centres, FRCs, and Springboard projects, are holding it together. Without them, there would not be referrals. When there is an allocation of funding to individual services, there should be no pitting local services against one another for the allocation of money or commissioned services. Section 56 workers need the respect and recognition they deserve. They need the monetary reward to do the job.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_99">I reassure the Senator that Meitheal is a fundamental part of what we are doing now and will be doing even as we change our services. We offer family support and early intervention, as Mr. Hone mentioned earlier. We are standing up 90 teams. There will be at least three family support and early intervention teams doing the work that is being done today but under a different structure. We need it to be more equitable across the 90 areas. CFSNs are there and nothing is changing. We value that work. CYPSCs are there and will not change. In the reform programme, all that is good will not change. It is just a restructuring as we divide out our areas a little differently. Mr. Smyth might talk to the Senator about the issues she has raised about sustainability and payment.</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Patrick Smyth<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_100">I thank the Senator for the question. I share the sentiments she expressed in her comments about how much we depend on the work that is done by community and voluntary organisations. Tusla spends approximately €200 million of its budget on community and voluntary organisations. That is out of the €5 billion that the State spends in total on community and voluntary supports. We are restricted from the pay perspective in what we can do independent of the rest of the organisation. Through the WRC, I know the State and the community and voluntary organisations had discussions and negotiations across 2023 and 2024. From Tusla's perspective, we have added approximately €16 million to the budget for community and voluntary organisations. That process is ongoing and there will be more money this year.</p>
+          <p eId="para_101"> Under the most recent agreement, I understand there is a commitment to recognise future awards around the specific areas that were negotiated. Part of that is resolved. </p>
+          <p eId="para_102"> The Senator also asked what we can do to support other activities within community and voluntary organisations. That is something we are looking at. We have some important community and voluntary organisations that provide residential care. We recognise that they cannot do that on air. Since the Covid-19 pandemic, we have had to increase funding to them to ensure the level of funding they used to get from revenue-raising voluntary support organisations.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_41">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_103">Could we get a commitment that when organisations are putting in their budgets or estimated costs, they include an increment every year? My management team put in pay increases in theirs. Can we include that as part of the funding? That way, you could hold on to staff. People would stay in their jobs. It is an ageing workforce.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Mr. Patrick Smyth<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_104">That is absolutely the case.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_105">We might come back to this issue in the second round, if that is okay. I call Deputy Boland.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_44">
+          <from>Deputy Grace Boland<recordedTime time="2025-07-10T10:30:00+01:00"/></from>
+          <p eId="para_106">I thank the witnesses for coming. I appreciate the work that Tusla does, particularly in supporting the most vulnerable in our society, namely, our children. I do not underestimate the weight of the burden the witnesses carry and I thank them for the work they do. They have acknowledged that there are some systemic issues but a huge amount of work has been done in recent years. I thank them for it.</p>
+          <p eId="para_107"> I will focus on what we, as a committee, can do to support the witnesses in continuing to address these issues. From a legislative perspective, what are their requests?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_108">I will start and then ask colleagues to come in with anything additional. First, the Deputy might underestimate what it means to our staff to get public acknowledgement of the good work they do every day. In the context of trying to increase staff morale, it is very difficult for staff when they read the worst of the headlines in the newspapers or when their work is underestimated or not valued. People should challenge or call us out when we get things wrong and hold us to account, but recognition of the work done on the front line every day is hugely important for us. That would be the first thing I would ask of the committee.</p>
+          <p eId="para_109"> The second ask relates to the fact that it is a demand-led service. When a child protection referral is made, that will maybe involve gardaí being sent out during the night to attend a domestic violence incident or a public health nurse meeting a parent in the throes of addiction in circumstances where children were at risk. These referrals that have to be responded to. We have to be held to account in the context that we do the best we can with every euro of public funding we receive, that we make sure there is value for money and that we are not wasting money and that we have tight controls over our spending. In a demand-led service, however, we know that as demand increases, additional investment is needed.</p>
+          <p eId="para_110"> I referenced the third ask in my opening statement. The review of the Child Care Act is very important to us, particularly in the context of the statutory duty for interagency co-operation. We have seen changes and improvements in the work we do with our colleagues in the Garda and the HSE, in the relationships that have been built at local level and in the work of CYPSCs, but interagency being placed on a statutory basis and getting the review of the Child Care Act completed are significant for us. The reform of the guardian <i>ad litem </i>service and putting the service on a statutory footing are significant. That office has been established. We absolutely advocate for the voice of a child to be heard at every level of our service, through participatory models in Tusla, through the funding we give to EPIC in the context of empowering children in care and having advocacy services for them. We advocate for the voice of the child in court and the regulation of the service. There are some astronomical costs associated with the service and the legal costs associated with it, so we welcome that. The programme for Government contains a commitment to a whole-of-government approach to alternative care. When a child comes into the care of the State, they are in the care of the State. While we are not looking in any way to underestimate our responsibility as a statutory agency to protect and provide care and support for that child, we do need the support of other Government agencies and Departments, whether that is in the areas of education, housing or social protection or health.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_46">
+          <from>Deputy Grace Boland<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_111">Is there a blocker? On the face of it, the various Departments want to support Tusla and want it to do well. Obviously, however, it is obviously not working.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_112">We need a policy. It is happening on the basis of relationships. As Mr. Hone said, we are delighted with what this. Where we look at children within special care or those with the most complex needs, we were delighted to receive the support of an assistant commissioner of An Garda Síochána and the CEO of the HSE in joining with us in considering how we assess that need and respond to it. We are really grateful and are working really hard on a daily basis, but there is a need for a policy. Take the zero tolerance policy in DSGBV services as an example. In that context, there is a clear whole-of-government policy, a whole-of-government commitment and a way of holding individual agencies, including ourselves, to account. The establishment of such a policy is something we would welcome.</p>
+          <p eId="para_113"> The final piece is around mental health legislation. We see many children and young people who might have emerging personality disorders, as has been described, and significant presentation of suicidal ideation who do not meet the criteria for mental health services under the existing legislation. We advocate that the legislation be looked at. I am happy to talk further about that matter offline.</p>
+        </speech>
+        <speech by="#GraceBoland" eId="spk_48">
+          <from>Deputy Grace Boland<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_114">On the apprenticeship scheme, it would be amazing if we could try to allow people to learn and earn on the job. I was delighted to see reference to this. Will Ms Duggan tell us about it?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_115">My colleague Ms Mannion will take that. </p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Ms Rosarii Mannion<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_116">I thank the committee. It has been a really positive experience to engage with it today. I again refer to the outstanding staff we have in Tusla who do an extraordinary job, day in, day out, in the most difficult of circumstances. I really appreciate the positive acknowledgement.</p>
+          <p eId="para_117"> In the context of the apprenticeship scheme, we are very focused on growing our own and developing a long-term pipeline of staff in order that we will not be in a situation where we are reliant on overseas staffing. Such staffing has a role, obviously, but we want to grow our own. The apprenticeship is a very progressive model in terms of social work and, hopefully, in the future, we will bring forward social care. On social care, we are bringing forward a work-based learning programme which will do very similar from September.</p>
+          <p eId="para_118"> Tusla has led in terms of social work. Across the State prior to this, we were producing about 250 social workers. That was totally inadequate. On any day of the week, we would need 1,000 social workers being produced in this country. With the support of the executive, our board and colleagues in the Department, we have been able to bring forward this apprenticeship programme in partnership with UCC. Initially, we put forward 35 apprentices. This year, we have doubled that. We now have over 105 apprentices going through the churn, if you like. We will double our production of social workers in the next year. It has been fantastic in that we have new pathways, new grades applying and people with life experience. We have a much broader cohort coming through. The programme is in no way a yellow-pack initiative. The standards are the same. It is CORU registered and CORU regulated. The quality is the same and the academics are the same. The real positive is that the apprentices are with us and are staff from day one. They are Tusla employees. They are part of the team and they are contributing. They are going to college, bringing back that knowledge and applying it day to day. It has been an overwhelmingly positive experience. This is something we want to grow, share, develop and embed. It really is the way of the future.</p>
+          <p eId="para_119"> We have done an all-staff survey. It was the second all-staff survey across the agency and there was a 63% response rate in respect of it. Two of the most positive indicators from the survey were the benefit of the apprenticeship programme for our teams and the programme's use in terms of supporting and driving a learning and developing culture.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_51">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-10T10:40:00+01:00"/></from>
+          <p eId="para_120">I thank everyone for coming in today, for their opening statement and for providing the annual report. I will ask my questions and then leave it to the witnesses to decide who should respond.</p>
+          <p eId="para_121"> I will begin by acknowledging every staff member of Tusla. They have a very challenging job. I am sure it is extremely challenging at times, and I want to acknowledge that.</p>
+          <p eId="para_122"> On the very large, 500%, increase in separated children seeking international protection, can the witnesses explain how that works. If someone goes to the International Protection Office and says they are a child, does the office deal with them there and then or do they go automatically to Tusla to ascertain, in the first instance, whether they are a child?</p>
+          <p eId="para_123"> Second, I was very concerned to read the external report on special care. It reads almost as a cry for help in terms of other agencies, not Tusla. Reference was made to interagency co-operation, but this does not seem to be working in special care. I appreciate that there have been issues with staffing and that it is an extremely difficult environment to work in. Of that there is no doubt. It is good that staffing levels have improved and that there are better wages and so on. However, if additional special care beds were needed tomorrow, are there sufficient staff in place to cover those additional beds beyond the 16?</p>
+          <p eId="para_124"> From reading the report, I felt there was almost an - and this is probably the wrong word - overuse of special care in circumstances where a child has addiction or mental health issues. Are there cases where special care is used but where the necessary supports are not there for the child if the case involves addiction or mental health issues? In light of the limited number of special care beds we have, I am just seeking to ensure that the children going into them will get the support and care they need. This would mean that there would then be a benefit for the child, which is the most important thing.</p>
+          <p eId="para_125"> On Tusla's staffing levels, there will be changes, but are the staffing levels adequate for the six regions and 17 areas as matters stand? Tusla also funds the Irish Foster Care Association, IFCA, which does wonderful work. I presume it will seek additional funding. There has been a reduction in the number of foster carers. The IFCA operates at the coalface and has a good relationship with foster carers. It does a really good job and is trusted. The association deserves additional funding, if possible. It is needed now more than ever because of the challenges in bringing more foster carers on board and showing the benefits and positives of being a foster carer in Ireland today.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_126">I will let Mr. Hone come in on the separated children service in a moment. We fund the IFCA and value the work it does. We have seen its submission for budget 2026. It aligns with our views. We have for the first time this year seen an increase in the number of Tusla foster carers recruited because of how we changed our work in promoting fostering. An important initiative in the agency means that some of our foster carers are now employed as mentors to other foster carers. In essence, they are peer support workers. Foster carers tell us that this is a model they want investment in. That is our commitment in budget for next year.</p>
+          <p eId="para_127"> On special care, when a High Court judge makes a court order or grants a special care order, it is one of the most significant and extreme orders he or she can make for the protection of a child who is either a harm to themselves or others. When I came into this role, initially as interim CEO, in 2023, one of the first things I did was get an external group to come in. The group was given access to anything they needed - namely, data and access to all stakeholders, the ombudsman, the Judiciary, Department colleagues across the spectrum - and was tasked with presenting a report to our executive on its assessment of special care provision. That report contains more than 30 recommendations. We are working hard internally to implement them. I gave an example of how we have agreement from the Garda and the HSE to sit with us on a national interagency group to look at the needs of children.</p>
+          <p eId="para_128"> This gives rise to two issues. As the Deputy said, there are a number of young people in our communities who have significant needs. Those needs could be best met through different services by working with colleagues in the HSE in the joint commissioning of services and the expansion of addiction services for children and young people, mental health and disability services and services for children with suicidal ideation and emerging personality disorders. As we sit here today, no young person is awaiting special care. That has been achieved through the investment we received from the Government in respect of more step-down placements. We were seeing young people having to stay in special care for longer because there was not an appropriate step-down placement for them. We have received investment for further residential and step-down placements. However, today there are only 15 beds open. We have the staff to open a 16th, but there is one young person with very complex needs who needs a very high staffing ratio. Right now, there are 15 beds and we have the capacity for 15 beds. We are working extremely hard - Ms Mannion has all the details - and have made major efforts to try to increase staffing. We are grateful to the Department for the work it has done to get a new grade of special care staff into the agency. With all the efforts we have made, we have had just two applicants - Ms Mannion can correct me if I am wrong - for that grade. Until we can recruit more staff in special care, we will not be able to open the beds beyond those that are already open. We are doing everything we can to increase bed capacity in special care and to work with colleagues in terms of other services and step-down facilities. Mr. Hone will speak about separated children.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_129">We deal with all referrals in respect of separated children coming into the country. We spoke earlier about how more than 800 children have been accommodated in the past year. So far this year, there have been 325 referrals involving separated children. Also, 554 children in care have been accommodated so far this year. That is a 33% increase on last year. The children who come into the State in these circumstances - and I commend the work of our separated children team - have come from very traumatic backgrounds. In view of the experiences they have had in their countries of origin and having had to travel halfway around the world to get here, they do not trust State authorities to start with. As a result, when we intervene, there is a lack of trust. You have to build relationships in an environment in which language is a problem a lot of the time and in which trust is a problem. We do age assessments of all the young people who come in. If we are in doubt, we err on the side of caution. We treat the young person as a child if there is any doubt at all and we provide services accordingly. That puts pressure on our services, but people speak very positively about working with this cohort of young people. Those involved in that part of the service enjoy their work and make tremendous interventions.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_54">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_130">I will allow the Mr. Hone to continue on that topic during my slot, because I am also interested in it. Will he talk about what the assessment looks like when people arrive in the country and Tusla is trying to ascertain whether they are 17 years of age or an adult?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_131">That assessment has been developed. About 35 stakeholders were engaged in developing what is entailed in the assessment. It is extremely thorough in terms of what it does. If there is a doubt, we treat the young person as being under 18 and provide services accordingly. As part of the assessment, we also look at whether the young person already has family in the country. Reunifications do happen. We often send young people back to their families in their countries of origin, albeit there has to be a safe arrangement and safe passage.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_132">I want to understand the assessment more. Does it involve an interview? Is there a medical assessment? I do not understand what the assessment involves.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T10:50:00+01:00"/></from>
+          <p eId="para_133">As Mr. Hone referenced, in the early stages of the significant influx in the context of global movement and people coming here from Ukraine, we were challenged on the assessment piece. We assess eligibility in the context of childcare services and the Child Care Act. We wanted to work with stakeholders. There were legal challenges to some of our findings. We worked with the various stakeholders to make sure of certain things in the absence of an objective assessment around age. In other countries, there are more objective assessments that involve medical examinations. The role of the Department of justice and the International Protection Office, which comes under the remit of the Department, involves looking at documentation, information on point of entry and all of that. Where a young person indicates they are a minor or where they are believed to be a minor, they are referred to us. We are operating on the basis of subjective analysis in this regard. It is in the context of the balance between making sure no child is taken into IPAS services and the risk of this that we apply the principle and benefit of that. This also creates a risk we have to manage to make sure, when applying the principle and benefit of being a minor, that no potential adult is housed with children.</p>
+          <p eId="para_134">Our team has an extraordinary amount of work to do in terms of perhaps having to decide to put a young person to whom we are applying the principle of the benefit of age into a single-occupancy unit because we could not risk putting him or her in with someone who is an adult, where we have any doubt around that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_58">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_135">It certainly is complex.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_136">It is very challenging. Looking at the EU migration pact, and working with the Department of justice, we talk about the need for more objective measures and more engagement with the services across Europe and the world. We certainly would welcome more objective measures that would ensure any risks could be mitigated.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_137">I will move on as time is limited.</p>
+          <p eId="para_138"> I thank Tusla's 5,700 staff for the phenomenal work they do every single day. I encourage them to keep going with the reform and to keep growing, learning and doing all they can to keep our children safe. I read in Tusla's report about issues regarding homelessness, the cost of living and addiction. Reference was also made to social media. A big passion of mine is pushing for age verification on social media sites and robust age verification on pornography sites. What impact do the witnesses feel social media have had on their referrals? I would like to hear more about that.</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_139">The impact of social media is a growing concern we all share. Whether the impact is on psychological development, on young people's view of themselves or in terms of access to pornography, the challenges social media pose are widely documented across society. We have an engagement with Coimisiún na Meán and have applied to be a trusted partner with the commission. We are doing work in this area, which Mr. Hone might talk about. It goes back to Senator Cosgrove's point. We are doing a huge amount of work with separated children seeking international protection. We have particular programmes through our funded services that look at promoting online safety. We are working through the different aspects. We will contribute in any way we can to the legislative discussions and would welcome the opportunity to be part of any of those discussions. There has to be a focus on young people and education on resilience and their knowledge and awareness of artificial intelligence and all it is bringing. It is one of the most significant challenges we are facing as a society.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_140">In the case of children in foster, residential or special care, are social media something Tusla has to think about in terms of contact with people who might have been involved in criminal activity, drugs and so on or connections with family members who are not good influences?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_141">There are challenges for us all in terms of the use of social media, oversight of use and trying to be protective. As a parent, the challenge for me is that my children are steps ahead of me, and my friends with whom I discuss this say the same. We have policies within our services around social media. This is something with which our foster carers and residential care staff struggle. For many of your young people, their phone is their connection. We are constantly asking ourselves, every day, how we can do this differently and better. Mr. Hone might talk more about some of the services and programmes.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_142">We referred to the PPFS programme. There are several examples around the country of projects to create information leaflets and forums for parents to inform them of the risks related to social media and what safety steps they can take to ensure a safer online experience for children. We are still playing catch-up with a lot of this.</p>
+          <p eId="para_143"> A question was asked as to whether special care is sometimes used inappropriately. A lot of our young people who are referred to special care are involved in criminality and are being contacted by criminal gangs through social media with a view to involving them in very heavy-end criminal activity, much of it related to drugs and delivering drugs. We have put some young people in special care to keep them safe and protect them from that type of activity out in the community. One could argue from a children's rights perspective that this is not an appropriate means of protecting those children in that we are locking up the victims rather than perpetrators. We really must be careful about that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_65">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_144">I could talk about this all day but I must move on to the second round of questions. Members will have seven minutes each, starting with Deputy Kerrane.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_66">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_145">On the point about special care, there is the aspect of children who are in trouble with gangs, drugs and all of that. My concern is more about children with addiction, mental health issues, suicidal ideation or whatever it may be. If they are being put into special care by order of the judge of the day and are not able to get the supports they need while in that care, their being there is a waste of time.</p>
+          <p eId="para_146"> The witnesses did not have time to answer my question about staffing. What are the staffing levels as of today across the 17 areas and six regions ahead of the transformation that is due to happen?</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Rosarii Mannion<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_147">At the moment, we are funded for 5,825 staff. As of today, we have 5,600 staff at work. We still have room within our ceiling to recruit, which we need to and are doing. The challenge is always about having the right staff in the right place at the right time.</p>
+          <p eId="para_148"> In terms of the structural reform, we have developed a very sophisticated resource allocation model that enables us to identify where our resources are and where we need them to be in terms of supply, geographic distribution, societal issues, environmental issues, etc. We know now where we may have excess, where we are understaffed and so on. We are doing that work and we will engage with our staff as part of the reform programme to see where we may need to refocus our energy and efforts. Overall, with the very dedicated focus we have on staff recruitment, staff retention, workforce planning and trying our best to create a culture of health within Tusla, we will, slowly, meet the staffing challenges we have. Unfortunately, this is not happening as quickly as we would like.</p>
+          <p eId="para_149"> On special care, as the CEO said, we are very grateful for the new grade. Staff can now earn up to €67,000 within special care. We are pleased to get that. It will assist us but it will be a medium- to long-term strategy. Likewise, our apprenticeships absolutely are the way to go. We should not find ourselves in this situation in three, four or five years. That is the timeline. We would love it to be much faster. We have a very good overseas recruitment campaign whereby we are bringing in staff. In anything we do, particularly with reference to our people strategy, we do not want to bring forward a solution that adds to the stress on our system and our excellent staff. We want to support them. It would be very unwise to bring 250 overseas staff into teams, areas or units because we would just create additional problems. We are very much on top of the issue, ahead of it and getting all the support in place. However, the message I have is that it will be a medium- to long-term strategy.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:00:00+01:00"/></from>
+          <p eId="para_150">It is important to note in respect of our HIQA reports, and we have had quite a few inspections recently up and down the country, that HIQA comes in and finds good practice and areas we need to improve. That is a constant source of assurance for us in terms of making sure we know the current demands and how our services are currently being led and governed. HIQA, in its most recent inspection report, which involved going into ten of the 17 areas, spoke about the significant challenge in respect of resourcing related to need. That is really important. We have a funded workforce and we are trying to grow it. We have more social workers and more social care workers but we have unallocated cases because we do not have enough social workers to allocate to all the children who need them. There are cases where we will allocate other professionals, and that is appropriate, but for children in care, the legislation and regulations require the allocation of a professionally qualified social worker. As Ms Mannion said, it will take us two or three years to see results from the apprenticeship scheme.</p>
+          <p eId="para_151">Further investment in terms of scaling up the apprenticeships, bursaries and other supply routes into these professions is what is critical. </p>
+          <p eId="para_152"> In terms of special care, it is important to differentiate what we see as a child and family agency. It goes back to Deputy Ó Murchú's point. I know Deputy Dempsey raised early intervention and the right service at the right time. What is really important for us is advocating. If children and young people need mental health services, early intervention for disabilities, early intervention for autism, or addiction services at an earlier stage, we need advocacy around that for children. It is not so much the argument around the special care piece because at that point the child is really vulnerable and volatile in terms of life and death and safety to themselves. They may be suitable for special care but the absence of early intervention is what we are trying to advocate for across all of the different agencies.</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_153">We are looking to improve special care all of the time. There are several processes examining that at the moment. All of the issues tend to gel together. Young people look for and need this type of service. I have great hope for the new referrals committee. We have an agreement from the HSE and An Garda Síochána, which will deal with the referrals that come in. Tusla can check back upstream across agency boundaries into what has been tried to date to address the needs of these young people across the agencies. We can make better decisions about whether special care is appropriate, or whether we should try something different within the agencies that are on the referral committee. That will bring a much-needed change to the special care process.</p>
+        </speech>
+        <speech by="#ClaireKerrane" eId="spk_70">
+          <from>Deputy Claire Kerrane<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_154">Do social workers account for much of the 200-plus gap in staffing?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Rosarii Mannion<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_155">It is predominantly social workers in social care.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_72">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_156">Ten children died in the care of Tusla last year. Will Ms Duggan confirm how many of these deaths were reviewed and what changes have been made to prevent further tragedies happening to children in State care?</p>
+          <p eId="para_157"> More than 230 children were referred to the Tavistock gender clinic in the UK, which is now closed following the Cass report's findings of unsafe practices and lack of evidence for puberty blockers as a safe treatment for children. What has Tusla done to review the cases of the Irish children affected, including those in State care who may have accessed this service? Has Tusla issued any guidance or support to families in light of these findings? In regard to a child who may come into the care of Tusla when a parent may not affirm that child's gender, will Ms Duggan confirm what actions Tusla takes as an agency to support that family and that child, and to keep that child in the family home rather than removing the child from the family home? I would like to know what those actions are.</p>
+          <p eId="para_158"> I would also like to ask about children who are in the care of institutions outside of the State because Ireland may lack the expertise to deal with the complex needs of those children. How many of them are there? What is the cost of that?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_159">I thank the Senator. I want to make sure I have captured all of her questions. I will deal with the matter of the death of children in care. Mr. Hone will deal with the out-of-State placements along with Mr. Smyth in terms of the cost perspective. I might get Mr. Hone to clarify the questions she raised about Tavistock.</p>
+          <p eId="para_160"> It goes without saying that the death of any child in State care or known to State care is absolutely horrific. It is a significant trauma for their families, the staff who worked with them and their foster care families. It is important, without in any way trying to position the agency around this, to clarify some of the headlines. Since the agency was established in 2014 right up until this year, there have been 27 deaths of children in care.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_74">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_161">It is still a lot.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_162">It is, absolutely. Fifteen of those deaths were as a result of natural causes. Tusla is very grateful that in communities right throughout the country, there are foster carers who take in children with life-limiting conditions and neurological conditions. In the wider child population there are, unfortunately, children who die of natural causes every year. Over that period of almost 11 years, eight of those children died by suicide. That goes back to what we said earlier about the supports needed for children with mental health issues and suicidal ideation. When Tusla talks about a whole-of-government approach, we recognise that children in care have experienced very traumatic life events by the nature of the fact they are in care and we think they should be prioritised for access to clinical services.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_76">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_163">I thank Ms Duggan. Can we move on?</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_164">Two of those children died in accidents and that is very difficult. Two of those children died of overdoses, and that goes back to the point on the need for addiction services. It is really important to put this in context because of Tusla's responsibility to children who are in care and the staff who look after those children. It is 27 children over an 11-year period. Accidents and natural causes accounted for the deaths of 17 of those children. We report all of those deaths to the national review panel for investigation and we do an internal review to examine our engagement with the services. The other number that makes the figure larger is that over the 11-year period in question, there would have been 216 deaths of children who were known to Tusla; that is, children who were known to our family support services or community and voluntary services. It is very important that the narrative around the death of children in State care is contextualised on where the argument needs to be.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_78">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_165">I thank Ms Duggan but I only have a few minutes left and I want to try to get an answer to the question on out-of-State care.</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_166">Mr. Smyth can answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Patrick Smyth<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_167">There are no kids at the moment in high-cost out-of-State care.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_81">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_168">There are none.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Patrick Smyth<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_169">There are a number of kids who are out of the State who are with foster parents.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_170">Or they are with family members.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Patrick Smyth<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_171">There are a small number of those but there are none in high-cost placements. In the past we have had high-cost placements but not at the moment.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_85">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_172">There are none at this moment. I had a question in regard to Tavistock and the Cass report.</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_173">We are into a difficult area of practice, as the Senator will appreciate. When we come across this type of situation around sexuality, gender and transgender, as was pointed out before our systems are designed to do a full assessment of need of young people, hear their voices and listen to their voices. When we come across those types of issues, those young people are supported to explore those issues, to develop and to get the services they require. As the Senator knows, services in this area are extremely limited. She spoke about the centre that closed down. There is a need for further services out there for that cohort of young people and to acknowledge the difficulty for parents here when they have a young person who might be coming out as transgender or whatever sexuality. That can be very difficult for parents to hear, understand and appreciate.</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_87">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_174">What does Tusla do to support those parents and that child to make sure they stay in their home environment, rather than removing the child from that environment and have the whole relationship break down?</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:10:00+01:00"/></from>
+          <p eId="para_175">We will give them as much support and information as we possibly can but the supports are limited. Tusla is limited by the lack of provision within the health services to respond well to this issue. We intervene and provide supports. PPSF staff and early intervention staff do a lot of work in this space with families around these particular issues and work voluntarily with them. I am not aware of a case in which children were taken into care for this reason. I am not saying it has not happened but I am not aware of any case in which it has happened. Every care plan Tusla puts before the court in terms of removing children is questioned thoroughly by the judge and by a guardian <i>ad litem </i>to make sure it is the right decision for that young person.</p>
+          <p eId="para_176">We are rightfully tested and challenged on any of our recommendations and that is the way it should be.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_89">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_177">I will follow on from earlier discussions about early intervention and how, when we miss that opportunity, we end up dealing with cases that are more complex. I would also like to hear more about our guests' engagement with mental health services, addiction services and so on. We keep talking about no wrong door, one single door and so on. We do an awful lot of talking about it rather than seeing it in action. There is a lack of capacity, which we have already spoken about, extending from social workers right through to foster carers. I am also interested in any follow-up legislation that is required or powers that are needed to deal with the huge level of need.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_178">I will start at the end, if I may. I have already outlined the legislative pieces that would be very welcome. In terms of social work, Ms Mannion has outlined what more we need and the various actions that we are taking in relation to the supply routes. In terms of foster care, again we are getting support from the Department but it is a changing society. We are still very proud that we are among the top countries in Europe in terms of the percentage of children in foster care. We have over 5,700 children in care and at the moment about 87% of those children and young people are in foster care. We want to get that figure back up to 90%.</p>
+          <p eId="para_179"> What we are seeing from the age profile of foster carers is that they are getting older. Also, there are societal issues that do not so much prevent people from becoming foster parents but make them think they would not be approved. One of the most important messages we are trying to get out there is that foster carers can come from different backgrounds. Foster carers do not have to own their own house or be married. Foster carers can be single and they can have other children, or not. The messaging around the potential of individuals across communities is so important.</p>
+          <p eId="para_180"> We are delighted to see organisations now adopting foster-friendly policies in the private sector. That is something we would love more support on. Private organisations across the country could step up and look at becoming fostering-friendly organisations who support their employees. Employees and individuals may not be able to be full-time foster carers but perhaps they have the potential to take a child for a weekend, to be a back-up support, providing respite for foster carers across the country. We are trying to get support around that messaging.</p>
+          <p eId="para_181"> As we said, as a result of the work we have put in through therapeutic supports, mentoring programmes and the increased fostering allowance that the Minister approved last year, we have seen, for the first time, an increase in the number of Tusla foster carers recruited in the last 12 months. We are hoping that will grow further. We have been vocal on this. It is a shared message from our colleagues in Tusla, the HSE and community and voluntary services right across the country. We are seeing young people with more and more needs in terms of mental health, school avoidance, drugs, addiction and pornography and what we need is a scaling-up of all of the services in the State. It is not about the silos, who owns them or who is responsible, but about investment.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_91">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_182">In fairness, we would all agree with the point about scaling up. Ms Duggan has already spoken about the reorientation of the organisation to become more fit-for-purpose and reactive. That relates to reporting and ensuring that all cases are dealt with but it is also about ensuring we have the proper protocols and that we catch these issues outside. We speak about reporting but as a State we need to be more reactive in terms of early intervention through specialist public health nurses and so on. There must be engagement and connection with families so that we can catch issues before they become nuclear. We all know of the more complex issues, particularly involving drugs, poverty and chaos of all sorts.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_183">As we said, we recognise that when there is such a significant demand on our services, we have to be accountable and make sure that we are using the resources we have to best effect. When we talk about restructuring and reform, that is about catching issues earlier. There are other examples.. We have talked about the fact that funding is coming for five new family resource centres. We have also received funding in the last year for a home visiting service. That is a really important service that has been established as a pilot. In involves a home visitor calling to homes to look at the types of supports that families need and make sure they are linked in with the child and family support networks. We know the families that are in need of help and we want to be able to support families to come forward and not feel that they cannot ask for help. Many families associate Tusla with its child protection work so they fear that if they go to Tusla for help, it will mean their children will be taken from them. What we want families across this country to know is that in 2024 we supported 48,000 families through our family support service and the community and voluntary services right across the country. That is very important.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_93">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_184">That is a particular issue and a message that needs to get out there. If we could have those early interventions, we might not have the issues that people worry about. How would the home visiting service operate? Would the families be known to Tusla already?</p>
+        </speech>
+        <speech by="#" eId="spk_94">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_185">Yes, or it could be through a public health nurse referral.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_95">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_186">It is that sort of process.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_96">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_187">I will return to the issue of staffing. I have many friends who work in the areas of child protection or social care. I am talking about people who are either directly employed by Tusla as social workers, social carers or family support workers as well as those who provide the commissioned services. Staff are dealing with a lot of trauma. Every day they are working with people and families who have a lot of complex needs. In Ireland we have the weakest workers' rights regime in western Europe. I am speaking from a broad perspective. As an agency of the State, when Tusla is commissioning and contracting services like occupational therapy or residential care, can it ensure that those getting those contracts protect workers' rights? Can it ensure that staff have a right to collectively bargain, for example?</p>
+          <p eId="para_188"> I also think that a lack of therapeutic support for staff is a huge gap within commissioned services. A lot of managers in services would have worked on the ground themselves. There was a progression route and they became managers but there is a lack of therapeutic support for front-line staff. This is an issue that should be examined. I know from working in the area that staff are working with people who are dealing with a lot of trauma and that rubs off. It does have an impact. Is there any way that can be budgeted for in the context of commissioned services and directly employed staff? I believe the provision of therapeutic support should nearly be mandatory for front-line workers.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_189">I might let Ms Mannion respond first and then Mr. Hone might add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Rosarii Mannion<recordedTime time="2025-07-10T11:20:00+01:00"/></from>
+          <p eId="para_190">We absolutely value the work of our voluntary and section 56 staff in particular. In relation to having mandatory diktats in terms of health and well-being, I do not personally favour that. We take a different approach to the way we work. We have a people strategy. People's eyes can glaze over when one talks about a people strategy but it is fundamentally important. We are a people-delivered service. It has to be all about the people and getting that right. We have improved a lot in terms of providing psychological support and interventions.</p>
+          <p eId="para_191">For instance, within Tusla, there is a work pillar trying to develop a culture of health, which, although not easy, is crucial. We have put in psychological supports for our front-line staff. We have our critical incident stress management, CISM, approach. There is a full programme of work around that. I am more than happy to engage with any section 56 provider. We want to partner with those providers, take what we have and utilise it, rather than have providers paying for something like that.</p>
+          <p eId="para_192"> The Senator is right that the work is emotionally draining and taxing. By way of information, I was looking at the top five reasons for staff referrals to our occupational health and employee assistance programmes, and they are stress, anxiety, bereavement, depression and relationship difficulties. Of course, we have to get in and support the staff. I am confident we are doing better. I am happy to partner with the Senator if she wishes to have access to any of those resources.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_99">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_193">That is very welcome. With commissioned services, often they are struggling on a tight budget. While there are fantastic managers, often they are not trained in therapeutic management, or even in reflective practice. It is about the therapeutic element and providing psychotherapy or counselling support for a lot of staff. Can the well-being of staff be factored in to annual budgets? Maybe directly employed Tusla staff are different, but for commissioned services, can the well-being of staff be factored in as essential and a necessity?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Rosarii Mannion<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_194">It could certainly be a recommendation.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_195">I know of several examples. To be fair to the people and change department in Tusla and its strategy, one of the big, positive changes I have seen within Tusla is that when someone goes off sick, there is good engagement with that individual to try to get a return to work plan that looks at the full reasons behind the sickness absence and includes a range of supports. I have never seen any support offered to help a member of staff return to the workplace being turned down. I cannot think of any such instance. Anything I have been asked for has been provided. That is almost like a psychological contract with the worker to ensure he or she gets back quickly. We all know that when it comes to therapy and intervention, the longer a person is off sick, the less likely it is that he or she will come back. It is that constant engagement, from the moment the sickness happens and also on the person's return, to ensure the staff member is getting whatever individualised supports he or she needs, but also the peer support. It is a cultural thing as well. It is about the culture of management and care for our staff that we need to constantly pay attention to and develop, particularly in an organisation where we are struggling to get certain grades of staff. Those supports are really important.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_196">It is important to recognise, and we have heard this from our staff through various forums and initiatives, that some of the changes required are not about funding. Rather, they are about space, time, leadership and a commitment to, as Ms Mannion said, a healthy culture within an organisation. Now that the Senator has raised this issue with us, we are more than willing to do an event or a session to support community and voluntary organisations if they wish to come and hear directly from us about what we found beneficial.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_103">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_197">That would be great. </p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_198">As Ms Mannion said, we are happy to share what we have, if that would be of any help. I also know there are a lot of community and voluntary sector organisations that are putting good supports in place for their staff. It is certainly something we will take away and examine. We have a commissioning advisory group. That is the group we have in place in Tusla that allows us to engage approximately once a quarter on those kinds of strategic issues with commissioned services.</p>
+        </speech>
+        <speech by="#NessaCosgrove" eId="spk_105">
+          <from>Senator Nessa Cosgrove<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_199">Often, you are fighting a fire that you do not have time for. It is not factored in. I ask if that could be factored in as an essential part of the work day or work calendar.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_200">I thank Senator Cosgrove very much. It is back to me now. We will have time for a third round of four minutes each, if members wish to contribute after me. Ms Duggan mentioned that one in four children is absent for more than 20 days. Is there any breakdown of those figures with regard to an urban versus rural divide, or are they the same regardless?</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_201">I do not have the exact breakdown, but that information is available and it is certainly something we can share with the committee. My understanding is that there is no significant difference. While we are seeing some improvement post Covid, it is not at the rate we want. The work our education support services are doing, with the support of the Department of education, is very much around understanding that. </p>
+          <p eId="para_202"> When we speak about asks of this committee, we are going to launch a new programme, with the support of the Department of education and the Minister, Deputy McEntee, called Anseo in September. It is a word that resonates with anyone who has gone to school in Ireland. Everyone will understand what the word “anseo” means. We welcome the support of this committee for this campaign in order to get behind promoting the importance of what all the evidence tells us about children and young people being in school. It will help to support and maintain them in school.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_203">We look forward to being involved with that programme. To move to the issue of foster carers, the increase in the number of foster carers through social media campaigns and a targeted approach is a great success story. I know there is still an urgent need, however. Is there anything I am unaware of that is similar to maternity or paternity leave that a new foster carer could avail of when they initially take on the care of a child? Is that something the witnesses think should be looked at?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:30:00+01:00"/></from>
+          <p eId="para_204">The allowance paid to foster carers is set by the Department. We were delighted last year that, for the first time since 2009, there was an increase in the fostering allowance. There was also an initial set-up allowance for new foster carers. There is now work being done to support any significant travel costs associated with foster carers perhaps bringing children or young people on access visits, for example. There is also access to an advanced allowance in scenarios where an individual child or young person in foster care has a particular need or needs to access a particular service. We welcome the Department of Social Protection’s decision this year to ensure that the back to school allowance is available for foster carers.</p>
+          <p eId="para_205"> The final ask I know from the foster carers we speak to is on the whole issue of pensions, which is a difficult and challenging one. As we said, the foster care allowance is tax free. It is an allowance paid on behalf of the child who is in foster care. The Department of Social Protection is engaging with our parent Department to understand that ask or need.</p>
+          <p eId="para_206"> In recent years, I have spoken to 500 or 600 foster carers. For almost all of those foster carers, while of course they want recognition of the increased cost of child care and for looking after and providing for a child, what they want most is access to services for the children in their care. They want children in care to be prioritised for access to clinical and therapeutic services and have an allocated, consistent social worker who does not change because of recruitment or retention challenges. From our perspective, it is around advocating for the prioritisation of children in care for access to services. It is around looking at developing our own therapeutic services of helping and forming care planning. It is about ensuring we are better at communicating, engaging and supporting.</p>
+          <p eId="para_207"> I know this committee will have heard from one of our peer support workers yesterday about a new initiative that came out of our reform programme last year. Foster carers who have been through it and understand the highs, lows and great benefits of fostering act as a voice and an ear for foster carers to listen to. That has certainly proven to be a significant support to foster carers.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_208">The financial increases are very welcome. I stand with the witnesses in looking for that kind of priority, wrap-around service. Especially, let us say, if a child is best placed with a relative, like a cousin, aunt or grandparent, and they are working full time, it can be a major upheaval or maybe a barrier to fostering if you are in full-time employment. You might be very well placed to take a child of secondary school age, but I would imagine you need a little bit of time to adapt your household and schedule, and there is no leave or anything available.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_209">I might let Mr. Hone respond.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_210">I agree. We need that. Every tool we can put into the toolbox that helps and supports carers like that would be a useful development for fostering. There was a project in Sligo-Leitrim when I was area manager there called day foster care. You could be a foster carer who is out working and the child could go into day foster care during the day, and they would look after the arrangements during the day. You then pick the child up in the evening. It is almost like a childcare arrangement. That worked well. That sort of peer support and mutual support between foster carers to get that level of support to allow that to happen was very important. Those things are worth exploring.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_211">As Mr. Hone said, any and all supports are helpful. We have two speakers remaining. Who wishes to go first? I call on Senator Keogan. Does she want to take five minutes?</p>
+        </speech>
+        <speech by="#SharonKeogan" eId="spk_114">
+          <from>Senator Sharon Keogan<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_212">I will try to get to it quickly. Sometimes I look at the organisation and I really want it to work. I do not like the idea of private. I know that has had to be done because of the circumstances Tusla is in. Looking at the National Transport Authority, NTA, model, it is organised into six main divisions. Sometimes I look at Tusla and wonder how we could work this better. Could it be split into divisions for family support and reunification such as under five years old, six to 12 years old, 12 to 18 years old, special emergency placements, and disability? Is that a framework that could be looked at long term?</p>
+          <p eId="para_213"> I have mentioned the guardian<i> ad litem</i> service to the Minister and I am mentioning it to the witnesses. That service stops at 18 for a child who is in care. I want that extended to the age of 23 for children who stay with Tusla and in the education programme right up to that age. Kids need someone to be on their side after the age of 18, and very often, the aftercare worker just does not have time to do it with their caseload. The extension of the guardian <i>ad litem </i>to the age of 23 would be important.</p>
+          <p eId="para_214"> Regarding aftercare, some of those children get let down very badly after the system. Some people do not keep the children after the age of 18, which is awful. However, circumstances do happen and kids end up having to leave that family home after the age of 18, which is absolutely terrible. Getting that child on the housing list the minute they turn 18 is really important, as is following up with that child to see where they are in relation to accommodation. Children who should not end up on the streets end up on the streets. Children end up in very bad situations if they do not have somebody after the age of 18. If they are not in education, they fall through the cracks, and they are the people who need further intervention down the line.</p>
+          <p eId="para_215"> What are the witnesses’ views on the framework I have modelled and the guardian <i>ad litem</i>?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_216">Mr. Hone will take aftercare in a moment. On the guardian <i>ad litem</i>, that is the voice of the child in court. We are absolutely grateful for the organisation, which I am sure the Senator knows of, called Empowering People in Care, EPIC. It is an advocacy service for children and young people in aftercare. That extends to young people in aftercare. We fund that service and absolutely encourage and direct young people in aftercare to use that service as their advocacy service. In the interim and through the regulation of the guardian <i>ad litem</i> service, the scope and remit of its work would be looked at through the Department under the scoping of that service.</p>
+          <p eId="para_217"> On the structure bits, as an organisation we know from international research that when you create silos or separate structures within an agency, the risk is that children and young people start to fall between those. Something can be right up to the age of five, and then if they have to try to move to a different service, there can be a blockage and so on. We have looked at the whole restructuring and what we have come up with now as the new way of working is around the fact that within our community services, it will be one single point of contact, making sure we look at the total need of a child, and then we have the right response pathway. We will have an early intervention response pathway, a family support response pathway and a child protection response pathway. While the response pathways will be different, they will be managed by one person to make sure that the risk of any child falling between or being in the right or wrong pathway does not happen. Within our alternative care services, we have foster care services, residential care services, aftercare services, separated children services and special emergency arrangements. They are now all coming in under the governance of one function to make sure we are getting better efficiencies and productivity. We are able to see whether, on any one night, all of our beds and placements across the systems are being used. We have put much work and research into the evidence base for the new structures. With the best of the information we have available to us, we believe now it is the right structure to try to deal with the real fundamental challenges we are trying to deal with at the moment.</p>
+          <p eId="para_218"> Mr. Hone will come in on aftercare.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_219">I will give some numbers. Out of 2,231 young people currently receiving an aftercare service, 1,018 of them stay with foster carers beyond the age of 18. There are 235 in other accommodation, and that could be friends or relatives. Out of that cohort, 209 go home by their own choice. A total of 188 are in residential care, and these are usually young people who have additional needs. Thirty-eight are in supported lodging, which is somebody in a home providing a room. Thirty-four are in designated care-leavers’ accommodation, which we purchase from the private sector much of the time. Sometimes that is with partner agencies, and partner-funded agencies provide those. That takes us to 2,231.</p>
+          <p eId="para_220"> The issue with homelessness and trying to be clear about those figures is difficult and fraught because post 18, when a child moves on and into the community and is not engaging with the service any more, that child is difficult to track. Knowing exactly how many become homeless in the system is very difficult. It is usually figures from homelessness services. When they turn up, they learn that the child might have been in care at some point, and that is where those figures tend to come from. Therefore, tracking that is difficult.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_117">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:40:00+01:00"/></from>
+          <p eId="para_221">The witnesses dealt with a significant amount around foster carers and those pieces that have been done and need to be done, because we need to attract as many people as possible.</p>
+          <p eId="para_222"> I will talk about something that is historical and was brought to my attention after the fact. I get that Tusla will go out to family settings. Sometimes that is suitable for putting somebody into care. I am just using this an example. I think I bought it up at the committee before. It was a case where this guy was left with his uncle, and his uncle took him around to collect his drug debt. While they were very minor debts, he had been brought from chaos and put into a situation that was still within the family but was not a whole lot better, from what I can see. It is how we ensure that those circumstances do not arise and, beyond that, that the triggering mechanism happens fast enough. We want to see early interventions and avoidance of it. There are, however, situations and circumstances we have all seen where it will never make sense how, even when we took the kids, we left them that long in desperate situations.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_223">I will respond to that. For the type of chaotic situation the Deputy has described, we have a child protection notification system. Children in those vulnerable situations are referred. We have the signs and safety system whereby we work with families and young people to identify safety within the family network and where the safest place is for that child.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_119">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_224">What is safety? I sometimes think that safety is the absence of imminent physical danger. Something else could be terrible in the long term.</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Mr. Gerry Hone<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_225">Under any of those safety plans, all the checks should be done if a recommendation is made that a child be placed with a relative or elsewhere. The checks on those relatives are done under the child protection notification system. These are multiagency meetings that are independently chaired. An Garda Síochána attends those meetings. Any individual who is mentioned in the context of a care arrangement for a young person can be checked.</p>
+          <p eId="para_226"> Things fall through the cracks at times and there is no doubt about that. When that happens, we review those situations so we can strengthen our systems to make things better for those young people.</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_227">I will return to the piece around child protection. On the basis of information known to us or our staff at a particular point, difficult decisions must be made all the time. If as a society we want to do more to protect children and promote their safety, we are reliant on other people. Where they have any concern about a child, we need them to come forward. We must ensure that when they do come forward with a concern, it is taken seriously. That is certainly what we are trying to promote within the agency as we increase our staff, including the number of social workers, and accelerate the digital transformation, which allows more time for our business supports and allows our administrative and social work staff to answer the phone. If somebody in a community sees something, we must listen to them. As the Deputy said, we must respond quickly. Circumstances change and information that may be unknown to us at a particular point may become known. The important part is that when it becomes known, we respond.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_122">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_228">I get that. I spoke earlier about the tragic case of Kyran Durnin. If we had a specialist public health nurse, home visiting service and whatever else, we would catch some of that. In the reorientation, I would like to think that protocols will be changed. Without getting into the detail of an individual case, I hope the protocols around such cases and the instances that arose are changed.</p>
+          <p eId="para_229"> An issue was raised with me in respect of birth tracing and medical records. A woman had an issue. She was born in or around 1991. She said that had she been born slightly earlier, she would have found it easier to get the correct information and tracing. I will follow up on that case.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_230">Birth information and tracing falls under new legislation. We know that information is important to those individuals who want to understand their birth information and all the other information to which they are entitled under the legislation. We are now compliant with the timelines for that. It is a good measure for us to know we are doing what we should by getting that information to those individuals as quickly as possible. Where there is a specific concern, I ask the Deputy to come back to us directly and we will follow up.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_124">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_231">Will Ms Duggan comment briefly on the Kyran Durnin case and the protocols?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_232">As I said, we cannot talk about specific cases. We know that until the May or June of that particular year, as has been widely reported, Kyran was in school. He was being seen by teachers, and parents at the gate. There were many other services involved, as any other child of that age is seen. I will move away from that case and go back to the point that parents must look for early help. Family members may know that a parent is struggling and should look for early help for them. We have a responsibility to ensure that we are linking in with public health nurses, teachers and other relevant people in those children's lives.</p>
+          <p eId="para_233"> It also comes back to the fact that we have had 96,000 referrals, with an expected 103,000 or 104,000 this year. With the resources we have, we are absolutely responding, I hope, in all cases where there is an immediate and obvious risk of harm. Where there is a lower level of concern around family support or a child welfare case, there are waiting lists for children. We do not have allocated workers for those children. We must use the resources to ensure we see those who are most at risk. We want to be able to respond to all children at the earliest possible time.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_234">There are five minutes remaining. I will ask one question and will then hand over to Ms Duggan for a closing remark. She mentioned the stepdown placements from special care. Witnesses who were previously before the committee talked about special care and wanting an in-between high-support service or placement. Is that already in place? Is that what a stepdown placement is? Does Ms Duggan see room for a middle ground, perhaps when a court order is finished but a child is not able to go to general foster care? Is there space for something else?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_235">We have through our strategic plan for residential care identified the need for a continuum of placements. Without going through the history of high-support units, decisions were taken a number of years ago to close them. We are now conscious that HIQA is the regulator in terms of registering, inspecting and monitoring our residential units. Rather than talking about a specialised or high-support unit, and I have already referenced the need for addiction, mental health and disability services in specific cases, we also recognise that some of the children and young people in our care need more therapeutic-led placements. They need placements that are single occupancy because they find it difficult to live with other young people. They need placements that are closer to home to allow them to work towards reunification. What we do not want is an association in the sense that just because you have been in special care, you need a special placement when you come out. We want a variety of types of residential placements.</p>
+          <p eId="para_236"> We see very young people who are demonstrating harmful sexualised behaviour. We need a specialised type of placement for them. We have those placements but will need more, based on what our data is telling us. We see young people who are finding it difficult to manage in foster care even though they are very young or of a particular age. We need more therapeutic-type placements for those young people. With all the investment we got last year and the future investment we hope to get, we are looking at designing placements across that continuum of need. That welcomes a whole-of-government approach that considers housing and health in the context of the types of placements required for young people with more complex needs.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_237">I thank Ms Duggan. Perhaps she could make a one-minute closing remark. I would appreciate that.</p>
+        </speech>
+        <speech by="#" eId="spk_129">
+          <from> Ms Kate Duggan<recordedTime time="2025-07-10T11:50:00+01:00"/></from>
+          <p eId="para_238">I sincerely thank the committee for having us, for the interest members have shown and for the knowledge of our services and the associated challenges they have displayed. In the past, we have had a relationship with the committee whereby if any members want to meet us at any time, reach out or request specific information, we are delighted for them to do so. As I said earlier, I acknowledge our staff members not just across the Tusla services but also in the community and voluntary services. That is important.</p>
+          <p eId="para_239"> We want to promote the depth and breadth of work that we do. We want to support families. We want to be seen to support through earlier intervention. In respect of the funding we give, people often say Tusla is not in their communities, whereas we might be funding the Barnardos service within that community.</p>
+          <p eId="para_240">That is not stepping away from the challenges we face, the fact we have to be held to account as a public sector agency, that we have to be challenged and that when we get things wrong or where mistakes are made, we are held to account for those. Certainly for us, a really important part is helping to build the trust and confidence in our services and we thank the committee sincerely for that.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_130">
+          <from> An Cathaoirleach<recordedTime time="2025-07-10T12:00:00+01:00"/></from>
+          <p eId="para_241">I thank all our Deputies and Senators for their very engaging questions. I know it has been a really busy week for the witnesses with their launch this week. We look forward to continued engagement with Tusla and I thank them for the offer to our Deputies to reach out. I know I certainly have more burning questions but as the witnesses will notice, I am a stickler for time. I thank them for coming in, and the meeting stands adjourned until next Thursday, 17 July at 9.30 a.m., where we will briefly meet in public session. Then we will go into private session for 15 minutes and back to public session. I thank you all, and have a lovely weekend.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee adjourned at 12 noon until 9.30 a.m. on Thursday, 17 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,1214 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-09-23/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-09-23/debate"/>
+          <FRBRdate date="2025-09-23" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_housing_local_government_and_heritage"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-09-23/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-09-23/debate/mul@"/>
+          <FRBRdate date="2025-09-23" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-09-23/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_housing_local_government_and_heritage/2025-09-23/debate/mul@.akn"/>
+          <FRBRdate date="2025-09-27" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AubreyMcCarthy" href="/ie/oireachtas/member/id/Aubrey-McCarthy.S.2025-01-29" showAs="Aubrey McCarthy"/>
+        <TLCPerson eId="BrianStanley" href="/ie/oireachtas/member/id/Brian-Stanley.D.2011-03-09" showAs="Brian Stanley"/>
+        <TLCPerson eId="ConorSheehan" href="/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29" showAs="Conor Sheehan"/>
+        <TLCPerson eId="EoinOBroin" href="/ie/oireachtas/member/id/Eoin-Ó-Broin.D.2016-10-03" showAs="Eoin Ó Broin"/>
+        <TLCPerson eId="JoeCooney" href="/ie/oireachtas/member/id/Joe-Cooney.D.2024-11-29" showAs="Joe Cooney"/>
+        <TLCPerson eId="JoeFlaherty" href="/ie/oireachtas/member/id/Joe-Flaherty.D.2020-02-08" showAs="Joe Flaherty"/>
+        <TLCPerson eId="MariaMcCormack" href="/ie/oireachtas/member/id/Maria-McCormack.S.2025-01-29" showAs="Maria McCormack"/>
+        <TLCPerson eId="MichealCarrigy" href="/ie/oireachtas/member/id/Micheál-Carrigy.S.2020-03-30" showAs="Micheál Carrigy"/>
+        <TLCPerson eId="PatBuckley" href="/ie/oireachtas/member/id/Pat-Buckley.D.2016-10-03" showAs="Pat Buckley"/>
+        <TLCPerson eId="PatCasey" href="/ie/oireachtas/member/id/Pat-Casey.D.2016-10-03" showAs="Pat Casey"/>
+        <TLCPerson eId="PaulaButterly" href="/ie/oireachtas/member/id/Paula-Butterly.D.2024-11-29" showAs="Paula Butterly"/>
+        <TLCPerson eId="PaulMcAuliffe" href="/ie/oireachtas/member/id/Paul-McAuliffe.D.2020-02-08" showAs="Paul McAuliffe"/>
+        <TLCPerson eId="RoryHearne" href="/ie/oireachtas/member/id/Rory-Hearne.D.2024-11-29" showAs="Rory Hearne"/>
+        <TLCPerson eId="SeamusMcGrath" href="/ie/oireachtas/member/id/Séamus-McGrath.D.2024-11-29" showAs="Séamus McGrath"/>
+        <TLCPerson eId="ThomasGould" href="/ie/oireachtas/member/id/Thomas-Gould.D.2020-02-08" showAs="Thomas Gould"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM THITHÍOCHT, RIALTAS ÁITIÚIL AGUS OIDHREACHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Housing, Local Government and Heritage</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-23">Dé Máirt, 23 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-23">Tuesday, 23 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#PatBuckley">Pat Buckley,+</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#PatCasey">Pat Casey</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PaulaButterly">Paula Butterly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#JoeFlaherty">Joe Flaherty</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#AubreyMcCarthy">Aubrey McCarthy</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#ThomasGould">Thomas Gould</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MariaMcCormack">Maria McCormack.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#RoryHearne">Rory Hearne</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PaulMcAuliffe">Paul McAuliffe</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#SeamusMcGrath">Séamus McGrath</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#EoinOBroin">Eoin Ó Broin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#BrianStanley">Brian Stanley.*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Richard Boyd Barrett.</summary>
+          <summary eId="sum_5">+ In éagmais le haghaidh cuid den choiste / In the absence for part of the meeting of Deputy Thomas Gould.</summary>
+          <summary eId="sum_6">I láthair / In attendance: Deputy Conor Sheehan.</summary>
+          <summary eId="sum_7">
+            <person as="#Chair" refersTo="#MichealCarrigy">Deputy Micheál Carrigy sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Affordable Housing: Discussion<recordedTime time="2025-09-23T15:00:00+01:00"/></heading>
+        <speech by="#MichealCarrigy" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T15:10:00+01:00"/></from>
+          <p eId="para_16">No apologies have been received but we have received correspondence from Deputy Gould indicating that Deputy Buckley will be replacing him today.</p>
+          <p eId="para_17"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings.</p>
+          <p eId="para_18"> Ireland is facing ongoing difficulties in delivering affordable housing to meet demand. The cost of buying and renting a home has risen faster than most people's incomes, making it even harder for many to find a place they can afford. A range of factors contribute to this, including delays in planning, a shortage of workers and building materials, limited funding for housing projects, and increased investment activity in the property market. These challenges have led to fewer people owning homes and more experiencing housing insecurity.</p>
+          <p eId="para_19"> Today, I am pleased we have the opportunity to consider this and other related matters with representatives of the Department of Housing, Local Government and Heritage, the Land Development Agency, LDA, and the City and County Managers Association, CCMA. From the Department, I welcome Ms Laura Behan, acting assistant secretary in the affordable housing division, Ms Anne Marie O'Connor, principal officer and head of the vacant homes unit, and Mr. Trevor Donnelly, principal officer and head of the viability schemes unit; from the LDA, Mr. John Coleman, CEO, Mr. Phelim O'Neill, director of development, Ms Dearbhla Lawson, director of planning services, and Mr. Enda McGuane, director of asset management; and from the CCMA, Mr. Eddie Taaffe, chair of the housing committee, and Ms Niamh McCarthy, assistant national co-ordinator in the housing delivery co-ordination office.</p>
+          <p eId="para_20"> Before we begin, I wish to explain some limitations to parliamentary privilege and the practice of the Houses with regard to references witnesses may make to another person in their evidence. The evidence of witnesses physically present or who give evidence from within the parliamentary precincts is protected pursuant to both the Constitution and statute by absolute privilege. Witnesses are reminded of the long-standing parliamentary practice to the effect that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of that person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such direction.</p>
+          <p eId="para_21"> The opening statements have been circulated to members. I will take them as read, so I will ask each organisation to provide a briefing of a minute or a minute and a half rather than giving the full statement. We will then publish the statements on the committee website. Is that agreed? Agreed. I invite Ms Behan to make her opening remarks on behalf of the Department.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:10:00+01:00"/></from>
+          <p eId="para_22">I thank members for the invitation to address the committee today on affordable housing. Affordability and the chance to own a home are at the heart of our housing policy.</p>
+          <p eId="para_23"> I will begin by introducing my colleagues, Ms Anne Marie O'Connor and Mr. Trevor Donnelly, who are principal officers in the affordable housing division.</p>
+          <p eId="para_24"> Enabling home ownership is a key objective of the Government. To make it more affordable, a range of targeted supports are in place. Furthermore, the introduction of a cost-based rental model in 2021 now provides a long-term accommodation option for thousands of households that find it difficult to afford private rents. Since the launch of Housing for All in 2021 up to the end of March this year, more than 14,500 affordable housing supports have been delivered via approved housing bodies, local authorities and the Land Development Agency through the first home scheme, the cost-rental tenant in situ scheme and the vacant property refurbishment grant. The first quarter of this year saw the delivery of more than 1,600 affordable housing supports and continued strong performance of the various affordable housing pathways. We are on track this year to maintaining or exceeding our 2024 affordable housing support levels.</p>
+          <p eId="para_25"> We are continuing to engage with delivery partners to advance the affordable housing delivery pipeline for 2026 and beyond. This ongoing engagement and co-operation between key delivery partners is ensuring that the affordable housing programme is responding effectively to affordable housing needs at local and national levels.</p>
+          <p eId="para_26"> To reinforce the commitment to further support the delivery of affordable housing in Ireland, the Government has committed to introducing a new national housing plan to follow Housing for All, including a new starter home programme. The new programme, across the public, private and approved housing body sectors, will continue our commitment to promoting affordable homeownership and to secure long-term rental tenures for young people and fresh start applicants. That commitment, its implementation and potential timeframe are being considered in advance within the context of the new national housing plan. While work is under way to advance this new plan, the measures and supports established in Housing for All are being actively implemented to accelerate and increase delivery of secure, affordable housing.</p>
+          <p eId="para_27"> Affordable housing schemes are operating at scale, supporting thousands of households and the affordable housing delivery programme continues to be expanded and developed year on year, supported by unprecedented levels of State investment. The Government is fully committed to working with all stakeholders to deliver social, affordable and cost-rental homes at scale and to continue accelerating housing supply across all tenures. This is demonstrated by the record level of investment that is being provided for the delivery of housing in 2025, with overall capital funding available of almost €7.5 billion.</p>
+          <p eId="para_28"> Once again, I thank the committee for the invitation to participate here today and I look forward to our discussion.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T15:10:00+01:00"/></from>
+          <p eId="para_29">I thank Ms Behan and invite Mr. Coleman to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. John Coleman<recordedTime time="2025-09-23T15:10:00+01:00"/></from>
+          <p eId="para_30">I will give a brief version of my opening statement.</p>
+          <p eId="para_31"> We are grateful for the opportunity to engage with the committee today. I would like to begin by assuring members that the LDA's delivery of affordable housing is ramping up significantly. Our latest figures show we are on course to reach an annual output of more than 2,500 homes by 2027 and we should become the country's largest producer of homes by then.</p>
+          <p eId="para_32"> Since the LDA was established, we have focused on developing a strong pipeline of projects and we are now active on over 40 sites with a series of projects at every stage from design and planning through to construction. To illustrate the scope, impact and level of our activity, it might be useful for me to zone in on the period between our last appearance at this committee in June of this year and now and to outline the progress made. Since then, we reached an agreement with Horse Racing Ireland on the transfer of land in Leopardstown in Dublin with the potential for more than 800 homes. In the same month, we acquired another site in Cherrywood in Dublin for over 350 homes, and around 800 homes in combination with the adjacent local authority site. We acquired a site in Tallaght on the private market for 700 homes.</p>
+          <p eId="para_33"> We launched a public consultation on our plans to deliver more than 2,000 homes on a site in Clongriffin where construction is already under way on more than 400 homes in the first phase. The Clongriffin Central site was acquired by the LDA in late 2023 and in March of this year, we announced the purchase of a neighbouring site in Baldoyle. The two sites together are located on either side of the Dublin to Belfast train line and we now have the ability to deliver over 4,000 homes in addition to supporting infrastructure, streets, parks and other amenities.</p>
+          <p eId="para_34"> In June, we sought expressions of interest from home builders for a new phase of Project Tosaigh to utilise this delivery channel to ensure the development of much-needed apartments in key urban areas. In July, we opened applications for affordable purchase apartments in Shanganagh Castle estate where we have completed the direct delivery of 597 homes in partnership with Dún Laoghaire-Rathdown County Council. We lodged a planning application for over 285 homes at the Gasworks site on the Dock Road in Limerick, which was transferred from Gas Networks Ireland.</p>
+          <p eId="para_35"> We received planning permission for a 350-home development in Wilton in Cork on land transferred to the LDA by the ESB and we are currently expecting planning decisions on applications for over 380 homes in Bluebell Waterways in Dublin and 934 homes at Dundrum Central.</p>
+          <p eId="para_36"> Just this week, we submitted a planning application for 345 homes at Galway Harbour. Earlier this month, we launched the start of construction on over 1,100 homes on two sites in Balbriggan and Skerries in north County Dublin.</p>
+          <p eId="para_37"> These are just some of the transformative projects that we have been behind in recent months. I am pleased to report that there are already more than 5,000 people living in LDA-delivered homes. Our surveys of residents show high levels of satisfaction with our developments and our affordable housing rents and purchase prices.</p>
+          <p eId="para_38"> The Government has also recently announced an expanded remit for the LDA in the provision of active land management and a greater geographical area of operation. We believe this will further support the agency in the execution of our mandate to accelerate housing delivery across Ireland. This is a clear endorsement of our substantial progress to date. We are ready to assist in this and, indeed, in certain cases we are already involved in such work.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T15:10:00+01:00"/></from>
+          <p eId="para_39">I thank Mr. Coleman and invite Mr. Taaffe to make his contribution.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_40">I am chair of the County and City Management Association's committee on housing and I am chief executive of Wexford County Council. I am accompanied today by Ms Niamh McCarthy of the housing delivery co-ordination office, which is based in the Local Government Management Agency.</p>
+          <p eId="para_41"> The affordable housing fund, AHF, is a cornerstone of Government's Housing for All plan and was established to accelerate the availability and delivery of affordable homes for purchase or rent. The AHF provides subsidies to local authorities to help cover the development costs of affordable housing schemes. The subsidies enable local authorities to offer homes at lower cost for purchase or rent to approved affordable housing candidates. The AHF grant typically ranges from €50,000 to €250,000 per affordable housing unit, depending on location and density of the scheme. Between 2022 and 2025, local authorities have demonstrated the capability to scale up delivery of affordable homes for purchase, having come from a standing start in 2022 and despite operating in a challenging environment marked by inflation, rising construction costs and changing legislative frameworks.</p>
+          <p eId="para_42"> Of Ireland's 31 local authorities, 18 were initially assigned affordable housing targets under the fund, having been identified as areas with affordability constraints. Delivery to date is of the order of 1,700 affordable purchase units with a pipeline of 3,200 working their way through planning, design and construction, while a further 6,000 dwellings are being assessed as proposals out to 2030.</p>
+          <p eId="para_43"> Cost-rental housing presents a complex set of challenges for local authorities. The model is structured over a 40-year lifespan requiring long-term viability and careful financial planning. One of the key risks is that local authorities could breach sector borrowing thresholds, which could constrain their ability to fund other essential services, such as infrastructure, community development and maintenance. Additionally, the requirement to deliver homes at a minimum of 25% below market rent has proven difficult to achieve outside of urban centres and main cities where market rents are high enough to make the model financially sustainable. In rural or lower rent areas, the cost-rental model struggles to gain traction without significant subsidy or land cost offsets.</p>
+          <p eId="para_44"> The future of affordable housing delivery and the provision of the AHF must build on progress while addressing persistent challenges. Local authorities continue to highlight the need for flexible and inflation-responsive capital supports, streamlined delivery mechanisms and enhanced capacity across the sector.</p>
+          <p eId="para_45"> While CCMA is confident local authorities can deliver on the objectives contained in Housing for All, we highlight that the next phase must confront the realities of viability, borrowing constraints and market dynamics, ensuring both urban and rural areas can participate meaningfully in the delivery of affordable homes. A balanced, well-resourced and locally empowered approach will be key to sustaining momentum and achieving the ambitions of Housing for All. Thank you.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_46">Thanks very much. I will give an opportunity for members to raise issues. We have gone slightly longer than planned, time-wise. Members have five minutes. I will cut it at five minutes so I ask them to direct the question straight away; otherwise, we will run into problems. I ask witnesses to be conscious of the time. I am giving five minutes to each member. That is for questions and answers. We have no apologies so we do not know if other members will come in. If we get an opportunity, we will go back around again.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_8">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_47">Thanks Cathaoirleach and thanks to all our guests. I welcome this discussion. Before becoming a TD, I was a long-term councillor and affordable housing was always something I strongly advocated for, so I welcome the topic being discussed in isolation here today.</p>
+          <p eId="para_48"> I will start with the Department. Mention was made of overall policy and targets. That is critical. The 14,500 affordable supports outlined include the first homes scheme, vacant property grant and so on. Does the Department have a figure for affordable purchase within that 14,500 from the start of Housing for All to now?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_49">Yes. Across the local authority affordable purchase scheme, the first homes scheme and the vacant property refurbishment grant, which are our three main purchase supports, 10,500 supports have been delivered to date.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_10">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_50">Can I break it down further to affordable purchase, as opposed to the first homes scheme and vacant property grant? Do we have that figure?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_51">To date, 1,700 local authority affordable purchase scheme homes have been delivered, almost 6,800 first home scheme properties and over 2,000 vacant property refurbishment grants.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_12">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_52">The ratio between affordable housing and social housing is quite stark. As a public representative, I have been picking up for a long time that affordable housing always seems to take second place in the pecking order. I do not know why but it needs to change. In the new housing plan, which we will get in the coming weeks, will affordable purchase have greater standing? Will there be specific targets for local authorities? Will the ratio change and better balance affordable and social? That is not to take away from social. It is critical but I would argue a wider cohort of people, day by day, are falling outside social housing supports who would be in a position to find their own home.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_53">It is important to look at the context of social housing having been delivered for almost 100 years within the State. The social housing delivery mechanisms are well established. Within local authorities, it is a well-oiled machine at this stage. We introduced the local authority affordable purchase scheme in 2021 with the Affordable Housing Act. We started out in 2022 with 350 affordable purchase homes and expect to have over 1,000 this year. In ramping up an entirely new system of housing, local authorities have done extremely well to deliver the numbers they have. It might be useful to tell the Deputy that the pipeline for local authority affordable purchase includes 4,500 already approved for funding over the next three years. We are constantly seeing schemes coming in-----</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_14">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_54">I appreciate that. Sorry for interrupting but the clock is against me. In the new plan, will there be specific targets annually for affordable housing delivery through the local authorities?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_55">The programme for Government has established the new starter homes programme and has indicated 15,000 starter homes will be delivered every year. We will be implementing that through the new plan.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_16">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_56">Those 15,000 starter homes are not just affordable purchase, though; they include other categories.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_57">Yes, that is across the full range of supports that are currently in place to deliver affordable housing.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_18">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_58">I would still argue affordable purchase is not getting the standing it deserves - absolutely not. There is a growing cohort of people out there who simply are not getting any support. If your income is a little more than €40,000 per annum and below €80,000, you are effectively left to fend for yourself. I do not think that is good enough. Affordable housing should be the vehicle for those individuals and families but, unfortunately, it is not. I ask the Department to go back and look at that. It is something I am taking up with the Minister as well.</p>
+          <p eId="para_59"> I am caught for time. I will adhere to the five minutes. Hopefully I will get an opportunity to come in again.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_19">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-09-23T15:20:00+01:00"/></from>
+          <p eId="para_60">I thank the witnesses for their presentations. Excuse the frustration in my voice but some of the ways in which the information from the Department is being presented to the committee are not factually accurate. In fact, I would argue the information is misleading. It is not true to say that targets are being met or exceeded. In every year since 2022, cost-rental targets and affordable purchase targets have been missed. Last year, the cost-rental target was missed by 16% and the affordable purchase target, which Deputy McGrath rightly raised, was missed by 61%. Approvals for the first home loan are not the same as purchases. The number of properties purchased through that - in my view - very controversial scheme is far lower than approvals. We have to get to a stage where the data on affordable schemes is accurate in the way it is on social. It is still not being presented accurately. I know Ms Behan does not get to make the decisions and I am not picking on her but it is really frustrating. The Government is missing its target and to tell the committee it is meeting and exceeding them simply is not true on those key schemes.</p>
+          <p eId="para_61"> The questions I want to ask are on the other really concerning bit of the affordable housing schemes, which is they are increasingly not affordable. That applies both to the affordable purchase scheme and to the cost-rental scheme.</p>
+          <p eId="para_62">On my first question, one of the things a lot of people do not understand is that, when the pricing for the affordable purchase schemes is being determined, there is an open market valuation. It is not actually the cost of delivering the unit but just an open market valuation. Even when the cost of delivering the unit is significantly lower than the open market valuation, that is where the pricing starts. For example, where Glenveagh was working with Dublin City Council, the open market valuation for a three-bed unit was €500,000. However, the actual delivery price of that unit was below €400,000. Why is open market value being used when it artificially inflates the price, meaning the purchaser gets less of a discount? Why is open market value being imposed on the local authorities in delivering these homes?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_63">I thank the Deputy very much for the question. The underpinning rationale for that is essentially that the market value of a home is the value of the property that the purchaser is buying. That home would sell for that value on the open market. The purchaser is getting an opportunity to purchase that home at a really significant discount from market value. Over time, he or she will buy out the equity share held by the local authority. That will feed into an affordable housing fund held by the local authority and be used to make another home affordable to a future purchaser. In essence-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_21">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_64">Does Ms Behan not understand? I apologise for cutting across but, like Deputy McGrath, my time is limited. Does Ms Behan not accept that, if this means a so-called affordable purchase home is €400,000, we have a problem? Would it not be better to start with the all-in delivery cost of the unit, as we do with cost rental, and try to provide a real discount rather than artificially inflating the price way above the cost of delivery? Surely, for the majority of people this scheme is targeting, €400,000 is not affordable.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_65">The price the purchaser is paying is very much affordable, however. The price the purchaser is paying takes account of the discount, which is facilitated by Exchequer investment for the most part. The price is determined as being the maximum the purchaser can afford to pay and-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_23">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_66">That is the second issue I want to move onto. I again apologise for being a little rude. It is only because the time is tight. What we are seeing with affordable purchase and cost rental is that increasing numbers of the people at whom they are targeted cannot afford them because their incomes are simply too low to meet the price. Is the Department tracking the number of people who are excluded from cost rental on application solely because they do not meet the affordability test? Is it tracking the number of people at the lower edge of income eligibility for affordable purchase who are excluded from buying because of the price? Is it actually checking how affordable these homes are for all of the deciles who are meant to be getting them? The data I am seeing indicates that only those people at the top of the income cohort can actually afford these properties and everyone else is being excluded. As Deputy McGrath rightly says, they are not eligible for social housing and increasingly they cannot afford affordable purchase or cost rental and are excluded. Is that something the Department is examining, tracking and concerned about?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_67">I maintain that there are a number of schemes on sale at any point in time across the country under the affordable purchase scheme. They are at a range of prices.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_25">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_68">I know that but, of the cohorts for whom these schemes are available, let us focus on lower, middle and higher incomes within the income brackets. Is the Department actually checking the extent to which there is a growing percentage of people who cannot access these schemes because the prices to rent or buy are too high? Is the Department even examining that? It is a yes-no question.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_69">We regularly analyse the income deciles and eligibility for affordable purchase-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_27">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_70">Will Ms Behan share that information with the committee?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_71">-----but tracking individually would be an impossible task because there are a range of purchasers in the market and, at any point in time, they may be buying-----</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_29">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_72">The AHBs and the LDA provide that information to TDs on request. I am sure if the Department asked them for it, they could provide it.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_73">They may be buying homes on the second-hand market at prices that are considerably lower. The new homes available under affordable purchase are not the only option for that cohort of people. To get a net figure buy subtracting the number of affordable purchase homes we have made available from the number of people in a cohort is a false premise.</p>
+        </speech>
+        <speech by="#EoinOBroin" eId="spk_31">
+          <from>Deputy Eoin Ó Broin<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_74">I am out of time but I will come back to that point if I get a chance.</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_32">
+          <from>Deputy Paula Butterly<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_75">I will very quickly ask a pretty straight question. Ms Behan was talking about the target of 15,000 homes in the general mix as regards affordability and the different schemes. Mr. Taaffe said that, if I add it up, roughly 10,000 homes will be delivered up to 2030. If I take into consideration what was said to be in the mix, there is a huge gap. That is first and foremost. That brings me to the conclusion that I must fully agree with Deputy McGrath that people in the middle, such as nurses, gardaí and office workers, are playing second fiddle in every sort of housing strategy we have introduced. They are not able to get a social house or to afford the prices in Drogheda, Dundalk, Dublin, Cork or Waterford. When we are looking at the new starter homes, I would argue that the balance has to favour this cohort of workers. According to this very quick calculation, we are talking about 13%, give or take. That is not a mix; it is a severe imbalance in the whole situation. How are we going to address the issues Mr. Taaffe raised as regards viability and borrowing constraints? If we are going to get to our target of 15,000 homes, in whatever mix that might be, a large portion of which must be for that middle cohort, how are we going to address these issues to ensure the local authorities reach those targets?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_76">When Mr. Taaffe was talking about 10,000 homes, I believe he was talking about those that are currently in the pipeline and being funded. We anticipate that a good deal more homes being provided by local authorities and by the LDA for sale through the local authorities will come on stream over the next five years and will come through our approval processes in that time. That is certainly not the limit of our ambition. It is what we can currently see. I assure the Deputy that schemes are developed and come to the Department for approval every week. That pipeline is consistently being added to. We have funding in place to deliver a much higher proportion of that. I also contend that we are ably meeting the affordable housing needs of a large number of vacant property refurbishment grant and first home scheme applicants via those schemes. They are available at scale and will be further scaled up into the future. The local authority affordable purchase scheme is not the sole support available to purchasers.</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_34">
+          <from>Deputy Paula Butterly<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_77">However, it is only a small portion of what is being made available to middle-income earners.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_78">It is intended to become a larger proportion.</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_36">
+          <from>Deputy Paula Butterly<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_79">Can Ms. Behan give me a percentage?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_80">It will very much depend on the capacity of the sector to develop schemes and build them out over the next five years but that capacity is growing all the time. It is impossible to put an upper limit on it at this stage.</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_38">
+          <from>Deputy Paula Butterly<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_81">Will there be a better balance for that cohort, which Deputy McGrath mentioned, that is really stuck in the middle at the moment? They are neither fish nor fowl at this moment in time.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_82">Through the new housing plan, the Government is very ambitious to meet as much of that housing need as we can.</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_40">
+          <from>Deputy Paula Butterly<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_83">How will we address the issues of viability and borrowing constraints that Mr. Taaffe raised?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_84">We are tackling the issues in respect of viability in a variety of ways at the moment. The Deputy is probably aware that the Government is focusing on infrastructure investment to service land and improve viability in that way. We recently looked at the apartment standards to try to improve viability. We are constantly seeking to standardise house types and apartment types to try to secure-----</p>
+        </speech>
+        <speech by="#PaulaButterly" eId="spk_42">
+          <from>Deputy Paula Butterly<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_85">Unfortunately, I am going to be as rude as Deputy Ó Broin and just ask Mr. Taaffe whether that will be sufficient to ramp up and ensure that we hit our targets. What is there currently and what extra needs to be delivered?</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T15:30:00+01:00"/></from>
+          <p eId="para_86">We need to be constantly looking at viability and making ourselves more efficient. We need additional investment in infrastructure to provide more serviced land. We need to look at modern methods of construction to make the construction sector as efficient as possible. We also need to make sure the subsidies are reflective of the real cost of housing delivery and that we can keep housing as affordable as possible. Constant analysis is needed. To be fair, that is what has been going on over the last couple of years. That has been being checked. The single biggest issue in respect of viability is that local authorities need access to funding to provide infrastructure to unlock more land.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_44">
+          <from>Deputy Rory Hearne<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_87">I thank the witnesses for coming in today. My first questions are for the Department and, unfortunately, it is under fire because of the way many of us see it. To cut to the chase, it is an absolute disaster. We are failing a generation, who are emigrating or stuck at home and depressed. The figures outlined by the Government in the previous Housing for All plan - the witnesses did not give figures today for what is coming - are completely inadequate as regards affordable purchase homes to be delivered by the State and affordable rental. We have a fundamental perspective problem with our housing policy, which is that the State is still ultimately reliant on the market and seems to be still obsessed with how we incentivise that market, rather than accepting that the market will never deliver affordable housing The State has to do it. The fact that all the issues Mr. Taaffe outlined are still being outlined so many years into an emergency is absolutely unacceptable.</p>
+          <p eId="para_88"> I will question a number of areas. First, on affordable housing schemes, yesterday I met the Housing Alliance of approved housing bodies, which said that the approval of schemes for affordable housing by the Department is being delayed. Are affordable rental housing schemes being delayed? When schemes come to the Department, are they being approved or does it have to go to the Department of public expenditure to get approval for funding for affordable housing schemes?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_89">We certainly do not. On the cost-rental equity loan, which is how the AHBs are funded in order to secure affordable rents under the scheme, the allocation made available by the Department to support AHBs, which are doing a wonderful job in ramping up the delivery of cost-rental housing, has been increased twice this year. Approvals are ongoing in the Department. Under the new national development plan, the funding that was negotiated by the Minister for housing is certainly adequate to fund the significant pipeline of AHB cost-rental delivery both that we have sight of at this stage and that is on the horizon.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_46">
+          <from>Deputy Rory Hearne<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_90">Is Ms Behan saying that no funding approval for projects has been delayed? No projects that have come in from AHBs or local authorities have been sitting in the Department for months waiting for approval.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_91">I cannot comment on the fact that there may be projects for which further information is sought and around which there may be ongoing engagement. However, I assure the Deputy that the funding is in place to approve even more projects this year than have already been approved and that €350 million to €400 million worth of projects have already been approved this year for AHB funding.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_48">
+          <from>Deputy Rory Hearne<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_92">Why does Ms Behan think AHBs are saying this?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_93">I could not possibly comment for them.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_50">
+          <from>Deputy Rory Hearne<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_94">Ms Behan spoke about the capacity of the sector to deliver, if it was increased. What is the Department doing to increase the capacity of the State to deliver affordable housing? </p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_95">Across the board the Government is investing in infrastructure, as we just discussed. We are supporting local authorities to buy land. We are investing in the LDA to deliver the output. We are funding and making viable cost-rental delivery by AHBs, local authorities and the LDA. We are supporting with subsidies local authorities to allow them to make affordable purchase homes available. There are myriad ways in which we are tackling-----</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_52">
+          <from>Deputy Rory Hearne<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_96">Does Ms Behan think they are adequate and sufficient?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_97">In response to Deputy Séamus McGrath's question earlier, at this stage we have a good handle on housing need. A tool is being developed by the ESRI, which has identified the new housing need arising over the coming five years and attempts to identify how much of that is social housing need, private housing need and how much is need with affordability constrained, that is, people who cannot afford to meet their housing need fully with private means but are not eligible for social housing. Based on what is emerging from that analysis so far, the targeted level of affordable housing supports we are putting in place over the next five years certainly looks to be in the right area, as regards meeting the need that is expected to arise.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_54">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_98">I welcome the guests to the committee. I will start with Ms Behan and affordable housing delivery. It is an important subject. She mentioned in her presentation that there were 14,500 affordable housing supports in the past five years. I ask her to please keep the answers short as we have little time and I do not want to be abrupt with her. Approximately how many or what percentage of those were first home scheme grants?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_99">Of the 14,500, 6,500 were first home scheme grants.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_56">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_100">That is almost half of them and that is the extra equity delivered by increased borrowing by a bank or the State.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_101">The first home scheme operates to bridge the gap between what the purchaser can afford to pay and the market value on the home.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_58">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_102">Yes, it is extra. It puts more debt on the house buyer.</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_103">It is an equity stake that is held by the first home scheme, which may be bought out over time.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_60">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_104">Okay. Has the Department done any analysis of what effect that may be having on house prices since the introduction of the scheme? There is evidence from England that shows that when a similar scheme was brought in, house prices increased significantly. Anecdotally and looking around at auctioneers' windows since that scheme came in, particularly for new developments, house prices have gone up. Yes or No. Was analysis done?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_105">The first home scheme commissioned KPMG in 2023 and again this year to review whether the impact of the first home scheme has been inflationary and whether it was meeting the affordable housing needs of those it was targeted at. It found the first home scheme had not had an inflationary impact, and that was confirmed by the review, which was repeated again this year.</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_62">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_106">Does that take into consideration the gazumping that is taking place in housing that is for sale in housing estates? Houses in the housing estate I live in were gazumped from the sale price that was registered.</p>
+          <p eId="para_107"> I will move to a different subject. I raised AHBs and unencumbered finance periods with the regulator previously in this room and with the Secretary General, Mr. Graham Doyle. I was chasing this for a long time, as were others. I am in favour of the work AHBs are doing; it is good. However, the legislation was introduced 25 or 30 years ago and it does not appear that any protection was made for when those units come out of the encumbered finance period. In other words, AHBs are free to have their own reletting policies. In one case, a private company was brought in and it is now setting and collecting the rent and running the show. What has the Department done about that?</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_108">I cannot comment on social housing schemes, but what I will say is that the cost-rental equity loan, which is how we support the AHBs to make cost rental available------</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_64">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:40:00+01:00"/></from>
+          <p eId="para_109">No, can we just go back to the AHBs? I am talking about where finance was put up by the State and schemes were built mainly on local authority or church land or donated land that had come from the public at the end of the day. AHBs built them in the late nineties and they are now coming of age. They are in the unencumbered period. I have raised this with the Department a number of times and I am not getting an answer about what happens. What is the situation? I gave a case study to the Department on this. It has been almost two years since I first raised this. What has the Department done to ensure the investment by the State is protected in the future? These homes got public support, whether from the Department or the local authority, in finance. What has the Department done to ensure it does not end up with AHBs, which have huge scope after the unencumbered period, being able to do what they like with them?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_110">In terms of affordable housing and the cost-rental supports-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_66">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_111">I am talking about the social ones. These were social.</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_112">Unfortunately, I am just not familiar with the social housing scheme in these terms-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_68">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_113">Okay. Could I ask Ms Behan to get-----</p>
+        </speech>
+        <speech by="#" eId="spk_69">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_114">-----but I will go back and ask a colleague-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_70">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_115">There is a principal officer in her Department who is supposed to be looking after this, and the regulator.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_116">-----to get back to the Deputy on that. Can I just reiterate-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_72">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_117">Yes, we need regulation to change that.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_118">-----that in relation to cost rental equity loan, CREL, which is the means by which we support the AHBs to deliver cost-rental elements, the designation of cost rental is for a period of 50 years and following that period, if the approved housing body chooses to remove that dwelling from the cost-rental system, the subsidy that we have paid the CREL is repayable to the State? In terms of going forward, the protection-----</p>
+        </speech>
+        <speech by="#BrianStanley" eId="spk_74">
+          <from>Deputy Brian Stanley<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_119">Bearing in mind that this issue is in relation to social housing built by approved housing bodies, from what we can ascertain to date, there is no protection there in terms of the State's investment, local authority investment or public investment after the encumbered period ends. As a committee, we should actually follow this up with the regulator.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_120">Ms Behan said she is going to come back to the Deputy with some information she does not have.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_121">I certainly will; I will talk to colleagues back in the Department and somebody will write to the Deputy.</p>
+        </speech>
+        <speech by="#AubreyMcCarthy" eId="spk_77">
+          <from>Senator Aubrey McCarthy<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_122">I thank the witnesses for being here today so soon after the last visit. Today's focus is very much on affordable housing, but it is important to remember that without service to our zoned land, there is going to be no progress whether that is in private housing, affordable housing, cost-rental or social housing. It is all part of the same system. When the witnesses were here with us before, they highlighted the shortage of zoned and serviced land. That was seen as a critical blockage, and we were discussing the Minister's letter from May that was sent out to the councils. The numbers were not released and that was the blockage. However, now it seems the Minister has issued the section 28 guidelines, and it has provided critical numbers for all areas, including my own area of Kildare with 2,706 per year. The Minister is asking the councils to vary the development lands as soon as possible. It seems, therefore, that the blockage now has been passed on to local authority level. In that context, this is my question. I have seen that Cork County Council and Kildare County Council have adopted a very proactive approach whereby they are seeking public consultation to identify additional lands for zoning, whether that is brownfield, greenfield, etc. It is all for rezoning under section 28. What do the witnesses think of Cork County Council's initiative? Are they aware of it? Can they tell me whether many other local authorities are following suit? If they are, where are they in the process, and what are the likely timeframes for the completion of the variations in those plans? Anybody can answer.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_123">I will take that one. As the Senator knows, the Minister has instructed local authorities to re-examine their county development plans. Those processes are working away in the background. Most local authorities have indicated that they will start the public consultation process on that in either quarter 3 or quarter 4 of this year, and there will be a formal public consultation process as there is with all variations. I think that is what the Senator is referring to with those local authorities. They prepare a draft variation that would reflect the increased numbers and the zonings associated with that. That will go out for public consultation either before or immediately after Christmas and then it will be put before the elected members of the respective county council for adoption or otherwise or amendment. We expect that process will be completed in the bulk of local authorities probably in the spring of next year.</p>
+        </speech>
+        <speech by="#AubreyMcCarthy" eId="spk_79">
+          <from>Senator Aubrey McCarthy<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_124">It is nearly a year after the numbers were provided.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_125">There are prescribed periods for variations to county development plans. That is prescribed in legislation. There is an analysis to be done on the existing capacity of the zoned lands. Then, we plug in the new figures that have been given by the Minister, assess what impact that would have and what additional zonings would be required and then that goes out to public consultation and there is a prescribed period for that, and then it goes before the members. As I said, local authorities are working on that in the background. Some of them have already published draft proposals and proposed variations. A lot will do so over the coming month or two as they work through the data and work through their existing plans. It goes out to public consultation, and it is put before the members for adoption.</p>
+        </speech>
+        <speech by="#AubreyMcCarthy" eId="spk_81">
+          <from>Senator Aubrey McCarthy<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_126">Is Mr. Taaffe confident? We had witnesses from Uisce Éireann and ESB in here before and they said that the targets we have from a Government point of view cannot be matched by the infrastructure. Is Mr. Taaffe confident that the housing targets we have can be met with the infrastructure we have?</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_127">There is no doubt that all of the various State infrastructure providers will have to seriously examine the variations and new zonings that will come from that process across all 31 local authorities. To that end, the Department recently established a housing activation office, which has started its consultation with local authorities to assess what infrastructure and infrastructure priorities are there or needed to unlock or service zoned lands. It is a huge challenge facing the State. It is going to require a significant amount of financial investment by the State to fully and adequately service lands around the country in terms of water, wastewater, the electrical grid, relief roads, public transport, community centres, schools, etc.</p>
+        </speech>
+        <speech by="#AubreyMcCarthy" eId="spk_83">
+          <from>Senator Aubrey McCarthy<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_128">Therefore, without the infrastructure, it is pie in the sky unless we get the infrastructure in place.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_129">No, there are significant portions of land that are already serviced where there is no infrastructural deficit. A lot of that is either being developed or in the process of being developed or has planning permissions on it that are part of the normal pipeline of housing development. However, there is no doubt about it that as we zone additional lands, additional investment in services will be required.</p>
+        </speech>
+        <speech by="#AubreyMcCarthy" eId="spk_85">
+          <from>Senator Aubrey McCarthy<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_130">I thank Mr. Taaffe.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_131">I thank Senator McCarthy very much. We will move on to Senator Casey.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_87">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_132">I thank everyone for their presentations on what was a topical conversation today on affordable housing. I cannot stress enough the importance of home ownership, the security that brings to a family and the impact it has on the community in which they are involved. It is a piece we have sort of left behind for the last decade. I am not picking specifically on the Department, but its officials are the policymakers in relation to this. We have two organisations here in relation to the delivery of that but with regard to the policy, we are not doing enough when it comes to affordability. I do not think the same emphasis, and I have spoken of this several times, is put on affordability that is put on social. My colleague mentioned it earlier. We need the same energy and effort that is put into social housing to be put into affordable housing.</p>
+          <p eId="para_133"> In that regard, the witnesses gave the figure we hope to achieve of 1,500 on average per year over the next five years, when at the same time we are looking at over 10,000 social houses. The other weakness in this argument is that we do not know how many people are in that affordable gap because once they fall off the social housing list, they are forgotten about. There is no mechanism in place to count the cohort of people who are in that category who fall outside of social housing and cannot afford to buy a home. I honestly believe it is time that, county by county, we count those individuals to get a full understanding of the scale and depth of the affordable crisis that is out there. I honestly think that until we know that, we cannot put a proper plan together. The witnesses might comment on that.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T15:50:00+01:00"/></from>
+          <p eId="para_134">First of all, I am sorry if I gave the impression that we are really only intending to target 1,500 affordable housing supports every year. In fact, it is 15,000. The starter homes commitment that is outlined in the programme for Government is the Government's targeted level of intervention to support affordable housing and the cohort of people the Senator is talking about who are challenged to meet their housing needs in the private market affordably. We have done a lot of work with the ESRI to gain an insight into the level of need with affordability constraints that are arising in terms of new households that are being formed in Ireland every year. I outlined a little bit about it earlier. It is the housing need and demand assessment. It is built up at local authority level.</p>
+          <p eId="para_135">It starts with all 31 local authorities in the State. It looks at the various income deciles. It looks at social housing eligibility, the number of new houses that will be needed and the number of new households that will be formed over the coming five years at any point in time. Using that information, it makes an assessment of what the level of need with affordability constraint will be - the people who will not be able to rent or buy in the private market. As I said, the Housing for All plan in 2021 was based on a need, which was assessed at that time, of about 4,000 households per year. We expect that when the next housing need and demand assessment will be competed, that need will be higher but we are calibrating our response to be higher to match that.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_89">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_136">Okay. I would prefer to see it going even higher again but that is another argument.</p>
+          <p eId="para_137"> I want to go back to both the LDA and the local authorities. Is the figure for Part 5 affordable housing, which was introduced in 2022, in any of the stats put before us today? Is it part of the figures that have been presented today? Regarding the LDA, Mr. Coleman has shown a huge pipeline of work coming through and it is fantastic to see that land acquisition being done but, at the end of the day, it is about the delivery of that housing. We will now be the largest playmaker in this space. How confident is he of delivering the numbers he has purchased since he was with us last, and has the LDA the funding and resources to do that?</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. John Coleman<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_138">We build our projections on what is usually a two- to three-year view on the projections we produce. That is based on contracts we enter upfront, for building contracts with sites we secure from the State or we purchase on the market where we appoint building contractors, or through Project Tosaigh, where we fund developers to deliver affordable homes back to the LDA and we release them as affordable homes. For two years, we have a pretty good view. Three years and beyond is based on projections or a pipeline you know is there but you have not contracted on yet. Once it is in contract you are pretty firm on it. We think we will have, next year, in and around 2,000 homes delivered because it takes between five and seven years for a site that does not have planning permission to be turned into homes by bringing it through the design and planning process, detailed design and then into procurement and construction. For the big schemes we work on, which are typically apartment schemes, by the time you put a shovel in the ground typical construction timeframes are in and around 24 to 36 months. That is the length of time it takes. The LDA was set up as a start-up in 2019. It really commenced in 2022 when the LDA Act was commenced. Now we are seeing that pipeline we have built result in completed homes so we have a reasonable degree of visibility on the level of production I have outlined.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_91">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_139">I also asked about Part 5.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_140">Very quickly, as we have gone well over time.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_141">Yes, it does. Part 5 and social and affordable as well. The Part 5 affordables coming through are only starting to build up because they are only a recent addition to Part 5.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_94">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_142">I have just one-----</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_143">I call Senator Maria McCormack.</p>
+        </speech>
+        <speech by="#MariaMcCormack" eId="spk_96">
+          <from>Senator Maria McCormack<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_144">I thank everybody for coming in. I am delighted we get to have a session solely on affordable housing because this is the biggest crisis we have at the moment. If you are in a rural community like Laois, it is nearly non-existent.</p>
+          <p eId="para_145"> I have two questions. First, Mr. Taaffe mentioned in his opening statement that out of the 31 local authorities, there are 18 that have been identified as having significant affordability constraints. Eighteen of them were specifically assigned targets. Do the local authorities have any input into these targets or has the CCMA been getting feedback about how low these targets are? I will give Mr. Taaffe an example for Laois. I do not expect him to comment directly on Laois but it is just an example. The target for 2022 was five houses. In 2023 it was seven, it was ten in 2024 and it was eight in 2025. We are going down even though the housing need is going up. In 2026 it is eight. These targets are absolutely ridiculously low. I want to get Mr. Taaffe's feedback on that please.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_146">To be clear, the original assessment of the affordability gap in 18 local authorities was when the affordable housing fund was initially launched back in 2022. Those targets were distributed <i>pro rata</i> to the 18 local authorities. That situation has now changed and it changed quite quickly. It was identified that if a local authority could make a case for an affordable housing fund outside of the 18 local authorities, they were eligible to apply. Now all local authorities are eligible to apply and make a business case for access to the affordable housing fund.</p>
+          <p eId="para_147"> The other point is that the targets were very much an initial distribution of what was felt with regard to the overall national target but I think local authorities are now trying to do as much affordable as they can. Those targets are seen as an absolute minimum and in some cases they are just not working to those. They are trying to do as much affordable housing as they can. To be fair to our colleagues in the Department, if any local authority puts in an application for the AHF fund, they have a business case, it stacks up and it meets the criteria with regard to the numbers, the subsidy etc., then they have been approved for those schemes and are progressing them. It is working-----</p>
+        </speech>
+        <speech by="#MariaMcCormack" eId="spk_98">
+          <from>Senator Maria McCormack<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_148">I am sorry to interrupt Mr. Taaffe but is he saying that if the local authorities submit that they can build or supply more affordable housing, there will be more budget there? The budget is not based on the target.</p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_149">My experience is that it is not. If a scheme stacks up with regard to the criteria set down by the Department, then irrespective of target or location, local authorities have been successful in getting those schemes approved.</p>
+        </speech>
+        <speech by="#MariaMcCormack" eId="spk_100">
+          <from>Senator Maria McCormack<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_150">More budget.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_151">Yes.</p>
+        </speech>
+        <speech by="#MariaMcCormack" eId="spk_102">
+          <from>Senator Maria McCormack<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_152">Okay, that is fine. Mr. Coleman was in here in June and that was fantastic but with the LDA, when you are outside of Dublin or a big city, we are left behind. I read Mr. Coleman's opening statement. I know the LDA has not been able to focus on rural communities yet but I loved that when we got past all the progress in all the big cities and got to the last lines, it was stated: "The Government has... recently announced an expanded remit for the LDA... [for] the provision of active land management... [in] a greater geographical area." I ask Mr. Coleman to tell me about this, about the constraints, or the possible timelines when rural communities like Laois might benefit.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. John Coleman<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_153">Sure. In June, the Government made a decision that there was going to be an alteration and expansion of the LDA's mandate. That included operating outside geographical areas we currently operate in. It is correct to say that. We are giving consideration as to how best we can do that at the moment. There are roughly 50 towns with a population of greater than 10,000 at the moment. We have mapped all State land in the country on our own, which is publicly available on our website. We are looking in detail outside the main city areas at which land in these larger towns could be best and most quickly accessed to deliver homes. We are doing that exercise at the moment. From an operational perspective, we are also in consultation with the local authorities and the Department on how best we could service these areas. The danger is that if we spread ourselves too thin, we might risk achieving nothing, whereas if we focused on some high-potential areas we might achieve more. We are working through that at the moment. We are consulting the Department on it and I expect, certainly within the next two months or so, that we would have a clear plan on where we are going in the non-city areas, if we can call them that.</p>
+        </speech>
+        <speech by="#MariaMcCormack" eId="spk_104">
+          <from>Senator Maria McCormack<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_154">Great. I know I am over time but within the next two months, when Mr. Coleman has this plan, can he please share it with the committee?</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Mr. John Coleman<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_155">Sure, of course. That is no problem.</p>
+        </speech>
+        <speech by="#MariaMcCormack" eId="spk_106">
+          <from>Senator Maria McCormack<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_156">Excellent. I thank Mr. Coleman.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_107">
+          <from>Deputy Joe Cooney<recordedTime time="2025-09-23T16:00:00+01:00"/></from>
+          <p eId="para_157">I thank all the witnesses for coming in. I have a concern, as they know, about what we call people being caught between two stools. It is subjective; what is affordable for me is unaffordable for you, which can be natural enough. A one-size-fits-all system is not working and there is no point saying it is working. We have seen that over the last number of months. The challenges facing people when they try to work through all the criteria is creating a system that just is not operational. Can I suggest that the witnesses would be better to come from the other side to that of the system, and maybe look at it from that side? There would be an approved mortgage, and the State would support the purchase by taking a share based on the balance of the payment. I am well aware of people who did not meet the limit for the social housing. Unfortunately, they cannot get a mortgage to get on the affordable housing ladder.</p>
+          <p eId="para_158">Where does that leave those who are caught in the middle? It leaves them staying at home with their parents, unfortunately, and they cannot get an affordable house. Maybe the witnesses will come in on that point.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_159">We are very conscious that there is a broad spectrum of need within the category of affordability. This is why the State has put in place such an array of supports to meet all the various different kinds of circumstances. Certainly there are people for whom there is a gap between the mortgage they can afford to repay and the price of housing in their area. The first home scheme and the local authority affordable purchase scheme are working to bridge that gap for those people.</p>
+          <p eId="para_160"> There are also a number of people for whom the availability of a mortgage is a challenge. Local authorities can make available mortgages through the local authority home loan to people who could maybe fund a mortgage but have been turned down by the retail banks. People should always think about turning to the local authority to consider whether they may be eligible for a local authority home loan as an alternative.</p>
+          <p eId="para_161"> Otherwise, there are options for people to purchase an older, vacant or derelict property and avail of the grant available from the State to make those homes habitable. It is a very generous grant of €50,000 or €70,000 if the home is derelict at the moment, which can assist. Further to that there are the cost rental schemes. The cost-rental schemes are being supplied by the Land Development Agency, LDA, by the approved housing bodies and by some local authorities. These schemes are targeting the delivery of homes at rents that are 20% or up to 30%, 33% or 35% below market rates, which often provide a very affordable rental to those households that are challenged to be able to afford a mortgage.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_109">
+          <from>Deputy Joe Cooney<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_162">Again, I can see where Ms Behan is coming from but I have directed people to the local authority where they find the criteria are something similar as if they had gone to the bank or wherever they were going to get their loan, unfortunately, so that is not a winner for them. We would all love to see them getting in the housing market. Could it come down to looking at the assistance side rather than coming up from the other side? I know a number of people who build a big amount of the affordable houses that are built in our county. Unfortunately, the building contractors are finding it hard to move on some of their affordable houses because the people in the bracket who qualified for them could not come with the loan.</p>
+          <p eId="para_163"> Ms Behan mentioned second-hand houses. It is almost impossible to buy these. Because of the vacant house grants, some of these properties are actually making bigger money than new houses. Where can people go to in this situation? I appreciate what the Department is trying to do so people get on the housing market but unfortunately we still have a serious issue out there.</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_164">There is another scheme that I should have mentioned. There are local authorities that are making available serviced sites on the edges of towns around the country. They can make those sites available, fully serviced. People can then self build, in close proximity to all the services of the town, a home they can afford to build themselves. That is another one of the options available, which people may not have been aware of.</p>
+        </speech>
+        <speech by="#JoeCooney" eId="spk_111">
+          <from>Deputy Joe Cooney<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_165">I am well aware that scheme as well. Unfortunately, one of those schemes in our county started 12 months back but there is little or no progress. How do we drive on those schemes? It is actually a good scheme where people can buy a serviced site and build their own houses but where are the finances? How can we drive on those schemes? That, I feel, would be a good idea.</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_166">We are exploring and constantly considering how to modify and improve our schemes to try to make them more efficient and more effective in terms of meeting the needs. All of that is under consideration at the moment in the new housing plan.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_113">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_167">There is a sense of <i>déjà vu</i> for me because I was on the last housing committee for five years. Then I was sick for the bulk of this year, so I thought coming back the housing crisis would be sorted but unfortunately it is not. My apologies that I was not here for the committee's June meeting.</p>
+          <p eId="para_168"> Having spent five years on the committee I am always exasperated that I do not get a sense that there is a housing crisis from the Department officials and other agencies when they come in. I do not mean to put the blame specifically on the witnesses but does the Department of housing measure performance metrically within the Department to see where it is at with whether it is going to meet this year's targets, and with the measures it will take to ensure those are met?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_169">With regard to setting social housing delivery targets and affordable housing delivery targets we set those targets for ourselves every year.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_115">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_170">How often would the Department-----</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_171">We set them for local authorities and for all of our other delivery partners. The Minister holds us to account on ensuring that-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_117">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_172">But do they hold themselves personally to account? As the acting head of the affordable housing division, does Ms Behan hold her team personally responsible for delivering those targets?</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_173">We operate daily within the shadow of knowing that there are over 15,000 people homeless in this country. We work tirelessly all the time to try to secure an increase in housing supply across all of the various different tenures to meet all of the various different housing. Our days are-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_119">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_174">I know they are working tirelessly but-----</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_175">Our days are 100% devoted to that-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_121">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_176">I know. I do not dispute the work the Department is doing but consider the exasperated couple looking into this and wondering "Are we making any headway at all". For example, we are virtually through three quarters of this year. Where is the Department <i>vis-à-vis</i> the targets this year and what has it done for the fourth quarter to ensure the affordable housing targets will be met for this year?</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_177">This is the time of the year when we do absolutely take stock of the level of delivery that has been delivered to date and whether we are going to meet our target-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_123">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_178">Where are we on that? We are coming to the end of the third quarter, so where are we on the target?</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_179">We are very hopeful that-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_125">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_180">Where are we on the target? Not "very hopeful". What is the specific number? Are we on target to meet it?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_181">This year we are actually ahead of our affordable housing delivery for this time of year and we fully expect to deliver more affordable housing supports this year than last.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_127">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_182">I am conscious of time but I will just drill into that. In her opening statement Ms Behan said that since 2021 there were 14,500 affordable houses delivered. When I talk about affordable housing, I talk about an affordable housing scheme. Ms Behan said that this was through approved housing bodies, local authorities, the Land Development Agency, and the first home scheme, which strictly speaking is not an affordable house because I could go and build a €400,000 house in Longford and I can access the first home scheme. Similarly, the cost rental tenant scheme and the tenant in situ scheme are not an affordable house. These are specifically for people who are in a rental situation. I would also not classify the croí cónaithe homes as affordable housing schemes. It is disingenuous to put all of those in under the one heading as affordable housing. What is the figure since 2021 for affordable housing, by which I mean strictly affordable housing schemes?</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_183">Does the Senator means affordable purchases made available by a local authority?</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_129">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_184">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_185">Is that to qualified-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_131">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_186">Advertised by the local authority as an affordable housing scheme.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_187">I will absolutely give the Senator the number. Since the scheme started in 2022, up to the end of quarter 1 this year, which is the last published figures, there were over 1,700 affordable purchase homes made available by local authorities. I absolutely contend that there is a range of affordable housing supports. This is just one. There are lots of households who feel that their affordable housing need has been met with the assistance of the State via the first home scheme and via cost rental properties. These people are currently living with rents they can afford and with mortgages they can afford to pay, in housing that has been supported by the State. There are 14,500 of those supports being met in that time.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_133">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_188">I do not agree with that analysis. Basically, that works out at about 11 affordable homes a week since 2022 as what we have provided.</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_189">Certainly it was slow to begin with, as I outlined earlier. It was a brand-new housing scheme for local authorities to begin to plan and to implement. It does take time for housing to secure planning, to secure funding, to get built, and then to be sold.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_135">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_190">We need more.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_191">We are certainly delivering a good deal more now than we were in those early years so those numbers will increase in the coming years.</p>
+        </speech>
+        <speech by="#PatBuckley" eId="spk_137">
+          <from>Deputy Pat Buckley<recordedTime time="2025-09-23T16:10:00+01:00"/></from>
+          <p eId="para_192">I apologise for coming in late.</p>
+          <p eId="para_193">However, I have read everything and I was watching. There were two things. Members mentioned the serviced sites. Going back a long time, I remember when you could purchase serviced sites from the local authority. One of Sinn Féin's housing policies suggested we go back to that and that each council would provide the serviced sites. The purchaser would pay the building costs and that stock would remain in the council because technically the council owned the site. The purchaser paid for the house that was built on it but it could reduce the cost by €120,000 to €150,000 of the purchase price. People said it was a bit silly because the purchaser would never own it. They would actually own the house and could sell it but only at market value. It would back to the council, the local authority or whatever, and that would keep the stock <i>in situ </i>the whole time. Has the Department looked at that proposal?</p>
+          <p eId="para_194"> There is another thing I am worried about. I am based in east Cork, which is fairly sparse from Mitchelstown to Fermoy. It goes all the way over to Cobh and all the way down to Youghal. In the last county development plan, Cork County Council said that, as its stands, Whitegate is maxed out, so there will not be any more houses built there. I suspect we will have a similar problem in other towns around the country. As elected representatives, we have access to a thing called the constituency dashboard, which is census information. Do any of those here today or any entity, as a housing body, have similar access? The reason I ask this is that my bugbear is workforce planning. This is the same for school transport and disability services. The information is in the dashboard through the census. It is possible to come up with a five or ten year plan because one can see where it is going, whether additional disability spaces will be needed in schools or whether there will be greater demand on public transport and that all goes with housing and access. That is my first question.</p>
+          <p eId="para_195"> We talk about affordable housing. I was just with Enable Ireland and Rehab Care. Nobody seems to talk about people with disabilities. I remember sitting on Cork County Council maybe 12 years ago. We would talk about building so many social and affordable houses but you would also have to have ones that were wheelchair accessible. Has that gone because houses seem to be getting narrower and higher? Those are my two questions.</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_196">I will take the disability question first. Every local authority in the country is very cognisant of the needs of people with disabilities for both social and affordable housing. In fact, in our scoring schemes and our approval of funding for affordable housing, we give additional marks. They are incentivised for funding to be provided to public authorities that are making provision for housing for older people or people with disabilities. We have seen a number of local authorities take on building affordable housing that is accessible that might be considered universal design and making it available for both older people and people with disabilities. That is still very much to the forefront of our thinking.</p>
+          <p eId="para_197"> On the question of an accounting, a census-type, approach to meeting needs, local authorities put in place housing delivery action plans five years ago in 2022 at the time of Housing for All. At that time, taking the results of the housing need and demand assessment, we asked local authorities to consider what the full expected extent of affordable housing need would be in their areas over the five-year period and to set out, given that they would have had a targeted level of their own delivery - and there were other schemes at their disposal such as AHBs, the LDA delivery, first home scheme and so on - in a mapped way how that affordable housing need would be met over the course of the next five years. We are updating all that information, the housing need and demand assessment, and a new set of housing delivery action plans will be prepared by local authorities with full sight of the expected level of need in their areas and the level of targeted delivery that all the various different affordable and social housing delivery partners will be able to provide within their area.</p>
+        </speech>
+        <speech by="#PatBuckley" eId="spk_139">
+          <from>Deputy Pat Buckley<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_198">May I come back briefly on that? I do not envy the officials in their job. This is for us as public representatives. I deal specifically with Cork County Council and it has been exceptional but I just feel it is not being supported by the Government bodies or the Government parties, even. A lot of people come into my office who have children with additional needs who are in totally inappropriate two-storey, two-bedroom houses. Children try to jump out the window and they are fighting because you cannot put a safety lock on the window upstairs because of health and safety. The council seems to be restricted. It does not have the appropriate stock to put those families in appropriate housing therefore freeing-up a three-bedroom semi-detached house, a detached house, or whatever, for someone else. Is there a way that we, as elected representatives, can work with the Department or the councils to improve this or to speed it up? Sometimes it is all "us and them" and we are fighting and it is the blame game. I do not want to play the blame game. As legislators, it would be good to hear if there was something that the officials here could change in the morning - something that could be done through legislation and once it is done they could do X, Y and Z and that it could start in 12 months. </p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_199">Can we get a very short answer to that question? That question has gone on for a minute.</p>
+        </speech>
+        <speech by="#PatBuckley" eId="spk_141">
+          <from>Deputy Pat Buckley<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_200">I apologise.</p>
+        </speech>
+        <speech by="#" eId="spk_142">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_201">The local authority sector might want to comment on that but let me assure the Deputy that we are very engaged all the time with the local authority sector and with all of our other delivery partners. We have a very strong two-way dialogue. We do listen and we are always prepared to modify schemes and evolve them in response to changing circumstances that local authorities encounter on the ground. That is the same for our other delivery partners.</p>
+        </speech>
+        <speech by="#PatBuckley" eId="spk_143">
+          <from>Deputy Pat Buckley<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_202">Thank you, Chair.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_203">I will let Deputy Sheehan from the Labour Party in.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_145">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_204">I thank the Cathaoirleach. My first question is on the apartment design changes and the LDA. The analysis the LDA provided to the Department on the apartment design changes should be published. Can the witnesses confirm that the changes will result in what the Minister told us, which is a saving of between-----</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_205">Is this specific report on housing?</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_147">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_206">Yes, because it relates to the delivery of apartments. I want to find out if these savings will definitely be achieved. There has been an initiative in Limerick from the mayor in relation to the deployment of smart housing. Does the Department feel that is something that could be deployed at scale? On funding delays, we had an extra €415 million allocated earlier this year. With the approval of the extra 3,000 social and affordable homes, how many notifications at this stage have been passed on to local authorities at this stage? How long is it taking for a CREL approval? </p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_148">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_207">We have three and a half minutes.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_208">Does the LDA want to take the apartment question first?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Mr. John Coleman<recordedTime time="2025-09-23T16:20:00+01:00"/></from>
+          <p eId="para_209">I thank Ms Behan. I will take the design changes first. I thank the Deputy for the question. It is a very important initiative that was brought through, in our view. The reality is apartments cost too much to deliver. That is having a big impact on affordability but it is also having a big impact on viability because the private sector, unsupported by the State, is largely absent from producing apartments. Usually it is the State that is supporting them and underlying them. Therefore, it is very important to tackle the issue of costs. We were very happy to support the Department in coming up with options to save and reduce costs. It depends scheme by scheme what the saving will be per apartment. For instance, basement carparks are very expensive to deliver, they can cost €50,000, €60,000 or €70,000 a space, so removing some basement parking could result in very large savings. If a scheme had a very high proportion of three-beds, given more optionality in relation to that, would result in a large amount of savings per apartment as well.</p>
+          <p eId="para_210">To answer the question and from talking anecdotally to developers, in some schemes they could indeed achieve the level of saving that was indicated by the Minister but it depends on how much would be offset scheme by scheme. However, the savings could be quite significant and will go quite a way towards improving viability of apartments.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_151">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_211">Will the changes plug the viability gap?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. John Coleman<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_212">I do not think there is any silver bullet for viability generally. It remains to be seen whether this will go all the way towards changing the viability gap, which depends on a lot of things. It depends on interest rates or return requirements for investors and other things but it is certainly a very significant move for making apartments more viable.</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_213">On the CREL approvals this year that were asked about, so far this year 37 projects have been approved for CREL, which will result in 2,917 homes out to 2028. That compares to 26 projects that were approved last year. There has been a significant increase again in the number of projects approved and the pipeline for AHB delivery continues to grow.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_154">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_214">How many of those projects that were approved this year were carried over from 2024 and how many were new projects?</p>
+        </speech>
+        <speech by="#" eId="spk_155">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_215">I do not have that number. Approval timelines very much depend upon the complexity of the scheme and the availability of full information in relation to them. If a scheme that arrived into the Department in November is not approved until January or February, it might not be for funding reasons. There may be other reasons a scheme might cross over between two funding years.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_156">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_216">Is there an average approval timeline?</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_217">The approval timeline very much depends on the size of the scheme and the number of requests there might be. I do not think we have a calculated approval timeline but I can get back to the Deputy if we can ascertain what that average is.</p>
+          <p eId="para_218"> On the SMART homes in Limerick, we are very interested in the SMART homes proposal as a Department because of the proposed deployment of 3D volumetric construction and the potential it might indicate in terms of improving the timelines for delivery of housing and being able to deliver housing at scale in a shorter timeline. At the moment, we are in discussions with Limerick City and County Council and the mayoral office about funding a pilot to prove the concept and to understand the timelines. The outcome of the pilot will ultimately indicate whether it is scalable.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_158">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_219">I will stick to the concept of specific projects. I appreciate that Ms Behan might not have all the details in front of her. These specific projects speak to broader points. I want to speak about the issues in Coultry in Ballymun. A cost-rental site was proposed as part of that. As a result of the viability issues with cost rental, it was decided that we need to provide an element of social housing as part of that overall project. You can see why an approved housing body would do that because there is far more certainty in terms of funding under the social housing model than there is under the cost-rental model. That is indicative of a problem. The reason it is important in Ballymun is that we are trying to improve the income mix and tenure mix in the area because of legacy issues there. That is not in any way to stigmatise social housing. The master plan and the local area plan, LAP, aim to increase both income and tenure mix in order to improve retail opportunities and lots of other elements. Will Ms Behan speak to that point? The project might have identified for cost rental, but in some ways the objectives have been undermined by ensuring it has to contain a social element.</p>
+          <p eId="para_220"> The second one is across the way in Balbutcher Lane. It is Dublin City Council local authority housing on a beautiful, greenfield site. There was really slow delivery on that site. It is a council-delivered development for affordable purchase in its entirety. We have another great one that has come on site now in Silloge. It is great to see that coming on site. It will be affordable purchase and is going through the Part 8 process. It also took an awfully long time to deliver. Is there somebody managing each of these with the local authority to make sure approval methods are sped up?</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_221">Along with my affordable housing team within the Department, I have engaged extensively with Dublin City Council as part of our work to try to make those particular schemes in Ballymun viable and affordable. We are constantly working with the council to try to operate within the framework of the sanction scheme and to try to find ways to make very challenging sites work. They are challenging in a number of respects, sometimes because of abnormal site costs and sometimes because the market value of the houses in the area makes it very challenging to deliver at affordable prices.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_160">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_222">Could Ms Behan speak to that point about market values? The Kildonan site in Finglas has a similar challenge because there are already second-hand properties available in the locality at what might be deemed an affordable rate. Therefore, approval cannot be given to construct new homes that would be in excess of that. Is that essentially the crux of it?</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_223">No. It is about the level of subsidy that is available. If the market value of a new home in an area is €250,000, taking an indicative example, but it costs €370,000 or €400,000 to build it, the subsidy that is available cannot bridge both the viability gap and deliver an affordability dividend-----</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_162">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_224">They are deemed market value because there are properties for sale at roughly that price?</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_225">Well, yes.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_164">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_226">My point-----</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_227">The market value is determined by a valuer.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_166">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_228">My point is that both in Kildonan and in Ballymun, the challenge for viability was that there were other existing second-hand properties that were coming in at the market value and the construction costs were significantly in excess of that price.</p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_229">In essence, the valuer places a value on the property based on what they think the property would attain on the private market. Sometimes, they have to rely on the cost of second-hand properties in an area in order to ensure that value.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_168">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_230">Does Ms Behan see the significant challenges for areas where there is a very limited supply of second-hand properties?</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_231">We are very conscious of that and are working very hard with Dublin City Council to try to counteract that. It has taken too long in Ballymun. We are very conscious of that. On the Deputy's earlier question about the tenure mix in an area, we do not believe funding schemes should determine the tenure mix. We are working with all of our delivery partners to try to ensure the tenure mix that is appropriate for an area is what should be delivered by the AHB, the local authority and the LDA, whoever it may be, and that we support those delivery partners to deliver.</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_170">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_232">There is a very obvious example of the challenges AHBs have that mean we have to change the tenure mix.</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Laura Behan<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_233">I am just not sure it is fair to say that certainty of funding is better around social housing than affordable. The CREL funding is just as certain-----</p>
+        </speech>
+        <speech by="#PaulMcAuliffe" eId="spk_172">
+          <from>Deputy Paul McAuliffe<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_234">The AHBs might disagree with that and that is the feedback I have certainly received.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_173">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:30:00+01:00"/></from>
+          <p eId="para_235">We will have to wrap this up. I will ask one question myself and cut my own time. I come from Longford. We have been pushing for a large number of years for an affordable scheme. We did not fit all the criteria and figure out a way of working it out yet. On the ground, that was a reality. People were looking for affordable housing. We have the highest percentage of social housing per head in the country. A lot of that is because of that. We now have a scheme in place with the Department but we are just waiting on approval. I am delighted to see that these are turned around fairly quickly. We need to see affordable housing schemes throughout the county and in our regional towns as well, not just in our main county town.</p>
+          <p eId="para_236"> I would like to ask Mr. Taaffe about the use of serviced sites by local authorities.</p>
+          <p eId="para_237">A number of schemes in Longford town were built 50 years ago as affordable housing under the serviced sites scheme. That is another method of affordability for people but an awful lot of local authorities do not seem to be implementing it, even though we are told the funding is there from the Department. What are Mr. Taaffe's views on the serviced sites scheme for the affordability of housing?</p>
+        </speech>
+        <speech by="#" eId="spk_174">
+          <from> Mr. Eddie Taaffe<recordedTime time="2025-09-23T16:40:00+01:00"/></from>
+          <p eId="para_238">There are a couple of issues with that. The first is that serviced sites on the edges of towns in residentially zoned lands can be problematic to deliver because, by definition, they do not meet the density guidelines for that residential land because you are selling an individual small plot. That has proved problematic. In smaller towns and villages, in Wexford, for example, the issue is that we do not have wastewater capacity in a lot of those areas. We are looking at a model whereby we can allow serviced sites to be sold on the edges of smaller towns and larger villages that have their own individual wastewater treatment systems. We are working up a number of those at the moment.</p>
+          <p eId="para_239"> A subsidy is available, up to a maximum of €30,000 per site, under the croí cónaithe scheme. We think that is a way of not letting perfection get in the way of something that is good. Where there is no wastewater treatment, it is a way of servicing individual sites on the edge of small towns and large villages. It is problematic to sell serviced sites in urban areas because of the density guidelines. When you are selling individual plots, it is hard to do it. It is hard to make it work financially and get a site that is cost-effective for people, even with the €30,000 subsidy. There are a few issues with it that are more technical rather than financial but local authorities are starting to do it. We are starting to look at it in Wexford.</p>
+          <p eId="para_240"> What we have found from talking to other local authorities is that it takes a while to sell these, believe it or not, for a myriad of reasons, including the wastewater issue, but we hope to do more of it. We are looking at three schemes in Wexford. We are just testing the ground on them to see how they actually sell, if you like, and the level of interest in them. It is something we could be doing more of and it could be a solution to getting residential development in rural Ireland, where wastewater is an issue. Where there is no plant or capacity in the plant, we should be looking at individual wastewater treatment systems.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_175">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:40:00+01:00"/></from>
+          <p eId="para_241">I have lots of other questions but I will not ask them because we have gone over time and we have a second session. I thank all the witnesses for coming in. I have no doubt we will more than likely see the vast majority of them within the next number of months, under various areas and topics we are discussing with regard to housing. I thank them for their courtesy. We will suspend briefly to allow the representatives to leave and the representatives for the second session to come in.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i> Sitting suspended at 4.43 p.m. and resumed at 4.52 p.m.</i>
+        </summary>
+        <speech by="#MichealCarrigy" eId="spk_176">
+          <from> Chairman<recordedTime time="2025-09-23T16:50:00+01:00"/></from>
+          <p eId="para_242">Before we commence, I am cognisant that I meant to say this during the previous session. I ask members to be careful, when speaking to witnesses, that the ultimate responsibility for any Department lies with the Minister on behalf of the Government, or indeed with the Secretary General. I ask members to be mindful of that when speaking to witnesses who are staff from the Departments.</p>
+          <p eId="para_243"> I am pleased to have the opportunity to continue our discussion with Professor Michelle Norris and Mr. Dara Turnbull. We are also joined by representatives from the Irish Council for Social Housing, Mr. Donal McManus, CEO, Mr. Sean O'Connor, chief executive of Tuath Housing and Ms Lyndsey Anderson , housing policy specialist. Their opening statements have been circulated to members already and I will take them as read. Is that agreed? Agreed. We will publish those statements on our website. Is that agreed? Agreed.</p>
+          <p eId="para_244"> I am conscious of the time. Members will have five minutes each and we will start with Deputy McGrath.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_177">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T16:50:00+01:00"/></from>
+          <p eId="para_245">I thank our guests for coming in and apologise for keeping them waiting. Today's meeting is focused on affordable housing which is a critical area, obviously. We all know the challenges in housing as a whole but in the earlier session on affordable housing we debated the specific challenges for a cohort of people who find themselves outside the social housing income limits but yet, in many cases, are not having their housing needs met through affordable housing, cost-rental models and so on. It is a very significant challenge and that is something we strongly impressed on the Department in the previous session.</p>
+          <p eId="para_246"> I ask all of the representatives here how do we try to scale up the delivery of cost rental and affordable purchase and get a better balance in terms of our overall delivery of housing? There has been a heavy focus on social housing; that is critically important. We all understand that. Sometimes it can be equated that the more social housing we deliver addresses the homelessness situation to a far greater extent, but every house helps that situation. If we provide an affordable house, it helps the homelessness situation because it frees up a potential rental property, for example, that another family were renting. I am just making the point that I do not think we should just look at homelessness in isolation <i>vis-à-vis </i>social housing. We have to look at it in terms of all the housing models, trying to increase supply and so on. That is sometimes an issue where it is just treated as social housing being the solution to homelessness and I would argue that is not necessarily the case. Specifically, on affordable purchase and cost rental, will the representatives, in a minute each, give a snapshot of what they believe needs to happen to ramp up the delivery of affordable housing and cost rental?</p>
+        </speech>
+        <speech by="#" eId="spk_178">
+          <from> Ms Lyndsey Anderson<recordedTime time="2025-09-23T16:50:00+01:00"/></from>
+          <p eId="para_247">I can come in first. I agree about increasing supply, generally. We spoke to our members about removing barriers and increasing delivery of cost-rental housing. Our members reported back a number of means by which they think they could be key levers for opening up more cost rental, such as access to land for the AHBs at either a zero or nominal cost, which would be quite beneficial. Increasing the equity element of the CREL loan and reducing down the loan element, and a reduction in interest rates and diversification of funding are things our members are quite keen on as well.</p>
+          <p eId="para_248"> I know the committee discussed funding approval processes already today. We suggest a return to the one-stage approvals process would also speed up delivery. Multiannual funding for approved housing bodies' housing delivery and things like exemptions from development contribution levies could speed up the delivery of cost-rental homes.</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T16:50:00+01:00"/></from>
+          <p eId="para_249">There are a couple of problems in relation to both access to and delivery of affordable housing and cost-rental housing. A key issue is the income bands used for targeting. They are just too narrow, in my opinion. There is a very narrow gap on top of the social housing income limits that enables people who do not qualify for social housing to qualify for cost rental. In my view it is too narrow. Also, the income limits are not regularly updated by the Department of housing. I was a member of the Housing Commission and we pointed out that, for instance, the income limits for access to social housing had not been updated for 13 years. A lot of people fall out of eligibility who would be eligible. That is one side of it.</p>
+          <p eId="para_250"> As Ms Anderson mentioned, access to land is a key issue. I should say, I have previously been a member of the board of the Land Development Agency and I think the agency, in many ways, is doing an excellent job in delivering social and cost-rental housing. The original mandate of the agency around activating State lands could be given more attention. The agency publishes a report on relevant lands, that is, State lands that could be used for housing. To date, its activity on these lands has been based on taking sites into its ownership for its own development. The original idea of the LDA was that public lands would be land banked by the LDA and made available to other providers. If that role was given more emphasis, that would help. Having sat on the relevant subcommittee, I experienced some of the barriers the agency faces in trying to get other agencies to transfer land because often housing is not a priority if the other agency is delivering health services or whatever, which is understandable. It would be more appropriate that those decisions would be dealt with by a Cabinet committee so the line Minister is asked to present to the Cabinet committee on housing. The volume of land on those sites is not enormous but the sites are often very well-located in towns and cities and are where we need the housing to be.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_180">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T16:50:00+01:00"/></from>
+          <p eId="para_251">I thank Ms Anderson and Professor Norris. I am out of time, unfortunately.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_181">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T16:50:00+01:00"/></from>
+          <p eId="para_252">We are tight on time.</p>
+        </speech>
+        <speech by="#SeamusMcGrath" eId="spk_182">
+          <from>Deputy Séamus McGrath<recordedTime time="2025-09-23T16:50:00+01:00"/></from>
+          <p eId="para_253">The Chair is very strict.</p>
+        </speech>
+        <speech by="#PatBuckley" eId="spk_183">
+          <from>Deputy Pat Buckley<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_254">The Chair and I have sat on a number of committees. I loved the honesty expressed a while ago. I wrote in my notes that there is no joined-up thinking between housing bodies, no sharing and no caring. I have listened to what was said. With the last group that was in here, I talked about workforce planning and supply. We have heard about the issue of land. The witnesses have plenty of experience from having worked in organisations . There is a possibility to speed this up and make stuff more affordable. I heard what was said about what we call the squeezed middle. If you have been waiting 13 years for a review of what the incremental gap is, there is definitely something wrong. Again, there is no joined-up thinking. It was interesting that Professor Norris mentioned a subcommittee. If she was envisaging that subcommittee, what would the purpose of it be and what would she expect to get out of it in the shortest timeframe?</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_255">At the moment, the LDA is required to negotiate one-to-one with other State bodies for the transfer of lands. State bodies obviously have their own objectives. Housing delivery may not be one of them. Land transfer for housing purposes may not be something that suits their other agenda. In my view, a way of dealing with this challenge would be to route those big land transfer decisions through the Cabinet subcommittee on housing. The CEO of the agency or even the line Minister could be brought in to make these agreements. The problem for the LDA is that the negotiation with all the individual bodies is enormously challenging. It can take a long time. It either needs legislation to require transfers, where the LDA requests it, or needs to be dealt with it through a Cabinet subcommittee. That bit of the LDA's mandate needs to be given more attention.</p>
+        </speech>
+        <speech by="#PatBuckley" eId="spk_185">
+          <from>Deputy Pat Buckley<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_256">It seems to be across all Departments that everything is working in silos and there is no joined-up thinking. I keep saying there is no "I" in "team", and if you do not have joined-up thinking, it does not work. I thank Professor Norris for that answer.</p>
+        </speech>
+        <speech by="#RoryHearne" eId="spk_186">
+          <from>Deputy Rory Hearne<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_257">I thank everyone here. I have a number of questions and my first one is for Professor Norris. It relates to the issue of financing, and perhaps Mr. Turnbull can come in as well. It is about potentially setting up a French-style <i>Livret A</i> scheme that would channel funding in private savings accounts into an affordable social financing method, like the Social Democrats has set out in its homes for Ireland proposal. This could offer potential to deliver thousands of additional units each year and address what Professor Norris referred to as the lack of certainty in funding streams. There is potential, given there is over €160 billion in private bank accounts in Ireland, much of which is not earning interest. I would like to hear comment on that.</p>
+          <p eId="para_258"> My other question is for the Irish Council for Social Housing. We have heard that some AHBs have faced delays in approval of funding, particularly as it relates to CREL, the affordable housing area. What is the council's experience with the Department of housing? What level of support does it feel is generally there for affordable housing bodies and for the continued central role that I believe affordable, not-for-profit, housing bodies and associations should be playing in the delivery of housing? What more can be done to support its role in that?</p>
+          <p eId="para_259"> Finally, what does Dr. Turnbull think are the key solutions Ireland should be adopting from the international experience?</p>
+        </speech>
+        <speech by="#" eId="spk_187">
+          <from> Mr. Dara Turnbull<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_260">We have written extensively about international solutions. The Deputy mentioned one already, the <i>Livret A </i>scheme, which originally existed in France not to fund housing but to fund war. It has since been adapted, thankfully, to more socially useful purposes. It has existed for over 100 years in France. It recycles the excess savings of ordinary households and reuses them for the purpose of funding socially productive infrastructure such as schools, hospitals and public transport, but the biggest beneficiaries are social and affordable forms of housing. What they do is offer an attractive rate of interest to savers, over and above what they get from a typical current account offer by a commercial bank in France, and those funds are then channelled at affordable, low rates of interest to social housing providers.</p>
+          <p eId="para_261"> I could speak extensively about the other policies out there. If we are talking specifically about affordable and social housing, which is the topic here, it is the hot topic we hear about a lot around Europe. People see this growing divide between people who access social housing in different countries and the people who access market housing. There are people caught in the middle, and that is the new space opening up in Ireland and across the European Union. There are people looking for that kind of affordable tranche of housing.</p>
+          <p eId="para_262"> I will direct the committee to a couple of schemes. I will not comment on Ireland's own experience with affordable housing and things like cost rental. I will leave that to Professor Norris and the representatives from the ICSH. Internationally, I recommend looking at Hitas housing, a form of affordable ownership housing that exists in Finland, specifically in Helsinki. I think it was mentioned in the previous session. It is a form of cost-purchase housing where you buy the bricks and mortar but you do not buy the land. The land is retained in public ownership in perpetuity and you pay a small land rent on that housing, but you become the owner of the home. You can sell it if you choose to move out, but the price you can sell it at is guaranteed to be affordable over the longer term because the price is basically whatever cost you paid originally, plus some-----</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_188">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_263">The screen stalled there for a second, but we have Mr. Turnbull back now.</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Mr. Dara Turnbull<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_264">I do not know where I cut off. I was saying to look at the Hitas system in Finland. It could be instructive for Ireland in delivering something even better than affordable-purchase housing, which is cost-purchase housing, at very cheap prices because you are deducting the cost of the land from the cost-purchase price. It guarantees that it will be affordable in perpetuity because it is affordable not just for the first person in the door who benefits from a public grant but for subsequent purchasers and owners of that property. That is something I would direct the committee to look at.</p>
+          <p eId="para_265"> I do not have time to go into it but another one to look at is the Nordic-style co-operative housing movement. It is another form of cost-purchase housing that is successful, and in countries like Sweden it is larger than the so-called public or social housing sector.</p>
+        </speech>
+        <speech by="#" eId="spk_190">
+          <from> Mr. Sean O'Connor<recordedTime time="2025-09-23T17:00:00+01:00"/></from>
+          <p eId="para_266">To return to Deputy Buckley's point about joined-up thinking, AHBs have a unique role. We are like a conduit between the public and the private sector. I include the LDA in this context when I say that. I am speaking from a practitioner's point of view in Tuath. We currently have just under 1,100 cost-rental units and we will be at 1,800 by year end.</p>
+          <p eId="para_267">We were experiencing a slowdown around the change in Government. That has cleared. I can only speak for Tuath, but we are getting approvals through and we will hit our target of 1,800 units by the end of the year. Further targets are going through.</p>
+          <p eId="para_268"> I do think AHBs have a central role. It is especially the case across Europe. Ireland is an outlier in terms of the size of the sector. Compared to elsewhere in Europe - I am sure Dara Turnbull and Donal McManus will be able to evidence this point - Ireland has not only a low stock of social housing and this new form of cost-rental tenure, but the AHB sector is particularly small. Housing is all we do, while local authorities have lots of other things to do. I have worked in other jurisdictions and the enabling role, if done properly, is very good. I think Professor Norris alluded to people having enabling roles in bringing forward sites, developing them and not necessarily holding them but passing them on to organisations whose sole purpose is not-for-profit provision of affordable housing.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_191">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_269">I thank the witnesses for coming in and for the presentations. I will start with questions for the Irish Council for Social Housing. What we are talking about here is affordable housing. We are either talking about affordable purchase homes or cost-rental homes, which are basically for long-term tenure. I know the organisation is playing a significant role in relation to the current cost-rental units out there, but what proportion does this represent in social housing overall now and where would you like to see it going in relation to cost rental?</p>
+        </speech>
+        <speech by="#" eId="spk_192">
+          <from> Dr. Donal McManus<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_270">In terms of the funding now, it is about two-thirds social housing to one-third cost-rental housing. We have moved fairly quickly from zero to one third in four years. That is quite a fast turnaround for a different type of scheme. I think different AHBs have different appetites in terms of what they want to do and what skills they have. Certain different skills are required with affordable housing than with social housing. At the moment, the ratio is probably heading towards 25% to 33% for affordable housing. For affordable ownership housing, we have not done a huge amount. One AHB provides some affordable ownership housing in certain areas. One or two other AHBs are considering looking at affordable housing for sale, which has a slightly different product and risk profile.</p>
+          <p eId="para_271"> We have moved quickly to get up towards one third of delivery. The numbers, particularly last year, saw us move from zero to one third. This is where it has stabilised now. I think each AHB will look at its financial situation, its risk profile and the debt being taken on. It is a fundamentally different product, CALF and P and A financing, than it is with cost-rental in terms of the State involvement and so forth. If we get clearer direction in the new strategic plan for the sector on what the pathways will be for finance, more AHBs may get involved. Five AHBs are involved in cost rental now in urban areas. Another four or five are considering it for family housing, for general lease, and for older people as well. There is probably a niche area there for housing for older people. That is where we are at now. If more AHBs were in the market, there would probably also be more delivery. I would say it would be somewhere between 30% and 40%. Now, though, people are just selling where they are at, which is about one third of delivery for cost-rental housing.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_193">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_272">Turning to Professor Norris, I fully agree with her regarding the income limits. We definitely need to address that aspect. On her comments concerning the LDA and its negotiations with other State bodies about securing land, has progress actually been made? Mr. Coleman has given us an overview of what his agency has achieved since June 2025, referring to sites being secured for 800 homes, 350 homes, 700 homes and 400 homes. He is clearly indicating that the LDA has been getting the land to build these houses over the last few months. Have we cracked the nut in relation to State bodies transferring land to the LDA or is there still a fundamental problem with that process?</p>
+        </speech>
+        <speech by="#" eId="spk_194">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_273">Obviously, the LDA would be better placed to directly answer that question than I am. In my view, though, we have not cracked the nut. The LDA has achieved some land transfers and conducted some land purchases from commercial semi-State bodies. In my view, such bodies tend to manage their land banks much more actively than non-commercial semi-States or public bodies. That part has worked effectively and it has achieved some land transfers for its own development. The issue, however, is that in an ideal world the LDA would also be taking in land it would make available to other providers.</p>
+          <p eId="para_274"> The Housing Commission, of which I was a member, suggested that the should LDA take in land and then make it available through developer competitions. The LDA would invite expressions of interest from, for example, AHBs to develop those sites. This is important because both local authorities and AHBs, but AHBs in particular, have huge challenges in buying land. In my view, these challenges mean there is an over-reliance on so-called "turnkey" development and not enough development of houses from scratch. There is also not enough development of small infill sites in towns and cities. Some of those are State lands and could be accessed. The expansion of the LDA's role in terms of acting as a public land bank or to provide land for other affordable housing providers would address a whole series of problems.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_195">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_275">I thank Professor Norris. Turning to Mr. Turnbull, he has tuned in, so I will ask him a quick question. Different models across Europe were mentioned that provide mechanisms to purchase homes. He mentioned one - it might have been in Sweden or one of the Nordics - where the land was provided free. Has a comparison been made of the shared equity scheme here with any of those models? I ask this because the principles of the shared equity scheme are quite similar in the sense that the State takes an equity share in a house and the person concerned then pays a service fee to the State annually and pays the equity amount back when it suits. Is there not a similarity between the scheme here in Ireland and those mentioned across Europe?</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_196">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_276">I ask Mr. Turnbull to keep his response very short because we are really tight on time.</p>
+        </speech>
+        <speech by="#PatCasey" eId="spk_197">
+          <from>Senator Pat Casey<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_277">I am sorry.</p>
+        </speech>
+        <speech by="#" eId="spk_198">
+          <from> Mr. Dara Turnbull<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_278">No, I can be very short. It is a different mechanism entirely. In the shared equity scheme, we are not necessarily guaranteeing long-term, systemic affordability because it might be affordable for the first purchaser, but if they then buy out the equity share of the State, the property effectively becomes like any other form of owner-occupier housing and the affordability mechanism is lost. Under the Finnish scheme I mentioned, the affordability is built-in in perpetuity. There is never the option to buy the land or the part of the value not owned by the occupier, which remains in public ownership in perpetuity and actually generates useful revenues for local authorities.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_199">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_279">I thank Mr. Turnbull. I call Senator Joe Flaherty.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_200">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_280">I welcome the witnesses. I am a great advocate for the AHBs. It is an underacknowledged arm in this battle to try to resolve the housing issue. I saw a figure from the Housing Alliance that 45,000 units are being managed now and over the next three years there is the potential to deliver 25,000 houses. Would the witnesses agree with this figure?</p>
+        </speech>
+        <speech by="#" eId="spk_201">
+          <from> Ms Lyndsey Anderson<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_281">I would actually say it is higher than that figure. The Housing Alliance represents some of our largest members, but the ICSH includes some 270 members and there would be a range of sizes. The Housing Alliance members would be our largest ones, but we still have a large cohort of care and support housing associations that are actively developing properties.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_202">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_282">Yes, smaller ones.</p>
+        </speech>
+        <speech by="#" eId="spk_203">
+          <from> Ms Lyndsey Anderson<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_283">The ICSH provides the funds-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_204">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_284">I am sorry to cut in but I am just conscious of my time. My next question is for Mr. O'Connor. We are doing a new housing plan at the minute. Has the Department brought Mr. O'Connor in and asked him to show it his pipeline for the next three years and what is going to be delivered, or are we still in this situation where the Department is operating in one silo and only goes to the AHBs when it is looking for something? Is the Department actively engaging the AHBs in the housing plan process?</p>
+        </speech>
+        <speech by="#" eId="spk_205">
+          <from> Mr. Sean O'Connor<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_285">In fairness, we have been delivering high numbers.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_206">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_286">I know, but it was said the 25,000 units could be actioned, and much more. Has the Department reached out to Tuath and asked if it can include these figures in its housing action plan?</p>
+        </speech>
+        <speech by="#" eId="spk_207">
+          <from> Mr. Sean O'Connor<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_287">In truth, it has. We meet with the Department every two months regarding the two sides, the social side of the house and the cost-rental side of the house.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_208">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_288">I know, but what I am trying to get to is that when I see the new housing plan, will I see those 25,000 units plus in it?</p>
+        </speech>
+        <speech by="#" eId="spk_209">
+          <from> Mr. Sean O'Connor<recordedTime time="2025-09-23T17:10:00+01:00"/></from>
+          <p eId="para_289">I do not have any reason to doubt it. The support seems to be there. In recent months, the Department has been looking for additionality for 2025 before the end of the year.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_210">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_290">In relation to that, there is a good cordial relationship. On the review that was done for the approved housing body sector, I think the report is with the Minister. Have the witnesses had any feedback on that or when do they anticipate that?</p>
+        </speech>
+        <speech by="#" eId="spk_211">
+          <from> Dr. Donal McManus<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_291">We did a lot of work with the Department 18 months ago to feed in. It was both us and different members of the sector. I think it is still with the Minister so we are just waiting for that to come out. Whether it is in Housing for All or an adjunct to it is obviously a key thing we will be looking for now. We put all that effort in with the Department and we want to see what the direction of travel is for the next couple of years. We have not seen it yet and we are still looking for it. It will really help boards of associations and staff to give them direction-----</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_212">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_292">Of course - certainty.</p>
+        </speech>
+        <speech by="#" eId="spk_213">
+          <from> Dr. Donal McManus<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_293">-----so we are looking forward to that being published sooner rather than later.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_214">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_294">Grand. Professor Norris was on the Housing Commission. It indicated we need to get to 20% of our housing stock being social as opposed to the 8% we have at the minute. How important are the approved housing bodies in that reach?</p>
+        </speech>
+        <speech by="#" eId="spk_215">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_295">The approved housing body sector is really vital in that reach. It plays an absolutely vital role, particularly in providing supported housing that is not provided by any other sector and it has a very important role in providing so-called general need social housing, that is, standard family housing. The approved housing body sector has been very successful in radically increasing its output in recent years. The challenge is not really there but with the local authority sector. I was a member of the Housing Commission and that is something we looked at. We suggested there needed to be reform to the local authority sector to allow it set up shared organisations, which we called local authority housing organisations, which would run housing services on behalf of a couple of local authorities. There is quite a capacity problem in the local authority sector. They have managed to increase output significantly, but the problem is the output is not always occurring where it is most critically needed, especially in cities, where delivery is a real challenge. Now the Department has completed its review of the approved housing body sector looking at the local authority sector, including how it is funded, how funding is approved for it and also the structure of delivery, would be a good use of time.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_216">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_296">I thank Professor Norris. I am nearly out of time. I have one last quick question because we have not addressed it sufficiently. On the funding, obviously there should be a multi-annual funding model. Given the scale of the money being dealt with it seem crazy there is an annual model. The other point is on the CALF loan element method. That should be replaced by a government equity or grant stake. Is that going to be addressed in the review of the approved housing bodies?</p>
+        </speech>
+        <speech by="#" eId="spk_217">
+          <from> Mr. Sean O'Connor<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_297">We use CALF and CREL funding extensively. There have been some very useful changes, especially to the cost rental regime. There has been the introduction of grants to dampen associations' gearing as we borrow. There is a model now to dampen gearing for social housing by introducing grants on that. That was a main criticism from the sector. Every scheme we were doing we went from 100% grant funding to 100% debt funding through a combination of private finance and soft loans from the Department, but there is no such thing as a soft loan for an auditor. You either owe the value or you do not, right? We owe the money in the books and that was driving up gearing, but there are mechanisms in place now that should keep borrowing down. The gearing is just a little bit academic because the main lender to the sector - and again Professor Norris had the connection there, being on the board - is the Housing Finance Agency. Effectively it is a monopoly. It has very competitive rates compared with the pillar banks and other lending authorities and that is something that needs to be tackled. There needs to be a bit of competitive tension brought into the borrowing and that would be helpful. The gearing thing is important but something is being done about that.</p>
+        </speech>
+        <speech by="#JoeFlaherty" eId="spk_218">
+          <from>Senator Joe Flaherty<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_298">I thank the witnesses.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_219">
+          <from>Deputy Thomas Gould<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_299">I thank everyone for being here. I will keep the questions short if they do not mind. I will start with Professor Norris. She has been here before on the excellent work she has done on the Housing Commission. We are talking about trying to reach a figure of social, affordable and cost rental properties. What is the best way the Government can deliver that if it was to take on board what the commission said and what Professor Norris has outlined? What are the areas the Government needs to focus on as a priority?</p>
+        </speech>
+        <speech by="#" eId="spk_220">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_300">I will highlight three. The first is this land issue, which is really important not just in upping the amount of social and cost rental housing being provided, but also to ensure it is in the right locations and the right sizes for households on the waiting list. The second is the capacity in the sector, that is, the actual skills capacity of the sector to deliver. I mentioned the idea the commission had of enabling local authorities to set up these shared services organisations between them called local authority housing associations. That is absolutely necessary. The third is the finance side of things. There has been a huge growth in State finance, which is enormously welcome, but we have a very long history of boom-bust financing of social housing. There have been periods when finance is readily available, like now, and then other periods when there are really sharp cuts to spending and it is very hard to ramp up delivery when you cut it radically, so I think-----</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_221">
+          <from>Deputy Thomas Gould<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_301">To tease that out a bit more, I come from an area in Cork, Garranabraher, which is almost 90 years old. Due to the boom and bust and the finances of the country going from being awash with money to austerity and back again there is no housing maintenance plan. The previous Minister and the new Minister have talked about putting in pre-emptive maintenance and maintenance plans but what they were talking about is a joke. Right across the country we have estates 80 and 90 years old with preventative maintenance plans put in. That means people are living in substandard housing that is cold, damp and not insulated. Professor Norris is saying that funding needs to be ongoing. If that is done on an ongoing basis then we do not get huge mountains of cost, because the work is being done as we go along. Is that not the right way to do it?</p>
+        </speech>
+        <speech by="#" eId="spk_222">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_302">Yes, absolutely. Obviously it is much more expensive to upgrade a house after it has become very run-down. What the commission suggested to resolve the issue was more use of cost rents. Rents would be linked to costs and then tenants who could not pay them would receive a subsidy like HAP. At the moment we have rents linked to income. They are affordable for tenants but they do not provide enough money for proper, ongoing maintenance. The local authorities are really in an impossible position in that regard.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_223">
+          <from>Deputy Thomas Gould<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_303">Professor Norris is right there. Local authorities are being scapegoated by the Government. They are being blamed but they are not getting the funding.</p>
+          <p eId="para_304"> On another issue other people may want to come in on, I had my clinic in my office on Monday and I had a family in with me. They were a husband, wife and three children with one on the way. She is living with the kids in her mother's house and he is living with his brother. They cannot get on the social housing list because they are earning too much and they cannot qualify for affordable housing because it is so expensive now they cannot get it. What happens to those families?</p>
+        </speech>
+        <speech by="#" eId="spk_224">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_305">That is a very good question. The income limits are just too narrow, particularly for cost rental and affordable housing. You really have to be in an unbelievably narrow band of income to qualify for both and you still have to have an income that will enable you to pay the cost rent or service the mortgage. When you combine all those it is just too narrow.</p>
+        </speech>
+        <speech by="#ThomasGould" eId="spk_225">
+          <from>Deputy Thomas Gould<recordedTime time="2025-09-23T17:20:00+01:00"/></from>
+          <p eId="para_306">Okay. Mr. Turnbull was talking about this. With the tenant purchase, there is a lot of it in some areas like Knocknaheeny. What happens then, especially for estates that are completely social housing, is the area where people buy into the community and buy their houses, you see the standards within that community rise because people are more invested.</p>
+          <p eId="para_307">There was mention of what happened in Europe and how the asset was not sold on but was kept for the good of everyone who was trying to access social and affordable housing, in particular affordable housing.</p>
+        </speech>
+        <speech by="#" eId="spk_226">
+          <from> Mr. Dara Turnbull<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_308">That has been the general approach we have seen in emerging schemes in Europe. I mentioned some of the Nordic countries. On the tenant purchase scheme, our nearest neighbours in Wales and Scotland have ended their tenant purchase schemes in recent times on the basis of intergenerational unfairness. For example, Wales has seen that young Welsh people do not have the same benefits that their parents or grandparents had because the stock has been privatised and, in most cases, grown smaller.</p>
+          <p eId="para_309"> The Deputy mentioned Knocknaheeny where the quality of the neighbourhood increased when people bought those homes. Typically, in the UK and other parts of Europe, that is not the case. We see that the quality of the privatised parts of the social housing stock, on average, tends to be lower than the parts of the social housing stock that remains in public ownership. That is because the people who buy those homes tend to have quite low incomes and, particularly where people are in retirement with small pensions, do not have the means to maintain those properties, whereas they would be overall better served by having remained in the social system. I am glad to see it works in Knocknaheeny but I would be wary about the long-term impact of low-income people of retirement age who have benefited from tenant purchase schemes.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_227">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_310">I thank the witnesses. My question relates to what Professor Norris said about the LDA. How concerned is she about the focus of the LDA moving away from what it was set up to do originally, which was to manage land, and it now morphing into a developer? On empowering the LDA to require State agencies to transfer land, how would that work in practice? Will Professor Norris quantify that in terms of the land transfer process? I ask because we have had huge issues in Limerick with this. If the process was streamlined, would she be able to quantify how that would impact the timeline for delivery?</p>
+          <p eId="para_311"> On the over-reliance on turnkey units, is there data on the impacts that this is having on price inflation? Is that quantifiable? I ask because it comes up an awful lot, in that people feel that they are constantly competing with the State when trying to buy a property in the private sector. I see that the Minister is looking at possibly expanding the remit of the LDA to develop market price homes on State land. In my view, he should be reducing the over-reliance on turnkey as a method for delivering social housing.</p>
+        </speech>
+        <speech by="#" eId="spk_228">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_312">On the remit of the LDA, it has expanded from the original idea. In my view, the expansion has enabled the LDA to fulfil functions that are not being fulfilled by other organisations. The LDA is doing very large developments. I did not hear the previous session but I assumed those people outlined very large-scale developments that would be difficult for other organisations to carry out. I also think the LDA does extremely important work to regenerate complex brownfield sites like the sites in Limerick that were mentioned where the LDA has assembled land owned by different providers. There is not really capacity elsewhere to do that. It is very important that we do not have different organisations all trying to fulfil the same remit. The land banking function is not really being fulfilled by anybody. It is very challenging to set up an organisation as large as the LDA - I think the LDA has done a superb job in many ways - but its land banking function is really critical, so that definitely needs to be prioritised.</p>
+          <p eId="para_313"> On turnkey purchases, that is quite a complex issue because there is a debate about whether a lot of these developments would go ahead if they were not bought-----</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_229">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_314">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_230">
+          <from> Professor Michelle Norris<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_315">-----pre-funded by a State organisation. This issue would merit more research, which is generally an academic's response to everything.</p>
+          <p eId="para_316"> On market price housing on State land, having sat on the LDA's subcommittee that drew up its regular Report on Relevant Public Land, as it is called, one thing that struck me was that quite a few of the large land banks still remaining in local authority ownership in cities were adjacent to very large social housing developments. We see that on the northside of Cork, for instance, and in places like Ballymun and Cherry Orchard. In my view, decisions about the development of sites should be made on the merits of the site itself. Rather than a blanket rule, in some of those sites it may be appropriate to put in market housing. In other sites, it may not be appropriate to put in market housing for that reason. The decision is to be made on a site-by-site basis.</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Dr. Donal McManus<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_317">We do not have land banks in our sector. We used to use the local authority low-cost sites scheme, which was very useful for many years both for social and affordable housing. That is why we thought the Land Development Agency would be a good vehicle to assemble land for social and affordable housing. Like Professor Norris, we would be keen for the LDA to retain that function.</p>
+          <p eId="para_318"> On turnkeys, it is complex issue. We have had a lot of so-called turnkeys since 2016 and Rebuilding Ireland. Some 20,000 households would not have been housed over that period without that. Let us be clear that turnkeys were essential then. We have transitioned towards direct new builds. It is a complex issue and sometimes people pit homeowners against social and affordable housing tenants, which is very unhelpful in terms of discussion. We see it in various newspaper articles. Social and affordable housing tenants and owners have no less right to be housed than homeowners, and that is our narrative.</p>
+          <p eId="para_319"> Obviously, it takes time to move to more large-scale construction because the land bank, resources and financial wherewithal must be built up. Like local authorities, that has taken five or ten years. To be clear, turnkeys have served a really important function and without them 20,000 households would not have been housed over the last ten years.</p>
+        </speech>
+        <speech by="#" eId="spk_232">
+          <from> Mr. Dara Turnbull<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_320">Regarding turnkeys, an emerging trend across many parts of Europe sees AHB-type entities providing more of their housing through turnkey-type arrangements, usually pre-purchased or pre-planned. There are two main reasons for that, and it is probably the same in Ireland. One is the quite restrictive rules around public procurement, which can add extreme delays, with appeals, transparency and so on, in the process of delivering affordable housing, which adds additional costs. With cost rental, that cost is ultimately borne by the tenants. That is one reason that needs to be considered.</p>
+          <p eId="para_321"> The second reason is access to land. As Professor Norris mentioned, some of the publicly available land may not be suitable for developing additional affordable housing schemes but there are other parcels of land that are currently privately held. Turnkey is a mechanism to access those private parcels of land. That is not just an Irish phenomenon. That really is a European phenomenon.</p>
+        </speech>
+        <speech by="#MichealCarrigy" eId="spk_233">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T17:30:00+01:00"/></from>
+          <p eId="para_322">I apologise to our guests for the delay in starting and thank them for their patience because we ran over time with our previous meeting. I thank them for coming in and assisting the committee. We will now conclude our consideration of matters. I propose that the committee continues in private session to discuss other matters.</p>
+        </speech>
+        <summary eId="sum_9"> The joint committee went into private session at 5.39 p.m. and adjourned at 6.01 p.m. until 3 p.m. on Tuesday, 30 September 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

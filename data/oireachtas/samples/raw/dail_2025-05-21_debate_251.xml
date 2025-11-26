@@ -1,0 +1,707 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-21/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-21/debate"/>
+          <FRBRdate date="2025-05-21" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_infrastructure_and_national_development_plan_delivery"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-21/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-21/debate/mul@"/>
+          <FRBRdate date="2025-05-21" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-21/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_infrastructure_and_national_development_plan_delivery/2025-05-21/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-23" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ConorSheehan" href="/ie/oireachtas/member/id/Conor-Sheehan.D.2024-11-29" showAs="Conor Sheehan"/>
+        <TLCPerson eId="EileenFlynn" href="/ie/oireachtas/member/id/Eileen-Flynn.S.2020-06-29" showAs="Eileen Flynn"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="LouisOHara" href="/ie/oireachtas/member/id/Louis-O'Hara.D.2024-11-29" showAs="Louis O'Hara"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="ReadaCronin" href="/ie/oireachtas/member/id/Réada-Cronin.D.2020-02-08" showAs="Réada Cronin"/>
+        <TLCPerson eId="SeanFleming" href="/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26" showAs="Seán Fleming"/>
+        <TLCPerson eId="TonyMcCormack" href="/ie/oireachtas/member/id/Tony-McCormack.D.2024-11-29" showAs="Tony McCormack"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM BONNEAGAR AGUS SEACHADADH AR AN BPLEAN FORBARTHA NÁISIÚNTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Infrastructure and National Development Plan Delivery</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-21">Dé Céadaoin, 21 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-21">Wednesday, 21 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#AidanDavitt">Aidan Davitt</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#ReadaCronin">Réada Cronin</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#EileenFlynn">Eileen Flynn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#TonyMcCormack">Tony McCormack</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#LouisOHara">Louis O'Hara</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ConorSheehan">Conor Sheehan.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#SeanFleming">Teachta / Deputy Seán Fleming sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-05-21T15:30:00+01:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:30:00+01:00"/></from>
+          <p eId="para_12">No apologies have been received.</p>
+          <p eId="para_13"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. They are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if members' statements are potentially defamatory in respect of an identifiable person or entity, I will direct them to discontinue their remarks and it is imperative they comply with such a direction.</p>
+          <p eId="para_14"> The first item on the agenda is the minutes, which have been circulated. Are the minutes of the last meeting agreed? Agreed.</p>
+          <p eId="para_15"> Next, I again wish to raise the issue of the nomination-----</p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_2">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-21T15:30:00+01:00"/></from>
+          <p eId="para_16">I wish to convey the apologies of Deputy Shay Brennan and Senator Davitt. Both are attending another meeting and may attend here if they can.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:30:00+01:00"/></from>
+          <p eId="para_17">We will note that. I thank Deputy McCormack.</p>
+          <p eId="para_18"> As agreed at the first meeting of the committee, members are requested to send forward nominations for the position of Leas-Chathaoirleach to the secretariat by 28 May. At our previous meeting, I suggested that the Leas-Chathaoirleach might come from the Opposition. Members from the Government parties are not excluded but I thought it was fair not to have the Government parties dominating the full thing. It is up to the members to decide in due course. Is it agreed for people to get their nominations in by 28 May? Agreed.</p>
+          <p eId="para_19"> At our previous meeting, we agreed to invite Transport Infrastructure Ireland and the National Transport Authority to attend our meeting on 11 June. Would the committee members also agree to invite officials from the Department of Transport? We want all three groups rather than having the first two groups saying it is a matter for the Department. We are better having representatives of the three groups here who can answer. Is that agreed? Agreed.</p>
+          <p eId="para_20"> I want to deal with a few items of correspondence that have been received by the committee since it was established. There is a letter from Deputy Sheehan on inviting the Minster for housing to outline his proposals for the housing activation office. I call on Deputy Sheehan to introduce his correspondence briefly. Actually, he is not here. Does the committee agree that the correspondence will be considered as part of our work programme? Agreed.</p>
+          <p eId="para_21"> We have correspondence from the National Youth Council of Ireland on the inclusion of youth engagement. The council would like to propose that each Oireachtas committee include a specific mandate in its terms of reference and work plan to involve young people in policy discussions and consider the impact of decisions on young people within the policy area. Can we agree to note that and add it to our discussions when we come to our work programme in the relatively near future? Agreed.</p>
+          <p eId="para_22"> We have correspondence from Gas Networks Ireland to brief the committee. Does the committee agree to note this correspondence and consider it as part of our work programme? Agreed.</p>
+          <p eId="para_23"> There is a request from Aeravai to meet me as Cathaoirleach of the committee and an offer to brief the committee on current developments in the space of autonomous vehicles and electric aviation, eVTOLs and how these will affect current proposed transport infrastructure investments in the future and their viability. Can we also agree to note that correspondence and to consider it for inclusion when we are drawing up the work programme? Agreed.</p>
+          <p eId="para_24"> I want to go back to the correspondence from Deputy Sheehan on inviting the Minister for housing, as the Deputy has arrived. I propose that we note the correspondence and consider it when we are drawing up our work programme. Does the Deputy want to add anything or is that adequate? We have not drawn up our work programme yet.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_4">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-21T15:30:00+01:00"/></from>
+          <p eId="para_25">I thank the Cathaoirleach. I wrote the letter because many of the issues we are having at the moment with housing delivery actually relate to infrastructure. Yesterday, the housing committee heard from the CCMA, which outlined how 30% of local authority land could not be developed because it was not serviced with the necessary infrastructure.</p>
+          <p eId="para_26">It would be useful to hear from the Minister specifically about the issues to this committee in that regard.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:40:00+01:00"/></from>
+          <p eId="para_27">When we draw up our work programme, as soon as is practicable, that item of correspondence will be taken into consideration. The next item on our agenda is a discussion with Department officials.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i>Sitting suspended at 3.40 p.m. and resumed at 3.42 p.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Large-scale Capital Projects: Discussion<recordedTime time="2025-05-21T15:40:00+01:00"/></heading>
+        <speech by="#SeanFleming" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:40:00+01:00"/></from>
+          <p eId="para_28">The purpose of today’s meeting is to meet the Secretary General of the Department of Public Expenditure, NDP Delivery and Reform to discuss the steps involved from concept to commission of large-scale capital projects. He is the first witness before this committee, and, inevitably, we will have a lot to do with his Department in the work of this committee. I am pleased to welcome Mr. David Moloney, Secretary General of the Department of Public Expenditure, NDP Delivery and Reform; Mr. Kevin Meaney, principal officer; Ms Jenny Connors, principal officer, housing Vote; Mr. Ken Cleary, principal officer, infrastructure delivery; and Ms Kate Ivory, principal officer, transport and agriculture Vote.</p>
+          <p eId="para_29"> Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks and it is imperative they comply with any such direction.</p>
+          <p eId="para_30"> I invite Mr. Moloney to make his opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:40:00+01:00"/></from>
+          <p eId="para_31">I thank the Chair and committee for the invitation to attend today. We look forward to a fruitful discussion with the committee. I am accompanied by my colleagues, Mr. Kevin Meaney, who will drive the review of the national development plan due in July. Ms Connors is in charge of the housing Vote, Ms Ivory is in charge of the transport Vote and Mr. Cleary will drive the measures to drive accelerated infrastructure over the coming months. We are in the middle of a substantial and significant national development plan. A total of €65 billion has been spent to date and more than €15 billion will be spent on the national development plan, NDP, this year, four times the level of investment only ten years ago. That has delivered a significant amount of infrastructure, including roads, schools, houses, hospitals and more to improve the lives of people in Ireland. We recognise the existing infrastructure deficits based on our historically low infrastructure in the economy.</p>
+          <p eId="para_32"> The recent programme for Government undertook to do a an NDP review, which will be completed by the end of July, led by the Department. It will encompass all public capital investment. As has been well signalled, it will include moneys up to just under €20 billion from a variety of named sources. In line with the programme for Government, the review will in particular support increased capital investment in housing, prioritising growth-enhancing infrastructure such as energy, water, transport and health digitalisation. The Government set out an ambition to build 300,000 housing units by 2030 which will be the priority in the review, in addition to our international competitiveness. We will have a public consultation on that, which I expect to commence in May, to enable all stakeholders to contribute. Bearing in mind there are some significant priorities in the review as set out in the programme for Government and budget statement last year. While not all sectors will be prioritised, it is important to note funding to each sector has greatly increased in recent years. The funding available across all sectors is likely to be high relative to historical levels.</p>
+          <p eId="para_33"> On the Department's work outside the NDP review, the programme for Government committed to establishing an infrastructure division which we have now done. The division will try to boost infrastructure delivery by identifying key reforms that will unlock delivery and unblock anything that might delay project delivery. I know that is a particular of interest to the committee today. There has been significant work in that area through the Planning and Development Act by the Department of housing. We reformed the guidelines we issue concerning the public capital programme through simplification of the public spending code and the introduction of new infrastructure guidelines. However, we are conscious further improvements and policy reforms are always possible. The new infrastructure division will support those reforms by having a holistic look at potential bottlenecks. We have experts from the key delivery areas of infrastructure such as water, transport and planning. They have been redeployed from their organisations to the infrastructure division. They will work with senior civil servants in the division to look at how we do project delivery and to see what areas can be enhanced and improvements can be made to secure faster delivery. The barriers to timely infrastructure will be a key focus of our work over the next six weeks. We hope to produce a report on that in July.</p>
+          <p eId="para_34"> We also hope to have a public consultation in June as well as the expert input by the people redeployed to the division and we will review international best practice. That work will be monitored by a new accelerating infrastructure task force announced by the Minister which first met last week. It will also be under the general oversight of the Cabinet committee on infrastructure which was recently created. The membership of the task force is comprised of a small number of experts in the area, particularly people active in the private sector with direct experience of infrastructure development or implementation of significant reform programmes. Those experts are joined by the CEOs of the commercial semi-States most integral to infrastructure development and by local government representatives. Arising from that assessment of barriers, an action plan will be developed. We hope that will provide a small number of high-impact reform actions that are robust, achievable, timebound and focused on addressing the barriers and weaknesses identified. The final piece is the National Development Finance Agency, NDFA, based in the NTMA which currently has a role in PPPs. It will provide Departments with the expertise they need to assist them in the delivery of major infrastructure projects. From that perspective, we believe the programme is ambitious and recognises there is a general enthusiasm that infrastructure delivery be accelerated. We are aware that the challenges and the many obstacles identified are difficult to overcome but we will attempt to identify the areas in which we might make the most progress. There is a determination to do that.</p>
+          <p eId="para_35"> Relevant to the committee's agenda today, I will speak about the infrastructure guidelines. We introduced them in 2024 following a review of the previous public spending code. A lot these things have to be seen in context. The public spending code was last reviewed in the context of the experience with the national children’s hospital, where it was felt the project was not properly scoped out and designed in advance of going to tender and that was a source of considerable uncertainty and delay in the project. We therefore set out within the public spending code a number of decision gates that had to be met for a project of that nature to proceed. In implementing those guidelines under the public spending code, it was felt their application to less complex projects in fact slowed them down without necessarily addressing real risk.</p>
+          <p eId="para_36">Because of that, we simplified for the less complex projects, particularly projects under €200 million. We simplified the procedures in place and, effectively, we now have a three-stage procedure under the infrastructure guidelines: decide what to do, decide what you are going to bid for and then, when you know how much it is going to cost, make a final decision that represents value for money. In our view, the infrastructure guidelines have gone some way. That is not to say that as part of this exercise we will not be critically evaluating them and, as the programme for Government instructs us to do, reviewing the infrastructure guidelines and seeing what further progress we can make. We will do that in line with best practice from our international review.</p>
+          <p eId="para_37"> Clearly, as regards any guidelines we have, the purpose is not to impede but to support project delivery. We are of the view that a properly scoped-out, properly planned project is most likely to be successfully delivered on budget and on time. That is one of the lessons we have learned. We know also, however, that there is a balance between risk and delivery and that the guidelines we establish must respect that balance and maintain an awareness of what the appropriate balance is. We give the detail in my speaking notes. I am conscious of the committee's time, Chair, but the-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_38">You are okay. Keep going.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_39">We give the detail of the infrastructure guidelines there. There is a reduction from five to three on the decision gates. Now we have preliminary business case, pre-tender and final business case. It is still the case that for projects over €200 million, a major project advisory group, or group of experts, looks at the project, gives it an external review and assurance and therefore informs the Government, in particular about the practicality of delivery of the project and the realism of the costs being suggested as regards the project. I know that is of interest to the committee as well. That is part of our strengthening of project management for large-scale projects. It has proven quite useful for the major capital projects it has looked at to date. It has looked at ten of them but they include the really big ones, including MetroLink, the national maternity hospital, the water supply project and others. It does not delay the project. The typical impact timeline is six to eight weeks, so we find that that piece does not delay but does inform, particularly around capacity to deliver and the realism of the cost within these project proposals.</p>
+          <p eId="para_40"> I hope that is a useful summary of where we are at. I am very happy to explain further any element of it and to engage with any questions the committee has.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_41">Thank you, Mr. Moloney. I will call on speakers as they indicate but I will first ask a few direct questions myself. Mr. Moloney might not have the answers here today but he can forward them to us in writing.</p>
+          <p eId="para_42"> He mentioned it is a review that is taking place. Will it be an update or just a review of where we are at? Are new items going into it? Is it a review or an update?</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_43">The period 2026 to 2030 will see something like €65 billion or €70 billion and there will be another €20 billion, so we will end up with about €90 billion over the period 2026 to 2030. Is that right, Kevin?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Kevin Meaney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_44">About €97 billion.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_45">There will be an additional €20 billion. It is a little more than a review in the sense that that is a very significant uplift. It also has a strong sense of prioritisation, so while we are doing it in a relatively short timeframe, we will look at the baseline funding in place and see whether changes are required in that as well as adding new elements.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_14">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_46">Mr. Moloney mentioned the Cabinet committee on infrastructure. If he has the list of which Departments are there, he might tell us, or if not, he can send that on to us.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_47">Yes, we have that. We will just get-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_48">Okay. There is a new advisory group for projects over €200 million. How many of those are in the existing national development plan? How many projects in that category, over €200 million, are in the current plan?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Kevin Meaney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_49">We did an update on our tracker. I think it is probably around 60 to 70 now that fall into that range when you pull out, say, things like DART+, which breaks into five projects of that scale, so what we-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_50">How many could it be?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Kevin Meaney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_51">About 60 to 70-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_52">We will ask you to send on the list of the 60-----</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Kevin Meaney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_53">We will get that.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_54">Yes, because this committee and the public want to talk about specifics as well as all the other things about delivery and everything else. People will understand what we are talking about on this committee if they see the list of projects that are in the system. That might come along to us as well. The Department might also identify the ten largest of those 65 in the current plan that have not commenced construction. A number of the 65 might be at planning or design or tender. Some of them, we hope, are at construction stage or near commissioning. I have no idea at this point. We are here to get that information. The witnesses might pick the ten largest of the projects out of that group that have not yet gone to construction. We will ask on the document whether the 65 were in the original plan, whether they were in a previous plan or when it started, and the Department's expected date for when the project will be completed. Some of these might be five years or ten years. If we are talking about a water pipe from the Shannon to Dublin, how long is that in the system and when is the water expected to be in the taps in Dublin? Those are the kinds of specifics people are looking for to understand and to appreciate that work goes on. The Department might not be able to say specifically but it must have a target date, because if it does not have a target date, it will never happen. I ask the Department to give us its best estimate of the 65 projects but specifically as regards the largest ten because people will associate with the major projects, no matter where they are in the country. If the Department can find out the largest tenders in the system that have not yet gone to construction, it might give us a note on each of those.</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_55">Absolutely, a Chathaoirligh. We will do that. It is no problem.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_24">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_56">I think Mr. Moloney is getting a feel for what we are looking for.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_57">Yes, and there is no problem in supplying that information.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_58">As regards delivery, he will probably be aware of some of the other groups we are bringing in across the board to see where the timescales for some of the projects may be cut short in some of the areas. I am not talking about cutting corners, but sometimes things can be done in a different timescale than is happening at the moment. That is the gist of where we will be at - getting delivery. The key word in the name of this committee is "delivery". If it ain't being delivered, the country has a problem. It is as simple as that.</p>
+          <p eId="para_59"> I have thrown out a few questions. I do not expect immediate answers but I ask the Department to get that information. I am sure that if it is doing its review, it is on top of all this.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_60">We will certainly give you that information, Chair. The members of the Cabinet committee on infrastructure are the Taoiseach, the Tánaiste, the Ministers for finance, public expenditure and reform, housing, environment, transport and enterprise and the Minister of what used to be the Department of Tourism-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_61">That is that Cabinet group.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_62">That is the Cabinet group.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_63">Is health on that group?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_64">No, the Minister for Health is not a member of the group.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_65">As regards capital investment and the national development plan, how significant is the health capital expenditure? The Department might give us a feel on that.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_66">We will give you those numbers. We can give you the breakdown by major sector. We probably have that to hand. Health, traditionally, was not a large capital sector but it has an extremely large capital project in the national children's hospital and it will have a further-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_34">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_67">The maternity hospital.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_68">-----large capital project in the national maternity hospital. In terms of the ten major projects and the timeline, we would be very happy to do that. We will write up the report properly. Obviously, that will be the metro and some other transport projects. It will be the water supply project, the greater Dublin drainage project and the national maternity project. The size of the project can sometimes be a bit deceptive because if we are thinking about, for example, housing delivery, the delivery of 300,000 houses, which of course will be a priority, they will not be delivered in €1 billion tranches but in projects of lesser scale than that. It is just to be aware that within very large parts of the infrastructure programme, it will not be as heavily dominated by very large projects. That is all.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_69">This plan will take us out to 2035. Is that the approximate timescale?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_70">Yes.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_38">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T15:50:00+01:00"/></from>
+          <p eId="para_71">Out of the projects going into that plan, the Department might not know how many are expected, but as we come to July, I am sure it will. How many of those are expected to be completed within the ten-year timescale? Of those the Department does not expect to be completed, what stage are they at? Is it another year or another ten years? Some of them might take a long time. This is so the public can get a feel for where we are at. The committee is probably one of the first places where we will have a bit of public discussion on these topics.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_72">Absolutely. To be of assistance to the committee regarding the expectations of what will come out of these processes, in the national development plan review in July, we will have allocations by Department for 2026 to 2030 and overall capital allocations for 2031 to 2035. The next step will be for Departments to prioritise particular projects within those allocations. While we will have some visibility on the individual projects by July, based on the allocations we will decide up to that point, that visibility will continue to evolve.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_40">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_73">How can the Department of Public Expenditure, NDP Delivery and Reform make an allocation to any Department if it does not have a list of the projects the Departments are talking about?</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_74">We will have-----</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_75">Surely the Departments have prioritised lists? The Department of Public Expenditure, NDP Delivery and Reform cannot hand out €1 billion to a Department and ask it to decide what it wants to do with it. Surely that is part of this process.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_76">The principle is that the allocations will in part reflect the capacity to deliver. Departments will quickly be able to identify from 2025 to 2030 what the projects are. There is no problem with knowing that. We will know all the current projects. In terms of what decisions the Government will make about the period 2030 to 2035, that will in part reflect successful delivery.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_77">When Mr. Moloney puts a price tag on a project today, is he giving us a price tag for the project to be completed this year or will it be a realistic assessment of inflation if it is a ten-year project and what is it expected to cost at the end? There is no point in starting with a figure based on 2025 prices when we know before we begin it will run until 2035. I suggest a plan that has an indication of both. There will be a gap in the plan if people do not know the figure by the time the project is expected to be delivered, taking inflation, including construction inflation, into account. The reason I say that is what damages public confidence in these projects is when the figure for a project is small at the start but eight years later it is multiples of that. Part of the problem is that people are not given a realistic estimate on day one. Does Mr. Moloney take that point?</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_78">I absolutely do. When people think of what they want to do, such as to build a hospital, they think of a number associated with that. That is fine, and they think of that number as having some reality to it but of course it does not. Until the applicant has developed a business case and modelled out the financial flow associated with that particular project, they do not have a realistic assessment of cost. That is why it is so important to develop a proper business case. Even then, the only time they really know is when they go to market and the people who will build it bid for it. There are certainly challenges over time.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_46">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_79">I will quickly introduce myself before asking questions. They may seem overly direct but it is because I am curious about the background and how this will work. It is not meant in a negative fashion but from a desire for clarity and to understand this as a new TD for Kildare North. I was a councillor for many years and worked on a number of projects. I have a financial background and worked in procurement. Do the witnesses work together or are they from different Departments? Will Mr. Moloney's team be working across Departments or how will it work?s</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_80">Sorry, I should have said that I am the Secretary General of the Department of public expenditure. The four people with me are principal officers - senior civil servants - responsible for driving areas of the infrastructure division recently created in my Department. We all work together and there are other senior civil servants working in that division as well. This group of people are all in the Department of Public Expenditure, NDP Delivery and Reform. With respect to the work we do, we connect right across Government Departments, and I will ask Mr. Cleary and Mr. Meaney to describe how they do that as regards delivery and the NDP review. We do that formally and informally through bilateral contacts, committees, the exchange of plans and Government memorandums.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_48">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_81">Is what the team is doing in infrastructure new to the Department?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_82">I will ask Mr. Cleary to set that out because it is new. It is a new division and plan approved by the Government. This is a new way of connecting across government and into the delivery agencies.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_50">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_83">That will determine how I will frame my questions and how we will work together. We are not looking at the past. I am also a member of the Committee of Public Accounts which is looking at the children's hospital. I would like to think we have learned from failures in that regard, so the issue will be how we encompass those lessons in how we work in the future. I could bring in a myriad of issues across north Kildare where there has been a huge failure of infrastructure delivery. A whole lost of things agreed in local development plans have not been delivered. As much as I agree with the Cathaoirleach's point about what we need to deliver on a large scale, we also have to look at the lower scale of how local authorities deliver. Sitting here in Dublin city centre, we will not get things delivered where they are needed in different areas. Ultimately, that is where projects will be overseen and delivered by the engineers onsite. How do we ensure that is done as opposed to having some nice-to-have documents.</p>
+          <p eId="para_84"> Deputy Cronin and I could point to the absence of a second bridge in Celbridge. We put into a local area plan in 2017 that we could deliver 2,000 houses if the bridge was built. Without it, there is a restriction on zoning. We could point out something similar with the LIHAF road in Maynooth that could have released land and we can see the same in Confey. I could point out where 6,000 houses could be potentially delivered. They were all part of local area plans but because basic infrastructure has not been delivered in our constituency, we did not get them.</p>
+          <p eId="para_85"> The Chair spoke about large-scale projects such as MetroLink. If we want to deliver housing, I could talk here about pipes that burst on the Leixlip- Maynooth road every Friday. It typically happens about 7.30 p.m. just to aggravate people even more. That is not even mentioning the schools we do not have.</p>
+          <p eId="para_86"> In a couple of months, we will be talking about putting more houses into north Kildare. If we are adding more houses, we have to build infrastructure. There is no point getting the infrastructure in 2032 and the houses in 2052 but unfortunately that is how things are done. While it is important to have a committee dealing with infrastructure, we also need a set of criteria as regards who the committee will be working with. Next week, we will meet the National Transport Authority and the Transport Infrastructure Ireland. We will also need to meet local authorities about the houses they will ultimately deliver.</p>
+          <p eId="para_87"> As regards Mr. Moloney's role, it is not unwieldy but it extends across a group of Departments which will make it difficult for the Department to deliver. I understand it will be complex, particularly with the responsibilities Mr. Moloney has. Committee members are ultimately the ones who will be responsible. We will have to stand for election in four years’ time and answer questions about why this has not been delivered. It is a significant responsibility and that is why it is so important to us that this committee delivers. I am setting out my side and I am sure the context for other members is similar.</p>
+          <p eId="para_88"> How will the Department be able to work with other Departments? Will it be able to reach down below those Departments? We talk about housing and local government. Transport goes through the NTA and TII. Will the Department be able to do that or will it have to go through the Departments?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_89">It would be helpful if Mr. Cleary took the Deputy through the new structures we have set up because they are specifically designed to reach out beyond Departments to delivery agencies. As such, they speak to the point the Deputy makes.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_52">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_90">Will the Department have responsibility for that?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. Ken Cleary<recordedTime time="2025-05-21T16:00:00+01:00"/></from>
+          <p eId="para_91">The programme for Government is very clear. This is a new committee and we have a new function, under the Department of public expenditure, on infrastructure reform. The programme for Government sets out a range of actions there. To address it in plain English, what we are going to be concentrating on is the reforms that we can commence which will accelerate the delivery of infrastructure. The Deputy put it very well in that what is needed to deliver housing is that critical underpinning infrastructure, namely, water, transport and electricity, needed to deliver every other piece of infrastructure, whether healthcare, social infrastructure or homes. We are going to concentrate on those critical areas of economic infrastructure - water, transport and electricity.</p>
+          <p eId="para_92"> As it is a new function for this Department, we are aware that we do not have the expertise we need to be able to make specific recommendations to the Government on what barriers to remove or how to accelerate delivery.</p>
+          <p eId="para_93">We have done a couple of things. In the first instance we have brought in people from those key commercial semi-States that are delivering this infrastructure on behalf of the Government. We now have people redeployed into our organisation from ESB Networks, EirGrid, Uisce Éireann, An Bord Pleanála and Transport Infrastructure Ireland, TII. They will work with us on our infrastructure reform agenda. </p>
+          <p eId="para_94"> In regard to our infrastructure reform agenda, we believe we need to go out and in a systematic way assess what are the barriers that are impeding delivery of infrastructure at the moment. We have many views and opinions but we do not have a systematic gathering of evidence and evaluation of that evidence. We are engaged in this task at the moment. As the Secretary General mentioned, we are going to launch a public consultation on this in June. Input will be sought from the public and from organisations. This will be combined with the expertise we brought in from the commercial semi-States. We will directly interview key stakeholders as well. Our hope is that by July we will be able to present a report to the Government highlighting what we believe the barriers to infrastructure development are. From that a work programme on what can be done to mitigate these barriers and accelerate infrastructure delivery will arise.</p>
+          <p eId="para_95"> We have brought people in from the commercial semi-States. We also have structures to engage in across government. As already mentioned, a Cabinet committee on infrastructure has been created. There is now a senior officials group on infrastructure that will sit underneath that. The Departments of the Ministers represented on that Cabinet committee will be sitting around the table at the senior officials group.</p>
+          <p eId="para_96"> Bilateral arrangements are also being put in place with the other offices that have been established by the Government, for example the housing activation office. We will remain in contact with them. We will be looking at that critical economic infrastructure that unlocks other things. I understand they will be looking at specific issues in specific areas of the country. There is going to be a good deal of overlap between our work. Similarly, there will be links with the work that the Minister for enterprise is going to do on competitiveness. The provision of infrastructure is critical to our competitiveness and the offering we have for inward investment. </p>
+          <p eId="para_97"> We have those formal structures in place. We will also be talking to our colleagues on a day-to-day basis as this work evolves. It is a very challenging timetable in terms of what we were asked to do. However, we are looking forward to getting into it.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_54">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_98">I thank Mr. Cleary for that clarity. It was around the movement and the change in the area because I would not have known. That is why I asked what might seem like basic questions and about ultimately how that will be delivered out around the country. Those blockages Mr. Cleary referenced are such key challenges. We all have a fair idea what they are but as Mr. Cleary said, until we can actually get the specifics it is impossible to deal with it. I thank Mr. Cleary for his time and I appreciate his response. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_55">
+          <from>Deputy Réada Cronin<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_99">I thank Mr. Moloney for his opening statement. The written statement provided refers to the Apple escrow funds and the distribution of the Infrastructure, Climate and Nature Fund, ICNF. How is that going to be broken down? We need money to spend on everything but we do not want money taken from the climate and nature fund. How will the Department ensure that stream of funding is ring-fenced for our climate initiatives? </p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_100">Almost €20 billion will be negotiated as part of the NDP review. The reallocation of moneys in July will reflect that whole amount of money. There are specific conditions attached to the ICNF and maybe my colleague, Mr. Meaney, can take the committee through them. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_57">
+          <from>Deputy Réada Cronin<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_101">When the review of the national development plan comes out we will have an idea of how that is going to be broken down.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Kevin Meaney<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_102">That is correct. Specifically, the conditions of the ICNF, particularly that €3.15 billion released for 2026-30, are set out in legislation. It was led by our colleagues in the Department of Finance. The Minister of Finance brought it through last year. That funding has to be specifically reserved for projects that meet decarbonisation requirements, improve water quality or improve biodiversity. There are specific criteria. The NDP review is the same 2026-30 window so we will allocate it as part of the NDP review. It will be applied to specific sectors and specific Ministers. Within the legislation on an annual basis then each of those Ministers with ICNF funding will have to make a statement as to how the money was used and how it would meet the objectives of decarbonisation, biodiversity or improving water quality. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_59">
+          <from>Deputy Réada Cronin<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_103">I ask the witnesses to talk about the National Development Finance Agency, NDFA, and elaborate on its new role. It is going to be offering project management and procurement. How will best practice be ensured in all those areas? </p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_104">We have used the NDFA to provide professional advice of various kinds, around public-private partnerships, PPPs, in particular in recent years, financial advice around that. Of course, we use NewERA within the NTMA to provide professional shareholder advice in relation to the commercial semi-States. That is the kind of model that we are going to try to establish. There is a sense that very large, capital-heavy Departments have a size that enables them to bring the correct expertise to develop the project management and the specific expertise. However, smaller Departments which do not have as much exposure to repeated capital projects need a central source of advice within Government and that would build up experience of actually delivering that type of public capital projects. That in effect is what we are going to be developing within the NDP. The concept is very clear because we already have that in respect of PPPs and shareholder management in the commercial State sector. We are going to try to apply that to the delivery of capital by those Departments that are not as capital-heavy as others. </p>
+          <p eId="para_105"> Precisely what that breaks down at will in some ways depend on what Departments identify themselves as needing. However, the areas we have identified there are the most obvious ones, such as project management, specific engineering and CS. These are things that will, for example, help in cost estimates at different stages of the project cycle.</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_61">
+          <from>Deputy Réada Cronin<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_106">In regard to the infrastructure guidelines, we all know about the scandals and the public frustration around wasted money. It is imperative that we get across that in this committee. I ask the witnesses to outline the need for value for money and how it will be ensured? Will the Department report back to us on a regular basis, such as annually, for example? How are we going to make sure that this new committee works?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_107">I am happy to engage with the committee in any format it wants to apply in that area. We oversee value for money mainly through setting out the guidelines for Accounting Officers to follow. In essence, the Accounting Officer structure is the key protection in terms of the key responsibility for delivering value for money. We do the infrastructure guidelines. They are absolutely centred around delivery, but delivering on a value-for-money basis.</p>
+          <p eId="para_108"> We also do the public financial procedures and the Minister has indicated that he intends to review public financial procedures from a value-for-money perspective later in the year. We are considering other measures generally to emphasise the role of value for money. There have been some matters that have caused a lot of public disquiet and we need to reaffirm and re-examine the roles and responsibilities and make sure everybody is aware of that need as they take decisions about taxpayers' money. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_63">
+          <from>Deputy Réada Cronin<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_109">Following on from that, can the Department explain the rationale behind major projects rising from €100 million to €200 million and the fact that there is going to be no external major projects advisory group, MPAG, review of those projects? What impact is that going to have specifically on projects under €100 million? </p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Kevin Meaney<recordedTime time="2025-05-21T16:10:00+01:00"/></from>
+          <p eId="para_110">We had a review when we had the public spending code in 2022. At that point we were looking at the scale of the projects coming through and some of the projects that probably fell within the €100 million to €200 million band. We are confident that there are still very robust processes in place for any projects actually over €20 million. From €20 million to €200 million many of the same criteria apply around doing an economic appraisal, ensuring value for money and financial appraisal. In terms of the role of the NDFA, for projects of €75 million or more we require all Departments to go to the NDFA, particularly around financial appraisal and advice about how projects would be financed. </p>
+          <p eId="para_111">That is not to say that anything that fell between €100 million and €200 million did not have a lot of rigour applied. It was still a lot of rigour. It was just that those projects now over €100 million were the ones, when not planned correctly, were where the real risk lies. That was an agreed position among eight or nine Departments and sectors having gone through some of the projects that were coming in of that scale. The €200 million was seen as a more appropriate level to pull the full rigour. </p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_112">It is a bit about that balance between risk and delivery. There was a feeling that for a lot of projects, the Department was engaging one set of consultants to provide an external view and then it was coming into the Department of public expenditure, which was engaging another set of people to provide an external view and seeing what the value of that was and whether it was duplicating or adding value. It was felt by the group of Secretaries General looking at it that, on balance, moving it from €100 million to €200 million made sense in terms of the level of-----</p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_66">
+          <from>Deputy Réada Cronin<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_113">It was inflationary. </p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_114">Exactly. Inflation would explain quite a lot of that jump between the two figures. </p>
+        </speech>
+        <speech by="#ReadaCronin" eId="spk_68">
+          <from>Deputy Réada Cronin<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_115">I am happy to come back in again. </p>
+        </speech>
+        <speech by="#TonyMcCormack" eId="spk_69">
+          <from>Deputy Tony McCormack<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_116">The questions I was going to ask were asked by previous speakers but I will make a bit of a statement. First, I am delighted the group was set up. It is fantastic. The fact that it will look at what is delaying projects and pull whatever is delaying projects out of the whole system. I am also delighted to hear about the group looking at bottlenecks and bringing in specialists to see where they are and again taking them out of the system if it is not working. We all know the issues from dealing with people. As a former councillor and now a TD, I hear from builders and council officials about the issues they have and the different processes and procedures they have to go through to get a project across the line and how long it takes. For instance, if we look at housing with the likes of Offaly County Council, it could take five years from the time it starts dealing with the Department to getting the houses built. When we know we are in an emergency situation, a lot of those processes could be whipped out and they are not adding value to the whole thing. The group and the work it does is vital. It is important that the work be done in an expedited fashion because of the fact that in the likes of housing, in a lot of cases the power and water infrastructure is creaking at the seams and we have issues with it. In my county, Offaly, we cannot build any more houses after the houses that already have planning permission because of the water infrastructure that is there. The power infrastructure is not so bad at the moment but if we increase the housing, we may meet problems there. </p>
+          <p eId="para_117"> Another issue is coming down the track and I do not know whether people are aware of it, although I hope they are. For new power stations or substations being built by the ESB, they have to order in transformers and other parts from different parts of the world, which can take up to a year at the moment. However, when we start rebuilding the likes of Gaza and Ukraine when the wars there end, which we hope they will do very shortly, all these suppliers are going to come under huge pressure and it may take us longer to get those parts when we still need that infrastructure in place now and going forward. As I said, it is vital that we get value for money without delays in the process that the group is going through and with everything happening quickly because we need the infrastructure. In the Department's case, we need it to be able to fund, but we need the infrastructure in place to be able to provide the services we need, whether that be in housing, healthcare, education or whatever it is. I know the Department is in charge of the purse strings. I am looking forward to working with the Department but I cannot stress enough how urgent its work is. We cannot have any delays. </p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_118">I thank the Deputy. Clearly, we are very aware of it. The timelines we are working to are relatively short. We hope to have the list of key actions that we can take on foot of a fairly extensive examination and consultation by the end of July, to kick on from there and to get on to unblocking whatever has been identified as the key blockers. We are well aware of that.</p>
+          <p eId="para_119"> On the point the Deputy makes about the general international environment and the competition for workers and parts, one of the problems we have had over the last five years is the destruction of the global supply chain. It could easily get disrupted in a different way as people are competing for the same things as large-scale construction happens in a lot of different places. We are very keenly aware of that and it certainly guides our work. </p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_71">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_120">I thank the witnesses for coming here today. In 2018, the construction sector group was set up in the Department of public expenditure. I am interested to know how this new group is different from that group. When the infrastructure unit was first announced a couple of weeks ago, to me it sounded very similar to the construction sector group. One of the issues I had with the construction sector group was that it did a lot of good work and produced a lot of recommendations but they were not necessarily taken on in the way they should have been by the Government. I am also very interested to know what exactly the interaction will be like with the Government's new strategic housing activation office. What sort of cross-communication will there be and will staff be working across both divisions? I have a slight concern that the staffing the group will get should not take staffing from, say, transport, housing or other Departments. Are the timelines and the guidelines in the Planning and Development Act realistic and deliverable? How will it improve the delivery of infrastructure? If the witnesses do not have it today, they may be able to come back with a list of the most significant projects that will be supported by this division and what projects this division will allow the Department to speed up.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_121">I thank the Deputy for that. I will hand over to my colleagues but will make a couple of remarks. I chair the construction sector group, which is still going. It has, over the years, fed in and driven quite a lot of good ideas, particularly around the modernisation of construction practices such as the use of modular, Build Digital and other things. It continues to support that and to support innovation in the construction sector. It is also conceived of as a way for different professional bodies within the construction sector to interact with the Government. It has that function as well and continues to be there. We referred to the housing activation office. We talk to the staff there all the time and are in constant contact with them. I do not think we have any intent at this point to share staff but the intention is that it is a very close relationship. In a way, they will be site-specific, whereas we will be driving the infrastructure. The two will have to meet and we will take the responsibility to make that happen. </p>
+          <p eId="para_122"> On the timelines in the Planning and Development Act, I will ask Ms Connors to give the update on that. </p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Ms Jenny Connors<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_123">Just to make that point again on the housing activation office versus the infrastructure group, it is more the macro on our side towards more the micro then on theirs. Regarding the Planning and Development Act, there is still a bit of road in it, with the secondary legislation to go through. As for those timelines and what the impact will be, there still is a bit of work to be done in identifying what that is. The other piece is the environmental cost scheme. I will pass over to Mr. Cleary on that because that is probably a bit more relevant to us. </p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Ken Cleary<recordedTime time="2025-05-21T16:20:00+01:00"/></from>
+          <p eId="para_124">As Ms Connors said, certain elements of this Act will be adopted by secondary legislation, or statutory instruments. Part of that is how environmental challenges are dealt with. A separate work stream is progressing that work and being led by the Department of environment, but the Departments of housing and public expenditure and the Attorney General's Office are all part of that group. We are looking at what the options are there in regard to secondary legislation to give effect to what the Government wants to achieve via the planning Act in a way that balances value for money, as we have talked about, and speed of delivery. </p>
+          <p eId="para_125">We also have to balance environmental concerns and our obligations at European level with development speed as well. That group is specifically introducing that secondary legislation.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_126">The point the Deputy raised about staffing is a fair one. It is a particular worry about planners in the system.</p>
+        </speech>
+        <speech by="#ConorSheehan" eId="spk_76">
+          <from>Deputy Conor Sheehan<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_127">We are short 500 of them.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_128">We give them to An Bord Pleanála, we give them to MARA, we take them out of local government. What does local government do? There are workforce challenges and we are engaging on those, absolutely. I do not think it so much applies to ourselves and the strategic housing activation office in the sense that we are quite small. The central function is there to drive change across, so the same issues do not arise and the same numbers do not arise, but it is certainly something we are mindful of. The linking into government, through government and into Departments is a real benefit for the commercial semi-States. It is seen very positively.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_78">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_129">I thank the officials for their time. I have a couple of questions on the infrastructure division and the accelerating infrastructure task force. Will the officials speak a bit about how those two will interact with each other?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_130">Absolutely. Mr. Cleary spoke about the group of experts we have redeployed into the Department. The plan is they will undertake a systematic review and produce a report. The accelerating infrastructure task force is there. It has a number of very senior people with experience of infrastructure delivery and significant reform. They will oversee those plans. The Minister chairs the accelerating infrastructure task force, the Department provides the secretariat and that task force, which includes as attendees the CEOs or senior officers of the commercial semi-States, will review the work that has been done within the infrastructure division and give its expert input as well from a higher strategic level. The idea is the suggestions that come from the stakeholder engagement from the systematic review the expert group will do will get fed into the accelerating infrastructure task force. That is really how the plan of action will be created.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_80">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_131">It was mentioned earlier how the outside groups with the expertise will be identifying some of the barriers to delivering projects. This is clearly a significant issue. In my constituency, the route for the Galway ring road was published ten years ago but still has not received planning permission. Has there been engagement so far on the barriers? What do the officials see as the particular challenges when it comes to delivery of large infrastructure projects?</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_132">I will hand over to Mr. Cleary to bring him up to speed with what has happened in the past couple of weeks since the group was stood up and explain what kind of things they are doing. On the broader question, the planning, legal and administrative consent processes are very much under the spotlight with respect to the extent to which they support or impede infrastructure delivery. I always go back to the idea that we have doubled capital spend since 2019. We have quadrupled it in ten years. We started from a very low level of spend and of infrastructure, so the level of need is really high. The Irish Fiscal Advisory Council, IFAC, suggests we are 25% lower in our infrastructure stock than a country of our size of income should be. That is a function of how we got here. The question then is how we get out of here. The Planning and Development Act is an attempt to do that. We have resourced the consenting authorities. We have resourced An Bord Pleanála very significantly. We have resourced local authorities for planners, although they have challenges in recruiting planners, so we are conscious of that. Then there are the developments in the legal system in recent years. If you were to look back to the 2010s you might see 20 judicial reviews a year and if you look at the 2020s you might see 80. There are significant developments in how the legal framework is applied within the planning process. We see those as really big issues. Some of them will be dealt with as the Planning and Development Act rolls out and the environmental costs regime is addressed. We also feel that right across the system the urgency of getting things done, doing things in a proportionate and balanced way, securing value for money, well-planned delivery and having an emphasis on delivery is possible. What we are looking at are the day-to-day things that block and slow down decision-making on infrastructure delivery. We want to identify where they happen and measure where they happen. Mr. Cleary might describe the process we plan to go through to get to that.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Ken Cleary<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_133">To put it simply, we have, as I said, brought in the people and brought in our experts. They are being combined with a team of civil servants and we have four strands of our work programme to complete between now and July. As to what those strands are, the people coming in from these organisations are bringing with them a certain amount of institutional knowledge. They are the people who are working on the ground trying to deliver these projects, whether that be water pipelines or electricity substations, so there is a certain amount of institutional knowledge coming with them. We are going to combine that with identifying key stakeholders in all these sectors and then using our team of experts and civil servants to go out and interview these people to find out what in their opinion is causing these undue delays in the process. As we have limited resources and time available we will combine that with a public consultation we will launch in June to canvass wider views from the public. At the same time we are going to be looking at international best practice to see whether there are any countries that have successfully introduced reforms to their capital process that have accelerated things and what the best practice might be from organisations like the World Bank, the OECD and so on. Those are the four strands of work we will be doing on a very practical level over the next two months and then trying to draw all that together for a report for Government at the end of July that will say in our opinion, having gathered this information and evidence as widely as we could and condensed it all, here is what we think the biggest problems are. That is our work programme and as I said we are aiming to complete that by July.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_83">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_134">Up to now what kind of engagement have the officials had with those industries?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Ken Cleary<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_135">From the Department of public expenditure's perspective it has largely been through the Government Departments. I should have emphasised when we are consulting key stakeholders Departments are part of it because it is the Departments that are responsible for the commercial semi-States that are ultimately responsible for those sectors of the economy. Until recently what our Department has been doing, if I can characterise it this way, is setting the rulebooks, including things like the infrastructure guidelines and so on. What we are now doing that is different is going out and gathering this evidence from the centre on what is delaying delivery, so that is a qualitative difference from anything we have done before. We have heard a lot of things coming from Departments and have heard a lot of things from stakeholders and interest groups. Now we need to gather this evidence in a more systematic manner than we have done to date and attempt to coalesce it into something coherent for the Government. We are trying not to give 500 things that are wrong with the system at the moment, but to focus on what are the most meaningful barriers and how we go about addressing them.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_85">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_136">One of the barriers to housing delivery referenced earlier was the area of water and electricity infrastructure. Has the Department done any mapping of where there are constraints on capacity in relation to those infrastructure issues when it comes to housing?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:30:00+01:00"/></from>
+          <p eId="para_137">Irish Water has a website that tells you where the water is available and where it is not. The challenge is to look at where water is and where it is not, where the grid has capacity and where it does not and what the development plans for rolling out further water and grid capacity are and whether they are all aligned or not. That is part of the work we expect to be done here. We know broadly where we have grid capacity and broadly where we have water capacity, but mapping that out to where we are building houses is a further step. The advantage of having the different delivery agents within the one group is really that it enables us to think about that alignment and about our future planning better, I hope.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_87">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-21T16:40:00+01:00"/></from>
+          <p eId="para_138">Mr. Moloney noted that there will be €15 billion of capital investment in 2025. There is approximately €14 billion in the Apple escrow account. Has Mr. Moloney been provided with an update by the Department of Finance on the distribution of this fund and a timeline for its allocation?</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:40:00+01:00"/></from>
+          <p eId="para_139">The way that is going to work is that the Government will take decisions on it in the context of the NDP review. Effectively, that review will make the decisions about the allocation of that money, and what will be allocated to what from it over the period 2026 to 2030.</p>
+        </speech>
+        <speech by="#LouisOHara" eId="spk_89">
+          <from>Deputy Louis O'Hara<recordedTime time="2025-05-21T16:40:00+01:00"/></from>
+          <p eId="para_140">That is 100%. I thank Mr. Moloney.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_90">
+          <from>Deputy John Clendennen<recordedTime time="2025-05-21T16:40:00+01:00"/></from>
+          <p eId="para_141">I thank the witnesses very much for joining us. It is important to put on record at the outset where, from an economic perspective, we have come from in terms of the quadrupling in capital investment, through financial prudence and the general strength of the economy. Without that, we could be having a conversation about where we are going to get the finances to pursue whatever projects we choose. It is important to note that.</p>
+          <p eId="para_142"> From an infrastructure perspective in general, we are looking to the future. We want to see development, progress and advancement but if we cast our mind back to earlier this year when we had individuals around the country who were without power or communications networks for weeks and months on end, the first step is that we must get that right and ensure there is a level of robustness in the networks in order that we deal with the risks in that regard in as effective a manner as possible.</p>
+          <p eId="para_143"> In that context, the first thing we must do is change the name of the national development plan to the national development and delivery plan. Development is ongoing. We will talk about it for ever. I could give two pages of examples of what we have been talking about for ever, one being the water supply for the east and midlands, which was on the first consultation report in 2015. We are still talking about it ten years later. We know we need the water supply. We need the offshoots now in towns en route from the west to the east, yet we are still talking about it. We must stop talking and start delivering. I was a councillor at the time. There are a lot of fresh faces in this room. There was an air of frustration around the national development plan. There was much theoretical work and nice colours on maps, especially relating to the zoning of land that was never going to be developed for various local reasons. We must take that into consideration.</p>
+          <p eId="para_144"> I appreciate that we must take a holistic view and determine where capital development will take place but we must figure out how we are going to mitigate the bottlenecks at a local level, and how that can be addressed. I will use one local town in my county as an example. Edenderry is basically locked down until 2029. We must figure out who the liaison officer is and who represents the collective grouping of all these services or utilities to determine how we break down these barriers. It is simply not acceptable to say that a town with a growing population that is within commuting distance of the capital city will not be developed until 2029. That makes no sense whatsoever. We must figure it out and put a plan in place.</p>
+          <p eId="para_145"> Mr. Moloney referred to the three steps in his Department but, unfortunately, the reality is there are probably double that number of steps in the Department in terms of its procedures. If we attach four months, for example, to each of these steps and give six to a Department and four to his Department, we are talking about 40 months of planning. That is without any obstacles on the road. We must determine how we are going to reduce the length of the process, and we must make a commitment in that regard. There is an onus and responsibility on us. When there is a bump in the road, utility providers must come to us with solutions rather than problems. I do not want to name any utility providers. However, we must work with them, almost in a public-private-partnership way, to determine how we can deliver on a more efficient basis.</p>
+          <p eId="para_146"> I attended an event this morning at the national construction training campus, Mount Lucas. One thing that struck me during my visit is the focus on the use of digital in construction. We talk about bricks and mortar and men on sites, but we are now looking at 3D printers of concrete, virtual reality planning and so on. When we read reports about the global position, to a certain extent, Europe seems to be lagging behind in terms of digitisation, and over-regulation could be another aspect of it. How do we determine whether we are moving at the right pace in that space or gaining value for money? How do we benchmark in an area like that where it is essentially cutting edge? There is an element of intercontinental global competition as well. How do we set out the roadmap to ensure we deliver?</p>
+          <p eId="para_147"> Like the Chair, I am not talking about cutting corners. We must ensure that whatever steps we take in a digital sense are done in a safe manner. There may be a sense out there that we must move at a greater pace.</p>
+          <p eId="para_148"> Mr. Moloney has been Secretary General of the Department for the past four years. We talk about value for money, delivery and what we need to do. What is his proudest moment or what project is he most proud of in terms of what we have delivered for the nation in the four years he has been there?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:40:00+01:00"/></from>
+          <p eId="para_149">I thank Deputy Clendennen very much for his questions. He is right: the 300,000 houses need water and electricity. We must plan that out and decide how we are going to do it and we must prioritise it within the national development plan review. It is true that there may be supplementary procedures within Departments that Accounting Officers use or that sectors use for their agencies. There are also approval processes between agencies and Departments. One of the things that we are going to do as part of the exercise that we have described is we are going to construct indicative timelines for particular types of projects. We are going to look at the actual time different pieces of the decision-making chain takes and that will identify for us where the problem lies. For example, when we did that before for some housing projects, we found that for run-of-the-mill housing estate projects, in some ways the delays all happened before they went to planning. That can be instructive. As we run out those timelines, that information will feed into the report Mr. Cleary spoke about.</p>
+          <p eId="para_150"> In terms of the value-for-money piece, we have significantly changed it through the introduction of the infrastructure guidelines. The Deputy referred to the four years of my tenure, in that time we redeveloped the national development plan in 2021, which was a strong change that prioritised spending and implemented it in government. Many of the projects we are talking about today have come through that process. In particular, what we have managed to do under the current phase of the national development plan is to deliver more than 800 schools. As I look around me, I note there are areas of delivery that demonstrate the capacity to deliver at local level. We know that electricity and the grid are significant disablers, as things stand, and that we must invest in them in order to make progress in the future.</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_92">
+          <from>Senator Eileen Flynn<recordedTime time="2025-05-21T16:40:00+01:00"/></from>
+          <p eId="para_151">I thank the witnesses for being here. This is a very new committee. It is great to have the Department in this evening. I am sure we will have it in many times over the next five years.</p>
+          <p eId="para_152"> I want to raise something that came up in the Seanad last year.</p>
+          <p eId="para_153">It is different but still I think the Department does have a responsibility with the Planning and Development Act, which at more than 700 pages was one of the biggest pieces of legislation ever to go through the Houses. For me, the Government not supporting disability rights and Traveller accommodation was disheartening. To be a member of this committee is a glimpse of inclusion. Mr. Moloney has said himself that some people and communities feel powerless when it comes to being included in infrastructure and what is going on in their communities. I know the public consultation launches in June. How will marginalised communities, including Travellers, be actively engaged to ensure their needs shape the project? There are refugees, migrants and people with disabilities. We have seen in a lot of working-class communities where people most impacted by what goes up beside them are usually not included. That is one of my questions. Another question is when the remaining section of the western rail corridor will be assessed for inclusion in the national development plan. What criteria guide all rail investment in the west?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_154">From my Department's point of view, for equality and inclusion we run out equality budgeting and take responsibility for equality budgeting over Departments. That is supposed to tell us across public spending where money is going, focusing in particular on ten themes - gender, marital status, family status, age, disability, sexual orientation, race, religion, membership of Traveller and Roma communities and socioeconomic status. In some ways, in what we spend we try to capture some evidence of what impact we are having. It can be challenging. We can do it with income. We can do it through the SWITCH model and the ESRI with income. It can be harder to do with other investments, but we try to capture the income on that.</p>
+          <p eId="para_155"> On our approach to consultation, I note the issue raised by the Senator and, in good practice consultation, part of that should be to find ways of linking in with those communities who might not otherwise be part of that consultation. We will give that some thought, both in terms of the consultation on the NDP and the infrastructure delivery piece we will engage on over the next couple of months. There are, of course, representative bodies and ways of doing that, so we should be able to do that.</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_94">
+          <from>Senator Eileen Flynn<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_156">Any support is important to us, and we will give the best support we can.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_157">I thank the Senator.</p>
+        </speech>
+        <speech by="#EileenFlynn" eId="spk_96">
+          <from>Senator Eileen Flynn<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_158">It is really important that it is inclusive. I thank Mr. Moloney.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_159">My colleague, Ms Ivory, will talk about the western rail corridor.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Kate Ivory<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_160">The All-Island Strategic Rail Review was published in July 2024. That review was undertaken by the Department of Transport down here in conjunction with the Department for Infrastructure in Northern Ireland. As part of that review, 32 recommendations were set out to enhance and expand the rail system across Ireland, which include things like track capacity, electrification, increasing speeds and high service frequency. As part of that review there was a recommendation about the reinstatement of the western rail corridor. That will be considered as part of the overall review. Each of those recommendations will come for consideration and the Department of Transport will work with the European Investment Bank and the Department for Infrastructure in the North to progress those recommendations. I do not have a timeline on that at the moment because they are still working out how to progress each of those.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_99">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_161">I apologise because Senator Flynn and I had to leave for vote, so I might have missed some context for what was said while we were out. I lend my support to what Deputies McCormack and Clendennen said about rural Ireland and the delays we are seeing in local housing developments. I do not want to use overly dramatic words, but I have heard from many councillors who refer to the death of rural Ireland with regard to delays up to 2029. In Kilkenny there will be delays up to 2029 before any new developments will be in place due to Uisce Éireann water supply and wastewater issues. It is obviously something particularly pertinent to development in rural places. I am not necessarily looking for a comment on that. I know the witnesses have spoken about it already, but I am adding my voice to that.</p>
+          <p eId="para_162"> I apologise if I missed this, but this has been coming up at any discussion about road safety infrastructure. We obviously have a number of dangerous roads in Ireland where we have seen a number of awful road deaths. How is that panning out and what is the prioritisation in that space? Another Deputy spoke about the acceleration of the infrastructure task force. It is fantastic to hear that civil servants will be on that in combination with sector experts. My question is about any conflicts of interest that might come up with sector experts working in the infrastructure sector making recommendations that might overlap with their businesses and so on. Are there protocols in place for that? That is just out of interest.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_163">Ms Ivory will talk about the road safety infrastructure. I will first take the point about water supply issues in rural areas. We do not have enough water or a grid for 300,000 houses. There is no doubt we have to develop water and grid over the coming five years. There is no doubt about that. That will be a focus for the NDP review. There are probably two groups of experts involved in what we have described. One is the group of experts coming in from the commercial semi-State sector. The advantage of having them is that if they are in the room together, they cannot just blame each other. There is a coming together there. They are all public sector organisations, so they are within that <i>chapeau. </i>The other element is the membership of the accelerating infrastructure task force. We have standard enough rules for people to declare interests where they have them. In the main, with the membership of that, I think the outside expert members are all broadly retired from their main careers, although they may continue to have various interests. However, there are standard enough provisions around the declaration of interests and people are expected to declare interests and excuse themselves from conversations where they have conflicts.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_164">Are there any final questions-----</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_102">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_165">There is just that final point on road infrastructure and safety, in particular on the N24 and N25. The witnesses might not have answers for those particular roads, but I am interested in this.</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Kate Ivory<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_166">I am not sure if I have those exactly, but I will talk about overall road safety infrastructure. In 2025, we are investing €1.5 billion in the road network and road safety. Approximately €800 million of that goes to asset protection and renewal. Across the national roads, approximately €239 million relates to asset protection and renewal, which will really enhance road safety. For regional and local roads, there is €600 million allocated. Those are the main areas of investment in road safety. There is also the Road Safety Authority, of course.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_104">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_167">Would it be possible to separately get some information on the N24 and N25, especially around south Kilkenny? There are a few areas there as it relates to counties Waterford, Kilkenny, Tipperary and Wexford.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Kate Ivory<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_168">We can look into that. I understand the committee potentially has TII coming in too, and it might be able to provide additional information.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_169">There being no further questions I thank Mr. Moloney and all of his colleagues from the Department. No doubt we will be meeting again. It is important we had an opening discussion. A minor point was touched on by one member. The witnesses said they are commencing consultation in June. In Ireland, consultation goes on forever. How can a consultation be launched in June and have a report published in July? Who are they consulting with? Is it themselves or the public? Talk to me about that consultation.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_170">It is a fair point. It reflects the urgency with which we are approaching the task in this initial phase. We will structure the consultation to make sure we include as many people as possible, but we are operating under a tight timetable.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_171">Is there a list of the usual people we talk to? Where does the public come into that?</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Mr. Ken Cleary<recordedTime time="2025-05-21T16:50:00+01:00"/></from>
+          <p eId="para_172">We anticipate issuing the public consultation element of it in June. We are envisaging four weeks for that public consultation period. That is necessary to bring a report to Government in July. The public consultation is one strand of the four elements of how we will be getting a report to Government in July. However, within that four-week period we aim to do a couple of public events to try to proactively gather information from it. We will be using existing vehicles planned for that time period such as the national economic dialogue and so on.</p>
+          <p eId="para_173">We have a mission from Government to report to it by July on the most critical barriers to infrastructure. We think we have to consult. One of the strands will be direct consultation with the stakeholders we identify in that period, particularly representative organisations. The public consultation will not be the only element of what we are doing. It is an important element but is bound by what the Government has asked us to do in terms of reporting back by July.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_174">Will some of that be outside Dublin? I presume it will. I also presume that the construction sector will be involved.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Ken Cleary<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_175">We considered it to be a critical stakeholder.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_176">I thank Mr. Cleary attending what has been an informative meeting. Earlier, we asked for a number of specific items to be sent on. They can be sent to us in writing and we will consider them in public session as soon as we receive them.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_113">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_177">Could we contact each local authority for details of what it sees as the top four or five critical infrastructure items on its list in order that we might get a feel for what is involved? That might be instructive for everyone.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_178">Is the plan to consult with-----</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. David Moloney<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_179">We could do that. Is it within our remit?</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_180">If the Department asked each of the chief executives, they could provide the information. We are in the real world, so it is important that it gets that.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Ken Cleary<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_181">We are going to target two organisations, namely the LGMA and the CCMA. We can ask them to canvas views from each chief executive.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_182">We do not want it said that a substantial number of local authorities were never even consulted on the matter.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_119">
+          <from>Deputy Joe Neville<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_183">It pulls them into it.</p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T17:00:00+01:00"/></from>
+          <p eId="para_184">Our next meeting will be with Uisce Éireann on 28 May 2025. There is one piece of housekeeping work to do before the meeting concludes.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee went into private session at 5.02 p.m. and adjourned at 5.05 p.m. until 3.30 p.m. on Wednesday, 28 May 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

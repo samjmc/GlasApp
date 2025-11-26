@@ -1,0 +1,1073 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-23/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-23/debate"/>
+          <FRBRdate date="2025-09-23" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_artificial_intelligence"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-23/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-23/debate/mul@"/>
+          <FRBRdate date="2025-09-23" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-23/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_artificial_intelligence/2025-09-23/debate/mul@.akn"/>
+          <FRBRdate date="2025-09-26" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AliceMaryHiggins" href="/ie/oireachtas/member/id/Alice-Mary-Higgins.S.2016-04-25" showAs="Alice-Mary Higgins"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="DeeRyan" href="/ie/oireachtas/member/id/Dee-Ryan.S.2025-01-29" showAs="Dee Ryan"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JamesGeogheganFG" href="/ie/oireachtas/member/id/James-Geoghegan.D.2024-11-29" showAs="James Geoghegan"/>
+        <TLCPerson eId="JohnnyMythen" href="/ie/oireachtas/member/id/Johnny-Mythen.D.2020-02-08" showAs="Johnny Mythen"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="PaulMurphy" href="/ie/oireachtas/member/id/Paul-Murphy.D.2014-10-10" showAs="Paul Murphy"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM INTLEACHT SHAORGA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Artificial Intelligence</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-23">Dé Máirt, 23 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-23">Tuesday, 23 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#JamesGeogheganFG">James Geoghegan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AliceMaryHiggins">Alice-Mary Higgins,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#DeeRyan">Dee Ryan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PaulMurphy">Paul Murphy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarethScahill">Gareth Scahill.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#JohnnyMythen">Johnny Mythen</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Senator Lynn Ruane.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MalcolmByrne">Teachta / Deputy Malcolm Byrne sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Artificial Intelligence and Children and Young People: Discussion<recordedTime time="2025-09-23T11:00:00+01:00"/></heading>
+        <speech by="#MalcolmByrne" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:00:00+01:00"/></from>
+          <p eId="para_13">I advise members that we are now in public session. Our guests are now live on Oireachtas TV. Senators Noel O'Donovan and Lynn Ruane have sent their apologies. Senator Alice-Mary Higgins will substitute for Senator Ruane.</p>
+          <p eId="para_14"> There are a few constitutional requirements and I need to go through the rules of engagement. I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In that regard, I ask any member partaking via MS Teams that prior to making their contribution to the meeting, they confirm that they are on the grounds of the Leinster House complex. Some colleagues are joining us on the screens, so when it comes to their questioning, they will pop up on the screens.</p>
+          <p eId="para_15"> The Oireachtas Joint Committee on Artificial Intelligence has been asked to look at how artificial intelligence is impacting on all aspects of Irish society and to advise Government policy through a rolling set of recommendations on what we think the Government and the State should be doing to prepare us for the opportunities and challenges that AI presents. As a committee we felt it was particularly important that, before we start to move into the modules we will be dealing with around AI and the State, AI and healthcare and AI in education, we would hear specifically from three groups. The next two sessions will be on AI and older people and AI and disability. The committee was very keen, right at the very start, to discuss AI and children and young people and to hear in particular the views of children and young people and their representative organisations. We had a great response to this and we are very appreciative of all the witnesses who have come in. We have had to divide the meeting into two sessions. I thank all the witnesses very much for coming in. Because there is such an interest, we ask everyone to try to be succinct in their questions and answers. That applies as much to members of the committee as to the witnesses, who I am sure will be very direct in telling us what they think we should be doing to be able to address the challenges and opportunities of artificial intelligence.</p>
+          <p eId="para_16"> I extend a very big welcome to the witnesses. I now ask the representatives of each of the organisations to deliver their brief opening statement.</p>
+          <p eId="para_17">They have about three minutes to do so. With us today we have Ms Grace French and Mr. Fionn McWeeney, who are youth advisory panel, YAP, participants from the Ombudsman for Children's Office; Mr. Reuban Murray, youth worker and AI project officer, National Youth Council of Ireland, NYCI; Ms Noeline Blackwell, online safety co-ordinator, Children's Rights Alliance; and Ms Áine Lynch, CEO, National Parents Council. I invite Grace and Fionn to make their opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Grace French<recordedTime time="2025-09-23T11:05:00+01:00"/></from>
+          <p eId="para_18">We are here today on behalf of the Ombudsman for Children's Office, OCO, youth advisory panel and thank the Chairperson and the committee for inviting us. We welcome the committee’s decision to hold a special session on children. We believe that speaking to young people about AI is vital because AI is already a part of our lives. We are the group most likely to be impacted by AI but, right now, policies and laws have little or no focus on young people and our rights. We want to ensure that children’s voices are listened to and taken seriously as the Government develops its plans in this area in the years ahead. We welcome the recent announcement of Government plans to establish a national AI office. We feel this provides a perfect opportunity to create a structure within this office that routinely involves children and young people in decision-making related to AI.</p>
+          <p eId="para_19"> Before we continue, we would like to highlight that we have published a report today setting out the views of our youth advisory panel regarding AI. We will draw from this report throughout these opening statements but would encourage the committee members to read our insights and recommendations in further detail after today's proceedings so they can hear the voices of every YAP member represented today, not just the two of us.</p>
+          <p eId="para_20"> We would first like to highlight some of the impacts, both positive and negative, that we believe AI has on our rights as young people. The first concerns our right to education. Many young people already use AI to help with their schoolwork. It can be a helpful tool when we need to catch up on study, carry out research or summarise information. On top of that, we also believe that, if used sensibly, AI has the potential to assist teachers too whether it is by helping to reduce heavy workloads or by creating efficient ways to monitor student progress. At the same time, we realise that becoming overly dependent on AI can impact on young people’s ability to think critically, creatively and independently. If we do not strike the right balance in schools, we risk neglecting these crucial skills. AI should be used as a tool, not a crutch and it should not take away our ability to be self-reliant. When it comes to our right to information, there is no doubt that AI makes it much easier for young people to access information independently. However, we are well aware that the information AI gives us can often be unreliable, inaccurate or biased. This is all the more reason to continue to develop young people’s ability to think critically and to question sources.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T11:05:00+01:00"/></from>
+          <p eId="para_21">Right now, we are also concerned about the impact of AI on children’s rights to be kept safe from harm. Many chatbots still do not have the necessary safety features to guarantee that the responses children receive are age appropriate. Children, especially younger one, risk being exposed to material that is offensive or distressing or having their personal data stolen and used without their consent. Much more has to be done to prevent the use of AI to create fake images of young people that can then be exploited for cyberbullying and even abusive material. Finally, young people have the right to grow up in a clean and sustainable environment. With the use of AI expanding, data centres in Ireland require increasing volumes of water and energy. If we do not put the environment at the heart of our discussions on AI, we risk going backwards in our efforts to protect our planet for the future and address the climate emergency.</p>
+          <p eId="para_22"> The risks of AI can be exaggerated, and we do not believe that out-and-out bans offer a realistic solution to such a complex issue. However, a balance needs to be struck between making sure AI is accessible for all young people but also safe. What we want are AI systems that work for, not against, young people. To achieve this, we have several recommendations for the committee.</p>
+          <p eId="para_23"> First, there needs to be proper regulation of AI at both an Irish and EU level. We need laws that will make protecting our personal data a priority, AI systems must be designed so that young people accessing them are shielded from harmful content and our politicians must guarantee there will be genuine consequences for companies that fail in their duty to uphold our rights. Companies must take seriously their responsibility to keep children safe online. They need to create effective age verification systems that restrict access to AI tools; children should have the option of blocking AI-generated content they do not want to see; and everyone under the age of 18 should be clearly notified when they are interacting with an AI tool.</p>
+          <p eId="para_24">Education that enables young people to understand AI and how to use it responsibly is key. Young people should be given the skills to be able to tell when something has been AI generated and to critically analyse AI-generated information. We want to understand what the Government is doing to regulate AI and we need reliable information about the benefits and risks of AI. Given AI is already part of our lives, this needs to be embedded in the curriculum and all teachers need to be upskilled so that they have the confidence to help guide us in AI safely.</p>
+          <p eId="para_25"> Finally, we wish to acknowledge that today is an important first step in ensuring that young people’s voices are included in the Government’s discussions on AI but this cannot be a one-off. As the Government moves forward on this issue, the impact of AI on our rights must be considered each and every step of the way. The new national AI office provides an opportunity to continue including children's views throughout this process. I thank the committee again for the opportunity to speak today and we will be happy to answer any questions members might have.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T11:10:00+01:00"/></from>
+          <p eId="para_26">I thank the Chair and members for inviting us here today. It is important that young people are at the centre of Ireland's debate on AI. Meetings like this play an essential role in that. The public conversation around artificial intelligence can often focus on how younger generations stand to benefit the most from this technology. However, it is emerging that the opposite might be the case. The Government’s own research has shown that young people are the most exposed to the adoption of AI in the labour market. In some sectors, recruitment is down by as much as 13%. One in three young people is turning to AI chatbots for social interaction and relationships, a trend that reflects the massive impact of Covid-19 on this cohort’s social development. We are also watching AI widen the digital divide as youth from poorer backgrounds are far less likely to use AI tools for learning or to help with school. Issues like these cause NYCI to have some real worries about AI and its impacts on the lives of young people but to paint artificial intelligence as some dangerous technology we must avoid or shrink away from is foolhardy. We see massive benefits for the use of AI within the youth work sector. We believe youth workers can play a critical role in supporting young people to respond to and benefit from artificial intelligence. That is why NYCI, with the support of Research Ireland, has undertaken the Empowering Young People through AI, Data and Emerging Technologies Project alongside DCU Insights and the Office of the Ombudsman for Children. As part of this project, we have three strands. In the first strand, we are operating a series of citizens' juries, a scaled-down model of a citizens' assembly. We are bringing together 48 young people across six juries to debate and consider key topics in artificial intelligence. We would welcome the chance to present the findings of the juries to the committee once they have been concluded and give members the chance to hear directly from those jurors. We are also working with Microsoft Dreamspace to develop an AI education programme, much like what was raised by Grace and Fionn, so we can ensure young people across society are equipped with the skills they need to thrive in an AI world. Critically, this education programme is to be delivered by youth services, not within schools. Turning to youth workers, we are working to develop a CPD programme to equip our youth sector to deal with the challenges AI presents for young people and also to equip youth workers to benefit from AI and use it in their work.</p>
+          <p eId="para_27"> On a final note, there is sometimes a great misperception about the role of youth work in addressing the challenges of society, as in the case of AI. Youth work gives young people the space and skills to develop as young adults, gives them a chance to address the challenges or obstacles they face and creates a place to find a different kind of support outside of schools. Across the country, youth workers are at the front line of guiding these young people. If we want to see a comprehensive response to this technology, we must better invest in youth work.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T11:10:00+01:00"/></from>
+          <p eId="para_28">I thank the Chairman and committee for the opportunity to address them on the topic of AI and children. As members have heard directly from the mouths of young people, children and young people live in this digital environment and are entitled to the full exercise of their rights in this environment. Our presentation and the longer briefing we also circulated focus on children’s rights. Our foundation, like other organisations here, is the UN Convention on the Rights of the Child, which as members will know has been signed by every country in the world bar one, and the specific comment made by the committee of that convention in 2021, which makes it easier for us to focus on the main issues within children's rights. That is general comment 25, a term we are likely to use without explaining what it is a comment on.</p>
+          <p eId="para_29">It is a comment on children-specific rights in the digital world. In focusing on the committee’s terms of reference, today we hope to support it in understanding how Ireland better produces and deploys AI safely and ethically in a way that brings societal benefits while safeguarding rights and mitigating risks. Inevitably, given the speed at which AI is moving and the size of the generative AI world, we will be focusing on safeguarding rights and mitigating risks for children and young people. </p>
+          <p eId="para_30"> I will gallop through the recommendations we have made to the committee. First, there is a need for a child-rights approach so that AI products and systems are inherently safe. In many ways, this is at the heart of it. If we had safe products, a lot of our problems would not exist at all. Currently, systems are not designed with child safety in mind. We recommend that all AI providers and deployers should be required by law to ensure that AI systems are safe for children by design and by default, and that systems should consider children’s views and ensure there are effective reporting and complaints systems. We also recommend that the national digital strategy, which in its current version does not do this, specifically consider children’s rights.</p>
+          <p eId="para_31"> Second, looking at the EU AI Act, we recognise that it is a very innovative piece of legislation and that someone has to start somewhere, but there are gaps in protection in the Act. There is no mention of recommenders, insufficient recognition of the chatbots that children find engaging and the potential for deepfake technology to do real and lasting damage to children’s lives. We hope that when Ireland is asked for its views on the new general code of practice, the committee might take the opportunity to read it with a child-rights lens. </p>
+          <p eId="para_32"> We also notice the speed at which child sexual abuse material can be generated, deployed and spread worldwide, particularly through deepfakes and the like. We recommend that the committee urge the Oireachtas to pass the necessary legislation to keep children safe in Ireland and to ensure that at European level this also happens. The Ombudsman for Children’s representative spoke about education. There is also the issue of children’s data in the various edtech programmes that are going into schools.</p>
+          <p eId="para_33"> Finally, inevitably, we mention resources. Nine bodies are tasked with protecting fundamental human rights under the EU AI Act. They have been announced for the best part of a year. They include the Ombudsman for Children and the Irish Human Rights and Equality Commission. We have heard nothing about the resources and training needed for those bodies. They will be crucial to making sure children’s rights are protected online.</p>
+          <p eId="para_34"> My colleague Alex Murphy and I are happy to answer any questions. </p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Áine Lynch<recordedTime time="2025-09-23T11:15:00+01:00"/></from>
+          <p eId="para_35">The National Parents Council thanks the Joint Committee on Artificial Intelligence for the opportunity to contribute to the discussion. As the national body representing parents in education, we focus specifically on education in doing that. In preparation for this meeting, the NPC conducted a national survey to gather parents’ views on the use of artificial intelligence in education. The survey explored awareness, expectations and concerns around AI tools such as chatbots, personalised learning platforms and automated grading systems. It also looked at broader issues including privacy, ethics and the role of teachers in AI-supported classrooms. The survey received responses from 911 parents, collected between 21 August and 8 September 2025. I hope the committee has received a full report on that.</p>
+          <p eId="para_36"> I will summarise some of the findings. Overall, parents’ opinions are divided. Some see AI as a useful support tool but most are concerned about its use in schools. They are concerned about over-reliance on AI and its potential negative effects on social skills and fear that it could weaken children’s problem-solving, creativity and critical thinking. These concerns were especially pronounced for younger learners, with many parents warning against introducing AI at primary level. Ethical and privacy issues were central, with most parents reporting that they were “very concerned” or “somewhat concerned” about how their child’s personal data might be collected and used. There were strong calls for regulation in line with EU standards. Concerns about fairness and unequal access to AI tools were also raised.</p>
+          <p eId="para_37"> Parents identified several advantages of AI, including support for children with additional educational needs, assistance with administrative tasks for teachers and the potential to personalise learning.</p>
+          <p eId="para_38">Commonly recognised tools included AI tutors, homework helpers and language translation aids. Nonetheless, parents were consistent in stressing that AI should only complement, and never replace, human teaching, emotional understanding and the relational aspects of education.</p>
+          <p eId="para_39"> Turning to varied awareness and understanding of AI, while most parents rated their familiarity with AI relatively highly, many remained unsure about its full implications in education. Over half had heard of AI being used in schools, although they were not sure what it was being used for. Almost half had not discussed it with their children, indicating mixed levels of engagement and understanding. Parents felt excluded from decisions about AI in schools and expressed a strong need for better communication and clear policies. Over 60% said they would need training to feel comfortable with AI in their child’s education, and over 77% supported teaching children how AI works and how to use it responsibly. A significant majority of parents, over 88%, were either opposed to or unsure about AI being used to assess students’ work or grade State exams. Their concerns centred on fairness, accuracy and the loss of human judgment in educational evaluation.</p>
+          <p eId="para_40"> The report shows that while some parents see potential benefits, most are cautious or concerned. They want a system that puts children’s learning, development and well-being first. Parents are asking for clear policies, better communication and meaningful involvement in decisions about AI in schools. They believe that education should remain rooted in human connection, creativity and ethical responsibility, and that any use of AI must be carefully considered, transparent and always in the best interests of children.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:20:00+01:00"/></from>
+          <p eId="para_41">I thank all of our witnesses. We go now to questions from members, who have been circulated with the speaking rota. We will allow four minutes for members. If we have time, we will get in a second round, but that four minutes includes questions and answers. If there is a specific person to whom a member wants to address their question, I ask them to indicate who that is. However, if one of our witnesses wants to answer a general question, they should just raise their hand.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_8">
+          <from>Senator Dee Ryan<recordedTime time="2025-09-23T11:20:00+01:00"/></from>
+          <p eId="para_42">I give my compliments and gratitude to all of the speakers for being here to lead us in this important discussion and helping the committee to think about the issues they have rightly highlighted in each of their opening statements. I had a good look through the opening statements in advance of coming in this morning. What jumps out at me having listened to them being delivered, as opposed to reading them from the page, are two issues that are cropping up. Grace, Fionn, Mr. Murray and Ms Blackwell spoke about them, and Ms Lynch touched on them. They are the challenges of critical thinking and how we empower and support our young people and children in recognising the difference between information that has been amassed across all sources and has not necessarily been verified, and which is being returned to them in the work they may do in the positive benefits of AI and using AI tools to assist them in education, learning and creativity. How do we help them to develop the critical thinking skills that allow them to identify that trusted, verified information from the potential for deepfakes, and for sinister and dangerous content? This really jumped out at me, and Ms Blackwell put her finger on it. This content is actually being repackaged and pushed through recommender systems. At this point we have little control over moderating other than by flagging and raising an objection afterwards. We all know too well the difficulties there are with pulling that content back in once it is out there.</p>
+          <p eId="para_43"> My question is for Ms Blackwell. Can she expand her thoughts on that crossover between what we are addressing today and the recommender systems? What recommendations would she like to see coming from this committee, and what would she like it to think about in terms of legislation and Government support to address those issues?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T11:20:00+01:00"/></from>
+          <p eId="para_44">I thank the Senator for raising that question. It is a loaded one, but it is important.</p>
+          <p eId="para_45">It goes back to something that is really not happening, which is that there is little or no obligation on big tech companies to produce safe products for children. One is not allowed to sell a car or baby formula in the European Union without a certificate saying that it is inherently safe. It is not that a car will not knock a child down but it must be inherently safe. That is only barely starting at European Union level but to the credit of the EU, it is going further than many other places. In the US, for example, they are saying that they will not regulate AI for ten years. In terms of an awful lot of what we are looking at in the Children's Rights Alliance, we are saying that there is a really big responsibility on the companies to produce safe products in the first place. </p>
+          <p eId="para_46"> The critical learning is really important for the issue of child sexual abuse material. Those deepfakes not only harm the children who are abused in them or semi-created in them; they also harm children in general because we are seeing it as children producing these, thinking that it is just fun. We have no regulation at all at European level on child sexual abuse material. We have not managed to get anything through simply because of the American concept of privacy. This is a bit controversial, but I will say it anyway. The American concept of freedom of speech, which is not the European concept, and the American concept of privacy have overridden entirely the right to protect children in the digital environment. Ireland is committed, in this particular Oireachtas, to developing a directive that can be brought in gradually. In the meantime, we have huge issues around our Tusla guidelines and the Children First guidelines. We have some really good legislation that is better than in other countries but it is not good enough. We need to protect children such that they understand what they are doing if they are making deepfakes or engaging in cyberbullying that is AI generated. There is that need but where is it to be in the curriculum? There is a most beautiful OECD video that is about half an hour long. In it, a teacher has all of the time in the world, it seems to develop it with the children. It now has to be embedded in the curriculum and not just in one class. It is not just for a tech class but needs to be throughout the curriculum. It also needs to be throughout youth work, to pick up on the points made by the National Youth Council of Ireland. Other people need to be involved so that young people understand that it may not be right or what they are looking for may not be right and they understand the harmful and criminal nature of it. We also have to resource our gardaí and the Director of Public Prosecutions to be able to understand what they are seeing and to be able to stop this criminal activity.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:25:00+01:00"/></from>
+          <p eId="para_47">Thanks. I am sure we will come back to this. Senator Scahill is next.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T11:25:00+01:00"/></from>
+          <p eId="para_48">I am sorry, I went over time.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_12">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:25:00+01:00"/></from>
+          <p eId="para_49">No, you are fine. It is an important point.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_13">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-23T11:25:00+01:00"/></from>
+          <p eId="para_50">We let Ms Blackwell go at it when she had the chance. </p>
+          <p eId="para_51"> First and foremost, I thank our witnesses for being here. It was very refreshing to hear from Grace, Fionn, Mr. Murray and all of the other speakers. We wanted to have their organisations in here this morning so that we can learn from them and hear their feedback on this. Fionn mentioned a number of issues, including protection, design, how children are shielded, verification systems and so on. I ask the YAP representatives to outline how they think companies should be held accountable for their AI products if they are exposing young people to harmful or misleading content.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T11:25:00+01:00"/></from>
+          <p eId="para_52">In the app we suggest that there should be significant fines for companies that have flagrantly ignored children's rights and the protection of children's rights . We suggest that there should be market regulation and that companies, no matter how big or small, should be held to a certain standard. Children's rights must always be protected and companies must be held accountable at the highest level. That is why we have suggested significant fines, in the first instance, when children's data is stolen or misused or when companies do not prevent children from accessing harmful content or misinformation, something that is extremely common at the moment. </p>
+          <p eId="para_53">We have also suggested banning offending companies from the Irish tech sector and setting up a complaints body for young people to contact if they think AI is being misused. These are only a copy of the recommendations that we have suggested. However, they are necessary steps to protect young people and to protect the data that is constantly being stolen, misused or abused in the current tech landscape.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_15">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_54">I thank Fionn for that. After the week that we have had, seeing data leaks and how data has been sold as well, how can young people be better informed on how their data is being used? That is quite important. I do not mind if Grace wants to come in on this one.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Grace French<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_55">It is necessary that we bring education on AI into the curriculum because there are lots of young people who do not know exactly what they are doing with AI and they need to be taught about how their information is being used. Tech companies need to have clear warnings on content but they cannot just take our information and use it without our permission. We should have the option to opt out of data harvesting.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_17">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_56">Thank you. Jumping over to Mr. Murray now, he mentioned that one in three young people is turning to AI companions for relationships at present. How should Ireland regulate or provide a safeguard for this emerging trend without stigmatising young people and making it an issue that they are worried about?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_57">Under the EU AI Act, there are now competent bodies aimed at addressing these issues and providing regulations on certain things. For example, AI in recruitment is something that is high risk so it needs high regulation. We should be considering AI chatbots designed to provide support or engage with young people in that way. Chatbots specifically designed to interact with young people need to be consider high risk and regulated as such and we have the framework under the EU AI Act to do that. What we need to see is a regulation piece where chatbots are being designed for young people to use. Specifically, there are some cases where chatbots are being used as AI mental health tools for young people. That is something that is increasing in other countries. We need to have a serious conversation about what rules we have. This comes to the Senator's point earlier around what do we do in the case of companies that are not adhering to best practice or regulation. By the time we are looking at punishing companies, the harm is already done. We need to look at how we proactively make sure that the compliance is there beforehand.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_19">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_58">I thank the Chair and all the witnesses, in particular the young witnesses, for appearing. The future is bright based on the presentations the three of them have given and no doubt all three of them could be sitting on this side of the committee room at some point in the future. All joking aside, it is useful for us as politicians to hear from young people about AI.</p>
+          <p eId="para_59"> I will frame my questions because in the Houses of the Oireachtas and across Ireland there are lots of people - tens of thousands or maybe hundreds of thousands of people - who still view AI as a sort of an abstract thing that they should be worried out. I was wondering whether our guests, as young people living in Ireland, could give us a flavour, without us prying too much into their personal lives, as to how they use AI in their day-to-day lives? Perhaps they could go through it, from Grace and Fionn to Mr. Murray. Will they give some practical examples of how they use AI, whether it be for education reasons, personal reasons or other reasons, or even that their friends might use?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Grace French<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_60">I use AI a lot to help me study, as do my friends. Sometimes the information that is given to us in textbooks is excessive and we do not actually need all of it, so I ask AI to simplify a topic for me. It can be helpful because it makes understanding a topic a lot easier. It is a useful tool in education, if it is used properly.</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_61">I use AI for studying and education. Sometimes, and we have all been there, you have a night before an exam, you have not studied and you need to cram some notes in. AI is extremely smart, as we all know. If you are able to put in information to say that you need a summary of a chapter on biology, it will come to you.</p>
+          <p eId="para_62">That is what AI should be purposed for and it is what we need to embed into our curriculum - that AI can be used for good things and not just the bad things on which we always focus. AI offers incredible opportunities for growth and can help people grow in professions and fields. That always has to be accounted for.</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_63">I know nothing at all about cramming last minute. As regards my own life and how I use AI, I have recently graduated from university. A lot of the time, we talk about how we use AI beforehand and when you are looking at research but one thing I always thought it was great for was feedback. For example, making a submission to the committee - this is not what we have done in our case, just to clarify - and being able to say, in theory, this is what we have submitted and this is the framework of what they were looking for and ask how those things matched up. It is the same way for putting in an essay. You should never use AI to write an essay or anything like that but after you have written it, you can put in the marking scheme and ask for detailed feedback. That can help you and coach you.</p>
+          <p eId="para_64"> There are a lot of practical ways outside of education as well. For example, if you are trying to catalogue loads of old books or something, you can take a photo with AI and use it to create a spreadsheet where it catalogues everything. There are loads of great and wonderful ways in which young people are actively experimenting to try to do these wonderful new things.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_23">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_65">I am not saying this to discount the issues raised, particularly those raised by Ms Blackwell, which need to be viewed through a criminal justice prism in many respects and it frustrates me that we are not able to have a discussion about innovation in AI and safeguarding children as if they are sort of binary choices. In the witnesses' peer groups, what is the overwhelming emotion or feeling around AI? The witnesses are all here with their official hats on, doing great work for young people, and are focused on those things but I get a sense that the overriding narrative in public discourse and media in Ireland and everywhere else is one where fear may be at the higher end of it but, among the witnesses' generation, what kind of feelings does AI provoke among their peer groups, generally speaking?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_24">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_66">I need people to be brief in response, please.</p>
+        </speech>
+        <speech by="#" eId="spk_25">
+          <from> Ms Grace French<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_67">Young people are actually fairly positive towards AI because we realise it is not going to be the massive problem it is exaggerated to be in the media. Robots will not take over the world at any stage soon. Young people tend to use it more as a tool. It is really positive in school work. With my peers, they look at it positively and they do not see it in a negative way. There is a slight fear of deepfakes but none of my peers have experienced that so I do not think it has come to their attention that it could be a negative. People should be educated to learn about deepfakes and why they are a possibility in future.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_68">I will allow others to come back in. I am just conscious of time. We have not developed an AI tool to keep members on time just yet. I call Deputy Gibney.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_27">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_69">I thank all the witnesses for being here. I am really enjoying today's session so far. I will focus my four minutes specifically on the ombudsman's office and the youth advisory panel. Hopefully, when we get a second round, I will come back in for the other organisations. Starting off with Dr. Muldoon, I have a few hopefully rapid-fire questions before I then get into some more discursive questions with the young people who are here today. It is around the EU AI Act and the office's designation as a fundamental rights body. Has Dr. Muldoon's office been promised additional resources to enable it to fulfil its duties under the AI act or does he expect those resources to be assigned to it in the upcoming budget?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Dr. Niall Muldoon<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_70">To date, there have been no resources assigned. The initial designation of our office said no increase in workload was expected so we should not expect any resources to come with it. It is something we are in negotiations about at the moment. The nine organisations have to meet with each other to determine the level of work that will be required. We will then make a business case for that. You cannot do this without resources. They are false promises.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_29">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_71">What engagement has Dr. Muldoon had with the Department of Enterprise, Tourism and Employment and Minister of State with responsibility for AI since being designated a fundamental rights body, which I believe was a few months ago now?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Dr. Niall Muldoon<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_72">That is right, it is a number of months now. We sent a letter to the Department looking for a meeting with the Minister of State, Deputy Smyth. It has not materialised yet but we expect one very soon.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_31">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_73">Excellent. Finally, Dr. Muldoon may not have the answer to my next question here today but perhaps his office can look into this. From his interaction with Departments and State agencies at the moment, is he aware of or does he suspect the use or deployment of any AI tools with rights holders?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Dr. Niall Muldoon<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_74">It is not something I am aware of at this time but I have to assume it is happening at some stage.</p>
+          <p eId="para_75">The OGCIO and the government in the wider sense are trying to look at how AI is used safely within the Civil Service and the public service, but I am not quite sure on that.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_33">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T11:40:00+01:00"/></from>
+          <p eId="para_76">The difficulty is that in other jurisdictions, such as the Netherlands, for example, there is a register. We do not have that here. This might be a topic I come back to other witnesses with, particularly around social work. Without that register it is kind of up to us, as citizens, to identify the use of AI.</p>
+          <p eId="para_77"> Moving on to the two youth advisory panel representatives, I thank them so much for being here today. I want to build on Deputy Geoghegan's line of questioning around attitudes towards AI technology more broadly. I want to give Ms French time to expand on what she had started to say on how young people feel about AI. I am particularly interested in how the witnesses think attitudes towards privacy differ between their generation and older generations. I ask Ms French or Mr. McWeeney to elaborate on that.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T11:40:00+01:00"/></from>
+          <p eId="para_78">I thank the Deputy. Expanding on Deputy Geoghegan's question asking how my generation feels about AI, I believe the majority of people are quite accepting of AI. As Ms French said, AI and OpenAI are not Skynet. We are used to AI now. We have grown up in a digital world. We have had the technology since we were born. We have been on the Internet. We have all of this information. The main fears for people are deepfakes and, as Ms Blackwell mentioned, AI videos, whether that is revenge porn or AI deepfakes that can lead to cyberbullying or harassment. That is quite a common fear among people. As we come into a world where AI is more accessible than ever, that fear is growing.</p>
+          <p eId="para_79"> Regarding the question on privacy, it is not something people have paid a lot of attention to. When we go onto a website now - even the Oireachtas website - it asks us to accept cookies. Nobody really knows what cookies mean anymore. We go onto any website, we click accept all, and we do that everywhere. Our data is being harvested in every part of the Internet. We cannot imagine how much data is being harvested by AI, ChatGPT and DeepSeek and all these different places.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_35">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T11:40:00+01:00"/></from>
+          <p eId="para_80">I am running out of time. Within the youth advisory panel discussions, do the witnesses see or detect a difference in how their generation, although it is not homogenous as a group, views privacy compared with those of us in the older generation? Do the witnesses think they treat it differently?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T11:40:00+01:00"/></from>
+          <p eId="para_81">We grew up in a world where your information and personal life was your own. We do not live in that world anymore. If you search my name or I search your name, everything is there. We do not live in a world where privacy is at the forefront anymore. We live in a world where public information and public access is everywhere. I think people in our generation have started to accept that. We know we leave a digital footprint everywhere. It has become increasingly difficult for people. When people apply for jobs, somebody will look at their digital footprint. It is everywhere. There is no real privacy on the Internet or in AI anymore. Our younger generation has accepted that. </p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_37">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-23T11:40:00+01:00"/></from>
+          <p eId="para_82">I thank the witnesses for being here today. It is really good to get such a cross-section of views. I thank them all for their statements. </p>
+          <p eId="para_83"> Listening to the witnesses today, I was struck by the benefits of AI but obviously the risks as well. The key things I am hearing are concerns around data protection, child abuse and child sexual abuse and the need for legislation to keep children safe. One of the areas I want to home in on is the idea of critical thinking. We hear that term bandied around a lot and about the importance of critical thinking for all of us in society. Maybe the National Parents Council would like to come in on this. What needs to be done to improve critical thinking for young people and for all of us as a society? How can we improve that? The younger generations are very much at the coalface for how AI is developing, but I am also thinking about future generations when it is going to be so normalised and even more ingrained in our society. We need to protect critical thinking to differentiate humanity from AI and keep that separation. How can we foster that?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Áine Lynch<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_84">It strikes me as we are having this discussion that if we were sitting here 25 years ago we would be having the same discussion about the Internet. The discussion is continuing. With all the regulation that needs to come in for companies, we also need to remember young people’s own capacity and agency in this conversation. That takes us to a point where we need to make sure the media literacy work that is continuously being done for young people and their parents continues and steps up. On critical thinking, the young people themselves have called for more education in schools about it. Parents in our survey said they need more information as well. For all the legislation and tools one can put in place, nothing will beat protecting children through the parent and child relationship and having that support between the parent and child and the school and the child. We need to put the education process in place so young people can use their critical thinking to look at what information is being put in front of them. They have been doing it all along with the Internet and now it needs to be adapted for this. As well as the necessary legislation, we really need to do the education programmes for students, teachers and parents around to work out whether something they look at is real or not. We need to give them those tools. </p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_39">
+          <from>Senator Laura Harmon<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_85">Great. I thank Ms Lynch. I have a follow-up question for Mr. Murray from the National Youth Council. I was very struck by the figure of one in three young people seeking out companionship and emotional support through AI and chatbots. Why does he think that is? Are they turning to this due to a lack of support in general, including face-to-face support? Is it a problem in society or is it a positive thing? If he wants to expand on the consultation the council has been doing with young people, that would also be very welcome. </p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_86">The point about face-to-face support is very important. I will defer to my colleague, Ms Fox, to respond on offline spaces.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Ms Alison Fox<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_87">I was going to follow up on that because it links in to the whole area of critical thinking. What is vital in all these conversations is that while we look at online and AI and its benefits, we must also look at the offline spaces and where young people can get support to have those critical conversations and also to challenge young people, to make them aware of the privacy issues but also have those discussions. Youth work plays a really vital role, particularly for very vulnerable young people who might not have a very positive experience within the formal education system. They need to meet with youth workers with whom they can have those side-by-side conversations and who can really challenge them. Mr. Murray spoke on the statistics which showed how more vulnerable young people, young people growing up in poverty, are not taking the benefits of studying out of AI but they are experiencing many of its harms. When we are considering all this, the youth voice, as YAP talked about, through all the modules is really important because youth voice has something to say on all these areas. We have to empower them but also look at those offline spaces and really support out-of-school as well as in-school so it is informal and formal education for young people to engage in equal discussions around it. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_88">I thank Ms Fox. I call Deputy Keogh. </p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_43">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_89">I thank all the witnesses. I was listening to their opening statements online. The survey from the National Parents Council is especially helpful. I also have a survey in general on online safety. Sometimes for parents, the act of filling in the survey gets them to think of the questions they do not know the answers to and perhaps start those discussions with their children. Sometimes we look at nine- or ten-year-olds and never imagine what they can get up to online or with AI so the surveys are good in the first place.</p>
+          <p eId="para_90"> Fionn's AI cramming was probably healthier than my 4 a.m. Red Bull cramming, so we have come a long way. Grace and Fionn brought up regulation and homed in on age verification. I met with TikTok at the ploughing championship last week. Its representatives were talking about behaviour analysis to figure out if someone is between 13 and 16 years or 16 and 18. There is also talk of bringing in a European wallet on the Google Play store or on the app store so that one would have to upload some kind of ID. Then there is facial estimation for age verification. What are their feelings as youth representatives about what kinds of verifications they would lean towards more? </p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Grace French<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_91">I do not think platforms monitoring the videos and content being consumed to verify age is very reliable because once young people know that is what is happening they will start watching videos that will make them seem older than 18. They will get around that very quickly.</p>
+          <p eId="para_92">On age verification and the European wallet, it is a great idea to have to provide ID like a passport but there are always ways around verification. Unfortunately, there are ways around everything. Young people are always going to find a way to make it seem as if they are older than 18 if they really want to. We can try to have some form of age verification. The European wallet would be the most efficient in that we would have some sort of ID and the information would be uploaded to that, but the point is that young people are always going to find a way to get around verification systems.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_45">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_93">We probably need to have all of the above, all at once, and more. Does Fionn want to come in?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_94">I agree with Grace that AI verification systems in their present form are not working. The UK implemented its Online Safety Act a number of weeks ago and we have already seen the number of exploitations and ways to get around it. It does not work. It is as simple as that.</p>
+          <p eId="para_95"> I agree with Deputy Keogh and Grace that the Google Wallet is the most effective way to do it. It is not a way that you can easily get around and it will help people to avoid using AI that will harvest their data or be dangerous towards their system and could potentially harm them in the long run.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_47">
+          <from>Deputy Keira Keogh<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_96">I thank the witnesses. I will come to Mr. Murray if that is okay. In his opening speech he mentioned the digital divide. This is something I have spoken about in here a few times as well. What comes to his mind when he talks about that? Is it the type of phone or laptop you have, or having an iPad? Is it about paying for professional AI? What kind of solutions does he think we should come up with? Is it grants for families with young children to help them buy better equipment? Is it grants for schools or providing equipment to schools? What are his thoughts on that?</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_97">We saw in the UK a few years ago that they specifically invested in youth work services to tackle online misinformation and disinformation. We can have a similar strategy in Ireland. A lot of work is being done within schools and formal education to learn more about AI but the groups that are at most risk of the digital divide are the types of people Ms Fox talks about - those who are disadvantaged and young people such as early school leavers. It is important that they have a stake in this new technology as well. That is through programmes like the Dream Space programme we have been working on that aims not only to teach them about how AI works - the black box and the algorithms - but also to look at how you can protect yourself and how you can know what is wrong in the way a deepfake is wrong. That AI literacy piece is really important. If you want to make sure that the digital divide is bridged by AI rather than widened for vulnerable people, youth work is a fantastic space by which we can approach that problem.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_49">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_98">I thank the speakers. I call Deputy Paul Murphy.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_50">
+          <from>Deputy Paul Murphy<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_99">I thank all of the witnesses. Often when we think about AI, we just think about ChatGPT and asking it to summarise this for me, but it is behind much of the technology that we use in our lives. It is very pervasive. One example of that is recommender algorithms, which are run on AI. It is AI-driven technology. There have been shocking studies on it in DCU and other universities. You buy a blank smartphone and set up an account as a young man or young woman and within half an hour - if you are a young man - you are being fed toxic masculine content, the likes of Andrew Tate and far-right stuff. That happens very quickly with blank accounts without saying to YouTube that you like this stuff. You just get fed more and more of it. As a young woman, you get fed videos that are pro-eating disorder, pro-self-harm and pro-suicide.</p>
+          <p eId="para_100"> I will start with Grace or Fionn. What do they or their peers experience in terms of the kind of stuff that people are fed on social media?</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Grace French<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_101">Personally, I think recommender systems need to be updated in some shape or form because they are not always accurate to what you actually like. I know a lot of people who have seen content online that they should not have, on the recommender systems. Recently, there was a video of Charlie Kirk being shot. That came up on a lot of my friends' recommender systems, even though they would not be watching videos in any way related to that.</p>
+          <p eId="para_102"> Deputy Murphy mentioned the promotion of eating disorders and self-harm. I would not personally look at content like that at all but for every 20 videos, there is something about an eating disorder or self-harm. It is really toxic. It can really damage people's headspace when those things constantly come up due to recommender systems.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_103">I would like to expand on that. The Deputy mentioned how recommendation algorithms feed people this information. That works because when a certain demographic all watches this thing - Andrew Tate, for example - the algorithm automatically assumes you want that. The main issue is looking into the videos and information people in a certain demographic are looking at and addressing why they are looking at it. For underage girls, eating disorders, suicide and self-harm are common topics. If you set up an account today and say you are a teenage girl, that is what will come up. If you say you are an underage teenage boy, you will get far right stuff - you are going to look at Trump and Charlie Kirk. This is how it works. We need to look at why they are prevalent, why it is so common within these demographics and why it is such a common thread in this algorithm.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_53">
+          <from>Deputy Paul Murphy<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_104">The Children's Rights Alliance in its submission made a point about the EU AI Act and that recommender algorithms were counted as high risk in an earlier draft but then got dropped entirely. Does Ms Blackwell have an opinion on why it was dropped?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_105">There was a lot of lobbying. You have to give credit to the European Union for insisting on putting an Act in place in the first place. They did not get what they wanted. That was the first iteration of legislation in that area. There will have to be more. The code of conduct that came out in August is an attempt to work on some of the issues. It still can be improved by members. The recommenders went for the obvious reason that they are making money for the tech companies. There is no other good reason. In terms of what the companies still have to do, under the AI Act, they have to put systems in place to deal with high risk. Our young friends spoke about sanctions; there are now slightly improved ways for national legislators to impose sanctions that are not Europe-wide under the Digital Services Act. If companies start to lose money because they are denied access to children and young people or any of us, they will start to improve. It will have to be sanctions.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_55">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_106">It is very interesting. The witnesses are giving us all the feedback we need. The most important issue is legislation. Another thing I am hearing is that children's rights have to be put to the forefront in every policy. A lot of these platforms are owned by individuals, which is another issue because often those individuals put their perspective on what is needed or not needed. We spoke about AI-powered recommender systems and AI-generated deepfakes. As young people, how do you cope with that? Can you decipher what is in front of you? Do you see loopholes in legislation we can control or change? What actions can we take to protect you? Any of the witnesses may answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_107">Many committee members are interested in the role of the regulatory sandbox, which Ireland is going to look at. It is important when that framework is looked at that children's rights are built in from the beginning. If there is going to be experimental AI in a public space, young people and children will interact with it. There is great research from different academics that specifically looks at the AI regulatory sandbox with young people's views in mind.</p>
+          <p eId="para_108">Sometimes when we deploy these kinds of technologies, if it is just designed for adults to interact with but children still interact with them, we have not built those protections in from the beginning. That is something I would encourage the committee to consider in its discussion on the sandbox.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_109">I thank the Deputy for his question. There are a few things we can do. In addition to the European wallet that is being developed to try to ensure that children under a certain age cannot access things, the Government's information office is trying to produce an Irish version because the European digital wallet assumes that you have a national identity card. One of the things we can do is try to make sure that that comes in quickly.</p>
+          <p eId="para_110"> In terms of legislation, this committee covers all the various areas because AI covers all these areas. There is a problem that Tusla and the Department of children need to be resourced to make sure there are up-to-date child protection systems in place. In the same way that children who see abuse offline can use those systems, they need to be available in respect of online as well.</p>
+          <p eId="para_111"> We need to look at legislation around what do we do with what is there right now. There is some provision that where we have evidence that systems are not working, national authorities can do something but Coimisiún na Meán, the media regulator, needs to be resourced to collect that evidence. There is currently legislation that there should be an individual complaints mechanism, which Coimisiún na Meán is considering and looking at but it has not put it in place. That would allow children to complain directly to the regulator rather than just going through a big, long process. These are things that this committee could look at that would be really valuable for the future development of children's rights.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_58">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_112">Mr. Murray spoke of a mini-citizens' assembly on AI with 38 people involved. When is that to happen and when will the report be finished?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_113">We are in the process of the recruitment stage. They will be meeting over November. The report will be available. Hopefully, we can make an interim report available to the committee in the new year or slightly later in the new year.</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_60">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_114">Lastly, I am interested in whether AI is creating inequality in our society. As someone said, we have to talk about laptops, phones and iPhones and such, which are very expensive. People in poorer areas will not be able to access that. What is their view on that?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_115">Has anyone a ten-second answer?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_116">The Deputy is right. There has to be massive resourcing in this area. Even within classes, there are inequalities. The other thing that you see is that the children who are better resourced, whether by parental support or better education systems, are doing better. AI is harming them less.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_117">I thank Ms Blackwell. Deputy O'Rourke is online. Is he in a position to join us?</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_64">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_118">I am. I thank the Chair and the witnesses. I have been listening in.</p>
+          <p eId="para_119"> I have a question for Mr. McWeeney and for Ms Lynch from the National Parents Council. Picking up on the piece on AI in education, Fionn gave an example in terms of how he uses AI for cramming before exams. There are some concerns with the leaving certificate reform that people will not use it just for studying purposes but will present AI-generated papers or essays as their own work and that the new additional assessment components for the leaving certificate might lend themselves to such opportunities, and about the potential implications of that. I wonder if Mr. McWeeney or Ms Lynch have a perspective in relation to that, if there are concerns that that type of thing might happen in the first instance, how it might be addressed or minimised from a operational point of view, the protections that might be there and the training, for example, that might be provided to teachers as well.</p>
+          <p eId="para_120">Other witnesses may want to come in on that as well.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_121">I thank the Deputy for the question. When I discussed this with my teacher one time after some protest about the new leaving cert, their general thoughts and the general reason they said they were protesting was not the fear of AI; it was that they had not received the appropriate training as to how to teach the new curriculum and how it would play out in the school environment. In the new leaving cert, with the project-based assessment, we already have that at junior cert level. In my class, in my year, very few people have used AI because the fact is that there are free resources available for teachers and the general public that are able to catch AI out. That is increasingly common with the advance of AI and with more AI chatbots coming out. I know two people in my year who used AI and they were both caught. I think the main reason teachers are worried about the upcoming leaving cert is that they have not received the appropriate training for the new leaving cert.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Ms Áine Lynch<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_122">Building on what Mr. McWeeney says, the education for the teachers is essential but, also, we know that teachers know their students' work really well. If something comes through assessment which is an additional component that is being worked on and looks starkly different from all the other work that student has done, to Mr. McWeeney's point, it is caught very quickly, even without the additional tools. Teachers' knowledge of their students by the time they come to leaving cert is very well established. Yes, good education needs to be put in place for the additional assessment components, particularly around the AI element of it, but the equalities in the leaving certificate exist very strongly at the moment. Some children have an awful lot more leg-up when it comes to doing their leaving certificate than other students. The additional assessment component gives an opportunity to level that playing field that we must take to offer children who traditionally do not sit and do well in exams another opportunity to be able to show what they know. As that is such a great need, we need to take that step forward and work with it and continuously assess how it is working out and whether we need to put more safeguards in place. The additional assessment component is vital for some students who are struggling in our education system at present.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_67">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_123">I thank both witnesses and the Chair.</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_68">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_124">I thank all the witnesses. I was struck by the point about resources. One of the options within the Digital Services Act is the digital levy and the idea of a digital levy contributing to funds that can be used for digital empowerment so one is not, for example, depending on direct grants from the companies that need to be regulated. The witnesses might comment on that.</p>
+          <p eId="para_125"> When we come to resources, Mr. McWeeney spoke about the environmental issue, and that is fundamental. When we talk about fear, it is not necessarily fear of technology, but there is concern about the environmental impact in terms of resources and energy and how that stacks up against what the benefits are. The witnesses might comment on that.</p>
+          <p eId="para_126"> What I wanted to focus on mainly, however, was the question of recommenders. We have heard from the witnesses that a lot of the focus is on entry points to the Internet, but people find ways around that. There are maybe two areas where it is about how the industry itself is regulated. This is not about how children or young people are regulated in their engagement but about the company's practices. One is the question of safe by design, the idea that if you are a 14-year-old using it or a 34-year-old using it, for example, as was mentioned, you should know that you are engaging with an AI tool. Either one should be told. That is building safe by design.</p>
+          <p eId="para_127"> On recommender systems, this is actually within the Data Protection Act. There is a section which says that it would be an offence to process the personal data of a child for the purposes of direct marketing, profiling or microtargeting. That section was never commenced. That meant it never came into effect as law, even though it is in the 2018 Data Protection Act.</p>
+          <p eId="para_128">Some of the witnesses are young teenage girls and boys. Is there scope in terms of ensuring companies cannot build a profile of users to say they are a teenager girl or boy and, therefore, they want to send those users particular materials, either because their advertisers would like them so directed or for whatever other reason? The idea is that young people should be able to use tools to do particular things they ask for but those young people and their data should not be a product. Do we need to look at how companies harvest and use people's data in terms of targeting information? Will the witnesses comment specifically on that?</p>
+          <p eId="para_129"> My last question is particularly for Grace, Fionn and Reuban. Is there a concern when they talk to people using AI about how often it is wrong and the prejudices that are built into it, either from how it is being trained or, sometimes, from the companies' owners? Is there an awareness of inaccuracy and prejudice within AI? Noeline might respond first, followed by Fionn, Grace and Reuban.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_130">I ask the witnesses to be as succinct as possible.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_131">The Senator is right about the digital levy. Coimisiún na Meán is to be funded by the tech companies themselves, to which the latter are already objecting. It is clearly the way forward. The companies going into schools and other places is not a good idea at all. Resources must be put into this and they must be put in by the companies to make things safe. Recommenders should be off by default for everybody.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Grace French<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_132">I thank the Senator for her question. The point about companies harvesting our information is that we do not want them using our personal information to profit or make a gain from us. We just want our personal information to be protected. However, if we start putting in identification systems like Google Wallet, we are giving those companies our data and they will use it. What should happen is that if we give them these identification systems and this data, they should not be allowed to use that data in any way, shape or form. My passport or other identification will show I am female and 15 years old. The company will have to use that information to verify that I can use certain parts of their platform, but they should not use that information to recommend certain content to me. A fine should be imposed on companies that do that and they should be considered to be banned from the Irish tech scape.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_72">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_133">Does Reuban wish to comment very briefly?</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_134">There are groups who are aware of bias, such as better advantaged young people. However, young people who are disadvantaged and do not have access to the AI education they need are less likely to be able to identify where that bias is happening, where those hallucinations are taking place and where AI is getting it wrong. That is another part of digital literacy we need to improve.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_135">There are ten seconds remaining if someone wants to respond very quickly.</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_136">I thank the Senator for her question. With the ever-expanding use of data centres in Ireland, there are immense environmental factors related to cooling them. One of our YAP members observed that the amount of water being put into the data centres, and the amount being wasted, is truly horrific. The environmental factors are huge. When we talk about AI, we must talk about the environmental aspect, which is a huge part of it.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_137">I have a question for Grace, Fionn and Reuban. Looking to the future, in ten or 15 years' time, where do they see AI making a big difference in Irish society, particularly areas about which they are optimistic? This committee must make recommendations to the Government on policy. If there is one thing they could see in our policy recommendations and see the Government do - it does not have to be in education; it can be in any space - what would it be? Grace might respond to that first.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Grace French<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_138">How AI will look in ten to 15 years depends heavily on how the Government reacts to it now. It could go very wrong, with people constantly relying on the Internet - a lot of young people have completely lost their sense of creativity - and our data continuing to be harvested, or it could turn into a really useful tool in education and for people who are poor, who can use the information to help them to study and for other things.</p>
+          <p eId="para_139">One of the recommendations I believe the committee should bring forward to the Government is that we need significant fines for AI companies if children's data is stolen or harvested in any way. If they breach this, the Government should consider taking them off the Irish tech landscape because it is just not acceptable.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_140">Does Ms French think fines are sufficient? I ask because companies are already being fined eye-watering sums for data breaches. Are fines enough?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Ms Grace French<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_141">It obviously depends on the company itself. If it is a multinational company, it is not enough. However, we cannot kick them out immediately. Realistically, we need to set up a complaints body for when children's data is harvested. They need to be able to share their problems with AI. These problems need to be brought to the Government or the Oireachtas. We cannot speak for every young person. They need to be able to speak for themselves as well.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_142">In the next 15 years AI could be in every part of our society and I suspect it will be. I met a woman on the train this morning who was going to a hospital. She spoke to me about AI. She said that she sees such a lack of resources and employment in hospitals now and they are simply not operating at the speed that they should be. She told me that she wants to see AI put in every corner of the healthcare landscape. She wants to see the management of files automated. She wants data to be used through AI. This is something we have to focus on.</p>
+          <p eId="para_143"> If I can give one recommendation to the Government today, I would like to say that for the people my age we need to make AI an essential part of the school curriculum at both primary and secondary levels. We need to be able to identify when AI, deepfakes and fake videos are being used. When people are saying things in a video and it is fake, it needs to be identifiable from the get-go. That is what we need to see.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Mr. Reuban Murray<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_144">I am surprised that the impact of AI on jobs did not come up more in the committee meeting. We asked the young people who applied through our system what the key issues were for them. The number two issue was AI and its impact on jobs. We have already seen that one in three Irish employers are using AI for recruitment and that can even include AI interviews. Young people are applying for those entry level jobs that are more likely to see that. That is going to have a massive impact and is something we have to consider.</p>
+          <p eId="para_145"> When one looks at the AI, counter-disinformation and digital strategies, there is no joined-up thread about how to tackle the issue of teaching young people about AI. How to tackle disinformation is becoming an increasingly bigger problem for young people. We recommend that the strategies be linked and a thread needs to be developed about how we tackle AI literacy and the problem of disinformation. The Chair should feel free to copy and paste this into the committee's report.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Niall Muldoon<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_146">With regard to the importance of fines, that money should be directly sent back into our child protection system. I made this recommendation with regard to the Data Protection Commission when it fined tech companies huge amounts. The money should be used directly as a ring-fenced amount of money. We could equalise our education system by providing tech for disadvantaged children, including Traveller children and children in poverty. We could start to rebuild using those fines so that there would be real benefit from that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_147">I am going to allow members one question in the second round. It is a question, not a statement. If people have a question that they want to direct to a specific witness they should raise their hand.</p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_84">
+          <from>Senator Dee Ryan<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_148">I would like to hear a little bit more from Ms Fox about the empowering young people through AI, data and emerging technologies project the National Youth Council of Ireland is doing with Research Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Alison Fox<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_149">The project came about through our work in the youth sector. We work with youth workers. We hear from them about the whole issue of AI, including the challenges and opportunities that young people are speaking about.</p>
+          <p eId="para_150">We are really conscious that, as a sector, we need to train and upskill youth workers, just as we must train and upskill teachers, on the use of AI. How do we better support young people when they engage with AI but also how do we support young people when they come across harm within that? One part of the project is the consultation with young people. Reuban talked about engaging with a cross-representative group of young people on their views on loads of areas within AI. It is also about looking to develop continuing professional development, CPD, for the youth workers who are at the coalface day to day engaging with young people, particularly in very vulnerable communities. Lots of youth services are largely based in very poor communities. We see a real digital divide there, one on the education level but also, as we already talked about, access to resources within that.</p>
+          <p eId="para_151"> The project is two-pronged. We are also working with the Office of the Ombudsman for Children to see how we can increase awareness among young people. Coming out of the AI juries, we are looking at what specific issues young people are talking about and how we can ensure a youth voice is engaging in all these discussions on an ongoing basis. As Fionn, Grace and Reuban all talked about, they have a real stake in the future in terms of that. How do we raise up their voice on an ongoing basis and better support young people to engage in those discussions?</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_86">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_152">I want to pick up on an issue Grace mentioned in her opening comments. We talked about critical thinking and how AI can become a crutch. She also mentioned creativity. Will she elaborate on the dangers and benefits she sees in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Grace French<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_153">AI can contribute significantly to children's creativity. It can help with hobbies and with creating images, which can be really fun. However, when it comes to coming up with original ideas, people tend to rely a lot on AI. Many of my peers are doing so. It could become a crutch if it is not monitored properly. Young people should be taught in school to develop their critical thinking skills and their creativity skills rather than being reliant on AI. It is becoming something they use instead of using their brain. I have used it a couple of times and, afterwards, I felt kind of crappy because I could not come up with something myself. I felt sort of lacking that I did not use my own creativity skills to come up with something.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_154">Ms Lynch wants to make a quick comment, after which I will call other members. I ask everybody to be succinct.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Ms Áine Lynch<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_155">I have a quick general comment that touches on something Fionn brought up earlier. One of the risks when developing policy around online activity is that we separate it from offline activity. For young people, they are the same. We need to look at this within the context of young people's lives. When we look at it in that context and at vulnerable children, who are often the children most harmed by technologies, we are sitting in a system where we have a child and adolescent mental health crisis in this country and a crisis around services. The children we are seeing most affected and impacted by some of the online dangers are the very children who cannot access the services and supports they need to develop the resilience they need. It can be really risky if we only look at AI in terms of legislation and supports around AI because these are young people who are living their lives every day and we have waiting lists for child and adolescent mental health services that are far too long. Unless we invest in that, we will continuously have children at risk from Internet AI and everything else. That is a general comment.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_156">I will take questions together from the next four speakers. I ask that questions be succinct and answers brief.</p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_91">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_157">Grace said something that shocked but did not surprise me during the questioning about recommender algorithms: that in her feed, the video of Charlie Kirk being murdered popped up on her screen. It is something I have been very concerned about, that a whole generation of people, not just in Ireland but around the world, are seeing videos that my generation would never have seen. Yet, if we turn on our public broadcasters that have licences, the adults, mostly, I presume, watching the news are protected from seeing that video. That single incident illustrates just how badly we, as states and supra-states like the EU, are responding.</p>
+          <p eId="para_158">No company is being held accountable for broadcasting a murder to millions of young people who did not want to see that murder on their screens. Nobody has been held to account for that. That is something we really have to tackle.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_159">I will let Grace respond. I will just get questions from Senators Scahill and Higgins and Deputy Mythen first.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_93">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_160">Grace welcomed the AI office. Ms Lynch spoke about parents' concerns in the survey, over-reliance on AI and the negative effects. Mr. Murray even mentioned the environmental impact of AI. How do they think their organisations can be more involved with the AI office and the decisions it makes?</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_94">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_161">As young people, do the witnesses think AI should be banned from using art and music?</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_95">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_162">I was struck by what Ms Lynch said about resources for youth mental services and even youth community, that is, actual physical spaces for young people to meet, which are one thing that is massively under-resourced in Ireland. She did not get a chance to come in on the recommender. How much does what is getting recommended and pushed to children feature as a parental concern? Will Ms Blackwell say just one line more on what she means by safe by design?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_163">I will allow each organisation a minute to respond and for any final comments they may have. I will start with the National Parents Council.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Áine Lynch<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_164">They were broad questions. We do not have links with the AI office at the moment. The trouble is that, with the way the country works, we are very pigeonholed. The National Parents Council represents parents' voice in education. Breaking down those barriers is important. The information that comes from parents about what concerns them and what they need to support their children is important for the AI office. Even the survey we have discussed would be important information for the office.</p>
+          <p eId="para_165"> We did not ask about the recommenders in our survey because we were specifically looking at education but we hear that parents are very concerned about them and their impact. It links directly to mental health. Fionn made a good connection with it. Some children will just dismiss it and some go down the rabbit hole. That needs to be looked at. That they should be off by default is an important piece, which Ms Blackwell also raised.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Noeline Blackwell<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_166">One thing this committee can recommend is that all actions by the State, all policies, be taken from a children's rights perspective and assessed for their impact on children's rights - the right to education, other important rights and the harms. Recommender systems are where the big companies have to be tackled. It cannot be done on our own. It requires putting in safe by design. The 5Rights Foundation in the UK has developed 11 principles for safe by design. They are really straightforward. It is possible, it is just not being done.</p>
+          <p eId="para_167"> On what we should be doing as a country, there should be a wide public awareness campaign. Then we would know the level at which it is important in our lives - it is not going to go away - how we can use it better and where the harms are. That will help with the pressure. Even the AI advisory council has suggested this is necessary. I would put some of those children on the AI advisory council. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_168">There is a recommendation I would agree with. I call on the National Youth Council of Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Ms Alison Fox<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_169">The main piece I will focus on is the national AI office. It is important that it consistently and routinely engage both with young people so that their voice is heard within that office consistently, particularly with a widely representative group, and with professionals who work with young people on an ongoing basis. That is key to moving forward. If that voice and engagement is not central, then it will have failed.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Ms Grace French<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_170">Deputy Geoghegan mentioned the videos that came up on TikTok. TikTok needs to be found responsible for those.</p>
+          <p eId="para_171">It is not the first time a video like that has come out and the company has taken it down after a couple of days. It is horrific. There are people as young as eight on TikTok, which is horrendous and they should not be on, it in my personal opinion. They are seeing that video and it can genuinely and properly damage their mental health. Adults are not seeing those videos on the news, as was said, but children are and it has a terrible effect on people's mental health. That video was up for far too long, as well as other violent videos, and they were saved. Loads of teenagers still have access to them, even though they are off the Internet now.</p>
+          <p eId="para_172"> Companies and apps need to be held responsible for that type of thing. Why is the video up there in the first place? The video should have gone through monitoring before it was available for posting, even if it is a public account. Senator Scahill mentioned the national AI office. We are a children's rights organisation so our main goal is to have children's rights highlighted. To involve us in the national AI office, all we want is for children's voices to be heard and children's rights to be looked at when laws and decisions are being made.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:30:00+01:00"/></from>
+          <p eId="para_173">Does anyone want to touch on the arts and music issue?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Mr. Fionn McWeeney<recordedTime time="2025-09-23T12:30:00+01:00"/></from>
+          <p eId="para_174">On the issue of arts and music and the great arts sector we have in this country, AI has been used many times over in the United States for music, film and stuff like that. I see it becoming an issue in the distant future; however, I do not believe a flat-out ban ever works in any field. We need to look at where AI is used in the arts sector and why it is used there. Is it because of a lack of resources and artists or is it because they want to make more money? That is what we have to look at. We need to have proper regulations on where AI can and cannot be used in the arts sector.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:30:00+01:00"/></from>
+          <p eId="para_175">I thank all of our witnesses for coming before us. It has been a very useful and informative session. As we continue our work, there is always an opportunity to input on any of the issues that come up because this is a topic that transcends all Departments. We will now have a second session with a number of other young people, youth organisations and children's rights organisations. I thank all of our witnesses for their input. We will certainly take their recommendations on board.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Sitting suspended at 12:32 p.m. and resumed at 12.42 p.m.</i>
+        </summary>
+        <speech by="#MalcolmByrne" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:40:00+01:00"/></from>
+          <p eId="para_176">We are still engaging on the issue of children and young people and artificial intelligence. We had a good first session.</p>
+          <p eId="para_177"> We now have a number of other organisations that are working with children and young people. I will introduce all the witnesses first and then invite them to make opening statements of three minutes. They are: Dr. Emily Bourke, policy and participation co-ordinator of BelonG To; Ms Alex Cooney, co-founder and CEO of CyberSafeKids; Mr. Bernard Joyce, director of the Irish Traveller Movement; Mr. John Church, CEO of the Irish Society for the Prevention of Cruelty to Children, ISPCC; Ms Sinéad Keane, CEO of Spunout; and Ms Jane McGarrigle, national co-ordinator of Webwise.</p>
+          <p eId="para_178"> It is a similar format to before. I ask that everyone be as succinct as possible, keeping their contributions to three minutes. I invite Dr. Bourke to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Dr. Emily Bourke<recordedTime time="2025-09-23T12:40:00+01:00"/></from>
+          <p eId="para_179">I thank the committee for having us here today. I am speaking on behalf of BelonG To, a national LGBTQ+ youth organisation. We work directly with young people aged 14 to 23, and every day we support them to navigate identity, mental health and digital life. I am joined by Rob Byrne, who is here today as a representative for the youth voice of BelonG To.</p>
+          <p eId="para_180"> We regularly consult the young people we work with on online safety, and two particular concerns have emerged in recent years: recommender algorithms and moderation of hateful content. Young people want to have the choice to opt in or out of online recommender systems and algorithms, allowing them more control over what they see online and the amount of time they spend on social media. While many of the young people we work with speak of the positives of social media as a place where they can find community and learn about their identity, they also express serious concerns about the content that is pushed to them and their peers. They see hateful and anti-LGBTQ+ content daily and algorithms push it because it gets a reaction from people, despite the harm it causes.</p>
+          <p eId="para_181"> They are also troubled by the recent weakening of content moderation by online platforms. In light of this, we have been advocating for strong enforcement of the Digital Services Act by the EU on the protection of minors, with risk assessment and solutions that reduce harmful and hateful content online.</p>
+          <p eId="para_182">Importantly, responsibility for the implementation and upholding of these solutions must fall to the online platforms responsible for the content rather than to civil society or affected individuals primarily. I will now hand over to Mr. Byrne who will illustrate some of the additional concerns that young LGBTQ people are dealing with as AI becomes more pervasive.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Mr. Rob Byrne<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_183">I have been involved with BelonG To's services for the previous four years. A concern for LGBTQ youth, particularly those of us who are not open about our identities, is how data is collected through our interactions with AI. AI is being built into more and more websites and apps all the time, often with no way to turn it off. The sale of our data to the highest bidder by big tech, which then uses the data to push specific targeted advertisements to us, could unintentionally out people. This is another important reason we should be able to opt out of recommender algorithms.</p>
+          <p eId="para_184"> AI is also only as good as the information it is trained on and many sources can show bias and reinforce harmful stereotypes, particularly when trained on social media. This risks AI training from its own content, creating a loop where bias is recycled and reinforced within the system. Some LGBTQ young people are also turning to AI chatbots as a form of social interaction when they do not find acceptance at home or in their communities. This is dangerous, as they can become withdrawn from social life, and language models just cannot replace real human interaction or empathy. Some young people have also been able to get around weak guardrails and get detailed instructions on how to harm themselves, with encouragement from the chatbot. Overall, AI has a lot of potential to be used for good. At the same time, it is being used to the detriment of minority groups and society as a whole. AI and tech companies need to be regulated to put young LGBTQ people’s well-being above the pursuit of profit.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Alex Cooney<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_185">I thank the Chair and members of the committee for inviting us to speak today. We appreciate the opportunity to address this crucial issue and will keep our remarks brief, though we are happy to answer questions afterward. CyberSafeKids is an Irish charity focused on promoting online safety for children and empowering families, educators and policy makers to take informed action. We have been researching children’s digital lives for more than a decade and our findings inform our education, advocacy and policy efforts. I am CEO, and here with me is our board director, Ms Clare Daly.</p>
+          <p eId="para_186"> Children today are growing up in a digital world where technology plays a central role. While digital platforms offer opportunities, they also expose children to risks that totally undermine their rights, as outlined in the UN Convention on the Rights of the Child, in general comment 25. The Internet was not designed with children in mind and meaningful protections have been slow to materialise. As AI evolves, it is critical to understand the risk it poses to children’s safety, especially in three areas: AI-powered recommender systems, AI-generated deepfakes and AI-powered chatbots. Starting with recommender algorithms, they shape much of what children see online. Platforms like TikTok, YouTube and Instagram use personal data, such as age, location and interests, to create detailed profiles and serve content. While this can seem helpful, these algorithms often expose children to harmful material - including stuff they do not want to see - with little transparency. We hear about this all the time from children themselves. A 13-year old girl recently said to us, "Sometimes I can feel nervous when I am on my phone. It is very easy to come across rude content that you do not want to see."</p>
+          <p eId="para_187"> Despite platforms claiming to ban harmful content, disturbing material still slips through, such as explicit videos or graphic violence. Last year, the Joint Committee on Children, Equality, Disability, Integration and Youth recommended that recommender systems be turned off by default for children under 16. However, no significant reform has yet been published. While the Digital Services Act offers some hope, current guidelines allow for too much optionality. We urge the committee to make clear recommendations to ban the use of profiling data for content recommendations directed at children. Recommended content should be based only on their explicitly stated interests and shown in chronological order where applicable, including content from accepted friends or connections - never based on inferred or behavioural data.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Clare Daly<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_188">AI-generated deepfakes are an alarming issue. A child's likeness can be used to create explicit content with just 20 images. We have seen reports of children using AI to create sexual deepfakes of peers, leading to real-world harm. These tools remain largely unregulated, and the omission of these risks from the AI Act is a missed opportunity. Other countries, like the UK and Australia, have started addressing this. The UK has announced proposals to ban the creation or distribution of AI tools for generating child sexual abuse material and Australia is moving to ban so-called nudify apps that manipulate images of minors. We urge this committee to consider similar legislation for Ireland.</p>
+          <p eId="para_189">In terms of AI-powered chatbots, AI chatbots are becoming more prevalent, with a growing number of children using them for homework help or social interaction. According to our latest report, over a quarter of primary school children and a third of 12- to 15-year-olds are using chatbots. These chatbots are often designed to feel human - empathetic, warm, and engaging - increasing the risk of children, particularly more vulnerable children, becoming emotionally attached. Recent cases taken by the families of children who have tragically taken their own lives, such as Raine <i>v.</i> OpenAI and Garcia <i>v.</i> Character.AI, highlight how children can be encouraged toward self-harm or suicide by interacting with these bots and, in the Raine case, discouraged from seeking help. While these cases are still under legal scrutiny, they underline the urgent need for safeguards, built in at the earliest stages rather than added as an afterthought. Unlike physical toys, which must pass rigorous safety and compliance checks, AI technologies remain largely unregulated and untested. Children are effectively canaries in the digital coalmine. In Australia, the eSafety Commissioner has introduced regulations requiring tech companies to implement age assurance and safety measures for chatbots under their Online Safety Act. California is likely to follow suit, and we urge Ireland to consider similar legislative measures.</p>
+          <p eId="para_190"> Child rights, including the right to be protected from harm, must be a priority in technology design, policy and legislation. We need stronger regulation to hold tech companies accountable and ensure AI systems are safe for children. We call on the committee to support legislative safeguards that would address these urgent concerns. I thank the committee for its attention to this critical issue.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_191">I thank Ms Daly and invite Mr. Joyce to make his opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Mr. Bernard Joyce<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_192">The Irish Traveller Movement welcomes the opportunity to be here today to discuss the topic of artificial intelligence, and to inform evolving decisions on Ireland’s approaches especially in the area of regulation, and the importance for Travellers of a human rights-based framing as part of any ethical considerations. We have raised these matters with Coimisiún na Meán and have engaged with the coimisiún on development of the online safety code for video-sharing platform services, and the safeguarding required for Traveller children, as a member of their youth advisory committee.</p>
+          <p eId="para_193"> Traveller children are particularly vulnerable to hate-based harms online. Some examples include where dedicated social media bots are created to look like real Traveller accounts and titled under stereotyping names; racist live streaming, which renders complaints inadequate when damage is done in real time; and platforms such as TikTok and Facebook, which facilitate pages that are solely established to negatively stereotype Travellers, including children and young people. We have also raised concerns about the absence of safeguarding via automated discrimination and social media algorithms that act as vectors of harmful content, especially to children, by reinforcement and amplification of content that is inherently attuned to a systemic bias and stereotyping of minority groups such as Travellers. We have expanded in our paper to the committee on some of the matters I would like to refer further here.</p>
+          <p eId="para_194"> Our primary recommendations for the committee’s consideration are on the need for an ethical and human rights standard, and we strongly endorse UNICEF’s policy guidance on AI for children in 2021 and on the UN Convention on the Rights of the Child. We raise the need too, for a very specific protection for Travellers as a group most vulnerable to racism, hate and discrimination bias in every setting, and in digital spaces in particular. We also recommend that digital platforms develop safety by design in all automated and AI-generated interactive tools and systems.</p>
+          <p eId="para_195"> There are three welcome defined protected grounds for Travellers in Ireland’s online safety code for video-sharing platforms, which is underpinned by Article 21 of the European Union Charter of Fundamental Rights. This prohibits incitement to violence or hatred, directed against groups or persons, including on the basis of ethnic or social origin. However, we remain concerned where digital platforms facilitate identity-based harmful content that may not be inciting hatred, but is pervasively stereotyping, perpetuating and racist, while technically still in compliance with the code.</p>
+          <p eId="para_196">The code does require platforms to operate recommender systems in a way that does not result in a user being exposed to content which, in aggregate, causes harm but for the purposes of the protection of minors, the coimisiún also relies on Article 28b(1)(a) of the AMS directive, citing that the most harmful content shall be subject to the strictest measures. However, that harmful content as described in the code is only where it meets the threshold of incitement, which does not take account of the systemic discrimination and racism streamed. The coimisiún’s guidelines aligned to the code also do not go far enough to mitigate against pervasively harmful content. We strongly recommend greater attention to recommender systems. In this regard, an coimisiún as digital services coordinator leverages a good position to promote higher standards for replication in Europe. </p>
+          <p eId="para_197"> Many digital platforms use artificial intelligence for content moderation but those systems are not dealing sufficiently with harm content on ethnic identity grounds. For Travellers this is a safety failure with multiple effects which start with the human-generated harmful content, amplified by automated algorithmic systems, under-moderated by AI systems and with referral to human complaints moderators who are not trained to understand the nature of identity-based harms, and complaints are not upheld. The element of human interaction on content moderation is critical to complaints processes, however without explicitly defining groups in the AI step to trigger a human involvement in the process, these are left unattended. Moderators are also generally not culturally-specific trained.</p>
+          <p eId="para_198"> This issue is not being tackled at the level of the code for platforms. We have referred in our submission to a case involving SoundCloud. The chilling effect of deficient online protection for Travellers grossly impacts on mental health and wellbeing. It also perpetuates a pervasive status for Travellers as being devoid of guardianship generally from procedures designed to protect all by default, without specific attention to the requirement of specialised protection.</p>
+          <p eId="para_199"> Our concerns are also focused on large language models, LLMs, which generate text, images, audio and video. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_200">I must ask Mr. Joyce to wrap up. </p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Bernard Joyce<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_201">We are concerned with the content and the AI. We have provided a submission to the committee. For the sake of time and everything else, I will bring it to a conclusion at that.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_202">Thank you very much. Mr. Church is next.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. John Church<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_203">Chair, committee members and colleagues, thank you for inviting ISPCC here today. ISPCC’s purpose is to protect childhood. We are a long-standing partner in the Irish Safer Internet Centre, under the co-ordination of the Department of Justice, and funded by the European Commission. We are also involved in novel research projects with TU Dublin, demonstrating that AI can be used for good. We have three recommendations. First is enhanced education. Children and young people require enhanced education to support them to learn and to think critically about AI. Second is robust regulation. Legislators must champion a robust regulatory system that supports safe and ethical design of AI technologies. Third is policy co-ordination. A cross-government co-ordinated approach with a national policy focus is needed, situated in the Department of An Taoiseach. </p>
+          <p eId="para_204"> ISPCC’s contribution here today is grounded in the reality that children are using AI technologies. Therefore, our collective focus must be on ensuring that these technologies are designed safely and ethically for them and that children are educated on how to use these technologies responsibly and productively. ISPCC’s service interventions are based on the child-facilitator relationship, that essential human connection. Members of our youth panel questioned whether their interactions with Childline were with chatbots. Once reassured that this was not the case, they stressed the importance of the human element of such exchanges.</p>
+          <p eId="para_205"> In preparation for our appearance, we surveyed our colleagues who have direct daily engagement with children. Children between the ages of eight and 12 are actively using AI through the chatbot features in their online games, with little actual understanding of AI. AI has come up in approximately two thirds of recent engagements with children, who told us they mainly use AI for homework, but they recognise it can be incorrect, and support, but they are curious about who they are talking to and whether their conversations are safe and private.</p>
+          <p eId="para_206">The ISPCC has numerous concerns about children using AI. These include the use of AI for support with mental health. AI cannot pick up on slang, cultural references or subtle emotional cues that may risk leaving a child in a vulnerable position. The use of AI for educational purposes presents a challenge for children who lack the necessary critical thinking skills to interrogate what is being served up to them. As for AI in the proliferation of cyberbullying, sexual extortion and child sexual abuse material, the prevalence of sexual extortion is hugely concerning among young people, with perpetrators stealing images to cyberbully, blackmail and extort their victims via popular apps.</p>
+          <p eId="para_207"> Children interacting with AI may find themselves in an echo chamber, reinforcing how they feel rather than offering alternative perspectives. It is important that maladaptive thoughts and behaviours, assumptions and bias do not go unchallenged. The ISPCC has been working with TU Dublin for several years on research projects underpinned by AI technologies. GroSafe, funded by Research Ireland, aims to develop a technology-enabled solution to build societal resilience against child grooming. N-Light, funded by Safe Online, is a deployable text analysis tool that allows for better data and sentiment analysis of our Childline webchat service. </p>
+          <p eId="para_208"> Before another joint committee in 2018, the ISPCC stated that children are often and invariably the "guinea pigs" when new apps are released into the marketplace. That was true in 2018 for social media, and it is true seven years later for AI. We do not want to be here again in another seven years’ time, or less, testifying that children are still an afterthought in the design process and that harm continues to happen. Better can be done and better ought to be done to ensure childhood is protected. I thank the committee for its attention and we are happy to answer any questions members may have.</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Sinéad Keane<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_209">Chairperson, Deputies, Senators, I thank the committee for the invitation to myself and my colleague, Dubheasa Kelly, to support its important work on safeguarding rights and mitigating risks related to artificial intelligence. </p>
+          <p eId="para_210"> Spunout is Ireland’s youth information and support platform. Each year, we reach over 800,000 young people with factual, non-judgmental information. This year alone, we have spoken directly with more than 30,000 individuals through Text About It, our 24-7 crisis text service. We are in the business of empathy at Spunout, something which AI cannot replicate or replace. We believe that regulation of AI must be carefully considered and crafted in full consultation with the young people whose lives, careers and educational opportunities are most impacted by this technology. </p>
+          <p eId="para_211"> For us, successful regulation would be based on a foundation of respect for transparency, responsibility, accountability and ethics in the provision and operation of AI technologies. Young people in particular must be protected from harm in this space, whether from inbuilt biases in AI models or from irresponsible delegation of decisions to AI, which would most properly sit with a qualified human being. Two areas in which this will be of the highest importance are in the provision of mental health support and in stemming the growing tide of misinformation and hate online. The recent EU loneliness survey has shown that young people in Ireland have the highest rates of loneliness in Europe and are at a growing risk of social isolation. We need to ask serious questions about the potential harms and indeed the existing impact of chatbots and other AI tools in this space. </p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Dubheasa Kelly<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_212">Any regulation must tackle the real risk that AI tools could present to young people in mental health crisis. At a minimum, it will be vital to consider the proper role of referrals from AI tools to trusted, proven support services. Preliminary data from our international affiliates in the digital support space has shown a recent and welcome increase in AI tools making timely referrals to credible, human-run support services like ours. This perhaps shows a way in which AI could be used to support rather than replace the role of trained, empathetic person-to-person support. From consulting with our youth action panel volunteers, it is clear they have profound concerns as to the social and psychological impact of AI technology on young people, whether on mental health, romantic relationships or social development. </p>
+          <p eId="para_213"> One of Spunout’s core values is innovation and we will always champion the free availability of information and technology where it stands to help, support and inform young people. So, too, do we believe in the fundamental value of working collaboratively with young people to understand and mitigate the risks of any new technology. As it works to develop appropriate AI regulations for Ireland, we are calling on this committee to continue and deepen its consultation with young people, as demonstrated by Coimisiún na Meán with its youth advisory committee, to prioritise regulation, education and AI digital literacy and to ensure full and timely enforcement of the Digital Services Act. </p>
+          <p eId="para_214">We look forward to any opportunity to further engage young people in the vital work of this committee. After all, it is they who have the most to gain and the most to lose from how we choose to approach the risks of AI.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_215">I thank Ms Kelly. Finally, we have Ms McGarrigle. </p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Jane McGarrigle<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_216">I thank the Chair and members of the committee for the opportunity to appear before them today. I am joined by my colleague Ms Tracy Hogan, education officer. </p>
+          <p eId="para_217"> Webwise, which is funded by the Department of Education and Youth and co-funded by the European Union, is the Irish Internet safety awareness centre and part of the Irish Safer Internet Centre. We promote safe, ethical and responsible use of the Internet, provide resources and training for educators, information and advice for parents and guardians and are supported by a youth advisory panel made up of post-primary students from across Ireland. Ahead of today’s meeting, we consulted 14 members of our youth panel and will now present their views. </p>
+          <p eId="para_218"> Most members of the youth panel we consulted were familiar with and regularly used artificial intelligence tools. When asked about the main benefits, access to information, advice and assistance and help with learning and schoolwork ranked highest. When asked what they believe is the biggest benefit for using AI tools, overwhelmingly, members noted the potential for AI tools to assist and support their learning. One respondent noted, “to have access for information easy and fast, if you need a deeper understanding of what ur studying”.<i>
+						</i> They also noted the convenience of these systems and it was noted, “AI gives young people a singular place to access a wide variety of information in a short space of time.”</p>
+          <p eId="para_219"><b>
+						</b>Among their top concerns were mis- and disinformation, jobs displacement, malicious use such as, for example, deepfakes, and over-reliance of AI tools, with one respondent noting:</p>
+          <p class="indent_1" eId="para_220">I think the threat that deepfakes and impersonation creates is extremely concerning for young people. It's getting so realistic that you can't tell what's real or fake anymore and it could happen to any of us.</p>
+          <p eId="para_221"> As for what they would like to learn<b>, </b>safe and responsible use of AI, data and privacy considerations, critical thinking skills and environmental impact ranked highest with one respondent noting “Internal workings of different types of AI for better understanding of how AI tools work.”<i>
+						</i></p>
+          <p eId="para_222"> Among their top recommendations were more education in schools on the areas I mentioned and safety by design with appropriate safeguards and strict regulation. When asked what they wish adults understood about how they use AI tools, one respondent noted, “I wish they understood that we don’t just use it for cheating on homework and stuff and that we more use it for educational purposes or entertainment or even advice.” When asked if they could change one thing about Gen AI tools what would that be, they told us they wished it did not use as much water. Other responses were “Make sure they can fact check all information they gather and not spread misinformation”; “Stopping it being marked as a friend i.e. my ai on snapchat”; “Exclude the art element from it, people who spend time making art or digital art are all losing respect and hopes as AI is making it”; “Have more safeguarding in place to ensure malicious information is not being shared and created”; and “That they cannot or would not provide a sense of companionship or create fake unnecessary relationships".</p>
+          <p eId="para_223"> To finish, AI has immense potential to transform many aspects of children and young people's lives but it must be designed safely and ethically and supported by robust regulation. We must also ensure we are preparing children and young people with the skills necessary to benefit from and critically engage with AI tools and systems, and finally, ensure we listen to children and young people on this matter and invest in ongoing research into the opportunities, risks and harms of AI technologies. </p>
+          <p eId="para_224"> Thank you. We welcome any questions the committee may have. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_225">I thank all our witnesses. We will now go to members, who will be aware of the speaking order. I will be a little stricter this time. It is four minutes for questions and answers - I am now being told it is three minutes. I was being generous. It is three minutes but most will probably take four minutes. </p>
+          <p eId="para_226"> I call Senator Dee Ryan. </p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_121">
+          <from>Senator Dee Ryan<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_227">Good afternoon, everyone. The witnesses are all very welcome and I thank them for their contributions. They were very interesting and hugely informative. They will not be surprised that there are lots of similarities and crossover in themes which came up in our earlier session. Reflecting them back to the witnesses, I am sure they are not surprised that the AI recommender systems and that use of recommender systems to push hateful or harmful content came up across a lot of presentations today. </p>
+          <p eId="para_228">AI-generated deepfakes and misinformation also came up. I am curious to learn more about a topic that was raised earlier, which Ms Daly also mentioned, which is AI chatbots. Earlier, the contributor from the Children's Rights Alliance in its submission noted its growing prevalence. Will Ms Daly tell us more on the harms that are being seen? The Act does seek to deal with chatbots in some way. What are the limitations and what else does she think we should be doing to tackle this issue? </p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Clare Daly<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_229">The harms are only becoming more and more known as chatbots are becoming more and more popular. As the CyberSafeKids survey shows, a quarter of children under the age of 12 are using chatbots. These are children between the ages of eight and 12. That is a very young age to be engaging in these technologies which are really not tested. Their own terms and conditions say they are prone to mistakes because they are in a developmental phase. These are untested technologies that young children are using. to answer the first part of the question, the harms are only becoming apparent. We really do not fully know. There are cases that are being litigated in the United States where children have died by suicide following the use of chatbots and reliance on them. It is emotional use and that is one of the risks.</p>
+          <p eId="para_230"> The AI Act was mentioned. It might touch on chatbots but while chatbots are included in Article 52 which speaks to transparency, it does not address the physiological or developmental risks when children form relationships with human-like bots which are designed to appear empathetic. This relational aspect is important, especially when we are talking about very young children or teenagers. The cases in the US relate to children who were aged 15 and 16. I think the harms are only becoming known. </p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_123">
+          <from>Senator Dee Ryan<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_231">What would the ISPCC like to see in terms of ensuring we do a better job here and that we strengthen proposed legislation? </p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Clare Daly<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_232">Safety by design. Safety at inception phase. We use the analogy of toys that are rolled out to children. These have standards and are tested. They are not rolled out on an untested basis. Similarly, you would like to see that with any product that is being targeted at or accessible to children, such that there are standards, testing and safety at inception. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_125">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_233">I am conscious of time so I will go to Senator Scahill. We may come back to the issue. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_126">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_234">I reiterate my thanks to all the speakers. Both the earlier session and this one have been very informative. The big thing I am getting from every representative body is education. That needs to form a part of everything we put into any report on this. I am not going back to Ms Daly specifically but, rather, to her organisation. On deepfakes, during the summer I was at a presentation when someone in the public eye told me a story about how only 20 images of them were needed to create an image which went out all over the place. It was shared in a number of places. This person had to go home and tell their parents that what was being shared was not them, but it was so realistic. The only reason the person knew it was not really them was that it featured an item of clothing that was not theirs. That is how dangerous it is. Ms Daly mentioned laws and changing laws. What specific laws would she like Ireland to introduce on this? I have a young family and I would hate to have that conversation with one of my daughters about some image that had been created. Ms Daly had information on the UK and Australia, which have moved towards an outright ban on these. Is that what the committee needs to look at? Do we need more targeted regulations on that?</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Ms Clare Daly<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_235">As I said, there are other jurisdictions that are banning these deepfakes outright. Technically, deepfake capabilities for general purpose is a widely available tool. There is a legitimate synthetic use for these tools but the harmfulness use piece is where the issue really lies.</p>
+          <p eId="para_236">We were able to legislate against intimate image abuse. Similarly intimate image abuse where we have deepfakes, or even image abuse, should be considered along the same lines. </p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_128">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_237">Mr. Church and Ms Keane also mentioned cyberbullying, stealing of images, blackmail and extortion. Earlier, Reuban Murray spoke about how one in three young people are now turning to AI companions. It was nice to hear Ms Keane emphasise empathy, creativity and judgment. These tools in their arsenal are too valuable to take out of human hands. That is going into a very worrying area in relation to how the bullying, blackmail and extortion can happen from these things and the information they are taking. Have the witnesses experienced any of that with approaches from people in relation to their experience with AI companions? </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_238">I will take one or two responses. I would ask whoever wants to answer to be brief.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_130">
+          <from>Senator Gareth Scahill<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_239">This is for Spunout, sorry. </p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Ms Sinéad Keane<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_240">We have not seen data emerge on this yet from our Text About It service but we do have emerging data on this. It is important that the main issues coming up in our service – we talk to over 50,000 young people every year in this crisis service – are isolation and loneliness. Young people are going online and looking for companionship because of that isolation and the loneliness they feel in society. When we look at the regulation of AI, as I think was mentioned this morning, we also need to invest in our child and adolescent mental health service so that there are in-person supports close to home to which people can go to get support. We also need to invest in our youth services so that there are places in real life where people can go and find that empathic connection such that they are not feeling that high level of loneliness and isolation and then going to AI chatbots for that human connection and potentially getting led down rabbit holes or towards very harmful content and information. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_132">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_241">Thank you. I call Deputy Geoghegan. </p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_133">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_242">I thank the Chair and all the witnesses. This is extremely helpful to the work we are carrying out. For anyone tuning in to the earlier committee session and this session, their views would probably be reinforced that a lot of these companies are essentially operating in a wild west environment when it comes to child safety. One of the young people here earlier was sort of criticising the media narratives of amping up the fear of AI but the reason there is fear is that people are fearful of things they cannot control and there is a great sense that we are not in control and that the “state” - whether it is the Irish State or the EU state - is not in control of the advance in technology, yet so many of us, including people in this room, benefit hugely from the innovations that are taking place. As Noeleen Blackwell highlighted, the EU has passed an Act, to its credit. It distinguishes itself from the United States in that regard. The next phase will be the implementing regulations and what they will look like. Domestically, Ireland and the other member states will have to establish their own AI offices. However, in the face of all that we are also operating in an environment where the EU wants to be more competitive in this space. It wants to ensure the innovations brought about by AI are here. The nut that seems very hard to crack, and I do not know the answer to this, is how is it that all these issues, some of which are real criminal justice issues and ones of mental harm, are being presented in such a binary way? If we were to engage directly with some of the major operators in this space, and I hope that we will, they will talk about their safeguarding and all these things, but none of it is working at the level that we need it to work to. </p>
+          <p eId="para_243"> I have probably given too long an introduction to get a substantive answer. Perhaps the witnesses can guide us on this in future submissions. When we deliver our AI office in Ireland, the primary legislation will come through this committee. If there is any clear view on how we can make Ireland robust from a regulatory perspective that does not dampen innovation but protects children, we are all ears and we want to listen to anyone who can talk about it.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_244">We have 30 seconds. Who wants to come in? I call Ms Jennings.</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Ms Fiona Jennings<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_245">I thank Deputy Geoghegan. It is either going to be a race to the top or a race to the bottom. At the moment, the EU is on that race to the top whereas are perhaps not. The AI office is going to provide a brilliant opportunity not just for Ireland but with regard to what it can potentially achieve and how it can bring about what the AI Act already wants to bring about. There are also the gaps, and we have talked about the gaps earlier. That co-ordinated policy approach is really important. That was said in the earlier session as well. AI is across all the Government Departments. It is across all of our lives. It is really important that we are on this trajectory now with respect to the EU AI Act. Ireland has led the way in terms of online safety regulation. The Chair was a huge part of that as well. It is really important that we hold our position there and continue on that trajectory.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_136">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_246">I thank the witnesses for being here. Some of the contributions from the beginning of this session are particularly stark with regard to the risks the witnesses have outlined. I am keen to dig into them a little bit more.</p>
+          <p eId="para_247"> We have AI as a stand-alone issue, if you like, or something that permeates in very different ways. Before we had AI, we already had a very divisive, polarised and harmful online environment in some ways. I am particularly interested in the experience of those who really feel the sharp end of that. I am going to come to the witnesses from BeLonG To and afterwards Mr. Joyce from the Irish Traveller Movement.</p>
+          <p eId="para_248"> Many of us in public representative roles experience online hate. In my previous work, I have had a glimpse of what the world look likes from the perspective of more marginalised communities for whom online hate is just a day-to-day experience. I know it is a difficult question in some ways but I would love to hear and understand what members of their communities experience with respect to that, and what they think about AI. As far as I am concerned, we hear a lot about how AI is going to supercharge innovation and enterprise, and all of the benefits it has, but it will also supercharge the negative elements of online activity. I want to hear whether the witnesses discuss that at the moment within those communities. Are people already seeing the impact of AI on an increase in hate? I will first ask BeLonG To and then the Irish Traveller Movement, ITM.</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Dr. Emily Bourke<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_249">Yes, certainly from BeLonG To's perspective in communicating with young people who use our services, the big thing that comes up is around algorithms pushing what was referred to earlier, which is content they do not want to see. Some young people in our services have described quite graphic pieces that have come to them in their feeds - anti-LGBTQ content, which really speaks very negatively to them as people. That is the piece that come up again and again.</p>
+          <p eId="para_250"> Then there are other - we were speaking about this earlier - perhaps less obvious but also insidious potential results. Say I engage with LGBTQ content in my feed and later I am on my phone in front of my parents and an ad pops up, then I am outed or potentially outed. There is this kind of outfiltering of impacts alongside what I am sure the Deputy has experienced herself, which is just bots. The Deputy mentioned that there has been a toxic atmosphere on certain parts of the Internet for a long time but with the bots it is just amplified. It is just comments and streams of hate at a volume that was not necessarily there before.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_138">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_251">I thank Dr. Bourke.</p>
+        </speech>
+        <speech by="#" eId="spk_139">
+          <from> Mr. Bernard Joyce<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_252">I think that is a really good question Deputy Gibney asked. In our submission, we have outlined a particular scenario but I will cover that for the benefit of the committee members.</p>
+          <p eId="para_253"> In the context of our input here, it is through a human rights lens and perspective, more so with regard to Travellers, Roma and minority groups who face the brunt of hate online, the division that creates and how that perpetuates itself in communities. I mean to see that in the context of how Ireland and society is now shifting and changing and we are really trying to play catch-up without adequate legislation.</p>
+          <p eId="para_254"> With reference to a survey that was carried out, for example, TikTok and Facebook host certain pages. A survey was carried out where 65% of Travellers said they experienced identity-based discrimination, the second-highest findings of six European countries researched, and 52% experience hate-motivated harassment, with such offences committed on the street or online.</p>
+          <p eId="para_255">Particular groups are now facing a barrage of online hatred. It is extreme, it is incited and it has an impact, particularly on children.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_140">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_256">I am over my time but does Mr. Joyce feel that AI has already turbocharged that or is likely to?</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Bernard Joyce<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_257">Absolutely. I know my colleague here talked about mental health and suicide but when you see young children faced with hate, being belittled and not feeling they belong in society, and that their culture, identity and way of life is not valued, accepted, supported or enhanced, that needs to be regulated. That needs to be addressed in the context of humans and where we are coming from. There is a race. Some people might say it is a race to the top in terms of fast-tracking in technology but it can also be a race to the bottom as to how society sees itself in terms of equity, equality and social justice. We really need to safeguard and protect that with respect to the vulnerability of groups and children regardless of their ethnicity, background, culture and who they are. That is really important. We have seen that very much played out but we have also seen complaints not being addressed and social media posts not being removed, particularly as it relates to children.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_142">
+          <from>Deputy Paul Murphy<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_258">It is a good place to start. I thank the witnesses for all the presentations. I was struck by what Mr. Joyce said about the algorithms acting as vectors of harmful content, reinforcing and amplifying content that is harmful and so on. He made a call to pay more attention to recommender systems. We spoke about this in the earlier session. Will the Irish Traveller Movement support the banning of targeting children with recommender algorithms?</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. Bernard Joyce<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_259">Absolutely. It is really important. When you are starting to look at particular types of information and you start to feel you are in a particularly vulnerable place, you are now overloaded with information. It could be suicidal, mental health or saying, "You are not worthy". You are looking at all this anti, negative, perpetuated information. There is no filter and no turn-off. It is in your room and your home. If it was on the street or in schools, there would be some type of safeguard and protection but because it is online there is no safeguard or protection. I would say it is not only about filtering; it is about banning it and ensuring that children are absolutely safeguarded and protected. Screening is not sufficient.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_144">
+          <from>Deputy Paul Murphy<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_260">I thank Mr. Joyce. I will turn to BeLonG To, who raised many of the same points about people being force-fed anti-LGBTQ, racist, far-right or pro-eating disorder content because it works for the tech giants. Then you have the added issue with AI and the algorithms effectively outing people without AI having the intent to do it in the sense that AI does not have intent. Similarly, is that something BeLonG To has considered? I think it raised the issue of people being able to opt out of recommender algorithms but should they not be off by default?</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Dr. Emily Bourke<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_261">Ideally, yes. Having the option to turn them on and off is a minimum viable option. Having them turned off fully is the ideal.</p>
+        </speech>
+        <speech by="#PaulMurphy" eId="spk_146">
+          <from>Deputy Paul Murphy<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_262">It came up a little bit earlier. It is possible to have social media without these algorithms. It is possible for people to choose themselves what they want. We do not have to have this fed to people. The companies do not want to do it because this is the magic that enables them to keep people's attention and then to sell more ads, etc. It is driven by profit. It is not driven by providing a good social media experience to people who signed up to Facebook to keep in track with their school friends, or signing up for TikTok to follow things or whatever. It is possible to have social media without being driven by these algorithms. Does CyberSafeKids want to comment?</p>
+        </speech>
+        <speech by="#" eId="spk_147">
+          <from> Ms Alex Cooney<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_263">They are designed for engagement entirely, as are AI chatbots. The idea is to keep you on and keep you consuming but it is very insidious. What we would say is there is not a safe or safer alternative for children. You need to just not use the system of tracking and profiling children and looking at their behavioural signals, and then determining what is going to engage them based on that.</p>
+          <p eId="para_264">It should be entirely based on explicitly stated interests and opt-in. The model is entirely inappropriate for children. We are just rolling this stuff out without the checks and balances. We are considering innovation. We are considering privacy to some degree but are not considering safety, so the model is just wrong. </p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_148">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_265">There is a cross channel between what we had this morning and now. The witnesses' themes seem to be a little bit different in that most of their statements are saying there is a grave danger here if we do not look at it, examine it and do it properly. People speak about guardrails. What is not included in the guardrails that should be there now?</p>
+          <p eId="para_266"> Can Mr. Byrne provide us with an example of the detriment of minority groups and his experience of it? I would appreciate that. Mr. Joyce spoke on identity-based harm. He referenced moderators and the training of moderators. How does Mr. Joyce think that can be done, or what does he think should be done on it? </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_149">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_267">I invite Mr. Byrne and Mr. Joyce to answer, then if anyone else wants to answer about the guardrails they can come in. </p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Mr. Rob Byrne<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_268">Can the Deputy repeat his question?</p>
+        </speech>
+        <speech by="#JohnnyMythen" eId="spk_151">
+          <from>Deputy Johnny Mythen<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_269">Mr. Byrne spoke about AI being used to the detriment of minority groups. Can he explain this? </p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. Rob Byrne<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_270">There is a lot of content produced by AI that directly goes online. There is a constant barrage of AI-generated content that targets minority groups. I have recently seen a lot of LGBT stuff. That is what I look at online, so then it would be pushed to me more. I have also seen racial-based hatred online being pushed by AI-generated content. </p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Mr. Bernard Joyce<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_271">That is certainly a good question. AI can obviously so far, but it cannot cover the ethical and the emotion. When it comes to AI, it cannot distinguish bias in its full form, but it can actually enforce it. Therefore, it requires regulation and not outsourcing standards to AI. That is now what is happening. We can see now that standards are being outsourced to AI in terms of complaints and procedures. It cannot decide through ethics. The other side of that is some of these major companies are not in Ireland or in a European context and cannot distinguish particular minority groups. They cannot identify Irish Travellers or other minority groups and therefore, the standard of complaints are not upheld. In that context, we need to look at that at a European level and within an Irish context. I would not be confident that we should just outsource everything. We need to have standards to ensure that humans as such have the authority to still oversee and manage but also manage the pace in which AI technology is moving. We need to hold the pace to catch up with the regulation, steps and safeguards. I am not an enemy of AI. It can be beneficial but it needs to be maintained and managed and safeguards need to be put in place to ensure it does not become a harmful place and does more damage than good.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_154">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_272">I am conscious about the time. We might come back to this. Is Deputy O'Rourke joining us online? </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_155">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-09-23T13:30:00+01:00"/></from>
+          <p eId="para_273">I am, and I thank the witnesses. I have been listening in. </p>
+          <p eId="para_274"> To pick up on the running issue of regulation and specifically in relation to the recommender algorithms, I will start with CyberSafeKids and then anyone else can come in on it. Does CyberSafeKids have recommendations of specific actions? </p>
+          <p eId="para_275">Does it require legislation? Is it regulation? Can Ireland act on its own or does it have to happen at a European level? Are there good international examples that we might lift from?</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Ms Alex Cooney<recordedTime time="2025-09-23T13:35:00+01:00"/></from>
+          <p eId="para_276">The Article 28 guidelines reference the recommender algorithm. The issue is going to be around enforcement because the language is not black and white. It allows optionality. It talks about prioritising explicitly stated interests as regards children, for example, but the word "prioritised" suggests that an alternative is possible. We need to tighten up this language and have much clearer guidelines - more than guidelines, actually - practices and policies in relation to the recommender algorithm and children. We do not think it should be based on profiling or behavioural inferences at all. Ideally, it would be at the European level as well, in order to protect a much wider group of children.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_157">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-09-23T13:35:00+01:00"/></from>
+          <p eId="para_277">I presume these are restrictions that can be made at the flick of a switch, literally, by the social media and tech companies at their end. </p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Ms Alex Cooney<recordedTime time="2025-09-23T13:35:00+01:00"/></from>
+          <p eId="para_278">Yes. It is a training issue. They need to train the algorithm in a different way as it relates to children and not use certain practices, which they are currently using, with this data and metadata, and only be based on explicitly stated interests for children. </p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_159">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-09-23T13:35:00+01:00"/></from>
+          <p eId="para_279">We have looked to Australia. There is an argument against that kind of blunt ban. Are there places that use this more targeted and nuanced approach? </p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Ms Alex Cooney<recordedTime time="2025-09-23T13:35:00+01:00"/></from>
+          <p eId="para_280">Australia has chosen to use the language of ban and to bring in a stated age. This brings in the question of age verification and age assurance. It is going to be doing that from November. We are not in favour of a ban as such. We would much rather see safer online practices and children's rights being upheld in these online environments so they can safely benefit from the online opportunities. Clearly, we need to do a lot more. The Internet needs to know it is a child. We need to do a lot more around age verification to ensure that is the case. Ideally, it would not be these companies benefiting further from our data. Rather, there should be trusted third-party solutions offering age verification. There has been a trial in Australia. An interesting report that has come out of that looks at the viability of age verification technology. It is there and has reached the standard that we need. </p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Ms Fiona Jennings<recordedTime time="2025-09-23T13:35:00+01:00"/></from>
+          <p eId="para_281">Something that could address that is the proposition of the regulatory sandbox which was spoken about in the earlier session. That is an ideal environment for children, regulators and all relevant stakeholders to come together and safely play at what works and what does not. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_162">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-23T13:35:00+01:00"/></from>
+          <p eId="para_282">I am interested to see the environmental piece coming up in a couple of presentations, and that the recommender piece is very strong. I have questions about the gathering of data. Mr. Byrne mentioned the idea of his data being sold. Would he agree that it should not be the case that information can be sold to advertise or target information at someone because they are a teenage boy, teenage girl or anything like that, or because of data that is inferred and gathered about them? This was in the Data Protection Act 2018. The section around the idea of profiling and microtargeting being an offence for commercial purposes when a child is involved was never commenced. Mr. Byrne mentioned the idea of bias loop. It is getting deeper and deeper. I ask him to comment on the idea of the prejudices arising from what is getting trained on. We do not just need to regulate who can be accessed by the algorithms, but how the algorithms are being trained, particularly when we have seen very active positions being taken by some of the owners of major tech companies. They have been clear about their intentions to train and that their AI products should represent and perhaps, in some cases, push certain prejudices and perspectives.</p>
+          <p eId="para_283">I would be interested in that. I then have a specific one for Mr. Joyce, and Mr. Byrne might comment on it as well, regarding the idea of prejudice being pressed. The witnesses also mentioned deepfakes. We have talked about deepfakes for individuals but it almost strikes me just hearing the witnesses speak that there is something around deepfakes for communities. That is, if you have the pretend Traveller or the caricatured or invented LGBT character or anything else that is being created which damages the community, do we need to look a little bit at the deepfake piece? </p>
+          <p eId="para_284"> Lastly, to Ms Keane, on the relationship piece I was really struck by her mentioning romantic relationships. It is not just the fake empathy piece but the danger of fake relationships in terms of not just the social but also the romantic. We know for example, some of the fake online girlfriends being offered at present are available to 12-year-olds. The witnesses - any of the others or Mr. Byrne - might comment on the danger of those same prejudices, how we react and what romantic relationships should look like when we know there is a lot of misogyny. Is there a danger there in how we set young people up to have romantic relationships in the future if they get used to fake chatbots?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_163">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_285">We have 22 seconds left so I will allow 20 seconds to Mr. Byrne, Mr. Joyce and Ms Keane in responding. I will go to Mr. Byrne first. </p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Mr. Rob Byrne<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_286">With regard to what the Senator was saying about the bias loop, obviously AI constantly trains off everything that is posted around it but a lot of the content now being put out is made by AI itself and contains all the biases. We then run into an issue where it reinforces itself with said biases with the same content it is producing and training itself off of. This creates a massive loop and completely reinforces the ideas it already has. That is a real danger because it is constantly reinforcing those really negative things. It makes it tougher for the positive things or things differing from that to break through because there is such a volume of content. </p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Mr. Bernard Joyce<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_287">The Senator will have probably seen in our submission that AI can generate a very biased picture of any particular group. In this case, there are two photographs that show a young Traveller child but it is reinforcing a certain prejudice in terms of poverty, deprivation, type of accommodation and the clothes. That is really dangerous because it has taken all the information and has then created an image, including the background and the child, portraying the child as a Traveller. In this case, it names it as a Traveller but it is on a site. That itself is perpetrating a type of prejudice and reinforcing it. When we talk about social exclusion, it shows this in some form but it does not show the positive, the contributing factor, the culture, the identity and all the other areas. It is certainly dangerous and we really need to address that type of imagery. </p>
+        </speech>
+        <speech by="#" eId="spk_166">
+          <from> Ms Sinéad Keane<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_288">Regarding romantic relationships, there certainly are extreme dangers for under 18s who have the potential to develop sexually explicit relationships. We have taken a long time in this country to come to a place where through the education system we can teach people about consent and healthy relationships so there is a lot of potential harm that can be done. This goes back to the piece around social isolation and loneliness. We are currently conducting research into that that we can share with the committee in the coming months when it is prepared. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_167">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_289">Chair, could I just get a "Yes" on-----</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_168">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_290">I cannot. I have already allowed the Senator five and half minutes-----</p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_169">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_291">-----the sale of data, if there was an agreement on the sale of data? It is just a yes-no answer.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_170">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:40:00+01:00"/></from>
+          <p eId="para_292">I cannot; I have to be fair to everyone. We are moving towards wrapping up. </p>
+          <p eId="para_293"> I want to ask very specifically the responsibilities we have between the regulatory responsibilities. Obviously, we have the Data Protection Commission, which has specific responsibilities and Coimisiún na Meán has responsibilities under the Digital Services Act and under the Online Safety and Media Regulation Act. We will establish the AI office and part of what we are looking at here in this age of AI is how we ensure the safety of children and young people to be able to avail of all the positives. What message would any of the witnesses like to send to the regulators in terms of what they are doing? </p>
+          <p eId="para_294">I am conscious Ms McGarrigle has not said anything in terms of the question. We will have her first and then any others may want to come in. </p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Jane McGarrigle<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_295">One of the things we have not really had an opportunity to discuss is that we do not have a national picture, data or research into the emerging risks, opportunities and harms of AI technologies. From our perspective, it would be really important to invest in ongoing research into what children are getting out of the AI tools and what are the emerging risks for them so that we can build an evidence-based response to this. That would be one of our recommendations. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_172">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_296">Our committee is certainly of the view of setting up an AI observatory to look at a whole range of issues for which we have an evidence base in that space. </p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Ms Jane McGarrigle<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_297">That is very welcome. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_174">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_298">Does anyone else wish to add to this in terms of the regulators?</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Ms Dubheasa Kelly<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_299">There are two areas we would like to highlight and bring to the regulators' attention. The first one is the voice of the young person being at the centre of that. Spunout is a youth-led organisation where we always place young people at the centre and we find it incredibly beneficial. For us, in engaging with our young people, they have brought to our attention they are highly concerned. While there were some positives in our consultation with them, there were predominantly negatives, which was in contrast to some of the contributions earlier today. Having them central to that would be key for us. The second is, and it goes back to what colleagues have said here, safety by design but including the guardrails such as that training around safeguarding and signposting. </p>
+          <p eId="para_300"> As we mentioned in our statement, there have been reports from affiliates of ours, which deliver the same service in Canada and the UK. They have found increasing reports from service users that they have been signposted by AI. One of the things we are doing is looking at our post-conversation survey to gather data on that and we will report back on this. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_176">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_301">Ms Cooney was signalling to come in. </p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Ms Alex Cooney<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_302">There is this idea that we need to build child protection and child rights even into the design of our regulation. The AI Act is a good example of where child protection was not a central consideration and as a consequence, it is lacking in that area. We need child rights by design, including the consultation with children, privacy by design and safety by design. There are clear standards that have been recommended and we need to use that as the best practice. </p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_178">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_303">I will allow members a direct question to an individual, if they signal. Senator Ryan can go first with a direct question. </p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_179">
+          <from>Senator Dee Ryan<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_304">I am thinking a lot about digital awareness - and this one is for Ms McGarrigle - in adults and in children. We all know in our own lives that adults do not realise what cookies are. They are the foundation and building blocks for recommender systems when we go online and on social platforms but with children, who would not spend as much time on websites where it is confined and more likely to be found on social platforms, are they aware the content they are viewing is prompting the next piece of content they are going to view? Is there an awareness in them as users?</p>
+        </speech>
+        <speech by="#" eId="spk_180">
+          <from> Ms Jane McGarrigle<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_305">I thank the Senator for that question. We spent a lot of time over the past couple of years talking to our youth panel about recommender systems and online algorithms. One of the things that struck me most about our conversations last year when I asked the young people what they do if they see something they do not want to see online or something that is harmful, was they had developed their own strategies on how to get by this. They know that if they spend too much time on that content, the algorithm will feed them more of that content and they do not want that. They do not have much trust in the reporting systems. They do not want to click or view on any more so it is kind of sad that they had to build their own strategies to be able to bypass these things. They do not have trust. They are aware of the systems and I suppose, within our own role, we have developed our own materials to support that and lessons around the power of the online algorithm. </p>
+        </speech>
+        <speech by="#DeeRyan" eId="spk_181">
+          <from>Senator Dee Ryan<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_306">I am just thinking specifically of those eight to 12-year-olds, the 25% who have reported seeing harmful content or content they did not wish to view, and if we have any information on how many of those eight to 12-year-olds-----</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_182">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:45:00+01:00"/></from>
+          <p eId="para_307">Deputy Gibney and then Deputy Geoghegan. I am being very lenient. </p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_183">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_308">I have been critical of the balance I see coming through from the Government in terms of actions. There is discussion around the risks versus the benefits of AI but, for example, I would be critical that that balance is not there in the programme for Government. I am keen to hear the witnesses’ analysis of policy development in this area. Do they think the Government is getting the balance right between risks versus benefits of AI in terms of actions rather than rhetoric?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_184">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_309">Who is the Deputy asking?</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_185">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_310">Anybody, but perhaps we could begin with Ms Cooney and Ms Daly.</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Ms Alex Cooney<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_311">We have guardrails now in a way that we did not two years ago through the Online Safety and Media Regulation Act and the Digital Services Act. We would argue that neither goes far enough on addressing risk. For example, the online safety code does not address the recommender algorithm. It deferred to the Digital Services Act for that. When we look at the wording of the Digital Services Act, it is not very strong. We are missing an opportunity. We have got to look at enforcement. If the language is too vague we will not be able to enforce it. To our minds, that is a really important gap to address.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_187">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_312">Mr. Church has one sentence.</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. John Church<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_313">In 2015 and 2016 we saw it come through our Childline data that online safety was an issue. It is now ten years later and we see legislation. All I would say is listen to the voice of the child very quickly and let us not wait for years to build up data. There are issues there and regulation takes a lot of time to put through. We are still talking about it ten years later.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_189">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_314">Deputy Geoghegan has a final question. </p>
+        </speech>
+        <speech by="#JamesGeogheganFG" eId="spk_190">
+          <from>Deputy James Geoghegan<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_315">Quite rightly, this discussion has been about risk. I am curious, within their own organisations and the people they represent, where do our witnesses see or are there benefits from AI to augment and support the work their advocacy is doing and the people they represent?</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Ms Fiona Jennings<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_316">I have three examples. One is our GroSafe project that is funded by Research Ireland in association with TU Dublin. It employs AI technologies around building a technology-enabled solution to develop societal resilience against child grooming. There is a digital game built around this as well as a knowledge-management system, a reporting feature and a signposting service. That is currently in development. We are before the international panel review next week. We are in the final three and we hope to make it to the final one. Our N-Light project is also underpinned by AI technologies. That is going to automatically interpret the feeling and sentiment of child web text messages. It involves machine learning that has been trained by our own data from our Childline web chat service. Again, that is going to allow us to better understand how children are talking about these issues from their perspective. This really puts that “voice of the child” piece into action.</p>
+          <p eId="para_317"> Another project is going to be looking at is a regulatory sandbox for online redress, Webwise. My colleague Ms McGarrigle is a project partner.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_192">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_318">Senator Higgins has one line. </p>
+        </speech>
+        <speech by="#AliceMaryHiggins" eId="spk_193">
+          <from>Senator Alice-Mary Higgins<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_319">Does Ms Jennings think that as part of the regulation, we should be looking at prohibiting the processing, profiling and gathering of data on children as something that can be sold for direct marketing or micro-targeting purposes, either by recommending or through advertisements?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_194">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:50:00+01:00"/></from>
+          <p eId="para_320">I believe there is agreement.</p>
+          <p eId="para_321"> I thank all of our witnesses in this and the last session. It is the intention of our committee to hear the voices of children and young people. It is critical that as we avail of the benefits of artificial intelligence, we are also aware of the challenges and threats. We are very keen that children’s and young people's voices inform that. We are keen that over the process our witnesses continue to input into that as we inform Government policy in this area.</p>
+          <p eId="para_322"> We are going to adjourn until 30 September, which is next week, for our meeting on artificial intelligence and older people. It will be a different perspective, but informing our thinking again. </p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 1.54 p.m. until 11 a.m. on Tuesday, 30 September 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

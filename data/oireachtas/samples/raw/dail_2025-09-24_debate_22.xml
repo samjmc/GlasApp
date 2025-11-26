@@ -1,0 +1,738 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-09-24/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-09-24/debate"/>
+          <FRBRdate date="2025-09-24" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/committee_on_budgetary_oversight"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-09-24/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-09-24/debate/mul@"/>
+          <FRBRdate date="2025-09-24" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-09-24/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/committee_on_budgetary_oversight/2025-09-24/debate/mul@.akn"/>
+          <FRBRdate date="2025-09-26" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="GeraldNash" href="/ie/oireachtas/member/id/Gerald-Nash.D.2011-03-09" showAs="Ged Nash"/>
+        <TLCPerson eId="JackChambers" href="/ie/oireachtas/member/id/Jack-Chambers.D.2016-10-03" showAs="Jack Chambers"/>
+        <TLCPerson eId="JoeNeville" href="/ie/oireachtas/member/id/Joe-Neville.D.2024-11-29" showAs="Joe Neville"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="MaireDevine" href="/ie/oireachtas/member/id/Máire-Devine.S.2016-04-25" showAs="Máire Devine"/>
+        <TLCPerson eId="PaschalDonohoe" href="/ie/oireachtas/member/id/Paschal-Donohoe.S.2007-07-23" showAs="Paschal Donohoe"/>
+        <TLCPerson eId="PearseDoherty" href="/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23" showAs="Pearse Doherty"/>
+        <TLCPerson eId="RichardODonoghue" href="/ie/oireachtas/member/id/Richard-O'Donoghue.D.2020-02-08" showAs="Richard O'Donoghue"/>
+        <TLCPerson eId="RyanOMeara" href="/ie/oireachtas/member/id/Ryan-O'Meara.D.2024-11-29" showAs="Ryan O'Meara"/>
+        <TLCPerson eId="SeanFleming" href="/ie/oireachtas/member/id/Seán-Fleming.D.1997-06-26" showAs="Seán Fleming"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Finance." href="/ie/oireachtas/role/minister/finance." showAs="Minister for Finance."/>
+        <TLCRole eId="Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform." href="/ie/oireachtas/role/minister/public_expenditure__national_development_plan_delivery__reform." showAs="Minister for Public Expenditure, National Development Plan Delivery and Reform."/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COISTE UM FHORMHAOIRSIÚ BUISÉID</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Committee on Budgetary Oversight</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-24">Dé Céadaoin, 24 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-24">Wednesday, 24 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 06:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 06:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CathalCrowe">Cathal Crowe</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MaireDevine">Máire Devine</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#CormacDevlin">Cormac Devlin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#PearseDoherty">Pearse Doherty,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#MaireadFarrell">Mairéad Farrell</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SeanFleming">Seán Fleming</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#GeraldNash">Ged Nash</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#JoeNeville">Joe Neville</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#RyanOMeara">Ryan O'Meara</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#EdwardTimmins">Edward Timmins.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Johnny Guirke</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#RichardODonoghue">Teachta / Deputy Richard O'Donoghue sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Pre-Budget 2026 Engagement (Resumed)<recordedTime time="2025-09-24T18:30:00+01:00"/></heading>
+        <speech by="#RichardODonoghue" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T18:30:00+01:00"/></from>
+          <p eId="para_14">I ask everyone to turn off their mobile phones and devices or put them on silent. Before we begin, I wish to explain some limitations to parliamentary privilege and the practice of the House with regard to references that may be made to other persons in the witnesses' evidence. Witnesses are protected by absolute privilege in respect of the presentations they make to the committee. This means they have absolute defence against any defamatory actions for anything they say at the meeting. However, they are expected not to abuse the privilege and it is my duty as Chair to ensure it is not abused. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction. </p>
+          <p eId="para_15"> I remind members of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. Members attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that in order to participate in a public meeting, members must be physically present within the confines of the place where the Parliament has chosen to sit. In this regard, I ask any members participating via Teams that prior to making their contributions, they confirm that they are on the grounds of the Leinster House campus. </p>
+          <p eId="para_16"> Members are also reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative that they comply with any such direction. </p>
+          <p eId="para_17"> This evening's engagement forms part of our pre-budget 2026 scrutiny and engagement and is our last public engagement on this matter. I welcome the Minister for Finance, Deputy Paschal Donohoe and the Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation, Deputy Jack Chambers. The committee welcomes the opportunity to engage with the Ministers. In the interests of time, we will take the opening statements as read and go straight to questions. Is that agreed? Agreed. I remind members that they have five minutes for questions and answers due to the time constraints.</p>
+          <p eId="para_18">I apologise in advance; I will cut everyone off at five minutes.</p>
+        </speech>
+        <speech by="#RyanOMeara" eId="spk_2">
+          <from>Deputy Ryan O'Meara<recordedTime time="2025-09-24T18:40:00+01:00"/></from>
+          <p eId="para_19">I thank the Ministers for being here this evening. I am conscious of our time constraints and a possible division bell that could go at any stage. I thank them for the opening statements which have been provided. I will start on the delivery of infrastructure. The Nevin Economic Research Institute was in with us yesterday. Infrastructure investment and capital expenditure as part of this budget was a key focus of its opening statement and contribution. Members of the Oireachtas for the mid-west also met with IBEC on Monday. IBEC was at the committee yesterday. A lot of the discussion was about the delivery of infrastructure.</p>
+          <p eId="para_20"> A major concern for me is the delay in the planning system and the ability that has to frustrate investment into capital infrastructure in this country, whether it is coming from the State or elsewhere. Planning permission applications spending prolonged periods in the system results in prices increasing but it also affects private investment coming from FDI. We talk about tariffs and the medium- to long-term effects tariffs could have on investment in future projects in this country but, right now, we are hearing the frustration among private businesses with the planning system and the potential for abuse of the judicial review system in frustrating active planning permissions, which I see in a lot of cases. That is deterring private practice and private companies from investing in their key infrastructure. I will start on that and how the planning permission system is potentially frustrating infrastructure delivery.</p>
+        </speech>
+        <speech by="#JackChambers" as="#Minister_for_Finance." eId="spk_3">
+          <from>Minister for Finance. (Deputy Jack Chambers)<recordedTime time="2025-09-24T18:40:00+01:00"/></from>
+          <p eId="para_21">The Deputy is absolutely right on that. I was actually at the infrastructure committee for most of the afternoon where we discussed this at length. In the summer economic statement and budget 2026, we have prioritised capital investment in the economy. There is €19 billion being allocated next year, which is about 5.3% of GNI*, which is a significant signal from us about trying to create, as a Government, the space to really invest in capital infrastructure in our economy. However, additionality on its own does nothing. That is why we will publish the reforms and actions we are trying to advance in the weeks following the budget, which is all about trying to truncate and shorten the project life cycle around water, transport and energy infrastructure, which is taking too long.</p>
+          <p eId="para_22"> Some of it relates to our legal system. The Deputy is right. Narrow interests are subverting the public interest in how the process is evolving. A lot of work has been done by our colleague, the Minister, Deputy Jim O'Callaghan. There is also ongoing work between my Department, the Department of housing and the Department of justice on the environmental legal aid scheme, for example, and reforms there. All of this frames the reforms we will advance in the actions which we have published and through the accelerated infrastructure task force, really trying to demonstrate how we can shorten the project life cycle, which is too long and is harming some investment decisions. Ultimately, it will constrain economic growth unless we drive delivery. I am in absolute agreement with what the Deputy said. We will show the outcomes from the work we are doing in the weeks following the budget.</p>
+        </speech>
+        <speech by="#RyanOMeara" eId="spk_4">
+          <from>Deputy Ryan O'Meara<recordedTime time="2025-09-24T18:40:00+01:00"/></from>
+          <p eId="para_23">There was a conversation on tariffs here yesterday and it was about supporting indigenous industry. I put a question to the Central Bank and its response kind of surprised me, particularly about indigenous industry in the part of the country I represent, where the nitrates derogation is a major issue at the moment. I asked the Central Bank whether it had done any investigation into what the economic impact of a loss of derogation would be on the Irish economy, particularly the rural economy. Derogation probably affects one part of the country in particular, let alone the fact it only impacts one country in all of Europe. The response was there has been no research done on that. When we talk about supporting indigenous industries, it is quite worrying to learn that there has been no research done to see what the economic impact of a loss of the derogation would be. Has work been done within the Government on that?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform." eId="spk_5">
+          <from>Minister for Public Expenditure, National Development Plan Delivery and Reform. (Deputy Paschal Donohoe)<recordedTime time="2025-09-24T18:40:00+01:00"/></from>
+          <p eId="para_24">I will come in on that. As all of the forecasting we do is very much at a macroeconomic level, it would not take account of matters such as that, even given their scale. It is a fair point that it is something we should consider. All of our forecasting is done at a national level. At times, we find it difficult to take into account sectoral-specific developments, even if those sectoral developments are really important. I am sure the Department of agriculture has done work on it. I know it is engaging with the Commission about the future of the derogation. I will certainly take that point away to see if it is something we could consider more in the forecasting we do.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T18:40:00+01:00"/></from>
+          <p eId="para_25">Before I suspend the committee for a vote in the Dáil, I welcome Deputy Joe Neville's parents and family members who are here today.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Sitting suspended at 6.46 p.m. and resumed at 7.36 p.m.</i>
+        </summary>
+        <speech by="#RichardODonoghue" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T19:30:00+01:00"/></from>
+          <p eId="para_26">Deputy Neville has five minutes and as I said earlier, I will stop people at five minutes because we are restrained on time.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_8">
+          <from>Deputy Joe Neville<recordedTime time="2025-09-24T19:30:00+01:00"/></from>
+          <p eId="para_27">That is no problem. I welcome both Ministers and their teams this evening.</p>
+          <p eId="para_28"> It is a late evening but at same time, it speaks to the importance of what we do here at the Committee on Budgetary Oversight and, more importantly, the importance of what the Ministers do in setting the budget. We are here to discuss the state of the country. The Minister, Deputy Donohoe, would have seen much more difficult times from a budget perspective in his time here. He saw critical issues during his time as a TD and in various roles. Notwithstanding that, there are different types of pressures. They almost have been the pressures of success as a country economically over the past number of years and what that brings with it but at the same time, they have to be dealt with too. With some of the economic pressures we know we are coming up against the issues of infrastructure and requirement for infrastructure. I was with the Minister, Deputy Chambers, earlier in one of the other committees, and we spoke about the need for infrastructure, specifically across the economy, and how we know that is required as part of that budget.</p>
+          <p eId="para_29"> We know from businesses and much of the work we have done with other groups that they speak continually about the importance from an economic perspective of the question of how we can build up resilience within our own indigenous economy, small businesses and the Irish base to ensure we do have a strong economic base fundamentally and not be as reliant on the corporate windfalls. I do not mind who answers this first question and I know the Ministers cannot get into specifics but from the budget's perspective, how do we think we can build future resilience into the economy over the next year and couple of years? </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_9" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:30:00+01:00"/></from>
+          <p eId="para_30">I thank the Deputy. I will kick off with one element of the resilience. We aim to run budget surpluses and then deposit those surpluses into the Future Ireland Fund and the climate, nature and restoration fund. Those two funds, by the end of this year, will be somewhere between €15 billion to €16 billion. The Minister, Deputy Chambers, and I aim to add to that in next year's budget as well. That resilience is critical from a public finance point of view. However, the work the Minister is doing on investment in infrastructure, which he has already spoken about this evening, is every bit as much an element of resilience within our economy as running budget surpluses. It is that twin-track approach in this budget and the four budgets afterwards that is going to be how we maintain our resilience in what has become a very volatile world.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_10">
+          <from>Deputy Joe Neville<recordedTime time="2025-09-24T19:30:00+01:00"/></from>
+          <p eId="para_31">Something that came up with a number of contributors yesterday, including IBEC and NERI, was broadening the tax base. That is obviously a difficult question and all of those questions will probably be answered more fundamentally in the next two weeks, but do the Ministers have any thoughts on that?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_11" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:30:00+01:00"/></from>
+          <p eId="para_32">Our efforts to broaden the tax base do not get the profile they merit. We revalued local property tax. It is the second time it has been revalued. Many jurisdictions struggle with one revaluation and we have done two.</p>
+          <p eId="para_33">We have broadened the number of homes that are paying it. The price brackets for evaluating LPT are now a bit more appropriate and realistic for the property market. Every year we do carbon tax moves. We are about to move into a period of gradually increasing PRSI to better fund pension savings in the future. I believe we have a very credible story regarding tax base broadening. Tax base broadening does not have to be done in a big bang by bringing in big new taxes in a single year. Instead, this and the previous Government budget by budget have made gradual changes. Carbon taxation is a difficult topic at the moment due to where we are with energy prices. In a few years that will bring considerable tax revenue. That is a good example of broadening the tax base.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_12">
+          <from>Deputy Joe Neville<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_34">I was a councillor for many years and saw at first hand how the LPT has evolved and indeed how it has changed this year. I agree with that.</p>
+          <p eId="para_35"> I have more of a left-field question. How does the Minister plan to deal with debt management in the context of the budget surplus? What are the thoughts behind that on the general question of the national debt?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_13" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_36">From our point of view, it is about ensuring that our debt as a share of national income continues to fall, which it is. It will be 65.3% for 2025, which is a big decrease on previous years.</p>
+        </speech>
+        <speech by="#JoeNeville" eId="spk_14">
+          <from>Deputy Joe Neville<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_37">I thank the Minister for coming tonight.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_15">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_38">Gabhaim buíochas leis na hAirí as teacht os comhair an choiste. I also welcome their officials. I am conscious that I only have five minutes so I will try to ask a few questions as quickly as possible. We know that the budget package will be about €9.4 billion and from the budget package we know two things for certain: capital investment is set to be about €2 billion and public sector pay is set to be about €1.2 billion next year. I ask the Minister to confirm a ballpark number for what the ELS is due to be. I am not asking for the exact amount down to the last cent but just a ballpark figure.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_16" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_39">We are taking a different approach to ELS this year where we are looking at the totality of expenditure. In the initial engagement we have had with all Ministers, the emphasis has been on reform, efficiency and the delivery of services on the baseline expenditure. That is informing the allocation in terms of their existing service but also what might be possible for next year. We are taking a different approach to that in the context of the variables that exist around existing levels of service. That is why we are taking a different approach for this year. It is always a negotiated figure as part of the budget process.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_17">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_40">I understand the Minister cannot give me an exact figure. However, can he give me a ballpark range? When he says he is looking to change it, is that through efficiency or through cutting it? Usually this kind of information would be available.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_18" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_41">It is not about cutting. For example, where we have increased overall expenditure, the measurable outputs from that in previous years has varied across different expenditure lines in terms of service delivery for citizens. Different policy changes are made in any given year, which mean the actual ELS within any Department can vary and change within the year and following further Government decisions. We are negotiating the total package of expenditure in the context of their existing base. That will form the basis of what else will be additional for next year.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_19">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_42">This is the budgetary oversight committee and obviously we are in the preparation for a pre-budget report. Can the Minister give a ballpark figure or a range given that we are 13 days out from the budget?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_20" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_43">It is being negotiated with every Department based on what is available. There is engagement across every Department. For example - I think everyone will see this - there are certain expenditure lines where despite significant increased investment, we are not seeing the level of output or service and there is a requirement for reform. Just setting additional expenditure on that existing level of service does not necessarily deliver the additional outcomes we expect if we add more onto it. It is reforming the baseline in terms of the policy approach that might exist in a particular Department. That is why reform is as connected to what else would be available next year in the context of-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_21">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_44">What additionality is there for new measures in that? Obviously, we know capital, public pay and ELS; those are three firm things. Outside those three firm things, is there anything else? Are there any carry-over effects of the money outside those three areas that would reduce the amount the Minister will have for new measures? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_22" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_45">It is a total package of €7.9 billion from an expenditure perspective. We are negotiating with each Department on that basis. The engagement is on the totality of that. We are not just negotiating new measures and in calculating-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_23">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_46">I understand that.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_24" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_47">It is important to promote reform in the context of the expenditure discussions we are having. The carry-over requires analysis of usage or the intensification of a particular scheme, for example. That can vary and is dependent on lots of factors. In the health system the demand profile has been increasing and continues to increase. In other areas the demand might fall. That is why there is variability across schemes and across Departments. Part of the overall engagement around ELS or around the Deputy's question on the ELS is to take a deeper dive into the outputs relating to existing expenditure lines in the interest of creating space in some instances for additional measures, but in other instances trying to reform how outputs may not be being delivered despite the increase in expenditure. That is the basis of our discussion.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_25">
+          <from>Deputy Mairéad Farrell<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_48">The Minister cannot give me a figure. I am in my last few seconds.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_26" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_49">Everything is being negotiated.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_27">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_50">I thank both Ministers for their attendance. As part of the budgetary process, are tax breaks for developers under consideration?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_28" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_51">We have not yet made any decision on any individual tax matters. We will indicate our tax decisions on budget today. Always in our tax code we give support to the housing market. We do that at the moment through help to buy. We will make further decisions on our tax package, which we will communicate on budget day.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_29">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_52">I know that decisions have not been made and I know that the Minister will not indicate decisions. I am just asking if tax breaks for developers are under consideration as part of the budgetary process.</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_30" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_53">I do not think it is helpful to pick out any one part of the different needs we have to consider or which have a particular focus for me. I am looking at an array of different matters. At many opportunities in the past, I have indicated the concerns I had regarding some incentives we had in place in our property market and the long-term effect of that. I still have that view. At the same time, we need to ensure more homes are built in Ireland. I have €1.5 billion overall available for new tax measures and I am not going beyond that. I am working with our colleagues in government on the individual measures to make that up.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_31">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_54">Representatives of Social Justice Ireland appeared before the committee recently. They have a very good analysis of the budget. They pointed out that we are wealthier than at any time in our history, yet almost 630,000 people are living below the poverty line, 190,000 of whom are children. Its analysis also found that in last year's budget the rich-poor gap increased to its highest level since its analysis commenced, meaning the gap between those on the highest incomes and those on the lowest has widened as a result of policy choices. Government put €1,214 per annum more into the pockets of someone on €100,000 a year than it gave to someone on the lowest income.</p>
+          <p eId="para_55"> The Social Justice Ireland analysis demonstrated how low-income working families, those with incomes below the standard rate have gained least from Government measures over the past five years and that we cannot keep ignoring these workers and families. It has continually highlighted the relevance of refundable tax credits as a means of making the taxation system fairer and helping this low-income group. How can the Minister defend the budgetary policy of recent years, which has been grossly unfair to low-income working families? Is the proposal that has been put forward by Social Justice Ireland for years about refundable tax credits that would actually help low-income working families under consideration as part of this budgetary process?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_32" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:40:00+01:00"/></from>
+          <p eId="para_56">I am going to be consistent in what I say.</p>
+          <p eId="para_57">We are considering all matters with regard to taxation at present and I am going to be consistent in the answer that I gave the Deputy in his earlier questions in saying we have made no decisions. I am sceptical regarding the claim that has been made that refundable tax credits can have the kind of effect that it is claimed with regard to the lower income families because of the low level of income tax they pay in the first place because we have such a progressive tax code. I believe there are other ways in which we can help those. </p>
+          <p eId="para_58"> Regarding the point made about inequality, I would also say that the Gini coefficient, which I know the Deputy will be familiar with as one of the measures we have of inequality across the world, Ireland has one of the lowest such levels within the European Union. While I cannot speak about the Social Justice Ireland analysis, many of the other recent analyses made of recent budgets did not include improvement of services and did not, for example, include the effect of things like free school meals and changes we made there which I know would have a larger effect on those who have less. That is the whole idea of making that change in the first place.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_33">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_59">If the Minister is sceptical about refundable tax credits, what other measures does he think could achieve the same?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_34" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_60">The working family payment has been a very effective payment we have used in the past to support those who are on lower income, as well as the gradual changes we have made in a number of years with regard to USC and the introduction into the higher rate of income tax. These have been measures that have helped ensure those on a lower level of income are not paying a higher rate of income tax purely because they do an extra hour of overtime or get a promotion.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_35">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_61">I have a question for the Minister, Deputy Chambers. He published the medium-term framework less than two weeks ago, which was subject to some considerable criticism - validly in my own opinion - because it did not contain, as we might have expected, departmental expenditure ceilings for the next period. Can I assume the next medium-term plan the Minister is obliged to publish will be published on budget day and that plan will include expenditure ceilings on a multi-annual basis for individual Departments?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_36" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_62">The medium-term expenditure framework was more a backward-looking piece about the expenditure drivers over the past five years. What the Deputy is referring to is a medium-term fiscal and structural plan which will contain the expenditure ceilings and will set out all of the detail he has requested. It is not and was never meant to be that. It is an analysis of the 45% increase in expenditure we have seen in the past five years and where did it go, what were the outputs from it and is an overall evaluation of that within my own Department on the policy choices that were made and what it is delivering to inform how we frame budgetary policy into the medium term. That will be published in the coming weeks when we publish the medium-term fiscal and structural plan with all of the detail the Deputy has referenced there. </p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_37">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_63">A number of budgets - all budgets in recent years, even beyond the immediate and more recent energy and cost-of-living crises precipitated by wars in Europe and so on - have really been works of fiction because individual Ministers have been coming back to the Dáil the year after October's budget with significant Revised Estimates. Is the era of significant cost over-runs over and does the Minister expect Ministers will be coming back next year with multibillion euro demands on the Dáil for additional expenditure? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_38" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_64">As for what we are trying to do in the budget process, there are two elements of additional expenditure we have added this year. Some of it relates to capital and we have provided for significant uplift in capital in the medium term with the national development plan review. Second, with the medium-term fiscal and structural plan and the moderation of current expenditure, which we have committed to do, part of the budgetary planning this year is to try to address some of the over-runs we are having in certain Departments. There may be a particular issue that will emerge where there is a requirement for intervention but the level of intervention in previous years is something we are trying to mitigate in the medium-term fiscal and structural plan. </p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_39">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_65">The Minister said it is not sustainable to continue----- </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_40" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_66">Well, I accept the issue is being-----</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_41">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_67">-----organising affairs like that. </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_42" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_68">In fairness, there was a series of crises. including inflation at 10%, Covid and the war in Ukraine,which precipitated and necessitated Government decisions and that cumulative impact created a 9% increase in expenditure. That level of expenditure over the next five years is not a sustainable position. What the medium-term expenditure framework sets out is where we have particular pressures, having to plan for that and budget for them in any given year and that is what we are planning to do. </p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_43">
+          <from>Deputy Ged Nash<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_69">I thank the Minister.</p>
+          <p eId="para_70"> In the limited time I have available, this is a question to the Minister, Deputy Donohoe. IFAC is on record as forecasting that with the full extent, if it can be described as such, or full effect of pillar 2 of the BEPS process coming into effect next year, the State stands to generate potentially €5 billion in additional corporation tax revenue. Is that a forecast that the Minister and his officials would accept? Is that a sort of ballpark where we expect to be next year? </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_44" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_71">We are considering that at present but there is a meeting taking place, even as we speak, in the OECD regarding the future of that process and what it will mean for international tax co-operation. We are considering what that means for our current corporate tax forecast and we will conclude that work in advance of the White Paper, which we will publish next Friday. </p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_72">This meeting is to suspend at 8.15 p.m. That is what was agreed. There are five more members to speak. With the agreement of the members that are left, if we cut the time everyone will get in and if we do not the meeting will suspend at 8.15 p.m. and members will not get in. Will the agreement of the five that are left be that we will go to just three minutes? Will we all agree to that and then we can all get in? Agreed. </p>
+          <p eId="para_73"> Deputy Fleming is next. </p>
+        </speech>
+        <speech by="#SeanFleming" eId="spk_46">
+          <from>Deputy Seán Fleming<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_74">I thank the Chair. I will be very brief; I have just three quick points to make. At one of our meetings here yesterday, I mentioned the issue of projects having to stall at various stages along the way because we do not have multi-annual budgeting. When you are doing big projects that run for years, you cannot be waiting for the annual budget each year. The funds could run out in September and no payments can be made without Supplementary Estimates which may not get made until the new year and sometimes work stops on site. What can be done to address that? </p>
+          <p eId="para_75"> The other question I would ask, because we have heard so much about big figures, is what is the cost of servicing the national debt each year and the average interest rate on that? The last question is a VAT issue. I had a gentleman phone me the other day who had been in business all his life and has handed the business over to the son. The son is a self-employed photographer and he said the VAT registration rate has a turnover of €40,000. This man told me decades ago when he started it was €40,000. He is now saying if you think of €40,000 as turnover, it grows €40,000, 50% of which is expenses. You are probably on a net income of €20,000 and you are paying VAT. He said it is wildly crazy. There is no money to be got for the Government out of it because the level of turnover is so small but he says the amount of paperwork for people starting businesses is crazy. He said as far as he knew, that figure has not changed in decades but I am subject to correction. They are my questions. </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_47" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_76">Very quickly, as I know two of the questions relate to the Minister, Deputy Donohoe, we have published multi-annual capital ceilings. For example, Irish Water has €12 million over the next five years and can plan and sequence that expenditure in the context of the different strategies that were set out and we will be publishing sectoral investment plans, as we discussed at the Deputy's own committee, which will give certainty to the construction sector as well in what can commence. </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_48" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_77">It is €3.3 billion that is the annual cost of servicing our national debt and I am aware of that issue on the VAT registration threshold. I will stand to be corrected by the Deputy but I do think it was changed once in recent years but that is it. The cost of changing it is more considerable than you might think but I am aware of it and it is an issue that has been brought up with me by very small businesses also. It definitely has not been indexed in line with turnover growth as other tax credits have been. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_49">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-24T19:50:00+01:00"/></from>
+          <p eId="para_78">I thank Deputy Fleming for covering two of my questions. </p>
+          <p eId="para_79">I also thank the Ministers. I understand what a difficult job they have to do. I have some quick-fire questions for the Minister, Deputy Donohoe, first. I encourage him to maximise what can be put away in the rainy day fund. How much is it planned to put away in 2026? </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_50" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_80">Around €6 billion. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_51">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_81">I also encourage the Minister to index the income tax bands and the tax credits. I appreciate that he cannot give me an answer on this today. It is simply to protect pay increases and would result in no loss to the Exchequer because inflation eats away at pay increases. If someone gets a 5% pay increase with 5% inflation, without an increase in the tax bands, they will actually be worse off because inflation will wipe out the increase, assuming they are receiving the 5% at the top rate of tax and end up with a 2.5% net increase in their pay. </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_52" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_82">Most of the budgets I have done and the budget that the Minister, Deputy Chambers, did last year included indexation. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_53">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_83">I understand that. </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_54" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_84">For this budget, though, there are many different competing demands on the tax end. I am not going beyond the €1.5 billion laid out in the summer economic statement. In addition to some of the other demands and needs of which we are aware, we have a number of tax credits that need to be extended. Otherwise, they will come to a very sudden end. All of that has a considerable cost. I have to consider other issues in relation to competitiveness within our economy and whether tax policy can play a role back in it. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_55">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_85">I understand that. My point is that it is not a cost to the Exchequer because it is just indexing. </p>
+          <p eId="para_86"> In regard to inheritance tax, I hope that one option is that the principal private residence would be exempt. That is just something to consider.</p>
+          <p eId="para_87"> Can we look at doing more detailed long-term budgeting? I acknowledge we have five-year programmes but can we do more detailed long-term budgeting that plugs in figures for pensions and healthcare in order that we will have a fair idea of what the expenditure is going to be? </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_56" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_88">The Department of Finance recently published Ireland 2040, which aimed to do that from a demographic point of view. Later in the year, we will publish that work that looks at long-term budget planning and economic planning within our country. Nevertheless, the ability to do that, given the number of shocks we have faced in recent years, is not as great as some people think.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_57">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_89">I have two more quick-fire questions, although the clock is against me. </p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_58" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_90">I am answering the questions, though. </p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_59">
+          <from>Deputy Edward Timmins<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_91">I understand that. The Central Bank said yesterday that an underlying deficit of €13.7 billion is projected for 2027. We should look at mitigating that now.</p>
+          <p eId="para_92"> Second, in regard to capital expenditure, does the Minister, Deputy Chambers, believe more outputs-----</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_60">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_93">With respect, Deputy, the time is up. I call on Deputy Pearse Doherty. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_61">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_94">As was mentioned, overruns this year have amounted to what is projected to be €4.6 billion. Over €3 billion of that has already materialised. Is there a breakdown of how much of that €4.6 billion overrun that is expected was planned, for example through Cabinet decisions?</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_62" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_95">Yes, €2.3 billion of that related to capital expenditure. To clarify, in what way does the Deputy mean "planned"? </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_63">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_96">Was it a Government decision to increase capital expenditure mid-year? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_64" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_97">Yes, in particular areas. We made decisions-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_65">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_98">How much of it was based on a Government decision? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_66" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_99">We made decisions relating to €3.3 billion of it. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_67">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_100">Was all of that planned? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_68" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_101">No, we made a decision and that was reflected in the SES. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_69">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_102">What about the €1.4 billion that is projected as an overrun? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_70" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_103">That still has to be allocated across different Departments. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_71">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_104">Does the Minister expect that number is accurate? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_72" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_105">It is, right now. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_73">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_106">What is the problem that the Minister's colleague has with managing the budget? When we look at the budget, we are all here to look at what is going to happen in terms of new measures. New measures of €3 billion have been announced, but there is an overrun of 50% in unplanned expenditure. That diminishes the budget in reality when the Government is not able to control the public finances in this way. It has happened year after year. </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_74" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_107">A significant element of this relates to capital and that is corrected in the new capital ceilings we have established on a multi-annual basis. That is one significant element of it. That is why, in the budgetary engagement we are having, there are certain parts of government where the levels and rate of expenditure exceed the parameters that are set. That is why reform has to take place-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_75">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_108">The Minister is responsible for the Department of reform. Does he take no responsibility for allowing expenditure to go 50% over what was planned? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_76" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_109">I do. That is why, in the medium-term fiscal and structural plan, slowing the rate of expenditure growth and having it much closer aligned to what is set out on budget day is my objective, as Minister for public expenditure. I take that responsibility seriously. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_77">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_110">In regard to tax, three measures are proposed. The Minister has been on the record about them. There are changes to the renter's tax credit, so that will all have to go into the base next year-----</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_111">Sorry, Deputy Doherty, we have only limited time. We have done it to accommodate everyone. I am not changing it for him. I call on Deputy Cathal Crowe. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_79">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_112">I thank the Ministers for being before our committee this evening. I have three points to put. Hopefully, we can deal with each point in a minute and get some responses. There are issues in need of urgent addressing in the upcoming budget. First, on the post office network, most post offices are tied into a contract with the GPO that expired in July. The contractual arrangements going forward are quite precarious, as is the financial model. There is an ask before Government by the Irish Postmasters Union. Indeed, Councillor Tom O'Callaghan in Ennis runs Independent Postmasters of Ireland. Can something be done for post offices in the upcoming budget, please? </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_80" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_113">I am conscious of that ask. I have actually met with the union. That is part of the engagement we are having with the Minister for communications. We have not yet agreed any expenditure for next year, until that is agreed by the Government. However, I am conscious of the pressure faced by postmasters. That is a matter of consideration. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_81">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_114">I thank the Minister. The next issue is another outlying issue. We are hearing that there is going to be a lift of the Dublin airport cap at some point. With that come other pressures on the other airports of Ireland. A particular concern is that the regional airports programme, with which the Minister will be familiar from his previous Ministry, has not yet been resolved. We do not know yet where it is at. I do not believe it can be factored into budget 2026. The ask of airports that may not be included in budget 2026 is that the environmental funds announced a couple of years ago would be rolled over on budget day to give them some funding flow. They have to host the Ryder Cup and the Irish Open in the mid-west. They are going to see the funding stream for airports like Shannon. </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_82" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_115">Some of what relates to regional airports, particularly in connection to Shannon, relates to capital expenditure. Part of what the Minister, Deputy O'Brien, will set out as part of his sectoral investment plan is how aviation and the regional airports programme interacts with that as part of the five-year strategy. The aviation division of the Department of Transport is conscious of what Shannon Airport has stated on the matter. However, it is more so a matter of how we plan capital in the medium term than it is a matter of budget day decisions. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_83">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_116">The final issue is school capitation money. This is the money that keeps on the lights, pays the bills and ensures our children can go to and enjoy school each day. It has not increased over the years of inflation. We are now getting to the point where schools are coming to my constituency office, worried they are going to default on bills. It is a big ask in the budget. I ask that something be done. Schools should not have to hold all these fundraisers or shake the biscuit tin to pay for the lights to be turned on in the classrooms. </p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_84" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_117">I thank the Deputy. On that issue, similar to my last answer, we are engaging with the Department of education on the priorities as part of budget 2026. The Minister, Deputy McEntee, is conscious of concerns reflected in the school community around capitation. There is ongoing engagement on what will be possible. We have not made any decisions yet. I take note of the Deputy's request. </p>
+        </speech>
+        <speech by="#MaireDevine" eId="spk_85">
+          <from>Deputy Máire Devine<recordedTime time="2025-09-24T20:00:00+01:00"/></from>
+          <p eId="para_118">Energy is a big factor in a lot of poverty. The regulator reckons that more than half a million people are in debt and cannot pay their bills. The biggest users of energy in this country are the data centres. Their usage is rising and rising and with that comes extra cost to the domestic consumer and their electricity bill. The regulator reckons that ordinary people's bills will increase by €500 per annum, whereas the bills of data centres are expected to decrease by 14%.</p>
+          <p eId="para_119">Over the next 20 years, a staggering 89% demand from the grid will be for data centres given AI, ChatGPT and all that stuff that is coming on board. Given that we are the second richest country in Europe, will the Minister restore the energy credits in this budget? Will he hold the data companies to account to pay their fair share and will he prioritise energy security?</p>
+          <p eId="para_120"> I am quite alarmed at the number of young people who are saying that they are depressed. Sixty percent of them are considering leaving and 33% have actually planned to leave. We are educating them and we are going back to the old age when we educated our kids to leave the country. What can the Minister do for our young people to prevent them leaving, to keep them here in the skills that we have taught them and trained them for and to allow them to no longer be in perpetual adolescence in their childhood bedrooms? That is why most of them are escaping, because they do not see a future.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_86" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_121">On the Deputy's last point, if we look at capital investment in housing, it is the single biggest focus as part of the review of the national development plan. A total of €36 billion, nearly one in every three euro, is going to support social and affordable housing, and other areas in terms of water infrastructure. There is also investment in other areas of infrastructure, which will help enable the level of housing delivery we want to attract and retain our talent here. A lot of young people are staying here to work and are contributing to the economy and many people are coming home as well. We need to balance what the Deputy said, but I know that housing is the single biggest issue for young people. We need to do more and that is what we are committed to. We will set that out in our new housing plan. We want to ensure that any payments relating to energy costs are reflected in the social protection system. Our work with the Minister, Deputy Calleary, as part of the budget process is a key part of that in terms of energy costs and how they affect many families.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_122">I have a question. In Limerick we had a big meeting at the start of this week in the Wyeth Nutritionals factory. We met major stakeholders and businesses from around County Limerick. Some of them are international companies that have bases here. Their biggest problem was, with their sister companies in other European countries, that the cost of doing business here is 10% or 15% more than in other European countries. Their biggest problems here are the tariffs coming in and PRSI contributions increasing as wages go up. Energy was also mentioned as an issue. What will be in the budget to try to keep these major employers in the country? They are being targeted by those tariffs, wage increases and energy prices. How are we going to counteract these in the budget to make sure that they do not leave and the likes of Trump takes them back?</p>
+        </speech>
+        <speech by="#PaschalDonohoe" eId="spk_88" as="#Minister_for_Public_Expenditure,_National_Development_Plan_Delivery_and_Reform.">
+          <from>Deputy Paschal Donohoe<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_123">A few weeks ago I met the Limerick Chamber of Commerce, as the Minister, Deputy Chambers, did. They raised many of these issues with us. A large part of our answer to that would be is the national development plan that the Minister has outlined here this evening. From a taxation perspective, I am considering measures that will respond to some of the issues that those employers are raising with us.</p>
+          <p eId="para_124"> I accept the Cathaoirleach's point on energy. The Minister, Deputy Darragh O'Brien, will soon be bringing to Government a report on how we can respond to this. When it comes to business taxation, in particular, Ireland has a very competitive offering for many of the employers that the Cathaoirleach would have met. This aims to offset some of the difficulties that have been touched on.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_125">We have been talking about overruns in different areas. Since I became a TD, I have been asking in the Dáil for design and build. That means that when there is a design-build project, as happens in other European countries, we can develop infrastructure, hospitals, etc. If there is a design-build model, then the budget is the budget. There can be no overrun. Can we adopt that on some of the projects that we are doing? That would mean that the Government would not have an overrun, as has happened with the children's hospital.</p>
+        </speech>
+        <speech by="#JackChambers" eId="spk_90" as="#Minister_for_Finance.">
+          <from>Deputy Jack Chambers<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_126">We should standardise a lot more across Government, whether it is in education, health or transport. That would help to better anchor cost control and I would support that.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_127">I thank the Ministers and their officials for attending and thank you for staying on longer with us. I now adjourn the meeting.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_92">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_128">Can I make a point of order? I have been a member of this committee previously and I am substitute today. I have never seen such a short committee in all my time here, two weeks before the budget. This is at a time when the Government has given less information than ever before in relation to the published documentation. As somebody who was involved in the terms of reference of setting up this committee, if it is allowing for such a short window which forces members into three minutes of questions and answers, it really needs to have a good look at itself in terms of the availability and the timing of this meeting.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_129">I am frustrated with it myself.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_94">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_130">I know, I am just making a broader point.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_131">Due to the voting system that went on tonight, and everyone taking a double vote on everything, it all took time. We had this set down on time. We had adequate time, but if the time is taken somewhere else, they are taking it back, and we needed to be in this committee. We were here since half past six, but other things within the Dáil sequence stopped it. In fairness, I asked the Ministers to give us extra time and they gave us that, over what we had first allowed. However, you are right and I am frustrated by this as well. We need to look at having extra time for something as important as budgetary oversight and meeting the Ministers.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_96">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_132">Why could this meeting not go on for another half an hour, or three quarters of an hour?</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_133">Because of the other commitments that the Ministers have. We have eaten into their time, which gives them a ten-minute window now to get to their next meeting. If we take extra time at this, their other commitments are actually pushed out. They have given us an extra half an hour more than what we first agreed on.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_98">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_134">The voting block was supposed to be later on, so Ministers, I presume, were supposed to be in the Chamber voting, right? The voting block is now finished.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_135">Yes.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_100">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_136">I do not know why we just did not extend the time. This is the budgetary oversight. It is unbelievable that this meeting was curtailed in the way it was and that we could not even get into the information. This is the first time ever that a surplus has not been provided. It is the first time ever that the amount of money that is being provided in the budget in terms of new measures has not been provided. It is always provided. This is supposed to be the committee that was set up as a result of the financial crash to examine things. We have got less information than before, and we are now in a situation where members were curtailed to 90 seconds to ask questions and 90 seconds to get an answer. That is not oversight.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_137">To me, three minutes is more than 90 seconds so maybe someone needs to do their maths.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_102">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_138">It is 90 seconds for the response as well unless the Cathaoirleach wants someone to just talk for three minutes.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_139">If you managed other times in other places better we might be able to get longer times ourselves and we want it in this committee. We have moved everything around. As you say, you are substituting for somebody else. Maybe you could sit in on more of our meetings and note how much time is allocated to different items of business. We gave four hours yesterday talking to other people in this committee room.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_104">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_140">I understand. I have read the transcripts of the meeting. What I am saying is that we have two Ministers in with less than two weeks before the budget and at a time when less information than ever was provided to the Members of the Houses of the Oireachtas in relation to the plans for the budget. There has never been less information ever in my time and I have been here for something like 17 years.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_141">I understand that. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_106">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_142">I am not complaining about the Cathaoirleach. I am just saying that I would strongly advise next year not to schedule this meeting at the time of the voting block. This curtailed the committee and forced the Cathaoirleach to allow everybody to come in to a situation where they had to ask their questions in 90 seconds and allow 90 seconds for responses. </p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_143">When I did it in the format of this room, your own party actually got 11 minutes compared with other people who actually got a lot less. I have tried to be very fair to all parties, but when you got your minutes, we also facilitated your other two colleagues that had to get in to speak. I understand the frustration, but every day is a learning day, and we will look into having extra time on such an important issue in the future.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_108">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_144">On a point of order, Chairman, I am a full member of this committee and usually full members take precedent over substitutes. We let Deputy Doherty have his go and he has now had about four minutes more than everyone else. It is a bit disingenuous as well, because five of those votes that we had to go to the Chamber for were triggered by the Deputy's party. Some of them were voted verbally from the floor and then they had to be done on an electronic basis.</p>
+        </speech>
+        <speech by="#MaireDevine" eId="spk_109">
+          <from>Deputy Máire Devine<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_145">Chair, that is disgraceful. A point of order.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_146">Respect the Chair, please. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_111">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_147">To finish my point of order, Chair.</p>
+        </speech>
+        <speech by="#MaireDevine" eId="spk_112">
+          <from>Deputy Máire Devine<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_148">Democracy, like?</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_149">Excuse me, respect the Chair. </p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_114">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_150">If I may finish.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_151">You can finish, but if your comments are in any way defamatory, I will pull them and adjourn this meeting now.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_116">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_152">It is a political shame. It is not defamatory. </p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_153">We have wasted a lot of time talking about something now where we could have been more constructive.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_118">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:10:00+01:00"/></from>
+          <p eId="para_154">We have all been appointed as full members of this committee now for four and a half months. The budgetary work began four and a half months ago in this committee at which all members, full members and substitutes could have come at all times.</p>
+          <p eId="para_155">It is misrepresentative to say it has just happened across an hour and a half or two hours here.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_119">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_156">I know that.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_120">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_157">Months of work have gone in.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_158">100%.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_122">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_159">Indeed, the budgetary process, as every member here knows even if the public might not know, began sometime after Easter. A huge amount of work has gone in from officials and Ministers.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_160">I will finish on this. I thank my own officials for the work and long hours they have put in. I understand there is frustration and people want to have longer to discuss this. It is something we can look at in the future and I look forward to that. I am now adjourning-----</p>
+        </speech>
+        <speech by="#MaireDevine" eId="spk_124">
+          <from>Deputy Máire Devine<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_161">Chair, he should withdraw those remarks about democracy and making amendments and that we actually impinged on this question-and-answer session. It is really crass, really poor form-----</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_125">
+          <from>Deputy Cathal Crowe<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_162">Withdraw what-----</p>
+        </speech>
+        <speech by="#MaireDevine" eId="spk_126">
+          <from>Deputy Máire Devine<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_163">-----and unintelligent.</p>
+        </speech>
+        <speech by="#RichardODonoghue" eId="spk_127">
+          <from> An Cathaoirleach<recordedTime time="2025-09-24T20:20:00+01:00"/></from>
+          <p eId="para_164">I am not having a debate on this. I am adjourning the committee now until our private meeting on 30 September.</p>
+        </speech>
+        <summary eId="sum_7"> The select committee adjourned at 8.20 p.m. until 3 p.m. on Tuesday, 7 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

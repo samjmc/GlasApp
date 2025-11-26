@@ -1,0 +1,592 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/roghchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-01/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/roghchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-01/debate"/>
+          <FRBRdate date="2025-07-01" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/roghchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/roghchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-01/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/roghchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-01/debate/mul@"/>
+          <FRBRdate date="2025-07-01" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/roghchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-01/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/roghchoiste_na_gaeilge_na_gaeltachta_agus_phobal_labhartha_na_gaeilge/2025-07-01/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-10" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CatherineConnolly" href="/ie/oireachtas/member/id/Catherine-Connolly.D.2016-10-03" showAs="Catherine Connolly"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="DaraCalleary" href="/ie/oireachtas/member/id/Dara-Calleary.D.2007-06-14" showAs="Dara Calleary"/>
+        <TLCPerson eId="JohnConnolly" href="/ie/oireachtas/member/id/John-Connolly.D.2024-11-29" showAs="John Connolly"/>
+        <TLCPerson eId="NaoiseOCearuil" href="/ie/oireachtas/member/id/Naoise-Ó-Cearúil.D.2024-11-29" showAs="Naoise Ó Cearúil"/>
+        <TLCPerson eId="ShaneMoynihan" href="/ie/oireachtas/member/id/Shane-Moynihan.D.2024-11-29" showAs="Shane Moynihan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Rural_and_Community_Development_and_the_Gaeltacht" href="/ie/oireachtas/role/minister/rural__community_development__gaeltacht" showAs="Minister for Rural and Community Development and the Gaeltacht"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>Select Committee on the Irish Language, the Gaeltacht and the Irish-speaking Community</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Roghchoiste na Gaeilge, na Gaeltachta agus Phobal Labhartha na Gaeilge</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-01">Dé Máirt, 01 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-01">Tuesday, 01 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 06:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 06:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#DaraCalleary">Dara Calleary (Minister for Rural and Community Development and the Gaeltacht)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#ConorDMcGuinness">Conor D. McGuinness,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ShaneMoynihan">Shane Moynihan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#NaoiseOCearuil">Naoise Ó Cearúil</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#NaoiseOMuiri">Naoise Ó Muirí.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Aengus Ó Snodaigh</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#CatherineConnolly">Teachta / Deputy Catherine Connolly sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Meastacháin i gcomhair Seirbhísí Poiblí 2025<recordedTime time="2025-07-01T18:10:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vóta 42 - Forbairt Tuaithe, Pobal agus an Ghaeltacht (Athbhreithnithe)<recordedTime time="2025-07-01T18:10:00+01:00"/></heading>
+        <speech by="#CatherineConnolly" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:10:00+01:00"/></from>
+          <p eId="para_9">Tá leithscéalta faighte againn ó na Teachtaí Barry Ward, Shónagh Ní Raghallaigh agus Aengus Ó Snodaigh. Tionóladh an cruinniú seo chun ár mbreithniú a dhéanamh ar na Meastacháin Athbhreithnithe do sheirbhísí poiblí 2025 ar chlár D, an Ghaeltacht, de Vóta 42 - an Roinn Forbartha Tuaithe agus Pobail, agus Gaeltachta. Leanfadh an seisiún ar aghaidh go dtí 7.30 p.m. Cuirfear ar fionraí é ag an bpointe sin.</p>
+          <p eId="para_10"> Cuirim céad míle fáilte roimh an Aire agus na finnéithe ón Roinn Forbartha Tuaithe agus Pobail, agus Gaeltachta: an Dr. Aodhán Mac Cormaic; an rúnaí cúnta i dtaobh ghnóthaí corparáideacha agus forbairt straitéiseach, Ken Jordan; agus na príomhoifigigh: Sadhbh Ó Cinnseala, Sharon Ó Ceallaigh agus Aisling Penrose. Cuirim fáilte rompu go léir.</p>
+          <p eId="para_11"> De réir Bhuan-Ordaithe 118(3), is comhalta <i>ex officio </i>de chuid an roghchoiste an tAire. Mar gheall air sin, cuirfear san áireamh é mar chuid den chóram agus don liosta vótála. Gabhaim buíochas leo ar fad as ucht a bheith anseo. Is mian liom a chur ar an taifead go bhfuil an tAire agus a oifigigh ag freastal ar an gcruinniú ó sheomra coiste 4 laistigh de phurláin Thithe an Oireachtais. Déanaimid ár mbreithniú ar na Meastacháin Athbhreithnithe le haghaidh seirbhísí poiblí 2025, clár D, an Ghaeltacht, de Vóta 42 - an Roinn Forbartha Tuaithe agus Pobail, agus Gaeltachta. Iarraim ar an Aire a ráiteas tosaigh a chur faoi bhráid an roghchoiste.</p>
+        </speech>
+        <speech by="#DaraCalleary" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht" eId="spk_2">
+          <from>Minister for Rural and Community Development and the Gaeltacht (Deputy Dara Calleary)<recordedTime time="2025-07-01T18:10:00+01:00"/></from>
+          <p eId="para_12">Tá sé iontach a bheith ar ais sa choiste. D'fhág mé é go tobann cúpla bliain ó shin so tá sé deas a bheith ar ais. Déanaim comhghairdeas leis an gCathaoirleach as a toghadh. Guím gach rath uirthi. Tá mé ag súil go mór le hobair léi. Gabhaim buíochas leis an Teachta Ó Snodaigh as a gceannaireacht ar an gcoiste ar an Dáil dheireanach. Tá Eoghan Ó Cruadhlaoich fós ann mar chléireach ar an gcoiste chun gach rud a choimeád le chéile. Ar dtús, tapaím an deis buíochas a ghlacadh leis an gcoiste agus mé ag teacht os a chomhair chun Meastacháin Athbhreithnithe 2025 agus caiteachas faoi chlár D de chuid mo Roinne nua, an Roinn Forbartha Tuaithe agus Pobail agus Gaeltachta, a phlé.</p>
+          <p eId="para_13"> Tháinig méadú 11% ar an allúntas don Ghaeilge agus don Ghaeltacht i mbliana, ó €98.050 milliún in 2024 go €108.931 milliún in 2025. Is méadú suntasach é seo a thugann deis don Roinn roinnt de na tograí caipitil is mó a chonacthas san earnáil riamh a bhrú chun cinn i mbliana agus tuilleadh forbartha a dhéanamh ar scéimeanna teanga atá curtha ar bun againn le roinnt blianta anuas ar mhaithe le todhchaí na Gaeilge agus na Gaeltachta a threisiú. Is mian liom sa ráiteas seo blaiseadh a thabhairt daoibh ar roinnt de na tosaíochtaí atá ag an Roinn don earnáil i mbliana. Aon cheann nach bhfuil sa ráiteas, ní aon sin le rá nach tosaíocht é.</p>
+          <p eId="para_14"> Faoin gciste a chuirtear ar fáil do chlár tacaíochtaí pobail agus teanga na Roinne, cuirtear idir chúnamh caipitil agus reatha ar fáil ó fhomhír D3 chun cabhrú le feidhmiú an phróisis pleanála teanga sa Ghaeltacht. Baintear leas as an gciste caipitil chun cabhrú le háiseanna pobail, teanga agus caitheamh aimsire a uasghrádú nó a chur ar fáil fud fad na Gaeltachta. Maidir leis an gciste reatha, baintear úsáid as chun scéimeanna faoi leith a riar sa Ghaeltacht, sé sin, scéim na bhfoghlaimeoirí Gaeilge, scéim na gcúntóirí teanga agus scéim na gcampaí samhraidh. Ina theannta sin, baintear leas as chun tacú le feidhmiú cláir oibre faoi leith atá aontaithe ag an Roinn le heagraíocht Ghaeltachta. Ina measc siúd, tá Acadamh na hOllscolaíochta Gaeilge agus Oidhreacht Chorca Dhuibhne.</p>
+          <p eId="para_15"> Tá maoiniú caipitil de €2.7 mhilliún ar fáil i bhfomhír D3 chomh maith in 2025, móide €385,000 a tugadh ar aghaidh ó 2024. Tá dhá thionscadal móra áirithe ag an Roinn mar thosaíocht do chúnamh caipitil faoi fhomhír D3 in 2025, sé sin, Ionad Oideachais agus Óige in Indreabhán, Contae na Gaillimhe, agus forbairt togra turasóireachta i gcomhar le hÚdarás na Gaeltachta i gCarna. Tá deontas os cionn €300,000 don réamhobair don Ionad Oideachais agus Óige in Indreabhán ceadaithe ag an Roinn agus tá deontas os cionn €900,000 ceadaithe d’Ionad Cuimhneacháin na nImirceach i gCarna. Agus mé ag caint maidir le maoiniú caipitil, ní mór dom a lua go bhfuil tús curtha anois leis na réamhoibreacha tógála i leith athfhorbairt Ardoifig Chonradh na Gaeilge ag Uimh. 6 Sráid Fhearchair, an togra caipitil is mó riamh atá maoinithe ag mo Roinn in earnáil na Gaeilge. Tá an togra seo á mhaoiniú ó fhomhír D4 de chuid na Roinne.</p>
+          <p eId="para_16"> Tá soláthar €10.7 milliún curtha ar fáil faoi fhomhír D4 reatha le haghaidh 2025, méadaithe ó bhuiséad €9.2 milliún in 2024. Is í aidhm na scéimeanna tacaíochta Gaeilge atá maoinithe faoin bhfomhír seo an Ghaeilge a chothú agus a chur chun cinn lasmuigh den Ghaeltacht. Cuirtear maoiniú ar fáil do thionscadail a bhfuil tábhacht straitéiseach leo chun tacú leis an Acht teanga, plean digiteach don Ghaeilge, straitéis na healaíona teangabhunaithe, agus maidir le stádas na Gaeilge mar theanga oifigiúil agus teanga oibre san Aontas Eorpach.</p>
+          <p eId="para_17"> Baineann mo Roinn úsáid as an gciste faoin fhomhír C10 chun tacú leis an bpróiseas pleanála teanga. Is allúntas de €7.55 milliún atá ar fáil ó mo Roinn don phleanáil teanga in 2025 i gcomparáid leis an maoiniú de €6.7 mhilliún a bhí ar fáil anuraidh. Cuirfidh sé seo ar chumas na Roinne tús a chur leis an gcéad timthriall eile de na pleananna teanga agus tuilleadh infheistíocht a dhéanamh in earnálacha an teaghlaigh, an óige, na n-ealaíon agus na luathbhlianta sa Ghaeltacht.</p>
+          <p eId="para_18"> Tagraím don obair fhiúntach agus thar a bheith tábhachtach atá ar bun ag Údarás na Gaeltachta ar mhaithe le fostaíocht a chruthú sa Ghaeltacht. De bharr na hoibre seo, tá níos mó daoine fostaithe i gcliantchomhlachtaí na heagraíochta ná mar a bhí riamh agus tá siad le tréaslú as sin. Cuireann Foras na Gaeilge an Ghaeilge chun cinn ar an gcuid eile den oileán, agus tá ról tábhachtach ag Bord na hUltaise chomh maith maidir le forbairt cultúir agus teanga na hUltaise. Is obair í seo atá ar bun i gcúinsí dúshlánacha faoi láthair de bharr deacrachtaí le maoiniú an Fhorais Teanga. D’éirigh linn socraithe éigeandála maoinithe a chur i bhfeidhm do 2025, ach tá sé mar thosaíocht ag mo Roinn oibriú lena gcomhghleacaithe ó Thuaidh idir seo agus deireadh na bliana ar mhaithe le socrú fadtéarmach a fhíorú.</p>
+          <p eId="para_19"> Gabhaim buíochas le baill an choiste as an deis a thabhairt dom labhairt leo inniu agus cuirim fáilte anois roimh phlé ar na athbhreithnithe seo.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:10:00+01:00"/></from>
+          <p eId="para_20">Gabhaim buíochas leis an Aire. Maithfidh sé dom é go ndéarna mé dearmad fáilte a chur roimh an Uasal Ó Droighneáin. Tá fáilte roimhe. Tá deis againn ceisteanna a chur. Glaoim ar an Teachta Ó Cearúil.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_4">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-01T18:10:00+01:00"/></from>
+          <p eId="para_21">Gabhaim buíochas leis an Aire. An rud is tábhachtaí ón ráiteas ná go bhfuil méadú 11% tagtha ar an allúntas don Ghaeilge. Is maith an rud é sin a fheiscint. Mo bhuíochas leis an Aire agus leis an Roinn as sin a dhéanamh i mbliana.</p>
+          <p eId="para_22"> Tá ceist amháin agam. Bhuaileamar le hoifigigh Foras na Gaeilge ar maidin agus chuir mé ceist orthu faoi na líonraí Gaeilge. Tá siad ann cheana féin i gCluain Dolcáin, Inis agus Baile Locha Riach. Tá mé ag breathnú, i gCill Dara ach go háirid, ar Nás na Ríogh atá ag fanacht ar aitheantas mar líonra Ghaeilge. Ní fheicimse aon rud anseo a léiríonn go bhfuil níos mó airgid ar fáil ionas go mbeimis in ann líonra Gaeilge a chur ar fáil do Nás na Ríogh agus do bhailte eile thart timpeall na tíre? An bhfuil sé caillte agam nó an bhfuil sé anseo? An bhfuil an t-airgead le cur isteach ag an Roinn?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_5" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:10:00+01:00"/></from>
+          <p eId="para_23">Mar a dúirt an Teachta, tá sé ann sna nótaí. Tá alt speisialta le haghaidh Cill Dara le Gaeilge.</p>
+          <p eId="para_24">Tá Foras na Gaeilge ag iarraidh a bheith in ann iarratas nua a lorg ó ghrúpaí pobail, mar a dúirt an Teachta agus mar a pléadh ag an gcruinniú, le bheith aitheanta mar líonraí Gaeltachta faoi Acht na Gaeltachta, 2012. Beidh seo ag brath ar airgead breise a bheith ar fáil don fhoras sna blianta amach romhainn. Tá cainteanna ar bun idir m’oifigigh, an Dr. Mac Cormaic agus oifigigh an Roinn Phobail ó Thuaidh.</p>
+          <p eId="para_25"> Tá sé thar a bheith tábhachtach go dtiocfaí ar réiteach maidir leis an gceist idir seo agus deireadh na bliana. Nílimid ag iarraidh go mbeidh na deacrachtaí a bhí ag na grúpaí Gaeilge agus ag an bhforas i mbliana acu an bhliain seo chugainn. Táimid ag cur an-bhéime ar an obair sin a chríochnú chomh luath agus is féidir. Tá a lán rudaí agus deacrachtaí i gceist léi. Tá an dá Roinn ag obair go mór le chéile faoi.</p>
+        </speech>
+        <speech by="#NaoiseOCearuil" eId="spk_6">
+          <from>Deputy Naoise Ó Cearúil<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_26">Tuigim sin agus tuigim an deacracht atá ann. Ó thaobh dul chun cinn na Gaelainne de, go háirithe lasmuigh den Ghaeltacht i mbailte cosúil le Nás na Ríogh agus Maigh Nuad, tá an bhéim, an Ghaelscolaíocht agus an pobal Gaeilge ann. Tá daoine le Gaeilge ag déanamh iarracht an Ghaeilge a chur chun cinn sna bailte agus sráidbhailte seo. Tuigim an deacracht atá ann. Seolfaidh mé litir chuig an Aire ag iarraidh an t-airgead sin a fháil i gcomhair an fhorais go bhféadfadh sé aitheantas a thabhairt do na líonraí sin sa todhchaí.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_7" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_27">Chuirfinn fáilte roimh an litir sin, ach tá Cill Dara le Gaeilge ag déanamh an-jab. Tá sé ag obair le gnólachtaí, múinteoirí agus bailte. Tá suim agam obair le grúpaí cosúil leis sin. Tá an Roinn, an foras agus an Roinn ó Thuaidh chun na deacrachtaí sin a réiteach.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_28">Glaoim ar an Teachta McGuinness.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_9">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_29">Cé mhéad ama a bhfuil agam i dtaobh ceisteanna? An bhfuil sé oscailte?</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_30">Tá sé ceart go leor.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_11">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_31">Gabhaim buíochas leis an Aire as teacht os comhair an choiste agus as an deis díospóireachta a bheith againn mar gheall ar na Meastacháin agus a leithéid. </p>
+          <p eId="para_32"> An dóigh leis an Aire go bhfuil dóthain maoiniú caipitil ar fáil d’Údarás na Gaeltachta chun i ngleic leis an bhforbairt tithíochta atá de dhíth sna ceantair Ghaeltachta? Is éard atá i gceist agam ná na suíomhanna a aithint agus a fhorbairt agus na tionscadail a fhorbairt go dtí an pointe atá siad in ann dul chuig an Roinn tithíochta i gcomhair maoinithe. An bhfuil sé sásta go bhfuil dóthain ann agus go bhfuil dóthain caite?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_12" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_33">Táimid ag plé chúrsaí caipitil an údaráis ag an bpointe seo i gcomhthéacs an phlean forbartha náisiúnta agus an athbhreithniú atá á dhéanamh ar an bplean sin. Baineann an plé le foirgnimh an údaráis, go mbeidh an t-airgead aige ionas go mbeidh sé réitithe le cúrsaí teicniúla don ré nua. Tá plean iontach ag an údarás maidir le cúrsaí intleachta saorga, AI. Baineann plean eile le cúrsaí glas ionas go mbeidh sé in ann infheistíocht a dhéanamh sna seanfhoirgnimh atá aige chun retrofitting agus cúrsaí cosúil leis sin a dhéanamh. Tá an plé sin ag dul ar aghaidh. Bhí ardú i gcúrsaí caipitil an údaráis don bhliain seo. Bhí plean mór aige i nDún na nGall agus tá sé ag iarraidh an t-airgead a chaitheamh ar an bplean sin.</p>
+          <p eId="para_34"> Ó thaobh chúrsaí tithíochta, táimid fós ag plé ról an údaráis. Táim ag déanamh a lán iarrachta chun tuiscint a fháil ar na grúpaí difriúla. Bhí cruinniú agam le BÁNÚ agus le Tinteán. Thugamar an-aird ar an tithíocht ag an gcruinniú sin. Tá pleananna ag an údarás agus táimid ag plé na bpleananna sin leis an Roinn tithíochta mar is í an Roinn tithíochta an príomh-Roinn le haghaidh chúrsaí tithíochta sa Ghaeltacht.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_13">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_35">Cén céatadán nó briseadh síos atá ann sa mhéid caipitil atá nó a bheidh á chaitheamh ar na hoibreacha a luaigh an tAire i dtaobh na bhfoirgneamh atá ag an údarás agus leithéidí an ionad fiontair i nGaeltacht na nDéise? Céard faoin airgead caipitil a bheidh á chaitheamh ar fhorbairt tithíochta?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_14" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_36">Níl an t-eolas sin agam ag an bpointe seo mar táimid ag plé chúrsaí caipitil i gcomhthéacs an athbhreithnithe ar an bplean náisiúnta. Beidh mé ag plé chúrsaí caipitil an údaráis i gcomhthéacs chúrsaí monarchan, gnó, fiontair agus aon ról a bheidh aige i gcúrsaí tithíochta i gcomhthéacs na chéad cháinaisnéise eile. Tá an plé sin le tosú go fóill.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_15">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_37">Luaigh an Teachta Ó Cearúil Foras na Gaeilge. Ar ndóigh phléamar é seo cheana féin. Tá fadhbanna móra ann i dtaobh mhaoiniú an fhorais. Tá sé ag cur srian ar chuid de na ceanneagraíochtaí atá ag feidhmiú le maoiniú an fhorais. Chomh maith leis sin, tá sé ag cur bac ar an tslí gur féidir le Foras na Gaeilge deiseanna a thapú má thagann deis chucu, cosúil le tograí ar nós Creidim Ionat agus leithéid. Is tionscadail iad seo a thagann anois is arís ar féidir leis an bhforas rith leo.</p>
+          <p eId="para_38"> Ar ndóigh, tá fadhb leis an DUP sa Tionól ó Thuaidh. Níl an tAire Pobal ó Thuaidh toilteanach dóthain maoinithe a chur chuig an bhforas. Chomh maith leis sin, leis na ciorruithe a cuireadh i bhfeidhm in 2010, níl leigheas tar éis teacht ar staid reatha maoinithe Fhoras na Gaeilge ó shin. An bhfuil pleananna ag an Aire cur leis an infheistíocht i maoiniú Fhoras na Gaeilge ar shlí shuntasach?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_16" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_39">Ag an am seo, tá an Roinn agus an Roinn Pobal ó Thuaidh ag plé na ndeacrachtaí a bhí ann. Mar a dúirt mé leis an Teachta Ó Cearúil, nílim ag iarraidh go mbeimid san áit chéanna in 2026 mar a bhíomar in 2025. Ní easaontaím leis an Teachta faoin mbrú atá ar an bhforas mar gheall air sin, ach caithfimid an fhadhb a réiteach. Caithfimid na deacrachtaí a phlé sa spás atá againn agus sa bhealach atá leagtha amach.</p>
+          <p eId="para_40"> Nuair a thángamar go dtí deireadh an phróisis i mbliana, bhí cruinniú an-mhaith agam leis an Aire ó Thuaidh. Tá relationship maith idir oifigigh mo Roinne agus na hoifigigh ó Thuaidh. Tá siad ag obair air anois. Níor stad siad den obair. Tá na cainteanna sin fós ar siúl chun réiteach fadtéarmach a thógáil le chéile.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_17">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_41">An bhfuil an tAire dóchasach mar sin mar gheall ar an gcaidreamh sin idir é agus an tAire eile?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_18" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_42">Tá an meon “glass half-full” agam an t-am ar fad. Sin an bealach atá agam. Nílim ag rá nach bhfuil deacrachtaí ann. Beidh deacrachtaí ann cosúil leis an taithí a bhí againn i mbliana. Nílimid ag iarraidh go mbeidh an taithí chéanna againn an bhliain seo chugainn.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_19">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_43">Ceann de na réitithe a moladh arís agus arís eile i bhfianaise drochstaid chúrsaí maoinithe Fhoras na Gaeilge ná go mbeadh cuid de na tograí maoinithe go díreach ag an Roinn. Ar pléadh é sin go hinmheánach?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_20" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_44">Táimid ag iarraidh an fhadhb a réiteach sa chomhthéacs atá againn ag an bpointe seo agus sa scaffolding atá againn. Seasaim go mór leis an obair atá á déanamh ag an bhforas. Tá foireann iontach ann. Tá príomhfheidhmeannach agus cathaoirleach an bhoird iontach ann. Táimid i dteagmháil rialta leo. Táimid ag-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_21">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_45">Aontaím leis an Aire go huile is go hiomlán air sin.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_22" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_46">Tá fadhb fhadtéarmach againn. Táimid ag iarraidh an fhadhb sin a réiteach sa chomhthéacs atá againn ag an bpointe seo.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_23">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:20:00+01:00"/></from>
+          <p eId="para_47">Aontaím go hiomlán le measúnú an Aire ar an bhforas. Mar iarchomhalta boird, tuigim an fhoireann, an bhainistíocht agus an bord agus an ról dearfach a bhíonn á n-imirt acu.</p>
+          <p eId="para_48"> Ceann de na scéimeanna atá ag an bhforas ná scéim na mbailte seirbhíse Gaeltachta. Ar ndóigh, tá roinnt mhaith bailte taobh amuigh de na ceantair Ghaeltachta agus tá a bpleananna teanga á maoiniú ag an bhforas. Tá éacht á dhéanamh ag na hoifigigh phleanála teanga sna bailte seirbhíse Gaeltachta agus sna ceantair Ghaeltachta. Níl a dhóthain de bhuiséad acu chun tionscadail dhearfacha fhorásacha nua uaillmhianacha a chur i gcrích. An bhfuil pleananna ag an Aire nó a Roinn maoiniú breise a chur ar fáil dóibh chun na pleananna sin a chur i gcrích?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_24" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_49">Ag an bpointe seo, tá an chéad grúpa de phleananna ag teacht chun deiridh. Tá muid ag déanamh athbhreithnithe orthu. Tá muid ag teacht go dtí deireadh an athbhreithnithe sin. Aontaím go mór leis an Teachta go bhfuil na hoifigigh pleanála teanga ag déanamh an-jab. Tá mé ag iarraidh go mbeidh support breise le haghaidh na n-oifigeach sin. Tá muid ag breathnú ar na ceantair ina mbeidh muid in ann cuidiú leo le hairgead breise, ach braitheann sé sin ar chúrsaí cáinaisnéise agus an plé a bheidh agam leis an Aire. Mar a dúirt mé ón tús, tá allúntas de luach €7.5 milliún le haghaidh cúrsaí pleanála teanga in 2025. Is a lán airgid é sin. Is ardú mór é i gcomhthéacs na mblianta roimhe seo. Beidh muid ag plé an jab iontach atá déanta. Beidh muid ag plé an impact atá ag na pleananna sin, go háirithe sna bailte a bhfuil pleananna teanga iontu le fada anois. Tá muid ag scrúdú na resources breise a bheidh muid in ann cur le chéile chun cuidiú leo.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_25">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_50">Tá ceist eile agam atá cosúil leis an gceist roimhe seo ach atá bainteach leis na ceantair Ghaeltachta agus na hoifigigh pleanála teanga atá i bhfeighil na bpleananna teanga reatha. Tá muid ag féachaint ar an dara glúin de na pleananna teanga seo sna ceantair Ghaeltachta. An bhfuil airgead suntasach agus uaillmhianach curtha ar leataobh i gcomhair an dara glúin? Tuigim, nuair a cuireadh pleananna teanga le chéile ar dtús, bhí tuiscint ann sna pobail go mbeadh níos mó airgid ann dóibh chun na pleananna a chur i gcrích ná mar a bhí nuair a cuireadh i gcrích iad. Is dócha go raibh níos lú airgid acu ná mar a bhíodar ag ceapadh. Tá an fhianaise sin ann sna pleananna teanga. Tá roinnt mhaith acu léite agam agus tá siad uaillmhianach. Tá siad mór. Is cáipéisí móra iad a bhfuil an-chuid istigh iontu. Tá a fhios agam, mar iaroifigeach pleanála teanga, agus ó a bheith ag caint le pleanálaithe teanga timpeall na tíre, nach raibh siad in ann iad a chur i gcrích mar gheall ar an méid airgid a bhí curtha ar fáil. An mbeidh ardú ann? Níl mé ag caint ar ardú ar aon dul le inflation; tá mé ag caint faoi ardú suntasach le gur féidir níos mó a bhaint amach sa dara glúin.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_26" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_51">Déanfaidh mé iarracht ardú a fháil. Tá mé ag ceapadh go bhfuil an t-ádh orainn go bhfuil gur iarAire Stáit a raibh cúraimí na Gaeltachta agus na Gaeilge air é an tAire caiteachais phoiblí, an Teachta Jack Chambers. Tuigeann sé cé chomh tábhachtach is atá an próiseas sin. Pléifidh muid an cás le haghaidh airgid breise do chúrsaí pleanála teanga. Bhí ardú ann sa bhliain seo freisin. Chomh maith leis sin, tá muid ag díriú ar areas cosúil le cúrsaí óige is ealaíne ina mbeidh muid in ann cuidiú leo.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_27">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_52">Tá cúpla ceist eile agam má tá sé sin ceart go leor, a Cathaoirligh.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_53">Is féidir leis an Teachta teacht isteach arís. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_29">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_54">Okay.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_55">Is féidir leis críochnú le cúpla ceist.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_31">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_56">An bhfuil aon mhír sna Meastacháin a fhágann tacaíocht do naíolanna Gaeilge? Is í sin mo chéad ceist. Baineann an cheist eile atá agam le scéim labhairt na Gaeilge. Bhí sé molta ag mo pháirtí go mbeadh a leithéid de scéim tagtha ar ais. Ghlac an t-iarAire Stáit agus Aire reatha, an Teachta O’Donovan, leis go dtabharfar scéim labhairt na Gaeilge ar ais. An bhfuil plean ag an Aire ina leith seo? An bhfuil airgead iniata sna Meastacháin lena dhéanamh?</p>
+          <p eId="para_57"> Tá ceist agam mar gheall ar oifigigh Ghaeilge sna húdaráis áitiúla. An bhfuil sé seo á mhaoiniú? Ní fheicim é sna Meastacháin so níl a fhios agam i ndáiríre. An bhfuil sé seo á mhaoiniú ag Roinn an Aire nó ag an Roinn tithíochta?</p>
+          <p eId="para_58"> Is í an cheist dheiridh atá agam ná seo: an bhfuil briseadh síos ar an maoiniú atá caite faoin fo-mhír “scéimeanna tacaíochta Gaeilge”? Ní fheicim an briseadh síos. Maith dom má tá na sonraí ann ach ní fheicim sa cháipéis iad.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_32">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_59">Céard é an dara cheist?</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_60">Scéim labhairt na Gaeilge.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_34">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_61">Scéim labhairt na Gaeilge.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_35" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_62">Sin an chéad cheist.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_63">Baineann an chéad cheist le naíolanna. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_37">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_64">An bhfuil aon mhír sna Meastacháin faoina dtagann naíolanna?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_38" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_65">Naíonraí. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_39">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_66">Naíolanna i gcomhair páistí níos lú ná sin. Babies.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_40" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_67">Níl aon phlean ag an bpointe seo faoi scéim labhairt na Gaeilge. Maidir le cúrsaí luathbhlianta, tá súil againn forbairt a dhéanamh ar an bpacáiste tacaíochta teaghlaigh a rinne Tuismitheoirí na Gaeilge thar ceann na Roinne agus tabharfar faoi thaighde i scrúdú bailí a d’fhéadfadh tacaíocht breise a chur ar fail don earnáil luathbhlianta sa Ghaeltacht. Breathnófar ar bhealaigh chun cúnamh a chur ar fáil chun earnálacha áirithe sa Ghaeltacht a spreagadh le níos mó úsáid a bhaint as an nGaeilge ina gcuid gnólachtaí. Tá muid á scrúdú sin agus tuigim go mór cé chomh tábhachtach is atá sé.</p>
+          <p eId="para_68"> Maidir leis na naíonraí, tá plean náisiúnta á ullmhú faoi láthair ag an Roinn leanaí agus tá ionchur á dhéanamh ag mo Roinn san obair sin. Tá an plean sin le foilsiú roimh dheireadh na bliana. Beidh teagmháil láidir idir an Roinn seo agus Roinn na leanaí faoi na naíonraí.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_41">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_69">Gabhaim buíochas leis an Aire as an bhfreagra sin ar na naíonraí, ach baineann mo cheist céanna le naíolanna. In ionad na naíonraí, is crèches atá i gceist agam.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_42" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_70">Tiocfaidh mé ar ais chuig an Teachta ar an bpointe sin.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_43">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_71">Gabhaim buíochas leis an Aire. Bhí ceist amháin faoi na hoifigigh Ghaeilge sna húdaráis áitiúla. An bhfuil siad sin á maoiniú faoi Roinn an Aire nó faoin Roinn tithíochta? Más í Roinn an Aire atá ag maoiniú na scéime sin i gcomhair na n-oifigeach Gaeilge, an bhfuil a dhóthain maoinithe ann i dtuairim an Aire? Tá seans ann gur an Roinn tithíochta atá ag maoiniú na scéime seo. Ní féidir liom aon sonraí a fheiceáil sna Meastacháin.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_44" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_72">Is í an Roinn tithíochta atá freagrach as sin.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_45">
+          <from>Deputy Conor D. McGuinness<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_73">An Roinn tithíochta. Gabhaim buíochas leis an Aire agus leis na hoifigigh as ucht na bhfreagraí agus as a bheith anseo.</p>
+          <p eId="para_74"> Mar fhocal scoir, luaigh an tAire Tuismitheoirí na Gaeltachta agus an dea-obair atá ar bun aige. Mar ionadaí tofa agus tuismitheoir Ghaeltachta, tugaim ardmholadh dó. Déanann sé éacht ag cur tacaíochtaí ar fáil do chlainne óga sna Gaeltachtaí chun an Ghaeilge a choinneáil beo sna clainne sin. Theastaigh uaim é sin a lua toisc gur luaigh an tAire é.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_46" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_75">Tá an Teachta ag brú ar dhoras oscailte. Tá an plean sin an-tábhachtach. Tá muid ag scrúdú cén chaoi a mbeidh muid in ann cuidiú le daoine óga le Gaeilge agus daoine óga sna Gaeltachtaí. Tá an-suim ansin.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_47">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_76">Is deas an tAire a fheiceáil. Gabhaim buíochas leis agus lena fhoireann as teacht isteach tráthnóna. Tá trí cheist ghonta agam. Ar an gcéad dul síos, is é ceann de na cláracha atá leagtha amach sa chlár Rialtais ná Gaeilge365. Ní fheicim é luaite sna Meastacháin. Is mian liom meas an Aire a fháil air sin agus conas a dhéanfar monatóireacht air. Céard atá i gceist ag an Roinn leis an gclár sin amach anseo?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_48" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_77">D’fhoilsigh muid airgead breise le haghaidh Gaeilge365 i rith Sheachtain na Gaeilge nuair a bhí muid i Halla na Cathrach. Is clár iontach é agus tá muid ag iarraidh go roinneann Comhairle Cathrach Bhaile Átha Cliath leis na húdaráis áitiúla eile é. Níl a fhios agam cad é an scéal is déanaí leis. Níl na figiúirí agam ach seasann muid go mór leis sin. Tá muid tar éis infheistíocht mhór a chur isteach sa chlár Gaeilge365. Is clár iontach é.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_49">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_78">An tiocfaidh sé faoin bplean forbartha náisiúnta freisin?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_50" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_79">Is é sin an plean, ach tá sé tábhachtach go forbraíonn sé anseo sa chathair ar dtús agus go bhfuil muid in ann an fhorbairt sin a fheiceáil. Is é sin an plean, áfach. Tá suim mhór ag an bhfoireann anseo é a fhoilsiú go náisiúnta.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_51">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_80">Is mian liom na figiúirí a chloisteáil.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_52" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_81">Tá na figiúirí agam. Beidh €100.1 milliún san iomlán gach bliain. Tá leath an mhéid sin ag teacht ó mo Roinn.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_53">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-01T18:30:00+01:00"/></from>
+          <p eId="para_82">Tá sé thar a bheith dearfach é sin a chloisteáil. Mar a dúirt an tAire, is sárchlár é. Is féidir le húdaráis áitiúla ar fud na tíre a mhacasamhail a dhéanamh agus féachaint ar an gcur chuige nuálaíochta atá ann i leith na Gaeilge.</p>
+          <p eId="para_83"> Ag leanúint leis sin go dtí Údarás na Gaeltachta, a bhí os comhar an chomhchoiste an tseachtain seo chaite, mar is eol dúinn, is é ceann de na fadhbanna atá aige ná forbairt tionsclaíochta na Gaeltachta a chur chun cinn. Cén sórt stiúrach atá tugtha ag an Roinn i leith an bhuiséid a bhfuil aige ó thaobh tionscadal nuálaíochta a mhealladh chun na Gaeltachta? Tá a fhios againn ar fad go bhfuil an t-údarás ag iarraidh daoine le scileanna nuálaíochta agus ardscileanna a mhealladh chun maireachtáil sna Gaeltachtaí agus go gcuirfear na tionscadail nuálaíochta agus na tionscadail le hardscileanna ar bun sna Gaeltachtaí.</p>
+          <p eId="para_84">An bhfuil stiúir tugtha ag an Roinn don údarás i leith na gcliantchomhlachtaí lena mbíonn sé ag obair sna hearnálacha teicneolaíochta, cógaisíochta nó pé ceann acu a mhealladh chun na Gaeltachta?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_54" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_85">Bhí cruinniú agam leis an údarás faoi chúrsaí fostaíochta cúpla seachtain ó shin. Tuigeann lucht an údaráis mo thaithí agus, mé i m’iarAire ar chúrsaí digiteacha, go bhfuil suim mhór anseo. Bhí cruinniú agam le coiste digiteach an údaráis chun cúrsaí digiteacha a phlé. Tá pleananna iontacha ag an údarás chun cúrsaí digiteacha a spreagadh. Tuigim gur phléigh lucht an údaráis na pleananna sin, cúrsa AI ina measc, ag cruinniú deireanach an chomhchoiste. Tá sé saghas ceangailte le ceist dheireanach an Teachta. Luaigh siad an deis AI a úsáid le haghaidh seirbhísí poiblí.</p>
+          <p eId="para_86"> Tagann sé ar ais go ceist an Teachta McGuinness. Caithfimid infheistíocht a dhéanamh i bhfoirgnimh an údaráis ionas go mbeidh siad chomh láidir agus is féidir ó thaobh chúrsaí teicniúla, chúrsaí digiteacha agus gnó nua. Tá sin thar a bheith tábhachtach. Sin an fáth a bhfuil béim mhór á cur agam air sa phlé leis an Aire, an Teachta Chambers, faoin bplean náisiúnta forbartha nua.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_55">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_87">Sin iontach. Baineann mo cheisteanna deireanacha le líonraí Gaeilge. Mar is eol don Aire, tá an-dul chun cinn déanta ag líonra Cluain Dolcáin i mo Dháilcheantar féin le hÁras Chrónáin agus na heagraíochtaí ar fad a bhaineann leis. Cén sórt monatóireachta agus cruinnithe a bhíonn ag foireann na Roinne leis na sluaite a eagraíonn na líonraí timpeall na tíre? Níl sé i gceist agam tabhairt amach faoi na líonraí ach táim ag iarraidh foghlaim óna bhfuil ag obair go maith do líonraí atá ann faoi láthair. Agus muid ag féachaint ar an scéim líonra a leathnú amach go ceantair eile sa tír, an féidir foghlaim ó na ceithre líonra atá ann faoi láthair? An ndéanfaidh an tAire cur síos ar mhonatóireacht na Roinne ar na líonraí le cinntiú go bhfuil siad ag dul ó neart go neart agus go bhfuil an tacaíocht atá de dhíth á fáil acu?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_56" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_88">Tagann an tacaíocht sin díreach ón bhforas. Buaileann foireann an fhorais leis na líonraí sin an t-am ar fad. Spreagann an foras na grúpaí agus foghlaimíonn sé uathu. Tá an-chuid grúpaí leis an taithí sin. Tagann an pointe sin ón bhforas. Táim réasúnta sásta le hobair an fhorais, go háirithe sa spás sin.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_57">
+          <from>Deputy John Connolly<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_89">An bhfuil aon bhriseadh síos ag an Aire ar an gcéatadán a caitheadh ar an nGaeltacht i gcomparáid leis an nGaeilge sna háiteanna eile ar fud na tíre? An bhfuil briseadh síos idir caiteachas ar an nGaeltacht agus ar an teanga taobh amuigh den Ghaeltacht?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_58" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_90">Tá an briseadh síos ann agus beidh mé in ann é thabhairt don Teachta. Táimid ag iarraidh cúpla rud a dhéanamh mar gheall go bhfuil Roinn nua ann. San iarRoinn gnóthaí poiblí agus tuaithe, bhí scéimeanna ann cosúil le CLÁR agus town and village renewal. Fuaireamar spásanna breise agus scéim bhreise i gCLÁR agus town and village renewal do na contaetha a bhfuil Gaeltacht iontu le haghaidh na gceantar Gaeltachta.</p>
+          <p eId="para_91"> Agus an dá Roinn ceangailte anois, beimid in ann dul ar aghaidh leis na seanchláir a bhí san iarRoinn. Beimid in ann iad a cheangal le cúrsaí Gaeilge agus ceantair Ghaeltachta freisin, rud a chuirfidh airgead breise do na ceantair Ghaeltachta. Tá suim agam dul ar aghaidh leis sin agus go gcuirfí a lán airgead breise go dtí an Ghaeltacht agus go muintir na Gaeltachta.</p>
+        </speech>
+        <speech by="#JohnConnolly" eId="spk_59">
+          <from>Deputy John Connolly<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_92">Tá sé go maith é sin a chloisteáil. Cuirim fáilte roimhe sin. Tá ceist amháin eile agam. B’fhéidir gur luaigh an Teachta McGuinness é seo romham. Tá a fhios againn go bhfuil go leor oibre á déanamh ag na hoifigigh phleanála teanga, ach rud a chloisimid go minic ná go bhfuil sé deacair do na ceanneagraíochtaí iad a choimeád sa ról. Téann go leor acu ar aghaidh chun obair leis an Roinn, le hÚdarás na Gaeltachta nó le heagraíochtaí eile mar sin. B’fhéidir go gcuireann sé sin isteach ar an bplean. Ba bhreá linn dá mbeadh an duine céanna a d’ullmhaigh an plean ann chun é a chur i bhfeidhm. Baineann sé sin le coinníollacha oibre. An bhfuil aon tuairim ag an Roinn chun stádas buan a thabhairt do na róil sin?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_60" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_93">Aontaím go mór go bhfuil an-jab á ndéanamh acu. Tá daoine i gcónaí á ngoid ag comhlachtaí nó eagraíochtaí eile. Rinneadh a lán oibre ar chúrsaí pinsin anuraidh agus i gcúrsaí cosúil leis sin. Beidh mé ag iarraidh airgead breise a lorg le haghaidh chúrsaí pleanála teanga, ach beidh sé sin i gcomhthéacs an phlé ó thaobh na chéad cháinaisnéise eile.</p>
+          <p eId="para_94"> Tuigim go mór an tábhacht a bhaineann le ról an oifigigh pleanála teanga. Tá pearsantacht an oifigigh pleanála teanga thábhachtach freisin agus tá sé tábhachtach go bhfuil ceangal idir an plean agus an duine. Beidh mé ag déanamh a lán iarracht iad a choimeád sna ceantair a bhfuil siad ann, agus iad a choimeád sa system.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_95">Tagraím do na Meastacháin agus an t-airgead. Tá ardú i gceist. Is maith an rud é sin. Is dearfach an scéal go bhfuil ardú maoinithe i gceist. Níl sé sin ag tarlú i bhfolús, áfach. Bhí ciorruithe damanta i gceist. An bhfuil mé ceart nach bhfuilimid fós ar ais ag an áit a rabhamar ó thaobh mhaoiniú na mblianta 2008 agus 2009? Nílimid ag an bpointe céanna fós. Táimid fós thíos ó thaobh an mhaoinithe de, nach bhfuil?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_62" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_96">Is í an cháinaisnéis is mó-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_97">Tuigim. Is rud dearfach é sin. Ach nílimid ann fós. Táimid fós ag iarraidh teacht suas leis an méid maoinithe a bhí i gceist tráth.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_64" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_98">Táimid ag dul sa treo ceart ag an bpointe seo. Tuigim go bhfuil daoine ag iarraidh airgid bhreise. Tuigim go bhfuil na struchtúir agus pleananna againn anois ó thaobh chúrsaí pleanála, chúrsaí caipitil agus gach scéim go bhfuil treoir chun airgead breise a chaitheamh.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_65">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_99">Tuigim go bhfuil fráma agus a lán scéimeanna maithe ann. Nílim ag easaontú, ach is í ár dtaithí ar an gcoiste seo i gcónaí ná daoine agus dreamanna ag streachailt. Tiocfaidh mé ar ais go cúrsaí tithíochta. Cuireann finnéithe an choiste seo in iúl dúinn go bhfuil géarchéim ann ó thaobh na Gaeilge de, sna Gaeltachtaí go háirid, áit a bhfuil easpa tithíochta, in ainneoin na scéimeanna uilig. Níor aontaigh an Dr. Aodhán Mac Cormaic liom an uair dheireanach a bhí sé os ár gcomhair go bhfuil géarchéim i gceist. Tá sé soiléir dúinn, agus ní saineolaithe muid ach tá sé ráite go mion minic, go bhfuil géarchéim i gceist.</p>
+          <p eId="para_100"> Tá cúpla ceist phraiticiúil agam. Tá institiúidí tríú leibhéal thar a bheith tábhachtach ó thaobh sholáthar mhúinteoirí agus dhaoine le Gaeilge chun ár ndualgas a chomhlíonadh faoin sprioc 20% faoi Acht na dTeangacha Oifigiúla (Leasú), 2021. Gabhaim buíochas leis an Aire as an eolas. Tá sé an-chabhrach. Maítear ar leathanach 5 go bhfuil athbhreithniú ar an gclár idir lámha. Cén uair a thosaigh an t-athbhreithniú sin agus cén uair a chríochnófar é?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_66" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_101">Mar a dúirt an Cathaoirleach, tá athbhreithniú á dhéanamh. Táim ag iarraidh go mbeidh cúrsaí oiriúnacha tríú leibhéal ar fáil chun tacú le daoine ar spéis leo gairm bheatha a bhaint sa Státchóras anseo in Éirinn, chomh maith leo siúd a bhfuil spéis acu a bheith ag obair sna hinstitiúidí Eorpacha. Táim ag súil go gcuirfear an t-athbhreithniú sin i gcrích faoi fhómhar na bliana seo. Tá sé tábhachtach go mbeidh sé déanta chomh luath agus is féidir mar gheall go bhfuil Uachtaránacht na hÉireann ar an Aontas Eorpach ag teannadh linn. B’fhéidir go mbeidh deiseanna ann ansin. Tuigim spéis an Chathaoirligh sa straitéis seo.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_102">Tá sé thar a bheith tábhachtach. An bhfoilseofar an t-athbhreithniú sin?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_68" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_103">Foilseofar an t-athbhreithniú. Táimid sásta é a phlé leis an gcoiste seo.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:40:00+01:00"/></from>
+          <p eId="para_104">Tá sé sin suimiúil. Tá neart rudaí maithe, ach táim ag piocadh rudaí a léimeann amach domsa. Tagraítear do na foghlaimeoirí ar leathanach 6. D’fhreastail beagnach 28,000 duine ar choláistí samhraidh agus is dul chun cinn é sin. </p>
+          <p eId="para_105">Bhí siad dúnta le linn na paindéime ach tá siad oscailte arís. Is maith an rud é sin. An bhfuil spriocanna leagtha síos ó thaobh líon na bhfoghlaimeoirí? An bhfuil sprioc ann? An bhfuil slat tomhais i gceist?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_70" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_106">An iad na daltaí atá ag teacht go-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_107">Is iad na foghlaimeoirí sna coláistí atá i gceist agam. Tá scéim ann a ligeann dóibh freastal ar choláiste Ghaeilge.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_72" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_108">Tá 27,000 duine-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_109">Tá an méid sin ar eolas agam, ach an bhfuil sprioc i gceist? An bhfuil plean leagtha amach maidir le líon na bhfoghlaimeoirí atáthar ag iarraidh a mhealladh?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_74" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_110">Níl sprioc dhíreach ann. Tuigim an cheist go mór, áfach. Tiocfaidh mé ar ais ar an gceist sin mar caithfidh muid é a phlé. Níl an figiúr sin agam. </p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_111">B’fhéidir go mbeidh muid in ann é sin a leanúint suas. Tá scéim na gcúntóirí teanga iontach. An bhfuil folúntais sa scéim? An bhfuil na daoine go léir fostaithe nó an bhfuil folúntais?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_76" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_112">Tá gach duine fostaithe ag an bpointe seo.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_113">Níl aon fholúntas sa scéim sin.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_78" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_114">Níl aon fhigiúr agam a deir go bhfuil folúntais ann. Má tá cinn ann, tá muid ag iarraidh iad a líonadh mar tá an scéim sin thar a bheith tábhachtach. </p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_115">Tá sí. Arís, iarraim ar an Aire teacht ar ais leis na figiúirí sin. Mura bhfuil folúntais sa scéim, is maith an rud é sin.</p>
+          <p eId="para_116"> Is oth liom a rá nach bhfuil dualgais an Aire faoi Acht na dTeangacha Oifigiúla á gcomhlíonadh aige. Is oth liom é sin a rá. Bhí agus tá sé de dhualgas air faoi Acht na dTeangacha Oifigiúla dátaí i leith oifigigh agus seirbhísí Gaeltachta a leagan síos. Nuair a foilsíodh an tuarascáil, bhí dá rud i gceist. Comhthreomhar leis an bplean sin, bhí gá le plean gnímh agus níl tasc ná tuairisc ar an bplean gnímh. Chomh maith leis sin, bhí sin le bheith foilsithe laistigh de thréimhse ama agus tá an tréimhse ama sin thart. Tá mé ag iarraidh a rá go bhfuil Acht na dTeangacha Oifigiúla thar a bheith tábhachtach. Tá sé sin ráite againn roimhe seo ag an gcoiste. Tá dualgas air mar Aire dátaí a leagan síos. Bhí tréimhse ama ann agus níor tharla sé.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_80" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_117">Tuigim go mór an dualgas sin. Tá ualach mór oibre déanta faoin Acht ó achtaíodh an tAcht leasaithe ag deireadh 2021. Bhí mé ar an gcoiste ag an am sin. Mar a dúirt an Cathaoirleach, mar chuid de sin, ceapadh foireann shonrach chun an obair seo a dhéanamh agus bunaíodh ionad nua. Tuigim áfach nach bhfuil roinnt den obair seo go léir go poiblí go fóill. Beidh áthas ar mo Roinn fógraí mar sin a dhéanamh san fhómhair ó thaobh na gnéithe seo a leanas: foilsiú an chéad phlean gníomhaíochta faoin bplean náisiúnta agus seirbhísí poiblí Gaeltachta; agus tionscnaimh comhairliúcháin faoi na caighdeáin teanga agus alt(9)(a), is é sin, ainmneacha, seoltaí agus teidil i nGaeilge, agus alt 9(d), is é sin, foirmeacha oifigiúla agus socrú na ndátaí i leith oifigigh agus seirbhísí Gaeltachta. Beidh áthas orm chomh maith tuarascáil an Aire ar fheidhmiú an Achta idir 2022 agus 2024 a fhoilsiú san fhómhar chomh maith agus léargas níos doimhne a thabhairt air seo go léir. Tuigim, beidh muid-----</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_118">Tá mé ag dul ar ais arís. Cén dáta ar a mbeidh an plean gnímh foilsithe? Cén dáta ar a mbeidh dualgas an Aire chomhlíonta aige agus tréimhse ama curtha síos ó thaobh seirbhísí agus oifigigh sa Ghaeltacht?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_82" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_119">Chomh luath agus is féidir san fhómhar i mbliana.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_120">San fhómhar. All right. Gabhaim buíochas leis an Aire. </p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_84" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_121">Sa bhliain seo; ní an chéad uair eile. Is fómhar 2025 atá i gceist agam.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_122">Níl sé cosúil le hAcht na dTeangacha Oifigiúla nó Bille Údarás na Gaeltachta. Rinne mé dearmad ceist a chur faoin bhliain a bhí i gceist. Tá dhá cheist phraiticiúla agam. Is é Lurgan an teideal atá agam ar an ionad nua atá beartaithe. Is dea-scéal é. Is mian liom eolas a fháil ar stádas an ionaid sin. </p>
+          <p eId="para_123"> I gcomhthéacs na mórionad, tá pleananna ollmhóra ó thaobh Bhaile Átha Cliath de agus is maith an rud é sin. An bhfuil pleananna mar sin i nGaillimh? An bhfuil mórionad beartaithe i nGaillimh? Tá Sráid Dominic ann. Is áit álainn í ach tá gá le caoi a chur uirthi. Níl a fhios agam an í sin an áit-----</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_86" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_124">An í cathair na Gaillimhe atá i gceist ag an gCathaoirlech?</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_125">Is í. Bhí dhá cheist ann, is iad sin ná an t-ionad Lurgan agus an mórionad i nGaillimh.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_88" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_126">Mar a dúirt mé, tá muid fós ag obair ar chúrsaí Lurgan. Tá cead pleanála faighte ó mhí Iúil anuraidh. Tá muid ag súil le tosú ar an obair tógála faoi mhí Mheán Fómhair nó ag deireadh na bliana seo le go mbeidh an t-ionad Lurgan tógtha faoi 2027 nó mar sin.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_127">An mbeidh sé tógtha faoi 2027?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_90" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_128">Tá sé sin ann. Tá obair fós le déanamh air. Níl aon sonraí agam faoi chúrsaí chathair na Gaillimhe. Tá muid ag iarraidh go dtagann daoine le chéile chun é a phlé. B’fhéidir go mbeidh an Cathaoirleach in ann cuidiú leis sin.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_129">An bhfuil cainteanna ar siúl? An bhfuil aon rud tosaithe ó thaobh ionaid de?</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_92" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_130">Tá, ach tá muid ag tús an phróisis sin.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_131">Tá muid ag tús an phróisis.</p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_94" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_132">Déanann sé ciall mhór go mbeadh áit i gcathair na Gaillimhe ach caithfidh muid é sin a phlé leis an Roinn caiteachais phoiblí. Má tá daoine ag iarraidh teacht le chéile, beidh m’oifigigh in ann cuidiú leo. </p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_133">Gabhaim buíochas leis an Aire. An bhfuil duine eile ag iarraidh teacht isteach le tuilleadh ceisteanna? An bhfuil aon rud breise is mian leis an Aire nó a oifigigh a rá? </p>
+        </speech>
+        <speech by="#DaraCalleary" eId="spk_96" as="#Minister_for_Rural_and_Community_Development_and_the_Gaeltacht">
+          <from>Deputy Dara Calleary<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_134">Is mian liom mo bhuíochas a ghabháil leis an gcoiste. Ceapaim gurb é seo an chéad uair go raibh an roghchoiste as Gaeilge freisin. Gabhaim buíochas le m’oifigigh agus le cléireach an choiste, a bhí ag iarraidh é sin a bhaint amach leis na blianta.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_135">Go raibh míle maith agat, a Aire. Cuireann sé sin críoch lenár mbreithniú inniu. Tá cinneadh le déanamh againn. An bhfuil muid sásta teachtaireacht a sheoladh chuig an Aire le rá go bhfuil muid sásta leis na Meastacháin Athbhreithnithe, nó an bhfuil na comhaltaí ag iarraidh go scríobhfar tuarascáil? Ní dóigh liom é.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Cléireach an Roghchoiste<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_136">Feidhmíonn an teachtaireacht mar thuarascáil cé nach ndéanann an coiste tuarascáil. Beidh tuarascáil ann.</p>
+        </speech>
+        <speech by="#CatherineConnolly" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_137">Is féidir leis an roghchoiste glacadh leis an teachtaireacht chuig Cléireach na Dála mar thuarascáil an choiste. An bhfuil sé sin aontaithe? Aontaithe. Ní dóigh liom go bhfuil aon rud eile. Cuireann sé sin deireadh lenár mbreithniú ar na Meastacháin Athbhreithnithe i gcomhair seirbhísí poiblí - Vóta 42, clár D - an Ghaeltacht, de chuid na Roinne Forbartha Tuaithe agus Pobail, agus Gaeltachta. Arís, is mian liom ár mbuíochas a ghabháil leis an Aire chomh maith leis na hoifigigh as an gcúnamh a thug siad dúinn inniu agus na ceisteanna a fhreagairt. Cuireann sé sin críoch lenár ngnó inniu.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Teachtaireacht chuig an Dáil<recordedTime time="2025-07-01T18:50:00+01:00"/></heading>
+        <speech by="#CatherineConnolly" eId="spk_100">
+          <from> An Cathaoirleach<recordedTime time="2025-07-01T18:50:00+01:00"/></from>
+          <p eId="para_138">De réir Bhuan-Orduithe 110 de Dháil Éireann, seolfaidh cléireach an choiste an teachtaireacht seo a leanas chuig Cléireach na Dála:</p>
+          <p class="indent_1" eId="para_139">Tá Roghchoiste na Gaeilge, na Gaeltachta agus Phobal Labhartha na Gaeilge tar éis a bhreithniú ar na Meastacháin Athbhreithnithe le aghaidh seirbhísí poiblí le haghaidh na bliana dár gcríoch an 31 Nollaig 2025 a chríochnú: Vóta 42 - An Roinn Forbartha Tuaithe agus Pobail, agus Gaeltachta, clár D - an Ghaeltacht.</p>
+        </speech>
+        <summary eId="sum_6"> Cuireadh an roghchoiste ar athló ar 6.58 p.m. <i>sine die.</i></summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

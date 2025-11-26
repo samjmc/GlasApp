@@ -1,0 +1,939 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-09-23/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-09-23/debate"/>
+          <FRBRdate date="2025-09-23" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_fisheries_and_maritime_affairs"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-09-23/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-09-23/debate/mul@"/>
+          <FRBRdate date="2025-09-23" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-09-23/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_fisheries_and_maritime_affairs/2025-09-23/debate/mul@.akn"/>
+          <FRBRdate date="2025-09-27" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CharlesWard" href="/ie/oireachtas/member/id/Charles-Ward.D.2024-11-29" showAs="Charles Ward"/>
+        <TLCPerson eId="ConorDMcGuinness" href="/ie/oireachtas/member/id/Conor-D-McGuinness.D.2024-11-29" showAs="Conor D McGuinness"/>
+        <TLCPerson eId="DavidMaxwell" href="/ie/oireachtas/member/id/David-Maxwell.D.2024-11-29" showAs="David Maxwell"/>
+        <TLCPerson eId="GerardPCraughwell" href="/ie/oireachtas/member/id/Gerard-P-Craughwell.S.2014-10-10" showAs="Gerard P. Craughwell"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="MichaelCollins2016" href="/ie/oireachtas/member/id/Michael-Collins.D.2016-10-03" showAs="Michael Collins"/>
+        <TLCPerson eId="PadraigMacLochlainn" href="/ie/oireachtas/member/id/Pádraig-MacLochlainn.D.2011-03-09" showAs="Pádraig Mac Lochlainn"/>
+        <TLCPerson eId="PatTheCopeGallagher" href="/ie/oireachtas/member/id/Pat-the-Cope-Gallagher.D.1981-06-30" showAs="Pat the Cope Gallagher"/>
+        <TLCPerson eId="SarahOReilly" href="/ie/oireachtas/member/id/Sarah-O'Reilly.S.2025-01-29" showAs="Sarah O'Reilly"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM IASCACH AGUS GNÓTHAÍ MUIRÍ</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Fisheries and Maritime Affairs</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-23">Dé Máirt, 23 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-23">Tuesday, 23 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 11:00 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 11:00 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JohnConnolly">John Connolly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#GerardPCraughwell">Gerard P. Craughwell</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#JoeCooney">Joe Cooney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#SarahOReilly">Sarah O'Reilly.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PatTheCopeGallagher">Pat the Cope Gallagher</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PadraigMacLochlainn">Pádraig Mac Lochlainn</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#DavidMaxwell">David Maxwell</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#CharlesWard">Charles Ward</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#JenniferWhitmore">Jennifer Whitmore.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Michael Collins.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#ConorDMcGuinness">Teachta / Deputy Conor D. McGuinness sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i>The joint committee met in private session at 11.02 a.m., suspended at 11.23 a.m. and resumed in public session at 11.25 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Inshore Fishing: National Inshore Fishermen's Association<recordedTime time="2025-09-23T11:25:00+01:00"/></heading>
+        <speech by="#ConorDMcGuinness" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:25:00+01:00"/></from>
+          <p eId="para_14">Before we begin, I must, as I do at every meeting, say a short few words on privilege. Witnesses giving evidence from within the parliamentary precincts are protected by absolute privilege in respect of the evidence they give to the committee. This means that a witness has a full defence in any defamation action for anything said at a committee meeting. However, witnesses are expected not to abuse this privilege and may be directed to cease giving evidence on an issue at my direction as Chair. Witnesses should follow the direction of the Chair in this regard and are reminded of the long-standing parliamentary practice to the effect that, as is reasonable, no adverse commentary should be made against an identifiable third person or entity. Witnesses who are to give evidence from a location outside the parliamentary precincts, which I do not think arises in this meeting, are asked to note that they may not benefit from the same level of immunity and should take appropriate legal advice on this matter themselves. Privilege against defamation does not apply to the publication by witnesses outside of the proceedings held by the committee of any matters arising from the proceedings.</p>
+          <p eId="para_15"> I advise members of the constitutional requirement that they be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a Member to participate where they are not adhering to this constitutional requirement. Therefore, a Member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via MS Teams that prior to making their contribution to the meeting, they confirm to me verbally that they are on the grounds of the Leinster House campus. Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks, and it is imperative that they comply with any such direction.</p>
+          <p eId="para_16"> The agenda for today's meeting is issues affecting inshore fishing. We know that there are many and they are serious and grave, and that is why we want to hear from representatives. We are delighted to be joined at this meeting by officials from the National Inshore Fishermen's Association, NIFA. Tá fíorfháilte rompu anseo. They are most welcome here. We look forward to our engagement. We have Mr. Michael Desmond, chairperson; Mr. John Menarry, vice chairman; and Mr. Michael Foley, head of the pelagic steering group. Their opening statement has been circulated to members in advance of this meeting, but I will give them up to five minutes if they want to go through the opening statement, read it into the record or summarise it, as they wish. I will leave that up to them. We will go to questions and answers thereafter. I ask members, when the opening statement has concluded, to indicate if they wish to speak and I will take a note of their name. We will hopefully get in two rounds of questions and answers if time allows. I remind members to ask their questions within their allotted time, which will be ten minutes, while also ensuring they give sufficient time for the witnesses to respond.</p>
+          <p eId="para_17"> I will hand over to the witnesses Ar aghaidh libh.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T11:25:00+01:00"/></from>
+          <p eId="para_18">As members might have guessed, we are not here to give career advice, but I thank the committee for its invitation here to discuss the difficulties, challenges and future opportunities of the inshore fishing sector. As many of them are aware, Ireland seems to have more marine NGOs and anti-fishing social media groups than it has actual fishermen. The vast majority of the members associated with these groups seem to have zero experience or knowledge of our vital industry but can call for the closure of existing and important fisheries within our sector that contribute to the economic survivability of rural coastal communities.</p>
+          <p eId="para_19">Instead of closing current fisheries, the committee should focus on the reopening of fisheries that were unjustifiably halted by previous Governments because of intense lobbying from various groups at a time when there was no producer organisation to represent us and counteract these misguided measures. French and British vessels continue to fish for bass on our very doorstep while Irish consumers are buying imported, inferior farmed fish when it could be fresh wild-caught Irish sea bass. The same scenario applies to sea trout, salmon, eels and pollock. To reopen fisheries with sustainable management plans in place would allow our members and others to diversify their fishing activities and alleviate the pressure on the shellfish stocks.</p>
+          <p eId="para_20"> There is an immediate and urgent need for financial support for inshore fisherman similar to those received by Irish artists. Annually, approximately 2,000 artists receive €35 million because they are recognised as a part of this country's culture and heritage, as are we, without the recognition. As well as being primary food producers of the healthiest food source available, 30 years ago, we were getting higher prices for our product than we are now, and our expenses have increased tenfold. Atlantic storms and gales are far more frequent because of climate change, so we are spending less time at sea during the winter months. Our pleas cannot go ignored once again in the upcoming budget as they have in all previous budgets.</p>
+          <p eId="para_21"> Pelagic fish stocks are a national resource and asset. It is unconscionable that another year will pass where almost the entirely of the mackerel and herring quota is given to just 50 large vessels, owned by maybe two dozen people. How can the minority be the main beneficiary? Some semblance of morality needs to be injected into this equation. An ever-increasing number of our membership are of the belief that the only reason for this ridiculous distribution is our inability to make political donations.</p>
+          <p eId="para_22"> Inshore vessels should always be allowed to land their catch in the closest port and not be obliged to travel to a designated one, often for hours in treacherous winter sea conditions.</p>
+          <p eId="para_23"> A dedicated hook and line quota for bluefin tuna must be acquired immediately for the inshore sector. It is difficult to comprehend that vessels from all EU coastal states as well as a fleet from the southern hemisphere are allowed access to this stock while again, we can just observe. This particular species is more abundant than ever on our shores, and to be able to access this fishery would greatly enhance the financial income of inshore vessels.</p>
+          <p eId="para_24"> There has to be increased engagement from the Department of the marine and all inshore representatives to improve results with our innumerable issues. The situation surrounding the north-west herring committee needs immediate resolution as this grouping is devoid of any inshore representation whatsoever. An impartial chair needs to be appointed from within the Department with immediate effect.</p>
+          <p eId="para_25"> Access to social welfare must be improved. The fish assist scheme is minuscule in comparison to what is needed. Each vessel is a small business and deserves to be treated as such because of the employment it creates. Illness benefit access is also necessary.</p>
+          <p eId="para_26"> Grant applications need a complete revamp for our sector as those most in need are unable to avail because of the pay 100% upfront requirement. This is causing a two-tier sector. A huge number of fisherman are also not computer literate and paper copies need to be made available.</p>
+          <p eId="para_27"> In relation to offshore renewable energy, the Irish State must ensure that all fisherman affected are adequately compensated by renewable energy companies. The brown crab working group needs to be resumed this year, and regular meetings have to take place quarterly. A huge-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_28">I will ask Mr. Desmond to conclude as we are at the time limit. I ask him to summarise the last couple of points if he does not mind.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T11:30:00+01:00"/></from>
+          <p eId="para_29">Climate experts say we are experiencing a climate crisis because we have lost our connectedness to nature. The people who still have the connection are inshore fisherman. Yet, it is us who are being sacrificed in the name of it. Several politicians have called for the decarbonisation of the fishing fleet even though we have the lowest carbon footprint of all food producers.</p>
+          <p eId="para_30">There are hundreds of small open fishing vessels using between 1 and 2 litres of fuel per hour while alongside us at sea ecotourism boats seeking basking sharks, dolphins and other marine mammals are equipped with twin 300, 400 and 500 hp engines, emitting 100 times more carbon than us. If decarbonisation is to occur in the marine sphere, would it not make sense that it would start with the ecoboats rather than primary producers of healthy food? There are dozens of nuclear submarines roaming the world’s oceans, but the three of us here are deemed to be the danger to the planet while, in actual fact, the inshore fishing sector could be part of the solution with small scale, sustainable, wild-caught, fresh organic food improving invigorating and sustaining employment and population in Ireland’s coastal communities into the future if the political will to help was there. I hope this committee will be an example of that will.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_31">Gabhaim buíochas as sin. Iarrfaidh mé ar Theachtaí agus ar Sheanadóirí a suim a léiriú má tá siad ag iarraidh caint. I have Senator Sarah O'Reilly, then Deputy Mac Lochlainn and then Deputy Collins. If anyone else wishes to indicate, they should just catch my eye.</p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_6">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_32">The witnesses are very welcome. I am delighted to see them here. I will just ask three questions of whomever feels best placed to respond to them. I ask that we keep it brief enough so that we can get the three questions and responses in. Will Mr. Desmond expand on his statement regarding fisheries that were unjustifiably closed? What effect did this have on the local economy?</p>
+          <p eId="para_33"> My second question has to do with the impartial chair for the north west herring advisory committee. What seems to be the main issue there? Can it be resolved?</p>
+          <p eId="para_34"> It seems that the brown crab is extremely important. A high percentage of inshore vessels rely on this stock, as is mentioned in the statement. I understand that fishermen are having to put out 100 pots where they used to put out 30 to catch the same amount of crab. What barriers are there to inshore fishermen diversifying into new species? How can the Department tackle this?</p>
+        </speech>
+        <speech by="#" eId="spk_7">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T11:35:00+01:00"/></from>
+          <p eId="para_35">I will answer the question on closed fisheries and Mr. Menarry can talk about the north west herring advisory committee and the brown crab. The EU never asked Ireland to ban wild salmon fishing or bass fishing. Ireland did that because of lobbying from the tourism industry and hoteliers from Athlone, Killarney and wherever else. There was no organisation to stand up for inshore fishermen at the time. It is the same for the pelagic stocks. We do not have a quota for pelagic stocks because there was no one at the table to represent us. In fairness, the EU has brought in a law requiring producer organisations to be either an inshore PO or an offshore PO. To become an inshore producer organisation, 80% of an organisation's membership has to operate vessels of 12 m or less in length. All the other POs are for those operating vessels of 24 m or more in length so, under EU law, we are the only PO in Ireland representing inshore fishermen. Even though those organisations say they represent inshore fishermen, they are not allowed to. There was no one to argue the point because we were not at the table back then. Salmon and bass were fished in west Cork and salmon was also fished in Donegal. There were thousands of people employed all around the coast long ago. Thousands of anglers are now allowed to catch them without a problem while we are not. It is ridiculous. Instead, we are eating farmed salmon, which everyone knows is nowhere near the same thing. We have probably lost hundreds, if not thousands, of jobs in coastal communities because of the taking of these fisheries.</p>
+          <p eId="para_36">There is nothing to stop the Government from reopening this. At the time it was a moratorium. Bass fishing was stopped. English and French boats are fishing bass off our coasts now. French boats are actually pair trawling for them, and I cannot go out and shoot a net or catch a bass with a rod and line. Every bass we eat in restaurants is coming from Turkey or Asia. It is crazy. That deals with the closed fisheries. Mr. Menarry will talk about the north west advisory herring committee and the brown crab as he is involved in that.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T11:40:00+01:00"/></from>
+          <p eId="para_37">I thank the Deputy. On the subject of the north west herring advisory committee, from the outset there were issues around the interpretation of the Minister’s policy, and amendments made by the then Minister, Deputy McConalogue in 2023. There was a “them and us” perspective on the interpretation of it. We reached out to the Department on several occasions to ask officials to come to a meeting to explain the policy because we had a situation where the chair at the time was emailing about it and getting phone calls. We asked about one phone call and where he got his information and we were told he could not remember who he got the information from. The last time we discussed quota management I asked a principal sea fishery officer in the Department of the marine. All it will take to get that committee back is for one representative at the Department of the marine to attend its very first meeting after it reconvenes and put on the record what is meant by what is in the policy. We can move forward from there but we cannot have a situation where one group says it is this or that or "I think it is this or I think it is that". All it will take is on official from the Department of the marine to attend for one hour and the case will be closed. That official can say it on the record and we are happy to move forward from that.</p>
+          <p eId="para_38"> On the issue of the brown crab, it is the most socioeconomically important stock in Ireland. We can talk about the worth of the mackerel, but if the mackerel disappeared in the morning, outside of 50 RSW vessels for six weeks of the year, it would have zero effect and virtually undetectable consequences for the inshore sector but it is seen as the gold standard and that is all we ever hear about. Brown crab is fished by 90% of the inshore sector and that is down to lack of opportunities.</p>
+          <p eId="para_39"> That leads me to the Senator's question about diversity. We do not need to diversify; we need to regain access to the stocks we have been excluded from. We had access to mackerel. There was a polyvalent allocation of mackerel of 13%, and ministerial policy has privatised that for 27 vessels, leaving 2.5% of that 13%. When I say 2.5%, that 13% is 100% of the polyvalent allocation. We get 2.5% of that 100%, which leaves approximately 200 tonnes for the rest of the polyvalent sector. We have 400 tonnes of a hook and line mackerel fishery. That is a small amount and not enough to make it economically viable for most of the fleet because factories that can process up to 1,000 tonnes a day. They would have the 400 tonnes done before dinner time. It is not viable for the factories with a larger scale. That limits a lot of the market for that product. When it was last reviewed by the Minister at the time, we had a situation with north west herring that under 10 m vessels were excluded from any track record regardless of whether they had a track record in the fishery. We had a case of two vessels, one under 10m and one over 10m fishing together, and the vessel over 10 m fulfilled the same criteria as the under 10 m vessel. However, the over 10 m vessel got so-called track record in the fishery and was allowed access to quota, whereas the under 10 m vessel was limited to 5% of the overall quota for the entire polyvalent sector. Some 40 vessels can access that. We are not asking for diversification, we are asking for access to what we had access to before ministerial policy changed it. That is all we need.</p>
+          <p eId="para_40"> Many of our issues are Irish-based and are to do with the Minister. They have to do with the interpretation and enforcement of policy. We do not have issues at European level that the larger vessels might say they do. Many of our issues could be quite easily sorted out in the morning if the political will was there. We are not looking to take massive chunks from any sector. We are talking 3 or 4% of any quota as regards mackerel. What we had before was 40% of herring fisheries and it was the majority of the inshore fishing vessels that fished it.</p>
+          <p eId="para_41"> We do not have to go that far back in history to when there were no large vessels in this country. Everybody started out small. Some got big, and fair play to them, but the inshore sector has always been there. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_9">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_42">Is Mr. Menarry saying he does not believe that we should be trying to fight in Europe?</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_43">From an inshore perspective, absolutely. More quota for Ireland is good. However, for the inshore sector, if we cannot access that quota, what is the point? Why fight a battle if you are not going to gain anything from it? We have enough to do fighting for our members, like we are doing here today. We do not need to do that in Europe. We need to basically fight our own Minister first to get access to what we always traditionally had access to. </p>
+        </speech>
+        <speech by="#SarahOReilly" eId="spk_11">
+          <from>Senator Sarah O'Reilly<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_44">If I were to say that nobody is tougher on Irish fisheries than the Irish Administration, would I be wrong? </p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_45">Nobody is tougher on inshore fishermen than the present ministerial policy. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_46">Deputy Collins is next. For everybody's attention. here are clocks around the room and it is ten minutes for each Teachta Dála or Seanadóir and that includes time for answers. Thank you Senator, that was right on the button. </p>
+        </speech>
+        <speech by="#MichaelCollins2016" eId="spk_14">
+          <from>Deputy Michael Collins<recordedTime time="2025-09-23T11:45:00+01:00"/></from>
+          <p eId="para_47">I am not a member of the committee but this is my first opportunity to attend a meeting. I wish the committee well. It is an important committee as it gives a voice to the fishermen in this country. That has been lacking and it is great that there is a Ministry as well. I thank Deputy Mac Lochlainn for letting me jump ahead of him. I will get a chance to ask questions but I might not get a chance to stay here because we have a meeting and I should be at it as we speak. I will put a number of questions. The witnesses might take them down as with the time limit, they might not be able to answer them. </p>
+          <p eId="para_48"> I have spoken several times in the Dáil about the immediate need for financial subsidies for inshore fishermen. The very valid point was made that nobody is arguing that artists are not entitled to funding but artists are receiving roughly €35 million and the inshore fishermen receive zero subsidy.</p>
+          <p eId="para_49"> Another point is that access to social welfare for fishermen must be improved with fish assist. The witnesses might explain that to us later. French and British vessels continue to fish for bass on our doorstep. Unfortunately, Irish inshore fishermen do not seem to be able to do that. Why can they not do so when the French and British can? </p>
+          <p eId="para_50"> The witnesses say that inshore vessels should always be allowed to land their catch at the closest port. This is obviously for safety reasons and others. Why is that not happening? </p>
+          <p eId="para_51"> There should also be a dedicated hook-and-line quota for bluefin tuna. I have been saying that should be the case for the pelagic fishermen and for inshore fishermen as well. Throughout the world, every other country seems to have this quota and Ireland does not seem to be able to get its hands on any of the lucrative bluefin quota. These are ways of survival for the fishermen, to look at quotas that other countries have and why we do not. </p>
+          <p eId="para_52"> We have a stand-alone Minister. Are we making progress? The witnesses might say that it is only 12 months but 12 months is 12 months. Is the inshore fishing group making progress in getting its point across about subsidies and new quotas? Is that happening under this Minister or are we in the same position we were in 12 months ago? The situation surrounding the north west advisory herring committee needs to be resolved immediately, as this group is now devoid of any inshore representation. Why are the inshore fishermen not represented on that group? Is the Minister helping in any way on that? </p>
+          <p eId="para_53"> Regarding grant applications, someone wants to build a shed or do something that is beneficial to their job. Unfortunately, they have to pay 100% upfront before a grant can be drawn down. How do the witnesses envisage a way forward to change that? There is no point if the fishermen do not have the funding and are in a financial state that the banks will not back them. How are they going to get the money to build a shed or other structure and reclaim the money after? Can that be changed? Are there any talks on that being changed? </p>
+          <p eId="para_54"> Regarding the brown crab working group, the witnesses are saying that it needs to be resumed this year and that regular meetings have to take place. Why have they not taken place? </p>
+          <p eId="para_55"> I have been told on numerous occasions that the number of seals is at a record level. As everyone knows, their only diet is fish, so what do the witnesses see as the solution? </p>
+          <p eId="para_56">I have a lot of questions and the witnesses have only six minutes to answer. I ask them to do the best they can. I am delighted they are here. I should have said that at the beginning.</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_57">We will not have time to go through them all. I was not able to read the entire opening address. Seal numbers around our coastline are at record levels. There are now tens of thousands of them. Everyone knows their only diet is fish. Tens of thousands of seals will eat millions of fish. If an animal in the wild does not have a predator, its prey becomes extinct. That is what will happen. Unless numbers are reduced rapidly, no amount of MPAs will halt the reduction in fish stocks because seals do not have a predator. Norway, Greenland and Iceland have fish in abundance in their inshore waters because of seal culls. Finland, Estonia and Sweden have written to the EU Commissioner to request to be allowed to do what we are requesting, namely reduce their numbers. When we were allowed to fish for salmon, we kept the seal numbers under control. That is why there is salmon there. When we were prevented from fishing salmon, the population did not increase because if there are 100 seals at the mouth of a river, salmon cannot go up and down to spawn. </p>
+          <p eId="para_58"> Mr. Menarry might address brown crab and Mr. Foley will speak about inshore vessels and the closest port. </p>
+          <p eId="para_59"> On grant applications, we get all of our grants through BIM. When it was formed, it provided loans for fishing boats to fishermen. We would not have a fishing industry if BIM had not been structured in the manner in which it was in the beginning. BIM's portfolio has expanded to include the tourism industry. People cannot access a grant unless they pay 100% upfront. If I wanted to build a shed, improve my boats or do anything else, I have to pay 100% and then receive a percentage back from BIM. If people do not have the money in the first place, they cannot go ahead. The people who have will get more and the people who have not cannot access the funding. However, if the system worked the other way around, whereby BIM paid a supplier X amount and we then paid the rest, it would be a fairly simple solution.</p>
+          <p eId="para_60"> Members know the story with social welfare. People who are self-employed cannot really access the system. We need financial subsidies and supports, and are looking for them. There is no fisherman in Ireland who is not down €10,000 a year due to Covid, Brexit and the war in Ukraine. That is just crew members. The market for shellfish has collapsed four times in the past five years. We cannot keep going with mounting expenses.</p>
+          <p eId="para_61"> Mr. Foley can answer the question on the safest port because that relates to pelagic stocks.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_62">There is legislation stating that a vessel must go to a designated port where there is a weighbridge to land fish. Those fishing on the south coast, such as off Cork Harbour or whatever, have to go out to sea and steam to Baltimore or Dunmore East to land a catch. That is not safe for small inshore boats. If a boat has fish on board, this could involve a ten-hour steam to one or other of those ports. Fishermen are going out into the open sea and risking their boat, their own lives and the lives of their crew. Something needs to be done. </p>
+          <p eId="para_63"> Fishermen can land a ten tonne catch, but that limit needs to be increased to, perhaps, 25 tonnes. A lorry that comes with fish will take 25 tonnes. If a fisherman sends a lorry away with ten tonnes of fish, he or she will have nothing for their fish because their transport has gone and is taken out of the ten tonne catch that has been landed. If the rule was that an inshore fleet could land 25 tonnes in any port around the coast, that would be a massive help for inshore boats.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_64">Mr. Menarry can deal with the questions on the bluefin tuna quota and brown crab.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T11:50:00+01:00"/></from>
+          <p eId="para_65">I will add to what Mr. Foley said. There is an SFPA office in Greencastle. </p>
+          <p eId="para_66">Ten boats can land 10 tonnes but one boat cannot land 11 tonnes. Ten boats can land 100 tonnes but one boat cannot land 11 tonnes and that is down to legislation. The Minister can fix that in the morning if he wants. Legislation would fix it, no problem. It would be done and dusted. </p>
+          <p eId="para_67"> On the tuna, it is unfortunate that Senator O'Reilly has just stepped out but it is probably the one quota for which we need to go to Europe to get an allocation. ICCAT issues Europe with a quota allocation and it is up to our Minister to ask for an allocation for us. We have asked on numerous occasions and been told that nobody will give it to us but if we do not ask, we do not get. We hear the same old story that for us to get more, other people will have to take less but it is a case that in order for us to get any, those who have it all are going to have to take a small haircut. I was out fishing in Donegal Bay yesterday. I was fishing for crab and there were five angling boats fishing for tuna around me. There was tuna everywhere. One or two tuna per week would save me having to go to brown crab. It would take the pressure of the brown crab and give us diversification. The stocks are there. We cannot fish tuna in our waters because our Government at the time was under pressure from angling vessels to protect tuna in Irish waters. That is why the anglers are limited in the number of angling boats that can actually fish for them in Irish waters. They are a protected species.</p>
+          <p eId="para_68"> On the north-west herring, it is down not to political will but will on the part of the Department to engage. Everybody said one of the main issues with the north-west herring committee was a lack of engagement from the Department. I have given the Department options. We had a meeting in March 2024 and were asked to get back to the Department within a week. We got back within the week with a letter containing our recommendations but we heard nothing until the Department came out with recommendations for the fishery in October. There was no engagement whatsoever. </p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_19">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_69">Is it a fair assessment to say that the inshore sector and the inshore fisheries all around our coast are heavily reliant on fishing for shellfish which are non-quota species? There are concerns about the long-term viability of all of that, in any event. The sector is heavily reliant on shellfish and just does not have access, in any real way, to other fisheries. Is that a fair statement?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_70">Yes.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_21">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_71">That is the situation. Will the witnesses confirm that in the case of our quota that is allocated for our quota species, that is a public quota that belongs to the Irish people? </p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_72">Yes, it is a national asset.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_23">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_73">It is a national asset. It is important that is understood. In terms of Article 17 of the Common Fisheries Policy, CFP, the witnesses met with the EU Commissioner for fisheries, Mr Costas Kadis, earlier this year. What did he have to say about Article 17, which refers to a fair and accountable allocation of quota?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T11:55:00+01:00"/></from>
+          <p eId="para_74">We explained to him that Article 17 is in existence and is there for a reason. It is there to help inshore vessels but it looks like certain coastal states, and Ireland in particular, ignore it. Ireland just ignores it. It is supposed to support the inshore sector by ensuring a fair share of quota stocks for inshore vessels. As the committee knows, we have 400 tonnes of mackerel out of 40,000 tonnes. When the quota was 70,000 tonnes, the entire inshore fleet, which is now close to 95% of the fleet, still only got 400 tonnes. When we put it to him, he agreed that something has to be done about it, but what? Is it a Common Fisheries Policy review? As with the Department, a lame tortoise would get things done faster. It is just crazy that it is going on and on. The article is there and already exists. Micheál Martin was able to bring in penalty points in this Dáil overnight, and he said that if he did not do it, the EU would penalise him. At the same time this Government, and every previous Government, have refused to share quotas fairly but there is no backlash from Europe about it. The EU does nothing whatsoever about it. It just goes on and on and nothing is ever done. We are where we are with it. </p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_25">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_75">It strikes me that when we look at the fishing industry and people at sea, there is concern about how the SFPA implements Common Fisheries Policy law, yet Article 17 does not seem to have any effect in Ireland. In terms of north-west herring and mackerel, quota management and all of the apparatus through which fishermen are supposed to engage, the witnesses have outlined their concerns about this for a long time. What is the new Minister of State, Deputy Dooley, telling them? Does he intend to bring in an independent chair? Does he intend to try to make the system work? What is their sense of it? Is there a role for the committee in seeking clarification on how all of this works?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_76">Hopefully we will know more by this evening as we are meeting the Minister of State, Deputy Dooley, at 3 p.m. to discuss this and other matters. On the point that the Irish quota is a national asset as it belongs to the country, it is ministerial policy to privatise it for the chosen few. If the policies change then we can get back access to the fisheries to which we had access previously. It belongs to the people but it is being privatised in this country.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_27">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_77">I ask the witnesses to keep us updated on their meeting with the Minister of State. If these concerns are not addressed, I ask them to correspond with the committee and ask it to play an active role in assisting the process.</p>
+          <p eId="para_78"> My understanding of the position of the National Inshore Fishermen's Association is that it supports the Irish fishing industry being given a fair allocation of fish under the Common Fisheries Policy but it is asking that this fairness extends inshore. It is asking for more fish for the Irish quota and for a fair share of the quota. Is this a fair assessment of the position?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_79">That is exactly it. Deputy Mac Lochlainn has hit the nail on the head.</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_80">Other producer organisations go to Europe and bang on the table about fair and equal access. If we want fair and equal access at European level we have to have it at national level also. As has been said, we cannot have double standards. We have a situation at national level in the inshore sector whereby larger vessels exceed national quotas by between 200% and 500% in some fisheries, yet when it comes to other fisheries we have clauses put in place, such as for hook and line mackerel and the north-west terrain, whereby when vessels start to get close to the quota the fisheries close to prevent them from going over the quota. Last year 6a north herring was exceeded by more than 200%. Due to paybacks and penalty clauses imposed by Europe, we have -153 tonnes of quota this year and we will probably not have quota in the fishery next year either because more will have to be paid back.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_30">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:00:00+01:00"/></from>
+          <p eId="para_81">The next area I want to look at is financial supports. There were a number of points made in the presentation. The witnesses rightly compared the financial subsidies available in other areas of the Irish economy and society. The one I always think about is farmers. They get single farm payment assistance under the Common Agricultural Policy, and rightly so. I can never understand why something similar is not in place for fishermen. The witnesses also spoke about access to social welfare and the fish assist scheme being less than minuscule in comparison to what is needed. I tabled a parliamentary question not that long ago. The number of fishing families throughout the State who get assistance is approximately 50. I believe it is 51. This is absolutely tiny. It means the scheme is not working. This absolutely backs up the point the witnesses have made.</p>
+          <p eId="para_82"> The witnesses also made a point on grant applications with regard to paper copies and dealing with the bureaucracy. I ask them to speak about this. Ideally from the position of their association, what type of financial supports would work? When I speak to inshore fishermen they always say they want fish first. This is absolutely sound. Across the board, species are being tightened. I am fervently of the belief that financial support is necessary in the inshore sector to keep it in the water. The Irish people would want this. What is the ballpark? Where does the sector need to be in terms of financial supports, social welfare supports and grant assistance?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_83">We have already addressed the grant assistance. That is a very simple fix. Rather than us coming up with 100% and then getting the percentage back, the State could pay the percentage first. It is the same as when BIM was originally set up. It gave the loan for it. We are not asking for loans, although it would be great if they were given.</p>
+          <p eId="para_84"> On the financial supports, farmers get them and are entitled to them, but the price of beef and milk is higher now than it ever was and they can still get supports. We were told that because it was not written into the Common Fisheries Policy, we could not get anything from the State, while it was written into the Common Agricultural Policy at a European level. There is nothing written about a common artist policy but the State can find the money for that because of artists' importance to the culture and heritage of Ireland. Are we not as important to the culture and heritage of Ireland?</p>
+          <p eId="para_85"> The real killer for us is that there was €242 million available through the Brexit adjustment reserve, BAR, funding and 95% of the fleet, the inshore sector, got nothing. The State will say that it did and that it got €40 million this way and that way, but when you look into it, that went to the piers. The bigger lads got it into their hand. The money we received from the then Minister, Deputy McConalogue, at the time did not come out of BAR funding. The tourism industry and everyone got it. Commissioner Kadis is of the firm belief that tens of millions was given to the inshore funding, all from BAR funding. It is a complete lie. It did not happen. What did ours come out of?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_86"><i>De minimis</i> aid.</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_87">It came out of <i>de minimis</i> aid. I do not know if it is true or not but I think some of that money was actually handed back afterwards. We were there and we could not sell crabs, shrimp or whelks because of Covid, Brexit and the war in Ukraine and we basically had to tie up the boats. We are then giving back money, allegedly? It is hard to take.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_34">
+          <from>Senator Manus Boyle<recordedTime time="2025-09-23T12:05:00+01:00"/></from>
+          <p eId="para_88">I welcome the witnesses. It is great to see them in here talking about inshore fishing, which is a vital part of coastal communities and one that needs to be supported. A lot of the questions I wanted to ask were asked already but I will just go down through them. On the financial support, I totally agree with that. I have boys working for me who are part-time fishermen. There are days and weeks when they cannot go out. They are self-employed. It is totally wrong. It is through no fault of other groups that they are getting financial aid. Inshore fishermen should get financial aid too. That is something on which the committee should push the Minister, and push hard. I know one man who sat at home for three weeks last year waiting to go out to lift his pots. That is wrong. I would like it if the committee took it on as one of the points we would support the inshore fishermen on to try to get some kind of financial aid.</p>
+          <p eId="para_89"> As Mr. Desmond alluded to, it is criminal what fishermen are made to do when they cannot land at the port that is safest for them. I know of a couple instances where boats have had to leave the port at Inver during an amber warning and go around to Killybegs to land fish when it was totally unsafe. However, if they had not done it, they would have been brought before the courts. It makes no sense at all. At the end of the day, the captain of the boat that holds the license should make the decision as to whether it is safe to go to another port or to come in to land. Mr. Desmond is 100% right. If you have under 10 tonnes, you can land at a non-designated port but a fisherman does not know what is in the net. The policy is total nonsense. At the end of the day, the captain of the boat should have the sense to make the best decision for his crew and to land the fish at the nearest port if it is safe to do so.</p>
+          <p eId="para_90"> If the weather is good and he wants to go around to the weighbridge, let him go on ahead, but he should be given that option. He really should because somebody will be lost at sea over the head of this rule here. I have talked about this rule before. What is happening is totally nonsensical. That is another issue the committee could push hard with the Minister. If it is safe, it should be allowed and if not, they should land where it is safe for them to do so.</p>
+          <p eId="para_91">Regarding the pelagic species, how does Mr. Menarry think it could be better shared? The pot is so small at the moment and, in my eyes, everybody deserves a bit. The problem is coming from Europe. We are getting the crumbs at the table. Everybody else is fishing in our waters and we are getting very little. How can we make it fair for inshore as well as the big boys on the pelagic trawlers? Everybody has to be looked after.</p>
+          <p eId="para_92"> Regarding the herring committee, I attended a meeting in Donegal along with Mr. Menarry. The was a row about herring. Was that last December?</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_93">It was just before we were up here the last time. </p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_36">
+          <from>Senator Manus Boyle<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_94">Was that row ever sorted or was it kicked down the road like everything else?</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_95">The Department never engaged. It has been asked to engage several times and just point-blank will not. Everybody is being told to go into a room to sort it out. As the Senator said, the big guys have it all and we have nothing. The Department are expecting us to come along and to get together. It is up to the Minister and his officials to be the referee and put it right.</p>
+          <p eId="para_96"> Regarding the pelagic share, all we want is for it to go back to the way it was before the policy changed in 2012 and 2017. It was taken off the inshore sector. We are not looking for something that was never available to us. We only want what was available to us before. We have always stated the case that at the end of the year, if it is not caught then it should go back into the pot and be shared out again next year. It is not that fish is going to go to waste or anything like that. When we are talking about 2%, 3%, or 4% of the mackerel quota, in 2023 there was 140,000 tonnes of pelagic species available to Ireland. The inshore sector had access to approximately 2,000 tonnes out of 140,000 tonnes. We are not talking about massive numbers. </p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_38">
+          <from>Senator Manus Boyle<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_97">The bluefin tuna is another example. I totally agree. From what I am told by fishermen, there is plenty of tuna out off the coast. Why does Ireland not have a licence for tuna for the likes of the small inshore fisherman to be allowed three or four fish a week, or whenever the fish are there? That would keep that fisherman's costs down and would save other species too. The fish is there. Every other country is getting them. There are boats coming from Japan to fish tuna in international waters. Why can we not get a small quota to fish for the likes of the inshore fisherman, to keep their costs down and to save other stocks?</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_98">We are in a situation where Iceland is looking to access Irish waters to fish blue whiting. They are talking about trading self-appointed mackerel quotas on the basis that the mackerel is in their waters. If Europe gives access to the Icelanders in exchange for a quota they awarded themselves solely on the basis that there is mackerel in their waters, surely we can make the same case that with bluefin tuna in our waters 12 months of the year, Ireland should be allowed access to quota for fish in our waters. We talked about double standards before. If that is not put right, we are going to have double standards there as well. </p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_40">
+          <from>Senator Manus Boyle<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_99">From talking to the Commissioner, he sees other opportunities too for inshore fishermen in Ireland because the migratory patterns have all changed. That is one issue we could push hard for in this committee so that the inshore sector could try and get something out of the bluefin tuna stocks. They are off our coast. I heard a story last night about a boat that was out on Sunday. All the crew saw around Donegal Bay was tuna.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_100">The tuna has been in as far as Killybegs Harbour.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_42">
+          <from>Senator Manus Boyle<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_101">Nobody is catching them. They are just being let away through catch-and-release so they cannot take them in. </p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_102">We need to ensure that a hook-and-line quota is given, because, if we are just given a bluefin tuna quota and it is all caught in two days by a couple of large boats, the quota is gone. This man actually fished tuna with hook and line in the Bay of Biscay in a 12 m boat before so it can be done. </p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:10:00+01:00"/></from>
+          <p eId="para_103">It is a lovely fish. With hook and line you are playing with the fish. Environmentally it is 100% with no bycatch.</p>
+          <p eId="para_104">It is there outside our doorstep. I went to the Bay of Biscay when I was young to fish tuna in a 12 m boat because I wanted to. I should not have been there but I did it because I wanted to fish tuna. It is now outside my own doorstep and I cannot fish it. It does not make sense. The fish are there in Cork Harbour and Waterford Harbour and all of the harbours along the south and west coasts. They come into the harbours. We look over the back of the wall at them. We will be looking at the Spanish and French catching while we are not allowed to catch. That needs to change.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_105">Can the committee do something about the issues we raise? It is 18 months since the last time we were here and nothing has changed. All of the points we have made here today we made 18 months ago. The previous committee we were in front of did nothing for us. As the committee is only for fisheries, can it ensure financial support for us? Can members speak to Ministers for Finance and public expenditure and reform before the upcoming budget and say we need something? </p>
+          <p eId="para_106"> When the pollock fishery was lost to us, some of our members stopped fishing as they were dependent on it. A minority were totally dependent on it and those lads are gone now. Can the committee give us an undertaking it will speak to the finance officials for us and deliver a result?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_107">I am conscious I am eating into Senator Boyle’s time but to respond directly to Mr. Desmond, the committee is not the Minister or the Government. Our job is to hold Government to account, point towards policy improvements and innovation, highlight issues and hold State agencies to account. That is the committee's function and role in all of this. That said, we have people here who are clearly very passionate about the fishing industry. It is very important that in our first half year's work we get to grips with the issues affecting the inshore sector. The discussions we have had today and other discussions we have had and will have in the coming months will feed into a report the committee is compiling.</p>
+          <p eId="para_108"> Deputy Mac Lochlainn is rapporteur for this committee on sea fisheries protection issues. There will doubtless be reports this committee will do in the future, looking at various aspects. We can of course write to Ministers, including the Minister of State, Deputy Dooley, whom our witnesses will meet later today, but also the Minister for Finance and public expenditure and reform as and when necessary to make suggestions and demand certain changes. Whether they make those changes is beyond our ability to guarantee. I am conscious I have eaten into Senator Boyle’s time. I will give the Senator a minute to wrap up and will then go to our next speaker.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_47">
+          <from>Senator Manus Boyle<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_109">I thank the Chair for clarifying that. There is no meaningful engagement with the Department. The committee should write to the Department and ask that it interact far more often with the inshore fishermen. At the end of the day we have a Department and that is what it is there for. It has to engage with the people out on the sea doing the job and it is not doing that. The Department needs to step up.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_48">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_110">Before I move on to our next speaker, Deputy Whitmore, there is a proposal from Senator Boyle. Is it agreed that we write to the Department to seek ongoing engagement, notwithstanding the fact that our witnesses are meeting the Minister today? We can discuss that correspondence at our next private meeting.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_111">The committee will ask for meaningful engagement.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_112">Yes, meaningful engagement is very important. </p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_51">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:15:00+01:00"/></from>
+          <p eId="para_113">I thank our witnesses for coming in today. I am trying to get my head around that information as there was a lot of it in the opening statement and the discussion that followed. It is within the remit of the Government to address the mackerel and herring quotas.. It is not a competency of the EU and the Government does not need to go back to the EU to redistribute those quotas. NIFA had access to larger quotas of mackerel and herring. When and why was the decision made to switch?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_114">In 2012, the then Minister, Deputy Coveney, brought in a policy which basically track recorded the herring fishery - the north-west herring and the Celtic Sea herring. I think 35 or 37 boats actually got, as we called it, the golden ticket. The rest of the boats got an allocation. There is a small inshore fishery in Dunmore East called the Dunmore box. It covers the Waterford and Wexford coast. Larger pelagic vessels were not allowed to fish in that box. He allocated 11% in the Dunmore box for the smaller boats, while he gave 85% to the 30-odd larger boats. I think it was even less allocated in the north west. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_115">Yes, it was 5%.</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_116">It was 5% in the north-west herring fishery. Prior to his arrangement and the rebuilding of the stocks, it was on a 33%-66% basis, over and under 55. It was two thirds to one third. Basically, we went from having under 55% of boats having 33% of the quota. With the Minister, Deputy Coveney's policy, we were reduced to 11% in the Celtic Sea herring and 5% in the north-west herring. We are not looking for anything here. All we want is to have what was taken off us. This can all be sorted nationally.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_55">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_117">Why was that decision made? What was said at the time?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_118">I spoke to Mr. Coveney at the time - actually, it was through letters and emails - and he said to me that the reason for it was to preserve the stocks. The Celtic Sea herring has since collapsed. I think the Minister, Mr. Coveney's policy needs to be readdressed because it did not do what it was meant to. I have letters at home where he stated that the reason he was giving it to this number of people was to protect that stock.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_57">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_119">However, he did not reduce the overall quota. He just redistributed it.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_120">He redistributed the quota, yes. It was to protect the stocks, but the fisheries collapsed, so his policy did not work.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_59">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_121">With the stocks after collapsing, even if that was redistributed or the NIFA had more access to it, is there potential or would it viable for it? Obviously, if the fish are not there, it is going to be difficult for anyone to make a living out of it.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_122">At the moment, the Marine Institute is doing DNA sampling on the Celtic Sea herring, and it now believes that 50% of the Celtic Sea herring has gone north into the north Irish Sea. It is actually climate change or water temperatures rising. It believes now that the fish have gone into the Irish Sea. However, we have very little Irish Sea herring quota because we lost it in the Brexit deal. We will have to get access for that herring fishery. If it is the case that the Celtic Sea fish have gone into the Irish Sea and we do not have Irish Sea quota for it, we are done.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_61">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_123">Mr. Foley was talking about the Icelandic fisheries saying they were in Icelandic waters and, therefore, they can access it. Is there potential then or would that be something similar for stocks going up from the Celtic Sea? Is that a similar opportunity? If the Celtic Sea stocks have gone northwards up into the Irish Sea, is there an argument to be made that they are actually Celtic Sea stocks?</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_124">That is why the Marine Institute did the DNA testing on them - to try to prove that. At the moment, it is ongoing. We are taking samples as often as we can for it.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_63">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:20:00+01:00"/></from>
+          <p eId="para_125">We are seeing a lot of changes in the different stocks and their distribution and the ranges. It is hard to predict with stocks what movements there are going to be. On the flip side then, we are also seeing things like bluefin tuna coming into our waters, which we would not have ever had before.</p>
+          <p eId="para_126">Do the witnesses think the Department moves fast enough when new opportunities come up potentially-----</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_127">No.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_65">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_128">-----to actually maximise it for them? The point was well made that if there was a quota, it would have to be hook and line because otherwise the quota would just be eaten up by the bigger players and NIFA would not get any of it.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_129">The Celtic Sea herring has been on a scientific quota for the past seven or eight years, which is minimal. Basically, all we are getting is enough to take samples for the Marine Institute. As little as we have, the inshore have 105 tonnes this year. I was at a Celtic Sea herring meeting last week to decide how we are going to share out these 105 tonnes. It is minimal. You could say that has been going on since 2017 or 2018 but because the herring are gone, there is nothing coming up behind to take the slack. We are left with a hole in our income. I do not know what the real answer is. The real answer is that we have to prove that these herring have gone to the Irish Sea but, obviously, the English or the Scots will not want to hear that because as far as they are concerned, it is their fishery now as we traded it; it was a trade deal in Brexit. We traded Irish Sea herring.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_67">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_130">The inshore sector is getting squeezed significantly. Mr. Desmond and I have had discussions on sprat. I know I am on a different side of that issue, but we do need to have sustainable management of fisheries and because there has been a lack of management in many different fisheries over the years, the witnesses are being overly impacted by that and they are sort of being squeezed by changes, such as climate change and water change, overfishing and the bigger players having a bigger voice when it comes to a lot of this. They are probably at the coal face and getting impacted by it a lot more. For Mr. Desmond's organisation, am I correct that there are approximately 1,300 people in the inshore fleet, and he represents around 200?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_131">We have 246 members at the moment, but we represent about 300 boats.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_69">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_132">Are they from all around the country?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_133">They are all from every coastal county, yes.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_71">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_134">I do understand as well that they are all individual businesses, and sometimes it can be difficult to bring together groups that see themselves on an individual basis and such. We have agreed to write to the Minister to have more consultation. The witnesses have obviously found that their voices have not been heard and listened to when it comes to their sector over the past number of years. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_135">We have only become a PO in the past three years.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_73">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_136">The organisation is relatively new so.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_137">There was no voice before that, and we are finding it increasingly difficult. We are voluntary. I want to be at home fishing today, not up here. It is the same with these lads. We have other things to be doing. The other POs got help with funding and so forth when starting. Again, it is down to the interpretation of EU law. Spain gave €8.4 million to its POs upfront to be used according as they wanted it. We got nothing. We are three years as a PO now, and we have a secretary at home doing up what we spent in the past three years to get a percentage back three years later. We are doing everything out of our own pockets. Then, when we get the percentage back, we are expected to stay going. We contacted the Minister of State, Deputy Dooley about this, and he is writing to get it, but they are saying it has nothing to do with the EU and that it is the Department of Finance that is stopping us from getting funding upfront.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_75">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_138">However, the other POs get funding.</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_139">They got it to help them to start off in the beginning. However, they are going for so long; they have been there for decades. Once POs get set up, people are putting in their receipts all the time and getting their percentage back. They have big membership fees. It is a percentage of their boats' gross. It is €100 per year for us. We cannot afford to. Our members are cash strapped.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_77">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_140">That might be something as well, Chair, that we could push-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_141">Absolutely.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_79">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:25:00+01:00"/></from>
+          <p eId="para_142">-----because it is important that they have a strong representative body that can have those discussions with the Department.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:30:00+01:00"/></from>
+          <p eId="para_143">On the SPAs issue, we are on different paths. </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:30:00+01:00"/></from>
+          <p eId="para_144">Sorry, if Mr.Desmond does not mind, I will hand over to Deputy Gallagher. We are into his time slot. We can get back to that issue. </p>
+        </speech>
+        <speech by="#PatTheCopeGallagher" eId="spk_82">
+          <from>Deputy Pat the Cope Gallagher<recordedTime time="2025-09-23T12:30:00+01:00"/></from>
+          <p eId="para_145">Like my colleagues, I welcome the National Inshore Fisherman's Association to our meeting today. It is a long time since I met with representatives of the association. However, a lot of the problems are still the same.</p>
+          <p eId="para_146"> I looked at the presentation relating to sea bass. What needs to be done there? At the moment it is just for angling purposes. Years ago, it was the same for salmon. I was totally opposed to the termination of drift netting for salmon. We were told at that time by those in Iceland and by those in this country that if we ban drift netting it, there would be plenty of salmon for the anglers. It would be interesting to have the witnesses' view on what the stocks of salmon are like. Maybe, after many years, it is time the State looked at the stocks of salmon and considered reopening them. There is no point in us blaming Europe all the time. Europe has no control over that. We have that control within our own country.</p>
+          <p eId="para_147"> I could not help but note that inland fishermen are almost an extinct species. I look at all the others receiving supports such as the artists receiving €35 million because they are part of our culture. However, inshore fishermen are part of the culture and heritage as well. If we do not put a stop to it now, and try to assist them, we will not be meeting in a number of years because inshore fishermen will be totally extinct. </p>
+          <p eId="para_148"> We can be very supportive here, but we do not want to give the impression we have the answers to everything. We can make a case to the Minister on behalf of the National Inshore Fisherman's Association. The representatives will make their own case with their very good presentation. This is a good document for us to use. </p>
+          <p eId="para_149"> In the old days, I was very familiar with Baginbun and Dunmore, and right around the coast over to the south. I have not been down there for a number of years. I am more familiar with the designated ports. I was taken aback to think the designated ports are only Baltimore and Dunmore East. Of course, a fisherman can go into any port if it is <i>force majeure, </i>but he cannot claim a <i>force majeure</i> every single time. Of course, there is the 10 tonnes idea for landing at designated ports. I know the witnesses do not have the answer but who was the individual that decided unilaterally that should be 10 tonnes? Why is it not 12 tonnes or 20 tonnes? It is the same principle. There should be more designated ports. There are plenty of SFPA officials. If they get an hour or two-hours notice and are hailed, they can be there to do it. When I look at the north-west coast, which Mr. Menarry is more familiar with, from right around into KIllybegs, crab vessels have to go around there, and an accident is going to happen. Then it will be too late. </p>
+          <p eId="para_150"> Regarding bluefin tuna, I am not so sure what is meant that there must be more meetings on this. </p>
+          <p eId="para_151"> Sprat has not been mentioned. Next year, or some time afterwards, there is going to be restrictions on the baselines for sprat. That was announced by the Minister for agriculture some time ago. Is there a sprat fishery? Years ago, there was a big sprat fishery in Cobh and Dunmore East, but the witnesses have not mentioned it. Are they involved in that? </p>
+          <p eId="para_152"> I have been reminded of the days of Brendan O'Kelly, which is going back a long time. He was chairman and chief executive of BIM. At that time, no one could afford to build the 50-footers. BIM built the boats at that time down with Joe O'Boyle in Dingle, and up in Killybegs and maybe elsewhere. It gave an opportunity to get a foot on the ladder. However, now fishermen have to go to the banks and, my God, it is hard to get money from banks. They will not give it to them. There will have to be something put in place. Hopefully, between the Minister, BIM, and the Department of Finance, they will put some scheme in place that means fishermen would not have to complete the job. Then when the job is completed, it takes some time before it can be signed off and they get their money. That is something we should be looking at. </p>
+          <p eId="para_153"> The submission states: "The BCWG (Brown Crab working group) needs to be resumed". I am not so sure what that means, but there should be regular meetings. </p>
+          <p eId="para_154">I would also support regular meetings between the association and the Department. That should happen. It should not be once a year. That should happen a couple of times at least so it can highlight the issues. I know it is not popular to talk about culling seals but, by God, seals' food is fish and something has to be looked at there because seals are consuming a lot more fish than the fishers are landing. Mackerel and blue whiting are as much part of the fishery and require that intervention. I am sure the Minister of State will look at the possibility of ring-fencing a percentage for the association's members.</p>
+          <p eId="para_155"> I am glad the witnesses are here. We will be glad to meet them anytime. In particular, we will meet our Donegal friend to assist in every way possible. The meeting today was important. He might be a member of my own party but I believe the Minister of State, Deputy Dooley, is a good listener. He is fair and will give them a good hearing. However, a good hearing is not good enough. There has to be follow-through. </p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:35:00+01:00"/></from>
+          <p eId="para_156">That is our point. There has to be follow-through. There is a lot to get through there in the Deputy's questions. On salmon fishery, the committee could make recommendations like that to reopen fisheries for us instead of closing them. As for the sprat fisheries, when we are forced out of the quota species, the only thing we have left is the non-quota species. Then when the Government starts bringing forward legislation to stop us fishing the non-quota species, what are we supposed to do? The ISES information on sprat is just a precaution. I will let Mr. Foley talk about it in greater detail but there are plenty of sprat in Irish waters. Just because there was not in Bantry Bay last year does not mean they were not in Donegal Bay, the Dunmore box or anywhere else. Pilchards and anchovies have become the dominant species in the bays of the south-west coast for the past number of years because of warming waters. Two hundred years ago, there was 200 French vessels sailing from Brittany in France to Bantry fishing those stocks and there was no sprat there then either. Things change. It is not always overfishing. However, Mr. Foley will get into the sprat fishing in more detail. </p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:35:00+01:00"/></from>
+          <p eId="para_157">We will talk about the Dunmore box. It runs on the 52° line from Mine Head. It goes way east of Carnsore Point, up the east coast and into Cahore Point at 52.30°. That is the Dunmore box. It is a big area. The only thing Simon Coveney did that I agree with was that box because it excluded the larger pelagic vessels from fishing for herring and sprat within the box. Since 2012, the sprat fishery in Waterford Estuary and in the Dunmore box has come on in leaps and bounds. I have some numbers here from the Irish Marine Institute that it did while it was doing the Celtic Sea herring survey. I can show it to members later. They will see on that survey that the fish are predominantly in the Dunmore box. It is very positive but - which is even more positive - it did not do the survey in the bays and estuaries where the fish predominantly were at the time the survey was done. The institute stated it did not do that. The vessel was too big to go into the bays to do the survey. While the survey looks good, if they had been in those bays when that survey was done, it would have shown that the stocks in the Dunmore box are very good. I would say the same for the north-west sprat fishery in Killybegs. No survey was done on the east coast. The survey that was done on the south coast did not include Bantry Bay or any of the bays around the coast.</p>
+          <p eId="para_158">To be honest with Deputy Whitmore, I was flabbergasted when the Government put a moratorium on sprat while there was were very good and lucrative fisheries in the south east of Ireland and on the north west coast of Ireland. If there is no sprat in Bantry Bay, I do not have the answers. However, I will ask a question. Does the Deputy know how much sprat the inshore fleet took out of Bantry Bay in the past ten years?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:40:00+01:00"/></from>
+          <p eId="para_159">I will cut in as we are over time and Senator Craughwell has been waiting online. He is going to take his ten minutes now. We will have a stand-alone meeting next week to look at the entire issue of sprat, and if Mr. Foley would like to send some questions, we can put them. We just do not have time to discuss it now. There will hopefully be another round of questions, with much less time for TDs and Senators, and there may be an opportunity to put it then. For now, we will go to Senator Craughwell. I can see the Senator is in one of the lovely Leinster House offices but would he mind verbally confirming he is on the grounds before he proceeds?</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_86">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-09-23T12:40:00+01:00"/></from>
+          <p eId="para_160">Can I check that the Chairman can hear me?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:40:00+01:00"/></from>
+          <p eId="para_161">Loud and clear.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_88">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-09-23T12:40:00+01:00"/></from>
+          <p eId="para_162">I am sitting in my office in Leinster House 2000. I am sorry I did not come down, but I am trying to get some other work done as well. What I have got to say is fairly short and sweet. From the time we joined the European Union, I have seen fishermen thrown under the bus time and again. I have seen harbours around the country that once had several trawlers in them slowly but surely disappear. My colleague, Pat the Cope Gallagher, is 100% correct. In a very short space of time, we will not have a fishing industry, certainly at the scale we are talking about today. </p>
+          <p eId="para_163"> Before I speak about one of my concerns, I just want to say we have to be honest. The Chair has been very honest here with the witnesses that have come here today. We cannot change Government policy or guarantee money. We cannot guarantee anything.</p>
+          <p eId="para_164"> Deputy Mac Lochlainn referred to a fisherman sitting at home for three weeks due to bad weather and earning no income, what that does to a family, etc. Many things need to be looked at, but this committee should immediately investigate the privatisation that has been referred to by the witnesses. We need to find out exactly who is behind the privatisation, what formula is being used to divvy up quotas, etc.</p>
+          <p eId="para_165"> To the three witnesses, I really do not have questions. They have been asked question after question and there is very little to be said from a question point of view other than I would like to know whether any of them or fishermen within their particular areas are likely to leave the industry in the very near future. I will leave it at that and I look forward to an answer from the witnesses.</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:40:00+01:00"/></from>
+          <p eId="para_166">I thank the Senator. I will leave it to Mr. Menarry to talk about the quota. As to whether the three of us are likely to leave, it is quite possible. Recently, I applied for and got a fisheries local action group, FLAG, grant for marine tourism and got it. I am seriously thinking about packing fishing up because it is just not viable. It is not that the fish are not there or that I cannot catch them. Rather, what I used to do before was to tie my boat up in winter time, bring in my pots and then go fishing for herring and sprat with Mr. Foley or his partner. I now find myself fishing pots all year round. That is because of Government policy. We have this pressure on our shelter stocks because of Government policy. There is no other reason. We were stopped from fishing bass, salmon, trout, eels and pollock. What are we supposed to do?</p>
+          <p eId="para_167"> There will be complaints in a few days' time - it will be from the Save Our Sprat group - that a fellow made a statement the other day that inshore fishers do not know what sustainability was. It is not our fault we are put into one pressure zone of stocks. It is not by choice. The Government forced us to do that. There is no strategy for inshore. In 2019, the then Minister, Michael Creed, came up with the inshore strategy. It was launched in 2019 and was to run until 2024.</p>
+          <p eId="para_168">There was a huge launch and fanfare and pictures in the newspaper. We never had one meeting about it since and we are now in 2025. There is still no strategy for inshore. It is very easy to say the moratorium on bass or salmon can be lifted in 2025. That takes some of the pressure off shrimp and crab stocks and little by little, gets the fleet to diversify into different stocks again. We were sustainable fishermen when it was left to our own devices. I fished scallop for a couple of months of the year, herring for a couple of months of the year, salmon, shrimp, and everything worked fine, and then the Government started getting involved and destroyed the whole lot. It is very easy for the Government to fix that by reopening the fisheries, diversifying and giving us a fair share of the quota like we used to have. To answer the Deputy's question, unless things change, I can see myself packing up shortly.</p>
+          <p eId="para_169"> Mr. Menarry is better equipped to answer the question on privatisation.</p>
+        </speech>
+        <speech by="#" eId="spk_90">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_170">I will also answer the Deputy’s first question on whether I am likely to leave the industry. Nobody wants to leave the fishing industry. It is part of who and what we are. We may be forced to leave. We talked about pollock already. When the pollock was closed, some of our members were actually forced to sell their boats. They were forced out, with no compensation or supports.</p>
+          <p eId="para_171"> On the question of who is behind the privatisation, ministerial policy has basically privatised pelagic quotas. When we had access to 13% of the mackerel quota through the polyvalent allocation and the policy review was reviewed in 2017 by the then Minister, Simon Coveney, those who benefited most were in the south west of the country in his own area. In Europe, we asked MEPs whether they thought that our inability to make political donations affected our ability to access quota. How the policy is privatised to quota for a chosen few would lead one to believe "Yes". Why would a quota that was accessible to so many get taken away and put into the hands of a few? I do not know. In the Deputies’ game, it is all about votes. The inshore sector is the largest sector of the fishing industry by a country mile, yet we get treated the worst. We cannot say whether that was directly the reason for the privatisation but those vessels get their allocations at the start of every year and the inshore sector does not get access to those quotas. If one has the money, one can buy into those fisheries. If one can afford the money for the boat and licence, one can buy into it. To my mind, if one can buy into something, it is being privatised.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_172">I am not thinking of leaving. I come from a fishing background. Records started in 1864 and I can trace fishing back on my father’s side of the family to that, and I would say another 200 or 300 years before that. I can, on paper, prove that my family has fished since 1864. It is a way of life and I would like to carry it on. I do not want to be pushed out of something I love.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_92">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_173">It was quite moving to hear from the three witnesses. There was an allegation made that the quotas had been moved to the south west. We need to examine that and I ask that we organise to have the Department in fairly quickly to deal with that issue.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_174">There is a proposal from Senator Craughwell. As part of our work programme, we have undertaken to have the Department in on a regular basis. The Senator's proposal is a good one and I am prepared to see it go forward.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_94">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:45:00+01:00"/></from>
+          <p eId="para_175">Can I widen that proposal? I suggest we invite the Department in to respond to the issues around allocation of mackerel, herring and pollock quota. Basically, all of the issues raised today.</p>
+          <p eId="para_176">They are easily summarised. We would invite them in and the Minister or perhaps the Department. I want to get guidance from the delegation.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_177">The Department is just an arm of the Minister. It is his decision.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_96">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_178">It is the Minister.</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_179">It is the Minister's signature on all the documents.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_98">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_180">The Minister and his senior officials should be invited to respond to the issues raised. It is a public quota. It belongs to the people. Article 17 of the Common Fisheries Policy is the framework around how we deal with that. He needs to explain how they are adhering to Article 17, and how they are mediating between the fisheries organisations on this matter.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_181">I thank Deputy Mac Lochlainn. I call Deputy Whitmore to speak on that proposal.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_100">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_182">All this needs to be predicated on what fish are available. That is the other issue. If, for whatever reason, the stocks are not available, that has to form part of the discussion. I am keen on meeting the Marine Institute. What I would like to see is in all the different areas we are looking at, whether it is mackerel or bluefin, is to have the Marine Institute in here to tell us what the science is saying about the stocks and then the Department to talk about the policy on that. There needs to be a plan for the inshore sector that looks at all those different elements to see what growth there could possibly be.</p>
+          <p eId="para_183"> I am more than happy to have a chat with Mr. Desmond about the sprat fishery. There is a reason I am coming at it the way I am coming at it. He mentioned sustainable management. That is key to everything I will be doing on the fisheries committee because if there is not sustainable management of the fisheries, the fishers will not be there. My priority will be to make sure that there is a really strong inshore sector, but that has to be done hand-in-hand with the science and the fish stocks as well. I am more than happy to chat to him.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_184">On the science-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_185">Would Mr. Desmond mind waiting? I am trying to keep a little bit of control on this. We have at least one more speaker and potentially two to come in on it. I want to keep the discussion to comments on the proposal from Senator Craughwell and then I will go back to administrative issues. If it is related to that I will allow it, but if it is not, I will not.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_103">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_186">I just want to know if it is agreed that we will bring in the Minister and his officials to respond to the concerns about the allocation of quota.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_187">Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_105">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_188">Will the Marine Institute be part of that?</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_106">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_189">Might I come in there, Chair?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_190">I ask Senator Craughwell to wait a moment.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_108">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_191">I propose that the Marine Institute also be brought in, and perhaps BIM as well.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_109">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_192">As part of the same meeting. Is that agreed?</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_110">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_193">Is it that they would be consulted around the current availability of stocks?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_111">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_194">I would prefer to have a backwards and forwards discussion about the different stocks. There are different elements to this committee and the marine environment is a key element, as is the fisheries. We also have wind energy. It is important to have that reflected here as well.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_112">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_195">Just to be clear, the species that we are talking about are quota species. The actual quota that is allocated is based on existing Marine Institute evidence.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_113">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_196">There is no bluefin quota though.</p>
+        </speech>
+        <speech by="#PadraigMacLochlainn" eId="spk_114">
+          <from>Deputy Pádraig Mac Lochlainn<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_197">I am sorry; I did not hear what the Deputy said.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_115">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_198">There is no bluefin quota. The Marine Institute is undertaking a lot of studies at the moment on-----</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_199">It is EU quota that gets shared out among member states.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_200">Can I take it as agreed that we will certainly invite the Minister in-----</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_118">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_201">Could I come in again, Chair?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_119">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_202">In a moment. I just want to finish this point. Perhaps we will have a discussion about how that meeting goes at our next private meeting on Tuesday morning, if that is okay. Other speakers have been waiting patiently to come in and have their say. Senator Craughwell has one minute if that is okay.</p>
+        </speech>
+        <speech by="#GerardPCraughwell" eId="spk_120">
+          <from>Senator Gerard P. Craughwell<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_203">Sure. I agree with Deputy Mac Lochlainn, but if we are having the Department in - it should come before the Minister - then we should be provided with empirical evidence from the past five years on how quotas have been divided. We need to have empirical evidence that we can work from, so I ask that we seek that information.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_204">If that is agreed, we can move on. Agreed. The next speaker is Deputy Charles Ward.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_122">
+          <from>Deputy Charles Ward<recordedTime time="2025-09-23T12:50:00+01:00"/></from>
+          <p eId="para_205">I thank the witnesses for coming in today. It is particularly shocking to hear that bluefin tuna in our waters is being fished by other nations but because we have no proper quota the French and British vessels continue to fish for sea bass on our very doorstep but we have not been able to fish for them since the 1990s. Looking at that, and coming from a rural environment surrounded by the sea, it seems to me that we have lost generations of fishermen.</p>
+          <p eId="para_206">They have chosen other careers and pathways. Mr. Desmond spoke about moving forward, and how it is part of his blood and his soul. I come from an island where fishing was the heart of the community but that is not the case any more. I see this coming down the line. Culturally, it is as important as the arts to me. This is generational - family to family. The witnesses can trace their lineage back 300 or 400 years. That was part of my family's life at some point. It is discrimination of the highest order. The fishers are being discriminated against. Moving forward, we must look at it as part of our culture. We cannot allow this to go.</p>
+          <p eId="para_207"> I will ask a few questions. Did the organisation feed into the new inshore fisheries strategy for 2024-2029? Does Mr. Desmond know why the publication has been delayed?</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_208">I do not know. Could the Deputy enlighten us?</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_124">
+          <from>Deputy Charles Ward<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_209">I will get back to Mr. Desmond on that. The first question has been answered. We will move on. Could the witnesses give me the background on why the north west herring advisory committee does not have any inshore representatives? Since when has this been the case? Why has the brown crab working group stopped meeting?</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_210">On the committee, it got to a stage where we were having a meeting, things were agreed at it and at the next meeting things would have changed. When we asked about slides that were up on the screen we asked how did that happen and we were told that we had all agreed to it. Things were changing between meetings. They were agreed at one meeting and changed at the second meeting. We were told that the majority had agreed on it. We reached out to the Minister and the Department at the time to express our concerns but we were not listened to. I would not say we were bullied. We are big and bold, but when you are a minority on any group, you get overtaken. We were told that was what the committee had agreed, and when we could not work with it and there were disagreements on the policy we stepped away from the committee because we felt it was doing us no good. We reached out to the Minister and the Department when we did that. They came back to us just before St. Patrick's Day 2024. The remaining committee members, both NIFA and the national inshore fisheries forum had stepped away from the committee. We were at that meeting with departmental officials. We expressed our concerns. We were asked by the principal officer of the Department to come back within a week, because in their words, there was "urgency". We wrote back with our few points. Any of the options we gave are in place elsewhere. We asked for an independent chair. There is already an independent chair on the Celtic Sea herring management committee. We asked for a few things like that and we heard nothing until October when the same principal officer came to a quota management committee to announce the herring fishing arrangements for that year. When I asked how they came about I was told they were based on submissions made. I asked by whom, and we were told whatever was submitted by what was left of the committee and both NIFA and the NIFF. At the time I was not certain as to whether perhaps we had made a submission earlier in the year but I found out after the meeting that we had made no submission, so it was basically what was left of the committee or whoever else decided what it was going to be. We have still not had a response to the suggestions we made following the meeting in March.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T12:55:00+01:00"/></from>
+          <p eId="para_211">On the brown crab working group question, we asked the then Minister, Deputy McConalogue, three years ago. It has been said that we are not sustainable. We asked for the brown crab working group to be set up.</p>
+          <p eId="para_212">We spent two years waiting for it to be set up and when it finally was, it met twice last year. The last meeting was in September or October in Athlone last year-----</p>
+        </speech>
+        <speech by="#" eId="spk_127">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_213">October.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_214">It was October. It was a couple of months ago that those four recommendations went to the Minister, and it has not met since. We want to proceed with this. We want to go ahead. We want a viable brown crab fishery to go ahead, but they will not meet with us and discuss it. We never agreed to one of the recommendations; the other three we did, but we took that to be just the initial step whereby that was what we could agree to on those days and then we would meet again to further it. Here we are now; a further year has gone by. It is not our fault.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_129">
+          <from>Deputy Charles Ward<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_215">No.</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_216">We want this management of stock. We want it in place, but what do we do?</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_131">
+          <from>Deputy Charles Ward<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_217">I will move on. I am aware of the time. Does Mr. Desmond believe the Cornwall model is a better-managed fishery, and does he believe we could mirror it?</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_218">God, yes. The hook and line mackerel?</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_133">
+          <from>Deputy Charles Ward<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_219">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_220">Yes, without a shadow of a doubt. In Ireland, inshore fishing accounts for about seven jobs ashore. For every inshore fisherman, there are seven shore jobs. That is according to State statistics. In Cornwall, it is 15 to one. They are saying there now for the pelagic sector this year, the price of mackerel will go up to €3,500 per tonne. That is €3.50 per kg. That is bulk codfish pumped in and pumped out. We are hook and line, and we cannot get €1 per kilo. Our fish is a hook and line caught fish and way fresher. We cannot get it. The reason we cannot, with regard to the processors, is that there is not enough of it there for them to set up the market for hook and line, but if there was bigger than 400 tonne quota they could.</p>
+          <p eId="para_221"> That is another thing I would like to bring to the committee's attention. There was a survey report the then Minister, Deputy McConalogue, asked for two years ago on the hook and line mackerel fishery to see if 400 tonnes were enough or not. BIM gave it to Bord Bia. Bord Bia tasked a private company to do it. The girls in that company did it and sent back the report. We obviously know what the answer was - it was that 400 tonnes were not enough. Two years later, where is the report? Buried, cannot find it, nowhere to be seen. BIM will tell you that it was not actually a report but more of a review and it is finalising it now, even though BIM paid €26,900 to the people who put it together two years ago. We have yet to see that report.</p>
+        </speech>
+        <speech by="#CharlesWard" eId="spk_135">
+          <from>Deputy Charles Ward<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_222">I am beyond words at this stage. That is all from me. I thank the witnesses.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_223">Go raibh maith agat, Deputy Ward. I call Deputy Maxwell.</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_137">
+          <from>Deputy David Maxwell<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_224">I apologise, gentlemen; I was attending another committee. I am from an inland county and I do not know much about inshore fishing and such, but I have been reading up. The bluefin tuna are migratory fish. They come in and feed on the sprat, herring and mackerel in our inshore waters. We are not allowed to catch them. All we are doing is tagging them and releasing them. Can the other EU countries come into our inshore or do they have to just sit and fish? They can fish for them; they have the quota. However, that fish then can head back out and the Koreans and Japanese can take what they want. Nobody knows; they have no quota. Am I correct in surmising that? How far in can the EU boats come - the English or whoever - into our waters to fish for the-----</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_225">Six miles.</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_139">
+          <from>Deputy David Maxwell<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_226">Irish fishers are not allowed to fish any of it. If they catch one, they tag it as part of the process.</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_227">To put it in context-----</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_228">Fatten them up-----</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_142">
+          <from>Deputy David Maxwell<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_229">For them to get.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_230">-----for our European partners</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T13:00:00+01:00"/></from>
+          <p eId="para_231">To put it in context, most of the European quota is taken in the Mediterranean. What they do is catch them, put them into cages and feed them. However, now when the north-west herring opens now in October and November, we will have cases where the bluefin tuna are swimming about. When the fish come in, the inshore boats do not catch them until after they have spawned because these last few years there has been no difference in price, and it is more conservation-friendly to allow them to spawn before they are caught. If there is no difference in price, why would we do it the other way about? What happens to a lot of that herring is that it is block frozen.</p>
+          <p eId="para_232">It is what the tuna cannot eat when they are here. When the tuna are caught and put into the cages in the Mediterranean, that herring is shipped over there to feed those tuna in the cages. It is not a case of what they eat here. We are shipping it over behind them.</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_145">
+          <from>Deputy David Maxwell<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_233">We are catching the herring here to block freeze it to ship it to the Mediterranean to cage feed fish-farm tuna.</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_234">They are not farmed. They actually grow them on.</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_147">
+          <from>Deputy David Maxwell<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_235">Okay. I do not know who came up with the idea that we were allowed no quota, and all these European vessels could come within six miles of our water and fish away. We are tagging these fish for scientific data and Korean and Japanese vessels can mop up everything out there and we do not know what they are taking. From what I am seeing of the fishery, and Mr. Foley's testimony that from 1864, his family - his great-grandfather, grandfather and father-----</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Mr. Michael Foley<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_236">My great-grandfather.</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_149">
+          <from>Deputy David Maxwell<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_237">If that was happening on an Irish farm, people would not be able to get into Dublin with tractors and picketing and whatnot by the farmers, and they would be right to. In the few months I have spent looking at the maritime sector, I can see that the witnesses are being dealt a raw hand here. That is from someone who does not really know much about it, and I openly admit that. However, I did visit Killybegs, and saw the factories tied up and how fish cannot be landed. I know that is different, but we see what is happening to the witnesses, and that is just one example. We heard their testimony today. If we do not change our way, we are going to have no fishing industry here because, as the witnesses said, the three of them will all give it up because they see no viability in it. That is a sad reflection on policy in this country in fisheries going forward.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:05:00+01:00"/></from>
+          <p eId="para_238">Deputy Cahill has joined the meeting. Attendees will recall that at the start of the meeting he sent his apologies and said he would like to come in at the end if he could make it in. He has joined us online and indicated that he wishes to speak. The floor is Deputy Cahill's. At the outset, he might confirm verbally that he is on the precincts of Leinster House. The Deputy seems to be muted, so we might have to come back to him.</p>
+          <p eId="para_239"> I have a number of questions for the witnesses. The vast bulk of what I had intended to say today has already been said. The witnesses can rest assured of my support for the inshore sector. I see how important it is socially and economically and from a heritage point of view. I can see how important it is for coastal communities all around this island, particularly in my own area where I see it up close. I know the pride that comes with the heritage and the sense of personal pride for those who go to sea and fish and who care deeply about the environment, but also the sense of community pride in coastal communities. One thing that is of huge concern to me is not only the recruitment of new fish but the recruitment of new fishermen and women. It seems to be an ageing industry, if we are being brutally honest about it. There are not a huge amount of young people entering the industry and to be brutally honest, could you blame them? It is a tough station made much tougher not by the hard work that it involves, although it is hard work, and not by the dangers and risks, although there is danger and risk involved, but by all the issues we have discussed here today.</p>
+          <p eId="para_240"> I am particularly concerned about the lack of young people who are participating in the young fisherman scheme. Are there improvements the witnesses could suggest to that scheme or, indeed, reshaping a whole new scheme that could go some way to encouraging young people to enter into the industry and particularly the inshore industry? Obviously, I take the point, and the witnesses can take it as read that addressing the issues that have already been raised here today would probably be the biggest single thing they could do to make it an attractive prospect, but are there other things that could be done to encourage young fishers into the industry?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_241">The main reason young people are not entering in the fishing industry is that they do not see a future in it or more importantly believe they will not make as much money out of it as used to be the case. Thirty years ago, I was getting £3 a kilo for velvet crab and you now get €3 per kilo. On any supermarket shelf in Ireland or throughout Europe, all that can be seen is shellfish that was farmed in Asia in very questionable water quality at the very least. It is far cheaper than ours. I do not know what checks are there. The packaging labels contain pictures of an Irish county, an Irish lighthouse or some geographical area in Ireland, but on the back it can be seen that it is from Cambodia, Vietnam or wherever.</p>
+          <p eId="para_242"> Lately I have seen on one so-called Irish product "From Thailand and-or India". If they do not know what country this food came from, how do they know what kind of fish farm it came out of? We believe the reason the price for Irish shellfish has dropped so much is that we cannot compete against this inferior product. However, Irish processors have been given tens of millions of euro from the Irish State to help them with Covid, Brexit, etc. What do they go and do with the money? They import thousands of tonnes of foreign fish. The biggest fish ports in Ireland now are Cork Airport, Dublin Airport and Belfast. Every single thing in our supermarkets is coming from them. I have even seen scallops from Australia and mussels from Chile. Prawns are all from India, Thailand or wherever. That is what we are up against. We just cannot compete with that and people do not know the difference between the health of what we are producing, which is wild produce caught from non-polluted waters, and this stuff. It is also giving us a bad name because it is not very good when it is eaten. It would be a start to find out why Irish processors do this. There should be a campaign by the State to encourage people to buy an Irish product so that we would actually get a price for our fish again and that might lead to an upturn.</p>
+          <p eId="para_243"> We are talking about the privatisation of a quota. Previously somebody buying a boat could see a future where they might buy the next boat because they knew they would be allowed to fish for mackerel and other fish. However, now if they buy a boat, all they can fish for is shellfish for the rest of their lives. What is the purpose of that when there is only X amount available? </p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_152">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:10:00+01:00"/></from>
+          <p eId="para_244">It sums up the massive contradictions that we have seen when Dublin, Cork and Belfast airports are the biggest fishing ports on this island. No matter what way we look at it, it does not make sense for an island nation in the north Atlantic to be importing seafood from as far afield as Thailand and Australia. From an economic point of view, from a social point of view and from an environmental point of view, it cannot make sense. Mr. Desmond hit the nail on the head when he said we have a healthy product. If we want to use marketing buzzwords, we can say it is artisan, batch caught or "small and slow" food. We have this really healthy food source on our doorstep that can be caught. It tells the story and there is a direct connection. We talk about from farm to fork but this is from sea to fork with that level of traceability. The Government's strategy needs to take that on board.</p>
+          <p eId="para_245"> I have one other question for Mr. Desmond and I would like to hear his comments on it. It relates to our coastal infrastructure, something that was not mentioned yesterday, which is why I am bringing it up. Our inshore sector across the coastline is dependent on a number of smaller ports and harbours, many of them under the control of the local authority rather than BIM or the Department. There is a huge issue with funding where local authorities are only funded for "shovel-ready projects", which means they have to do all the foreshore licensing and preparatory work themselves at cost before they can be considered for funding to do it. This is leading to issues such as the lack of dredging in Cé Heilbhic in west Waterford, which is replicated all across the coast.</p>
+          <p eId="para_246">Is that something members of the association are raising with Mr. Desmond and his colleagues? Does he think, as I do, that the Departments needs to relook at the rule to bring it more in line with how other Departments fund other capital works by local authorities?</p>
+        </speech>
+        <speech by="#" eId="spk_153">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_247">Yes, without a shadow of a doubt. When people contact their local politician about, say, the local pier in their area, they are told it will take three years to get a foreshore licence and to forget about it. It is mind-boggling the time it takes, so people do not bother to do it. That has to be rectified.</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_248">On importing seafood into Ireland, Bord Iascaigh Mhara is a development agency for the fishing industry, yet one of its pats on the back when its representatives attended the committee was, and this might not be the correct wording, regarding the work they did in helping processors import product into Ireland more efficiently. We had a case where BIM was supposed to be helping us to develop but now it is fighting against us. It has a claim to fame regarding encouraging imports. Reference was made to buzzwords but it is the case that everything we catch is wild, free range and organic, yet BIM, instead of supporting that, is supporting processors to import and is fighting against us. It is-----</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_155">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_249">I will say it for Mr. Menarry: it is absolutely ridiculous. It is a scandal.</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_250">It definitely is.</p>
+        </speech>
+        <speech by="#" eId="spk_157">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_251">It is a scandal what Irish consumers are eating. There is a particular product out there called pangasius. I do not want to name the supermarket but it is in all its fishcakes. That fish is farmed in sewers. There are 2,000 factory workers and the excrement from those workers goes into the pond to feed the fish that are brought over here. It is nuts what is in our supermarkets at the moment. We are trying to sell and then the market just collapses and we are told, "Ah sure, there is so much product". They are putting this stuff against ours. Mention was made of sprat being used to feed farmed salmon. None of us supports farmed salmon. Wild-caught fish cannot be compared with 10,000 fish swimming around inside a cage and the dead zone that is created around that. Argentina, with half its population living below the poverty line and inflation in treble digits, has banned salmon farming because of the damage it was causing. In Ireland, farmed salmon is for sale against our product. It is nuts when we consider the toxicity of it compared with the wild-caught product we have.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_158">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_252">I thank the witnesses for their responses. We are right up against the clock. I hope we will be able to hear Deputy Cahill when I call him again. I would like to give him the opportunity to take his ten minutes before we wrap up, if that is okay. Unfortunately, we still cannot hear Deputy Cahill. The technology is not co-operating. Would any other member like to put a closing question or two in the few minutes remaining? As there are no members indicating, I invite the witnesses to wrap up the discussion. Mr. Menarry is indicating.</p>
+        </speech>
+        <speech by="#" eId="spk_159">
+          <from> Mr. John Menarry<recordedTime time="2025-09-23T13:15:00+01:00"/></from>
+          <p eId="para_253">To put the inshore sector in context, we are responsible for almost 95% of the fleet and at least 65% of the direct employment. We are doing all of this with non-quota species. While it is important to say we have fair access to whitefish quotas, we uptake only approximately 5% of those quotas. We could access a lot more of the pelagic quotas but we are talking about only 2% of those quotas. As the largest sector of the industry, which provides the most onshore employment - for every one job on a boat, there are seven more ashore - we are doing all of this with 5% of the whitefish quota and 2% of the pelagic quota. If we were given fair and equal access to the quotas and the resources, which includes finance as well as flesh, we could double the size of the Irish fleet quite easily, when one considers what we are already doing with so little.</p>
+          <p eId="para_254">I will give an example that is not far from Deputy Ward's area. One of our members just upgraded his boat. He is young - under 30 - and he has three guys with him in the boat. That is four guys, multiplied by seven is 28, which gives 32 jobs in the back end of nowhere. If IDA Ireland or some other organisation wanted to put 40 jobs in the middle of nowhere, people would be tripping over themselves to help.</p>
+          <p eId="para_255"> On financial supports, we heard there would be financial supports for any Irish industries affected by the US tariffs. When those tariffs started, the first thing that happened to the inshore sector was that live lobsters began to be flown from Canada to Europe to directly compete with us. Yet, the word is we are not affected by the tariffs. We were told we were not affected by Brexit but at every turnaround, we were told we could not do this or that because of Brexit. Every other sector in the fishing industry was affected by Brexit but we were told we were not affected. We are only asking for fair and equal access to all resources.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_160">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_256">Senator Craughwell has raised his hand. He may come in very briefly as we are almost out of time. In fact, the Senator has left the call.</p>
+          <p eId="para_257"> I thank all the witnesses for attending in person and for engaging as they have done. They have been forthright in their analysis of the issues affecting their members, the sector and the wider fishing industry. They should rest assured that we have heard their concerns. As Chair of the committee, I will ensure the issues they raised are ventilated on the floor of the Dáil and brought to the Minister's attention. The witnesses are meeting with the Minister after our engagement and I am sure he will give a very good account of those issues.</p>
+          <p eId="para_258"> I thank members for their participation, their really good time-keeping - we are getting better at that - and the quality of the questions and interactions. It has been a really illuminating meeting. We need to do more. Mr. Desmond made the point very well in asking what the committee can do. We can shine a light on bad practice and highlight issues where there definitely is room for improvement. As I said when I sat in this chair for the first time, Ireland needs an assertive and ambitious maritime and fisheries policy. In my reading of things, we have never had that in the history of the State. Others might disagree but my view is we have never had that and now is the time to do it. We are an island nation and we have this immense natural resource at our disposal. We must ensure it is used in the national interest and used responsibly. The inshore sector has a critical role to play in that. I again thank the witnesses for their participation and wish them the best of luck for their meeting this afternoon.</p>
+        </speech>
+        <speech by="#" eId="spk_161">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_259">I thank the Chair. I have one question before we go. Reference was made to reports and reviews. Can this committee make recommendations to the Dáil?</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_162">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_260">Indeed, we can. We will discuss in private session what reports we might do arising out of this discussion. We have one report under way, which is on sea-fisheries protection and the policing of the fishing sector. Deputy Mac Lochlainn is the rapporteur on that. I am sure it will contain many recommendations, which will have to be teased out here. We will have to discuss them and agree on them. We certainly can make recommendations.</p>
+        </speech>
+        <speech by="#" eId="spk_163">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_261">I ask the committee to make a recommendation for financial supports for us. We are not joking when we say the financial income is not there at the moment. It is not the lack of fish; it is the lack of price for that fish. Overheads are another issue. The price of bait is ten times what it was previously. When I talked about tenfold increases, I was not joking. I spoke about a pot costing £5 30 years ago. Now, it is close to €100.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_164">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:20:00+01:00"/></from>
+          <p eId="para_262">My position on that question is to say "Yes, absolutely"; we can write to the Minister and make a case if that is agreed. The witnesses, I suggest, could make a submission on the types of financial supports that might work for their sector and their members.</p>
+          <p eId="para_263">If Mr. Desmond wanted to the write to the committee with that submission, that would be able to inform a fuller discussion. I am sure it is something that we as a committee could meet in private about and discuss. I imagine we would be happy to consider. Without agreeing to anything here, if you wanted to make that submission it would definitely be heard. That is a good suggestion for a future meeting. We will meet in private session next week and I will be sure to raise that issue and see how members feel. Is that okay?</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Mr. Michael Desmond<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_264">Thank you very much.</p>
+        </speech>
+        <speech by="#ConorDMcGuinness" eId="spk_166">
+          <from> An Cathaoirleach<recordedTime time="2025-09-23T13:25:00+01:00"/></from>
+          <p eId="para_265">Thank you so much. That concludes the meeting.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 1.25 p.m. until 11 a.m. on Tuesday, 30 September 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

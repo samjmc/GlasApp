@@ -1,0 +1,860 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_enterprise_tourism_and_employment/2025-07-17/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_enterprise_tourism_and_employment/2025-07-17/debate"/>
+          <FRBRdate date="2025-07-17" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_enterprise_tourism_and_employment"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_enterprise_tourism_and_employment/2025-07-17/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_enterprise_tourism_and_employment/2025-07-17/debate/mul@"/>
+          <FRBRdate date="2025-07-17" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_enterprise_tourism_and_employment/2025-07-17/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_enterprise_tourism_and_employment/2025-07-17/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-19" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <analysis source="#source">
+        <parliamentary>
+          <voting eId="vote_1" href="#sum_14" outcome="#lost" refersTo="#sum_13">
+            <count eId="vote_1-count_1" href="#qty_1" refersTo="#ta" value="3"/>
+            <count eId="vote_1-count_2" href="#qty_2" refersTo="#nil" value="5"/>
+          </voting>
+          <voting eId="vote_2" href="#sum_18" outcome="#lost" refersTo="#sum_17">
+            <count eId="vote_2-count_1" href="#qty_3" refersTo="#ta" value="3"/>
+            <count eId="vote_2-count_2" href="#qty_4" refersTo="#nil" value="7"/>
+          </voting>
+          <voting eId="vote_3" href="#sum_22" outcome="#lost" refersTo="#sum_21">
+            <count eId="vote_3-count_1" href="#qty_5" refersTo="#ta" value="3"/>
+            <count eId="vote_3-count_2" href="#qty_6" refersTo="#nil" value="7"/>
+          </voting>
+          <voting eId="vote_4" href="#sum_26" outcome="#lost" refersTo="#sum_25">
+            <count eId="vote_4-count_1" href="#qty_7" refersTo="#ta" value="3"/>
+            <count eId="vote_4-count_2" href="#qty_8" refersTo="#nil" value="7"/>
+          </voting>
+          <voting eId="vote_5" href="#sum_31" outcome="#lost" refersTo="#sum_30">
+            <count eId="vote_5-count_1" href="#qty_9" refersTo="#ta" value="4"/>
+            <count eId="vote_5-count_2" href="#qty_10" refersTo="#nil" value="6"/>
+          </voting>
+        </parliamentary>
+      </analysis>
+      <references source="#debates">
+        <TLCConcept eId="#lost" href="/ie/oireachtas/ontology#DeclaredLost" showAs="Declared Lost"/>
+        <TLCConcept eId="#carried" href="/ie/oireachtas/ontology#DeclaredCarried" showAs="Declared Carried"/>
+        <TLCConcept eId="#staon" href="/ie/oireachtas/ontology#StaonVote" showAs="Staon Vote"/>
+        <TLCConcept eId="#nil" href="/ie/oireachtas/ontology#NílVote" showAs="Níl Vote"/>
+        <TLCConcept eId="#ta" href="/ie/oireachtas/ontology#TáVote" showAs="Tá Vote"/>
+        <TLCPerson eId="AengusOSnodaighSF" href="/ie/oireachtas/member/id/Aengus-Ó-Snodaigh.D.2002-06-06" showAs="Aengus Ó Snodaigh"/>
+        <TLCPerson eId="AlbertDolan" href="/ie/oireachtas/member/id/Albert-Dolan.D.2024-11-29" showAs="Albert Dolan"/>
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="CormacDevlin" href="/ie/oireachtas/member/id/Cormac-Devlin.D.2020-02-08" showAs="Cormac Devlin"/>
+        <TLCPerson eId="GeorgeLawlor" href="/ie/oireachtas/member/id/George-Lawlor.D.2024-11-29" showAs="George Lawlor"/>
+        <TLCPerson eId="GraceBoland" href="/ie/oireachtas/member/id/Grace-Boland.D.2024-11-29" showAs="Grace Boland"/>
+        <TLCPerson eId="JamesOConnor" href="/ie/oireachtas/member/id/James-O'Connor.D.2020-02-08" showAs="James O'Connor"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="NiamhSmyth" href="/ie/oireachtas/member/id/Niamh-Smyth.D.2016-10-03" showAs="Niamh Smyth"/>
+        <TLCPerson eId="PaulDonnelly" href="/ie/oireachtas/member/id/Paul-Donnelly.D.2020-02-08" showAs="Paul Donnelly"/>
+        <TLCPerson eId="PaulNicholasGogartyGP" href="/ie/oireachtas/member/id/Paul-Nicholas-Gogarty.D.2002-06-06" showAs="Paul Nicholas Gogarty"/>
+        <TLCEvent eId="bill.2025.33.dail.3" href="/ie/oireachtas/bill/2025/33/dail/3" showAs="Copyright and Related Rights (Amendment) Bill 2025: Committee Stage (Dáil)"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM FHIONTAIR, TURASÓIREACHT AGUS FOSTAÍOCHT</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Enterprise, Tourism and Employment</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-17">Déardaoin, 17 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-17">Thursday, 17 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#GraceBoland">Grace Boland,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#BrianBrennan">Brian Brennan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#CormacDevlin">Cormac Devlin,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AlbertDolan">Albert Dolan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#PaulDonnelly">Paul Donnelly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#PaulNicholasGogartyGP">Paul Nicholas Gogarty</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#GeorgeLawlor">George Lawlor</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#SeamusMcGrath">Séamus McGrath,+</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#AengusOSnodaighSF">Aengus Ó Snodaigh,*</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NiamhSmyth">Niamh Smyth (Minister of State at the Department of Enterprise, Tourism and Employment).</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputies John Clendennen, Rose Conway-Walsh and Tony McCormack.</summary>
+          <summary eId="sum_5">+ In éagmais le haghaidh cuid den choiste / In the absence for part of the meeting of Deputy Albert Dolan.</summary>
+          <summary eId="sum_6">I láthair / In attendance: Deputy Eoin Hayes.</summary>
+          <summary eId="sum_7">
+            <person as="#Chair" refersTo="#JamesOConnor">Teachta / Deputy James O'Connor sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Select Committee<recordedTime time="2025-07-17T09:30:00+01:00"/></heading>
+        <speech by="#JamesOConnor" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:30:00+01:00"/></from>
+          <p eId="para_13">We have three items of business this morning. They are: the election of Leas-Chathaoirleach, Vice Chairman, of the select committee; a motion regarding the scrutiny by the joint committees of Private Members' Bills which have passed their Second Reading in the Dáil; and the Committee Stage consideration of the Copyright and Related Rights (Amendment) Bill 2025.</p>
+          <p eId="para_14"> Before we proceed, there are a number of housekeeping matters to go through. I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit members to participate if they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via Microsoft Teams that prior to making their contribution to the meeting they confirm that they are on the grounds of the Leinster House complex. Should a division occur, any member participating remotely will be required to make their way to the meeting room within the normal division time to vote before returning to their original location.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Election of Leas-Chathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></heading>
+        <speech by="#JamesOConnor" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_15">The first item of business is the election of Leas-Chathaoirleach. One expression of interest has been received from Deputy Brian Brennan. I invite a formal nomination of Deputy Brennan for the position of Leas-Chathaoirleach. The Deputy is entitled to nominate himself.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_3">
+          <from>Deputy Brian Brennan<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_16">I nominate myself.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_17">I accept that. There is no need for a seconder. As we have received no other nomination, is that agreed? Agreed. I congratulate Deputy Brennan and wish him well.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="motion" eId="dbsect_4">
+        <heading>Referral of Private Members' Bills to Joint Committee: Motion<recordedTime time="2025-07-17T09:40:00+01:00"/></heading>
+        <speech by="#JamesOConnor" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_18">I move:</p>
+          <p class="indent_1" eId="para_19">That the joint committee, in line with standard practice and in accordance with Dáil Standing Order 185, be requested to carry out scrutiny of any Private Members' Bill that this committee scrutinises.</p>
+        </speech>
+        <summary eId="sum_8"> Question put and agreed to.</summary>
+      </debateSection>
+      <debateSection name="debate" refersTo="#bill.2025.33.dail.3" eId="dbsect_5">
+        <heading>Copyright and Related Rights (Amendment) Bill 2025: Committee Stage<recordedTime time="2025-07-17T09:40:00+01:00"/></heading>
+        <speech by="#JamesOConnor" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_20">This meeting has been convened to consider Committee Stage of the Copyright and Related Rights (Amendment) Bill 2025, which was referred to the select committee by an Order of the Dáil on 19 June 2025. I welcome the Minister of State at the Department of Enterprise, Tourism and Employment, Deputy Niamh Smyth, who has responsibility for trade promotion, artificial intelligence and digital transformation. I propose that we publish the opening statement provided by the Minister of State on the committee's website. Is that agreed? Agreed.</p>
+          <p eId="para_21"> It is proposed to group amendments Nos. <i>a</i>1 to <i>d</i>1, inclusive, and amendments Nos. <i>e</i>1, 1 and 2. All other amendments that are not grouped will be discussed individually. I invite the Minister of State to make some brief opening remarks.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_7">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_22">I thank colleagues for being here with me today. I thank the Chair and members of the committee for facilitating Committee Stage and for the support for the Bill on Second Stage in the Dáil. I am delighted to bring the Bill to Committee Stage today on behalf of the Minister, Deputy Peter Burke.</p>
+          <p eId="para_23"> As the Minister of State, Deputy Dillon, set out on Second Stage, the Bill has a very specific purpose. It introduces amendments to the Copyright and Related Rights (Amendment) Act that are necessary following a European Court of Justice ruling delivered in September 2020, in a case that originated in the High Court in 2016. This ruling found that Ireland had not adequately transposed a 2006 EU copyright directive on the sharing of royalty payments between producers and performers of recorded music. The relevant article of the directive is Article 8(2). The State had not provided clear obligations for producers to share royalties with performers. We had not specifically provided for how royalty payments are to be shared between performers and producers in the absence of an agreement between them. Nor were we fully compliant with international copyright conventions, namely the World Intellectual Property Organisation Performances and Phonograms Treaty and the Rome Convention because we had also not ensured that equal treatment is provided to nationals of countries outside of the European Economic Area that are party to international copyright conventions.</p>
+          <p eId="para_24"> The Bill will restore Irish copyright legislation to full compliance with EU and international law. It sets out a new process for the agreement of division of royalties between music performers and producers, extends application to nationals of countries outside the EEA that are party to international copyright treaties, and grants the function of final arbitration of disputes to the Circuit Court.</p>
+          <p eId="para_25"> The Government has identified one potential amendment to the Bill, which would be added to section 2. This amendment will be tabled on Report Stage. I will present it in further detail when we discuss section 2.</p>
+          <p eId="para_26"> It is imperative that the Bill is enacted in order to ensure Ireland is fully compliant with EU and international law. It is vital that we have an efficient legal framework in place to support copyright and intellectual property, a necessity for the economic well-being of the creative sector, in this case the music sector, which is a significant employer in the State and essential to our culture, which brings us all so much enjoyment.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_27">I welcome Colman Clinch, Linda Scales and Paul Noonan to the Gallery. They are representatives of Recorded Artists Actors Performers, RAAP. I thank Deputy Ó Snodaigh's team for bringing them in. I thank the Minister of State for her comments.</p>
+        </speech>
+        <summary eId="sum_9">SECTION 1</summary>
+        <summary eId="sum_10"> Question proposed: "That section 1 stand part of the Bill."</summary>
+        <speech by="#AengusOSnodaighSF" eId="spk_9">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_28">Will we be dealing with the Title to the Bill at the beginning or the end of Committee Stage?</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_29">At the very end.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_11">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_30">In some ways, the Title relates to the definition. I understand the convention is to deal with it at the end, but the Long Title makes reference to giving further effect rather than full effect to an EU directive. Why is that ? We are supposed to give full effect to an EU directive and sometimes we go beyond it. We are supposed to implement EU directives in full. That is what we signed up to, and that is why I am wondering about the Title.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_12">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_31">I will come back to Deputy Ó Snodaigh on the matter. Is the Title normally dealt with at the end?</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_13">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_32">Yes, we can do it at the end.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_14">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_33">I might have further information at that point. I do not think there is any particular reason, and we can clarify this for Deputy Ó Snodaigh.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_15">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_34">That is okay.</p>
+        </speech>
+        <summary eId="sum_11"> Question put and agreed to.</summary>
+        <summary eId="sum_12">NEW SECTIONS</summary>
+        <speech by="#JamesOConnor" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_35">Amendments Nos. <i>a</i>1 to <i>d</i>1, inclusive, are on the first additional list of amendments circulated on 14 July 2025 and will be discussed together. Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_17">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T09:40:00+01:00"/></from>
+          <p eId="para_36">I move amendment No. <i>a</i>1:</p>
+          <p class="indent_1" eId="para_37">In page 3, between lines 13 and 14, to insert the following:</p>
+          <p class="indent_2" eId="para_38">
+            <b>"Amendment of section 38 of Principal Act</b>
+          </p>
+          <p class="indent_2" eId="para_39"><b>2.</b>Section 38 of the Principal Act is amended in subsection (1)(b)(i) by the insertion of "single" after "agrees to make".".</p>
+          <p eId="para_40"> The reason these amendments were not on the original list is because, thankfully, the delay in the committee dealing with the Bill allowed me extra time to consult RAAP and others to try to figure out something that was bothering me. RAAP has given me a lot of information. It is one of the key organisations representing Irish recording artists, actors and performers. It stands out as one of the collective management organisations that is registered. Its representatives are here today to give additional oversight. Pre-legislative scrutiny of the Bill was waived, which was strange. It is a short Bill but it has great implications for recording artists, performers and those who are producers. It is a pity that Phonographic Performance (Ireland) Ltd., PPI, had to be forced through the courts for us to realise the need for proper copyright legislation.</p>
+          <p eId="para_41"> The reason for these specific amendments is to address the Bill's shortcomings. I hope the Minister of State will be able to look at and consider them.</p>
+          <p eId="para_42">The Bill contains proposals that focus on section 208 of the principal Act. Under section 38, PPI is empowered to collect the single equitable remuneration for which Article 8.2 of the directive provides. Historically, it has collected this revenue but was not obliged to share it in the proper manner with the performers. Section 38 is the carve-out from the copyright of the producers of sound recordings, which grants a licence for the right to use recordings subject to taking a licence and paying the equitable remuneration to a licensing body. The absence of conditions for the sharing of that single payment has enabled producers to exploit the situation to their benefit. In the end, that was the finding in the court case which led to this legislation being introduced. The court found that exploitation was done in the wrong.</p>
+          <p eId="para_43"> Performers' rights were only introduced in 2001, following proceedings taken by the Commission against the State for its failure to transpose the directive correctly even partially and definitely not in full. That is part of an earlier question. As the first collector of remuneration, PPI used to contact RAAP, the organisation that helped me with this Bill. RAAP represents 5,000 Irish recording artists. PPI provided RAAP, on an annual basis, with a calculation of the total sum due to the performers. That calculation was the PPI's and was not an agreed calculation. One of the major problems was that PPI came up with its own formula, which it did not fully share with anybody in a way that was accessible. We are here because it was found not to be equitable. It did initially operate satisfactorily but there was a unilateral change made by PPI in 2014, which led to the court cases. PPI sought to oversee the calculations of individual payments to performers and to exclude payment to non-EEA performers who were considered not to qualify for the payment. We are attempting to address the flaw in our legislation. PPI allocated the payments it was not paying to the non-EEA performers to its members, the producers. It was withholding payments and redistributing them among its own membership.</p>
+          <p eId="para_44"> RAAP issued proceedings, and we thank it for that. The artistic community thanks it. When it initiated those proceedings, PPI terminated the 2002 agreement, which was working, and appointed a UK collective management organisation, PPL. It represented the producers and performers and was to take the place of RAAP in calculating the sums due. This led to another problem because a second set of proceedings had to be taken by RAAP. Based on the requirement in section 208 of the principal Act, payments for performers must be subject to an agreement or fixed in default of an agreement by the controller of intellectual property. We will come back to that because it is one area in which I am not happy with the approach taken in the Bill.</p>
+          <p eId="para_45"> Since the second set of proceedings were initiated, PPI took over the management of the shared right under the system that had been devised by it and RAAP. PPI now collects the revenue from users, makes a number of disputed deductions from the sums collected, determines the net distributable revenue to be shared with performers, uses PPL in the UK to calculate the payments to individual performers in accordance with opaque distribution rules and pays RAAP the sum it or PPL has calculated to be payable to the performers that RAAP represents, claiming that in the absence of agreement, this represents equitable remuneration. It denied RAAP's request for sufficient information about how those calculations were formed. There were clearly a number of errors in the calculations. If you do not have access to how it came to its calculation or the formula it relied on, it is difficult to adjudicate the matter. It manages the performer's right without being registered to do so with the controller and without any authorisation. That meant RAAP became a post box to which PPL sent on the remuneration for RAAP to pass on without any meaningful role as a collective management organisation.</p>
+          <p eId="para_46"> Apart from denying RAAP a role in negotiating the share for performers or coming to an agreement on what that should be, RAAP was also prevented from being able to establish whether the payments allocated by PPI were correct. It was also denied the ability to confirm the identity of the performers whose money was being withheld by PPI. Those were the non-EEA performers. As I said, those moneys were being diverted to the producers.</p>
+          <p eId="para_47"> Since the commencement of legal proceedings, the total revenue paid by PPI to RAAP for its members and the members of the collective management organisations with which RAAP has bilateral agreements has dropped by a substantial 20%. That drop applies to the gross revenues collected by PPI, which raises major questions. Ultimately, we are talking about artists, their rights and remuneration. If they are getting less money because of a unilateral decision made by one company, that is not justified. There should have been a figure of 50% or some other negotiated figure, but there was no negotiation. There has been a substantial drop in revenues.</p>
+          <p eId="para_48"> Despite succeeding against PPI in the context of most aspects of the litigation, flaws in the legislation have to date prevented RAAP from being able to access an effective remedy to prevent PPI from continuing. Even though PPI would be aware of the changes and of the position with respect to the legislation and the directive, and the flaws involved, it has continued. That is why I welcome the fact we are addressing the issue. However, I have a number of issues with different aspects of the legislation.</p>
+          <p eId="para_49"> We are dealing with amendment No. <i>a</i>1, which amends section 38. As stated, section 38 grants PPI, the producers' organisation, a dominant position. Performers are the weaker party in terms of bargaining power and wealth. With this amendment, I am trying to ensure that substantial payments due to performers cannot be withheld. One of the problems with being an Opposition TD is that we cannot put a cost on the Exchequer or the people. Groups sometimes ask for amendments, the exact wording of which we cannot accept. I had to be imaginative. I have tried to capture in full what was intended by amendments that were put forward.</p>
+          <p eId="para_50">I am open to tweaking these amendments a little based on the discussion today and bringing them forward again on Report Stage to give full effect to what RAAP and others have mentioned to me in my deliberations thus far. In fact, the best approach would have been for us to use the summer months to tease these issues out a bit more before taking the next Stage in the autumn. However, we are where we are and I will not delay proceedings too much. However, it is important, because we are talking about people's livelihood, to try to get this correct at this stage and, if needs be, on Report Stage.</p>
+          <p eId="para_51"> I apologise for wandering a bit. Amendment No. <i>a</i>1 reflects a proposal by RAAP to correct an oversight in both the existing legislation and this Bill to ensure the right to the single equitable remuneration collected from users by the licensing body representing the producers of sound recordings is recognised as a shared right and is a payment for both performers and producers. The directive requires the right to be indivisibly accorded to both cohorts. It is the right to ensure that if a phonogram is used for broadcasting or any communication to the public, a single equitable remuneration shall be paid by the user. This is a right owed by the user to the performer and producer jointly.</p>
+          <p eId="para_52"> Under current law and in the Bill as proposed, this right is granted exclusively to the producer, which is key, and is collectible by the collective management organisation, with a secondary and subsidiary right for the performer to claim a payment from the producer. The intention of the directive is singular, whereas we have a system that provides a lesser right for the performer. We are looking for a shared right, which is quite a different legal concept from the right to claim against a party. The miscasting of this right not alone fails the test of transposition but also supplements and augments the monopoly over collection accorded in the Act to producers, thereby creating fertile conditions for abuse of that monopoly, which we supposedly are trying to address.</p>
+          <p eId="para_53"> These amendments are required to correct the existing position. At the very least, there must be an amendment to section 38 of the Act to clarify that the licence fee paid by the user represents remuneration for both producer and performer, as well as changes to the language of section 208 to support the correct characterisation of that right. Article 8.2 of the directive states that "Member States shall provide a right in order to ensure that a single equitable remuneration is paid by the user". That is how the right is set out in the directive. Amendment No. <i>a</i>1 would alter the wording to correct the legislation to provide that a user of a sound recording would agree to make a single payment rather than simply to make the payment. This would bring our legislation in line with the directive.</p>
+          <p eId="para_54"> Which other amendments are being dealt with in this group, a Chathaoirligh?</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_55">We are discussing amendments Nos. 1 and <i>a</i>1 to <i>d</i>1, inclusive, together.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_19">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_56">Should I deal with them one by one or as a group?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_20">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_57">I would prefer to deal with them as a group, if that is okay with the Deputy.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_21">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:00:00+01:00"/></from>
+          <p eId="para_58">Amendment No. <i>b</i>1 is simple enough. It proposes to amend section 38(1)(b)(i) of the principal Act to insert "each" after "in respect of". Its purpose is to back up what I have been saying. It is straightforward and simple. It will change the wording to "agrees to make payments in respect of each such playing or inclusion in a broadcast or a cable programme service". There should be no ambiguity in this as people can exploit that ambiguity, as has happened in the past to the detriment of performers and probably also producers. The amendment sets out very specifically that payment is for each broadcast or inclusion of a performance. This would strengthen the provision.</p>
+          <p eId="para_59"> Amendment No. <i>c</i>1 provides for another straightforward change to section 38(1)(b)(i) of the principal Act. It proposes to insert the following after "a licensing body": "for the purpose of remunerating jointly the qualifying copyright owner in the sound recording and performers whose qualifying performances are incorporated in the sound recording, in respect of such playing or inclusion". Again, this will align our legislation with Article 8.2 of the EU directive. It is clear what the intention of the directive is in this case.</p>
+          <p eId="para_60"> Amendment No. <i>d</i>1 is a more substantial amendment, which I submitted together with my colleague, Deputy Conway-Walsh. It is intended to bring the clarity being sought by RAAP. It proposes the inclusion of the word "only" between "may be exercised" and "through a collective management organisation" in section 38 of the principal Act. I tinkered around with the wording, which might not have the full effect called for by RAAP and others. I might come back to it but the intention is to bring clarity that the right to receive equitable remuneration is a right shared between the qualifying copyright owner of the sound recording and the performers whose qualifying performances are incorporated in the sound recording. It will give definitions for how a qualifying copyright owner and qualifying performer or performance can be identified. It will ensure respect for the central role of the collective management organisations registered with the controller of an intellectual property.</p>
+          <p eId="para_61"> It is worth respecting the role of collective management organisations like RAAP and PPI. The right to a single equitable remuneration is one performers simply cannot exercise on an individual basis. We cannot expect a performer or artist to monitor every single use of his or her performance. That is impractical and it is why organisations like RAAP have been set up throughout the world. They represent work as collectives on behalf of performers. The collective management organisations were set up specifically for that purpose. They are not for profit but for the benefit of the artists.</p>
+          <p eId="para_62"> There should be nothing in this legislation that would undermine the rights of collective management organisations, their recognition and the specific role they have. What seems to have happened is that performers were being lumbered or burdened with having to do all the work themselves. As I said, the right to an equitable remuneration is one performers cannot exercise individually. They do not have the facility, unless they are multimillionaires, to monitor all uses of recordings and manage the relationships concerning payments. Managing all uses of a performer's performance or recording would see performers ending up having to negotiate to try to get their remuneration. That is specifically why the collective management organisations were set up and their role has been recognised.</p>
+          <p eId="para_63">There is a guide of collective management produced by the World Intellectual Property Organization, which confirms there is "one <i>specific </i>area of related rights where joint collective management is indispensable, namely, the right of performers and producers in respect of broadcasting communications to the public of phonograms." Currently, the producer representative controls outright, even if<b>
+						</b>disputed, all aspects of the setting of the tariffs, the collection of licence fees and the management of both the performer's and the producer's interest. This is entirely inconsistent with the concept of shared right, which should provide for the participation by the performers in all stages of the process. This, in turn, will deliver the transparency and accountability of those shared rights.</p>
+          <p eId="para_64"> The Spanish have an intellectual property Act. Perhaps in the time between us concluding Committee Stage today and when we resume the Minister of State might look at the Spanish intellectual property Act, which gives a more precise example of how this can be done within a framework of mandatory collective management. It states:</p>
+          <p class="indent_1" eId="para_65">The right to the single amount of equitable remuneration ... shall be exercised through societies for the collection of intellectual property rights. The exercise of that right through the relevant collecting societies shall include negotiation with users, the calculation, collection and distribution of the remuneration due and any other action necessary to ensure the effectiveness of the said right.</p>
+          <p eId="para_66"> I am nearly done. All 17 collective management organisations RAAP surveyed in preparation for its amendments - it supplied everybody with the information - said that compulsory collective management is provided for in their domestic legislation. It looked at 17 organisations. I do not know whether in the preparation of this Bill the Minister of State and the drafters looked at those best practises across Europe. Without telling the Minister of State what to do, although maybe I could advise her, and I know we are all looking for some type of break or at least a wind down of sorts, but she or the officials might get a chance during the summer to sit down with representatives from RAAP and discuss the wording because we have that opportunity. Even if we conclude today, and if we have Report Stage, we should be able to get this right. This is in all our best interests. I will finish with that. I have more on those points, but I will finish on those sets of amendments.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_22">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_67">I thank Deputy Ó Snodaigh. He must be exhausted after all that. I thank him very much for going into such level of detail.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_23">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_68">I am here for a while; I can speak for longer if needs be.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_24">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_69">I want to reassure the Deputy. There are representatives from RAAP in the Gallery today, and I join with the Chairman in welcoming them. A meeting has been scheduled to meet with the officials in the coming weeks. Of course, we will do anything we can. The intention of all of us is to get this right and make sure that the producers as well as the performers, and the performers have been the people who have suffered most until now, are treated in a fair and equitable manner. I thank Deputies Ó Snodaigh and Conway-Walsh in her absence for the four amendments, which were taken today. These are the amendments to section 38 of the main Act. I cannot accept them, and I will explain why.</p>
+          <p eId="para_70"> The Deputies are correct to make the connection between section 38 and section 208. Section 38 sets out the arrangements for users and those who broadcast or communicate music in public to obtain licences. The tariffs paid by the users are, in effect, the moneys that then are distributed as royalties, minus administrative costs, to both the performers and producers. The Government does not propose to amend this part of the Act because it was not found to be defective. The Copyright and Related Rights Act 2000 implements EU and international law in the area of copyright.</p>
+          <p eId="para_71"> The Rome Convention is an international convention for the protection of performers, producers of phonograms and broadcasting organisations. Article 12, which was considered by the Court of Justice of the European Union, CJEU, states that if a music recording is published, broadcast or communicated to the public, a single equitable remuneration is paid by the user. This is set out in section 38. Article 12 of the convention continues to state that this single equitable remuneration shall be paid by the user to the performers or the producers or to both. Section 38 of the Act provides for equitable remuneration to be paid to the producers. We do not propose to amend this at the moment.</p>
+          <p eId="para_72"> It may be the case that there are different models in place, even within the EU, as to how payments are collected in distributed. In Ireland, this was the subject of a court case, as the Deputy outlined, between RAAP and PPI, which concluded in 2021. Article 12 of the international convention continues to state that "domestic law may, in the absence of agreement between these parties, lay down the conditions as to the sharing of this remuneration." It is repeated in the rental lending directive. This is one of the areas the Bill seeks to address by amending section 208 of the Act. Section 2 sets out the arrangements to improve this process. The Bill now makes very clear that producers must share the actual remuneration with performers. In most cases, they will receive 50%. The way in which this payment is made should not affect the amount of equitable remuneration. The Bill ensures that performers receive their fair share. It is not necessary to include amendments to affect that collective management organisations may represent either party should they wish to do so. This is already the case.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_25">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_73">I was hoping the Minister of State would be able to indicate that we would look again at this whole section in a way that was not setting in stone some of the problems that have been identified and which, in fact, will continue in a slightly different way the approach that has been taken thus far in terms of the power imbalance between producers and the performers or artists. The directive is quite clear that should not be there. The Minister of State even said that it could be 50% in most cases, but it means it is not always, and there may be reasons for that. We have seen thus far that it has not been. If we have one group that is, if you like, subservient in any way to another, that relationship or power imbalance starts. The directive, as I quoted, is quite clear in how it addresses that.</p>
+          <p eId="para_74"> The amendment I did not address was my amendment No. <i>e</i>1. The notes I have state that acceptance of the amendment would delete section 2 of the Bill. This captures a lot of what I was already saying. This takes out, if you like, one of the main sections of the Bill or the main section, in some ways, that deals with this and replaces it with a wording that I believe is more equitable and addresses the concerns. Therefore, it is not that we are taking rights away from PPI or whoever would be there. This is making sure that we-----</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_75">I wish to clarify that we have not moved on to amendment No. <i>e</i>1.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_27">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_76">Have we not moved on to that yet?</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_77">I am sorry about that.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_29">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:10:00+01:00"/></from>
+          <p eId="para_78">That is even better. We are going back to the other one so. It is a pity we are where we are, but it is good that the Minister of State has agreed that there will be a meeting with RAAP. That just points to part of what I said earlier. It is a pity that the committee in its wisdom, or lack of wisdom, decided to waive pre-legislative scrutiny way back, although it was not this committee but a former iteration of it.</p>
+          <p eId="para_79">A committee should never waive pre-legislative scrutiny when it comes to anything to do with copyright and EU legislation because they are usually based on highly complex theories. In this case, it is based on a highly complex court decision. That is why I was asking about full or further transposition. The previous legislation probably said, "full" but this says "further" because we did not fully transpose it.</p>
+          <p eId="para_80"> My amendments are quite simple. I am pressing them to try to ensure they are given their full weight. They deal with the key section, section 208 of the Copyright and Related Rights Act 2000. This is about payments to performers. We are in a world now where we need to set this out in black and white because if we do not do that, we will have other challenges, some of which are already upon us, but there will be a lot more in the future. If we do not set out the rights of the performers and artists to equitable payment, then we could see a situation when we deal with the rights for remuneration in AI and all of that. We are all grappling with it in our head, including the use and misuse of music and performance and the right to our image. Only this week, the Netherlands passed a law to give each individual the right to their image. The Minister of State has that right. That is important for the future.</p>
+          <p eId="para_81"> In terms of what disputes exist from the existing copyright and existing legislation in this field, we need to get it right so we can ensure the protections are there for producers and the performers in the future that are being abused by AI programmes. There is a role for AI, but if people are making money on the back of producers or performers, then they need to pay their dues for those. We need to ensure when they are paying it, they are paying it correctly. That is why I am adamant these amendments will strengthen the relationship and ensure that ambiguity does not continue. I am pressing these amendments.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_30">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_82">I take on board what the Deputy said. The officials are going to meet with RAAP in the coming weeks. Hopefully that can resolve some of the issues. To concur, I read about the right to an image. This is being discussed under the Danish Presidency, to be considered as part of the revision of the copyright of the DSM directive.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_31">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_83">It is good. It is a rolling agenda item. I am on the British-Irish Parliamentary Assembly and it is one of the issues I have asked to be included on the agenda of one of its subcommittees, namely to look at ensuring payment everybody equitably in relation to AI, which is one the new revolutions we can all benefit from it. We do at the moment. Everybody switches on their Google Maps. That is AI. It is telling us the best or worst way, depending on the circumstances, to get from A to B. In this case, it all to do with ensuring that people or those companies cannot be freeloaders on the back of work that was produced by anybody in any shape or form, but in particular the performers. If we put in an inequitable distribution of those funds and if this legislation is passed unchanged, we will end up with a lot of cases in the District Court, the Circuit Court or wherever this will end up in the future because artists will have to keep challenging. We will be coming back to amend this again if it goes through with the current wording.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T10:20:00+01:00"/></from>
+          <p eId="para_84">I wish to add my own two cent. I had the privilege of meeting with RAAP. The fact the Department will engage with it is highly important on foot of the concerns it has. Some of them are quite legitimate. I appreciate that will be done. The representatives from RAAP are welcome this morning to observe the proceedings of the committee.</p>
+          <p eId="para_85"> We are going into a technical phase of this now. Apologies, if I make a few errors. It is my first time doing this.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_6">
+          <summary eId="sum_13">Amendment put: </summary>
+          <summary title="division" eId="sum_14">The Committee divided: Tá, <quantity refersTo="#ta" normalized="3" eId="qty_1">3</quantity>; Níl, <quantity refersTo="#nil" normalized="5" eId="qty_2">5</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_7">
+            <p eId="para_86">Tá</p>
+            <p eId="para_87">
+              <person refersTo="#PaulDonnelly">Donnelly, Paul.</person>
+            </p>
+            <p eId="para_88">
+              <person refersTo="#GeorgeLawlor">Lawlor, George.</person>
+            </p>
+            <p eId="para_89">
+              <person refersTo="#AengusOSnodaighSF">Ó Snodaigh, Aengus.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_8">
+            <p eId="para_90">Níl</p>
+            <p eId="para_91">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_92">
+              <person refersTo="#BrianBrennan">Brennan, Brian.</person>
+            </p>
+            <p eId="para_93">
+              <person refersTo="#CormacDevlin">Devlin, Cormac.</person>
+            </p>
+            <p eId="para_94">
+              <person refersTo="#AlbertDolan">Dolan, Albert.</person>
+            </p>
+            <p eId="para_95">
+              <person refersTo="#NiamhSmyth">Smyth, Niamh.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_15"/>
+          <summary title="decision" refersTo="#lost" eId="sum_16">Amendment declared lost.</summary>
+        </debateSection>
+        <speech by="#AengusOSnodaighSF" eId="spk_33">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:40:00+01:00"/></from>
+          <p eId="para_96">I move amendment No. <i>b</i>1:</p>
+          <p class="indent_1" eId="para_97">In page 3, between lines 13 and 14, to insert the following:</p>
+          <p class="indent_2" eId="para_98">
+            <b>“Amendment of section 38 of Principal Act</b>
+          </p>
+          <p class="indent_2" eId="para_99"><b>2.</b>Section 38 of the Principal Act is amended in subsection (1)(b)(i) by the insertion of “each” after “in respect of”.”.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_9">
+          <summary eId="sum_17">Amendment put: </summary>
+          <summary title="division" eId="sum_18">The Committee divided: Tá, <quantity refersTo="#ta" normalized="3" eId="qty_3">3</quantity>; Níl, <quantity refersTo="#nil" normalized="7" eId="qty_4">7</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_10">
+            <p eId="para_100">Tá</p>
+            <p eId="para_101">
+              <person refersTo="#PaulDonnelly">Donnelly, Paul.</person>
+            </p>
+            <p eId="para_102">
+              <person refersTo="#GeorgeLawlor">Lawlor, George.</person>
+            </p>
+            <p eId="para_103">
+              <person refersTo="#AengusOSnodaighSF">Ó Snodaigh, Aengus.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_11">
+            <p eId="para_104">Níl</p>
+            <p eId="para_105">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_106">
+              <person refersTo="#BrianBrennan">Brennan, Brian.</person>
+            </p>
+            <p eId="para_107">
+              <person refersTo="#CormacDevlin">Devlin, Cormac.</person>
+            </p>
+            <p eId="para_108">
+              <person refersTo="#AlbertDolan">Dolan, Albert.</person>
+            </p>
+            <p eId="para_109">
+              <person refersTo="#PaulNicholasGogartyGP">Gogarty, Paul Nicholas.</person>
+            </p>
+            <p eId="para_110">
+              <person refersTo="#JamesOConnor">O'Connor, James.</person>
+            </p>
+            <p eId="para_111">
+              <person refersTo="#NiamhSmyth">Smyth, Niamh.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_19"/>
+          <summary title="decision" refersTo="#lost" eId="sum_20">Amendment declared lost.</summary>
+        </debateSection>
+        <speech by="#AengusOSnodaighSF" eId="spk_34">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T10:50:00+01:00"/></from>
+          <p eId="para_112">I move amendment No. <i>c</i>1:</p>
+          <p class="indent_1" eId="para_113">In page 3, between lines 13 and 14, to insert the following:</p>
+          <p class="indent_2" eId="para_114">
+            <b>“Amendment of section 38 of Principal Act</b>
+          </p>
+          <p class="indent_2" eId="para_115"><b>2.</b>Section 38 of the Principal Act is amended in subsection (1)(b)(i) by the insertion of the following “for the purpose of remunerating jointly the qualifying copyright owner in the sound recording and performers whose qualifying performances are incorporated in the sound recording, in respect of such playing or inclusion” after “a licensing body”.”.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_12">
+          <summary eId="sum_21">Amendment put: </summary>
+          <summary title="division" eId="sum_22">The Committee divided: Tá, <quantity refersTo="#ta" normalized="3" eId="qty_5">3</quantity>; Níl, <quantity refersTo="#nil" normalized="7" eId="qty_6">7</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_13">
+            <p eId="para_116">Tá</p>
+            <p eId="para_117">
+              <person refersTo="#PaulDonnelly">Donnelly, Paul.</person>
+            </p>
+            <p eId="para_118">
+              <person refersTo="#GeorgeLawlor">Lawlor, George.</person>
+            </p>
+            <p eId="para_119">
+              <person refersTo="#AengusOSnodaighSF">Ó Snodaigh, Aengus.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_14">
+            <p eId="para_120">Níl</p>
+            <p eId="para_121">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_122">
+              <person refersTo="#BrianBrennan">Brennan, Brian.</person>
+            </p>
+            <p eId="para_123">
+              <person refersTo="#CormacDevlin">Devlin, Cormac.</person>
+            </p>
+            <p eId="para_124">
+              <person refersTo="#AlbertDolan">Dolan, Albert.</person>
+            </p>
+            <p eId="para_125">
+              <person refersTo="#PaulNicholasGogartyGP">Gogarty, Paul Nicholas.</person>
+            </p>
+            <p eId="para_126">
+              <person refersTo="#JamesOConnor">O'Connor, James.</person>
+            </p>
+            <p eId="para_127">
+              <person refersTo="#NiamhSmyth">Smyth, Niamh.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_23"/>
+          <summary title="decision" refersTo="#lost" eId="sum_24">Amendment declared lost.</summary>
+        </debateSection>
+        <speech by="#AengusOSnodaighSF" eId="spk_35">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_128">I move amendment No. <i>d</i>1:</p>
+          <p class="indent_1" eId="para_129">In page 3, between lines 13 and 14, to insert the following:</p>
+          <p class="indent_2" eId="para_130">
+            <b>"Amendment of section 38 of Principal Act</b>
+          </p>
+          <p class="indent_2" eId="para_131"><b>2.</b>Section 38 of the Principal Act is amended by the insertion of the following subsection (3A) after subsection (3):</p>
+          <p class="indent_3" eId="para_132">"(3A) (a) Payments made to a licensing body pursuant to subsections (1) and (2) of this section shall be known for the purpose of this section and section 208 as ‘equitable remuneration’. The right to receive the same is a right which is shared between the qualifying copyright owner of the sound recording and performers whose qualifying performances are incorporated in the sound recording.</p>
+          <p class="indent_4" eId="para_133">(b) In this section—</p>
+          <p class="indent_5" eId="para_134">'qualifying copyright owner' means a person or body qualifying for copyright protection in a sound recording by virtue of sections 182, 183, 184 or 288;</p>
+          <p class="indent_5" eId="para_135">'qualifying performance' means a person or body whose performance qualifies for protection under sections 287, 288 or 289.</p>
+          <p class="indent_4" eId="para_136">(c) The right of the copyright owner to receive equitable remuneration may be exercised through a collective management organisation which is a licensing body as defined in subsection (15) of this section and registered with the Controller of Intellectual Property pursuant to section 181 in respect of the copyright in sound recordings.".".</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_15">
+          <summary eId="sum_25">Amendment put: </summary>
+          <summary title="division" eId="sum_26">The Committee divided: Tá, <quantity refersTo="#ta" normalized="3" eId="qty_7">3</quantity>; Níl, <quantity refersTo="#nil" normalized="7" eId="qty_8">7</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_16">
+            <p eId="para_137">Tá</p>
+            <p eId="para_138">
+              <person refersTo="#PaulDonnelly">Donnelly, Paul.</person>
+            </p>
+            <p eId="para_139">
+              <person refersTo="#GeorgeLawlor">Lawlor, George.</person>
+            </p>
+            <p eId="para_140">
+              <person refersTo="#AengusOSnodaighSF">Ó Snodaigh, Aengus.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_17">
+            <p eId="para_141">Níl</p>
+            <p eId="para_142">
+              <person refersTo="#GraceBoland">Boland, Grace.</person>
+            </p>
+            <p eId="para_143">
+              <person refersTo="#BrianBrennan">Brennan, Brian.</person>
+            </p>
+            <p eId="para_144">
+              <person refersTo="#CormacDevlin">Devlin, Cormac.</person>
+            </p>
+            <p eId="para_145">
+              <person refersTo="#AlbertDolan">Dolan, Albert.</person>
+            </p>
+            <p eId="para_146">
+              <person refersTo="#PaulNicholasGogartyGP">Gogarty, Paul Nicholas.</person>
+            </p>
+            <p eId="para_147">
+              <person refersTo="#JamesOConnor">O'Connor, James.</person>
+            </p>
+            <p eId="para_148">
+              <person refersTo="#NiamhSmyth">Smyth, Niamh.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_27"/>
+          <summary title="decision" refersTo="#lost" eId="sum_28">Amendment declared lost.</summary>
+        </debateSection>
+        <speech by="#JamesOConnor" eId="spk_36">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_149">Amendment No. <i>e</i>1 in the name of Deputy Conway-Walsh is being taken by Deputy Ó Snodaigh. Amendments Nos. 1 and 2 are related and are physical alternatives to amendment No. <i>e</i>1. Amendments Nos.<i> e</i>1, 1 and 2 may be discussed together.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_37">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:00:00+01:00"/></from>
+          <p eId="para_150">I move amendment No. <i>e</i>1:</p>
+          <p class="indent_1" eId="para_151">In page 3, between lines 13 and 14, to insert the following:</p>
+          <p class="indent_2" eId="para_152">
+            <b>"Amendment of section 208 of Principal Act</b>
+          </p>
+          <p class="indent_2" eId="para_153"><b>2.</b>Section 208 of the Principal Act is amended by the substitution of the following subsections for subsections (1) to (9):</p>
+          <p class="indent_3" eId="para_154">“(1) A performer has the right to share equally with the copyright owner in the sound recording the equitable remuneration for which provision is made in section 38(1), after deduction of the justifiable costs of collection.</p>
+          <p class="indent_3" eId="para_155">(2) The right of the performer in subsection (1) may be exercised through a collective management organisation registered as a licensing body with the Controller of Intellectual Property to manage performers' property rights, under section 286.</p>
+          <p class="indent_3" eId="para_156">(3) The exercise of the right of the performer pursuant to this section shall include the right of a collective management organisation to participate in decisions concerning the following:</p>
+          <p class="indent_4" eId="para_157">(a) the negotiation with the parties referred to in section 38(1);</p>
+          <p class="indent_4" eId="para_158">(b) the calculation of the justifiable costs of collection;</p>
+          <p class="indent_4" eId="para_159">(c) the calculation of the net distributable revenue after payment of the justifiable costs of collection;</p>
+          <p class="indent_4" eId="para_160">(d) the manner and timing of the payment of the total net amount due to performers.</p>
+          <p class="indent_3" eId="para_161">(4) The calculation and payment of the amounts due to individual performers shall be conducted in compliance with the provisions of the European Union (Collective Rights Management) (Directive 2014/26/EU) Regulations 2016.</p>
+          <p class="indent_3" eId="para_162">(5) (a) The collective management organisation representing the copyright owner in the sound recording shall not retain any monies due to performers.</p>
+          <p class="indent_4" eId="para_163">(b) All sums due to performers shall be paid within the time limit specified in Regulation 11(2) of the European Union (Collective Rights Management) (Directive 2014/26/EU) Regulations 2016.</p>
+          <p class="indent_4" eId="para_164">(c) Sums identified as being due to unknown or unidentified performers shall be paid to the collective management organisation representing the greatest number of performers in the State, which shall be obliged to attempt to seek out and pay such performers.</p>
+          <p class="indent_3" eId="para_165">(6) The right of the performer under this section is transmissible by testamentary disposition or by operation of law, as personal or moveable property, and may be assigned or further transmitted, including by assignment, by any person who legally acquires the right.</p>
+          <p class="indent_3" eId="para_166">(7) Where the sharing of equitable remuneration in accordance with subsection (1) is not acceptable to a performer or a copyright owner in a sound recording, an alternative sharing of equitable remuneration as between a performer and a copyright owner in a sound recording may be agreed by the performer and the copyright owner concerned, including through negotiation by their respective collective management organisations.</p>
+          <p class="indent_3" eId="para_167">(8) Any dispute arising under this section may be referred by or on behalf of one or more of the parties affected by the dispute to the Controller of Intellectual Property, who shall consider the matter and make such order, subject to the provisions of this section, as he or she shall think fit, within 6 months of the making of such application.</p>
+          <p class="indent_3" eId="para_168">(9) An order made under this section shall have effect from the date on which it is made or such later date as may be specified by the Controller of Intellectual Property.".".</p>
+          <p eId="para_169"> Amendment No. <i>e</i>1 is grouped with amendments Nos. 1 and 2. Amendments Nos. 1 and 2 were submitted before Committee Stage of the Bill was delayed. The extra time afforded me further time to speak to those who represent the different organisations. Having looked at the Bill again, without the rush caused because the previous committee did not adopt a pre-legislative scrutiny approach on it, while I had an inkling that there needed to be a change, I was able to talk to Recorded Artists Actors Performers, RAAP, and others and put forward the more comprehensive amendment No. <i>e</i>1. Therefore, I will withdrawn amendments Nos. 1 and 2 and concentrate my discussion on amendment No. <i>e</i>1.</p>
+          <p eId="para_170"> Amendment No. <i>e</i>1 is, in many ways, one of the key amendments I am putting forward. It deals with some of the points I have already elaborated on and I will try not to repeat myself. This is dealing with section 208 of the principal Act. It is substituting the subsections (1) to (9), inclusive, and setting out the rights in clear, unambiguous terms.</p>
+          <p eId="para_171"> While I have spent a lot of time here, I am not necessarily the be-all and end-all of drafters. However, we, and RAAP in particular, have captured the essence of what is required. I am not precious enough to say that it does not need a tweak here or tweak there, but it should be accepted that a performer should have the right to share equally with the copyright owner in the sound recording the equitable remuneration from that. That is subsection (1).</p>
+          <p eId="para_172"> Subsection (2) provides that the right of the performer in subsection (1) may be exercised through a collective management organisation registered body with the Controller of Intellectual Property to manage property rights. I think we accept the principle of that.</p>
+          <p eId="para_173"> Subsection (3) states that the exercise of the right of the performer pursuant to this section shall include the right of a collective management organisation to participate in decisions concerning four points, which are listed, namely, the negotiation with the parties referred to in section 38(1), the calculation of the justifiable costs of collection, the calculation of the net distributable revenue after payment of the justifiable costs of collection, and the manner and timing of the payment of the total net amount due to performers. That is the exercise of that right.</p>
+          <p eId="para_174"> Subsection (4) of the new section provides that the calculation and payment of the amounts due to individual performers shall be conducted in compliance with the provisions of the European Union (Collective Rights Management) (Directive 2014/26/EU) Regulations 2016. That is important to ensure that is as clear as possible.</p>
+          <p eId="para_175"> Subsection (5) states that the collective management organisation representing the copyright owner in the sound recording shall not retain any moneys due to performers. That is setting out that it cannot withhold any remuneration due. It states that all sums due to performers shall be paid within the time limit specified in the regulation set out in the amendment and that sums identified as being due to unknown or unidentified performers shall be paid to the collective management organisation representing the greatest number of performers in the State, which shall be obliged to attempt to seek out and pay such performers.</p>
+          <p eId="para_176">The principle of this is a collective management organisation in Ireland - one of those being RAAP - will be the holders of any funds identified which are due to somebody who has not been identified. This can be held until those people who are due it are identified and those funds are then passed onto them.</p>
+          <p eId="para_177"> The right of the performer, under the proposed subsection (6), "is transmissible by testamentary disposition or by operation of law, as personal or movable property, and may be assigned or further transmitted, including by assignment, by any person who legally acquires the right". This ensures some of what I was speaking on earlier regarding those who are represented by the collective management organisations which are acting on behalf of the performers and artists. This is where this can be set out. As I said earlier, this legislation does not expect each individual performer or artist to pursue or try to track down where their performances are used to figure out what costs are due to them and so on.</p>
+          <p eId="para_178"> Subsection (7) states the sharing of equitable remuneration will be done in accordance with subsection (1) and where it is not acceptable to a performer or copyright owner in a sound recording, an alternative sharing of equitable remuneration as between a performer and copyright owner in a sound recording, may be agreed by the performer and copyright owner concerned, including through negotiation by their respective collective organisation.</p>
+          <p eId="para_179"> Subsection (8) states: </p>
+          <p class="indent_1" eId="para_180">Any dispute arising under this ... may be referred by or on behalf of one or more of the parties affected to the Controller of Intellectual Property, who shall consider the matter and make such [an] order subject to the provisions of this section as he or she may think fit, within 6 months of the making of such an application. </p>
+          <p eId="para_181"> This is one of the key changes I think the Minister of State was addressing in encouraging people to go to court and taking away the power of adjudication from the controller of intellectual property. One of the concerning issues is our court system is already clogged up - bunged up to the door - yet, where we have a competent mechanism - the controller of intellectual property - we are suggesting we bypass them and the disputes be referred to the courts. I encourage the Minister of State and drafters to look again to see can we ensure the powers or the standing of the controller of intellectual property is such that it can adjudicate rather than clogging up our courts. Outside of clogging up the courts - which are already clogged up enough - it is the cost. Once you enter court, there are legal costs on both sides. It is set at a low limit but that would not be exclusively so, depending on the amount of money in question. I am not a legal expert but if there is a substantial sum of money under dispute, you end up at the Circuit Court and High Court or whatever. At each stage, there is higher liability or a higher chance those taking such a legal case will back out because they do not have the money or their organisations could be hamstrung by the concern of the higher sums of money. </p>
+          <p eId="para_182"> In the past RAAP had to take cases and we should all be thankful it did because we are now dealing with legislation on foot of that. It is not its role to do so. In some ways, it is but we need to find ways where we are not ending up in court time and again with costs involved. We should ensure that where we have opportunities to avoid that, disputes can be dealt with through mediation and arbitration. Everyone is entitled to go to court one way or the other. If there is a dispute where people are not happy with the resolution, they can go to court. In this instance, I presumed one of the controller of intellectual property's key roles was the arbitration in the event of disputes but we are moving away from that in this legislation. </p>
+          <p eId="para_183"> The final part of the amendment provides that an "order made under this section shall have effect from the date in which it is made or such later date as may be specified by the Controller of Intellectual Property". I will leave it at that and let the Minister or other people go.</p>
+        </speech>
+        <speech by="#PaulNicholasGogartyGP" eId="spk_38">
+          <from>Deputy Paul Nicholas Gogarty<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_184">I agree on this point. With Brexit especially, it does not make sense to have any input from a UK organisation and RAAP has historically done that. As it said in its contributions to this committee, it has never had complaints about the way it collects on behalf of artists. We should leave it in the hands of professionals so to speak. </p>
+          <p eId="para_185"> I also agree putting it through the courts system is unwieldy and costly. It remains an option but I do not think it should be the first recourse.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_186">Does Deputy Lawlor wish to speak?</p>
+        </speech>
+        <speech by="#GeorgeLawlor" eId="spk_40">
+          <from>Deputy George Lawlor<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_187">Yes. Much of this is new to me. When I joined the enterprise committee, copyright was not the first thing I thought I would be discussing from a voting point of view. It appears to me from all this, however, that there seems to be much ambiguity here. We are a nation of performers and artists yet the imbalance is being directed towards the superpowers of the producers in many ways. </p>
+          <p eId="para_188"> The waiving of pre-legislative scrutiny is a shame. I have sat in this committee several times and you would nearly want a senior counsel alongside you at some of the meetings, such is the degree of detail involved. I have to say I am disappointed some of the amendments to date have not been taken on board. In my view, they wave a little more in favour of the performers and assist them in a way I believe we as a country should be assisting them. We are not a country of superpowers in production or producers but we are a country of performers, artists and people who bring much to the table. That is what we are renowned for. We as a committee should be focusing on ensuring we weigh in behind the performers to a greater extent. </p>
+          <p eId="para_189"> That is just my observation on it.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_41">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_190">I appreciate the Deputy's contribution. Does the Minister of State wish to address those comments?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_42">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T11:10:00+01:00"/></from>
+          <p eId="para_191">I thank the committee for the contributions so far.</p>
+          <p eId="para_192"> I am ably advised by the fabulous officials on either side of me. There had been no referrals in the past 20 years to the controller - perhaps that says something in itself - until this dispute arose. The sense was the controller perhaps did not have the expertise and that is why going to the courts would probably be a higher level of expertise on this issue.</p>
+          <p eId="para_193"> Referring back to Deputy Ó Snodaigh's amendment, I thank him for proposing it but on this occasion I will be rejecting it. First, on amendment No. <i>e</i>1, in subsection (1), the Deputy has suggested wording which includes "justifiable" collecting cost rather than "reasonable" collecting cost as it is included in the Bill. This wording was carefully considered and reasonable was deemed more appropriate as it requires consideration of the questions of fairness. </p>
+          <p eId="para_194">On that basis, the wording on the proposal proposed in the Bill is preferred. We believe it provides the intended level of protection for performers. Additional provisions in relation to this apply via the collective rights management regulations. </p>
+          <p eId="para_195"> With regard to the proposed subsections (2) to (5), inclusive, in the amendment, there is no need to include provisions around the ability of the collective management organisations. It is already the case that a performer or a producer may be represented by their representative body or collective management organisation for the purpose of reaching an agreement under this section. It is provided for by section 208(2) of the Act, which states that the right to equitable remuneration can be assigned by a performer to a collecting society to exercise that right on his or her behalf. </p>
+          <p eId="para_196"> In addition, the proposed subsection (3B) in the Bill states that the sharing of equitable remuneration can be agreed by or on behalf of the performer and the owner who is the producer. As subsections (3C) and (3D) follow on from subsections (2) and (3B), there is no need to repeat this in each subsection. The amendment is, therefore, unnecessary. </p>
+          <p eId="para_197"> Similarly, the proposed subsection (6) of this amendment is not necessary as it is already provided for in the copyright Act. </p>
+          <p eId="para_198"> With reference to paragraph (5)(b) in the amendment, there is also no need to state that collections of moneys must follow the provisions of the CRM directive. This is already provided for in Irish law. </p>
+          <p eId="para_199"> I also cannot accept the suggestion that unidentified sums must be paid to the largest CMO in paragraph (5)(c) of the amendment. </p>
+          <p eId="para_200"> Proposed subsections (7) to (9), inclusive, of the amendment concern the process to be followed where agreement cannot be reached as to the sharing of equitable remuneration. The Deputy wishes to retain the current role of the controller as the arbiter, which the Government does not accept. The Bill removes this function from the controller. It is necessary, in the view of the Government, to do so. </p>
+          <p eId="para_201"> Following the receipt of legal advice, including from the Office of the Attorney General, my Department determined that the reassignment of functions from the controller of intellectual property to the courts constituted an appropriate and necessary course of action. Adjudication of the dispute by the controller under section 208 of the Act extends beyond the scope of intellectual property law and requires the application of equitable principles. Such assessments, particularly those involving fairness, proportionality and respective contributions of all parties, fall outside the institutional expertise of the controller. In contrast, the courts possess the requisite experience and knowledge of case law to adjudicate on matters of equity, drawing on a well-established body of case law and a long-standing tradition of applying equitable remedies. </p>
+          <p eId="para_202"> The controller of intellectual property is responsible for the granting and registration of intellectual property rights in Ireland, specifically patent, trademark and industrial design rights, as provided for under the various Acts, rules and regulations for which the controller has statutory responsibility. The controller also has certain statutory functions under the Copyright and Related Rights Act 2000, which are mainly concerned with the registration of copyright licensing bodies and referencing and applications related to licensing schemes operated by these bodies. The office of the controller of intellectual property also disseminates information on intellectual property rights and provides my Department with input into the planning and drafting of certain intellectual property legislation, as well as the formulation and implementation of policy regarding the development of an intellectual property rights protection scheme. A full review of the controller of intellectual property’s functions was not deemed necessary in the preparation of this Bill, as its scope is limited in matters relating to the sharing of royalties in sound recording arising from the Court of Justice of the European Union’s judgment in C-265/19.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_203">I thank the Minister of State. Does Deputy Ó Snodaigh wish to comment again? </p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_44">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:20:00+01:00"/></from>
+          <p eId="para_204">I thank the Minister of State for her answers, some of which reflect answers I received in response to parliamentary questions in preparation for this Bill. I will come back to them. In the proposed legislation, the term “reasonable collecting costs” is used. That is not defined. The general scheme of the Bill used the term “justifiable collecting costs”. The arguments being made by RAAP and others is that the term “justifiable collecting costs” is less likely to cause problems as it is rooted in Recital 28 of the CRM directive, which states “it is important that management fees do not exceed justified costs of the management of the rights”. Usually in law you try to use the same terms unless you are bringing in new terms and, therefore, a new definition. It is worth looking at that. </p>
+          <p eId="para_205"> In respect of the issue of the controller and the courts, I am still not convinced by the Minister of State’s arguments or explanations as to why there is a need to scrap the role of the controller of intellectual property and force performers and producers to go to the Circuit Court as their first port of call. This is the problem. The Intellectual Property Office of Ireland is a State body, as the Minister of State has said, which is responsible for intellectual property rights, including patents, designs, trademarks and copyrights. In fact, in the future, some people may look for a European patent, rather than a patent from a single nation. That is a different argument, however. The office will obviously remain in charge of all of those areas, as the Minister of State said, but not sound recordings. That is bizarre. Something that is exclusively deserving of the same protections as any patent or design should fall under the controller’s remit. </p>
+          <p eId="para_206"> The Circuit Court, as I argued already, is now being asked to take over the role. This is at a time when, if I go to the court today to ask for a hearing, I will be told that it will be at least December, if not January of next year, before I get that hearing. That is six months. The Bill proposes that a person must wait at least six months before even making an application. That is, therefore, one year before a person is guaranteed a date for a hearing. It could be longer than that. If there is an easier way, and if something is not broken, you do not have fix it. </p>
+          <p eId="para_207"> I mentioned the cost of litigation. I do not know why we are doing this. I asked a parliamentary question as to whether any of the stakeholders asked for this change. The Minister said no representations were received, nor were there any lobbying efforts made by any stakeholder within the music sector regarding the transfer of functions concerning the dispute resolution of sound recording copyright from the controller of intellectual property to the Circuit Court. No one asked for it. I have a problem with clogging up our courts when there are alternatives. </p>
+          <p eId="para_208"> I also asked why the Department does not believe that a controller is judicially competent because this function is being passed onto the courts. The answer, which was quite mind-boggling in some ways, reflects some of what the Minister of State just said, that is, that the necessary assessments, which involve fairness, proportionality and contributions of parties, fall outside the institutional expertise of the controller. Usually, when a function is outside the expertise of a body, you give it that expertise rather than just taking the function away because we are now going to have to create that expertise in the courts. That is the concern. If the controller’s office cannot be trusted to be fair and proportionate, why is it in charge of all other IP issues? It is not just the sound recordings in question. If it cannot be trusted on one element, how can it be trusted on anything else? It is a question.</p>
+          <p eId="para_209">The Minister of State might elaborate more on the justification for this move, either now or on Report Stage. On additional resources or expertise being required, she said that no major approach had been made to the Controller of Intellectual Property, thus far. I believe in leaving well enough alone. The controller's task, under section 208(8) of the current Act, is to "make such order as to the method of calculating and paying equitable remuneration as he or she may determine to be reasonable in the circumstances". That is the task at the moment and it is exactly the role that is being scrapped, with the Circuit Court being tasked only with determining the share of remuneration in an individual case rather than the methodology. Some of the problems that were identified in the cases taken by Recorded Artists Actors Performers, RAAP, involved the methodology as well. It was not just the specific equitable remuneration. It was that adjudication.</p>
+          <p eId="para_210"> In regard to the third issue, it is still not clear to me why the proposed Bill appears to act as if remuneration, negotiation and dispute resolution are matters for the individual performers and individual producers, without any mention that the reality in the sector is that collective management organisations, CMOs, have the effective capacity. There seems to be a move away from the role of the CMOs because the Bill speaks of individuals rather than the organisations that have the expertise required and which have represented their members well. In the case of the producers, the CMOs probably represented their members too well, but that is a separate issue. In this case, we need to ensure there is no diminution of the role of the CMOs. Again, if it is not broken, do not fix it.</p>
+          <p eId="para_211"> They are the three core issues. They are some of the issues we need to concentrate on to ensure that, when this Bill is passed, we have the best possible legislation to protect the roles of the producers, performers, artists, and, in my view, the controller, rather than the court.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:30:00+01:00"/></from>
+          <p eId="para_212">As we have exceeded two hours, I am obliged to give a five-minute break for officials and the Minister's team to use the facilities or anything else.</p>
+        </speech>
+        <summary eId="sum_29">
+          <i> Sitting suspended at 11.33 a.m. and resumed at 11.40 a.m.</i>
+        </summary>
+        <speech by="#JamesOConnor" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_213">Deputy Ó Snodaigh had concluded his remarks before we suspended. Does the Minister of State wish to comment on what he said?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_47">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_214">No. I accept what he says and his bona fides in that regard. We will have the summer months to think about this and to tease it out a little bit further. I will discuss the matters raised by Deputy Ó Snodaigh with the Minister, Deputy Peter Burke, because the decision has been made by the Government. The officials will meet with RAAP in the next two weeks. I am happy to do that too. If we can find some agreement on it, I would be happy to do it. However, I am afraid I will not be accepting the amendment today.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_48">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_215">I thank the Minister of State. In some ways, that is the luxury of pre-legislative scrutiny, where a Minister proposes something and we go through the heads of the Bill and we agree or do not agree with what is proposed. We can tinker with the Bill before the wording is decided. The problem now is that unless the wording in a Bill setting out a measure is changed, it becomes an Act. The key part of the process is to try to ensure that we put nothing in legislation to hinder or cut across what is intended. That is the reason I asked at the start of the meeting about the Long Title. The intention is to try as much as possible to faithfully transpose the EU directive into Irish law to give effect to what was intended in the first place and also to give full effect to the decisions that were taken following litigation by RAAP to ensure that the power dynamic disappears and that nobody benefits in a way that cuts across the original intention in the EU directive from 2006.</p>
+          <p eId="para_216"> I will come back to the questions again because in some way they relate to the next section. The key part of this amendment is to replace the amendment to section 208 of the principal Act so that we have the protections required. Collective management organisations are key and front and centre of all of this. They represent the artists and ensure that they get their fair dues and that we do not burden the artists or CMOs with extra work by having to go to the Circuit Court. I do not know the cost involved, but the cost of going into court increases when one steps in the door. Unless a case is settled at the door of the court, the costs increase substantially after that. That can have a chilling effect on an artist or an organisation, in this case RAAP and PPI, and stop them pursuing justifiable cases for remuneration.</p>
+          <p eId="para_217"> I mentioned another point but I do not think the Minister of State replied to me on it. It related to the wording "reasonable collecting costs". I am concerned about the lack of definition in that regard. Perhaps the Minister of State could look at the matter. If she intends to continue with the wording, then perhaps we could have a definition section at the start of the legislation to explain it, because the term used in the general scheme of the Bill is "viable collecting costs", which is closer to recital 28, which I mentioned earlier. The meaning of the term is defined as "not exceeding justified costs". I do not need an answer now but it is something we must address. The law must be clear for people who are trying to assert their rights in the future.</p>
+          <p eId="para_218"> I am still intent on pushing the amendment because it is a key amendment to the Bill. I already indicated that. The next section is opposed. I have dealt with some of that but I will come back to it. Of all of the amendments I have pushed to a vote, this amendment captures the point that has been raised with me and others by those who are in the industry and feel we have an opportunity to get it right. We do not want to come back here with an amendment Bill in two or three years because we messed up. It is good that the Minister is looking to delve into this again. I will leave it at that on amendment No. <i>e</i>1 unless somebody else wishes to make a point to me or the Minister. At this stage, I am happy to leave it at that.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_49">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_219">Could I clarify that the Deputy is withdrawing amendments Nos. 1 and 2?</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_50">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_220">Yes. Those amendments were my initial way of dealing with it and trying to get my head around it. I was helped by others.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_51">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_221">We need agreement that they will be withdrawn.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_52">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:40:00+01:00"/></from>
+          <p eId="para_222">I can push them if you want, Chair. They are preferable to what is there at the moment, but they do not capture in full what we would like to do.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_18">
+          <summary eId="sum_30">Amendment put: </summary>
+          <summary title="division" eId="sum_31">The Committee divided: Tá, <quantity refersTo="#ta" normalized="4" eId="qty_9">4</quantity>; Níl, <quantity refersTo="#nil" normalized="6" eId="qty_10">6</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_19">
+            <p eId="para_223">Tá</p>
+            <p eId="para_224">
+              <person refersTo="#PaulDonnelly">Donnelly, Paul.</person>
+            </p>
+            <p eId="para_225">
+              <person refersTo="#PaulNicholasGogartyGP">Gogarty, Paul Nicholas.</person>
+            </p>
+            <p eId="para_226">
+              <person refersTo="#GeorgeLawlor">Lawlor, George.</person>
+            </p>
+            <p eId="para_227">
+              <person refersTo="#AengusOSnodaighSF">Ó Snodaigh, Aengus.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_20">
+            <p eId="para_228">Níl</p>
+            <p eId="para_229">
+              <person refersTo="#BrianBrennan">Brennan, Brian.</person>
+            </p>
+            <p eId="para_230">
+              <person refersTo="#JohnClendennen">Clendennen, John.</person>
+            </p>
+            <p eId="para_231">
+              <person refersTo="#CormacDevlin">Devlin, Cormac.</person>
+            </p>
+            <p eId="para_232">
+              <person refersTo="#AlbertDolan">Dolan, Albert.</person>
+            </p>
+            <p eId="para_233">
+              <person refersTo="#JamesOConnor">O'Connor, James.</person>
+            </p>
+            <p eId="para_234">
+              <person refersTo="#NiamhSmyth">Smyth, Niamh.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_32"/>
+          <summary title="decision" refersTo="#lost" eId="sum_33">Amendment declared lost.</summary>
+        </debateSection>
+        <speech by="#AengusOSnodaighSF" eId="spk_53">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_235">I move amendment No. 1:</p>
+          <p class="indent_1" eId="para_236">In page 3, between lines 13 and 14, to insert the following: </p>
+          <p class="indent_2" eId="para_237">
+            <b>“Amendment of section 208 of Principal Act </b>
+          </p>
+          <p class="indent_2" eId="para_238"><b>2.</b>Section 208 of the Principal Act is amended by the insertion of the following subsection after subsection (3): </p>
+          <p class="indent_3" eId="para_239">“(3A) Equitable remuneration less reasonable collecting costs shall be shared equally as between a performer and an owner of the copyright in a sound recording.”.”. </p>
+        </speech>
+        <summary eId="sum_34"> Amendment, by leave, withdrawn.</summary>
+        <summary eId="sum_35">SECTION 2</summary>
+        <speech by="#AengusOSnodaighSF" eId="spk_54">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_240">I move amendment No. 2</p>
+          <p class="indent_1" eId="para_241">In page 4, between lines 13 and 14, to insert the following: </p>
+          <p class="indent_2" eId="para_242">“(3F) A licensing or representative body may act on behalf of a performer or an owner of the copyright, with their permission, for the purposes of this section.”. </p>
+        </speech>
+        <summary eId="sum_36"> Amendment, by leave, withdrawn.</summary>
+        <summary eId="sum_37"> Section 2 agreed to.</summary>
+        <speech by="#NiamhSmyth" eId="spk_55">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_243">I flag that a Government amendment to section 2 will be introduced on Report Stage.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_56">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_244">On what?</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_57">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_245">As flagged on Second Stage, a further amendment to the Bill is under consideration by the Minister, Deputy Burke, to strengthen the appeals process by adding a provision similar to current section 208(6) but adapted to the new arrangements provided for in this Bill where an agreement cannot be reached as to the sharing of the equitable remuneration between a performer and a copyright owner. An advanced draft of the amendment has been prepared but unfortunately it has not yet been finalised. Therefore, it will be presented on Report Stage.</p>
+          <p eId="para_246"> I would appreciate it if the committee allowed me to set out the purpose of the proposed amendment and the form it will take. Currently, subsection 208(6) allows for an application to be made to the controller to vary a previous determination of the controller as to the amount of equitable remuneration payable. Subsection 208(6) is deleted by this Bill. The proposed amendment will introduce new subsections to section 2. This will allow either party to an order under subsection (3E) or subsection (3H) to apply to the appropriate court to vary the order. As with subsection 208(6), a certain period will have to have elapsed before an application can be made. It will most likely be 12 months as this is currently the case. The court will then confirm an order or vary the order. The Minister is considering the possible inclusion of criteria that may be considered by the court in making its determination.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_58">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T11:50:00+01:00"/></from>
+          <p eId="para_247">I do not know whether I welcome it or not at this stage as my head is getting a bit fried by going back and forth. It shows the Minister is considering the matter.</p>
+          <p eId="para_248">It is odd that, on one hand, we are taking powers away from the controller and, on the other, we seem to be ensuring it has some role in the appeals process initially. I would have to see the wording in order to see how it complies. As a procedural question, if we do not conclude today, can the Minister bring that forward in September? </p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_59">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_249">As section 2 has been agreed, we cannot go back to that.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_60">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_250">It might have been easier if we had known that in advance because it would have allowed us to argue the point now rather than on Report Stage. The problem on Report Stage is that you go into recommittal and then you are in the lap of the Ceann Comhairle or the Business Committee as to what time we have in terms of making a change. Especially when we are moving powers and provisions towards the Circuit Court, which is the purpose of the next section we will be dealing with, and extending that by what the Minister of State has just proposed, it is vital that we have as much time as possible. We can argue that at the Business Committee but it means this committee will not have the opportunity to tease out the wording the Minister of State will be proposing.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_61">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_251">I appreciate the sentiment expressed by the Deputy but, unfortunately, the amendment is only in draft form. It has not yet been finalised. I, too, will work with the Whip's office to try to ensure that we have the time and space to deal with the matter on Report Stage.</p>
+        </speech>
+        <summary eId="sum_38">SECTION 3</summary>
+        <summary eId="sum_39"> Question proposed: "That section 3 stand part of the Bill."</summary>
+        <speech by="#AengusOSnodaighSF" eId="spk_62">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_252">In the context of section 2, the controller was mentioned. I am opposed to section 3. I have already made a number of points, but the position is even worse than what I had declared. While the Circuit Court is referenced in the section, so too is the High Court. Every citizen is entitled to have recourse to the courts. That is a given. Now, however, the process is being forced into the courts. The Minister mentioned that it will be six months before a person can apply to the courts and also the delays relating to the courts. As I mentioned, it is six months, but it may be longer. It has taken longer previously. That is just to get a first hearing.</p>
+          <p eId="para_253"> We should always try to promote mediation as much as possible. In light of the controller's loss of powers under the Bill, I have a major concern that we are going the wrong way and forcing people into the courts in circumstances were there was an alternative mechanism available. That mechanism, albeit maybe weaker than it should have been, was the best solution. Arbitration would have encouraged mediation, especially if the law is set out in a particular way. In the context of the matters in respect of which RAAP was required to pursue litigation, when we are finished this legislation will address some of the problems that exist. The likelihood of further litigation by RAAP or others means that the controller, without any change, would probably be in a better position than is the case at present.</p>
+          <p eId="para_254"> The courts do not have powers to adjudicate on methodology. One of the key concerns that RAAP had related to the methodology and formulas being used to calculate who was entitled to what. Justifiably, from its point of view, PPI said it was doing everything right. That is why it defended the case. It proceeded to bypass the system by allocating the rights to an English company in circumstances where there was no disclosure of the methods used to calculate who was entitled to what percentage. I mentioned earlier that since the dispute arose in 2013 or 2014, the remuneration or wages - in many ways, that is what we are talking about - of artists on the basis of airplay, etc., that was coming from PPI has dropped by 20%. We are concerned about people's livelihoods.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_255">It is 12.06 p.m. The Deputy may want to give the Minister of State an opportunity to reply, but we will have to adjourn at that point.</p>
+        </speech>
+        <speech by="#AengusOSnodaighSF" eId="spk_64">
+          <from>Deputy Aengus Ó Snodaigh<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_256">Okay.</p>
+        </speech>
+        <speech by="#NiamhSmyth" eId="spk_65">
+          <from>Deputy Niamh Smyth<recordedTime time="2025-07-17T12:00:00+01:00"/></from>
+          <p eId="para_257">I thank the Deputy. The rationale for the inclusion of the new section 3 is to provide legal certainty around the transition between the current arbitration process, which sits with the controller, and the new process in cases where agreements cannot be reached, which are to be referred to the Circuit Court. The relevant provision in the Copyright and Related Rights Act has been in place since that legislation was first enacted in 2000. There were no referrals in the first 21 years of the Act being in place. There has only ever been one application made under section 208(5) for an order pursuant to section 298(8) of the Act. That was in September 2021 in relation to the same parties that were in dispute before the courts. In that context, the Office of the Attorney General advised that the controller could not make a determination until the legal proceedings had concluded. These proceedings, insofar as they involved the State, were concluded in February 2021, when the High Court issued its judgment on the matter. At that time, it was understood that the exiting section 208 was legally defective, following the CJEU ruling, because it did not require remuneration to be shared with all performers. It became apparent to the Department of enterprise and to the then Controller of Intellectual Property that section 208 of the Act as it currently stands is not satisfactory.</p>
+          <p eId="para_258"> Following the receipt of legal advice, including from the Office of the Attorney General, the Department of enterprise determined that the reassignment of functions from the Controller of Intellectual Property to the courts constituted an appropriate and necessary course of action. Adjudication of a dispute by a controller under section 208 of the Act extended beyond the scope of intellectual property law and requires the application of equitable principles. Such assessments, particularly those involving fairness and proportionality and in respect of contributions of parties, fall outside the institutional expertise of the controller. In contrast, the courts possess the requisite experience and knowledge of case law to adjudicate on matters of equity, drawing on well-established bodies of case law and a long-standing tradition of applying equitable remedies. The Office of the Controller of Intellectual Property is a reasonable entity when it comes to the granting and registration of intellectual property rights in Ireland, specifically patent, trademark and industrial design rights as provided for under the various Acts, rules and regulation for which the controller has statutory responsibility. The controller also has certain statutory functions under the Copyright and Related Rights Act 2000. These are mainly concerned with the registration of copyright licensing bodies, references and applications relating to licensing schemes operated by these bodies.</p>
+          <p eId="para_259"> The Office of the Controller of Intellectual Property also disseminates information on intellectual property rights and provides my Department with the input to the planning and drafting of certain intellectual property legislation, and the formulation and implementation of policy in relation to the development of the system of intellectual property rights protection.</p>
+        </speech>
+        <speech by="#JamesOConnor" eId="spk_66">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T12:10:00+01:00"/></from>
+          <p eId="para_260">Three sections remain unattended to at this time on account of the time constraints. The committee has two options. We can try to seek another room to continue on and to finish, which will mean we will need to suspend for a short while, or we can adjourn <i>sine die</i> and return to it after the summer recess. We will go into private session now to deliberate on that. Is that agreed? Agreed. Before we go into private session, I thank the representatives from RAAP very much for their attendance. They are most welcome. Their input and counsel are appreciated.</p>
+        </speech>
+        <summary eId="sum_40">
+          <i> The select committee went into private session at 12.10 p.m. and resumed in public session at 12.12 p.m.</i>
+        </summary>
+        <speech by="#JamesOConnor" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-07-17T12:10:00+01:00"/></from>
+          <p eId="para_261">As the time has expired for our deliberations today, the committee will agree to adjourn <i>sine die</i> and return to the matter at a later stage. As Cathaoirleach of the committee, I extend my sincere gratitude and thanks to the committee staff and our clerk for their input and work in recent weeks. It is very much appreciated by all members of the committee and for those who have come before the committee so far. We have an extensive work programme when we return, which I look forward to working on. I wish everyone a wonderful summer and I thank them for their work and service. I also thank the Minister of State, Deputy Smyth, for being here.</p>
+        </speech>
+        <summary eId="sum_41"> Progress reported; Committee to sit again.</summary>
+        <summary eId="sum_42"><i>
+					</i>The select committee adjourned at 12.13 p.m. <i>sine die.</i></summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,805 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-07-02/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-07-02/debate"/>
+          <FRBRdate date="2025-07-02" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-07-02/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-07-02/debate/mul@"/>
+          <FRBRdate date="2025-07-02" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-07-02/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_finance_public_expenditure_public_service_reform_and_digitalisation_and_taoiseach/2025-07-02/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-10" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="CianOCallaghan" href="/ie/oireachtas/member/id/Cian-O'Callaghan.D.2020-02-08" showAs="Cian O'Callaghan"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="EdwardTimmins" href="/ie/oireachtas/member/id/Edward-Timmins.D.2024-11-29" showAs="Edward Timmins"/>
+        <TLCPerson eId="GeraldNash" href="/ie/oireachtas/member/id/Gerald-Nash.D.2011-03-09" showAs="Ged Nash"/>
+        <TLCPerson eId="KevinBoxerMoran" href="/ie/oireachtas/member/id/Kevin-Boxer-Moran.D.2016-10-03" showAs="Kevin Boxer Moran"/>
+        <TLCPerson eId="MaireadFarrell" href="/ie/oireachtas/member/id/Mairéad-Farrell.D.2020-02-08" showAs="Mairéad Farrell"/>
+        <TLCPerson eId="PearseDoherty" href="/ie/oireachtas/member/id/Pearse-Doherty.S.2007-07-23" showAs="Pearse Doherty"/>
+        <TLCPerson eId="ShayBrennan" href="/ie/oireachtas/member/id/Shay-Brennan.D.2024-11-29" showAs="Shay Brennan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" href="/ie/oireachtas/role/minister_state/public_expenditure__infrastructure__public_service_reform__digitalisation" showAs="Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM AIRGEADAS, CAITEACHAS POIBLÍ, ATHCHÓIRIÚCHÁN SEIRBHÍSE POIBLÍ AGUS DIGITIÚCHÁN, AGUS AN TAOISEACH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-02">Dé Céadaoin, 02 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-02">Wednesday, 02 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ShayBrennan">Shay Brennan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#PearseDoherty">Pearse Doherty</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ErinMcGreehan">Erin McGreehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#KevinBoxerMoran">Kevin Boxer Moran (Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GeraldNash">Ged Nash</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#CianOCallaghan">Cian O'Callaghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#EdwardTimmins">Edward Timmins.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#MaireadFarrell">Teachta / Deputy Mairéad Farrell sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Estimates for Public Services 2025.<recordedTime time="2025-07-02T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vote 13 - Office of Public Works (Revised)<recordedTime time="2025-07-02T15:30:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:30:00+01:00"/></from>
+          <p eId="para_11">No apologies have been received. I advise members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any member partaking via Microsoft Teams to confirm that he or she is on the grounds of the Leinster House campus prior to making his or her contribution to the meeting.</p>
+          <p eId="para_12"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if members' statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_13"> The Select Committee on Finance, Public Expenditure, Public Service Reform, Digitalisation and Taoiseach is meeting today to consider the Revised Estimates, Vote 13 - Office of Public Works. The Revised Estimates Volume, REV, for public services provides considerably more detail at subhead level, as well as performance metrics. Revised Estimates are the revised final proposed spending for the next year and form the basis for parliamentary scrutiny of allocated expenditure. I welcome the Minister of State, Deputy Moran, and his officials from the Office of Public Works to today's meeting. It is his first time coming before our committee. I invite the Minister of State to make his opening statement.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation" eId="spk_2">
+          <from>Minister of State at the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation (Deputy Kevin Boxer Moran)<recordedTime time="2025-07-02T15:30:00+01:00"/></from>
+          <p eId="para_14">I thank committee members for their invitation. I am joined by members of the OPW management board and the OPW chairman, Mr. John Conlon, to discuss the 2025 Revised Estimates, Vote 13 - Office of Public Works. I look forward to engaging with the committee and working with members collaboratively and constructively over the course of the Government. This year, Exchequer funding of €714 million will enable the OPW to progress and deliver in our core areas of work in flood management, estate management and heritage services. The scope and scale of the work across the OPW is extensive and varied. This funding enables the organisation to deliver on behalf of the State. The OPW plays a vital role in supporting key Government initiatives in the programme for Government, national development plan, climate action plan and sustainability, among others. We are also ready to step in at short notice to facilitate important one-off projects such as the preparation for the upcoming EU Presidency. This year, as we progress with our programme of works, we will, for example, implement a range of measures to mitigate the impact of flooding, expand the roll-out of retrofitting in line with climate action goals, maintain and manage the State’s property portfolio from Dublin Castle to Garda stations nationwide, design and build new infrastructure such as ultra-modern office accommodation to a memorial bridge, protect and preserve our national heritage and tell the stories of the past at our many historic gardens and parks, castles and ancient monuments, including our two world heritage sites. The gross allocation for 2025 of €714 million includes €384 million in current funding and €330 million in capital funding. The overall figure sees an increase of €19.5 million or 3% on the 2024 provisional outturn. The additional funding requirement is primarily driven by progress in our flooding relief management programme. The structure of the OPW Vote remains unchanged from last year and the budget breakdown is as follows: climate-responsive flood risk management, €127 million; estate management, €495 million; and administration, €92 million.</p>
+          <p eId="para_15"> As I mentioned, a key objective is the progress of our work on flood relief schemes while ensuring climate change is considered at all stages of the process. The OPW leads a proactive and whole-of-government approach to managing flood risk. Our core objective is to reduce, to the greatest extent possible, the impact of flooding on homes and businesses across the country. We anticipate that the €127 million in funding will allow us to reach important milestones this year, including the achievement of six major flood relief schemes, some in Deputies' areas such as Crossmolina, Glashaboy and Whitechurch. We are progressing up to five further flood relief schemes towards substantial completion, including in Athlone in my constituency. Our climate change adaptation plan aims to ensure communities are protected against increased flood risk. It includes a national programme to develop scheme adaptation plans for pre-existing flood relief schemes.</p>
+          <p eId="para_16"> Moving on to estate management, the OPW manages and maintains 2,500 buildings ranging from landmark heritage sites to central Government offices. The gross capital allocation of €228 million and current allocation of €267 million for estate management reflects the Government’s continued investment in public infrastructure. The OPW works to provide modern, energy-efficient, fit-for-purpose accommodation that aligns with sustainability goals. The OPW is leading by example in decarbonising the public estate in support of a 50% improvement in energy efficiency by 2030. This year, several buildings will see retrofits, including key Government Departments such as the Department of justice on St. Stephen’s Green. This funding will enable planned and reactive maintenance across our property portfolio including statutory compliance with fire, lift and accessibility standards and energy upgrades. In 2025, the OPW continues to conserve and invest in our heritage sites and visitor experiences with recent plans unveiled and enhancements at key attractions like Carrowmore megalithic tombs in Sligo, Clonmacnoise, Oldbridge, Barryscourt and Rockfleet Castle. Meanwhile, our events team is working to ensure the smooth running of the EU Presidency at Dublin Castle next year.</p>
+          <p eId="para_17"> I will finish with reference to the administrative funding of €92 million. The nature of this work of the OPW requires the input of a dedicated team of professional, technical and administrative staff working in multidisciplinary teams across a wide range of roles. While the organisation has been under considerable scrutiny of late, it is important not to lose sight of the valuable work ongoing across the country. We cater for 15 million visitors annually at our heritage sites and we deliver projects under the national development plan to the value of €4 billion. None of this work is possible without our people, our greatest asset. I thank each and every one of them for their help and support.</p>
+          <p eId="para_18"> The OPW is fully committed to the principles of value for money, sustainability and transparency. The lessons learned from recent project delivery experiences have been integrated into our processes. New procedures are in place to support improved efficiency and oversight across project delivery, including new project management guidelines and the development of procurement training for all staff. I can say with confidence that the OPW stands ready to deliver for Government.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:30:00+01:00"/></from>
+          <p eId="para_19">I have five indications of people who wish to contribute. I remind members we are discussing the REV in this session and other topics later.</p>
+          <p eId="para_20">I ask members to try to be succinct.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_4">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_21">On Vote 13, subhead B6 contains building projects in planning or under construction. I ask the Minister of State about the audit carried out by Deloitte that found that the OPW did not conduct a value for money assessment for the bike shelter project, for example, in advance of the work taking place. Deloitte made a number of recommendations in its audit. Will the Minister of State give us an update on the implementation of those recommendations? Will he update us on the new enhanced internal auditor position? Have the updated project management guidelines for small capital projects been put in place?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_5" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_22">I have been in the Dáil on a number of occasions about this. I am happy to say that the Deloitte report provided us with the guidance to go forward and work collaboratively as an organisation. The appointment of the senior executive to the position gives me the confidence about smaller projects. Hands up, we did fall down on it, but I am happy to say, going forward, that we are implementing every section of the audit report. There were some concerns about the length of time it took us to deal with that report. I want to be happy that every one of the 18 recommendations in the report has been implemented. I am happy to say they will be.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_6">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_23">Is there any indication of how many of the 18 are implemented now and how many have yet to be implemented?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_7" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_24">We are implementing them as we go along but most of them are implemented at this time.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_8">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_25">Is the new enhanced internal audit position done then?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_9" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_26">That is done, yes.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_10">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_27">Have the project management guidelines for small capital projects been put in place?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_11" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_28">Yes, they have been put in place. As I said to the Deputy, I work across the whole of the OPW. I work collectively with all the staff, no differently from the people here at the top table. I want to see delivery of value for money. In my time since I came in, working with the Minister, Deputy Jack Chambers, it has always been about value for money. That is what I am about and what I want to see going forward.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_12">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_29">On Vote 13, subhead B6, regarding value for money and the overspend on modular units, I am supportive of everything that is being done to provide housing for people fleeing from war. I think that is necessary and worthwhile work. On the programme to deliver 654 rapid build modular units, the current overspend on the project is €47.9 million. Will the Minister of State talk us through how that overspend became so large? That is an average cost per unit of €436,000, which is very high for a modular unit on State-owned land. How did that happen? What measures are being put in place to ensure it does not happen in future?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_13" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_30">The modular units and the work around that came in almost on budget, not over it. Where it became complicated was with the site, the delivery of water, electricity and sewers. Some of these sites were in very poor locations and it took a lot of work and effort. We see that, only recently from the Minister for housing, houses are reaching nearly €1 million. If we were to build those modular homes today, we would be looking at a way higher number. The modular units have a lifespan of 60 years. They are an asset to the State going forward. I hope that when the war in Ukraine ends, we can hand these back to the local authorities and they will become a valuable asset to the State.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_14">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_31">The overspend is €47.9 million. That is what was provided in a response to a parliamentary question. I would not say it is on budget. The Minister of State is trying to say the unit itself is on budget but the associated costs, which are an integral part, is where the overspend is.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_15" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_32">The associated costs played a huge part in the delivery of those units.</p>
+        </speech>
+        <speech by="#CianOCallaghan" eId="spk_16">
+          <from>Deputy Cian O'Callaghan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_33">You cannot put a modular unit in without associated costs. When this is being calculated, are there no calculations about putting in connections? How did we get to a point where that was such a high overrun? I have talked to people who work in the industry and they say that those costs came in exceptionally high. Does the Minister of State accept that point or does he actually think it is good value for money?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_17" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_34">I accept the point the Deputy makes but I have to say that I have heard the debate around many a table that modular homes were at a high price, but they have a 60-year lifespan. Some people talk about getting a modular home for €40,000 to €70,000, but they normally have a 20 or 30 year lifespan. The State went down the road of having a lifespan which I think makes it an asset. These sites were very complicated. It would be fair to say that while this was pushed as a pilot scheme, the plans that are there for those modular units can be used in every local authority in the country if they wish to use them. They are there for them and are an asset in their own right. It is not just the modular homes but the design and the planning application.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_18">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_35">I want to stick specifically to the figures in Vote 13. I have a number of quick questions. I do not think we need to go into too much detail on most of these. I will get quick responses and we can do it one by one. The first one is travel and subsistence. That seems to be a considerably higher figure than other Departments, particularly when taken as a percentage of salaries, wages and allowances. I suspect there are many OPW people out in the field, which might explain some of that. Will the Minister of State comment on that?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_19" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_36">Our team is growing and our people are on the ground throughout the country. We have quite a large number of staff, which takes up a lot of that.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_20">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_37">Digital and capital investment and IT expenses seem reasonably high as well. There is an €11.7 million Estimate for 2025 compared with €10 million for 2024. Is that an IT project to run the Department or does that refer to IT projects relating to exhibits and OPW works?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_21" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_38">I will have to come back to the Deputy on that at a later date, if that is okay.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_22">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_39">Sure, no problem. Under A5, there is a figure of €1.98 billion. It is cumulative financial damages avoided by completion of major flood relief schemes. I have two questions on that. When is it cumulative from? Is that 1997, as per the note on the previous point? Will the Minister of State confirm that? How is that measured, given that it is damage avoided?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_23" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_40">If we did not build those flood relief measures, there would be damage, but by building those, we avoided that damage, which is significant.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_24">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_41">How do we measure what the damage might have been?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_25" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_42">It is different schemes. I could talk to the Deputy about schemes up and down the country. Some of the schemes protect 700 or 800 homes. If that scheme was not in place, that is the total that would be damaged along with land banks and everything that goes with that. It is huge and has been successful in protecting homes, as we have done in the past and will do in the future. On the Vote, our money to address flooding is up. I see us protecting more and more homes in the future.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_26">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_43">The cumulative figure is close to €2 billion. Is that since 1997?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_27" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_44">Yes.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_28">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_45">A total of €1,000 is allotted for the EU Presidency. I cannot imagine-----</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_29" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_46">We are working with the Tánaiste and Department of Foreign Affairs and Trade. We are only starting to collaborate on the way forward on that. We work closely together. The money will be there when the time is right. It is all about working together to push that forward.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_30">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_47">It is a placeholder for now.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_31" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_48">Yes.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_32">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_49">Grand. B12 refers to one major project, a data centre investment. This is EU funding. What is that data centre?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_33" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_50">That is the data centre in Backweston.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_34">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_51">What is it for?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_35" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_52">It is whole-of-government. We all come together.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_36">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:40:00+01:00"/></from>
+          <p eId="para_53">Okay, great. I have two further questions, very quickly. There were 15 million visitors, which is an astonishing figure.</p>
+          <p eId="para_54">Does the Minister of State have a breakdown as to how many of those were tourists, specifically international tourists, as opposed to locals?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_37" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_55">No, I do not have the breakdown at this time.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_38">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_56">Maybe we could get it in time.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_39" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_57">I will take a note and get back to the Deputy.</p>
+        </speech>
+        <speech by="#ShayBrennan" eId="spk_40">
+          <from>Deputy Shay Brennan<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_58">Perfect.</p>
+          <p eId="para_59"> As regards upgrading works for people with disabilities, the Department has a target figure. In 2024, the target figure was 36. The Minister of State probably does not have the outturn on that yet, but does he have any indication as to how we are getting on compared with that target?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_41" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_60">As the Deputy may know, the last time I was Minister of State, I introduced free access for people with disabilities. I set a target at that time that we would deliver 24 or 30. This time it is 30. It is tough - there is no point in saying it is not - but where we can do it, we do it. We do it in Garda stations, we do it in this building and we will continue to do it. Many people from the heritage side ask me how it is that we do not have more accessibility on sites. It is difficult to do because of the nature of the sites and the buildings, but our whole team are working very closely on delivering this. It is something I am very passionate about and something I want to continue to do.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_42">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_61">Bogfaimid ar aghaidh. Glaoim ar an Teachta Nash.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_43">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_62">The Minister of State is very welcome, as are his officials. I plan to discuss only the REVs under the various headings. My first question relates to the administration budget. This is section IV on operational services, supplies and sundry equipment. I note that, last year, the outturn was €1.335 million. That means this year's Estimate represents a decrease of 34%, which is a significant drop. The Minister of State might explain what that involves and why that drop is so significant.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_44" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_63">I am sorry. I do not know whether it is the mic or something else, but I cannot hear the Deputy correctly.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_64">Repeat the question, Deputy.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_46">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_65">This is on page 1 of the REVs. It is section IV on the administration side. There is programme expenditure and then the overall administration side. The heading relates to operational services, supplies and sundry equipment. On the current side, last year, it was €1.335 million. It is estimated to be down to €876,000 this year, which is a reduction of 34%. That is a significant reduction. My question is why that reduction is so significant. What explains that compared with last year?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_47" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_66">For proposed services for the office, the 2024 Vote is €75,000, and €1.356 million is for the operational services.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_48">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_67">Similarly, under that heading - this is section VII, policy reviews, consultancy services and research - there was an allocation of €264,000 last year. It is down to €150,000 this year. That is a 43% decrease. Is that an aberration? Is it normal to spend €264,000 or thereabouts or is €150,000 more normal? What explains that difference year on year?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_49" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_68">We provide the cost of consultancy services, including value-for-money reviews at the office. The 2024 figure is €23,000.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_50">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_69">Does that relate to the cost of the Deloitte initiative?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_51" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_70">No, it does not.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_52">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_71">I see.</p>
+          <p eId="para_72"> Moving on further down the Vote, under estate management, subhead B5, the purchase of sites and buildings was €3.78 million last year. That is up. The Estimate this year is €13.323 million. What explains the difference there? That is quite a jump in one year.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_53" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_73">Potential acquisitions and disposal are commercially sensitive, but I assure the Deputy that the OPW will continue to seek and explore value-for-money purchase opportunities in line with the OPW strategy and the wider Government policy.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_54">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_74">I understand that the Minister of State will not be in a position, because of commercial sensitivity, to identify the buildings, but, in general terms, what would the purpose of these buildings be?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_55" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_75">We are always looking at buildings.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_56">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_76">I understand that.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_57" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_77">We continue to look at buildings, and where we see we can buy, we do so. As I said, though, these are commercially sensitive. The Deputy can understand that himself.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_58">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_78">On the EU Presidency, the Minister of State explained to Deputy Brennan why there was a small amount allocated at this point in time. The OPW always does a very important job in the context of the rotating European Union Presidency. That is something the Office of Public Works can be very proud of. The Minister of State mentioned that Dublin Castle would be the principal location for many of the major European Union Presidency-related events, but it is generally the case that we try to showcase the country and what we have on offer during the European Union Presidency. There is huge opportunity to do that when we accede to the Presidency shortly. Will the Minister of State elaborate on what plans he and the OPW have to showcase other OPW assets around the country in the context?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_59" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_79">We are engaged with the Department of Foreign Affairs and Trade. If I were to say to the Deputy that we were going outside Dublin, every Minister and every TD would look for events in their constituencies. As the Deputy can understand, we are at the very early stages of the planning. My departmental officials and I are working with the Tánaiste. As the plan is unveiled, it will be made public. I am under pressure from different people looking at their different areas. As the Deputy can understand, from an operational and security point of view, not all of that will be possible.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_60">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_80">The Minister of State knows he will be very welcome to Oldbridge.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_61" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_81">I knew that was coming.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_62">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_82">The Minister of State could anticipate that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_83">A Theachta Nash, can you-----</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_64">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_84">Yes. I have two further short questions, if I may. As regards subhead C7 on the number of surplus properties disposed and the outturn in 2023, there is a figure of 22 with a figure of 25 in brackets, so I imagine 22 was probably the estimated outturn. The target will be 20 properties in 2025. In 2024, the output target was 29. The Minister of State may not have this information available, but I would be interested in establishing what the properties in 2023, 2024 and 2020 were. The Minister of State might provide that information to the committee subsequently, even in correspondence.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_65" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_85">We will do that.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_66">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_86">Finally, if I may, and it is-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_67">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_87">Very succinctly.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_68">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_88">-----related to subhead C7 on the income from disposal of surplus properties, a lot of properties in the ownership of the OPW would be allocated to local authorities-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_89">Succinctly.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_70">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_90">-----or other State agencies. Is that not the case? I assume there is little or no charge-----</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_71">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_91">Succinctly.</p>
+        </speech>
+        <speech by="#GeraldNash" eId="spk_72">
+          <from>Deputy Ged Nash<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_92">-----involved in that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_93">Can you-----</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_74" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_94">I will.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_75">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_95">Go raibh maith agat. Glaoim ar an Teachta Timmins.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_76">
+          <from>Deputy Edward Timmins<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_96">I have just one question. On page 60, subhead B12, national recovery and resilience plan, there was €61 million in 2024 in capital expenditure, which is down to €30 million in 2025. What was that €61 million originally for? What was the outturn in 2024 and what is the €30 million in 2025 for?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_77" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_97">Backweston and Tom Johnson House.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_78">
+          <from>Deputy Edward Timmins<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_98">What was being done there?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_79" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_99">Sixty-two.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_80">
+          <from>Deputy Edward Timmins<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_100">What works are being done?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_81" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_101">Retrofitting for Tom Johnson House. Backweston is the data centre we were talking about earlier. Both of them together come to that price.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_82">
+          <from>Deputy Edward Timmins<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_102">Is the €30 million this year for the same projects?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_83" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_103">It is to do with retrofitting going forward.</p>
+        </speech>
+        <speech by="#EdwardTimmins" eId="spk_84">
+          <from>Deputy Edward Timmins<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_104">Could I get a breakdown of the 2024 actual expenditure and the split between the projects?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_85" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_105">Will do. No problem.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_106">Glaoim ar an Teachta Doherty agus ansin ar an Teachta Burke.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_87">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_107">Cuirim fáilte roimh an Aire Stáit chuig an choiste. As regards subhead B8, we are talking about rents there, and a number of others have mentioned it. Is the Minister of State aware of the Distillers Building in Smithfield? Is that occupied at the minute?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_88" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T15:50:00+01:00"/></from>
+          <p eId="para_108">It will be in September of this year.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_89">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_109">How much have we spent in rent on that building so far? Does the Minister of State have that figure?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_90" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_110">I will get the figure for the Deputy.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_91">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_111">It was reported previously that it was about €12 million up to the start of this year, so it has probably gone over that now. To turn to the cost of the agreement entered into - I appreciate this was before the Minister of State's time, but he is now in this role - would I be right in saying the 25-year lease is worth about €200 million? I understand it is €8 million a year. Is that where we are at?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_92" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_112">Yes, that is correct. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_93">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_113">It is €200 million. Would I be right in saying the estimate for the fit-out was about €60 million?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_94" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_114">Yes.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_95">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_115">The State is going to rent a building that will cost €260 million over the next 25 years, which is the equivalent of about €15,000 per square metre. The Central Bank estimated what prime city centre retail space cost to buy, and it is about half that cost annually. We could actually buy that building for significantly less than the cost of renting it over the next 25 years. it is not just me saying this or what the Central Bank estimates. The OPW did a spending review and said that purchasing office space cost between 29% and 38% less. In the Minister of State's view, why has the State entered into a contract worth approximately €250 million and we will not own the building at the end of that time, when we could have bought a building of this size in Dublin city centre for substantially less?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_96" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_116">I understand where the Deputy is coming from, but as I said, we always look to buy these buildings if they come up as deals and it is possible to buy them, and we always will, but it is all about capital at the end of the day and whether it is available at the time. This is also about getting the building. When we talk about the project the Deputy mentioned, four different Departments will go into that building. There is a saving to the State here in one sense. Those Departments will also leave other buildings, which we will bring up to standard in future. If we could go into a place where we could buy the property, we would, but those properties are not available and do not come onto the market. I agree with the Deputy that most of the buildings we need for the operation of Leinster House and the courts, for example, all have a huge cost in rent. If we try to buy them, which we would in cases where the capital was available, the zeros increase after the price once the OPW's name gets associated with anything.</p>
+          <p eId="para_117"> Regarding the building and project the Deputy is talking about, I went through this in detail and I am quite satisfied that what the OPW entered into at the time was good business in terms of occupancy by four Departments.</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_97">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_118">I represent my constituency of Donegal, but I would meet very few people on the street who would say it was a good idea for the OPW to rent a building in Dublin city centre for €12 million that nobody has been in for the last year and a half and that nobody will be in until September. We will see if that deadline is met. </p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_98" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_119">I could say the same for my constituency, but this is Dublin. We-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_99">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_120">The point is it is taxpayers' money. Nobody is in that building and we are renting it for €12 million. </p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_100" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_121">I appreciate that, but the fit-out is included in the cost, too, and this does not come cheap. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_101">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_122">I will just ask another question and I asked it of the senior Minister already. It concerns the residential properties in the Phoenix Park. It was reported in the <i>Irish Daily Mail </i>and we flagged the issue to the Minister of State, so I am sure he is familiar with it. Will he explain how much rent is charged on each of those houses? </p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_102" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_123">This issue has been in the news recently. In broad terms, these houses were built in the 1800s and it is no different from Bord an Móna or CIÉ having houses. The people in these houses work in the park and are a valuable part of the Phoenix Park. Two people in their late 70s and late 80s are living in those houses, but everyone living in them is paying rent. Many people have-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_103">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_124">I am sorry for interrupting, but I am pushed for time. The question is on how much rent is being charged on those houses and what the process is for handing out OPW houses.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_104" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_125">No-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_105">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_126">I am going to ask all my questions together because I am under pressure for time. How much rent is generated by the houses, either individually or taking the seven combined? What is the process for handing out OPW houses to public sector workers and how many OPW residential properties are being let out for residential use?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_106" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_127">Rent is being paid in line with the income those people earn. They are earning a very modest income and part of the work-----</p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_107">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_128">It is a differential rent. Is it like a council house rent?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_108" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_129">It is similar. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_109">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_130">This is the Estimates process. Can the Minister of State tell us the rent being paid on the seven houses combined? Is that information available to the public? </p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_110" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_131">No, it is not available to the public. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_111">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_132">Will the Minister of State provide the committee with the documentation that shows how these houses are rented and how the rents are calculated, please? Is that possible?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_112" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_133">Yes.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_113">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_134">Go raibh maith agat. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_114">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_135">Are these the only residential houses that the OPW rents out? </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_115">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_136">We need to wrap this up. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_116">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_137">Yes, I appreciate that. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_117">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_138">I ask the Minister of State to be as succinct as possible. Will he provide all that information to the committee? </p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_118" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_139">Yes. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_119">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_140">Go raibh maith agat. </p>
+        </speech>
+        <speech by="#PearseDoherty" eId="spk_120">
+          <from>Deputy Pearse Doherty<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_141">I thank the Minister of State. </p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_142">I call an Teachta Burke. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_122">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_143">I was speaking in the Dáil, so I apologise for being late and not being here when the Minister of State was speaking. I wish to touch on the issue of flood risk management. There is quite a variation in real terms between the cost when we start off with most of these projects and the final amount of money paid out. Is anything being done in the Department to examine how it can better manage this issue?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_123" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_144">We always look to do better with flood schemes. As the Deputy knows, though, schemes always change between when we announce them, get consent to build and then start on the ground. The whole complexity of a scheme and its delivery changes. Inflation also comes into play. There are many ifs and buts, but at the same time we are delivering in a lot of communities. I have travelled through most of the country where people suffered greatly from flooding. I am there to protect them and I will always work to do that in future. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_124">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_145">An example is the Glashaboy flood relief scheme in my constituency. In fairness, the contractors are doing a very good job. There is a lot of inconvenience for the residents, but it will be a very good job when it is finished. A sum of €9.8 million is mentioned in a document here, but the overall cost of this project will be far more. The total cost was originally estimated at €12 million. What kind of figure are we looking at now?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_125" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_146">If the Deputy looks at what was included when that scheme was announced, he will see the number of properties being protected now is greater and this adds to the cost. The public realm part of the scheme, working through the local authorities - as we have on the project in the Deputy's constituency - also adds to the price. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_126">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_147">What will the overall cost of this scheme now be? </p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_127" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_148">It will be €38 million.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_128">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_149">The Minister of State will accept the cost in the original proposal when it started off was around €12 million. I know there was quite a lot of delay. This had nothing to do with the Minister of State. It was necessary to go through a procedure of planning and everything else, but the net cost now is going to be €38 million. </p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_129" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_150">Yes. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_130">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_151">Looking at this from an overall perspective, when we start out doing projects, we set out a vision or an idea of an estimate of what the costs will be. It was thought the total cost for this Glashaboy project would have been €12 million, but we are now talking about three times that figure, which is a difference of about 200%.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_131" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_152">The design and delivery details are not known at the start. This is the main driver that puts up the cost of the flood schemes. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_132">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T16:00:00+01:00"/></from>
+          <p eId="para_153">Is this not a problem when we are trying to deal with the public? We are looking at this from a political point of view. The perception publicly is different to what the Department has to deal with because of what was first announced as the cost of the project rather than being a bit more realistic. I will give an example. I dealt with the project team building a new children's hospital in Canada. One of the things that team put into the estimated cost was a 15% inflation rate per annum because it knew building costs would go up. We are a bit unrealistic, though. When we set out a figure for a project, we convince the general public that is what it is going to cost, when everyone knows that, in real terms, it is going to cost much more money. It is then very hard for us, from a political perspective, to justify the ultimate expenditure. Should a new approach be adopted concerning what we are presenting to the public as regards what the final outcome is going to be? I know there is also the question of having to ensure the contractors do not think there is a free-for-all. I fully understand that aspect too, but does the Minister of State not think there is a need for a better mechanism for dealing with this issue?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_133" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_154">What people do not understand is it takes 11 years to get from the start of a scheme to the finish. That is practically the delivery time on a flood scheme. About 95% of the scheme is underground, so people do not see it, but that is the key to delivering protection of the homes. These schemes are challenging. As the Deputy is well aware, when a scheme starts and you start to dig, challenges arise daily and they can drive up the cost. The complexity of the flood relief schemes requires rigorous environmental assessment. Planning delays and public procurement also play a part in the overall cost of the scheme.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_134">
+          <from>Deputy Colm Burke<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_155">I accept that, but do we need to look at it in a different way from now on because of the way costs have escalated over a very short time?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_135" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_156">I look at it all day long. As I said, my job is to protect communities up and down the country. I am not setting out to waste money deliberately. I go out to do the best job. When I meet members of communities who want different parts of a scheme to be dealt with, such as walls or different designs, we work with the local authorities and they drive these schemes from start to finish.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_157">My questions relate to estate management, which is programme B. It is noted the OPW incurs significant costs from the maintenance of buildings. Garda stations are cited as an example. Will the Minister of State identify how many Garda stations closed after the period of austerity are still held by the OPW and the cost to date of maintaining these buildings? I might flag my other questions for the sake of handiness.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_137" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_158">There were 139 Garda stations closed in 2012 and 2013. Only 19 former Garda stations remain and all these are being prepared for disposal or lease.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_138">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_159">Can I get a figure on how much it cost to maintain them in the period between then and now?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_139" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_160">Yes, we will forward that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_140">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_161">Under programme B, there is a heading for office accommodation owned and leased by the OPW. It shows that in 2024 the number had fallen from the previous year but is rising again. I am wondering whether the OPW is leasing more buildings because there is no separation in this line between buildings that are owned and those that are leased, so it is not fully clear about that.</p>
+          <p eId="para_162"> I will ask another question while the Minister of State and his officials are getting the figures together because we are under time pressure. How many of the retrofitted buildings reached an A or B rating? I appreciate the Minister of State may not have the figure to hand but he may be able to furnish the committee with it afterwards.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_141" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_163">On the first question, the key function of the OPW is to provide accommodation for Government Departments and bodies. In 2024, we had 325 lessees and 265 buildings are leased, with 42 of these warehouses. We had 15 new leases commence in 2024 and a further 24 leases have been surrendered.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_142">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_164">The Minister of State is saying the OPW had 15 additional leases in 2024. Is that correct?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_143" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_165">Yes.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_166">That was on top of the 325. He said 25 were surrendered.</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_145" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_167">It was 24.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_146">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_168">I am just a bit confused. The 15 additional are the 15 new ones but the 24 surrendered are out of the 325. Is that correct?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_147" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_169">That is correct.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_148">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_170">That is fine. On the other question about how many retrofitted buildings reached an A or B rating, could that figure be furnished to us?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_149" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_171">We will get the Cathaoirleach a note on that.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_150">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_172">That would be perfect. We have a joint committee meeting starting at 4.30 p.m. Does the Minister of State want to make any closing remarks before we finish up?</p>
+        </speech>
+        <speech by="#KevinBoxerMoran" eId="spk_151" as="#Minister_of_State_at_the_Department_of_Public_Expenditure,_Infrastructure,_Public_Service_Reform_and_Digitalisation">
+          <from>Deputy Kevin Boxer Moran<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_173">No. I thank all the Deputies.</p>
+        </speech>
+        <speech by="#MaireadFarrell" eId="spk_152">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_174">I thank the Minister of State and his officials for assisting the committee with our consideration of the Revised Estimates. Next week, we will consider the Revised Estimates for the Department of the Taoiseach.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Message to Dáil<recordedTime time="2025-07-02T16:10:00+01:00"/></heading>
+        <speech by="#MaireadFarrell" eId="spk_153">
+          <from> An Cathaoirleach<recordedTime time="2025-07-02T16:10:00+01:00"/></from>
+          <p eId="para_175">In accordance with Standing Order 110, the following message will be sent to the Dáil:</p>
+          <p class="indent_1" eId="para_176">Tá Roghchoiste um Airgeadas, Caiteachas Poiblí, Athchóiriúchán Seirbhíse Poiblí agus Digitiúchán, agus an Taoiseach tar éis a bhreithniú ar na Meastacháin Athbhreithnithe le aghaidh seirbhísí poiblí le haghaidh na bliana dár gcríoch an 31 Nollaig 2025 a chríochnú: Vóta 13 - Oifig na nOibreacha Poiblí.</p>
+          <p class="indent_1" eId="para_177">The Select Committee on Finance, Public Expenditure, Public Service Reform and Digitalisation, and Taoiseach has completed its consideration of the following Revised Estimates for public services for the service year ending 31 December 2025: Vote 13 - Office of Public Works.</p>
+          <p eId="para_178"> Under Standing Order 109(2), this message is deemed to be the report of the committee.</p>
+        </speech>
+        <summary eId="sum_5"> The select committee adjourned at 4.15 p.m. until 4 p.m. on Wednesday, 9 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

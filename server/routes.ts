@@ -52,6 +52,8 @@ import debateMonitoringRoutes from "./routes/debateMonitoringRoutes";
 import regionRoutes from "./routes/regionRoutes";
 import politicianChatRoutes from "./routes/politicianChatRoutes";
 
+import debateAdminRoutes from "./routes/admin/debateAdminRoutes";
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Set up session middleware
   app.use(sessionMiddleware);
@@ -151,6 +153,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register admin routes for news scraping and system management
   app.use("/api/admin/news-scraper", newsScraperRoutes);
   app.use("/api/admin/parliamentary", parliamentaryAdminRoutes);
+  app.use("/api/admin/debates", debateAdminRoutes);
   app.use("/api/admin/baselines", baselineAdminRoutes);
   app.use("/api/admin/articles", manualArticleRoutes);
   

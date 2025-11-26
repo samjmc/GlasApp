@@ -1,0 +1,1450 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-19/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-19/debate"/>
+          <FRBRdate date="2025-06-19" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-19/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-19/debate/mul@"/>
+          <FRBRdate date="2025-06-19" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-19/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-19/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-25" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BrianBrennan" href="/ie/oireachtas/member/id/Brian-Brennan.D.2024-11-29" showAs="Brian Brennan"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="NicoleRyan" href="/ie/oireachtas/member/id/Nicole-Ryan.S.2025-01-29" showAs="Nicole Ryan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCPerson eId="TeresaCostello" href="/ie/oireachtas/member/id/Teresa-Costello.S.2025-01-29" showAs="Teresa Costello"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-19">Déardaoin, 19 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-19">Thursday, 19 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#TeresaCostello">Teresa Costello</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#PeterRoche">Peter Roche</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#MarieSherlock">Marie Sherlock.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Brian Brennan.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_6">
+          <i>The joint committee met in private session at 9.35 a.m., suspended at 9.40 a.m. and resumed in public session at 9.45 a.m. </i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Treatment of Children with Dysplasia and Scoliosis and Related Matters: Discussion<recordedTime time="2025-06-19T09:40:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_14">I advise members of the constitutional requirement that members must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where they are not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask any members partaking via MS Teams that prior to their contribution to the meeting they would confirm they are on the grounds of the Leinster House complex. </p>
+          <p eId="para_15"> Members are reminded of long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. If their statements are potentially defamatory in relation to an identifiable person or entity, they will be directed to discontinue their remarks and it is imperative that they comply with any such direction.</p>
+          <p eId="para_16"> Today the committee will consider the treatment of children with hip dysplasia and scoliosis and related matters. To commence the committee's consideration of this matter I welcome from Children's Health Ireland Ms Lucy Nugent, chief executive officer, Dr. Ike Okafor, clinical director, Ms Eilish Hardiman, strategic programme director, Dr Allan Goldman, chief medical officer and Mr. David Moore, head of the spinal service management unit; from the HSE Ms Kate Killeen White, regional executive officer, HSE Dublin and Midlands, Dr. Colm Henry, chief clinical officer, and Anne Marie Hoey, chief people officer; and from the Department of Health I welcome Ms Tracey Conroy, assistant secretary and Ms Rachel Kenna, chief nursing officer </p>
+          <p eId="para_17"> It is fair to say the matters before us are very serious. What has been revealed in the various reports and via the media has been deeply concerning to committee members and citizens across the country. Before today’s meeting we asked Children’s Health Ireland to provide us with a copy of the internal investigation. That has not happened. That is somewhat disappointing. We would have liked to have seen that before today’s meeting. Some of the replies we have received to parliamentary questions have been unsatisfactory. I expect today that we get full and frank answers to some of those questions. </p>
+          <p eId="para_18"> To commence our consideration of these matters I invite Ms Nugent to make the opening remarks on behalf of Children’s Health Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T09:40:00+01:00"/></from>
+          <p eId="para_19">I thank the committee for the opportunity to address it today. I am pleased to be before the committee today representing Children’s Health Ireland and I will endeavour to answer members' questions to the best of my ability. I joined as chief executive five months ago tomorrow, and as I said to the members’ colleagues on the Committee of Public Accounts , I want to express how proud I am of our almost 5,000 staff, who work diligently at the front line of paediatric healthcare provision in CHI at Temple Street, Crumlin and Tallaght, and at our urgent care centre at Connolly.</p>
+          <p eId="para_20"> I began my career as a nurse in Temple Street Children’s University Hospital and I appreciate the pressures and demands placed on our people on a 24-7 basis but also how rewarding our jobs are. Last year, CHI treated more than 148,000 children who attended our emergency departments, almost 29,000 children underwent day case procedures, more than 17,000 children underwent theatre procedures and almost 29,000 children and young people had an inpatient stay with us. Exceptional care was delivered to these children, despite being in old and not-fit-for-purpose buildings. We continue to lead on paediatric research and innovation on an international stage because our children and young people deserve the best that medicine and science can offer.</p>
+          <p eId="para_21"> We do not just provide healthcare - we provide support for children and families when they are at their most vulnerable and we respect that that is a privilege. We are a place of healing, a source of comfort and a community with a relentless dedication to paediatric healthcare – a message that is often lost, especially in the current climate. We want every patient and family who we meet to feel safe and cared for. </p>
+          <p eId="para_22"> However, we need to do better. Despite all this good work, I am very aware of the impact of the past several years, months and weeks where revelations relating to our culture, governance and practices have led to great pain being inflicted upon some of those who were in our care. I say to the committee, to the children and families impacted and to the Irish people, that I am sorry. I am sorry on behalf of the management of Children’s Health Ireland and I am sorry on behalf of the entire organisation. </p>
+          <p eId="para_23"> I am very aware that various issues that my organisation is grappling with - I will speak to each of those issues in due course this morning - have an enormously worrying impact on parents around the country and whether they can place their trust in us.</p>
+          <p eId="para_24">We want the best possible outcome for our children when they go into and leave hospital. When that does not happen, children are failed and trust is broken.</p>
+          <p eId="para_25"> Our mission statement states that we in CHI aim to promote and provide child-centred, research-led, learning-informed healthcare to the highest standards of safety and excellence. On occasions, we have failed to do that. As the new CEO of this organisation, I am determined to ensure we can restore trust and faith in our national paediatric service.</p>
+          <p eId="para_26"> With regard to the challenges with spinal surgery, as stated a couple of weeks ago at the public accounts committee, I acknowledge and give full recognition to the families impacted by the recent HIQA report relating to the use of unauthorised springs in three children. What happened should not have happened, and children should have been protected from harm. We are deeply and unreservedly sorry to those families. We do not underestimate the impact this has had and is having on the families affected and the distress it has caused to all patients and families in the spinal service. The HIQA review found that while corporate and clinical governance arrangements were in place in CHI, there were unclear lines of reporting and accountability to ensure the safe introduction and use of new surgical implants and implantable medical devices. It was found that supporting policies and procedures were either not in place, not fit for purpose or not followed. CHI has since introduced robust policies and processes, with training and awareness for staff ongoing.</p>
+          <p eId="para_27"> In respect of CHI’s spinal surgery management unit, which was established in 2024 and is led by my colleague, Mr. David Moore, its aim is to build a safe and world-class spinal service, which treats children and young people in a timely and patient-centred way. Between January and May 2025, 254 procedures have been added to the spinal surgery wait list compared with 193 procedures added for the same period in 2024. While we are doing more spinal surgeries this year, with a total of 210 to date, we are also seeing more outpatients and adding more procedures to the waiting lists. I recognise, however, that these are just not numbers. Rather, they are children and young people.</p>
+          <p eId="para_28"> The list is constantly changing. As children and young people have their surgeries and come off the list, new patients are added. Important progress is being made every month. The spinal surgery management unit has implemented initiatives which have reduced the waiting time for outpatient appointments, for example, by 40%. We acknowledge that waiting times for patients are still too long. We continue to work to reduce the length of time patients are waiting for appointments.</p>
+          <p eId="para_29"> The report on developmental dysplasia of the hip is in the public domain, having been published by CHI on 23 May. I recognise the worry it has caused many more patients. The audit reviewed 147 random and anonymous cases across the three hospitals. Based on criteria that had been retrospectively applied for the purpose of the audit, it found that thresholds for recommending pelvic osteotomy procedures varied between CHI Crumlin, CHI Temple Street and the National Orthopaedic Hospital Cappagh. Children who had surgery at CHI Crumlin were found to have been appropriately selected for surgery based on the current international standards used by the auditor. A proportion of children, in the opinion of the auditor, did not meet the threshold for surgery based on the criteria used for the audit. Regrettably, the audit identified one case from the review sample where a child experienced complications due to the surgical approach recommended to them. This family has been contacted and supported through an open disclosure process.</p>
+          <p eId="para_30"> The audit made a number of recommendations, which are fully accepted and will be implemented across CHI. All families have been sent a letter which details if their child was part of the audit and what the next steps will be. Multidisciplinary team review clinics have started. This is a once-off review to assess complications only and determine the current clinical state of each patient. After this, patients enter the recommended normal follow-up process. To date, 105 appointments have been offered, with 60 patients seen in CHI and a further number of patients seen at the National Orthopaedic Hospital Cappagh . We are arranging these clinics as quickly as possible and hope to have seen all children within six months.</p>
+          <p eId="para_31"> Multidisciplinary team meetings have started to include surgeons across all sites. Any child who is listed for a hip surgery with CHI is now discussed at this multidisciplinary team prior to surgery in order that all children and young people who come to CHI for care will receive the same standard and care across our hospitals. Two international experts currently support this multidisciplinary team. Families will be involved in a thorough and transparent discussion of decision-making, including risks and benefits, in order to make informed decisions with and for their children. Any complications identified during the follow-up reviews will be acknowledged and discussed with families and appropriate action will be taken. The purpose of these reviews is to ensure that patients are doing well following surgery. Should any concerns be identified, they will be discussed along with any recommended course of action.</p>
+          <p eId="para_32"> The care and well-being of our children is our absolute priority for CHI. I am sorry that impacted families were not offered one consistent and excellent standard of care across our developmental dysplasia service. I do not underestimate the stress and anxiety families are rightfully feeling throughout this audit process. To one family whose child experienced complications during their care with CHI, I extend my heartfelt apologies.</p>
+          <p eId="para_33"> I give my assurance to all affected families that they will be directly supported and are being contacted with follow-up information and next steps. We are standardising care across all CHI sites in order that all children receive the same high-quality treatment no matter where they are seen. Also, it is important that we act swiftly to review developmental dysplasia surgery patients to enable us to answer outstanding questions raised by this audit. This will be done openly and transparently. The independent HSE review will determine whether surgery was required and will assess the appropriateness of the original decision-making. This review is in development by my HSE colleagues. We have had dedicated supports in place for families who wish to contact us about this report since March of this year. Every family has been responded to in a timely manner, although I accept that families want more detailed information and that this is a stressful time for them.</p>
+          <p eId="para_34"> As with the issue that was the subject of the HIQA report, I assure the committee and the public of the absolute priority I, as CEO, am giving to ensuring robust governance and processes in CHI and as fostering a caring, open and supportive culture for children, families and staff.</p>
+          <p eId="para_35"> With regard to the recent unpublished report, members will be aware of the recent internal report relating to a number of interpersonal and process matters which has been the subject of much media attention. First, I apologise for the fact that I, as CEO, and CHI, as an organisation, are not at liberty to publish this report. It is not in any way our intention to hide the truth or to hide behind legalities to avoid disclosure. While a redacted or pseudonymised version of the report was considered, it would not have made sense to those who had not seen the leaked confidential report. In addition, the CHI board and executive team wanted to inform the public of the actions that have been taken. It is simply our legal duty not to publish the report, regardless of what is in the media. I hope the committee notes that we have provided it with a summary of the report which ensures compliance with our legal advice while at the same time providing as much detail as possible relating to the report’s contents and, importantly, the action taken on foot of the internal examination.</p>
+          <p eId="para_36"> We take our accountability to the public and the families extremely seriously. We are committed to learning, improving and ensuring that every child who comes through our doors receives the highest standard of care. Our patients and their families are at the heart of everything we do. That must remain our central focus.</p>
+          <p eId="para_37"> While the myriad of issues I have just spoken of are naturally of the greatest concern to members of the committee, we should not allow today’s interaction to go by without referencing the fact that we will soon be moving into the new children’s hospital. As expressed by my consultant colleagues in a recent letter to <i>The Irish Times</i>:</p>
+          <p class="indent_1" eId="para_38">... this project is the culmination of decades of work and hope for what we can deliver for children. It represents a transformative opportunity to deliver world-class paediatric care, and we are focused on building a positive, inclusive and forward-looking culture as the one team, working together for the children and families we are privileged to serve.</p>
+          <p class="indent_1" eId="para_39">We are looking forward to playing our part in ensuring that the new hospital becomes a centre of excellence defined not just by its infrastructure, but by the spirit of partnership and patient-centred care that underpins everything we do.</p>
+          <p eId="para_40"> Once the National Paediatric Hospital Development Board hands over a substantially completed building, CHI will commission the building for it to be operational to international standards. We have been working for many years on integrating services, functions and teams across facilities to become a single organisation with one governance and management structure and one culture, which is being progressed in preparation to move into the new children’s hospital. As is obvious, this has not always been easy. However, it is continues to be done. We will continue to ensure and progress CHI’s readiness as an organisation to move into the new hospital and we will be ready and able to take over the new facility.</p>
+          <p eId="para_41"> In line with Sláintecare principles, the national model of care for paediatric healthcare services will ensure that children are treated as close to home as possible. This will put the new hospital at the epicentre of a network of care, in collaborative partnership with our colleagues in regional centres, to deliver comprehensive paediatric care-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_42">We are over time. Ms Nugent might give a summary.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_43">I am new to this job. I wish I were speaking to the committee under different circumstances. Failings have been identified. We apologise for those failings and repeat that our primary focus in CHI is, at all times, to deliver timely access to quality, safe care to children and young people. It is a time of reset for us. We are entrusted with the most precious lives, namely those of children and young people across Ireland. My colleagues and I accept and carry this responsibility with us every day. I thank members for taking the time to listen to me. We are happy to take their questions.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T09:50:00+01:00"/></from>
+          <p eId="para_44">I thank Ms Nugent. We now move to members. Each member will be allocated a ten-minute slot to put questions to the witnesses. We will move through the speaking rota as agreed on the basis of party size.</p>
+          <p eId="para_45">I want to ensure that each member gets an opportunity to contribute. If we stick to ten minutes each, we will ensure that all members have an opportunity to speak. We will take a break at around 11 a.m. Our first speaker is Deputy Daly.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_6">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_46">Ms Nugent's comprehensive statement notwithstanding, there is no sense in the statement of the gravity of what has happened to the children in terms of development dysplasia of the hips. There is no sense in it of the gravity of what has happened. It is scandalous. I am not an orthopaedic surgeon, nor do I pretend to be, but I am a member of the medical profession, a doctor of 40 years' standing. Before I came into this job I would have been minded to defend our profession, where it could be defended. However, the Thomas audit of the management of developmental dysplasia of hips in children in CHI Temple Street, CHI Crumlin and the National Orthopaedic Hospital in Cappagh is deeply disappointing and unsettling, most especially as it follows on from the use of non-medical grade springs in spinal surgery in CHI.</p>
+          <p eId="para_47"> With the HIQA report on the use of non-medical grade springs, we do not have all the answers. By the way, no one person should be thrown under the bus for this, notwithstanding whether that person has a question to answer about his or her judgment, caseload or decision-making. This is not about one surgeon. This is a about a whole system failure. When we hear talk about moving CHI into the new €2.5 billion hospital, it is like having top-of-the-range hardware for a computer but the software is rotten. There is no other way of putting it.</p>
+          <p eId="para_48"> I do not think Ms Nugent imparted a sense of the realisation of the anger, not just about what happened to the community of children who were involved. I accept that the spinal issue might be different but with the hip issue it is just inexplicable that in a small city, relatively speaking, in a small country, between three orthopaedic departments, there could be such stark divergence in decision-making. The Thomas report has vindicated one department but not the other two departments. International experience has shown that there will be some divergence, in the order of maybe 5% to 7%. I stand to be corrected by an orthopaedic specialist on this. However, when the divergence is in the order of 60%, 70%, 80% or 90%, there is something absolutely rotten in that department, notwithstanding the work done and the good cases that come through. There is a generation of children who have been operated on who should not have been. These operations were carried out on spurious evidence, without proper audit and without proper governance. I know Ms Nugent is new in the job. Ms Hardiman was there. It looks like under her regime, she was rewarded for substandard management of the hospital. I am saying this strongly because all of this happened under Ms Hardiman's watch.</p>
+          <p eId="para_49"> I will keep my contribution to five minutes because I would like the witnesses to have five minutes to respond. The HIQA report states: "there were no overarching CHI-wide standardised governance structures and supporting policies and procedures in place for the introduction and use of medical devices." This is an astounding finding. In addition, HIQA found that what corporate and clinical governance procedures were in place at the CHI group were overly complex and difficult to understand for management and staff, both at site-specific hospitals and the overall CHI group. I have spoken to medical professionals in those hospitals and they vindicate HIQA's view.</p>
+          <p eId="para_50"> With the changes from 2019 onwards there was a loss of experienced management staff at Temple Street, resulting in a breakdown of communication and governance pathways. The report states: "While there were a number of controls in place, these did not provide adequate safeguards at each stage of the end-to-end process for the introduction and use of springs." I will leave that because I am going to run out of time.</p>
+          <p eId="para_51"> We have the HIQA report and we are waiting on the Nayagam report into the practice of one surgeon in relation to the use of non-medical grade springs. It is incredible that these springs came through a procurement process, had a quality code and arrived to a surgeon in the operating theatre, yet everyone is throwing that surgeon under the bus. Management has thrown that surgeon under the bus. He might have exhibited poor judgment. He might have been overworked. He might have had pressure put on him to fulfil waiting lists and to operate more. That was for him to resist but management has serious questions to answer on this. I do not believe the answers we have been given already. We will have to wait for the Nayagam report.</p>
+          <p eId="para_52"> I have covered the hips' issue. A lot of the same governance issues arise. It would appear that there was a department that was dominated by one or two surgeons who decided what would be best for a child in 15, 16, 20 or 30 years and operated on children who should not have been operated on. These operations were based on spurious evidence and spurious data.</p>
+          <p eId="para_53"> Much has been made about retaining the CHI board intact leading up to the opening of the new hospital. There is zero confidence in the CHI board and the management, notwithstanding the changes outlined by Ms Nugent. I am speaking as a medical professional who would be inclined to try to tease the nuances of this but there are no nuances.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_54">There are three minutes left in the slot.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_8">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_55">I will yield to our visitors.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_56">If, in any way, I did not convey the gravity of the situation, I apologise. It keeps me awake at night.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_10">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_57">I accept that. </p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_58">Regarding the governance structures, like any new CEO, I have come in and reviewed them, notwithstanding the HIQA report recommendations. Those structures were put in place at a time when the new children's hospital was imminent. However, we have corrected the issue, for example, of the site responsibility for the clinical directors. They no longer have that. I have changed that. We have enhanced the supports they have. In addition, we have clinical specialty leads and we have revised their job descriptions. They now take on more of a management role as well as a leadership role. This will be of great help to the clinical directors.</p>
+          <p eId="para_59"> In relation to the executive management team, since my appointment, I have appointed a permanent director of people and culture. Obviously, this is a huge focus for us. The director took up his permanent role on 7 April. The director of operations started on 9 June and the deputy CEO will be starting on 7 July. I have two other posts on the executive management team that were temporary and I am now progressing to permanent. This is important to stabilise the executive management structures, to ensure that we are fit for purpose. A lot of work has been done in regard to that. </p>
+          <p eId="para_60"> I fully accept that it is a systems process response. It is never about one individual. Regarding the medical device management process, we now have a clinical ethics committee in place. This is important because in paediatrics, unfortunately, manufacturers do not always manufacture paediatric-specific devices, etc. We have a clinical ethics process in place for any off-label use of a particular device, in other words, using it for a different purpose than that for which it was originally designed. Any non-CE marked devices are also brought through that committee.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_12">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-19T10:00:00+01:00"/></from>
+          <p eId="para_61">If I may interject, I accept everything Ms Nugent is doing now but I am going to ask Ms Hardiman some questions, as she was the CEO of the hospital at that time. A surgeon has been suspended because of the non-medical grade spinal springs being used in surgeries. What sanction did management get? What sanction did Ms Hardiman get? By the way, the hips issue happened on Ms Hardiman's watch as well.</p>
+        </speech>
+        <speech by="#" eId="spk_13">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_62">I echo Ms Nugent's heartfelt sympathy regarding what happened. This should not have happened in CHI. We are on record as saying that. We fully accept the HIQA report which identified that there were weaknesses in the management. I welcome the changes that have been brought in.</p>
+          <p eId="para_63"> On the surgeon, the Deputy will appreciate that there is a process there. The individual went on voluntary leave, which is a separate process to suspension. That is to be clear for the record. We went through that process and other HR processes.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_14">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_64">We are out of time, but we may come back to this if there is another round.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_15">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_65">I have never found it so difficult to prepare for a session of any committee. I have been in the Oireachtas since 2011. The reason I found it so difficult is the full breadth of crises and scandals in CHI. I say to Ms Nugent that it is almost impossible in this session for us to give justice to the families who feel let down. We had the Boston review. We had the HIQA review into the use of non-medical grade springs. We still have the waiting list for children with spina bifida and scoliosis. We had an audit into hip dysplasia and the potentially hundreds of procedures that were carried out unnecessarily. We also have this unpublished report, which cites concerns with oncology, urology, orthopaedics and many different issues. What was happening in CHI is frightening, and families feel let down. It happened on the watch of the former CEO, Ms Hardiman, who now also has a clear role in the transition to the new children's hospital, and that worries people. It worries me and it also worries parents of children, some of whom are in the Public Gallery. I welcome them. I have never seen an opening statement that had the words apology and sorry in it so often, which is necessary, but it shows the gravity of the issues within CHI. I say to Ms Nugent that we have to put that sorry to the test.</p>
+          <p eId="para_66"> I will start with Ms Killeen White. This unpublished report, of which we had what I described as an editorial or sanitised version published by CHI, has been referred to An Garda Síochána. Is it correct that some elements of it have been referred?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_67">That is correct.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_17">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_68">Who referred it to An Garda Síochána?</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_69">I did.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_19">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_70">Why did CHI not refer it to An Garda Síochána?</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_71">This report was done on events in 2021. My understanding is that, at the time, once the unsubstantiated allegations in the report were investigated, they did not meet the threshold for criminality. However, I respect-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_21">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_72">One second, please. It is CHI's view that they did not meet the threshold. Since Ms Killeen White referred it to An Garda Síochána, did she get any correspondence or any view from CHI, even now, with regard to whether it felt it appropriate that it was referred to An Garda Síochána?</p>
+        </speech>
+        <speech by="#" eId="spk_22">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_73">Any suggestion that public money is not used for the intent-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_23">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_74">I did not ask that. I asked that since Ms Killeen White referred the report to An Garda Síochána, has she had any communication or view from CHI as to whether or not, even now, it should have been referred?</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_75">CHI has verbalised an opinion that it does not meet the threshold for referral.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_25">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_76">That is since it was referred.</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_77">That is correct.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_27">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_78">I find that extraordinary. The HSE was informed by CHI about this unpublished report at a meeting in March 2022. That is what CHI says. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_79">CHI has indicated that. I can confirm that the minutes of that meeting have been reviewed by the Health Service Executive and there is no reference to the report, its recommendations or its findings.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_29">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_80">There is no reference whatsoever, so when CHI says that it informed the HSE of that report, is that accurate?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_81">The first time I, as REO, and the CEO were advised of the existence of this report was on 24 May 2025.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_31">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_82">I cannot accept that there is any cultural shift within CHI. There is a culture of secrecy. What was in this unpublished report referred to a silo mentality and a toxic culture within the organisation. Despite Ms Nugent's best efforts, she has a lot of work to do.</p>
+          <p eId="para_83"> I want to get to some of the issues in this unpublished report. I have spoken to the head of the HSE and I know that it sought to have a pseudonymised version of the report published. That did not happen either. There is clear conflict and differences between the HSE and CHI on all of these issues, which really troubles me. I will come to some of the issues involved because they are in the public domain. I will start with Ms Nugent, and with children who were called Crumlin orphans. My understanding is that a report was compiled in 2017 by a Mr. Dixon. It is now known as the Dixon report. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_84">That is my understanding, but I do not think that report was accepted by CHI.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_33">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_85">It was not accepted. It was certainly not published. The important part is whether or not children were notified. I will read from an extract of that report, which was in the public domain and details of which were published in a Sunday newspaper. It states:</p>
+          <p class="indent_1" eId="para_86">Evidence from the gathered patient information shows that patients in both Temple Street and Crumlin have been neglected and have not received the level of care which would be expected in the modern day in a country with developed healthcare.</p>
+          <p eId="para_87"> How many children were identified as being orphaned children? Were their families notified of the Dixon report or of any concerns that were raised?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_88">There were 34 families. I would have to defer to my colleague in relation to whether they-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_35">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_89">As of now, have families been notified of any concerns raised with regard to what was described as suboptimal care given to their children?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_90">Just so I am clear, is the Deputy talking about the Dixon report?</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_37">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_91">Yes, and the unpublished report, which also cites issues. We have two reports that cite issues relating to these orphan children. I know that the advocate groups and parents, some of whom are in the Public Gallery, have sought that report and have not got it. They feel they have been stonewalled. They feel they are meeting a wall of resistance. This is what they are talking about when they say they are being failed. This is about their children. If it was my child, I would want answers. That is why I am asking if the families were notified.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_92">When this report-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_39">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_93">It is yes or no. Were the families notified?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_94">Not to my knowledge.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_41">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_95">Not to Ms Nugent's knowledge. Exactly.</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_96">But-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_43">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_97">No, sorry. With respect, it is a failure that families were not notified. I will move on to another section that is troubling for me, because there are patient safety issues. There is a procedure called orchidopexy. Does Ms Nugent know what that is?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_98">It is a surgery for undescended testes.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_45">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_99">Exactly. This unpublished report, which again was in the public domain in part because of concerns about delayed waiting lists, in the context of one subset of these patients states:</p>
+          <p class="indent_1" eId="para_100">[D]espite an existing alternative option being available for quicker treatment ... Patients with undescended testes who require [this procedure], are waiting far in excess of the recommended timeframe for treatment, placing those patients at real and known risk for fertility issues and/or cancer in later life.</p>
+          <p eId="para_101"> It is shocking that this could happen. What follow-up has been done on that?</p>
+        </speech>
+        <speech by="#" eId="spk_46">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_102">This report was initially commissioned in relation to interpersonal issues and team dynamics. The 45 participants who entered into it did it on a confidential basis. When I looked at the pseudonymised, anonymised or redacted versions, they made no sense. They would make no sense to the public, because we have a responsibility-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_47">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_103">What does make sense to me, if I can be clear and blunt, is that Ms Nugent is talking about information that has not yet been disclosed to the patients. When I see there were patients with undescended testes who were waiting far in excess of the recommended timeframe for treatment and that they were placed at real and known risk for fertility issues or cancer, that jumps out at me. Again, I want to know if any of those patients were identified and contacted about those concerns.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_104">Open disclosure was discussed at the time and was discussed with the clinical experts. I will ask my colleague Dr. Goldman to explain-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_49">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_105">I will ask my question again. Because of the limited time available, I am asking a direct question. Were the parents of those children contacted with regard to those concerns?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_106">They did not meet the threshold for open disclosure.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_51">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_107">Again, they were not contacted. I just find all of this incredible.</p>
+          <p eId="para_108"> Concerns were also raised about oncology. Is it also true to say there was a CHI risk assessment completed on 27 August 2021 in respect of the oncology unit? Is that not correct? It scored a risk of 20 out of 25, which is high. The assessment states, "because it was a high red risk they cannot be accepted and require significant management focus to mitigate them." In fact, it states that, "Paediatric oncology patients have a poor experience or are harmed due to the inability of CHI to deliver international best practice standards." It talks about prolonged recoveries. I am again asking about those cases. Were the parents of the children involved notified of those concerns?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_109">Not to the best of my knowledge.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_53">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:10:00+01:00"/></from>
+          <p eId="para_110">I find all of this absolutely and profoundly shocking. CHI can say what it wants regarding how this report came about. It is shocking that the report has not been published. It is shocking, and not only in the context of this issue, because you cannot look at it in isolation. You have to look at all the children who had surgeries carried out unnecessarily.</p>
+          <p eId="para_111">There are children, some of them who are in the Public Gallery, who have been waiting for years. They are so-called "orphan children", as they were described, who received suboptimal care and whose parents have been asking for reports they know exist but are not being given. There are parents who were not informed of risks and issues identified in regard to oncology, urology and orthopaedics. There are differences within the HSE as to whether that report should have been referred to An Garda Síochána. There are differences, in that the HSE is categorical that it did not receive the report even though CHI states it did. I do not accept that there is a cultural shift, as far as I can see, given all of that. To say Ms Nugent has a lot of work to do is an understatement. I am concerned that the person who was in the lead position when all of this was happening is also the person who now is a lead in transitioning to the children's hospital. It is absolutely ridiculous and will anger the public. It will certainly anger the parents of those children.</p>
+          <p eId="para_112"> I have one final question for the clinical director.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_54">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_113">The Deputy is running out of time.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_55">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_114">Perhaps the clinical director will answer briefly. Regarding the multidisciplinary team reviews of kids with osteotomies, I think that 72 have been seen so far. How many need to be seen and how long will that take?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_56">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_115">Very briefly, because we are over time.</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_116">We have seen 72 so far. We expect to see roughly 1,800.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_58">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_117">How long will that take?</p>
+        </speech>
+        <speech by="#" eId="spk_59">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_118">We are hopeful that we will see the majority within six months.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_60">
+          <from>Deputy Peter Roche<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_119">It is a welcome development that the witnesses are here. I thank them for their comprehensive summary. It is quite difficult at times when one hears the stories and the impact this has had on children. As part of the report the witnesses have brought before the committee today, it is reassuring that the very important steps that need to be put in place are being considered.</p>
+          <p eId="para_120"> The move to the new hospital is the perfect opportunity to ensure that all compliance is there. The real reason the witnesses are here is that fundamental mistakes were made and have a fundamental impact on children, not just the children who had botched surgery, but also on parents - young parents in most cases - who are left picking up the pieces. We all know them and have met them. I am one of those who had a visiting child who had been impacted as a consequence of one of those procedures. When I look back on it, it galls me because one waits in anticipation for a full recovery and for the next procedure, whenever that would be, to get this child to full mobility in the future. I learned that that child was informed recently that, as a consequence of the previous surgeries, the child will not now be considered because of the enormity of the impact the procedure would have on the child due to the legacy issues.</p>
+          <p eId="para_121"> These are the real issues that have brought the witnesses here today. I thank them for attending but it is a calamity they have to be here. One would expect that, when one brings a loved one - a child or otherwise - to any of the hospitals for a procedure or operation, it would be done with the very highest integrity and standards and where any ambiguity or indecision is certainly not a concern. We have had this debate over the past couple of weeks. God knows I do not come from a medical background but I certainly come with a high degree of empathy. It kills me when I hear of the pain and suffering endured by some of those children.</p>
+          <p eId="para_122"> I note Ms Nugent still maintains that there is no good reason to publish the full report. That is my first question. Why will CHI not publish the full report or even a redacted version? Ms Nugent touched on some of the reasons she felt it might not be appropriate or otherwise, but if there is nothing insurmountable or toxic about that report, I cannot see any reason it would be withheld. That is my first question.</p>
+          <p eId="para_123"> Next, is there an independent review of how internal conflict and cultural issues at CHI affect clinical safety and patient outcomes? What specific targets have been set for clinical and cultural integration ahead of the move to the new hospital? How will CHI ensure that the new hospital is not just a change of location but a transformative and caring institution? What safeguards are now in place to prevent the introduction of unauthorised or untested medical devices in CHI hospitals?</p>
+          <p eId="para_124"> I have two questions that are quite significant and I will put them to Ms Nugent, if she does not mind. Can she or will she confirm that meetings took place with two surgeons at CHI Temple Street and the National Orthopaedic Hospital Cappagh on 20 February 2020? Can or will Ms Nugent confirm that these surgeons sought her guidance on the introduction of what I would describe as novel medical devices?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:20:00+01:00"/></from>
+          <p eId="para_125">I was not in this position in 2020, so I am unable to answer that question.</p>
+          <p eId="para_126"> Regarding the introduction of new medical devices, and as I stated previously to Deputy Daly, there is a process now in place involving a clinical ethics committee as well as a medical device management committee, which I chair. I am more confident that only approved devices can come into CHI. That includes matters that were in the public domain, such as the use of gastrostomy buttons. They have been in use for 15 to 20 years and there is a lot of scientific research on them, but they had to be grandfather-claused through the medical device management committee, which has been done. I know from talking to a parent recently that that parent was very happy to have that device, but there needs to be a process. Innovation is important for medicine and healthcare but it has to be done in a way that protects the child, protects the individual with the good idea and protects the organisation.</p>
+          <p eId="para_127"> Regarding culture, we know we have to do a huge amount of work on this. It is not right; it is broken. We are bringing three different cultures and merging them together, but the values are the same. They are very much focused on children and on delivery of the best care we can provide. There is a lot of work ongoing in that regard. A culture change programme has started. We have immersion projects with staff and staff rotating to work with one another so that the person someone works with today may not be the person he or she works with tomorrow. We need to make sure we are ready for the new building. It is a fantastic building but it is just a building. It will not deliver care; the people will. We understand that.</p>
+          <p eId="para_128"> There is a meeting with the HSE on 3 July. I have met the national director of culture and we are happy to engage in a newly launched cultural programme. If we can get it right at CHI, we can get it right anywhere. That is really important. The most important question in all of this is whether the staff are willing to engage in this, and they are. <i>The Irish Times</i> letter that my almost 200 consultant colleagues wrote stated that, and we know we have to do better, because if the culture is right, then I think anything else is possible.</p>
+          <p eId="para_129"> Regarding conflict, this report was originally commissioned because concerns were raised. An intervention happened with that team, so action was taken. There were 34 actions. There were monthly minuted meetings regarding that to track the change and action was happening.</p>
+          <p eId="para_130">I have taken legal advice on the publication of the report. The people who participated in that report trusted that it was a confidential process. I need to maintain that trust among my colleagues because we have a lot of work to do. They have not seen the report. It was not shared with them. Some of the statements in the report were not substantiated in the long run. That is the piece of information that is missing. From that point of view, fair procedures would have to be given to the individuals involved, etc. I understand from the feedback that somebody did not provide that assurance.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_62">
+          <from>Deputy Peter Roche<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_131">In the brief time I have left, I ask the witnesses to respond to my questions on the meetings in 2020 at Cappagh.</p>
+        </speech>
+        <speech by="#" eId="spk_63">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_132">I thank the Deputy. I am happy to discuss this and to clarify. There was a meeting in February 2020 at Cappagh hospital between one clinician, the management of Cappagh and Temple Street hospitals and myself. That meeting was in the diary in response to an invite to the clinician to discuss Cappagh and how it could be used more to help address the waiting list issues. That meeting is in my diary. It is documented. I have notes of the meeting and the clinician and I subsequently exchanged emails about what was discussed. Devices and the nature of the relationship with springs were not discussed at that meeting. They should not have been because that is not something Cappagh hospital actually does. We discussed MAGEC rods. The reason we did was these safety notes had come out earlier and we raised it as an issue. I responded to my email specifically in relation to that, which is a separate department.</p>
+          <p eId="para_133"> Where there is a difference is that two clinicians are saying they opted in to meet with me at Temple Street earlier that day. I have nothing in my diary about that, my office has no record of it, I have nothing in my notes about the meeting and I have no memory of it. I do not believe that meeting occurred. That is just to be clear in reference to this. I hope I have been clear about that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_64">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_134">We are over time. The next slot is for the Social Democrats, so it is my time. Like others, I struggle to know where to start. We could be here for a number of days or weeks with a list of questions that could be asked on all of this. My conclusion is there is a toxic work culture in parts of CHI. There is dysfunctional internal communication and poor governance. I am not satisfied with the answers we received regarding the publication of reports. Would it be possible to share the legal advice the CHI has received on that report?</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_135">Yes.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_66">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_136">CHI is happy to share that with the committee. That is great. More generally, there are ways of disclosing things. Names can be redacted and people can be engaged with. If things are contested, that can be noted in the report. What I am hearing is this constant reluctance to disclose and share information. We need accountability, transparency and full disclosure from CHI. That is how it will begin to repair the trust because that has been broken. That would be a very good starting point.</p>
+          <p eId="para_137"> Linking to an earlier discussion, there are many patient advocates who asked about previous reports who have been denied access. Why were those reports, for example, the Dixon report, not provided to those who were looking for them?</p>
+        </speech>
+        <speech by="#" eId="spk_67">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_138">My understanding is the Dixon report was never accepted by CHI.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_139">I might be able to help with that. It was a report commissioned by Temple Street, pre-CHI. It was not accepted by the management of Temple Street at the time.</p>
+        </speech>
+        <summary eId="sum_7">(Interruptions).</summary>
+        <speech by="#" eId="spk_69">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_140">-----it did identify matters that were actually brought to the attention of management and addressed but the report itself, and its findings and methodology, were not accepted because there were concerns about it.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_70">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_141">Does the HSE share that view of the report?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_142">The Dixon report is before my time. I cannot comment on CHI's view on that.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_143">I am not aware of that report. I have not seen it.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_73">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_144">I will move to the matter of the unnecessary hip surgeries, which are shocking, distressing and disturbing. I acknowledge Ms Nugent said she is equally distressed by a lot of this. Questions still remain around all of this. The audit period is a two-year period going back to 2010, but how far back does this issue go?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_145">The audit period is from 2021 to 2023. A decision was made though to look back further to 2010, as that appeared to be a time point where practice varied. It also allowed the CHI to follow through up to skeletal maturity. Does my colleague, Dr. Okafor, want to add anything else?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_146">I think Ms Nugent has it covered. The year 2010 was chosen by us because-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_147">Dr. Okafor will have to turn his mic on and off. </p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_148">We chose 2010 for two reasons. We wanted to make sure we captured all the children who had osteotomy and were still under our care. If we had brought it too soon, we would have missed out some children, which we did not want to do. The second reason was there was a publication by one of the senior surgeons in 2010, which described the approach they used.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_149">That paper was based on surgeries that happened before 2010. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_150">Yes, but the acetabular indices used in the paper were fairly generous. That low-threshold approach was not being used at that stage. We felt that the change in practice would have occurred from around 2010. There is still scope to look back further but we are looking back to 2010 because we want to establish where that practice started first.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_80">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_151">The big question that remains for many of us is why this happened. We know what happened but nobody has been able to tell us why.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_152">That is a good question. The reason we did the audit was, first of all, to establish whether there was a difference in threshold. The auditor found, as the Cathaoirleach will know because he saw the report, that the surgeons in Crumlin were largely compliant with what international practice was.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_153">I read the report. I know that.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_154">We found that within a group of surgeons at Temple Street and Cappagh, they had a philosophy that if they intervened earlier, they would prevent children when they were older or were young adults from having osteoarthritis and needing hip replacements. It was a philosophy they firmly believed.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_84">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_155">How many of the children who had unnecessary hip surgeries had private health insurance?</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_156">I did a snapshot. There was a suggestion in the public media that this was done for financial gain. In the audit period, the number of private patients in the two CHI facilities was 25% and 26%. This is well within the contractual norms of under 30%.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_157">Is CHI ruling out financial incentive as a motive and putting it down purely to philosophy?</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_158">Yes.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_159">The procedure was identified as a novel procedure. Were families informed that this procedure was novel? The report I read stated it was a novel procedure with a lower threshold. Were people informed of that?</p>
+        </speech>
+        <speech by="#" eId="spk_89">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_160">I will defer to my colleague in a minute, but my understanding is procedures are modified all the time. A consultant might start doing something as he or she was taught as a trainee. It then might be slightly modified based on the need of the patient or skill sets. I will defer to my clinical colleagues, maybe Mr. Moore, on that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_161">Was there informed consent?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_162">Sorry, I am talking about procedures.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_92">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_163">That was the question.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_164">Informed consent-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_165">Were people informed it was a novel procedure? That is the question I am asking.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_166">Informed consent is taken at all interactions with regard to doing a procedure. From that perspective, informed consent has to outline the reason for surgery, the risks, the benefits and the risk of not doing anything. That is a standard process across CHI. We are enhancing it. We have a new consent form that is being launched, which goes into even more detail, as part of our learning from-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_96">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_167">Is the suggestion that patients were informed it was novel?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_168">I cannot confirm or otherwise why it would not have been there.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T10:30:00+01:00"/></from>
+          <p eId="para_169">I cannot speak as to what the patients were informed but I agree with what Ms Nugent said.</p>
+          <p eId="para_170">Any procedure that started off 40 or 50 years ago, with particular equipment available and understandings of how things were to be done, will regularly evolve over time and be modified by people. I am not quite sure what the procedure was here but it is normal for procedures to evolve over time.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_99">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_171">Does the HSE wish to respond on any of that?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_172">On informed consent?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_173">Dr. Henry was indicating.</p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_174">Having spoken to Mr. Thomas on a number of occasions, I recall he described the surgery, which I am sure the Cathaoirleach is aware is essentially preventative, as surgery in which the clinician's purpose is to prevent hip dysplasia developing in adolescence or later in life. His findings in the audit did not just indicate that there was a low threshold for surgery, or what he characterised as being at the extreme end of variation, but also that he could find no evidence in the audit samples of the kinds of discussions you would expect to take place between a surgeon and family to explain the pros and cons and relative risks. That is not to say they did not take place but he did not find evidence of what would be quite complicated but necessary discussions with families explaining why preventive surgical intervention might be used. Even the best practice centres that comply completely with the standards he has laid down will not be expected to get the decision right 100% of the time, because they are trying to prevent something from happening later. Therefore, his characterisation was that he did not see evidence in the audited sample that the kinds of discussions in question took place.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_175">On caseload management, are there defined maximum caseload caps for orthopaedic surgeons or consultants in CHI?</p>
+        </speech>
+        <speech by="#" eId="spk_104">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_176">I am not sure I understand the question.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_177">Are there defined maximum caseload caps for orthopaedic consultants in CHI? My question is on the growing list of patients. Is it clinically safe to continue to assign new patients to consultants who have significant backlogs?</p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_178">One of the learnings from the unpublished report is that we need to ensure equity of access such that if one consultant has a lower waiting list than another, the lists will be rebalanced so all patients will have the same waiting time, albeit too long. The central referrals office has been created in CHI. When a referral comes to it, it is assigned to the consultant with the relevant expertise and the lowest waiting time to provide the required equity.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_107">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_179">I am sitting back here looking at Ms Nugent answering all the questions. She is new, so my questions are therefore for Ms Hardiman. Where is the accountability for management’s failure of governance and procurement? Does Ms Hardiman believe she may need to rethink her position on this? This all happened on her watch. Considering what is said about this problem, parents are very annoyed when their children are let down. By God, the children in question were let down.</p>
+          <p eId="para_180"> I have a few questions and I will fly through them because I want answers. Why did the clinical indication rates vary so drastically between Crumlin, Temple Street and Cappagh hospitals? What oversight existed regarding the individual consultant’s surgical decisions? Were any concerns raised by colleagues or management at the time? We have already spoken about whether parents were fully informed and whether there was informed consent.</p>
+          <p eId="para_181"> What checks failed in the hospital procurement or clinical governance process for non-CE-certified springs to have been used? I come from a procurement background and would assume there was a process in place for ordering the relevant products. How did what occurred happen? I cannot get it out of my head. Was there any testing or risk assessment of the devices before implantation?</p>
+          <p eId="para_182"> What role will external bodies like HIQA and the Medical Council play in investigating and enforcing accountability? Accountability is a matter I will come back to. Management needs to be accountable. I do not believe one person is to blame. I am not a medical person and do not like the idea of one person being used as a scapegoat; the rot usually happens from the top down. Why was the internal report not shared? I was reading notes that stated the report was not intended to be made public or published to ensure the staff felt safe participating. Secrets breed trouble and exactly what was going on, namely, poor governance and a toxic workplace. How could things go right in those circumstances? Children and their families have been so let down. I would like answers to the questions I have asked.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_183">I thank the Senator. I will endeavour to answer. First, I reiterate the apologies for all of the hurt or harm that has been caused and the stress to families. I was before the previous health committee on this matter and I reiterate my position.</p>
+          <p eId="para_184"> To work through the questions, I will begin with the issue of procurement. It has been identified, through the HIQA report, that the springs did not come in through the procurement process. There is a procurement process and what occurred was outside that. Since then, we have improved the procurement processes so what happened cannot happen again. The controls have been put in on the procurement side of things but also in relation to our processes within our theatres. More important, medical devices committees and structures have been put in place within CHI because we fully accepted the reports from HIQA. I believe we are at a strong standard, and assurance can be given, through Ms Nugent, that the processes are in place.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_109">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_185">Has a new procurement system been put in place to ensure no room for the error that would result in the purchase of non-surgical items?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_186">Historically, there were multiple points of entry for goods coming into Temple Street. We now have one centralised procurement function so you cannot get anything into the hospital-----</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_111">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_187">Since when?</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_188">Since 2023, I think.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_113">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_189">Why was that the case? Why was it coming from all angles and why was there nothing proper, given the importance of our children and their health?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_190">It was always the intention to move to one system of procurement. It had been implemented in Crumlin, Tallaght and Connolly hospitals, and the next area for implementation was Temple Street. It was always in our plan to have one standard of procurement involving a very robust process. It was part of our roll-out of the implementation of a single process-----</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_115">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_191">What was the delay? Why did it take so long?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_192">It was a phased approach because we could do only one place at a time. It was part of a process or integration. It was a case of rolling out single corporate systems, and it was just on a programme for work.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_117">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_193">My first question was on the accountability as regards Ms Hardiman’s position.</p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_194">The processes that have been brought in, particularly concerning medical devices and the ethics committee, are actually robust regarding innovations. Where a clinician wants to discuss modifications, they have a process that they can bring them up through within CHI. That assures the families and parents we serve that modifications are tested through that process before they are actually implemented.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_119">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_195">Does Ms Hardiman feel she has been held to account?</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:40:00+01:00"/></from>
+          <p eId="para_196">I have been in front of the committee and have apologised for the failures. We have accepted the report in relation to HIQA. We have a particular specialty that has been a particular focus in this but we have 38 other specialties that are working, many according to international practice and even meeting international benchmarks for their clinical outcomes. Definitely, I believe some of the issues were pre-CHI – they are legacy issues – and some of the issues are definitely associated with the massive change we are trying to implement.</p>
+          <p eId="para_197">We accepted those issues and were in a process of trying to improve them. Many of the issues, except for the springs, were raised by our staff within CHI. Everything else came through CHI. The majority of our staff are committed and health-centred. They care about what they do every day. We did not have that culture. Particularly in 2023, we went out to the staff and asked them to raise their issues and bring them to us so we could address them. The internal report has not been published. Ms Nugent looked at it, and this is not me saying this. The issues that were brought up were addressed. They were put through processes. They had not been addressed previously. The staff in that particular service are now in a much better place. To give assurances to families, that means a much safer present and not just because of the internal report but also because of the management systems that applied at the time, particularly in respect of the risk assessment, which did not wait for the report to come out. It had come up through us and had been addressed. It was being addressed with the support of the HSE. We are unusual in that we are merging and there are different cultures and differences. Those are the things on which we need to work with staff and they need to work with us in a trusting way to fix them.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_121">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_198">It should not be a toxic environment. It is place where children's lives have been affected. I am still not hearing an answer in respect of accountability.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_199">I absolutely agree with the Senator. The vast majority of our staff would say that it is a good place to work and they have a good working environment. The matters raised were shocking. Many of them, particularly those in the internal report, were issues that were pre-CHI. They were legacy, long-term issues that we got out in the open. We worked with the staff involved and put in the process to address those issues. We implemented the HR policy that perhaps had not been implemented up to that time. We now have a better service, a happier and more cohesive team and a safer service as a result of that process.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_123">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_200">I know that Ms Hardiman has said at times that she has no recollection of being told about issues. That is different to being actually told, and it concerns me. If it was my child, I would feel that people have a happier workplace and stuff-----</p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_201">Is the Senator referring to the meeting?</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_125">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_202">I am talking about the springs.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_203">I have been absolutely clear. HIQA confirmed in its report that no one from senior management approved those springs or were aware of their use. That is in the HIQA report. I did not have a meeting on the issue. That is my position. I had no evidence of it. I have nothing in my diary and my personal assistant has nothing in hers. I have nothing in my log.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_127">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_204">How will CHI's governance be restructured to prevent a reoccurrence?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_128">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T10:50:00+01:00"/></from>
+          <p eId="para_205">We are over time and due to take a break. There are six members remaining and there will be ten minutes each if they want to come back in. We will be strict on the time limit for the break. We will take a five-minute break after which the six remaining members will have ten minutes each.</p>
+        </speech>
+        <summary eId="sum_8">
+          <i>Sitting suspended at 10.53 a.m. and resumed at 11 a.m.</i>
+        </summary>
+        <speech by="#SorcaClarke" eId="spk_129">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_206">I am really disappointed that we have to have this meeting. I suspect it will be the first of a series of meetings we will have on issues like this. I find that deplorable. People entrusted CHI with the care of their children. Children are not small adults. They have a very specific set of needs. I say this as a TD and a parent, I think CHI abused that. Not only are the parents stressed and anxious, as Ms Nugent referenced in her opening statement, they are furious and this was not acknowledged anywhere in her opening statement. I wish CHI luck rebuilding trust. I have children who have been to CHI hospitals. They no longer need to but I am not sure if that trust would ever be rebuilt with me if I was in the same situation as these parents.</p>
+          <p eId="para_207"> My first question is about clinical review meetings while my second is about the retrospective review. The hip dysplasia advocacy group is saying very clearly that many of the families with children were included in the audit from 2021 to 2023 and have gone back for the review meetings. A further investigation was mentioned to them. They were under the impression that the clinical review would be the last step - the closure step. Can Ms Nugent provide clarity as to what additional steps are planned and how those steps differ from the initial process?</p>
+          <p eId="para_208"> Who will be on the panel conducting the independent international review? What is the purpose of a second stage and how does that benefit the children and their families? As part of that, are different thresholds being used there as opposed to the initial stage of the audit?</p>
+          <p eId="para_209"> Very concerningly, I am told that the clinical lead was unable to answer a question as to whether children, regardless of the surgical justification, face long-term risks due to the modified surgeries they underwent. The families are asking very reasonably for clear evidence-based answers. Very concerningly, I am also told that some physiotherapy sessions were conducted away from families without explanation and without consent. That is really serious. Those parents need answers as to why that happened.</p>
+          <p eId="para_210"> If families need to travel outside the State, what would that look like? How would a process like that work? I put it to all the witnesses that it is not acceptable for a family to travel from the west of Ireland for a five-and-a-half-hour appointment and for nobody to even offer them a cup of tea. The witnesses talk about trust, compassion and all the good that CHI does. That is human. That is basic stuff. We are talking about a five-and-a-half-hour appointment after having travelled from the west of Ireland.</p>
+          <p eId="para_211"> On the retrospective review, will these parents and other parents who have children in a similar situation be engaged with when it comes to drafting terms of reference? Will CHI take on board their concerns and their lived experience of this outcome? When findings are being communicated, the families ask that it be done with full and open disclosure. Ms Nugent said there had been informed consent from parents in terms of the novel procedures that were carried out. I put it to her that some of the parents say something very different - that they did not give informed consent. </p>
+          <p eId="para_212"> Another very reasonable ask is that when the review results are published, none of them would be labelled as inconclusive. These parents want answers. They want full and complete answers. Will everyone on the panel be independent international paediatric consultants with no affiliation to CHI? Who are they, where are they from and what is their expertise?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_213">I apologise if I misled the Deputy regarding informed consent and the process. I cannot confirm otherwise or not for each individual child, so I would like to clarify that. I will ask Dr. Okafor to answer the question about current review clinics and the physiotherapy assessment because he has been attending those clinics. The expert panel review is being conducted by the HSE and I would defer to Dr. Henry for that.</p>
+        </speech>
+        <speech by="#" eId="spk_131">
+          <from> Dr. Ike Okafor<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_214">We had our first set of multidisciplinary assessments. These clinical assessments were purely clinical. They were supposed to assess the current stage of the children to see whether they had any complications or ongoing symptoms. We had a senior physiotherapist who assessed the children using a hip score. The hip score had different components. One was a questionnaire where there is a self-reported outcome while the other assessment involved assessing range and gait and there is a final score that is done. Children who needed to have X-rays went for X-rays and the final piece involved them speaking to the consultant orthopaedic surgeons, all of whom were independent and were not the primary surgeons who saw the children.</p>
+          <p eId="para_215"> The first time we did this was on a Friday and Saturday. We had not anticipated how long it was going to take. We had planned to see 70 children over the two days but some people cancelled while some did not wait. We got slicker on the Saturday. We identified areas on Friday where things did not go right in terms of the flow and we definitely had people home earlier on the Saturday. Generally we were able to capture everything we wanted to capture in terms of the outcomes.</p>
+          <p eId="para_216"> The Deputy is right. In terms of the data, when we see the vast majority of children, we will have an idea of what the complications are. Only then can we quantify what the risk will be to children who received surgery using this type of philosophy or the lower threshold. We started with children who were in the audit. These were children who had surgeries between 2021 and 2023 so they are still relatively young. Where we are going to start to see some of the data in terms of long-term possible complications is when we start to see the older children. It will be good to put it together, publish something and say that, from the number we see, these are the numbers. That will give parents with younger children some kind of idea of what to anticipate or expect.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T11:00:00+01:00"/></from>
+          <p eId="para_217">Having reviewed the report and having spoken to the author, Mr. Simon Thomas, it was clear that the most important thing for parents was the clinical follow-up to ensure there was skeletal maturity and to assess the impact of the lower threshold of surgery. It is also really important to them to find out whether surgery was appropriate in the first place, now that the finding was that there was a much lower threshold for surgery in two institutions. This is what I advised the CEO at the time. It went beyond Mr. Thomas's recommendations. We are applying that back to 2010.</p>
+          <p eId="para_218"> This is a difficult and complex exercise in two ways. We have some experience of conducting independent exercises involving international experts. The action of exporting data, information and radiology findings of itself needs to be very tightly managed and controlled to ensure the international experts have all the information they need.</p>
+          <p eId="para_219">The synthesising of all that evidence into reports that then can be conveyed to families in a compassionate and supportive way is itself an exercise we have some experience of over the past few years. At the moment, we have identified a number of international experts. I will not name them at this stage, if that is okay. We are also getting the legal opinions necessary to set this up to make sure we have robust terms of reference. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_133">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_220">Will the HSE engage with the parents around the terms of reference?</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_221">Yes-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_135">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_222">The HSE will give them that commitment.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_223">-----I am happy to engage with the parents as part of this process. Absolutely. Setting this up, convening this panel, having the chair named and secured and having all the legal supports necessary will take us until September. We expect then that the assessment of each case will take us right through to the end of the year and into next year because of the number concerned. I referenced similar exercises we have carried out over the years and I stress the importance of that part of generating the report and translating it to families in a compassionate and supportive way.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_137">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_224">Will the HSE commit to making counselling and mental health supports available to both the children and their parents?</p>
+        </speech>
+        <speech by="#" eId="spk_138">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_225">We will support parents in any way they need-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_139">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_226">And their children.</p>
+        </speech>
+        <speech by="#" eId="spk_140">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_227">-----and their children, when we are communicating these reports.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_141">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_228">I thank Dr. Henry. The next slot is Fine Gael.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_142">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_229">I thank the witnesses for their presentation and for the work they are doing. I know it is a very challenging time because there is also the whole amalgamation going on with the new children's hospital. On the current waiting issue, the HSE states that 65 cases are suspended. Do we have any idea of where those patients are now? Have they gone to other hospitals? Have they gone to other jurisdictions? If they have gone to other jurisdictions and they come back to Ireland then, is there a support mechanism for them in place?</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_230">Just to clarify, is Deputy Burke talking about spinal patients?</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_144">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_231">Yes.</p>
+        </speech>
+        <speech by="#" eId="spk_145">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_232">I will defer to my colleague Mr. Moore as head of the spinal unit.</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_233">Patients can be suspended for many different reasons. These can be clinical reasons, at the family's request or for reasons such as exams. Quite a lot of patients with non-complex surgery opt to have their operations, if possible, during the school holidays so it does not interfere with their schooling. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_147">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_234">Of the 65, where the treatment is suspended, where are we with that 65 now? Are they just left sitting there waiting for further decisions to be taken or are they being provided with the level of care they require and is it being provided in a timely manner?</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_235">The Deputy mentioned outsourcing. If a child is being outsourced outside the public system, whether it is to the Blackrock Clinic or abroad, then they would be suspended on our waiting list until they have their procedure.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_149">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_236">Is monitoring taking place to make sure? Will there be support for them once a procedure is provided?</p>
+        </speech>
+        <speech by="#" eId="spk_150">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_237">Yes, on both counts. We have a dashboard that has every single child who is on the waiting list for surgery and that is available to the clinical nurse specialists.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_151">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_238">I come back to the issue where a surgery was carried out on a child and the procedure that was carried out was deemed not the best way of managing that patient. Obviously, there is a team with senior registrars, registrars and consultants. You now have, say, a senior registrar who has now become a consultant. In instances where families do not want any part of that team being involved in the care of that child, is that being looked at and clearly identified to make sure that problem is not arising?</p>
+        </speech>
+        <speech by="#" eId="spk_152">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_239">Will Deputy Burke clarify what the issue is? I am not sure what-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_153">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_240">If, for argument's sake, a senior registrar who was on the team when a surgery was carried out and the family, who were aware of who was on the team, are now concerned that they are being referred back to that person, who is a consultant now-----</p>
+        </speech>
+        <speech by="#" eId="spk_154">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_241">I cannot comment on that. I am not sure of instances where that has happened.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_155">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_242">Are there processes in place to make sure that where concerns are raised by families regarding the care provided previously, they are not ending up back with any part of that previous team?</p>
+        </speech>
+        <speech by="#" eId="spk_156">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_243">Yes. Certainly in our service, we would always discuss what is going on with the family and try to assuage their fears. I am not sure-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_157">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_244">I will move on to something totally different. I refer to the findings of a high attrition rate among support staff due to bullying issues and the whole issue about people in training finding it very difficult. Anyone who is in training - a senior house officer, a registrar or a senior registrar - will depend for references into the future on the person they are under. For that reason, they may be afraid of raising concerns about the way they are treated. What is the process now being set up to deal with that kind of issue, where a registrar or senior registrar who is not happy about the way issues are being managed is afraid of raising it because they are afraid for their future career prospects?</p>
+        </speech>
+        <speech by="#" eId="spk_158">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_245">We have regular inspections by the training bodies to ensure we are meeting the needs of our trainees. I think the Deputy is referring back to an unpublished report which refers to a trainee. In that situation they were supported. We engaged directly with the training body. The training was paused until the cultural-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_159">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_246">Does Ms Nugent accept there is an issue? Among trainee doctors, there is a fear of raising a concern because it may affect their future promotion prospects or even jobs within the particular hospital.</p>
+        </speech>
+        <speech by="#" eId="spk_160">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_247">Healthcare is very small. That is always a concern. Another reason we did not want to publish the report is that we did not want to identify the trainee in that respect. However, there are supports in place. We have had two inspections following that report. The last one was extremely positive because of the learnings and the steps we had put in place. We have supports for our trainees as well. We have a whole training support system in place. Again, as we were saying, we want people to have the psychological safety to speak up if they are experiencing something or if they see something that is not right.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_161">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_248">Does Ms Nugent accept there was evidence that people were concerned about the processes taking place-----</p>
+        </speech>
+        <speech by="#" eId="spk_162">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_249">At that point, four years ago, yes.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_163">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_250">-----and were afraid of saying anything? These were consultants who may not have been in place for too long but the senior people were totally in charge. How does the HSE now deal with that process into the future?</p>
+        </speech>
+        <speech by="#" eId="spk_164">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_251">I will defer to Dr. Goldman.</p>
+        </speech>
+        <speech by="#" eId="spk_165">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_252">I thank the Deputy for the question. It is completely unacceptable for a trainee to be bullied as was the case in that report. Certainly, that would be totally unacceptable now. The Deputy is right to ask how we deal with that if the trainee is perceived to be in a vulnerable position. At the induction of all the trainees when they start, I speak about culture and respect and about them treating everybody and being treated with respect. If that is not the case, I ask them to please speak up either along their line or to myself. Then, as Ms Nugent said-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_166">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_253">There is an issue regarding trainees. Coming back to the patient, do we have a process in place for a patient who is unhappy but is afraid to ask questions? Are we satisfied we are giving enough information to patients so that they can raise concerns, if they have them, with someone independent of the care team who is appointed to look after the child?</p>
+        </speech>
+        <speech by="#" eId="spk_167">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_254">We have a separate family and parent support team, which is completely separate from the clinical team.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_168">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_255">Are parents aware of that structure? Are they satisfied that their own position is not undermined by raising a concern?</p>
+        </speech>
+        <speech by="#" eId="spk_169">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_256">I would hope so. I would hope that we would stress absolutely that their position would not be affected. We get a lot of compliments and we get a lot of complaints. Where there is a complaint, we take it very seriously. We would look into it and assure the family that we are doing that and that they should not be compromised by that.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_170">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:10:00+01:00"/></from>
+          <p eId="para_257">A big concern that has been raised with me by constituents over many years is that when they make a complaint to the hospital, it takes time for it to be dealt with. </p>
+          <p eId="para_258">In some cases, people do not get answers for more than 12 or 18 months. Are we now satisfied that we have a structure that can deal with a complaint in a timely manner?</p>
+        </speech>
+        <speech by="#" eId="spk_171">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_259">Yes, there is a structure and one of the KPIs that we monitor is how quickly we close out any complaints. I agree, in that, if a person needs information, we should be able to provide it as timely as possible. We are hitting the 30-day target. I forget the exact percentage, but it has increased and is increasing. That is an area of focus for us.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_172">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_260">In respect of the whole process of amalgamation, there are differences. This is quite clear from what occurred with surgeries, where one hospital was doing them correctly and properly and two others provided treatment that it now appears was inappropriate. When the teams come together in one hospital, are we satisfied that we can get all of them to work together with no domination of one group over another that would result in procedures being changed to something that might not be the appropriate way to deal with or manage a patient?</p>
+        </speech>
+        <speech by="#" eId="spk_173">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_261">Regarding the MDT function, that is something we are enhancing, not just in respect of hips, but right across the organisation. It was highlighted in the HIQA report. With respect to culture, we are doing a piece of work targeting the particular service the Deputy describes. The teams have agreed to and are engaging in that process so that we will have a new culture going into the new hospital. We are leaving the old behind.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_174">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_262">As a TD in Dublin Central and a mother of three, I have had quite a bit of contact with CHI at Temple Street and the satellite unit on Connolly campus over the past number of years, and there is incredible work being done on the ground by staff who go above and beyond on a regular basis. That is important to acknowledge, given what has been happening on the ground, the abject failure of leadership within CHI over the past number of years, which has led to a serious issue with morale among staff, and this horrible set of revelations, which are corrosive to staff's confidence in their own organisation and, more importantly, to the confidence of families and patients that attend it. Like others, my head boggles at the number of questions we have here today and that we know we will not have time to get full answers to.</p>
+          <p eId="para_263"> My first question is to Ms Nugent and, separately, Ms Hardiman. Are there other reports, live or historical, within CHI that are currently or have been with the board, given the seriousness of the situation, incident or allegation, whatever it may be? Are there other reports that are not in the public domain? Are there reports that have not been reported to the Minister for Health or the HSE? I, for one, do not want to see a drip-feed of revelation, crisis and shock in the months to come. I would like Ms Nugent to disclose if there are other issues of seriousness that we should be aware of.</p>
+        </speech>
+        <speech by="#" eId="spk_175">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_264">I asked exactly the same question because I did not know about the unpublished report from 2022. I have asked that of my executive management team. The Nayagam report still has to be published. There are also internal HR processes in train, and the results of those will be known in due course. That is the best of my understanding.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_176">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_265">There are no other major reports, investigations or internal reviews?</p>
+        </speech>
+        <speech by="#" eId="spk_177">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_266">Not to my knowledge.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_178">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_267">I put the same question to Ms Hardiman.</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_268">I have discussed this with Miss Nugent. There are individual reviews of individuals, which is a normal part of professional development or dealing with areas of competency that need to be developed through a normal development programme. There are some HR processes going through the organisation that relate to individuals. That is normal. We do not disclose those because they have to do with individuals. I am aware there have been reports. We created reports about staff feedback way back in 2020. It goes back to then. The results have been shared with the staff, and we are moving on some of them regarding professionalism. They were staff surveys.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_180">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_269">The 2022 report very clearly set out that behaviours and dynamics within a particular department had the potential to put patient safety at risk. That was not reported to the Minister for Health or the patient safety office in the HSE. Why did CHI not report that?</p>
+        </speech>
+        <speech by="#" eId="spk_181">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_270">To be clear, one of the issues raised was around risk, and quite rightly. The risk assessment was separate to the report. While the report was collated in 2021 and published in 2022, our risk management processes had already kicked in in 2021. A risk assessment was done, but the report did not make the executive aware of the issue.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_182">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_271">CHI did not see it was serious. The situation Ms Hardiman is talking about has had to be referred to the Garda. There is a clear question of judgment here.</p>
+        </speech>
+        <speech by="#" eId="spk_183">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_272">If I may, I am focusing on patient safety and the risk elements because they were our priorities, keeping the patients to the fore in our minds. The issue raised in relation to the risk was around what we would call a single point of failure, where there was a single clinician involved in a tertiary service. That was brought up through the appropriate elements of the HSE. Thankfully, the HSE totally supported us with investment very early in 2021, even before the report was finalised. There were issues and matters coming up through our processes that were not just being revealed in this report, but were being managed. Most important were some of the HR processes. They were historical and had been there for years. They were addressed as well.</p>
+          <p eId="para_273"> We took the training issue very seriously and went with the training bodies and the external review of how training was assessed. We were very open about all of those aspects that were addressed in 2021. The staff felt - we wanted them to be open and honest - that these were long-standing issues and they wanted them brought to our attention. I am glad they did that. We said very clearly at the time that if they raised a matter, we would take action and address it. Action was absolutely taken. We reported specific issues through the HSE via the relevant processes and our normal processes, but we did not disclose the report, and Miss Nugent has outlined why.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_184">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_274">Is the HSE satisfied that what may be characterised as historical issues by Ms Hardiman have all been resolved? There is a belief they have been. A HIQA report from this year sets out fundamental reforms to address another department, but I want to hear from the HSE representatives as to whether they believe the measures taken, as Ms Hardiman suggests, have effectively removed that risk to patients and those challenging behaviours that were referenced?</p>
+        </speech>
+        <speech by="#" eId="spk_185">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_275">Regarding the series of issues people have mentioned here today as presenting in CHI, the Health Service Executive, in consultation with CHI, has initiated a process under the service arrangement to include enhanced governance and oversight at CHI. The CEO has put in place a national oversight group, which CHI is a member of, to go through all of those issues and have robust governance in place in order to ensure an enhanced assurance process from the HSE perspective and to support Ms Nugent in the job and the tasks ahead.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_186">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_276">It is happening as opposed to completed?</p>
+        </speech>
+        <speech by="#" eId="spk_187">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:20:00+01:00"/></from>
+          <p eId="para_277">That process is <i>in situ</i> at this point.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_188">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_278">Very quickly. On the Dixon report, am I correct in saying it was stated earlier that CHI does not accept the recommendations it contains?</p>
+        </speech>
+        <speech by="#" eId="spk_189">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_279">This was pre-CHI. It was a report on Temple Street.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_190">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_280">Did Ms Hardiman state that CHI does not accept the Dixon report or that it does?</p>
+        </speech>
+        <speech by="#" eId="spk_191">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_281">No, because Temple Street Hospital and Crumlin Hospital at the time, as two independent hospitals, had raised concerns and issues about elements of that report, and it was not processed. I must say, however, that it did identify a need for investment, which was quite obvious. Other elements of the report were problematic in the context of the clinicians, and hence it was not able to be progressed.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_192">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_282">To be clear, an email from Ms Hardiman's office in October 2019, when she was chief executive of CHI, to the Spina Bifida &amp; Hydrocephalus Paediatric Advocacy Group, stated:</p>
+          <p class="indent_1" eId="para_283">The registry for children with Spina Bifida across CHI is currently being validated at Consultant level. We are also [recommending] the recommendations of an external review of Urology services (Dixon report) which includes Spina Bifida care.</p>
+          <p eId="para_284"> There seems to be a disconnect between what was in that correspondence and what is being communicated today. We could talk all day about those issues, but I want to move on.</p>
+          <p eId="para_285"> With regard to the bullying that took place, Ms Nugent, there were significant implications in terms of the high attrition of support staff and the specialist registrar scheme had to be suspended. What actions have been taken from a HR perspective? Have people been suspended? Bullying is a serious allegation. What HR actions have been taken?</p>
+        </speech>
+        <speech by="#" eId="spk_193">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_286">When the report was finalised, everyone agreed there needed to be an intervention because it was unacceptable. An external facilitator worked with the team, and the appropriate HR processes were followed in that regard.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_194">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_287">But there have been no suspensions or anything like that because of the allegation of bullying.</p>
+        </speech>
+        <speech by="#" eId="spk_195">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_288">Obviously, as it is a confidential process, I cannot comment further.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_196">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_289">There is a series of questions about the waiting list-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_197">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_290">This has to be the final question. The Deputy's time is-----</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_198">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_291">-----but I wish to ask about staffing and the national children's hospital. I understand that there has been a long-standing call from the national children's hospital to the HSE regarding staffing. Can the witnesses provide the up-to-date figure regarding the staffing level required to ensure that the existing level of service will be maintained when CHI moves into the new building next year?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_199">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_292">Very briefly. We are over time.</p>
+        </speech>
+        <speech by="#" eId="spk_200">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_293">We have had extensive engagement, which is still ongoing, between the HSE, the Department and ourselves because exciting additionality will be coming with the new national children's hospital. We are still discussing that.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_201">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_294">Yes, but what is the number? The information I have indicates that 382.8 whole-time equivalents were requested three years ago.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_202">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_295">The Deputy is over time now.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_203">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_296">What is the number now?</p>
+        </speech>
+        <speech by="#" eId="spk_204">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_297">It is higher than that. It has not been agreed yet.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_205">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_298">Can you give us the number? We need to understand. We want to support CHI and ensure it gets the staff it requires in order to ensure the services will be up and running when it moves into the hospital next year.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_206">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_299">The Deputy is over time now. Does Ms Nugent have a number?</p>
+        </speech>
+        <speech by="#" eId="spk_207">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_300">It is 576.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_208">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_301">I thank Ms Nugent. We have just 30 minutes left. We have a hard deadline because the Joint Committee on Key Issues Affecting the Traveller Community will be meeting in this room at 12.30 p.m., so we need to vacate it. We have a number of members remaining. I propose to take Senators Ryan and Clonan. We have a Fine Gael slot left. Deputy Boyle had been here, but he offered his time to Deputy Brennan, if that is agreeable. Those will be the final three slots. Is that agreed?</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_209">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_302">As long as people get the full ten minutes.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_210">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_303">That is the intention. It is going to be a struggle to get contributions from all the members in the time remaining. There will be one more Fine Gael slot if the relevant members want to decide who is going to take that one.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_211">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_304">Can we split the time?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_212">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_305">Yes.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_213">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_306">I am going to go back to the novel procedures because the waffle around it was not acceptable. The witnesses are and telling us that they cannot publish a report because they are worried about naming people. Yet they cannot give us a straight answer as to whether the parents were notified, whether they gave consent and whether they knew it was novel procedures they were signing up to.</p>
+        </speech>
+        <speech by="#" eId="spk_214">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_307">I can understand that the word "novel" can provide some concern. My previous statement was on how accepted procedures get modified over time.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_215">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_308">Yes. We know that.</p>
+        </speech>
+        <speech by="#" eId="spk_216">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_309">It was-----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_217">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_310">We are well aware of how that works.</p>
+        </speech>
+        <speech by="#" eId="spk_218">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_311">In relation to whether parents were told this or not, I cannot honestly say. I do not know.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_219">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_312">Ms Nugent does not know. That is fine. It was mentioned that a clinical ethics process is now in place. Why is it only in place now? It is not a corner shop that CHI is running. It is working with children in a hospital. Where was that process before this point?</p>
+        </speech>
+        <speech by="#" eId="spk_220">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_313">A research and ethics committee was always in place, so this is an enhanced committee to specifically look at-----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_221">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_314">What had that committee done during that time? Why is there a massive need now for an enhanced one? What was the role of this committee in the first place?</p>
+        </speech>
+        <speech by="#" eId="spk_222">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_315">Again, when we have procedures, drugs and devices not normally used in paediatrics, we must have a process in place to ensure we are operating in an ethical manner and in the best interests of the child.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_223">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_316">Yes, we know that, but we know that did not happen here either.</p>
+        </speech>
+        <speech by="#" eId="spk_224">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_317">Dr. Goldman would like to comment.</p>
+        </speech>
+        <speech by="#" eId="spk_225">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_318">I thank the Senator for this very important question. We always had a research ethics committee for research studies. Like many other big children's hospitals in the world, a clinical ethics committee that goes with that is very important. Our clinical ethics committee has two clear roles. The first concerns discussions about children where there are challenges around their care. This gives parents an opportunity to come in and present them, and-----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_226">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_319">Perfect. Did that committee flag this?</p>
+        </speech>
+        <speech by="#" eId="spk_227">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_320">Yes. That is the first component of that committee. The second component, which we have added, is to cover novel procedures because-----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_228">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_321">Why was this clinical committee that was already not flagging the novel procedures initially when this was happening? Why is there a need to put in a second committee?</p>
+        </speech>
+        <speech by="#" eId="spk_229">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_322">No. We have not. The clinical ethics committee has been up and running for between one and one and a half years. I could get the date for the Senator. We only set it up at that time. We did not have a clinical ethics committee at the time of the procedures.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_230">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_323">Why not?</p>
+        </speech>
+        <speech by="#" eId="spk_231">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_324">I cannot say. I started here in 2021 and it was one of the ambitions to set up that committee, and it took a while to set up.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_232">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_325">Can Ms Hardiman tell us why it has not been set up?</p>
+        </speech>
+        <speech by="#" eId="spk_233">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_326">When Dr. Goldman came on board as the chief medical officer, this element was one of the things to progress. Before that, we had a process whereby the research and ethics committee did take some elements relating to clinical ethics. We also have a clinical ethicist in CHI and if there were issues of that nature that needed to be considered a group would come together. What Dr. Goldman has put in place has meant that, as opposed to responding to issues whenever they were formally raised, they will be put into a more formal process. There was a form of ethics support for staff who raised those particular issues before it was set up as a formal committee.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_234">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_327">Turning to Ms Nugent, and I know she is new to the role, we have seen how the word "culture" is used here as a scapegoat, especially among medical professionals. We have seen it used by HIQA, and it has been stated that the issue is the need to change the culture. How, though, will the culture be changed when the core is rotten? I ask this because it starts at the core and feeds out. It was mentioned the staff are brilliant, they are doing the work, they have mechanisms to raise issues and the hospital wants to hear about the issues. What it sounds like is that management did nothing about these issues when they were raised by the staff. How is this culture being fixed? It is not going to happen overnight.</p>
+        </speech>
+        <speech by="#" eId="spk_235">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_328">No, it will not happen overnight, but it is key for the success of the organisation. We are doing a number of programmes. I am also trying to get out and about. I do town hall meetings where I stand up in front of the staff and they can ask me any questions. They are raising issues and we are -----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_236">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_329">Is Ms Nugent willing to do that for parents?</p>
+        </speech>
+        <speech by="#" eId="spk_237">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_330">Yes, I am.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_238">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_331">Is Ms Nugent willing to do those meetings for parents, where they can stand up and ask her these questions directly?</p>
+        </speech>
+        <speech by="#" eId="spk_239">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_332">Yes, I am.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_240">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:30:00+01:00"/></from>
+          <p eId="para_333">Perfect. I now have a question for Mr. Moore. He was quoted recently in <i>The Sun</i> on the subject of the funding as stating, "I had no hand, act, or part in the €19 million but my understanding is that every single penny was used in CHI". As the national clinical lead for spinal surgery, can he explain how he had no hand, act or part whatsoever in the allocation or oversight of the €19 million?</p>
+        </speech>
+        <speech by="#" eId="spk_241">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_334">My role started just over a year ago, in February 2024. I was not in that position. I am aware of the €19 million because there was a HSE audit. I understand it validated the use of those funds in CHI. I cannot really comment any further.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_242">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_335">Okay, I will go to the HSE.</p>
+        </speech>
+        <speech by="#" eId="spk_243">
+          <from> Ms Kate Killeen White<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_336">My understanding is the same as that of Mr. Moore in that the audit was commissioned by the HSE and it was found that the funding was used in an appropriate way.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_244">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_337">Who had oversight of that funding and how it was spent? That question is for the CHI.</p>
+        </speech>
+        <speech by="#" eId="spk_245">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_338">Funding comes in through the HSE. It goes through an internal process. It comes in through Rosetta, a financial system. If it is for posts, for example, there is a tracker system for when those posts were advertised and filled. We only get the money for those posts when they are filled. There is a process where we go back to the HSE to indicate the post has been filled and to ask if we can have the money. There is a tracker in the spinal unit itself because we have had a lot of welcome investment for staffing in the unit, for which we are very grateful. There is a robust process in place. We only get the money when we have the post filled.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_246">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_339">It sounds like when it comes to the accountability that Senator Costello mentioned, nobody seems to be accountable for anything right now. It seems to be a case of passing the buck around and see who-----</p>
+        </speech>
+        <speech by="#" eId="spk_247">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_340">I am the accountable officer of CHI. I apologise if I do not have all the answers because I am still new in my role but I am the accountable officer.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_248">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_341">That is fine but people need answers to the questions they have. While the “sorries” are welcome, there are parents and children who are worried and at their wits’ ends. They do not know what will happen. They are in the dark and we are being told here that the culture is going to change, it is going to be fixed and then it should be better. That is not good enough. It is not what people need to hear right now and nor is it what they want. They have been let down; that is the reality. This is saying the culture will change and passing the buck but no one has been held accountable yet. That is a real concern for people. Ms Hardiman bypassed the question Senator Costello asked about what sanctions she got. What sanctions did she get?</p>
+        </speech>
+        <speech by="#" eId="spk_249">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_342">Well-----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_250">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_343">There was nothing because she is still sitting here.</p>
+        </speech>
+        <speech by="#" eId="spk_251">
+          <from> Ms Eilísh Hardiman<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_344">If I may, part of the accountability is being here today and answering the questions to the best of my ability. I am happy to do that and come before any of the Oireachtas committees as a public servant. I accept there were weaknesses. I have apologised for those particular weaknesses. We have put in structures and processes to try to address them so the recommendations are being implemented by the actions. There is a lot of work to be done. It was not all perfect – absolutely not – but there are a lot of challenges related to merging hospitals. As a new entity, two of our first years were very unusual, to be quite honest, with a pandemic and a cyberattack that brought on greater stresses. What we were trying to do, and we are definitely in a better space now, was have integration, standardisation and a single governance process. In the early parts of CHI, because we set it up that way, we had hospitals that had to move from being hospital-centric or being hospital site-orientated to being single and that is quite complex. It takes time to actually-----</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_252">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_345">I understand and appreciate that. However, if I was in a position where I did not do my job diligently, I would not be sitting in front of Ms Hardiman now.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_253">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_346">We have two ten-minute slots left. The Fine Gael members have not spoken.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_254">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_347">Deputy Brennan and I will share time.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_255">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_348">Senator Clonan will have the final slot.</p>
+        </speech>
+        <speech by="#BrianBrennan" eId="spk_256">
+          <from>Deputy Brian Brennan<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_349">I thank the witnesses for their time. I am sitting here as a TD but also as a parent who is affected by this. That is why I purposely sat, as a parent, with the people behind me for the first phase of the meeting. This is my story. I went to Cappagh hospital with my young child who had an underlying health condition. We sat before the surgeon who is now on leave and were told we should seriously consider surgery. I asked for the pros and cons, as any other parent would. We left and drove back to Wexford. There was hardly a word spoken between me and wife in the car but as we arrived at our house, I said to my wife, “We can’t proceed.” My young son had been through enough. It is by the grace of God that I am not sitting over there. It is absolutely horrific. I am strong. People ask if I think about it every day. I do not but what I do think about every day are the parents. My God, how did this happen? I am of the firm opinion that justice must take its course but if this plays out the way I think it may, this could be one of the biggest cases of medical malpractice in the history of the State. With all due respect to those sitting before us, let us call this out as it is. The people sitting in front of me now were in the driving seat when this was going on. It was on their watch. Those are the facts.</p>
+          <p eId="para_350"> How was this allowed to happen? I heard a comment earlier that surgeons may be tired, overworked and all of that. I repeat that we should let justice take its course but how can a parent hand their young child over to a surgeon? Our children are the most vulnerable persons in our society. You hand your child over to a surgeon and you presume, expect and demand he or she will get the full care that child deserves. It is very clear this did not happen. This is so wrong. It really is.</p>
+          <p eId="para_351"> I am conscious of time. There are three main factors here. The first is the family. When I speak about the family I speak about the parents and the child. I am conscious of the work being done by the Minister to ensure things are improving. There was a policy of full exclusion of the people behind me. Why were they excluded? That has to change, and I can see it is changing, to inclusion. They must be part of every part of this process. In future, they must be fully engaged with everything that goes on. That is not a request but a demand from a parent. As I said, I am lucky. My child is seven years old and he is running half marathon distances almost. Thank God, he is in that position. Every day I think of these parents.</p>
+          <p eId="para_352"> On prevention, how can the witnesses honestly say this will never happen again? Based on what I have heard this morning, I do not feel that is the case. The Minister is taking the lead on this but it is essential that we get processes in place so this can never happen again.</p>
+          <p eId="para_353"> My last point is on justice. Justice has to play out. If somebody has done something wrong, they must stand up and be accountable. CHI has taken responsibility but the individual who stood over the children in question also has to take responsibility.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_257">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-19T11:40:00+01:00"/></from>
+          <p eId="para_354">Well said, Deputy Brennan. Did HIQA consult any hip preservation surgeons before publishing its recent report which failed to recommend universal screening for dysplasia?</p>
+          <p eId="para_355">Why has universal screening not been adopted? It is used in a lot of other countries. It is a preservation mechanism. In other words, it shows whether a person actually needs the procedure. Why did Children's Health Ireland commission an audit of hip preservation surgeries in Temple Street and Cappagh hospitals and compare them with Crumlin children's hospital where there is no such service because it outsources it to the Beacon for Kids department and University Hospital Galway, which were excluded from the report?</p>
+        </speech>
+        <speech by="#" eId="spk_258">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_356">I thank the Senator. On the issue of universal screening and the HIQA assessment of that, I will have to defer to my HSE colleagues as this is a national issue.</p>
+        </speech>
+        <speech by="#" eId="spk_259">
+          <from> Dr. Colm Henry<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_357">HIQA did conduct a health technology assessment, or HTA, of universal screenings, which applies in two of the 17 countries it looked at. HIQA advised a more targeted screening programme as a screening programme has to demonstrate value for money as part of any evaluation value if it is to be applied at scale. That targeted screening would only identify children at risk at birth, those with a family history of dysplasia and those who had a breech delivery. We will shortly establish a full screening programme and we are trying to finalise a proposal for that. We have established a service in 16 centres, with ultrasound scans and assessment at six weeks for children in those risk groups. The numbers that are going through the service correspond to the kinds of numbers one would expect to see in those risk groups. We would like to see this transformed into a fuller screening service. The ultimate determiner of that is the national screening advisory committee which sits within the Department of Health. We will certainly be making that case.</p>
+        </speech>
+        <speech by="#" eId="spk_260">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_358">The Senator asked about the cases that happened in Galway and in the Beacon Hospital. I understand that there was a retirement in Galway of a surgeon who did these procedures. The hospital was supported by colleagues in Crumlin hospital until a new consultant could be appointed. Members will be aware that the Crumlin hospital consultants are compliant with the criteria for developmental dysplasia of the hip surgery. With regard to the Beacon cases, I am not familiar with them but I understand they were done under a charitable process. Again, an audit was taken to ensure they were compliant. These were again Crumlin hospital surgeons.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_261">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_359">Will CHI now audit infants discharged from clinic with a single normal acetabular index in light of the fact that one such measurement does not exclude development of hip dysplasia?</p>
+        </speech>
+        <speech by="#" eId="spk_262">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_360">I will have to defer to my colleague on that question.</p>
+        </speech>
+        <speech by="#" eId="spk_263">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_361">We tend to look at the trend of what the X-rays look like. It depends on the risk factors and the original diagnosis. If the hip was dislocated when very underdeveloped, you would keep an eye on them longer and would not take just one measurement. If it has never really been a concern and it was just a case that somebody thought there was something there, you might discharge them with one X-ray measurement, if it is normal obviously.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_264">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_362">I ask for comment on the leaked report, which has upset so many families and others. I am aware there was reference to the CEO but the families deserve an apology, as do the surgeons and staff involved. Will the witnesses comment on that?</p>
+        </speech>
+        <speech by="#" eId="spk_265">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_363">The most important thing is that the patients identified in relation to time waiting were all reviewed, redistributed and dated and had their treatment. I have met the staff involved and by their own admission, they are a better functioning team than they were prior to that intervention. That is a positive. They are still engaging with supports to make sure they can build themselves up to be a well-functioning team in advance of the new children's hospital, which is a focus for us right across the organisation.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_266">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_364">It is my understanding from reports that Ireland has the highest number of total hip replacements. Will the witnesses comment on this in the context of experiences elsewhere?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_267">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_365">I ask the witness to be very brief as we have one more speaker.</p>
+        </speech>
+        <speech by="#" eId="spk_268">
+          <from> Mr. David Moore<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_366">I am not aware of where the Senator is getting that information. It may be correct. I did not know we were the world leaders, if you want to put it that way, in hip replacement surgery. I cannot comment on that.</p>
+        </speech>
+        <speech by="#" eId="spk_269">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_367">Not to be unhelpful, but that is a matter outside of CHI's paediatric service.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_270">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T11:50:00+01:00"/></from>
+          <p eId="para_368">The challenge I have is not to get emotional in this discussion. Before I ask questions, I should say there is nothing personal in this. I know that each and every person here is a good person who is trying to do their best but collectively, ladies and gentlemen, something has gone terribly wrong. It is a scandal of international dimensions.</p>
+          <p eId="para_369"> This report, which CHI has not published, is absolutely shocking. My son had spinal surgery in Temple Street hospital in 2018. If I had known about the contents of this report, I would not have given consent. This report shows that CHI is operating a three-ring circus. The language used in the report refers to a toxic and broken culture and abhorrent work practices. Let me be clear: the rogue consultant narrative CHI is relying upon is only a symptom of the problem. It is stated over and over again in the report that the problem lies with the senior leadership team - the executive and the board. They are the problem and they must take collective responsibility for that. Will they take collective responsibility for that?</p>
+          <p eId="para_370"> In the conclusion of the report it states that "a substantial and persistent message of concern" over apathy regarding the lack of management, leadership and good governance "along with poor operational oversight and accountability" came through very strongly during the examination. It refers to a lack of trust in leadership in being able to adequately challenge and address the issues raised in this report, which CHI is refusing to release.</p>
+          <p eId="para_371"> My next question is for Dr. Henry and I am sorry to have to address it to him. Bearing in mind the contents of this report and these conclusions, does he have confidence in the senior leadership team and the board, which have presided over all of this harm, to transition three children's hospitals into CHI? I do not. I would not allow my child to be treated in the environment that is set out and described in the report. I am sorry to say that I am not at all reassured by the witnesses' responses. "Sorry" does not cut it. I put it to Dr. Goldman and Dr. Okafor that when I was in with this committee and I described the circumstances of my son's surgery, how late it was and how unnecessarily traumatising it was, the doctors were aware of all of this and they did not inform the committee of the risk factors involved. I am, therefore, not convinced that they are fully open and invested in open disclosure. It is clearly not the case. Do the witnesses accept responsibility for this? I do not want an apology. Do they have confidence, having heard what is in these reports? If they were running Tayto Park, I would not let my children go there. I will be as frank as that.</p>
+          <p eId="para_372"> Who is doing CHI's public relations and crisis communications? What company does CHI employ to do its crisis communications, public affairs and public relations? How much of our taxpayers' money is CHI paying them?</p>
+          <p eId="para_373"> I have a few more questions. In this report there is a very alarming issue around the urological wait list. There is a cohort of patients known as the Crumlin orphans who are not receiving treatment from a urological surgeon with higher specialist training for the transitional pathway treatments that they need. That is absolutely extraordinary. These are children who need surgical procedures, which are routine in other jurisdictions, on their little penises and on the reproductive organs of teenage girls and teenage boys. According to the report, those children are reaching the transitional pathway to adult services. How many of those children have become infertile due to a lack of surgical intervention?</p>
+          <p eId="para_374"> If someone goes into a bathroom and accidentally switches on the fan when they meant to turn on the light, that is a mistake. This, however, is a systematic and systemic failing of these children on the urology wait list. I raised this several times in the Seanad last year and the Minister refused to come into the Seanad for my Commencement matters. It was reported by some of our journalist colleagues here. I am absolutely shocked to think that we have de facto sterilisation of disabled children in this country. That is shameful. It is an international scandal of proportions that I struggle to find the vocabulary to describe. How many children have become infertile and how many children's reproductive capacities have been compromised due to a lack of timely surgical intervention?</p>
+          <p eId="para_375"> The other question I have relates to other reports that are buried and that have not been published. I ask CHI to give an undertaking to furnish me, by way of the committee, with the Dixon report - I am not finished - and the other reports that have been mentioned. How can I or any of the parents here give informed consent for their children to be treated by CHI if we do not have the full facts about the actual circumstances and the risk factors CHI presides over? Let me be clear: the representatives as a board and as senior leadership - and they are very highly remunerated and have competed to be in their positions - can delegate authority but they cannot delegate responsibility. They are responsible personally, individually and collectively for everything that happens or fails to happen on their watch, and saying "it was like that when I got here" is not a defence.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_271">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_376">Senator, the witnesses will need time to respond.</p>
+        </speech>
+        <speech by="#" eId="spk_272">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_377">I do accept accountability, as I said.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_273">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_378">No. Responsibility.</p>
+        </speech>
+        <speech by="#" eId="spk_274">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_379">And responsibility, and that is why-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_275">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_380">So what will Ms Nugent do? How will she discharge that responsibility? Will she just carry on?</p>
+        </speech>
+        <speech by="#" eId="spk_276">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_381">No, and that is why I have reconfigured our executive structures, going from executive level right down to clinical director level and clinical specialty level, in order that we can ensure that we are measuring the right things - and it is not about outputs but about outcomes - and that if there are issues, we deal with them quickly and head-on.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_277">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_382">Again, as with the report, I never hear the word "children" or the word "parents". I hear measurements, quantitative statistics and this, that and the other.</p>
+          <p eId="para_383"> Moving on to the other questions, who is doing CHI's PR?</p>
+        </speech>
+        <speech by="#" eId="spk_278">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_384">We manage our crisis management, etc., internally. We have a communications department. We have a company called Q4 on a retainer monthly. For example, we had a session with it to prepare ourselves for today.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_279">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_385">How much is CHI paying Q4?</p>
+        </speech>
+        <speech by="#" eId="spk_280">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_386">I do not know the exact figure off the top of my head. I will have to come back to the Senator on that.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_281">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_387">Will CHI send that to the committee?</p>
+        </speech>
+        <speech by="#" eId="spk_282">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_388">We will.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_283">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_389">CHI is getting value for money from the rogue consultant narrative. I am very disappointed to hear that narrative. This is a systemic and systematic failure at board and executive level, and CHI is not fit for purpose. I am very alarmed, given what we know, that it is purported that the transition into CHI can be trusted. I think that will be a major risk event and I am glad to see that the HSE has intervened and stepped in because this needs oversight and needs to be very carefully managed. We are talking about harm to children. Again, can Dr. Goldman or Dr. Okafor tell me how many children have become infertile due to a lack of timely intervention on the urological pathway?</p>
+        </speech>
+        <speech by="#" eId="spk_284">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_390">Dr. Goldman will answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_285">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_391">I am not aware. It is impossible to say-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_286">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_392">The witnesses do not know. I know that Dr. Okafor knows the consequences and implications of children not receiving timely intervention on the urological pathway. The witnesses do not know. What do the parents think of that? That is shocking. I have highlighted this in the Houses of the Oireachtas on behalf of the people who have elected me here and who have given me a mandate. We have put this down on the record. I have here all my contributions, at least half a dozen contributions in which I warned about the lack of surgical interventions on the urological pathway, which is routine in other jurisdictions. As I said to Dr. Goldman the last time, he has come from Great Ormond Street. Is he not shocked by what he finds in this Republic in terms of the suboptimal outcomes for children in CHI?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_287">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_393">There are just 30 seconds remaining.</p>
+        </speech>
+        <speech by="#" eId="spk_288">
+          <from> Dr. Allan Goldman<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_394">I thank the Senator for his questions. I came here from Great Ormond Street with huge optimism about the prospects of the new hospital in bringing everything together. As issues arose, and many were legacy, we instituted as openly as we could reviews-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_289">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_395">This word "legacy" has been used repeatedly, but the witnesses do not know how many of our children have become infertile due to a lack of timely intervention. Again, it is like the light switch and the fan switch. That is not a mistake; that is an ongoing systemic and systematic failure of our children, with disabled children being de facto sterilised for lack of intervention on the witnesses' watch and they do not even know how many are affected.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_290">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_396">Thank you, Senator. We are out of time on that slot. There are a number of unanswered questions there. The witnesses might write to the committee to answer some of the questions we did not get answers to, if that is agreeable.</p>
+        </speech>
+        <speech by="#" eId="spk_291">
+          <from> Ms Lucy Nugent<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_397">Certainly. If the committee would like, Dr. Goldman could give some feedback on the issue Senator Clonan has raised because we did look at the scientific evidence, consulted with a urologist, etc.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_292">
+          <from> An Cathaoirleach<recordedTime time="2025-06-19T12:00:00+01:00"/></from>
+          <p eId="para_398">I think the committee will agree that we will engage again with CHI on this issue in the near future to get answers to some of the other questions.</p>
+          <p eId="para_399"> I thank CHI, the HSE and the Department of Health for engaging with the committee on this issue. The committee remains concerned about these serious issues and we will consider the matter further. As I said, I expect we will be in touch again.</p>
+          <p eId="para_400"> The next meeting in public session is a meeting of the select committee with the Minister for Health, Deputy Jennifer Carroll MacNeill, to consider the Estimates for public services for 2025, Vote 38 - Health. It has been agreed that the next meeting of the joint committee will be held in private session at 3.15 p.m. on Tuesday, 24 June, on MS Teams to consider correspondence and other committee matters. The joint committee's next meeting in public session will be on Wednesday, 2 July 2025.</p>
+        </speech>
+        <summary eId="sum_9"> The joint committee adjourned at 12.06 p.m. until 9.30 a.m. on Wednesday, 2 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

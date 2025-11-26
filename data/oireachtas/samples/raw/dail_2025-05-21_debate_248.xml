@@ -1,0 +1,391 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-05-21/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-05-21/debate"/>
+          <FRBRdate date="2025-05-21" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_education_and_youth"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-05-21/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-05-21/debate/mul@"/>
+          <FRBRdate date="2025-05-21" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-05-21/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_education_and_youth/2025-05-21/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-24" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AislingDempsey" href="/ie/oireachtas/member/id/Aisling-Dempsey.D.2024-11-29" showAs="Aisling Dempsey"/>
+        <TLCPerson eId="CathalCrowe" href="/ie/oireachtas/member/id/Cathal-Crowe.D.2020-02-08" showAs="Cathal Crowe"/>
+        <TLCPerson eId="DarrenORourke" href="/ie/oireachtas/member/id/Darren-O'Rourke.D.2020-02-08" showAs="Darren O'Rourke"/>
+        <TLCPerson eId="EmerCurrie" href="/ie/oireachtas/member/id/Emer-Currie.S.2020-06-29" showAs="Emer Currie"/>
+        <TLCPerson eId="GarethScahill" href="/ie/oireachtas/member/id/Gareth-Scahill.S.2025-01-29" showAs="Gareth Scahill"/>
+        <TLCPerson eId="JenCummins" href="/ie/oireachtas/member/id/Jen-Cummins.D.2024-11-29" showAs="Jen Cummins"/>
+        <TLCPerson eId="JoeConway" href="/ie/oireachtas/member/id/Joe-Conway.S.2025-01-29" showAs="Joe Conway"/>
+        <TLCPerson eId="LindaNelsonMurray" href="/ie/oireachtas/member/id/Linda-Nelson-Murray.S.2025-01-29" showAs="Linda Nelson Murray"/>
+        <TLCPerson eId="PaulineTully" href="/ie/oireachtas/member/id/Pauline-Tully.D.2020-02-08" showAs="Pauline Tully"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="RuthCoppinger" href="/ie/oireachtas/member/id/Ruth-Coppinger.D.2014-05-23" showAs="Ruth Coppinger"/>
+        <TLCPerson eId="RyanOMeara" href="/ie/oireachtas/member/id/Ryan-O'Meara.D.2024-11-29" showAs="Ryan O'Meara"/>
+        <TLCPerson eId="ShonaghNiRaghallaigh" href="/ie/oireachtas/member/id/Shónagh-Ní-Raghallaigh.D.2024-11-29" showAs="Shónagh Ní Raghallaigh"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM OIDEACHAS AGUS ÓIGE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Education and Youth</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-21">Dé Céadaoin, 21 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-21">Wednesday, 21 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 02:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 02:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RuthCoppinger">Ruth Coppinger</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#JoeConway">Joe Conway</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JenCummins">Jen Cummins</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#LindaNelsonMurray">Linda Nelson Murray</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#EmerCurrie">Emer Currie</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GarethScahill">Gareth Scahill</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#AislingDempsey">Aisling Dempsey</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PaulineTully">Pauline Tully.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ShonaghNiRaghallaigh">Shónagh Ní Raghallaigh</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#RyanOMeara">Ryan O'Meara</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#DarrenORourke">Darren O'Rourke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#PeterRoche">Peter Roche.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#CathalCrowe">Teachta / Deputy Cathal Crowe sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-05-21T14:00:00+01:00"/></heading>
+        <speech by="#CathalCrowe" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:00:00+01:00"/></from>
+          <p eId="para_15">In advance of today's meeting, apologies were received from Senator Curley. Before we proceed, I will go through some housekeeping matters. In accordance with Standing Orders I wish to make the following declaration. I do solemnly declare that I will duly and faithfully and to the best of my knowledge and ability, execute the office of Cathaoirleach of the Joint Committee on Education and Youth without fear or favour, apply these rules as laid down by the House in an impartial and fair manner, maintain order and uphold the rights and privileges of members in accordance with the Constitution and Standing Orders.</p>
+          <p eId="para_16"> I remind members of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the place where the Parliament has chosen to sit. In this regard, I ask any member partaking in the meeting via Teams that prior to making their contribution to the meeting, they confirm they are on the grounds of the Leinster House campus. </p>
+          <p eId="para_17"> Members are reminded of the long-standing parliamentary practice to the effect that they should not criticise or make charges against any person or entity by name or in such a way as to make him or her identifiable, or otherwise engage in speech that may be regarded as damaging to the good name of a person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative that they comply with such direction.</p>
+          <p eId="para_18"> It is a great honour to have been appointed as Cathaoirleach of this committee. I thank An Taoiseach for nominating me to this position. I look forward to working with each of the committee members in a genuine spirit of partnership and co-operation. I am confident we will bring our combined skills and enthusiasm to bear and make this a highly productive committee that discharges its functions in an efficient and enlightened way. I welcome all members of the committee, particularly those who are newly elected Members of Dáil Éireann and Seanad Éireann.</p>
+          <p eId="para_19"> I take this opportunity to pay tribute to the members of the previous committee on education, namely, the Committee on Education, Further and Higher Education, Research Innovation and Science. I hope this committee will be equally effective. I anticipate that we will refer to and build on the valuable work carried out by the previous committee, which identified key issues relating to education that need to be addressed. </p>
+          <p eId="para_20"> As we all know too well, however, there are seismic changes in the world, including the outcome of the US election and the rapid acceleration of the development of AI technology. In this changed reality, I strongly believe education will face significant challenges in continuing to provide world-class opportunities to all of our students. They deserve no less as they face a very different future, both in terms of how they learn and how they ultimately progress to meaningful job opportunities or to retrain at a later stage in life.</p>
+          <p eId="para_21"> It is also imperative that we continue to provide the crucial education supports required by those who have special needs or as a result of their circumstances, experience or educational disadvantage. This country has come a very long way in cherishing all of its citizens in equal measure, but we must continue to build on the strong foundations that have been put in place.</p>
+          <p eId="para_22"> Education also has an extremely important role to play in supporting positive mental health. It has never been more important that schools play a significant role in educating young people on positive mental health and, equally, on preventative measures to assist those who are at serious risk due to bad mental health. </p>
+          <p eId="para_23"> The inclusion of youth in our remit is also very important. The previous committee had a policy of inviting young people before it in order that their voices could be heard. These voices fed into recommendations that ultimately changed Government policy. I hope this committee can continue that legacy because young people are our future.</p>
+          <p eId="para_24"> I hope our collective efforts will feed into and support the efforts of the Minister for Education and Youth and the Minister of State with responsibility for special education and inclusion.</p>
+          <p eId="para_25">I am confident that our combined efforts will further Ireland's reputation as a country that truly values and supports education as well as the development of our youth to their full potential. I will endeavour to be as fair and impartial as possible to all members of the committee. I strongly believe a united approach, whereby all members contribute and feel their efforts are worthwhile, will yield the very best results from the committee. Do any members wish to comment?</p>
+        </speech>
+        <speech by="#PaulineTully" eId="spk_2">
+          <from>Senator Pauline Tully<recordedTime time="2025-05-21T14:10:00+01:00"/></from>
+          <p eId="para_26">I thank the Cathaoirleach and congratulate him on his appointment. I am looking forward to working with him and with all the other members on addressing the challenges and barriers relating to our education system. I want to say how good our education system is, and I commend all of those involved in education in this country. Our system is the envy of many other countries but, as I have said, there are challenges and barriers we need to address and, I hope, remove.</p>
+          <p eId="para_27"> The Cathaoirleach mentioned special education. We are all contacted on a regular basis about the lack of appropriate school places in our areas for children with additional educational needs. It is about looking at this in order that children can be educated with their siblings in their local communities as much as possible while getting the appropriate education. This is made more difficult by the lack of supports in communities, in our children’s disability network teams, CDNTs, and in primary care.</p>
+          <p eId="para_28"> Another issue raised regularly with me is the lack of proper funding for schools. The capitation grant probably needs to be reviewed. The requests on an ongoing basis for voluntary contributions from parents, which we know are not really voluntary, continue to create problems for many.</p>
+          <p eId="para_29"> I would like us to look at the criteria for how schools are granted DEIS status. I know of a situation where three of the four primary schools in a town have DEIS. It is very difficult to work out the precise criteria that are used.</p>
+          <p eId="para_30"> Every August and September, those of us from rural Ireland are inundated with representations from parents whose children have not got places on school buses to their local schools. Will the review of school transport that took place be implemented? When will it be implemented to ensure that all students are eligible for public transport to their schools?</p>
+          <p eId="para_31"> There are many other issues, including the expansion of Gaelscoileanna, which I am looking forward to teasing out with the members and the witnesses who come before the committee. I wish the Cathaoirleach well in his role, I am looking forward to our work.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:10:00+01:00"/></from>
+          <p eId="para_32">I thank Senator Tully for her kind remarks. This will not be a very long meeting, but we have an agenda item to go through, namely, our work programme for the coming weeks and into the autumn. I will get to it in a while, and members will be able to email specific requests. I noted at another meeting I attended earlier, which Deputy Currie also attended, that the secretariat recorded suggestions as they were being made in by those contributing.</p>
+        </speech>
+        <speech by="#RyanOMeara" eId="spk_4">
+          <from>Deputy Ryan O'Meara<recordedTime time="2025-05-21T14:10:00+01:00"/></from>
+          <p eId="para_33">I congratulate the Cathaoirleach on his appointment. On a personal level, I wish him the best. I know this is an area in which he has great expertise and about which he is very passionate. I look forward to working with him and with every member of the committee in a collegiate way on what is a very important issue.</p>
+          <p eId="para_34"> Education is the great equaliser in our society. I hope we will come at our work from the viewpoint of how we can best benefit children in the country. I come from a working-class background. The education I got has probably led to me being in the position I am in today. I hope that regardless of the challenges children face in life, whether it is socioeconomic status and trying to advance in society or special needs requirements, we can provide everything that is needed to give them the absolute best chance in life.</p>
+          <p eId="para_35"> I will most definitely engage on our work programme. Senator Tully mentioned school transport and special education. I was at the briefing earlier by the Minister of State, Deputy Michael Moynihan, on school transport. I raised the issue of the age limit of 70 years for school transport drivers. This is a matter on which we need to engage.</p>
+          <p eId="para_36"> We should at all times try to see how we can best support our school principals, special needs assistants, SNAs, secretaries, caretakers, teachers and, in particular, students and their parents. I look forward to working on the committee. I hope we can get some very good work done.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_5">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-05-21T14:10:00+01:00"/></from>
+          <p eId="para_37">The reason I chose the education committee as a top priority is because education is such a big issue in my constituency of Dublin West but also nationally. Education is of huge significance in every aspect of life. I have experience of teaching in an area of what is called disadvantage and teaching students with additional needs and I would like to bring this to bear as a teacher and a parent.</p>
+          <p eId="para_38"> I want to make a point on education spending. Ireland has among the lowest spends on education in the OECD. We should not fool ourselves or clap ourselves on the back with regard to the education system. There are massive deficits. We have fallen below the OECD average by approximately 8% and spending fell dramatically between 2015 and 2021. Education was particularly gutted during the financial crash. Certainly in my area we lost hundreds of teachers and we have not made up that deficit. This has to be a priority for the Government and for the education committee to bring home, particularly since the population has risen dramatically.</p>
+          <p eId="para_39"> As a teacher I attended ASTI conferences and I heard some of the issues affecting teachers on the ground. One of the issues at present is leaving certificate reform. The Government seems hell bent on coercing teachers to accept what is being foisted on them.</p>
+          <p eId="para_40"> I am due to speak in the Dáil on Gaza. In case I am not here when we are discussing that work programme the absolute priority, and I do not think it is controversial, is for us to convene an urgent session on additional needs education. We spent yesterday discussing special education, autism, neurodivergence and disabled children being left behind. Because the school year is running down dramatically, this has to be an urgent issue. What format this will take I do not know but I would have thought we would need the Ministers to come before the committee. It is a bit confusing because there are three Ministers with responsibility. There is the Minister for Education, the Minister of State with responsibility for special education and another Minister. It is all very confusing. I do not think it helps that it is spread across so many areas.</p>
+          <p eId="para_41"> The Minister visited a school locally last week and told the principal there was no teacher retention or recruitment problem. If we are starting from this basis it is a real problem. We need an urgent session because so many parents are still without school places in my area and, I am sure, in many other areas. There are buildings that have been sanctioned and counted as being in place that are actually not in place. These are key issues with regard to how we can get the modular buildings that have been approved in place to cater for students. I have other issues on my list and if I do not get to say what they are I will email them. Everybody would agree that we need to discuss these urgently.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:10:00+01:00"/></from>
+          <p eId="para_42">I thank Deputy Coppinger. If she does not make it back after speaking in the Dáil she can email them in and they can all be considered and, hopefully, factored into the work programme.</p>
+        </speech>
+        <speech by="#JenCummins" eId="spk_7">
+          <from>Deputy Jen Cummins<recordedTime time="2025-05-21T14:10:00+01:00"/></from>
+          <p eId="para_43">I congratulate the Cathaoirleach on his appointment and I wish him the very best of luck. I am delighted to be here. I have worked for decades in education and youth work. I have worked at every level of the education system, from early years through primary and secondary levels, I taught at third level and I have just completed a doctorate. I would love to see the committee tackle the issues that exist. We have an excellent education system but there are things we could do better. These include, for example, DEIS schools and educational disadvantage. I can go into this at a deeper level later. There is also the issue Deputy Coppinger raised regarding special education. This is possibly our burning issue. I would also like a discussion on the school completion programme. There are many issues with the school completion programme, including how it feeds into the new attendance initiatives. There is also the issue of multidenominational schools and parental choice in this country.</p>
+          <p eId="para_44"> I am looking forward to working with everyone in a collegiate way. This is a very important committee because the formation of every part of us as a human is our education. It feeds into every other part of our society. I am really looking forward to working on the committee and I welcome the opportunity.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_45">Well said. I thank the Deputy. I call Deputy Roche.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_9">
+          <from>Deputy Peter Roche<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_46">I thank the Cathaoirleach and congratulate him on his chairmanship. I have no doubts. He mentioned he is fair and balanced. From my perspective, I am a team player as well. I love the notion that we can do the best required of us in this forum. Turning to my background, I was not a teacher but I have been involved with the boards of management of schools for a long time. I was ten years with Galway and Roscommon Education and Training Board. I have seen the deficit in the educational structure in my county and this is probably replicated around the country. I would like to think that from today perhaps we would have the work programme and it would be categorised into areas of urgent attention, areas that could be prioritised next and then what might be desirable, and perhaps - this is my own take on it - we could draw up a plan and deal with the pressing issues, or try to deal with them, and then work through what I will not call luxury items but definitely what might not be as challenging for ourselves. There are many areas, as was mentioned. I am looking forward to participating. I am a team player and I am never going to be political in my commentary in here. It will be about how we can assist each other in getting the best result from this forum.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_47">I thank Deputy Roche. It is much appreciated. I call Deputy Dempsey.</p>
+        </speech>
+        <speech by="#AislingDempsey" eId="spk_11">
+          <from>Deputy Aisling Dempsey<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_48">I thank and congratulate the Chair. I was delighted to see his appointment. I know he will bring his energy and enthusiasm to this role as he does to his others. I concur with some of the other contributors who talked about the great strides we have made in education over many years. At its most basic level, we have made it more accessible and affordable through, most recently, free schoolbooks and school meals. I would like to see us continue on with this accessibility work. I would like to see this committee focus on Gaelscoileanna and Educate Together schools and exploring how we can support them more and grow them.</p>
+          <p eId="para_49"> School bus transport was another issue mentioned. That review has been complete for a while now, with only some pilot programmes. We need to see it implemented. As Deputy Coppinger said, though, special education should be our key focus. We have had many new classrooms opened. Among the vast majority of children in my area who have a place for September, some have places that are 20 km or 30 km from their homes. Just providing a place is not good enough. We need to strive for better in that regard.</p>
+          <p eId="para_50"> Turning to the subject of youth, it will be important we meet in this room with youth groups. I know we have a great age and gender profile here but we need to hear from the people we are discussing. These are young people and groups like Youth Work Ireland and others and this should inform some of our work.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_12">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_51">I thank Deputy Dempsey. I call Senator Nelson Murray.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_13">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_52">First, I congratulate the Chair. I wish him the very best of luck.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_14">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_53">I thank the Senator very much.</p>
+        </speech>
+        <speech by="#LindaNelsonMurray" eId="spk_15">
+          <from>Senator Linda Nelson Murray<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_54">I can already see from what people are saying here that we are all thinking very similarly. I think we are going to be a great group. I hope we can discuss many things and bring about change.</p>
+          <p eId="para_55"> Moving to the issues I would like to see raised in this committee, going back to what Deputy Coppinger said, I am passionate about inclusion in education. I am on the board of a special school in County Meath. I asked for a trial of a pilot programme because where we are really stuck when it comes to special schools is with regard to bus escorts and buses arriving at schools. This is because it is up to the principal and vice principal of the school to manage these aspects. If a bus escort is not available, if they are sick or something has happened, that child does not get to school. We need to have a transport manager who works within a certain area and helps to co-ordinate all this. Otherwise, it is up to the school. This is one thing I would very much like to work on. Additionally, it takes the bus escorts six weeks to get social welfare when they are not working over Easter, Christmas or the summer. It is very hard to get people into this job. The bus escorts are working two hours in the morning and two hours in the afternoon, so not many people will go for that job. We are lucky to have these escorts and yet they have to wait six weeks to get their social welfare. They also get means-tested every time they go for it. Again, this is something else I would like to see us discussing.</p>
+          <p eId="para_56"> Another matter is including special education in mainstream schools. We have an unbelievable project in County Meath. It is in Boyerstown National School and is called the rainbow room. It is incredible to see the integration between children with highly complex needs and other children and how it is working so well. It took the dedication of a principal to get that done but it is well worth people seeing it. It is something that could be rolled out throughout the country.</p>
+          <p eId="para_57"> We have 22 school projects in County Meath now, which is fantastic. Many of them, though, are caught up in the planning process. This is very frustrating. I know of one school in particular where the planning application went in last June. There is now another planning problem and a requirement for further information. Nothing can happen until that is done, so there is a lot of red tape there.</p>
+          <p eId="para_58"> Turning to the topic of youth, in preparation for this meeting today I met with the Youth Council of Ireland and Youth Work Ireland Meath. Again, the issue is funding. Volunteers are doing brilliant work in all our youth groups and youth councils. I would like to see more funding going in those directions.</p>
+          <p eId="para_59"> On early education supports, we know children from the ages of one to four have greater sponges in their heads than even older children have. It is very important we support them because they can take in so much information. Those are my bits for today.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_16">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_60">I thank the Senator. I call Deputy Currie.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_17">
+          <from>Deputy Emer Currie<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_61">I offer my congratulations to the Cathaoirleach. I look forward to working with him and all the members of the committee. Education and schools are major issues in my constituency of Dublin West. I look forward to discussing these issues from local and national perspectives. My main aim is for us to have an education system where all children belong. This means tackling the existing barriers, whether these are socioeconomic, language-based, such as access to English as an additional language, EAL, teachers, or they relate to children with additional needs. This is the biggest issue we are here to discuss. It would be worthwhile to bring the Minister of State with special responsibility for special education into the committee. A task force has been set up in Dublin 15 and I hope we would have an opportunity to discuss its lessons and recommendations. Ultimately, I hope we will be able to work together on a forward-planning system for the delivery of special school places and resources for children in our communities. I am very much about the practical solutions and I hope we can get into the weeds of the problem so that we can come up with these solutions.</p>
+          <p eId="para_62"> I do hope this will be a committee focused on education and youth.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_63">Yes, absolutely.</p>
+        </speech>
+        <speech by="#EmerCurrie" eId="spk_19">
+          <from>Deputy Emer Currie<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_64">I want us to spend a significant amount of time on the youth aspect. Our youth system now has seen an increase in investment from the justice perspective but we have not seen the same investment in universal youth services. These are extremely important in our communities and for our families. There is also a good opportunity here for us to focus on early learning. I am looking forward to getting stuck into all those issues with all the members.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_20">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_65">I thank the Deputy. The previous iteration of this committee straddled further and higher education as well, so this time we can truly say we are the committee of young people. Our remit goes as far as the leaving certificate cycle. We really are a committee for young people and, it is hoped, in line with what the members have said, we will get some young people in here in the weeks ahead to be witnesses and have their voices heard in this room too. I call Senator Scahill.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_21">
+          <from>Senator Gareth Scahill<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_66">Like my colleagues, I congratulate the Chair on his appointment and wish him the best of luck.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_22">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_67">I thank the Senator.</p>
+        </speech>
+        <speech by="#GarethScahill" eId="spk_23">
+          <from>Senator Gareth Scahill<recordedTime time="2025-05-21T14:20:00+01:00"/></from>
+          <p eId="para_68">I look forward to working with everybody on this committee. We can achieve a lot. I am not going to go over what my colleagues mentioned already, but since I entered the Seanad, I have had the opportunity to visit several secondary schools and some primary schools. Most of them were already on the schools building programme. In the time it took to implement that programme, however, their needs had evolved and changed. I hope we can flesh out the detail of this process and see if there are ways we can address it over the term. I refer as well to the delays in temporary accommodation for capacity issues. This is another matter we need to examine and try to speed up and simplify that process for the schools we are dealing with.</p>
+          <p eId="para_69"> Like Deputy O'Rourke, I am on the artificial intelligence committee. I believe there are many synergies here and there will be a great deal of correlation in that regard.</p>
+          <p eId="para_70">I look forward to fleshing that out with the whole committee as a method of preparing our students for the jobs in three, four or five years' time that we do not currently know exist. We must provide students with the tools to meet that demand. This will involve going further into the STEM subjects and giving students opportunities by tooling schools to deliver in that regard. I look forward to a collective conversation and discussion on that.</p>
+          <p eId="para_71"> Like my colleagues have said, youth services and the youth element of this committee will be important. Issues around mental health - awareness and supports for young people - are vital, so must form a big part of the committee's work. I have already discussed this matter with Deputy Peter Roche.</p>
+          <p eId="para_72"> The impact, limitations and risks of social media are all matters that we need to explore and discuss so that we can provide an outlet for schools and youth services to support young people in dealing with them.</p>
+          <p eId="para_73"> I look forward to what we can do over the term of this committee.</p>
+        </speech>
+        <speech by="#DarrenORourke" eId="spk_24">
+          <from>Deputy Darren O'Rourke<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_74">I congratulate the Chair on his appointment. The Chair and I were members of committees in the previous Dáil term. For those new to committee work, in my experience, it is a good opportunity to dig deep into issues and work collectively on them, which is nice.</p>
+          <p eId="para_75"> There are a few important areas on which I want to focus, the first of which has already been mentioned, that being, special educational needs. That is an immediate priority. There are strands to it, such as teaching resources, SNAs and physical space. That is important work that needs attention. Perhaps we could hear from the NCSE, the Minister and the Minister of State.</p>
+          <p eId="para_76"> Educational disadvantage is another issue. There has been significant investment in education and a number of welcome universal measures have been taken, but we need to discuss educational disadvantage. There is a DEIS plan and a proposed DEIS Plus scheme, so this is an important area to examine. There are indicators, for example, reduced school days and absenteeism, that might highlight issues in particular areas. There are issues around workers. Fórsa is conducting a ballot of SNAs, caretakers and school secretaries. That is an important area of attention.</p>
+          <p eId="para_77"> Another issue is the recruitment and retention crisis, emergency or whatever one wants to call it in the sector. There are many levers that could be tweaked to recruit and retain teachers in the system.</p>
+          <p eId="para_78"> We have just had a large briefing on school transport. You could set your clock by it. However, there are reforms and it is important that we pursue their roll-out.</p>
+          <p eId="para_79"> Irish language education is another important matter. Related to that is the idea that every child should have access to an education that reflects his or her value and priorities, whether that be in terms of special educational needs, religious ethos or non-religious ethos, or language. This is an important matter.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_25">
+          <from>Senator Joe Conway<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_80">Gabhaim buíochas leat, a Chathaoirligh, agus ar an gcéad dul sios ba mhaith liom fíor-chomhgháirdeachas a ghabháil leat ar do cheapachán ar an gcoiste seo. Tá siúl agam go mbeidh tú beannaithe le dea-shláinte as seo amach agus go mbeidh tú ábalta ansin smacht a chuir ar an gcoiste seo ar aon nós.</p>
+          <p eId="para_81"> I read somewhere about how someone had remarked that, when he was 15 years of age, he thought his father knew nothing but when he reached 40, he could not believe how much his father had learned in the intervening 25 years. I started my work in education on 1 July 1957, which was when I started as a junior infant in Ardagh national school in County Longford. Between then and 31 January 2025, when I was very privileged to be elected to the Seanad, I have been continuously involved in education in Ireland, so I have seen a lot of things come and go. After 67 years of involvement in education, the one thing that I know is how very little I know about it in the grand scheme of things. That is why I am buoyed up by the enthusiasm displayed by fellow members here. I think they will all bring their enthusiasms and geniuses. See that? I do not even know what the plural of "genius" is.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_82">Do not look to me for that answer.</p>
+        </speech>
+        <speech by="#JoeConway" eId="spk_27">
+          <from>Senator Joe Conway<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_83">I look forward to immersing myself in the work of the committee and learning, and maybe doing my own little bit of good for the children and young people of this country as a result of this committee's work.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_28">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_84">I wish to advise Deputy Ní Raghallaigh that everyone has made very general contributions. Does she wish to comment now or in a few minutes' time? She has indicated the latter.</p>
+          <p eId="para_85"> We have drifted into an area we will discuss shortly. I will make a few comments. Unlike Senator Conway, I made two efforts to escape education. I promised myself when I had my leaving certificate done that that would be it, but I went off to college and became a teacher. I made a second attempt to break free at the 2020 election only to end up on the education committee. However, I believe education is the most important sector in Irish society. Members have put it well that education is the equaliser.</p>
+          <p eId="para_86"> I will briefly describe how committees work. I have only five years of experience, as I came to the Oireachtas five years ago, but Deputy O'Rourke summed it up perfectly. Debate in the Dáil Chamber is configured to be adversarial. Members look across at the Opposition and it is spokesperson versus Minister, but committees are very much roundtable discussions. Last time, I was a member of the committees that dealt with education, transport and health and found the environment very collegial. Certainly, the transport committee worked well. What is lovely is that we have on that side of the room stakeholders we ordinarily do not get to hear in the Houses of the Oireachtas, giving us good input. Uniquely on this committee, we have a chance to hear young voices. Where possible, we should try to get them in.</p>
+          <p eId="para_87"> I will now refer to the bit that will probably bog us down a little bit, and it is the less attractive side of committee work, namely, dealing with legislation. That can be onerous and tedious due to dealing with amendments and all of that. We will enjoy discussing topical issues and getting into the divestment of schools, DEIS, special education and so on. That is where there is real value in all of this.</p>
+          <p eId="para_88"> Members have mentioned loads of topics. I hope we will touch on some of them before the summer recess and more in the autumn. Some will have to be fitted in around the five-year structure of committees, if no general election takes place. Some topics will recur. The Minister and departmental officials are the most responsible people in terms of answering questions asked by the committee, so we will need to have them here repeatedly.</p>
+          <p eId="para_89"> In addition to what members have requested, I would like to see the committee deal with two other matters. Half an hour ago in the AV room, a group of girls from Our Lady's Bower Secondary School gave an incredible presentation. They talked about the need for leeway shown to children and adolescents with dyslexia when facing State examinations. I see a lot of nodding heads and I believe everyone wants to see that happen. I hope that this committee will have to act as a driving force to see that happen.</p>
+          <p eId="para_90"> The second matter is that I do not think the current model of DEIS fully works, as it is linked to the census. Census statistics are gathered, that information is fed into Pobal and that is supposed to inform public policy for a five-year period. The problem is that, when one captures a data set of young people aged 12, they are nearly leaving secondary school by the time there is implementation of that data set and it is fed into the community. The data set also does not take account of transience and the rental market. I can think of many towns in my own constituency, and I am sure this is the case throughout the country, where people move around. The current DEIS model does not factor in the amount of people who have come to this country seeking international protection, fleeing the war in Ukraine, transience, etc. Therefore, we need a better DEIS model and this committee could give that consideration.</p>
+          <p eId="para_91"> Does Deputy Ní Raghallaigh wish to say a few words at this point?</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_29">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_92">I am looking at my notes and wondering how many of them have already been mentioned, so I think I will just listen, if that is okay.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_30">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_93">We have not covered the bits the Deputy was going to mention.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_31">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-05-21T14:30:00+01:00"/></from>
+          <p eId="para_94">Everything that has been said is great.</p>
+          <p eId="para_95">We had a meeting beforehand. I am not sure if I could discuss anything different to what Deputy O'Rourke and the others have already said. Obviously, special education is important to me. It is my brief. There is a lot of work to be done there, which I am sure has already been covered.</p>
+          <p eId="para_96"> Gaeloideachas is something that is also very important to me. I am on the Coiste na Gaeilge, na Gaeltachta agus Phobal Labhartha na Gaeilge, so I would love to do a bit of work in that regard.</p>
+          <p eId="para_97"> I do not know how much detail I should go into.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_32">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:40:00+01:00"/></from>
+          <p eId="para_98">People have suggested general areas they would like our committee to work on.</p>
+        </speech>
+        <speech by="#ShonaghNiRaghallaigh" eId="spk_33">
+          <from>Deputy Shónagh Ní Raghallaigh<recordedTime time="2025-05-21T14:40:00+01:00"/></from>
+          <p eId="para_99">They are the two main ones I would love to focus on. I could go on, though.</p>
+        </speech>
+        <speech by="#RuthCoppinger" eId="spk_34">
+          <from>Deputy Ruth Coppinger<recordedTime time="2025-05-21T14:40:00+01:00"/></from>
+          <p eId="para_100">Everybody seemed to agree that a meeting on additional needs right now was a burning issue. What format would that take? We have already had sessions in the Dáil, and I am sure there have been in the Seanad, so there is no point in repetition. It would have to include some groups that were at the coal face of trying to get special education places. Would we discuss that?</p>
+          <p eId="para_101"> On other themes that need to be taken up by the committee, I agree with the point made about additional time. That has been raised and is important. The issue of reading schools is one that has come up a lot in my area. On inclusive education, there have been a number of statements made in the newspapers by several TDs and others that are a bit worrying. It is now woke, apparently, to not want one religion dominating the education system. There should be a session about that.</p>
+          <p eId="para_102"> There has been no real progress with sex education since 2018 when I introduced a Bill on the matter. The education committee discussed it but it has not been implemented. That would be particularly relevant to our discussion of the manosphere and the targeting of young men and boys.</p>
+          <p eId="para_103"> The teacher shortage is a crucial issue. It is at the heart of everything. We should discuss how that can be tackled with, for example, extra allowances and measures that other governments are actively taking and this Government is not. The Australian and British Governments are doing an awful lot.</p>
+          <p eId="para_104"> I have never had a discussion on these matters, but they are important, as is the building programme. We should have a report on what the delays are, what the hiccups are, why we are not able to get modular buildings in and why it is taking nine or ten months.</p>
+        </speech>
+        <speech by="#CathalCrowe" eId="spk_35">
+          <from> An Cathaoirleach<recordedTime time="2025-05-21T14:40:00+01:00"/></from>
+          <p eId="para_105">We have those areas covered in other contributions.</p>
+          <p eId="para_106"> We will move on to the Leas-Chathaoirleach position. As Members are aware, a committee may choose to elect a Leas-Chathaoirleach who can perform the duties and exercise the authority of the Cathaoirleach in his absence. I propose requesting nominations for the position of Leas-Chathaoirleach. Members might wish to consult with one another and send nominations to the clerk by 23 May, which is this Friday. Ideally, the election of the Leas-Chathaoirleach will take place at the next private meeting of the committee.</p>
+          <p eId="para_107"> To recap, people should send nominations via email or in writing to the clerk of the committee by close of business Friday. We will deal with it at our next private meeting. We are hoping to have the Minister at the next public meeting. We do not want to take time out of that meeting, so we will deal with it in private session at our next private meeting if that is okay with everyone. Is that agreed? Agreed.</p>
+          <p eId="para_108"> We will now enter private session to deal with some housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_5"> The joint committee went into private session at 2.43 p.m. and adjourned at 3.13 p.m. until 12.30 p.m. on Wednesday, 28 May 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

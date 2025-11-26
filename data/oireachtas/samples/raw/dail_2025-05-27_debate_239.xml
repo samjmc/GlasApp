@@ -1,0 +1,317 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-05-27/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-05-27/debate"/>
+          <FRBRdate date="2025-05-27" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_the_implementation_of_the_good_friday_agreement"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-05-27/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-05-27/debate/mul@"/>
+          <FRBRdate date="2025-05-27" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-05-27/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-05-27/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-29" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AlisonComyn" href="/ie/oireachtas/member/id/Alison-Comyn.S.2025-01-29" showAs="Alison Comyn"/>
+        <TLCPerson eId="ConorMurphy" href="/ie/oireachtas/member/id/Conor-Murphy.S.2025-01-29" showAs="Conor Murphy"/>
+        <TLCPerson eId="CormacDevlin" href="/ie/oireachtas/member/id/Cormac-Devlin.D.2020-02-08" showAs="Cormac Devlin"/>
+        <TLCPerson eId="DavidMaxwell" href="/ie/oireachtas/member/id/David-Maxwell.D.2024-11-29" showAs="David Maxwell"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="FrancesBlack" href="/ie/oireachtas/member/id/Frances-Black.S.2016-04-25" showAs="Frances Black"/>
+        <TLCPerson eId="GarretKelleher" href="/ie/oireachtas/member/id/Garret-Kelleher.S.2025-01-29" showAs="Garret Kelleher"/>
+        <TLCPerson eId="NiallBlaneyIND" href="/ie/oireachtas/member/id/Niall-Blaney.D.2002-06-06" showAs="Niall Blaney"/>
+        <TLCPerson eId="NoelMcCarthy" href="/ie/oireachtas/member/id/Noel-McCarthy.D.2024-11-29" showAs="Noel McCarthy"/>
+        <TLCPerson eId="PatriciaStephenson" href="/ie/oireachtas/member/id/Patricia-Stephenson.S.2025-01-29" showAs="Patricia Stephenson"/>
+        <TLCPerson eId="PeadarToibin" href="/ie/oireachtas/member/id/Peadar-Tóibín.D.2011-03-09" showAs="Peadar Tóibín"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCPerson eId="SeanCroweSF" href="/ie/oireachtas/member/id/Seán-Crowe.D.2002-06-06" showAs="Seán Crowe"/>
+        <TLCPerson eId="ShaneMoynihan" href="/ie/oireachtas/member/id/Shane-Moynihan.D.2024-11-29" showAs="Shane Moynihan"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM FEIDHMIÚ CHOMHAONTÚ AOINE AN CHÉASTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on the Implementation of the Good Friday Agreement</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-27">Dé Máirt, 27 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-27">Tuesday, 27 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 12:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 12:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RoseConwayWalsh">Rose Conway-Walsh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#FrancesBlack">Frances Black</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SeanCroweSF">Seán Crowe</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#NiallBlaneyIND">Niall Blaney</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#AlisonComyn">Alison Comyn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#DavidMaxwell">David Maxwell</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#GarretKelleher">Garret Kelleher</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#NoelMcCarthy">Noel McCarthy</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#ConorMurphy">Conor Murphy</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#ErinMcGreehan">Erin McGreehan</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#PatriciaStephenson">Patricia Stephenson.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#ShaneMoynihan">Shane Moynihan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_16">
+                  <person refersTo="#PeadarToibin">Peadar Tóibín.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#CormacDevlin">Teachta / Deputy Cormac Devlin sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-05-27T12:00:00+01:00"/></heading>
+        <speech by="#CormacDevlin" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-27T12:00:00+01:00"/></from>
+          <p eId="para_17">Apologies have been received from Mr. John Finucane MP and Ms Sorcha Eastwood MP, who may join us online in a few minutes. We have also received apologies from Ms Pat Cullen MP and Mr. Cathal Mallaghan MP.</p>
+          <p eId="para_18"> We have some housekeeping matters. In accordance with Standing Orders, I make the following declaration:</p>
+          <p class="indent_1" eId="para_19">I do solemnly declare that I will duly and faithfully, and to the best of my knowledge and ability, execute the office of Cathaoirleach of the Joint Committee on the Implementation of the Good Friday Agreement without fear or favour, apply the rules as laid down by the House in an impartial and fair manner, maintain order and uphold the rights and privileges of members in accordance with the Constitution and Standing Orders.</p>
+          <p eId="para_20"> I remind members of the constitutional requirement that in order to participate in public meetings, they must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the place where Parliament has chosen to sit. In this regard, I ask members participating via MS Teams that prior to making their contribution to the meeting, they confirm they are on the grounds of the Leinster House complex.</p>
+          <p eId="para_21"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if members' statements are potentially defamatory in respect of an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_22">MPs participating in this committee session from a jurisdiction outside the State are advised that they should also be mindful of their domestic law and how it applies to their participation at these proceedings.</p>
+          <p eId="para_23"> I am delighted and privileged to have been appointed as the Cathaoirleach of the Joint Committee on the Implementation of the Good Friday Agreement. I welcome each and every one of the members and thank them for their participation. I look forward to working with each and every Member of the Dáil and Seanad. I particularly welcome Deputy Seán Crowe, a former Cathaoirleach of this committee. I also welcome the returning members of the committee, namely, Deputies Conway-Walsh and Tóibín and Senator Frances Black, who have been reappointed to the committee. We also have Senators Blaney and Mullen. I know that Deputy McGreehan was also a good attender in the past. I look forward to their contributions and insights. I thank them for their attendance. I particularly welcome the MPs who are attending physically today, namely, Ms Claire Hanna MP and Mr. Dáire Hughes MP. As I said, other colleagues may join online in a short while.</p>
+          <p eId="para_24"> I am pleased that under the orders of reference, our colleagues from the North who have been elected to the Westminster Parliament can attend to participate in these meetings. It is important that we hear from as many voices as possible in our deliberations as that will add value and experience to our discussions on the many interesting topics within our remit. The Good Friday Agreement remains the foundation of all progress that has been made since its inception in 1998. The work is, of course, ongoing and the implementation of the agreement offers us the hope of making further progress on this island and between our two Governments. I look forward to working with all members in a genuine spirit of partnership and collaboration as we work to consider the matters under the remit of this committee.</p>
+          <p eId="para_25"> I will open up to the floor. We have full attendance, or near enough, which is great. I open up to the floor for any comments at this point.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_2">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-05-27T12:05:00+01:00"/></from>
+          <p eId="para_26">I thank the Cathaoirleach and wish him the very best of luck in the future. I look forward to working with all members of the committee. As the Cathaoirleach said, I was a frequent attender of the previous committee on the Good Friday Agreement and I learned a lot from those meetings, which were well attended. There were great discussions and debates.</p>
+          <p eId="para_27"> We must consider our work programme for the next four years with great ambition. The title of this committee relates to the implementation of the Good Friday Agreement and we must consider the parts of the Good Friday Agreement that are yet to be implemented and examine how to strengthen those to strengthen those parts that have been implemented. We need to focus on those considerations which take account of the past and examine how to move to the future. We should continue in the vein in which we worked during the previous committee, including in respect of the shared island unit. We must consider how to enhance and make an impact on that unit, taking advantage of our experience, North and South, in our constituencies to consider how to do that. We should use the committee to bring communities together. The committee should also make a strident effort to ensure it hears the voices of the unionist community. Representatives of that community should be invited to attend. I do not know if that will require a charm offensive but we must all commit to it. This is a friendly home for all voices and those from all backgrounds are tolerated and listened to. When we look back at the end of the term of the committee, if we have heard more unionist voices and voices from all around the island, we will have spent our time well.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_3">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-05-27T12:05:00+01:00"/></from>
+          <p eId="para_28">I wish the Cathaoirleach well and congratulate him on his appointment. It is a wonderful position that comes with responsibility. It is a prestigious position in the sense that this is the only Oireachtas committee that also includes the voices of MPs.</p>
+          <p eId="para_29"> The job of work for this committee is expressed in its title, that is, the implementation of the Good Friday Agreement. It fits in with the programme for Government. I was glad to see in the programme that the Government remains steadfast in its support of the implementation of the Good Friday Agreement in full.</p>
+          <p eId="para_30">I think we get our guidance from that. We did some very good work in the previous committee and I commend the previous Chair, Fergus O'Dowd, for the work he did with us. We worked in a very collegiate way. The focus of our work was, notwithstanding the legacy issues we had to deal with - the legacy Act is still very much to the fore and something we will discuss in parallel - around the constitutional future. In July of last year we did the finance and economic report and brought in experts to do a really good report on that. We have other work to do in terms of using that report in the way we intended. We had spoken about a launch in the North and I would like to see that happen.</p>
+          <p eId="para_31"> We went on to do a report on women and the Constitution and that report contains very rich information and other details we can use in policy formation. The previous committee agreed that the next area we would examine would be health and an all-island healthcare system and I very much look forward to doing that. We realise that work will be quite substantial and will probably take approximately six months. A good basis has been formed by the previous committee. </p>
+          <p eId="para_32"> I wish the Cathaoirleach well and I know everybody here will want to work to fulfil the programme for Government among other matters. </p>
+          <p eId="para_33"> I refer to the cross-party motion on presidential voting rights for Irish citizens in the North that was recently passed in Stormont. We have a lot of interesting and very important work to do and I look forward to working with the Cathaoirleach.</p>
+        </speech>
+        <speech by="#AlisonComyn" eId="spk_4">
+          <from>Senator Alison Comyn<recordedTime time="2025-05-27T12:10:00+01:00"/></from>
+          <p eId="para_34">Like all other members, I wish the Cathaoirleach all the best and congratulate him. I am really looking forward to working on this particular body. I am a Louth-based Senator, and therefore a Border-based Senator. It is particularly important for me to see not only how we can stretch our hands across a very close Border but also how we can work throughout the entire shared island as we now call it.</p>
+          <p eId="para_35"> I did not always work in politics. I have been a journalist for 30 years and have worked with Sky News, UTV Ireland and BBC Northern Ireland. As a young reporter, I had the great honour to be on Ormeau Avenue on 10 April 1998, the day the Good Friday Agreement was signed. The young reporters who were there will never forget looking out the window at Mr. Blair and Mr. Ahern arriving into the yard. We were very excited but we could not have possibly known how seismic it would be. We still see the ripples here now, 25 years later. I feel very honoured that I can be a part of not just implementing anything that has not yet been reached, but seeing how we can improve what has happened already and how we can work with the likes of volunteer organisations, cultural organisations and everything civic that may not have been touched on in the agreement. I look forward to working with each and every member. </p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_5">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-05-27T12:10:00+01:00"/></from>
+          <p eId="para_36">Treisím leis an gCathaoirleach as ucht a cheapacháin mar Chathaoirleach ar an gcomhchoiste seo. Tá mé ag súil go mór leis an obair a bheidh sé ag treorú ar ár son agus muid ag tabhairt faoi chlár oibre chomhchoiste chomhaontú Aoine an Chéasta. Tá spéis i gcónaí á léiriú agam i saol Thuaisceart Éireann agus saol an oileán seo uile. Tá mé ag súil go mór lena mbeidh idir lámha againn, mar dhaoine ag obair le chéile, chun fhorfheidhmiú Chomhaontú Aoine an Chéasta a chur i gcrích. </p>
+          <p eId="para_37"> I congratulate the Chair on his appointment. I have no doubt his expertise in parliamentary procedure will stand him in good stead for the role he is about to embark on with regard to the work of this committee. Like other colleagues, I am extremely excited to be part of the Committee on the Implementation of the Good Friday Agreement. I am of the generation to which Senator Comyn referred, a generation that was filled with hope, enthusiasm and excitement about the future that was put in place by the Good Friday Agreement. Even the name of this committee, referencing the continuing implementation of the Good Friday Agreement, shows us that the agreement is not just a static point but a blueprint and a way forward for the development of society not only in Northern Ireland and on this entire island but across the islands of Ireland and Britain. I look forward to throwing myself constructively into the work programme we have. I hope we will adopt the ingenuity of John Hume's three strands approach in how we look at that work and how to continue to support, augment and strengthen our relationships with civic and political societies in Northern Ireland, as well as our all-island life and exploring further areas of potential co-operation, but also in looking at the east-west relationship in the changed context that has now been brought upon us by what has happened in the United Kingdom in the past few years. I am optimistic, for example, the new agreement between the EU and UK provides a good backdrop for us to continue that work.</p>
+          <p eId="para_38">I look forward to getting stuck in and to learning, listening and collaborating with colleagues from across all parties.</p>
+        </speech>
+        <speech by="#PatriciaStephenson" eId="spk_6">
+          <from>Senator Patricia Stephenson<recordedTime time="2025-05-27T12:15:00+01:00"/></from>
+          <p eId="para_39">I congratulate the Cathaoirleach and look forward to working with him. I think I share the sentiments of the majority of speakers. I am from the North, so I am glad to see there are a number of us representing the North on this committee. I am a child of the Good Friday Agreement, so it is a personal honour for me to be on this committee. I look forward to working with all members. There are so many challenges across this island. Deputy Conway-Walsh spoke about healthcare, which is a major issue I would be delighted to work on to see how we can synergise the two healthcare systems we have. I think the majority of us see that the public have a shared objective for this island in the long term. We might all have different ideas and approaches to how we get there. I hope this can be a constructive and open space to discuss those ideas and approaches, and to bring in unionist voices and the voices of other communities on the South of this island who are often excluded from discussions about the North. I know we have a lot of Border dwellers here, which is fantastic, but I live in the south east and I find that we often focus on the North and the counties of Ulster, and a lot of those other spaces are forgotten and not brought along in that conversation. I hope we can use this space to constructively plan for issues relating to all of the island, and certainly the east-west issues. In particular, we are still dealing with the ramifications of Brexit and what that has done with the splitting of so many issues on our island. I am looking forward to working with all members and I thank them for having me.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_7">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-05-27T12:15:00+01:00"/></from>
+          <p eId="para_40">Déanaim comhghairdeas leis an Teachta Devlin freisin mar gheall ar a ról mar Chathaoirleach. Is post iontach é. Tá go leor deiseanna ann chun a lán tionchar a imirt ar an Rialtas mar gheall ar cad atá ag titim amach ó Thuaidh agus ó Theas. Le cúnamh Dé, beidh am gníomhach aige mar Chathaoirleach ar aon nós. This is a very important committee, and it has a great opportunity, not just on an all-Ireland basis, but also here internally.</p>
+          <p eId="para_41"> One of the big outstanding issues is obviously still legacy. There is an interstate case being taken by this Government against the British Government. I would like us, at an early stage, to bring representatives of the Government before the committee to find out where that case is at. This heartbreaking issue is causing severe damage in the North of Ireland at the moment.</p>
+          <p eId="para_42"> This is obviously the only committee that has representatives from the North of Ireland on it. The only thing stopping Northern representatives attending every committee is a decision by the Dáil to allow that to happen. Leinster House and the Seanad could agree that Northern MPs could attend every committee here if they want to. We should be looking at how we get Northern voices into all aspects of the running of Leinster House, so that rather than speaking to each other with our backs to each other North and South, we actually understand what is happening across the island of Ireland.</p>
+          <p eId="para_43"> I welcome the motion by Sinn Féin and the cross-party motion on presidential voting rights. There is now a Bill in front of the Dáil that I would love every party to sign. The issue of presidential voting rights is something that should be fully cross party in its development through Leinster House.</p>
+          <p eId="para_44"> The other issue is that to a certain extent there is a cap on developments in certain issues because of the Good Friday Agreement. For example, InterTradeIreland has a cap on the number of staff and the investment that goes into it. The Good Friday Agreement, to a certain extent, is a living document, or at least it should be a living document. There are aspects for change that will be necessary as politics hopefully develops in the North. We should also be looking at what steps could be developed to make sure that Stormont functions better for people. I agree fully with the focus on health, and I suggest that the all-island economy is another aspect we need to focus on. Planning together, funding together and delivering services together will make those services better and cheaper to run.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Claire Hanna<recordedTime time="2025-05-27T12:15:00+01:00"/></from>
+          <p eId="para_45">Comhghairdeas to the Cathaoirleach on his new role. I am pleased to be back on the committee. We had a pretty broad agenda in the last mandate, but we were able to be quite agile in responding to various issues that cropped up over those few years. From the SDLP's perspective, we will go wherever we need to go and use all of the democratic levers. This is a particularly meaningful and unique body to bring together representatives from across the island.</p>
+          <p eId="para_46">I know we will get into the development of our work programme. There is much to be picked up on, including issues regarding reform of the Good Friday Agreement. There is a live conversation in Stormont as well as some of the post-Brexit hardenings. I have just come from an event in the Seanad about the North-South bodies. There is an understanding that much more work can be developed there. I always like to remind people that the Good Friday Agreement is not an ornament that we take down and marvel at. It is a toolkit to manage the everyday challenges as well as our longer-term constitutional aspirations. This committee has an important role in driving that.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_9">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-05-27T12:20:00+01:00"/></from>
+          <p eId="para_47">I congratulate the Cathaoirleach on his appointment. I am delighted and proud to be a member of this committee. I think we have become increasingly proud of the Good Friday Agreement over time. The celebration of 25 years the year before last helped us all to appreciate the significance of the Good Friday Agreement. This committee stands out to me as one that is crucial within the Houses of the Oireachtas. I echo comments made by Deputy McGreehan and my parliamentary party colleague, Senator Stephenson, on the importance of plurality of voices, both in the unionist community and the representation we can invite. I appreciation the standing invitation is there but it is also for us as a committee to examine how we can make sure that invitation is as readily available as possible and people are made to feel welcome here. As Senator Stephenson mentioned, it is across the Thirty-two Counties, our entire country. I went to college in the North in the nineties. I think of myself as quite unusual, since much of the population sadly do not have regular visits to the North. They do not have networks in the North unless perhaps it is from family. It is a shame that we have not really brought everybody along with us and we need to be aware of it.</p>
+          <p eId="para_48"> Although I was not a member of this committee, I appeared before the last committee three times as a witness in my previous role as chief commissioner of the Irish Human Rights and Equality Commission, so I would suggest that as well as health rights, equality is one of the next pieces of work that the commission could look at. I know it was on the list of potential next reports. There have been rights and equality issues post Brexit. I would say there has perhaps been too much focus on trade and commerce in the post-Brexit work between both jurisdictions. We have to examine that lived experience of rights and equality and make sure that we hear from the lived experience of those people who are most impacted, particularly people in the Border counties.</p>
+          <p eId="para_49"> Regarding the workings of the committee, I go back to my point about the unique nature of having colleagues here from Northern Ireland and making sure that we are using all of the technology that we can to make it as easy as possible for us as a group to feel that collegiality and to make sure that the practical document accessibility works for everybody, no matter who they are.</p>
+        </speech>
+        <speech by="#DavidMaxwell" eId="spk_10">
+          <from>Deputy David Maxwell<recordedTime time="2025-05-27T12:20:00+01:00"/></from>
+          <p eId="para_50">I congratulate the Cathaoirleach on his elevation to Chair of his committee. As a new TD, from the Border, this is the one committee I asked to be on and I look forward to working on this committee. I have worked as a councillor on cross-Border bodies for the last 20 years. Much work has been done. We want to keep that work. Much work has to continue in the future to bring all the voices into the room and get that discussion going. I look forward to working with everyone here over the next number of years, as Deputy McGreehan and others said, on implementation and how we move the Good Friday Agreement forward in a lasting way to maintain peace on the island.</p>
+        </speech>
+        <speech by="#ConorMurphy" eId="spk_11">
+          <from>Senator Conor Murphy<recordedTime time="2025-05-27T12:20:00+01:00"/></from>
+          <p eId="para_51">Déanaim comhghairdeas leis an gCathaoirleach. I am looking forward to working with everybody here on the work that the committee has outlined. Technically, I am a returning member because I was a Member of Parliament and served on the committee many years ago. A number of important areas of ongoing work have been outlined which we look forward to getting our teeth into.</p>
+          <p eId="para_52">This past number of years has been a time of profound change not just in the North but across the islands. The Good Friday Agreement is a living document. It is a document that accommodates and provides for change. It was never a full stop with respect to the development of where Ireland is going. The committee can play a useful role in recognising that and helping to facilitate discussions on what change should like and providing a space.</p>
+          <p eId="para_53"> I agree very much with previous commentators about trying to encourage unionist voices here. It is always difficult on the more political side of things but there are many unionists north of the Border engaged in conversations about political change and what it means for all of the people who share this island. In the absence of an officially created safe space, I think this committee can provide that function and I hope it does.</p>
+          <p eId="para_54"> With regard to whatever programmes of work we map out for ourselves, we should be conscious that that change is profound and it is increasing. The straws in the wind are now becoming straws in a gale force with regard to what that looks like, and we have work to do in that regard. We have a facility and a space here where we can bring people together to assist in mapping that out, and fulfil the potential of the Good Friday Agreement, which was about accommodating change and difference but also ensuring that people could continue on political journeys from 1998 right through to the present day, and wherever we go from here.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_12">
+          <from>Senator Frances Black<recordedTime time="2025-05-27T12:25:00+01:00"/></from>
+          <p eId="para_55">I congratulate the Cathaoirleach on his new role-----</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-05-27T12:25:00+01:00"/></from>
+          <p eId="para_56">Thank you.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_14">
+          <from>Senator Frances Black<recordedTime time="2025-05-27T12:25:00+01:00"/></from>
+          <p eId="para_57">-----and I look forward to working with him and his officials. For the whole committee, this is a very important piece of work going forward. I agree with all of the suggestions made here this morning. They are all really inspirational, to be honest. I really liked what Deputy Tóibín said about legacy and the interstate case. That is really important going forward. I also agree with my colleague, Deputy Conway-Walsh, with regard to the reports we worked on in the last Dáil term. For me, those reports were and are really important. What I learned was really insightful to me, particularly on finance, economics, and on women and constitutional change. I learned so much and the recommendations were quite powerful. I look forward to working on that, and to working with everybody here. That is where the real grafting happens, when we all work together, and are in the one place working together on issues.</p>
+        </speech>
+        <speech by="#GarretKelleher" eId="spk_15">
+          <from>Senator Garret Kelleher<recordedTime time="2025-05-27T12:25:00+01:00"/></from>
+          <p eId="para_58">Ba mhaith liom comhghairdeas a ghabháil leis an gCathaoirleach as ucht a ról nua, agus tá súil agam go n-éireoidh go geal leis ina thréimhse mar Chathaoirleach. To add to what everybody else has been saying, I am very encouraged by the opening remarks from everybody. The work of the committee is really about trying to create a better future for all of the island. The whole idea of inclusion has to be at the core of the work we do. Deputy McGreehan said initially about the importance of trying to involve members and participation from the unionist community in particular because the work of the committee is about inclusion, agus tír níos fearr a chothú do gach éinne. If we keep that in mind and try to do everything in our power to encourage more participation from places where participation had not been as prevalent in the past, it would be an enormous step forward. In hearing that being said by various members of the committee, I find it very encouraging and a great starting point. I wish the Cathaoirleach very well in his term and I look forward to working with everybody on the committee.</p>
+        </speech>
+        <speech by="#NoelMcCarthy" eId="spk_16">
+          <from>Deputy Noel McCarthy<recordedTime time="2025-05-27T12:25:00+01:00"/></from>
+          <p eId="para_59">Like everyone else, I congratulate the Chair on his role. I look forward to working with him and everyone on the committee. It is a very important committee and I am honoured to be on it. I look forward to the work programme and making vital contributions to it. Most importantly, I look forward to working with everyone here. I thank the Chair.</p>
+        </speech>
+        <speech by="#NiallBlaneyIND" eId="spk_17">
+          <from>Senator Niall Blaney<recordedTime time="2025-05-27T12:25:00+01:00"/></from>
+          <p eId="para_60">I wish the Chair well on his role in the five years ahead. It is great to see such a large gathering here today. I suppose the committee was smaller heretofore, and this augurs well for it over the next term.</p>
+          <p eId="para_61">This is my third time being a member of this committee. I was a member of the first committee in 2007. The committee has done some great work over the years but the piece missing is that the unionist parties are not participating. Much of the work we did in the last term is not fulfilled because we have not good enough of a unionist voice. I am probably repeating what others have said, but we really have to work hard. I am not beating my own drum when I say this, but I was appointed Co-Chair of the British-Irish Parliamentary Assembly in 2007 and my colleagues and I spent 21 months negotiating with parties in Northern Ireland to get their participation. It meant the reconstitution of the that organisation, which was done, to get them on board. The time is right to do that and for the Chairman to get working on that in this committee in this context, because our work is incomplete if we do not have full membership of the committee. We need to work really hard at that. The name of the committee says it all. Our work has to focus on the agreement. The agreement was the one thing everybody around the table, North and South, east and west, agreed. It is with that sentiment we need to move forward by ensuring we have unionists on board, because then our work is real, will be fruitful and will be meaningful. I do not think there was ever a division at this committee. It is an unusual committee and it is important that working relationship continues. I wish the Chairman well.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_18">
+          <from> An Cathaoirleach<recordedTime time="2025-05-27T12:30:00+01:00"/></from>
+          <p eId="para_62">Yes, let us hope that continues.</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Mr. Dáire Hughes<recordedTime time="2025-05-27T12:30:00+01:00"/></from>
+          <p eId="para_63">I welcome the sentiments of every member of the committee thus far. If that is the means by which we continue to work I have no doubt it will be a productive committee. I congratulate the Chair on taking up his position. It is fair to say there is consensus that of course the Good Friday Agreement is an evolutionary document, but it remains the basis for relations not only on this island but between this island and the island of Britain. It is an especially vital forum for me as a representative of citizens in the North. While MPs obviously represent everybody in their constituencies, that includes citizens who increasingly see the centre of political gravity on the island of Ireland. It is therefore important our voices are heard collectively across political divides in this forum. The point that has been made several times about engaging unionism is a key one. While there may be difficulties in engaging with political unionism, as Senator Murphy said there is a wide array of groups and individuals who are engaging on an all-Ireland basis, a community development basis and on a constitutional discussion basis that we need to tap into. That will involve this committee being pro-active and agile in its work and maybe being flexible in the means by which it carries it out. That includes meeting people from a unionist background - people with a British identity - where they are. We need to stretch ourselves both physically and politically in order to do that.</p>
+        </speech>
+        <speech by="#SeanCroweSF" eId="spk_20">
+          <from>Deputy Seán Crowe<recordedTime time="2025-05-27T12:30:00+01:00"/></from>
+          <p eId="para_64">Comhghairdeas, a Chathaoirligh. I have listened to other speakers talk about their experience of the committee. I think I was on the committee when it was established back in 2007. Really positive work has been done over the years by all the members, but the most important thing was we tried to bring in people, groups and individuals who felt they were excluded and that nobody was listening to them. We also did a lot of outreach work and that was really successful. I remember a meeting on the Shankill Road. People said it could not be done. I remember we met young people there and for the first time them reaching out and talking about their concerns, their challenges and what was facing their community. That was down to Co-operation Ireland and the work it had done. I remember going to the so-called peace walls and hearing how there were more walls being built than had been there in the past. The most important thing was listening to a lot of families who had suffered a great deal and who felt no-one was listening and that there was no avenue for them to tell their story, as well as all the peace groups that were working with all communities and none.</p>
+          <p eId="para_65">We have done very positive work and there is room for us to continue with it. Deputy McCarthy mentioned the whole area of the environment and biodiversity. This is huge. It is a question of the practical things we can do as a committee. When I was Chair of the health committee, we visited at Altnagelvin hospital and considered the issues of heart attacks and cancer care. Really positive work is happening that people are probably not aware of. It would be really useful for us as a committee to familiarise ourselves with it and build on it. If we can include those families and communities that feel excluded, it will represent really positive work.</p>
+          <p eId="para_66"> We should be wary of becoming dry as dust in our work. People must feel it is worthwhile. Many people watch the proceedings of these committees and make their minds up on the basis of what is happening inside and outside the Houses. If we are articulating the frustrations and some of the challenges people face in their lives, it will be really positive. There is a lot of work to be done. The most frustrating thing for all of us who were involved from the early days of the Good Friday Agreement right up to today is the slowness of change. This is probably what is killing the initiatives and energy that need to be put into the whole area. I wish the Chair well and look forward to working with everyone. </p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_21">
+          <from> An Cathaoirleach<recordedTime time="2025-05-27T12:35:00+01:00"/></from>
+          <p eId="para_67">I thank the Deputy. I acknowledge his role and time on the committee. I welcome him back to another term. I thank all the members for their kind wishes and, more important, their suggestions. I ask each and every one of them to harness these ideas and put them forward for a work programme. Given everything that has been mentioned, this will certainly be a busy committee. The work programme is important.</p>
+          <p eId="para_68"> As members may be aware, the committee may elect a Leas-Chathaoirleach to perform duties and exercises under authority for the Cathaoirleach in his or her absence. I propose requesting nominations for the position. Members may wish to consult one another and send nominations to the clerk by close of business on Wednesday, 4 June. Ideally, the election will take place at our next meeting, which is proposed for 10 June. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_5">The joint committee went into private session at 12.38 p.m. and adjourned at 1.28 p.m. until 11 a.m. on Tuesday, 10 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

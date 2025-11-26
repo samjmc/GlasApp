@@ -1,0 +1,847 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-06-25/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-06-25/debate"/>
+          <FRBRdate date="2025-06-25" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_disability_matters"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-06-25/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-06-25/debate/mul@"/>
+          <FRBRdate date="2025-06-25" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-06-25/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_disability_matters/2025-06-25/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-30" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="GillianToole" href="/ie/oireachtas/member/id/Gillian-Toole.D.2024-11-29" showAs="Gillian Toole"/>
+        <TLCPerson eId="KeiraKeogh" href="/ie/oireachtas/member/id/Keira-Keogh.D.2024-11-29" showAs="Keira Keogh"/>
+        <TLCPerson eId="LauraHarmon" href="/ie/oireachtas/member/id/Laura-Harmon.S.2025-01-29" showAs="Laura Harmon"/>
+        <TLCPerson eId="LiamQuaide" href="/ie/oireachtas/member/id/Liam-Quaide.D.2024-11-29" showAs="Liam Quaide"/>
+        <TLCPerson eId="MargaretMurphyOMahony" href="/ie/oireachtas/member/id/Margaret-Murphy-O'Mahony.D.2016-10-03" showAs="Margaret Murphy O'Mahony"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MauriceQuinlivan" href="/ie/oireachtas/member/id/Maurice-Quinlivan.D.2016-10-03" showAs="Maurice Quinlivan"/>
+        <TLCPerson eId="RuairiOmurchu" href="/ie/oireachtas/member/id/Ruairí-Ó-Murchú.D.2020-02-08" showAs="Ruairí Ó Murchú"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM NITHE A BHAINEANN LE MÍCHUMAS</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Disability Matters</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-25">Dé Céadaoin, 25 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-25">Wednesday, 25 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#KeiraKeogh">Keira Keogh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#RuairiOmurchu">Ruairí Ó Murchú</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#LauraHarmon">Laura Harmon</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#LiamQuaide">Liam Quaide</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#MargaretMurphyOMahony">Margaret Murphy O'Mahony.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#GillianToole">Gillian Toole.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputy Michael Cahill.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#MauriceQuinlivan">Teachta / Deputy Maurice Quinlivan sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Progressing the Delivery of Disability Policy and Services: Discussion (Resumed)<recordedTime time="2025-06-25T09:30:00+01:00"/></heading>
+        <speech by="#MauriceQuinlivan" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T09:30:00+01:00"/></from>
+          <p eId="para_12">Apologies have been received from Deputy Seamus Healy and Senator Nikki Bradley. The purpose of today's meeting is a discussion about progressing the delivery of disability policy and services. </p>
+          <p eId="para_13"> On behalf of the committee, I extend a warm welcome to the National Disability Authority. We are joined by Dr. Aideen Hartney, director; Dr. Rosalyn Tamming, head of policy, research and public affairs; Dr. Andrew Wormald, senior research officer; and Mr. Ciarán Finlay, senior policy officer. </p>
+          <p eId="para_14"> Before we begin, I wish to read a note on privilege and some housekeeping matters. All witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative that they comply with any such direction that I may make. I also remind members of the constitutional requirement that, in order to participate in public meetings, members must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of the Leinster House complex. This is due to the constitutional requirement that, in order to participate in public meetings, members must be physically present within the confines of the place where Parliament has chosen to sit. All members who participate via MS Teams are aware they must do so from the grounds of Leinster House if they wish to contribute. </p>
+          <p eId="para_15"> I call on Dr. Aideen Hartney to make the opening statement. </p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T09:30:00+01:00"/></from>
+          <p eId="para_16">The National Disability Authority, NDA, is a statutory agency established to provide evidence-informed advice and guidance to the Government on disability policy and practice and to promote awareness and application of universal design. My colleagues and I welcome the opportunity to engage with this committee at this early stage in its work and to address key points of interest for this meeting as identified by the members.</p>
+          <p eId="para_17"> The NDA looks forward to the approval and publication by the Government of the national human rights strategy for disabled people at the earliest opportunity. We understand a version is currently being reviewed at Ministerial level. The strategy, like its predecessor which expired at the end of 2022, aims to ensure a mainstream approach to realising the rights of disabled people in Ireland, where all Departments and public bodies are accountable for delivery of inclusive services within their remit. We therefore welcome the fact that each Minister is giving consideration to how this can be achieved in their respective sectors.</p>
+          <p eId="para_18"> The NDA supported the Department of Children, Disability and Equality in conducting the broad public consultation that informed development of this strategy. Therefore, we have a clear understanding of the ongoing frustration of disabled people and their representative organisations with gaps in service and barriers to inclusion, particularly where these barriers persist in spite of existing legislative and policy obligations. Almost 22% of the current population of Ireland indicated some kind of disability in the census of 2022. It is clear that a population cohort of this size must be included in the mainstream delivery of services across Government, as siloed approaches are neither effective nor in keeping with the United Nations Convention on the Rights of Persons with Disabilities, UNCRPD.</p>
+          <p eId="para_19"> We understand that when the strategy moves to its implementation phase, the NDA will have a key role to play in gathering and analysing data to allow monitoring against commitments made by the various Departments. This work will also highlight areas where further focus is required. We look forward to the support of this committee in encouraging accountability and engagement from all those responsible for realising the goals of the strategy.</p>
+          <p eId="para_20"> We also note there are some areas where we believe the action required is not specified within the latest draft of the strategy. This includes the need for a co-ordinated programme of supported employment, an acceleration of the decongregation of disabled people from institutional settings and inappropriate placements and a clear focus on provision of accessible housing. Each of these challenges requires a cross-departmental response. While the strategy provides for several multi-annual action plans during its lifetime, the NDA recommends a continued sense of urgency around these and other issues early in the strategy’s term if momentum is not to be lost.</p>
+          <p eId="para_21"> Another area requiring urgent attention is familiar to the committee, and concerns children’s disability services. The NDA has been commissioned by the HSE to conduct a review of the existing children’s disability network team, CDNT, service model to inform future policy decisions. This review is under way, with a final report due at the end of the year. The review comprises three stages. In phase 1 there will be a review of how the current model is delivering against the principles under which it was established, noting that not all network teams are fully staffed as yet. In phase 2 there will be a consideration of the optimal staffing of these network teams, informed by national and international evidence regarding good practice in such interdisciplinary teams. In phase 3 there will be a rapid review of the current pilot of provision of enhanced in-school therapy in special schools.</p>
+          <p eId="para_22"> The scope of the review has been agreed by the HSE and the Department and we advise the importance of understanding the strengths and weaknesses of the current model to clearly inform future decision-making, while noting that there are some who wish to explore other approaches to service provision in this space.</p>
+          <p eId="para_23"> Our work includes consideration of international evidence regarding aspects of the CDNT service model, analysis of monthly CDNT data returns, surveys and interviews of families engaging with the existing service to understand their experiences, as well as surveys and interviews with network team managers, staff members and other stakeholders.</p>
+          <p eId="para_24"> We believe this multipronged approach will give a robust picture of the operation of the current model to guide on where enhancements can be made and strengths built on. We also note that the programme for Government has identified a need for a review of existing disability legislation, including consideration of the assessment of need process. The NDA advises that such a review would be timely, as we recognise the challenges of providing diagnoses, as well as timely access to services in an environment where there is significant shortfall in staffing numbers.</p>
+          <p eId="para_25"> The committee has expressed interest in understanding whether the recent ratification of the optional protocol to the UNCRPD has impacted on the disability landscape.</p>
+          <p eId="para_26">While the ratification of the protocol is very welcome, the NDA advises that its purpose is to serve as a point of escalation once all national remedies have been exhausted. It can take time for a case to progress through these remedies and it is, therefore, likely to be too early for there to be much activity at UN level from Irish complainants. However, we advise that ratification means that persistent breaches at national level will ultimately be spotlighted internationally, which should provide an additional impetus for all public bodies to ensure their services are delivered in a manner that recognises and realises the rights of disabled people.</p>
+          <p eId="para_27"> We thank committee members for their attention and would be happy to discuss any of the topics touched on in this statement in further detail.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T09:40:00+01:00"/></from>
+          <p eId="para_28">I thank Dr. Hartney. I will now invite members to make their contributions. Each member has six minutes for the first slot. There is, as committee members know, a rota in place. I call Deputy Quaide.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_4">
+          <from>Deputy Liam Quaide<recordedTime time="2025-06-25T09:40:00+01:00"/></from>
+          <p eId="para_29">I thank the witnesses from the NDA for being here today. The areas of concern outlined in Dr. Hartney's opening statement are of central importance. Continuing on a theme I spoke to at last week's meeting, I respectfully suggest that any review of children's disability network teams, CDNTs, must include primary care services or we are missing a large part of the picture of disability services for young people more generally. I would go so far as to say that a review of CDNTs that did not include consideration of primary care within its terms of reference is verging on pointless. Clinicians who work in primary care despair when consideration of disability services fails to include primary care. That is because there are vast numbers of young people with disabilities or developmental issues on primary care waiting lists that are now so long that the service may as well not exist for them. These young people are characterised as having mild to moderate or non-complex difficulties. As we know, CDNTs deal with more complex disabilities. However, we also know that without early intervention the difficulties of people in the non-complex range may become more serious and may chain-react at sensitive stages of development.</p>
+          <p eId="para_30"> The other reason it is essential to examine primary care and CDNTs in tandem is that there has been an intimate interplay in the huge challenges faced by both services since the inception of the Progressing Disability Services for Children and Young People programme. That continues to this today. Around the country, families are being passed from one service to another, which is known as "defensive practice". It is almost inevitable when resources are so limited that services put up the shutters and become rigid in their inclusion criteria for fear of being overwhelmed by referrals, hence the single point of entry to child services that the HSE CEO, Mr. Bernard Gloster, mentioned at a meeting of this committee last week. Under that system, a clinician from primary care and a clinician from a CDNT would conduct a referral review together and make a joint and binding decision on the best service to which the young person would be referred. I must admit that I was sceptical of the idea initially but having consulted clinicians, I can see the value of it for more efficient referral processing and a reduction in the defensive practice to which I referred.</p>
+          <p eId="para_31"> I will give a real-world example of defensive practice and disjointed service delivery in action and the impact on families. I spoke in the Dáil recently about a constituent whose son had had an assessment of need with a diagnosis of autism in November 2024. The HSE service statement that issued from that assessment of need was sent to the family in mid-January and it recommended primary care services for that young boy. It projected that a first appointment with a psychology professional would be available in September 2030, five years and nine months later, for perhaps six or seven sessions. It is not a wrap-around or continuous service or anything like it. The boy has not been seen and the family have since been told that following a file review in primary care, he should be redirected back to a CDNT list. This is the maddening fallout of the long-standing neglect of these services.</p>
+          <p eId="para_32"> In the case of primary care, it is much more about a failure to recruit over many years than the difficulty in retaining staff. There are obviously retention issues in CDNTs. Not only has recruitment to primary care been either severely limited or stalled entirely in recent years, it has also had to contend with huge transfers of referrals from CDNTs. In the Cork-Kerry region, for instance, 577 children were transferred from CDNTs to primary care services in 2021. At present, large transfers of referrals are happening in the same direction in parts of Dublin. This amounts to unsustainable waiting lists being placed under further unmanageable strain by scores of redirected referrals. All the while, managers are being prevented from recruiting by recruitment restrictions. In that context, the sense of utter dejection for so many families is inevitable, as is the collapse of morale among staff.</p>
+          <p eId="para_33"> Another issue I want to touch on is the lack of multidisciplinary teams and team working in primary care. We know that the needs of the child are often best met by being seen by more than one discipline in tandem, or at least by having their needs reviewed by two or more disciplines. However, in practice, joint working tends to happen in a much more <i>ad hoc</i> and less co-ordinated way in primary care than it does in secondary services. This also creates inefficiency because a child whose primary need may be psychological may attend an occupational therapist for longer than is necessary if the psychologist is not available to see him or her for many months, or even several years.</p>
+          <p eId="para_34"> I just wanted to set out that context. To what extent is the crisis in primary care services for young people on the NDA's radar? Is it seen as inseparable from the challenges it is reviewing in CDNTs?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T09:40:00+01:00"/></from>
+          <p eId="para_35">I thank the Deputy. I will make an overarching point and then pass to my colleague Dr. Tamming for some more detail. We are conducting a review of the existing models against the principles on which they were founded. It is not an overall review of whether CDNTs are the right approach and how they interplay with primary care. Some of the points the Deputy has made are coming up through the research at this early stage.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T09:40:00+01:00"/></from>
+          <p eId="para_36">The issue of the evaluation of primary care at the same time did come up when the HSE was commissioning us to do this work. It was very much aware that it needs to be done as well but to do both in tandem would have meant a much longer process and urgency was felt at the time to apply to the CDNTs so that was what the HSE commissioned us to do. We have not got to this point yet, but as part of our proposal we will be talking to primary care and child and adolescent mental health services, CAMHS, specifically about the referral process and how it is working. That is a small part of it and does not in any way constitute a review of primary care.</p>
+          <p eId="para_37"> We have heard of many examples of what the Deputy described, such as the shifting of waiting lists from one place to another. There was not a recruitment freeze for CDNTs but there was for primary care. Even the skill sets of some people in primary care may be not as specialised in paediatrics. There are a considerable number of issues there. We totally agree that needs to be reviewed.</p>
+          <p eId="para_38"> The single point of entry that the representatives of the HSE talked about when they were before the committee last week will require another level of referral than what is there. The HSE is going to have to consider the overall process and staffing as part of that. It is a well-made point and I absolutely agree with all of the issues the Deputy has raised. There are problems with the national access protocol. It is applied differently in different places. We have at this point visited ten teams of the 14 we selected. It is coming up as an issue.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T09:40:00+01:00"/></from>
+          <p eId="para_39">We are out of time. We can come back in again later. I call Deputy Keogh.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_8">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-25T09:40:00+01:00"/></from>
+          <p eId="para_40">I thank the witnesses for being with us. I want to touch on universal design. Dr. Hartney spoke about promoting awareness and the application of universal design. As a new TD, I recently had to open a constituency office. In engaging with the builder, it was important to me, having come from the neurodiverse space, that the building would be fully accessible. In initial conversations, the questions were about how big the door needed to be and ensuring we had an accessible bathroom, but that was where it was going to stop. After that, regular doors were going to go in. I pointed out that I did not know who my staff members might be down the line and who might need access to the kitchen area, so I suggested making the whole building accessible. It was my first building project and it highlighted how far we have to go with universal design. What evidence do the witnesses have for where Ireland is in that regard?</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T09:40:00+01:00"/></from>
+          <p eId="para_41">I thank the Deputy. I welcome her approach to the design of her own office in that respect. It is very much what we would advocate. Universal design, for other committee members who may be less familiar, is the design of the physical or digital environment, or product and service, so that it can be accessed, used and understood by everybody regardless of age, size, ability or disability. Ireland is unique in having a statutory centre sitting within the NDA that promotes excellence in universal design.</p>
+          <p eId="para_42">However, I suggest that the uptake or application is still at a relatively early stage. Much work has been done in building awareness but that needs to translate into implementation at this stage. In our centre, we are presenting several resources, toolkits and guides that can be picked up and used by built environment professionals in various scenarios. We have, for example, created a checklist as to what the key elements of a universal design home would be. We are currently quite advanced in preparing a draft standard for universal design dwellings. This will go to public consultation shortly and we hope it will be finalised at the end of the year. We have a code of practice for accessible public buildings in draft form that is with the Minister for Children, Disability and Equality for approval.</p>
+          <p eId="para_43"> All of these resources should provide the must-dos and should-dos for scenarios such as that described by the Deputy and especially in the public realm. Challenges arise sometimes in the private sector. It is about incentivising and encouraging developers in this space to take on universal design. There is a lack of understanding or a variable understanding of what is involved and I think this is where these resources will be very helpful in terms of standardising approaches. One of the things we would really have liked to have seen in the draft strategy - it was not in the latest version we saw - was a commitment to review Part M of the building regulations in terms of housing. At the moment, houses are built to a standard where they are visitable, but that is not sufficient for people who have wheelchairs or other mobility aids. We would welcome a review of the regulations to achieve that level of livability. The variability of targets across local authority areas is another issue in this respect. There is a disparity between what is being called for in our ageing policies and in our disability policies, but there was a call for 30% of all houses in local authority public housing to be built to universal design standards. This is not being universally applied and we would welcome approaches in that regard.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_10">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_44">A level of 30% is still a long way off universal. It is interesting. When we are talking about disability, I feel it must be across all Departments. As Dr. Hartney said, one aspect is with the Department of Children, Disability and Equality, but the issue is really with planning and regulation.</p>
+          <p eId="para_45"> Sticking with a similar issue, a big bugbear of mine is the primary medical certificate. I have a particular constituent facing barriers to accessing her social life, job and appointments because she is waiting for the new version of the primary medical certificate. It has been recognised as not fit for purpose in its current format. The matter is currently with the Department of Finance. There is a need to come up with a new version, because there are criteria A to E currently. The girl I talked to had a foot at a 90° angle. If her foot was amputated, she could access the primary medical certificate, but because her foot is still on her body, she does not qualify. While we are waiting for new legislation, she is just not able to access independence, work and a social life. Do the witnesses have any views on where this should go? I do not know yet whether the matter is going to be with the Department of Health or the Department of Children, Disability and Equality or if it will stay with the Department of Finance.</p>
+        </speech>
+        <speech by="#" eId="spk_11">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_46">I do not think that decision has been made yet. There was a transport working group - it included discussion of this issue - led by the Department of the Taoiseach over the last two years. Several proposals were put forward but as far as I understand, they are being rolled into the new national disability strategy and will be managed under it. As far as I know, there is no decision yet as to where this matter will sit. There was wide recognition that reform was needed, though.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_12">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_47">It is very frustrating for people to be stuck while they are waiting for this reform. I will come back in again on the second round. I will not get another question asked in the next eight seconds.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_13">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_48">I thank Deputy Keogh very much. I call Senator Laura Harmon.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_14">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_49">I thank the witnesses for the opening remarks. It is great to have them here today for this engagement. I will talk about employment first. It is quite stark that Ireland has the lowest levels of employment for people with disabilities in the European Union. The figures I have here show we are currently at 32.6%, which is nearly 20% below the EU average of 51.3%. I would like to get the views of the witnesses on why this is the case. I know the National Disability Authority also has a role under Part 5 of the Disability Act 2005 in monitoring the employment of persons with disabilities in the public sector. I am aware we have a new target as of this year of 6% in the public sector. This was previously 3% and moved to 4.5% last year. How are we performing in relation to this target? In the witnesses' experience, what recommendations have been implemented? What needs to be done in future to improve the situation and support people with disabilities to enter the workforce and stay there?</p>
+        </speech>
+        <speech by="#" eId="spk_15">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_50">She is right that Ireland has the largest gap in disability employment in Europe. It is one of those cross-departmental issues that requires input from many different stakeholders and this is why we very much welcome the fact that employment is a designated pillar within the forthcoming strategy to try to develop this whole-of-government approach.</p>
+          <p eId="para_51"> A variety of issues underpin the situation. Some of it is about attitudes and expectations. People with disabilities are still being led to believe, or their families are being led to expect, that they may not have employment in any meaningful way. Some of it is also about lower levels of educational attainment. These bits, though, are steadily improving, so it is about being able to put the framework of supports in place at transition points when people are preparing to transition from education into employment. There are still some systemic barriers, like variable access to career guidance and access to work placement-type programmes.</p>
+          <p eId="para_52"> Additionally, there is the issue of what kinds of support somebody might need in the workplace. We still see a varying understanding of what is encompassed within the concept of "reasonable accommodation" by employers. The Department of Social Protection has recently reformed its supports for reasonable accommodations, but it will take time for some of these improvements to work through the system. Another gap in the system is the lack of a co-ordinated programme of supported employment. This would be for people with higher support needs and Ireland is an outlier in not having such a programme. In other EU countries, for example, this is encompassed within the public employment service. We have research through the OECD that shows some good case studies that Ireland could learn from in this regard.</p>
+          <p eId="para_53"> Coming to the public sector targets, the Senator is correct that, from 2025, public bodies will be expected to have 6% - as a minimum - of their workforce consisting of employees with disabilities. Our most recent published report is from 2023 and shows the majority of Departments are already at the 6% level or exceeding it. There is more variability among public bodies and there is a range of things to think about here. Some of this is about awareness and some of it is about some bodies being quite small, where if one employee is lost through retirement or illness, this changes the performance in relation to this provision within the Disability Act 2005. We would say the monitoring function we perform is driving attention to this issue, albeit slowly, so public bodies are mindful of this obligation and of working to achieve it. It is very important to stress that this 6% level should always be seen as a minimum target rather than the ceiling everybody needs to get to.</p>
+        </speech>
+        <speech by="#LauraHarmon" eId="spk_16">
+          <from>Senator Laura Harmon<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_54">As a follow-up query, case studies were mentioned. Is there international best practice we should be looking to in terms of employment best practice? Do the witnesses believe the National Disability Authority should be better supported and have more enforcement powers? Is this something they would take a view on?</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_55">There is no one country we can point to and say we will do that model. Different countries have different approaches that could be usefully packaged together. The Netherlands, for example, has a good approach on the supported employment side of things, as does Denmark. The OECD report I referred to - and we can send on the link to the committee after this meeting - has packaged up some of the useful lessons we can learn from. The question of whether we should have more enforcement powers is raised regularly. We have found the monitoring and publication of the report drives attention. People do not like to be named as non-compliant.</p>
+          <p eId="para_56">In our work, we always balance the monitoring function and the publication of an area where further focus is required with our work to provide ongoing guidance and support. We work closely with bodies that have been non-compliant over a number of years to try to improve their performance. It would be difficult to balance that with a more formal enforcement role. That is a decision for the Government.</p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_18">
+          <from>Deputy Gillian Toole<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_57">I thank the witnesses for meeting the committee and the team for providing us with the background information for today. I will try not to duplicate what colleagues have asked. Do the witnesses think the National Disability Authority has adequate resources to carry out its very busy and expanding role and tasks adequately? Regarding universal design, does the National Disability Authority advise local authority planners that living within is different from the visiting approach? Is employment in section 38 organisations, for example, the National Learning Network and Prosper, etc., taken into consideration for review and feedback? I think best practice in employment was already asked about.</p>
+          <p eId="para_58"> On the children's disability network teams, are there similar arrangements in other European areas? Where is the best practice? Does the authority get involved in financial matters, for example, financial advice for the resourcing of CDNTs? There has been a personalised budget pilot for six or seven years yet each person with a disability has different needs. Will the witnesses comment on that if relevant? Given waiting lists for assessment of need and the appropriateness of same, what emergency actions might be possible with the current cohort and staffing levels? Every delay is damage - I apologise for my bluntness - to a child or teenager. </p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_59">I will do my best to answer some of those questions and will then pass to my colleagues. Every public body will say a little bit more would help us do a little bit more. We have a large range of functions. For each function, we can assign perhaps two people or three at the very most. That allows us to deliver on our duties. If there were increasing demands from Departments or additional functions, we would have to look at that again. For the recent statutory functions assigned to us, we are lucky to have been assigned some resourcing envelope to go with them. I do not want to say it is all dependent on resources; we manage our work plan according to the capacity we currently have.</p>
+          <p eId="para_60"> On advising local authority planners, we have engagement with local authorities and make submissions to county development plans, highlighting the importance of universal design. We would like to monitor performance against the code of practice that is awaiting approval. That would be another monitoring function which would show areas that need further focus. Good work is being done at local authority level, for example, on the ageing side. There are lots of synergies and areas for potential collaboration on the disability side. If that could be more structured at local authority level, it would achieve a lot. On the question of whether we get involved in financial advice, we might do cost-benefit analyses in our work.</p>
+          <p eId="para_61"> I take the Deputy's point about the personalised budgets pilot which has been going on much longer than any of us would like. We are charged with the evaluation of the current pilot phase. I would put some caveats on the report that will come out of that, probably early next year, that the financial information will not be sufficient to allow us to say X amount is needed for X profile of need. That would be a matter for the HSE in an implementation phase. We can provide learning and guidance as to key principles that need to be followed in implementation.</p>
+          <p eId="para_62"> Dr. Tamming will comment on CDNTs.</p>
+        </speech>
+        <speech by="#" eId="spk_20">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_63">On CDNTs, we are doing a review looking at other counties and their children's disability services. It is a bit like the question on employment; there is no one model you can pluck. Whatever reforms happen are in the context of what we have already. One might say I would not start here, but we are here so we have to go from here. When you look at the evidence behind the current model, it is well thought out with the different aspects in those 12 principles. A lot of them are evidence-based. In theory, it is good; it is just there are problems with it. A lot of the people we talk to in reviews do not say the model is broken but, rather, the system around it. If it were properly resourced, fully staffed and had more staff, it could work fairly well is the general view coming through. Assessment of need is a complex area. The legislation will be reviewed. Without taking away rights, is there a way in the legislation to make it a system that is more fit for purpose? One has to balance the resources going into assessment of need with the resources going into providing supports to families. There is a bit of a disconnect there. CDNTs feel some of their valuable time is being taken away. The CDNT system is a needs-based system. Diagnosis is needed for lots of reasons but it is not needed to access a service, in theory.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_21">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_64">The next person to speak is Senator Murphy O'Mahony.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_22">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_65">The idea that diagnosis is not required is an extraordinary assertion. I would like to put that on the record.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_23">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_66">You will be in next, Senator, so you can raise that point then.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_24">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_67">As a committee, for somebody to assert that diagnosis is not required flies in the face of all international evidence. It is a most extraordinary assertion. Can you imagine if someone was to say that about cancer or cardiology services?</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_25">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_68">I am not disagreeing with the Senator but he can come in in a few minutes. Senator Murphy O'Mahony has six minutes.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_26">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_69">I welcome the witnesses and thank them for coming in. I also thank them for their fantastic work. I welcome the focus they put on interdepartmental co-operation. I am a big believer that every law, motion and suggestion should be disability-proofed. The work of the National Disability Authority goes towards that. I also welcome the children's disability network team review for which the authority interviewed stakeholders. You cannot beat lived experience. You could have ten degrees but there is no better way of getting evidence or information than talking to people who have lived through something. In the spirit of partnership between the National Disability Authority, the Government and all Oireachtas Members, I have a few questions. What supports would be of most help from this committee to help ensure departmental accountability as a strategy moves into implementation?</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_70">This committee is an important structure in accountability. Where commitments are made under the new strategy, the committee is another layer of focus as to whether they are addressed. It is also important for solution-finding where there are delays or barriers to interdepartmental working. It is an important piece of the picture.</p>
+          <p eId="para_71">We found in previous strategies that this is the bit that is hardest to get right. This is where the NDA comes in as a kind of knowledge carrier. We are a knowledge-based organisation as well as the research we do. By our access to various working groups and committees we can carry knowledge and learning between sectors. Having the committee also taking that approach would be very valuable.</p>
+          <p eId="para_72"> If this committee is making recommendations to the Government based on its work I would think that as part of that it could build in consideration of the sufficient time and planning for transition phases between different programmes of work. For example, Deputy Toole asked about the financial side of things. Where we would always advise a focus on the finances, if one wants want to switch from one model of service provision to another in any area, one can ring-fence some money for the transition. Often what is happening in disability services and supports is that people are being asked to switch to a new model while maintaining the old model with no additional funding, or it being done on a cost-neutral basis. It would be helpful if this committee could offer its own voice in support of ring-fenced funding for transition or for moving to new models of service.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_28">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_73">I thank Dr. Hartney. Can I get the witnesses' thoughts on decongregation? What could be done to speed it up? I am very conscious that it is not for everybody to move into independent living. For a lot of these people this has been their home and they do not know anything else. They might not want anything else. This is a kind of a double-barrelled question. What can be done to quicken up the process and what can be done for people who literally do not want to move?</p>
+        </speech>
+        <speech by="#" eId="spk_29">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_74">On speeding up the process, that is another one where the access to housing is a barrier, for example suitable housing in suitable locations for people to move out of institutional settings. In moving from a model where it is a large institution at some remove from the local community to a house within that community, those houses are not readily available or there is competition for them. Consideration must also be given to providing staff and support as they transition to this new model, new ways of working, and new skills and competencies they might need to build on. A lot of it is about communication. Sometimes there is resistance from the individuals or from family members because they do not know what the change is going to look like. Again, robust communication is needed about what to expect and how it will work out. What the HSE and some of the service providers have done with people who successfully transition is to spend some intensive time on that process. People have been very successfully decongregated who perhaps would have felt a little bit apprehensive about that. We did an analysis of the cost and benefits of living in institutional settings versus homes within the community. Our finding was very clear on the quality of life outcomes for people living within the community with support staff so it is not completely being cast out and within a home of their choosing and with people of their choosing. The quality of life outcomes were vastly improved compared to the institutional settings.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_30">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_75">That is interesting. It is important to focus and to bring the person along with the idea rather than turfing them out, or whatever. How could we better co-ordinate cross-agency staffing efforts, particularly as we are all very aware of recruitment and retention within the disability sector? How could we better co-ordinate the cross-agency effort?</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_76">That is the million dollar question because one wants to try to maximise the most efficient use of the staff one has. There is a danger there, however. The congregated settings were an efficient model if we look at it from a staffing point of view. One requires less staff for the same number of people than if the clients are out in the community in shared houses, but that is not a solution because one is going backwards then. We have to be very careful about voices that are coming up around recongregation. That is really important. There are lots of issues in the staffing pipelines for attracting people into the health and social care services, retaining them, having career progression, and all those issues looking at pay. Some of the recent increases in pay for section 39 agencies have been quite helpful. They stopped people going to the HSE, or wherever, for better pay. I do not know if it has fully stopped it but things like this make for a level playing field and are important.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_32">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_77">Following on with decongregation, we had HIQA before the committee the year before last. In their time to move on the process of decongregation they said that they had decongregated between 5,000 and 10,000 disabled citizens. When I asked HIQA where they went, I was told that they do not map that. I can tell the witnesses that a lot of them go into crisis. They return to elderly parents as adults with disabilities. For example, one lady who is 88 wrote to me. Her husband is 92 and uses a walker. Their 54-year-old daughter was returned to them from a congregated setting. She arrived by taxi. She is a wheelchair user. The 88-year-old lady is a cancer survivor and has been asked not to lift. The HSE is refusing to provide them with any supports until - the HSE has said this - one of them has passed away. It might be worth looking at this before a person is decongregated to make sure there is somewhere safe and accessible for them to go. If there is not, does the National Disability Authority have a view on whether decongregation is appropriate in those circumstances?</p>
+          <p eId="para_78"> I will turn to the national human rights strategy for disabled people and the NDA's role in providing policy advice to the Government. As a member of the Joint Committee on Defence and National Security, I am conscious there is an acknowledgement that Ireland is Europe's weakest link in terms of security, defence, intelligence and so on. There is an intellectual honesty in accepting that Ireland is on the floor in European terms and that we are dysfunctional in that regard. In drafting a national strategy of human rights, what is the NDA's level of ambition? What is our baseline in European terms for disabled citizens when the witnesses are talking to our counterparts in Europe? Are we in the top 10% of European countries for optimal outcomes or are we, as I suspect, worst in class in Europe? Are we outliers in European terms? Some of the measures were mentioned already, for example being worst in the OECD for participation in paid employment and so on. I would suggest that we are also worst in homelessness, social isolation and suboptimal medical and social outcomes. I am curious to know where the witnesses think we are and what is our base level.</p>
+          <p eId="para_79"> The authority is carrying out a review on the CDNTs, as commissioned by the HSE. Who designed the CDNTs? Will the witnesses tell the committee who was responsible for it? Who were the people who designed the CDNTs? Was there clinical sign-off on the CDNTs? Did any clinician sign off on them? Was a risk assessment carried out of the transition to the progressing disability services, PDS, programme? Untold harm has been done to tens of thousands of Irish children as a consequence of PDS. It has been an unmitigated disaster. It was interesting that the aim of it was to provide disability supports in "an equitable and consistent manner". I can tell the witnesses, as a member of a family who accessed those supports, that pre-2009 and pre-PDS some people got a really poor service but post-PDS and with the CDNT model nobody gets a good service. Nobody gets a service whatsoever. I suppose this is equitable and consistent across the country but it is hardly a desirable outcome. I would like to know about the risk assessments.</p>
+          <p eId="para_80"> I see that the NDA is hosting a conference in October on the sexual and reproductive rights of disabled people. I am curious to know about that. It has been widely publicised, as we established last week at the health committee, that a large number of disabled teenagers have become infertile through the lack of routine intervention on the urological surgical wait list at Children's Health Ireland, CHI, and that this is systemic. So it is a de facto form of forced sterilisation. Do the witnesses have a view on that and on whether the NDA might invite experts in that area to speak at its conference? I imagine that Ireland is probably the only country in Europe that sterilises disabled people through <i>force majeure</i>, which is to say a lack of routine interventions that allow for the development of testicular cancer, ovarian cancer, bowel and bladder cancers, and incontinence. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_33">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_81">Do any of the witnesses want to come back to that? I understand that they might not be able to answer that specific question.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_82">I will answer the question regarding decongregation first. The HSE implementation of the time to move on policy is about decongregating people with supports and putting in those wraparound supports. I am not in a position to speak about the examples that HIQA spoke of. The project we examined focused on people with intellectual disabilities moving out of campus-based services into homes within the community. That is where I referred to the quality of life outcomes being improved but that is predicated on the necessary supports being in place.</p>
+          <p eId="para_83"> In relation to the human rights strategy, what we are advising and working with the Department on is how a monitoring framework for that strategy would be outcomes focused in order to move us from areas where further attention is required up a ladder. In some areas, we are poorly performing in comparison with our European colleagues. In other areas, however, we are not worst in class. It is important those areas are also ones that are important to disabled people. </p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_35">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_84">I am curious. Where are we performing well? Where are we best in class in Europe? </p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_85">I am not going to use phrases like "best in class", but we are performing well in areas like the accessibility of public service websites where we are improving to ensure that people can access their services online. I appreciate that is not necessarily considered by a disabled person as a quality of life outcome on a daily basis. What the framework is about is teasing out those differences and what indicators are being-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_37">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_86">Would Dr. Hartney agree that we are outliers for disabled citizens in Europe? We have an explicitly ableist State. </p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_87">There are some areas where a lot more can be done. I have spoken about employment already. In relation to decongregation, we need to meet those targets to a better effect. I do not have all of the metrics in place to be able to agree with the Senator's assertion. The idea of the strategy is that it will move Ireland along a trajectory of improvement to a person-centred and an outcomes-focused approach to disability.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_39">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_88">I put it to Dr. Hartney that we are in crisis. Who designed the CDNTs?</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_89">It was the HSE. I do not have those details. It was designed quite a long time ago. </p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_41">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_90">It was 2009. It is quite recent. The National Disability Authority is commissioned to investigate it. I would imagine that if it was investigating it then it would speak to the people who designed it. Who are they? </p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_91">The HSE designed it. We have started our review with the teams, parents, families and staff. It is on our list to interview the HSE staff involved. We have not got that far yet. We can look that up. I wish to come back to the point regarding the assessment of need. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_43">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_92">We are well over time. </p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_44">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_93">Was there a risk assessment carried out for the roll out of CDNTs and PDS?</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_45">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_94">I request the witnesses to come back to the committee with a note about who designed it.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_46">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_95">I thank the witnesses. I apologise for not being here for their presentation. I was another meeting but I read it. I have a few questions relating to the whole area of employability. In County Limerick, where I am from, we have the EmployAbility service but it does not work for everybody with a disability. Sometimes with the services it provides, one box does not fit all types of disabilities. How can we broaden the remit of the services that are offered? My next question relates to a family I have been dealing with recently where the mother was the main carer to the child who has a disability. When I say child, it is somebody in their 30s. The mother ended up in hospital and will be there long term. The person with the disability has had to move to a care centre in County Tipperary, even though they are from Limerick. Every day they were going to their place of employment, which was around disability. They loved it. They do not have that quality of life now because they are so far away from where they were working. Their family are more than one hour away from where they are now living. How do we try to increase that level for a better quality of life for people with disabilities? While a disabled unit or living accommodation cannot be put up at every street corner, I am not sure examining it regionally is the right decision.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_96">On the employability side of things, employability programmes offer a valuable service in local areas. The Senator is right that there are limits to what they can achieve. That is where we would be advising the need for a national programme of supported employment where it can add on to the services offered either through Intreo or EmployAbility. Ideally, most services for disabled people would be offered through the mainstream provision. We have advised, and the Department of Social Protection are progressing some work in terms of upskilling Intreo staff to be able to address the needs of some disabled clients. EmployAbility would do another piece of that jigsaw. However, there is a cohort of people who are underserved. Those are people with higher support needs but who would be in a position to work a few hours per week with the support of a job coach. Job carving is another thread. In other European countries that is a complementary service. It is either embedded within the public employment service or closely aligned to it for smooth pathways of referral. That is something that we would very much like to see rolled out in an Irish context. There was an agreed policy between all of the relevant Departments back in 2018 but there were challenges in moving to a demonstration stage. That is something that could be usefully picked up during the lifetime of the forthcoming strategy. </p>
+          <p eId="para_97"> In relation to the quality of life and distance from services, there is a lot to unpick in those scenarios. Another area to highlight for the benefit of this committee is the importance of accessible public transport, so even where people might be at some distance from the services or places of employment or education that they wish to avail of, that transport is not serving as a barrier. There is a commitment within the forthcoming strategy to improve matters there. It is something that needs ongoing focus.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_98">The specialist disability services action plan is being implemented by the Department of Children, Disability and Equality. On the steering groups that I sit on, there are the issues of the emergencies, such as the parent dies or the parent goes into hospital and what happens. There is a huge recognition that there is a whole planning piece that needs to be in place. The system is reactionary rather preventive. There is acknowledgement that it needs to be more preventive. We need to be looking at what is going to happen and have things set up. There is not that funding going into that at the moment. However, there is a push for more funding to go into that planning piece in order that people are prepared and if the route after a parent dies is to residential service or some sort of supportive living, that it is set up in advance. </p>
+          <p eId="para_99"> Coming back to the topic of employment, yesterday I was at the launch of preliminary findings from a review of the WALK PEER programme. This is a programme where a NGO, WALK, supports school leavers into employment or further training. The results were positive. It is deferring people from day places. These are people from special schools whose trajectory used to be always to go into a HSE-funded day service place, but now there are alternatives. The HSE has allowed a deferral now for five years. It used to be that a person takes their place or they will never get it again. There are many options out there now. There are lots of pockets of great practice but they are funded on a short-term basis. They cannot plan. They lose good staff then until the next round of funding comes. As Dr. Hartney said, if it is a national programme of supported employment that means that there is equitable access for everybody. It is throughout the country. It not just these pockets. We can bring in all that learning. There is a lot that can be done. </p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_49">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_100">I wish to ask one final question about the collaboration between the National Disability Authority and local authorities when it comes to accommodation for people with disabilities and people in wheelchairs. </p>
+          <p eId="para_101">I am not sure local authorities always think about having the right size of door. While I know there are standards now, I know of two or three people who were in local authority accommodation for people with wheelchairs and they moved out because they found it impossible to get supports or to move around the complex. Could the witnesses comment on that?</p>
+        </speech>
+        <speech by="#" eId="spk_50">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_102">On our collaboration with local authorities, we are an advisory body that provides advice and guidance to local authorities. We encourage them to take up and adopt the guidance, which covers matters such as the Senator is talking about. A potential role for this committee would be to encourage more information transfer between local authorities at national level and that there is accountability for following that guidance. That could be something useful.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_51">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_103">What is the timeline for the review of the CDNT service model?</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_104">It is in three parts. Part three of the report, which is on schools, will be ready by August. As to the main bit on interviewing the teams and everything else, we expect to have a draft at the end of the year. Part 2, which looks at the workload and workforce, will take a little bit longer, perhaps into the end of quarter 1 of next year. That is the rough plan.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_53">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_105">That is good. There is a logic to the three parts. Correct me if I picked this up wrong, but we have approximately 414 positions that are unfilled in CDNTs at the moment. If those positions were filled, does Dr. Tamming have a view as to whether the CDNTs could do the work they are meant to be able to do?</p>
+        </speech>
+        <speech by="#" eId="spk_54">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_106">They probably could not. The planning behind the numbers per team was not as robust as it could have been and population sizes changed. Part of the workforce element we are going to examine relates to those parameters and population cohort sizes. The percentage of children with disabilities should not change hugely between different areas. There may be some populations with a lot of migrants or areas where more support is needed. Having all the teams fully staffed as a starting point would be great. The next step would be to ask what the optimal staffing is?</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_55">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_107">I agree. I really appreciate that answer because I have not been able to get a Minister to answer me on that particular question. I think that is where we all lie. We are asking how many positions are unfilled, but even if they were filled, we still would not have a system that was fit for purpose. As to what Dr. Tamming said about an assessment of need not being required to access a service, every Minister says that but every parent and every school will tell a completely different story. That is something that needs to be addressed. I have no particular issue with an assessment of need if the means by which if it was done were changed and it was done on the basis of evidence and dealing with the stakeholders, particularly the OTs, SLTs and psychologists. I will throw that out there.</p>
+          <p eId="para_108"> Dr. Tamming also mentioned the single point of access and the national access protocol. She spoke about the fact that there would need to be a real reorientation on staffing to deliver on that. We keep using these terms. What does Dr. Tamming think it would need to look like to deliver on that and how far are we from it at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_109">Before moving on to that, there are parts of the system that require a diagnosis for entry, such as schools, like the Deputy mentioned. The health system does not, though.</p>
+          <p eId="para_110"> To clarify something from earlier, I am very sorry if I came across as implying that a diagnosis was not required or important. It absolutely is.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_57">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_111">Long term.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_112">I was just making the point that people should be able to access services while waiting for their assessments of need. The problem is, once they get their assessments, they are still on a waiting list. There is a little bit of a communication issue where families may think that, once they get the assessments of need, they will get the service and do not realise that there is still a wait. In the analysis we have done on our findings so far, and looking at the slightly better staffed teams, the service is shown to be slightly better. Parents are slightly happier, staff are performing better, there are more children on their open caseloads and there are shorter waiting lists. Getting to the initial approved staffing level first will certainly be a great improvement, but there will be more needed after that.</p>
+          <p eId="para_113"> On the national access protocol, I am not sure. The point was made earlier about looking at primary care. It is really a whole pool of staff and how they are best deployed. That is a big piece of work that needs to be done.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_59">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_114">A huge piece of work on what we actually need to deliver on this is required. We are probably throwing out these terms a bit too quickly when the due diligence needs to be done.</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_115">If you look at it as a comprehensive system, the CDNTs are for the more complex children and primary care for the less complex. Where is-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_61">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_116">In theory.</p>
+        </speech>
+        <speech by="#" eId="spk_62">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_117">-----that dividing line and does that really work? Should it be one door? The concept of no wrong door is the place we are trying to get to.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_63">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_118">Without a doubt. The third part of the review and the idea of school-based therapies move that beyond where it is as a pilot. We know there are promises because there is a logic to putting the resources where the need is. The earlier the interventions happen, the better. Is Dr. Tamming happy with how school-based therapies are progressing? I might be jumping the gun as to where the review is.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_119">We visited all of the six schools that are in the initial first phase of the pilot. Events are overtaking us as we go along because there have been announcements of new schemes. It is difficult to see how this current pilot we are evaluating will fit into the overall picture.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_65">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_120">Dr. Tamming sees it as working, I imagine.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_121">What does "working" mean? It was not 100% clear what it was supposed to achieve. From the visits, we already see what parents expect it to achieve. They thought there were therapists coming in and wondered when their children would get the one-on-one therapy? The model is based on educational outcomes for the child, through a system that is school and teacher led. The therapists are primarily at that universal level, supporting the school to support the children.</p>
+          <p eId="para_122"> There are three tiers within the system that was set up. There is the universal, targeted and individual. None, or a very small number, of the schools we spoke to was doing any individual, one-on-one child therapy. It is important to remember the CDNT is set up on a family-centred approach where the family is involved in the child's support. Going into a school and doing a one-on-one session with a child with no parent present can be counterproductive because there is no-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_67">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_123">Follow-up.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_124">-----reinforcement of that at home. Getting clarity on what the model is supposed to achieve is not there in the overall system and getting parents to buy into what it is going to be and understand it is crucial.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_69">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_125">This only works if therapists engage with parents and the kids themselves, but also with the teaching staff and everyone. If everyone engages in best practice, the kids benefit.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_126">Getting the parents involved is considered best practice.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_71">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_127">I apologise for being late, but I was attending the health committee.</p>
+          <p eId="para_128"> From what has been said, we have the three strands of access to therapies, primary care and CDNTs, and it is now proposed to add education. I am interested in what was said about the ability to deliver therapies in a school setting for children with special and additional needs. On the availability of the parents, a lot of the anecdotal stories I heard from the teaching profession were how it discommoded students and took students away from the school setting to go to therapies at third sites, including the transport and logistics of that for both the parents and the school. For many of these children, that disruption to their routine can cause quite a bit of trouble. I have talked to therapists who have dealt with children who have arrived at a busy clinic quite upset.</p>
+          <p eId="para_129">By the time they settle and get into it, the session is over. It is about trying to achieve that balance. Where does Dr. Tamming feel we can achieve it? Should we be considering a model whereby, if we are going to move to the educational setting for some of these children to have their therapies, we make provision for parents to attend? Will there need to be infrastructure in those schools to provide the therapies where a parent is engaged with the therapist, if one-on-one therapy is being delivered at that site? </p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_130">That is a difficult question and we are probably too early in the process to be able to say that definitively. I do take the Deputy's point and it reflects what we have heard before. It is disruptive and the child is missing out on educational time when they are away from school and parents have to take time off work and whatever. About 20% of children in CDNTs attend a special school, which is where these initial therapies will go in. One CDNT manager said to us that she did not lose any sleep over the children in special schools. They are already fairly well supported. In a way, it could be argued that the current model of putting therapists into special schools means those children now have better access to therapists than other children do. It is detracting away resources. They are the children who have the most need, but still we have to look at a level playing field, to some extent. There are issues with the equity part of this. </p>
+          <p eId="para_131"> If it is an education-led system rather than a health-led one, the outcomes will always be focused on the educational outcomes. It is very difficult, when developing an individual family-centred plan, to determine what the child's health and social are needs versus their educational needs. These are not equally divided. If a child uses an alternative, augmentative communication device, that is their voice. Whether that is in school or at home, the support the child gets has to be seamless. There is a lot still to be teased out in this area but it certainly needs to be done. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_73">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_132">Is Dr. Tamming saying the more complex cases are at this time well catered for, or better catered for, in special schools, to the possible detriment of children with additional special needs? I need to be careful how I say this, but is there a possibility that the potential for improved outcomes could be lost if there is an imbalance in the system?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_133">We are working in a system where many of the CDNTs are understaffed. Staff have been taken from those teams and put into schools, where they will see the children in the school but many of those children do not come from their CDNT, so there are certainly fewer staff at the CDNT level to see the remaining children. That is just the way it is. I visited one of the schools in Cork recently. I cannot remember how many children were there, but let us say there were 100. Children came from 11 different CDNTs to that school. The level of communication the therapist in the school had to have with all the different teams was huge. Liaison and co-ordination take up a huge amount of therapists' time. We need to get to a system that is more seamless and more co-ordinated so that therapists can spend more time on therapies than on co-ordination. I am not saying that piece is not important - it is crucial - but there may be ways it can be done better. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_75">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_134">On the retention and recruitment of therapists, there is competition between primary care, the CDNTs and, it would now appear, the educational sector as well. We are training more allied health professionals and therapists in those areas. In terms of recruiting people from abroad, does that need to be looked at in the CORU reform of how we allow people into our system to work? </p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_135">That is probably beyond our area of competency to advise on but I might just make a point about this. The focus is often on therapists and their importance but other roles within a CDNT are also important and should be looked at, such as social care and the key-worker approach, which is very much valued by parents. It can often pick up things that would not come to light if it was just looked at through a therapy focus. It is important to keep that in mind too. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_77">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_136">Before we move on to round two, I want to ask a quick question. In her opening statement, Dr. Hartney stated that the ratification of the protocol is very welcome but that its purpose is to serve as a point of escalation once all national remedies have been exhausted. What did she mean by the phrase "national remedies have been exhausted"? She also said that it is likely to be too early for there to be much activity at UN level from Irish complaints. Have there been many? Do the witnesses have any idea of the numbers and types of complaints that have been escalated to the UN under the protocol? </p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Ciarán Finlay<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_137">Regarding the optional protocol, there are a number of admissibility criteria a complainant has to satisfy. One of these is that the person must have exhausted all available domestic remedies. This could include a quasi-judicial tribunal. If, for instance, someone has an equality complaint, they have to go to the Workplace Relations Commission, WRC. If there are further avenues for appeal, to the High Court, say, for a judicial review or to the Court of Appeal, the person has to follow those and take those remedies. There are certain exceptions. For instance, if the remedy is considered to be very prolonged and there is a long time between the person taking the complaint and it being resolved, the person can take the complaint directly to the committee, but they would have to show that they had taken steps. It cannot be just a hypothetical argument that, for instance, there were big delays within the court system. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_79">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_138">If it was a workplace complaint and the person went to the WRC, we all know how long it can take to get to the WRC and then for the determination to be made by that body. In the absence of getting a response, would the person still have to wait? </p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Ciarán Finlay<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_139">The person has to show that they have taken steps to exhaust domestic remedies. The requirement is that all domestic remedies must have been exhausted but there are certain exceptions. The committee's jurisprudence has been a bit inconsistent. In some cases it has shown that a three-year wait is considered to be too long and in other cases it has shown that a five-year wait is not too long. It depends on the nature and extent of the case but in general, a person would have to have exhausted domestic remedies.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_81">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_140">It could be up to four years before a person got to-----</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Mr. Ciarán Finlay<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_141">The overall point about the optional protocol is that it does not confer additional rights. What it does is provide an avenue for individuals to enforce their rights where they are not respected at the domestic level. What we see as a real benefit of the optional protocol is that it will hopefully afford public bodies and Departments the opportunity to look at their domestic remedies to see whether they are sufficient. This would ensure that individuals do not have to go to a UN body in Geneva to try to have their rights enforced.</p>
+          <p eId="para_142"> Regarding the second question about potential complaints, we are not aware of any but, as Dr. Hartney mentioned, it is still quite early days. The protocol was ratified in November. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_83">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_143">There are no cases at the moment before the UN. Is that correct?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Mr. Ciarán Finlay<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_144">Not that we are aware of, although it is a confidential process. Once a complaint is received by the committee, it would be looked at to determine whether it satisfied the admissibility criteria and if it did, the committee would then transfer it to the state for comment. We are not aware of any in the public domain but that is not to say that none have been filed with the committee. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_85">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_145">Without breaching confidentiality, would the NDA be aware when they are going through? For instance, if there were 12, would the NDA know there were 12?</p>
+        </speech>
+        <speech by="#" eId="spk_86">
+          <from> Mr. Ciarán Finlay<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_146">We are not aware of that. There is a backlog of complaints to the committee. It meets twice per year in Geneva. On average it deals with two to three complaints each time it meets, so that is five to six per year. In the period 2012 to 2023, the committee provided judgments or decisions on only 42 cases on their merits. Over 11 years there were only 42 cases. We are aware there is quite a big backlog and there are funding constraints on the committee as well. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_87">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_147">Are we aware as to whether the backlog includes any Irish cases? </p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Ciarán Finlay<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_148">Not that I am aware of, but that is not to say that there are not. </p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_149">We will move on to round two. The first speaker is Deputy Liam Quaide of the Social Democrats, who has six minutes. </p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_90">
+          <from>Deputy Liam Quaide<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_150">Last week, I appealed to the CEO of the HSE, Bernard Gloster, to reconsider a significant project in Cork that will be a clear breach of the UNCRPD if it goes ahead. The HSE is proposing to invest €64 million in developing a 50-bed, centralised residential mental health facility on the grounds of St. Stephen's Hospital in Glanmire. St. Stephen's Hospital is the site of a new elective hospital, which is appropriate. However, the new residential facility would be for adults with severe and enduring mental health difficulties who require 24-hour staffed rehabilitation and support. Some of those service users may live in such a facility for a relatively short period of rehabilitation, over several months maybe, but I know from working in adult mental health services that many will remain there for years or much of their lives and it will essentially be their home. The HSE has emphasised that the buildings it proposes to build - five bungalows on the hospital campus - will not be institutional in design. As we know, a home is about much more than a building; it is about the broader community in which the person lives. The UNCRPD enshrines the right to community integration for people with disabilities. St. Stephen's Hospital, which I know very well, could not be more removed from that reality.</p>
+          <p eId="para_151"> As I said here last week, the land around St. Stephen's Hospital is zoned for agricultural use. The land directly across from the hospital is zoned for light industry - an online warehouse. The nearest shop of any description to St. Stephen's Hospital is a 1.7 km walk from the entrance of the hospital and that is a service station. The first kilometre of this route has no footpath and there are no plans by Cork City Council to develop one. The nearest grocery shop, which is a SuperValu, is in Riverstown which is a 3 km or 40-minute walk away. Again, the first kilometre has no footpath. There are no community amenities within walking distance of St. Stephen's Hospital and no plans to develop any. The residents typically do not drive. Some will have mobility issues. The distances I have just cited may actually be longer depending on the location of the proposed residences within the large hospital campus.</p>
+          <p eId="para_152"> This proposal is entirely at odds with the progressive trend of supporting people with severe mental health difficulties to integrate in their communities, something that has been core to every mental health policy since Planning for the Future in 1984. It was further emphasised in A Vision for Change in 2006, in the HSE's own model of care for people with severe and enduring mental illness and complex needs in 2019, and in Sharing the Vision also in 2019. It is also in clear breach of the UNCRPD.</p>
+          <p eId="para_153"> Centralising these residential placements in St. Stephen's Hospital will necessarily cut people off from their communities because a facility of that size will serve a broad catchment area. It will not just serve people from Glanmire; it will take in people from parts of east Cork, north Cork and north-west Cork. Despite all of the arguments based on evidence and on mental health policy since the 1980s, despite all of the arguments based on the UNCRPD, and despite the fact that the HSE's claims about what is known as the city of neighbourhoods strategy in Cork City Council, which includes transforming the area around St. Stephen's Hospital, would not in any way survive a reality test because St. Stephen's Hospital is in the hinterland of Glanmire, there is no doubt in my mind the HSE will plough ahead with this. </p>
+          <p eId="para_154"> Mr. Gloster said last week that he will put the plans up for consultation for all agencies to have a say on them. I know that if this project goes to planning stage, it will be considered by the local authority on those terms exclusively and the planning application will very likely be approved. Given that the HSE has an authoritarian attitude that involves riding roughshod over its own mental health policy and the UNCRPD, what recourse do we have to challenge this development? Without sounding hyperbolic, it will condemn large numbers of people in Cork with severe and enduring mental health difficulties to a relatively isolated and detached existence on the grounds of a hospital. A planning submission will not work because it will not be considered under the terms of mental health policy. Can the National Disability Authority, as a body, assist in ensuring the upholding of the UNCRPD in a service provision decision that is of such significance as this? Are there other agencies that can bring their influence to bear on a project like this?</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_91">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_155">Before the witnesses answer, I should say that I understand they might not be aware of the full details of this issue. I do not expect them to be. The witnesses can answer this question in broad terms if they prefer. The Deputy's concern is that this project is going ahead with no local services. I think that would be more accurate.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_156">I thank the Chair for the clarification and the Deputy for the questions. The issues the Deputy outlined relating to a specific service are the same issues that would be important in the overall decongregation of disabled people, which we spoke of earlier. What we see in our work and what the Deputy has highlighted is a divergence in policies. There is a policy that specifies a maximum number of disabled people that would live in a setting to break the congregation approach. That is different on the mental health services side and again on the older persons care side. Ideally, in realising the UNCRPD, people would be living independently in a home of their choosing - ordinary lives in ordinary places - regardless of whether they have a mental health disability or some other kind of disability. We have made that advice in our submissions and highlighted it in some of our research where we say that this is what the research shows about disability and the focus in terms of the mental health agenda also needs to be regarded. The national strategy, when it issues, will be about continuing along the journey of progressive realisation of the UNCRPD and these are points that can be highlighted over its lifetime. We will continue to include a focus on mental health in our advice but that is what I can say in general terms on that.</p>
+        </speech>
+        <speech by="#LiamQuaide" eId="spk_93">
+          <from>Deputy Liam Quaide<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_157">We have a very concrete example here of something that, if it goes ahead, will centralise a large sum of funding in Cork for people with very high needs. Alternatively, it could take a different direction. Can the NDA, as an authority, directly comment on that or make representations to the HSE or the Minister?</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_94">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_158">If Dr. Hartney wishes to answer, I ask her to be brief.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_159">We can look at it in terms of the submissions we make on general local development issues. Other bodies such as the Mental Health Commission would probably be better placed to have weight in that debate.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_96">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_160">I wish to go back to the enhanced in-school therapy pilot that is coming down the line from September. I began my career in a special school that was within a pilot programme at the time called Ábalta. We had a fantastic model. A private speech and language therapist who was funded by the school's fundraising, Mari Caulfield, would come in every single week. There would be kids rostered to see her but not on a formal basis. It was done according to the needs of the school. She would be there for the day and would come back the following week on the same day. We also had Dr. Olive Healy who would attend as a behaviour support specialist in the very same way. We had various occupational therapists, OTs, at different times. They had a rota of children to see and across a couple of months they made sure to see everyone regularly. It was very much based on the needs of the school and it worked exceptionally well.</p>
+          <p eId="para_161"> In autism classes or different special schools, we mainly had speech and language therapists coming in, along with some OTs. There was often a fall-down when there might not have time set aside by teachers. The speech and language therapist might have been in the room one-to-one with the child so there was no carry-over. On a regular basis, the parents were not invited in so there was not that carry-over. In regard to the pilot coming down the line, what will the model be? Will a speech and language therapist be assigned to a certain number of schools and be available to consult generally with each school, or is it going back to the one-to-one model? Are we looking at best practices across the globe here? Who are the stakeholders or the advisers when it comes to planning this?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_162">The overall answer is "I do not know". We will put together our report on the six schools, and that will inform some of the future planning. There are two points I would like to make. First, some of the schools were a bit annoyed that they were not consulted on what their needs were. They were given a speech and language therapist and an OT but one school said it would have liked a physiotherapist as it had more needs in that area. They were not consulted. That finding can probably be built into a future programme. Second, the system is based on the universal, targeted and individual approach but the main emphasis at the moment is on that universal piece of supporting teachers to support the child so the child can engage with education. That is not the one-on-one therapy where the parent would come in. Because of all the CDNTs, any one school would have children from different CDNTs involved. </p>
+          <p eId="para_163">Although the school may have an occupational therapist, the occupational therapist from those teams may still come in to visit the child, speak to the teacher and do one-on-one work with the child. More co-ordination and engagement between the on-site occupational therapist and the person visiting is needed. A little bit more thought is needed in that regard.</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_164">I will make a more overarching point, which Dr. Tamming alluded to earlier. When a particular pilot is under way and then some plans for another pilot or something else are made as well, a lot of variables are being thrown into the mix. Sometimes it can be hard to tease out what is happening. We absolute recognise the political imperatives that lie behind some of these decisions, however. I am sure the Department of education or the NCSE is well placed to answer some of the specific questions. A common thread is the importance of clear communications from whoever is rolling out whatever model in order that parents, teachers, schools and individuals understand the desired outcomes or purpose of the pilot or intervention. Sometimes, those communications are falling down or perceived as lacking. That leads to people going along with varying expectations which may not be aligned. That is where challenges and dissatisfaction can arise.</p>
+        </speech>
+        <speech by="#KeiraKeogh" eId="spk_99">
+          <from>Deputy Keira Keogh<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_165">I agree with Dr. Hartney in the sense that as long as everyone in the pilot realises it is a pilot, best practices can emerge out of that. You can see the benefit of a speech and language therapist observing group time where a number of children are using AAC devices in various formats. It is about being able to consult in a broad manner as to how to improve the overall class. Often in special classes, there is scheduled OT time in the gym and a physio or OT comes in regularly to observe the whole class. I would love to see the model look like that. </p>
+          <p eId="para_166"> To come back to day services and adult services, I see different levels of consistency. Some services are fantastic, others are middling and some are not so great. I think of the South West Mayo Development Company, which has a fantastic social farming project, which is really engaging for those members. I visited the Irish Wheelchair Association in Belmullet, which has fantastic approaches to meaningful employment and exercise. There does not seem to be any kind of a curriculum or formal guide to the different services, however. There can often be section 38 or section 39 organisations involved. There is a lot of inconsistency. </p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_167">Adult day services are being run under the new directions policy. We have found in our work over the years that there are varying levels of understanding of what is encompassed in the new directions policy. The policy is established on 12 principles to foster independence for people attending those services. It promotes meaningful activities during the day that are of the person's choosing to help them build their interaction with society. One of the projects we have under way is to work with the HSE to develop an outcomes-based monitoring framework for new direction services. Hopefully, that will develop a framework that will lead to some of that standardisation. It is not that the curriculum <i>per se</i> or the scope of activities will be standardised or mandated but, rather, that they will have fidelity to the 12 principles and that the outcomes the person had chosen for themselves will be realised through those activities. We absolutely agree there is variability out there. Hopefully, some of these pieces of work will help address some of that. </p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_101">
+          <from>Deputy Gillian Toole<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_168">I thank the witnesses for their replies. We always learn. I find I learn from other people's questions and the replies to them. I have a few short queries. In the context of the review of CDNT services, does the National Disability Authority publish or communicate with the HSE and the Department along the way, particularly if there are red-flag issues, or does everything wait until the end? </p>
+          <p eId="para_169"> In terms of the inadequacy of population-based planning – those are my words rather than the witnesses' – does the NDA advocate and actively encourage that in feedback to the HSE and others, for example? </p>
+          <p eId="para_170"> Does emergency planning fall within the remit of the NDA, given that is an increasing problem for families? Is it actively involved in compiling suggestions? How well received is that and what stage is it at? Is it something this committee can support? </p>
+        </speech>
+        <speech by="#" eId="spk_102">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_171">For the CDNT review, we have two steering groups and an advisory group. The first steering group is made up of the HSE, parents’ voices and health and social care professionals and staff representatives. We meet every six weeks to two months to share updates. Our last meeting was before we got really into this. We will be able to share some findings with the group at the next meeting. We set up the second steering group for part 3 of the review because it includes education and the NCSE. The advisory group includes parent representatives and nearly all the health and social care professionals who are involved. There is good engagement along the way. I would not say there are red-flag issues. Obviously, in the context of any review, if something is identified that gives cause for concern, you raise it. We might go to the HSE informally with our main contact there to get clarity around some issues. We have not yet got to the point where we are discussing any recommendations or anything. There will definitely be more engagement at that point. I should have said the Department of children is also on those steering groups. </p>
+          <p eId="para_172"> The emergency planning piece is not really within our remit. I sit on the disability action plan steering group run by the Department of children. This has come up as an issue in that group. There has been a commitment to have a look to see what can be done in that regard. Maybe some money can be set aside as part of the Estimates process to do some work in that area and to develop sort of a model. There has been research work done in the past. The Trinity Centre for Ageing and Intellectual Disability has done work in this area to look at pre-planning for when something happens. There were interesting findings from that. </p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_173">The statistical and data analytics that will underpin projections for future need are within our remit. We have done some work on that in the past. Officials in the Department of children have taken it up and worked it in to a more future-facing thing. That is where we can be looking at the overall population structure and where emergencies might be likely to arise, particularly with an ageing population. We regularly include in our advice that reinstitutionalisation should not be the response to a crisis placement. That is where planning is necessary. </p>
+        </speech>
+        <speech by="#GillianToole" eId="spk_104">
+          <from>Deputy Gillian Toole<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_174">That unfortunately is the situation. There is not enough respite services and other services. </p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_105">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_175">There has been a lot of talk about the whole area of assessment of need. How does the NDA see itself supporting a new, modernised and more family-centred assessment of need? </p>
+        </speech>
+        <speech by="#" eId="spk_106">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_176">I do not know. One thing struck me when the Senator mentioned the family-centred piece. A lot of assessments of need are being done in the private sector, either funded by the HSE or families doing it independently. CDNT staff have said to us that when the assessments of need are done privately, they often come back with a service statement that says the child should get certain care. It is centred around a block therapy approach. The CDNTs have moved away from a block therapy approach, however. That is part of the disconnect in the communication between parents and the CDNTs. Some parents do not understand the social model and family-centred approach of CDNTs.</p>
+          <p eId="para_177">In some cases, some one-on-one block therapy over six weeks is required but often that is not what the need is. They find when they do the assessments of need themselves they can often bring the parents on a journey and really help the parent understand the child’s disability and the services that will be offered. They get much higher engagement in things like the group training and therapy sessions and have a better relationship with that family. While we know that is not the solution, given that the teams cannot take on more assessments of need, there is a way to do an assessment of need that can be a very positive experience. It is not just about getting a diagnosis for the child and a service statement. Rather, it is about bringing the parents along and helping them understand. Parents can often be quite traumatised when they find out about a diagnosis. The National Federation of Voluntary Bodies did a very good piece of work, called the informing families project, about the way parents should be told. Often, they can be informed in a very negative way, which impacts their whole trajectory in trying to get support for their child, but there are lots of positive ways of imparting that information.</p>
+          <p eId="para_178"> I have not really answered the Senator’s question.</p>
+        </speech>
+        <speech by="#MargaretMurphyOMahony" eId="spk_107">
+          <from>Senator Margaret Murphy O'Mahony<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_179">How news is imparted is critical. We have all heard horror stories. It is never good news but how it is handled or imparted is important, as is advice being provided straight away.</p>
+          <p eId="para_180"> How can it be ensured that the person with the disability, his or her family and organisations will remain central in the co-creation of any disability policy, not only in consultation, but also in implementation? How can we bring people with disabilities along?</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_181">The Senator has named it in "co-creation". The development of the forthcoming strategy was an example of how that could be done well, with the Department of Children, Disability and Equality doing some very intensive work with disabled persons’ organisations, DPOs, which are the representative bodies for disabled people, to develop the strategy. The Department went on quite a learning journey as to how that would be done, with engagement and negotiation of priorities. That is a good model from which other Departments can learn.</p>
+          <p eId="para_182"> Following the advice about the person being brought along and engaged with to help identify his or her choices, will and preference, and negotiating what is possible between both fields is something we are in the early stages at in the public sector in Ireland. The negotiation of this strategy is an example that can be followed and built on.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_109">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_183">The authority says on its homepage that it consults disabled persons' organisations. Will Dr. Hartney tell me which ones?</p>
+        </speech>
+        <speech by="#" eId="spk_110">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_184">We consult the ones we are aware of. I will probably forget some of the ones on the list but that includes Independent Living Movement Ireland; the Irish Deaf Society; Voice of Vision Impairment; Physical Impairment Ireland; the National Platform of Self Advocates; AsIAm; and Disabled Women of Ireland. Those are the national DPOs that are on our radar at the moment. We are always open, and our guidance is always open, to receiving information about others.</p>
+          <p eId="para_185"> I might take the opportunity to record the sad passing of Jacqui Browne, who was the chairperson of the DPO Network and whom I know the committee met recently. She will be a great loss to the landscape.</p>
+          <p eId="para_186"> We engage regularly with these organisations.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_111">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_187">I echo that. May Jacqui rest in peace. I have spoken on a number of platforms with her. She was a great lady. My sympathies to her family and friends.</p>
+          <p eId="para_188"> On assessments of need, since I have been elected, I have travelled to lots of other jurisdictions to investigate services and supports for disabled citizens throughout the European Union. I find it very interesting that, throughout the European Union, disabled citizens have a legal right to an assessment of need and a legal right to the services and supports, be they social or whatever, that are set out in an assessment of need. Not only that, but in most jurisdictions in the European Union, as a child develops and goes through adolescent years, there are ongoing formative assessments of need, often every two years, to track changes and make a plan for what supports and services the child needs going forward.</p>
+          <p eId="para_189"> I heard the Minister of State, Deputy Naughton, say on “Ireland AM” that the assessment of need, which is the only legal right that disabled citizens have in Ireland under the Disability Act 2005, was getting in the way of providing services and supports. I am curious as to whether the authority concurs with the Minister of State’s view that Ireland is a unique case where we do not need an assessment of need, only to provide services and supports?</p>
+        </speech>
+        <speech by="#" eId="spk_112">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_190">On the assessment of need, we would say the focus is on the waiting lists for assessment of need. That still does not mean people are getting services at the end, which is what they want and need. There is a lot of learning from other countries. I would speak to what is in our remit as the NDA. We could collect that learning, explore good practice in other organisations and feed that into the Government with a view to what might be worth considering if there is to be a review of disability legislation and a reform of the assessment of need process. I would reiterate that this is only one part of the problem, though. The issue is services, providing the services and having the personnel to do that.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_113">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_191">To reiterate, disabled citizens in other European Union jurisdictions have not just a legal right to the assessment, but also the services, supports, surgeries or whatever is set out in the assessment of needs. Does the NDA believe that is something that is desirable here?</p>
+        </speech>
+        <speech by="#" eId="spk_114">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_192">We would explore the rights that are in other jurisdictions. We would present them to the Government, as relevant and as requested, as routes for consideration. It is for the Government to decide what would happen next.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_115">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_193">It is the National Disability Authority that advises the Government on policy in this area. It is the national expert. Does it advocate for disabled citizens in Ireland, not just to have a legal right to an assessment of need, but to all the services, supports and interventions that are set out in such an assessment of need?</p>
+        </speech>
+        <speech by="#" eId="spk_116">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_194">We would advocate that people have the right to access the services and supports they need. Whether that is done through legal mechanisms is something I would need to give more thought to. I am not going to -----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_117">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_195">Just to be specific, we are the only country in the European Union where disabled citizens have no legal right to services, supports, therapies, interventions or personal assistants. Would Dr. Hartney favour Irish citizens coming into line with the rest of our European Union partners and having those legal and socioeconomic rights? </p>
+        </speech>
+        <speech by="#" eId="spk_118">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_196">With respect, I am not going to have words put in my mouth. What I would favour is people having access to services-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_119">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_197">No, I am asking a question. Would Dr. Hartney favour them having the legal right, as they do -----</p>
+        </speech>
+        <speech by="#" eId="spk_120">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_198">I am in favour of them having the right. Whether that is necessarily achieved through legal rights is something I am not going to be pinned down on without doing further work and getting advice on it.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_121">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_199">But that is the purpose of this committee. That is why I am asking Dr. Hartney the question.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_200">I-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_123">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_201">I am pinning Dr. Hartney down. </p>
+        </speech>
+        <speech by="#" eId="spk_124">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_202">I would say-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_125">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_203">I want a “Yes” or a “No”. Does Dr. Hartney favour legal rights for services, supports and interventions or does she not?</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_204">I favour rights and I would need to look, and my colleagues and team would need to look, before we would come down with advice on a “Yes” or “No” question like that. It is this committee's job. It is our job to do the research and provide the evidence base.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_127">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_205">I have to say I find that an alarming response, given the NDA's role to advise the Government on best practice.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_206">It is an advisory role about best practice. What happens elsewhere in Europe is-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_129">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_207">To come back to first principles, because there is a context here, we are in crisis-----</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_208">I understand and recognise that.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_131">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_209">-----with regard to disability rights. We are outliers in the European Union. There are suboptimal outcomes for disabled citizens like my son every day all across the State. The level of distress and unmet need is phenomenal. The NDA says it would not really have a view on whether these citizens should have a legal right, which is what sets us apart from every other European Union jurisdiction, England, Scotland, Wales, Northern Ireland and the United States – imagine Trump’s America where they have the Americans with Disabilities Act – yet Dr. Hartney is saying, “No, not really sure about that”.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:10:00+01:00"/></from>
+          <p eId="para_210">I am saying I do not have the information that would allow me to answer that question in a definitive way.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_133">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_211">How could Dr. Hartney not have that information?</p>
+        </speech>
+        <speech by="#" eId="spk_134">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_212">Because what they have now-----</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_135">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_213">She has been in the post for nine years.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_136">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_214">Senator, in fairness, you have asked the question a number of times. The answer you got is-----</p>
+        </speech>
+        <speech by="#" eId="spk_137">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_215">With respect, while countries may have legal entitlements to services and supports, we would need to do further work to establish whether that does really lead to those rights being realised or whether there are gaps that would need further attention. I do not believe it is a binary "Yes" or "No". I would like to do additional work if I were to answer that question in a binary way. With regard to looking at good practice in other countries that is absolutely within our remit and something we would do. Advice to the Government would be made on that basis.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_138">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_216">I put it to Dr. Hartney, respectfully, that the only reason we get an assessment of need is because there is a legal entitlement to it. That is the only reason. The reason we do not get the services and supports is we have no legal entitlement to them.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_139">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_217">I thank the Senator and I agree 100% with what he said. Dr. Hartney might not have been expecting that question, in fairness, from the Senator.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_140">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_218">With assessments of need the big fear is that the Government is going to undermine that one right people do have. People are absolutely open to a conversation on how best to deliver assessment.</p>
+          <p eId="para_219"> What are the witnesses' views on the CDNTs and that particular question? Has there been a discussion with the representative organisations? What engagement has there been with speech and language therapists, occupational therapists and psychologists? As a Member, I sort of made myself a member of the autism committee. I was not officially a member. I was shocked when we had the Irish Association of Speech and Language Therapists, IASLT, the Association of Occupational Therapists of Ireland, IOTI, and the Psychological Society of Ireland, PSI, before that committee. They said there had been no conversation with anybody from the HSE on what was the best way to deliver assessments and therapies. This is an absolute shortfall. The NDA's engagement would need to be at a comprehensive level in the review. Do the witnesses have any insights on that? It goes back to the fear that the legal right will be removed and that we will not have a complete discussion on how best we deliver assessments and therapies.</p>
+        </speech>
+        <speech by="#" eId="spk_141">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_220">The terms of reference we have, or the agreed plan we have with HSE, was explicitly not to look at the assessment of need beyond its impact on the team such as what percentage of a team's time is spent on assessments of need. It obviously comes up in parents' feedback to us but we are not reviewing AON as part of the CDNT review. AON is part of the role of CDNTs but it is also part of the role of primary care and CAMHS. It is not that-----</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_142">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_221">No, I understand that. It is a huge part and there have been constant conversations about it. The Government has spoken at times about the issues with it. I have no problem with the issues being addressed if there are issues, and maybe not everybody needs a 30-hours plus assessment but my fear is that the right to it would be removed. This is where I and many others have a particular issue. I like to think that somebody would review the best means of delivering assessments and therapies.</p>
+        </speech>
+        <speech by="#" eId="spk_143">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_222">It is not part of our agreement currently but I understand the Department is looking at this whole issue. They have a team looking at this but we are not directly involved in that.</p>
+        </speech>
+        <speech by="#" eId="spk_144">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_223">As of yet. I imagine there will be scope for us to input at a later stage. I absolutely understand the importance of the process to parents who want to have a sense of what services and supports they might need. We very much see the assessment of need as one part of what is needed. What is most needed is access to those services and supports.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_145">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_224">I agree. Does Dr. Hartney have a view at this stage on what could be done? Again I am jumping the gun on the best means of delivering assessments and therapies, and beyond that assistive technologies, on which the HSE is doing a piece of work. We have all seen how that can make a huge difference.</p>
+        </speech>
+        <speech by="#" eId="spk_146">
+          <from> Dr. Aideen Hartney<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_225">We have spoken a little bit about capacity within the system, the staffing and the resources. I am aware the committee heard about that at length last week from the HSE but we echo those concerns. Yes, assistive technology absolutely has a place. I am afraid that this is another place where Ireland is probably behind some of its counterparts. There is work under way, however, with the World Health Organization at national level to try to improve our performance there. It will have a lot of scope across a lot of areas of disability to help improve outcomes for people. We will be very interested to contribute to that in any way we can.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_147">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_226">I have a particular view on the CDNTs, and this is not to take away from people within them doing huge work. It is a positive model. The witnesses spoke earlier about the communication failures in relation to where parents are. In fairness, Mr. Bernard Gloster also said that those who had a more positive view of CDNTs were those who had a single point of contact or somebody they could have a conversation with. I imagine that made up for this communication deficit. The witnesses stated that. There needs to be a solution on this. I have seen it myself with parents. Some of it is frustration that is borne out of the fact that sometimes they do not get anything from an assessment through to therapies. All they have is frustration and then they are actually waiting, and on some level they are imagining that the therapies they will get are going to be phenomenal, but it is this thing that is removed from them. It is about dealing with the communication piece.</p>
+        </speech>
+        <speech by="#" eId="spk_148">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_227">There is good learning coming out of the review on that. Perhaps Dr. Wormald will speak to the newsletters and the different contact.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Dr. Andrew Wormald<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_228">The CDNTs have learned a lot about communication. They are improving communication but the comment coming back from CDNTs is there needs to be national communication on what children get, and what they would expect of the service and the service model. A lot of problems with the communication is the expectation of the service. The model is a social model sandwiched in between two medical models so it becomes very awkward to play and for people to understand how this social model fits into the medical model. People are coming to it with medical expectations when the model centres on the family and servicing the family. The one piece of communication I have seen that is done really well is a CDNT where the person is referred to them and they send out a family link worker virtually straight away, within a month of the referral. This worker goes into the house, meets the family and assesses the referral based on the meeting with the people rather than on a piece of paper work. This worker will tell the family about the service, what they can expect, what the CDNT will deliver, when they will deliver, sees what the family needs, and then feeds back to the team anything that may be missing off the referral papers as well.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_150">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_229">Outside of the issues that exist across the board of CDNTs, how many family link workers are there like that? Is every area covered in this regard?</p>
+        </speech>
+        <speech by="#" eId="spk_151">
+          <from> Dr. Rosalyn Tamming<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_230">There is not a standard. The core occupational therapy, speech and language therapists, physios and psychologists are found in all of the teams. The other professionals then vary. Some have behavioural therapists, some have nurses who play a really crucial role in some services but other services do not have them, and there are social care workers. Now we have the assistant therapists coming in, which will also be a new role. It is important that this is systematically implemented throughout all of the teams. Part of the work we will do in part 2 is looking at the different types of staff on the team. We do not necessarily want to be too prescriptive. We want to have equality across the teams but also a little bit of flexibility for some teams if they have very high levels of deprivation. Maybe they need more social care workers than, for example, a team in a more affluent area. A little bit of flexibility but a little bit more standardisation at the same time is probably what it needs to come to.</p>
+        </speech>
+        <speech by="#RuairiOmurchu" eId="spk_152">
+          <from>Deputy Ruairí Ó Murchú<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_231">A family link worker would seem to make complete sense and would deal with that communication piece.</p>
+        </speech>
+        <speech by="#MauriceQuinlivan" eId="spk_153">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_232">I thank the Deputy. Before we finish and before I thank everybody for coming in, I have just a quick comment. In the opening statement it was said that the National Disability Authority is a statutory agency to provide guidance and advice to the Government . Without pre-empting what the committee might decide later, I imagine that all the members are practically and really concerned about the legal right to an assessment of need, and that this be maintained. There is also the legal right to services, as Senator Clonan mentioned. Without pre-empting what the committee will decide, I imagine they will be in our recommendations on anything we are doing.</p>
+          <p eId="para_233"> I thank the witnesses for coming in and I thank them for their contributions. I thank all the members. With the agreement of the members, we will go into private session to deal with some housekeeping matters. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee went into private session at 11.30 a.m. and adjourned at 11.40 a.m. until 9.30 a.m. on Wednesday, 2 July 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

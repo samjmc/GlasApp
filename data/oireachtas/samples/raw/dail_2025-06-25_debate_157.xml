@@ -1,0 +1,1327 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_health/2025-06-25/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_health/2025-06-25/debate"/>
+          <FRBRdate date="2025-06-25" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_health/2025-06-25/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_health/2025-06-25/debate/mul@"/>
+          <FRBRdate date="2025-06-25" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_health/2025-06-25/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_health/2025-06-25/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-07" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="JenniferCarrollMacNeill" href="/ie/oireachtas/member/id/Jennifer-Carroll-MacNeill.D.2020-02-08" showAs="Jennifer Carroll MacNeill"/>
+        <TLCPerson eId="JenniferMurnaneOConnor" href="/ie/oireachtas/member/id/Jennifer-Murnane-O'Connor.S.2016-04-25" showAs="Jennifer Murnane O'Connor"/>
+        <TLCPerson eId="KieranODonnell" href="/ie/oireachtas/member/id/Kieran-O'Donnell.D.2007-06-14" showAs="Kieran O'Donnell"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MaryButler" href="/ie/oireachtas/member/id/Mary-Butler.D.2016-10-03" showAs="Mary Butler"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Health" href="/ie/oireachtas/role/minister/health" showAs="Minister for Health"/>
+        <TLCRole eId="Minister_of_State_at_the_Department_of_Health" href="/ie/oireachtas/role/minister_state/health" showAs="Minister of State at the Department of Health"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-25">Dé Céadaoin, 25 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-25">Wednesday, 25 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JenniferCarrollMacNeill">Jennifer Carroll MacNeill (Minister for Health)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#PadraigOSullivan">Pádraig O'Sullivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#PeterRoche">Peter Roche</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MarieSherlock">Marie Sherlock.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">I láthair / In attendance: Deputies Mary Butler, Jennifer Murnane O'Connor and Kieran O'Donnell (Ministers of State at the Department of Health).</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Estimates for Public Services 2025<recordedTime time="2025-06-25T09:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vote 38 - Department of Health (Revised)<recordedTime time="2025-06-25T09:30:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T09:30:00+01:00"/></from>
+          <p eId="para_12">The purpose of the meeting is to consider the following Revised Estimate for 2025: Vote 38 - Department of Health, including the agencies funded by the Department. I welcome the Minister for Health, Deputy Jennifer Carroll MacNeill, and the Ministers of State, Deputies Mary Butler, Kieran O'Donnell and Jennifer Murnane O'Connor. The Ministers are accompanied by officials from the Department. I thank the officials for providing a detailed briefing note relating to the Estimates. This is the first time some of the Ministers have been before the committee. I thank them for their engagement and look forward to working with them. It is safe to say that we have a shared ambition of improving health outcomes for everyone in Ireland. I look forward to working with them and the officials in achieving that aim.</p>
+          <p eId="para_13"> Members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable or otherwise engage in speech that might be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative they comply with any such direction.</p>
+          <p eId="para_14"> The opening statements were circulated late yesterday evening. If possible, it would great if the Department could provide us with the documentation at an earlier point as it would enhance our engagement and our ability to consider it in advance. I invite the Minister to make her opening remarks.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" as="#Minister_for_Health" eId="spk_2">
+          <from>Minister for Health (Deputy Jennifer Carroll MacNeill)<recordedTime time="2025-06-25T09:30:00+01:00"/></from>
+          <p eId="para_15">I thank the Chair. I am delighted to be here with my colleagues, the Ministers of State, Deputies Butler, O'Donnell and Murnane O'Connor. I am joined by the following officials from my Department: Mr. Derek Tierney, assistant secretary; Ms Rachel Kenna, chief nursing officer; Ms Tracey Conroy, assistant secretary; Mr. Daniel Curry, principal officer; and Mr. Patrick McGlynn, principal officer. We are here to consider the Revised Estimate for the Department of Health for 2025.</p>
+          <p eId="para_16"> This my first time meeting this committee. I want to speak to the members honestly about the performance of our health service and some of the key challenges we face. We have an opportunity to work together to make the health service better for patients and their families.</p>
+          <p eId="para_17"> There have been unparalleled increases in investment over the past five years. Since January 2020, the overall increase in expenditure has been €6.71 billion. This is a 35.3% increase, excluding disability funding, which was part of the Vote in 2020. The budget has increased from €19.04 billion in 2020 to €25.75 billion in 2025. At the end of April 2025, there were 25,661 more staff working in our health service than there were at the beginning of 2020. This represents a 25% increase, which includes additional front-line staff of 9,837 nurses and midwives, 4,084 health and social care professionals, 1,416 consultants and 2,280 doctors and dentists.</p>
+          <p eId="para_18"> In moving towards universal access to healthcare, we have rolled out free contraception for women between the ages of 17 and 35, free hormone replacement therapy, HRT, at the point of delivery, State-funded IVF, and hundreds of thousands of GP referred diagnostic scans are now being paid for by the State.</p>
+          <p eId="para_19">I have introduced direct referral to diagnostics by physiotherapists as well, in an effort to expedite the processes. Through medical cards and GP visit cards, about 2.3 million people have access to free GP care. When the income thresholds were increased to the median income, we estimated 430,000 people to be newly eligible. However, take-up has been only 72,500, and I encourage members of the committee to spread this story while there are people who have access to free GP care who are not availing of it. There are different reasons but let us try to encourage people to do that.</p>
+          <p eId="para_20"> The key point I want to make today and want to work with the committee on over the next number of months and years is that investment has moved ahead of activity levels. Our investment in health is very high. In 2022, Ireland ranked as having the third highest spend as a percentage of GDP-GNI* out of 27 EU member states. Nonetheless, activity is not keeping pace with the levels of investment. The recent IMF efficiency benchmark review found that Ireland's health system is inefficient compared with other countries, producing good outcomes but at high costs. It estimates that up to 15% of expenditure could be saved while maintaining life expectancy. That is borne out by our own repeated analysis.</p>
+          <p eId="para_21"> I sent the committee last night an invite to see a demo of a new interactive hospital productivity dashboard, which will be made public very shortly. It was developed under the productivity and savings task force as part of our commitment to have objective performance data that is open and transparent. The insight from the dashboard is excellent. It shines a light on the difference in performance across hospital sites, between specialisms and even within sites. For example, it shows us that over the past five years, we have increased real expenditure in our hospitals by approximately 36% above inflation, and that includes an average increase of 18% more staff on the ground.</p>
+          <p eId="para_22"> At the same time, activity in our hospitals as regards inpatients, day cases, outpatients and emergency department presentations has increased by on average 12% over the same period. Therefore, activity is falling behind investment. That average also shows considerable variation in performance between hospitals. For example, one of our model 4 hospitals saw only a 3% increase in overall activity, from a 36% in workforce and a real expenditure increase of 42%. That is clearly anomalous. In contrast, another model 4 hospital saw a 22% increase in overall activity, from a 40% increase in workforce and a 46% increase in real expenditure, which is considerably better than the other model 4 hospital but still not quite where we want to be. What is crucial is that we can differentiate between hospital activity, and it will be very telling.</p>
+          <p eId="para_23"> Obviously, we all have a higher expectation of performance in return for public investment because every cent invested by the taxpayer must produce a result that responds to the demands we face and will continue to face. This is not about efficiency for the sake of metrics. It is not a maths challenge we need to win. It is about making people's lives easier, better patient outcomes, safety and dignity and ensuring that when a person needs an appointment, they have a better chance of getting it and getting it quickly within the Sláintecare model. We are living longer and it is projected our population will reach 6.3 million people by 2040, depending on future migration. We must respond, therefore, but we must do so more efficiently and effectively.</p>
+          <p eId="para_24"> Focusing on 2025, this marks a very significant increase in investment and it has to be targeted in a way that improves access for patients to services and enables productivity. This year has seen one of the largest single-year increases in core health funding outside of the height of the pandemic. Gross funding increased by €2.9 billion, from €22.8 billion to €25.75 billion, an overall increase of 12.8%. That investment is heavily targeted towards increasing capacity to improve patient experience and access to health services. </p>
+          <p eId="para_25"> I recognise the progress that has been made, but also wish to highlight where we need to do more. On waiting lists and waiting times, again, over the past year the health service has achieved a 12% reduction in patients on waiting lists exceeding 12 months and a reduction, crucially, in average waiting times from 7.2 months to 6.5 months at the end of 2024. That is against a backdrop of a 9% increase in outpatients and a 5% increase in inpatient and day case attendances. There is, however, much more to be done to achieve our goal of ten- to 12-week waiting times with Sláintecare. To continue progress into 2025, funding has been allocated to further reduce waiting lists and times. The waiting list action plan was published in February 2025 with a total funding of €420 million, between the NTPF and the HSE. Approximately €100 million of that funding is to be invested in developing HSE capacity, staffing modernised care pathways. The scale of the funding overall shows that we have developed an over-reliance on insourcing and private work to deal with our waiting lists. We need to move away from our dependency on that model to fully utilise the underutilised internal capacity we still have within the core health system. That is how we safely reduce reliance on that model of additional funding to manage our waiting lists, doing so in a way that protects patient outcomes as we transition.</p>
+          <p eId="para_26"> Because of my concerns about the insourcing model, which I am sure committee members share, a number of weeks into my position as Minister, in early April. I requested that the CEO of the HSE carry out a review of insourcing across the system. I expect that to be completed shortly. I would like to come back to the committee when I have that to discuss it in good detail and look to see how we can reduce our reliance on insourcing while, at the same time, not negatively impacting on patient waiting times and patient waiting outcomes. That is going to be a fine balance we will have to figure out together how to do correctly.</p>
+          <p eId="para_27"> In respect of urgent and emergency care, that really is a priority. We have made good progress on reducing our trolley numbers over two different ways. At the end of 2024, there was an 11% reduction in the number of patients waiting on trolleys at 8 a.m. for a hospital bed compared with 2023, despite an additional 130,000 patient presentations to emergency departments nationally, but this year, we have seen an additional reduction, though it has not been as consistent as I would like. One of the key reasons for that has been the weekend rostering of consultants on site. The proper implementation of the public-only consultant contract is absolutely key in improving patient flow through the hospital and ensuring the safety, experience and dignity of our patients. Through the relentless focus of the CEO of the HSE, Bernard Gloster, and hospital managers in different ways, changes are being implemented at local level and we are seeing improvements, though not consistently. There are local nuances everywhere, which we can discuss.</p>
+          <p eId="para_28"> It really is not only about consultants, though it cannot happen without them. Many other staff and community throughout hospitals are also needed to operate our services on a seven-day basis. That has been a key reform goal for me, and I really am absolutely delighted to see the agreement between the HSE and staff representatives on moving towards working across seven days. That was initiated by Bernard Gloster on 12 February, and I am delighted to see agreement now in June. The key challenge is going to be around implementation. What that means is that up to 10% of staff, in addition to consultants, will now be rostered over weekends. I am focused on ensuring the HSE delivers those changes and that people can access services they need at the time they need them. As everybody here knows, people get ill seven days a week and better seven days a week. They need to access services and be discharged from those services on a seven-day week basis. I want us together to deliver this reform to reduce our trolley numbers and the time patients spend unnecessarily in hospital and to speed up access to care in less stressful settings, closer to home. Working over the full week will also mean we use our currently limited infrastructure and resources more effectively. </p>
+          <p eId="para_29"> We can deliver more services, for example, in outpatient departments, appointments and theatre rather than the majority vying for space Monday to Friday between 9 a.m. and 5 p.m. It is not logical or a good use of the assets that the taxpayer has already paid for. To improve access to services and additional capacity through capital investment is also a really key challenge for all of us together over the next number of years. A key limiting factor on improving access even further is our physical and digital infrastructure. We do have a legacy challenge; that is a factor, so we have a lot to do. For example, in 2022, Ireland had 291 hospital beds per 100,000 people, excluding nursing home beds, while the EU average is 516. In Germany, there are 766 beds per 100,000.</p>
+          <p eId="para_30"> The 2025 budget prioritised additional staffing and associated funding to expand our health infrastructure to improve access to services and increase capacity. Funding has been committed to staff two new surgical hubs in Galway and Swords, 335 net additional acute beds, four new virtual community wards, 615 community beds, 455 of which are replacement, obviously, and 160 new beds and six injury units for Carlow, Athlone, Dungarvan, Kerry, Ballina and Tallaght.</p>
+          <p eId="para_31"> Rebalancing our investment towards capital is a key priority for me in 2025 and I am quite sure for the committee as well. It is absolutely key to help unlock some of our productivity and access challenges and I would so appreciate the committee's support in making the best case for the maximum possible infrastructure investment through the NDP review. As the committee is aware, the NDP review is taking place at the moment. I do accept, of course, that there are strong demands in areas of housing, energy and water, but health infrastructure is something that impacts every single community and county in this country, and the Department of Health is keen to invest and invest strongly. </p>
+          <p eId="para_32"> A key area of focus in 2025 underpinning increased efficiency and performance is the digitisation of our services. It is no exaggeration to say that staff have been trapped in a work environment of pen and paper for many years, which is frustrating, difficult and inefficient. We are increasing our investment in digital health in 2025 by €100 million to progress and expand investment in virtual wards, which are quite exciting and the committee should come see them, for example, ehealth initiatives like national e-prescribing and national shared care record to avoid duplication of record collection, national electronic health records to streamline clinical workflows, and the use of AI-assisted diagnostic and triage tools in clinical and administrative services to improve and speed up decision-making.</p>
+          <p eId="para_33"> The HSE’s digital health app, which I hope everybody has downloaded, is one of the main ways patients manage their health information across services in Ireland. The app, which has recently won two awards, allows you to store your medical cards, track medications including self-declared information, view vaccination records and manage maternity and hospital appointments. Crucially, its functionality will continue to increase. By the end of 2025 it will have appointments and communications for BreastCheck, quit smoking support and prostate cancer self-care pathway support. It is really part of building a connected, patient-first digital health system and will continuously improve functionality and continue to evolve. I hope the health app provides a modern, easy-to-use platform for health information and the HSE remains committed to ensuring everyone can access services through multiple channels. This is one of them, but an important one.</p>
+          <p eId="para_34"> We will continue to implement and integrate new and existing HSE IT systems. Our financial management system, IFMS, will have 80% budget coverage later in the year. We have to quickly implement that now, crucially in our voluntary health sector as most of the remaining 20% of health Vote spend. It must absolutely be implemented in the voluntary hospitals. The national hospital management system, an electronic logistics and stocking system within hospital pharmacies, is also important. All of those projects will have a better and positive impact on how patients experience health services and health information.</p>
+          <p eId="para_35"> I turn to workforce expansion. Over the past five years, we have invested significantly to increase our current healthcare workforce. Recruitment in 2025 has been lower than I would like. We have committed funding to increase our healthcare workforce by a further 6,100 to 133,305. We are increasing the supply of trained health and social professionals. We have expanded student training places across medical, nursing and health and social care professions by 762 additional places since 2022. An additional 430 student places will be provided in academic year 2025-26, including 25 medicine places in Northern Ireland. In addition, 389 student places were provided in Northern Ireland across medicine, nursing, midwifery and allied health professions in 2023 and 2024. Crucially, we are trying everything we can to enable professionals to work at the top of their licence and expertise. As I mentioned, physiotherapists will soon refer directly for scans. Pharmacists will prescribe for common conditions and advanced practitioners in nursing and social care are stepping into diagnostic and treatment roles. Alongside expansion of our workforce, I am keen to ensure that regulatory processes in registration are as fast and efficient as they can be without diluting the need to ensure professionals are sufficiently trained to practise in a safe manner. I have recently met with the Medical Council and will be meeting with CORU and the NMBI in the coming weeks. I have reiterated the absolute necessity for the Medical Council to approach its work in the most efficient and logical way to make sure there are not doctors in Ireland who are qualified to work in our system who are prevented from doing so for too long.</p>
+          <p eId="para_36"> There are many challenges for people accessing services in primary care, mental health and in our hospitals. My focus as Minister for Health is to reduce those access barriers. I want to work with the committee to do that. However, it is also important to set out the backdrop of a real cause for optimism. The reforms we are starting to deliver, like a seven-day service, transparency on productivity and performance, the new systems like the app, surgical hubs, virtual wards, AI and many more, offer us opportunities to have a better and safer health service. It is already the case that our health outcomes are good. Our challenge is access and many of these projects are about enabling access and getting better productivity from the resources we have and continue to invest in. We have a lot of work to do. I look forward to working with the committee and I hope the members can see that the Minister and three Ministers of State are ambitious to build accessible, affordable and high quality healthcare for all.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_37">I thank the Minister. There is a lot to consider there. I also thank her for the invitation to the briefing on the productivity dashboard. For members' benefit, we have arranged a briefing next Tuesday on the HR Bill. My intention is to do both together. We will take the briefings on both issues at the same time. I now open the discussion to members. As in previous meetings, we will have rotating slots of ten minutes each. Our intention is to take a five-minute break in approximately one hour.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_4">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_38">I thank the Minister, Ministers of State and Department officials. I will try to do question and answer as we might get more views from them on what is happening in the health service. I am delighted the investment is increasing year on year, but I am struck by the Minister's observation that we are not getting return for our investment. A number of issues come to mind, one of which is the capacity issue. Are we growing our health service quickly enough for the growth in our population? Are we putting investment into parts of the system that cannot perform without other parts of the system being reformed? The Minister has, for example, outlined the digitalisation of our health service. If she will forgive me, I am delighted her focus is on that, but being involved in the healthcare sector for many years, I have heard this story repeatedly. I know that in the general practice setting, 98% of all GPs are fully computerised and have to be for the chronic disease management programmes. However, in our hospital sector we still have a situation where, if I do a digital referral in my surgery to a hospital, someone on the other end prints off a hard copy and walks around the hospital handing out that sheet. We have heard about this for many years. This country is one of the biggest centres of the digital economy in the world and yet we do not seem to have extrapolated that into our health service.</p>
+          <p eId="para_39"> The next point is that we have taken on more staff and there are two issues arising. One of these is retention of Irish graduates in our system. Many stories come back about the culture. It is not simply about money but culture. Are we treating not just our medical graduates but our allied health and nursing professionals properly when they come into our system? Are they welcomed into our system? Are they facilitated in our system? The narrative coming back is that they go because they are treated better in other jurisdictions after they leave here. That is a culture issue. It is not a money issue.</p>
+          <p eId="para_40"> I am glad the Minister referred to the NTPF. I hope there will be reform of it, given some of the issues that have arisen recently. On primary care centres, we are reliant on private public partnership. In a number of areas of the country like Ballaghaderreen, County Roscommon, and Edgeworthstown, County Westmeath, we have situations where small developers have gone out of business or have not satisfied the financial requirements after years of planning and the primary care centres have fallen through. Are we over-reliant on small developers producing these primary care centres? Should we have the HSE build these centres directly?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_5" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T09:50:00+01:00"/></from>
+          <p eId="para_41">There are a couple of different things there. On digitalisation, I appreciate the Deputy has heard about it before. To be fair, we would not have been able to download the HSE health app unless a substantial body of work had gone into that. Approximately 75,000 people have downloaded it, and it is the first step in this. This comes down to the investment decisions in the NDP and being able to take this forward. I do have the budget in the Department of Health at the moment to do that, but you can clearly see that the priority in the programme for Government is health digitalisation. My view is that it should be digitalisation and other infrastructure, but we will have that argument on a different day. I see a clear pathway to funding a different digital system. Derek Tierney is with me and is doing the work to drive that. There is a clear plan for this spend and I see a clear pathway over a number of years for the different stages of that and the delivery of that. It is absolutely essential for what we are doing, and the inefficiencies highlighted by the Deputy are particularly frustrating and must be frustrating for people working in the system. We have quite a body of work to do on that.</p>
+          <p eId="para_42"> For the information of the Deputy and as an update on the progress on the national electronic health record, the business case is being developed and is currently subjected to the external assurance process before it goes to the Government. A prior information notice, which is a key part of the procurement process, was published in June 2025 and informed different EHR suppliers about the health service's interest in a national enterprise-level EHR system. A national electronic prescribing service tender was published in June 2025 to develop secure and efficient transmission and storage for electronic prescriptions and dispensations for patients. Those are crucial updates in regard to it.</p>
+          <p eId="para_43"> With regard to electronic health, I would also bring in the virtual wards at St. Vincent's and Limerick. I would like to see more rolled out because this is very effective. There can be two nursing staff working overnight for 30 patients, which really could not be replicated in a hospital setting. The outcomes are very good. I would invite members to come to St. Vincent's or Limerick to see it in operation. However, if we give funding for the capacity to have 25 or 30 patients, I expect the hospital to bend over backwards to find those patients out of 550 beds and to make sure it is being utilised properly. For example, I was very disappointed to see what I regarded as the underutilisation of a virtual ward over a bank holiday weekend, which impacted on beds.</p>
+          <p eId="para_44"> Regarding staff retention, one of the most important pieces is how we treat and enable our workforce. One of the key things I hear repeatedly, including from Rachel Kenna, who is in charge of workforce planning across the board, is that we are trying to give everybody the opportunity to work at the top of their licence. In particular, it is fair to say that we see the best outcomes with advanced practitioners, whether it is in nursing or social care. It is about what we can do to further empower them in leading diagnostics and triaging in different clinical settings.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Ms Rachel Kenna<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_45">Retention is a big feature of our overall workforce planning. To summarise, and I would be happy to provide a more detailed note on this, for NCHDs, the task force that concluded last year made a significant number of recommendations. We have already seen improvements in induction programmes and the facilities within all of the hospitals for on-call, training and development, as well as space for NCHDs doing longer hours. There is a commitment to a reduction under the European working time directive, which has always been feedback from the doctors themselves. There are significant recommendations around training, education and improvements in simulation for doctors who are being progressed. As I said, we can provide a detailed note on that.</p>
+          <p eId="para_46"> From a nursing perspective, we have the safe staffing framework, which has had significant benefits and has shown through evidence that there is better retention for areas that have fully implemented the safe staffing framework. In addition, we are part of the European Nursing Action, which has a strong focus on the retention of nurses across the European region.</p>
+          <p eId="para_47"> Migration is a feature of our workforce in Ireland and will remain so, given our dependence on an internationally trained workforce. However, we are beginning to look at circular migration. What we are seeing is that while new medical interns and nursing graduates are migrating to countries like Australia, they are coming back into the workforce between three and five years later, which is significant for us. When we get better data on that, we will see the improvements.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_7" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_48">It is also important to take a global perspective and recognise there are many nurses coming to Ireland at the expense of their home countries. I am thinking of the Philippines in particular, which trains 13,000 nurses a year, 10,000 of whom leave to go to different parts of the world. At the World Health Assembly, I sat with the Filipino minister to recognise that. We are doing a lot of work to try to support those nurses and their families and to have that circular training. It is not just about us taking from other countries. We have an obligation to make sure that we are not doing that at the expense of other populations around the world, and we are quite conscious of that.</p>
+          <p eId="para_49"> With regard to the NTPF and insourcing, this is one of the most important pieces of work, first, because of the proper processes involved in it, second, to ensure there is no corruption of those processes and, third, to ensure it is not operating as a barrier to us getting to a universal public system. I became aware and concerned about this at an early stage, some six or eight weeks into being Minister. It arose from constantly asking about the use of CT machines and diagnostics. I would ask what time a CT machine runs until and be told that it runs all night, but not whether that is for emergency or elective procedures, or what happens on a Saturday. In a hospital, I would hear that the MRI machine does not work on Saturdays. I wanted to know why it did not work on Saturdays and whether it was because, say, it needed a rest. It turns out that the machines are working in some of the hospitals but they are not necessarily working in the public system.</p>
+          <p eId="para_50"> What are the constructs behind that? This is not to say they are not legitimate or that they have not been developed with knowledge and purpose, because they have. They have been developed for the purposes of trying to meet patient need and reducing waiting times for people who need surgeries and diagnostics and who have painful conditions. Our difficulty is that until we have the insourcing review that Mr. Gloster has completed, we will not have a real understanding of what is happening on a site-by-site basis, what the national implications of that are, how that is being used in different ways and how that has the capacity to be used wrongly, in my view, even if legitimately, but wrongly in delivering the overall public good of a public system working at maximum productivity.</p>
+          <p eId="para_51"> We will come back to the question of primary care centres. I will ask Mr. Tierney to comment.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_8">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_52">I welcome the Minister, the Ministers of State and all of the officials. The Minister mentioned inefficiency, high costs and the money that we spend in the healthcare system. Obviously, we want to get maximum efficiency. What was the figure that was approved in budget 2025?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_9" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_53">It was €25.336 billion and a little bit more.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_10">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_54">No, what was actually approved? I am not asking about the Revised Estimate. What was approved in budget 2025?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_11" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_55">I am sorry. That was the figure I had in my head for this year. It is the same number, pretty much.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_12">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_56">What is the difference between the two?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_13" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_57">It is €7 million.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_14">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_58">I just want to get to the productivity and savings task force issue. That was set up by the previous Minister. I am looking at the update for February 2025 and I looked at a previous update. There was the publication of a previous action plan that had redacted targets but in the February one, the targets were not redacted. The document states that there was a recalibration to the original plan. This included revised savings targets in accordance with the two-year expenditure agreement on health funding. Essentially, we have targets for two years, and I know this is rolled up into a figure of €633 million across the two years. What was the original target?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_15" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_59">I will have to ask my officials for that.</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Mr. Daniel Curry<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_60">The original target was the same.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_17">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_61">There was no variation. I am reading from the Department's own report. It says there was a recalibration to the original plan and this included revised savings targets. If Mr. Curry is telling me it was the same, there were no revised savings targets.</p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Mr. Daniel Curry<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_62">There were revised savings plans to deliver on the targets but the target was the same figure.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_19" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_63">The target was the same. The plan was revised to try to make sure to achieve the plan.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_20">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_64">It does not say that. It refers to including revised savings targets. That suggests that the figure had changed. We will come back to that and perhaps the Minister can give us unredacted versions of the previous plans. We are being told here that no change was made. I want to know if that was the case. I want to see the original documents, if that is possible, so we can see the targets that were set originally versus those that are being set now. What is set out in the plan, and maybe it is clumsy writing, suggests there was a difference.</p>
+          <p eId="para_65"> Of that €633 million, what savings have been achieved?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_21" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_66">I can go through it piece by piece. The HSE achieved €251 million in savings in 2024 across a number of areas, including medicines, €54 million; not doing management consultancy, €34 million; and other pay and non-pay savings across the system, €163 million. I can get a detailed breakdown of that for the Deputy.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_22">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_67">That figure is a very small amount of the overall budget. We are talking about efficiency and savings. When I look at the figure of €633 million, it is significant in its own right but less so in the context of the overall budget, and it is over two years rather than one year. Is it the Minister's view that those targets are sufficient or would she be looking to increase those targets?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_23" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:00:00+01:00"/></from>
+          <p eId="para_68">I would like to reach the targets in the first instance. The Deputy is right to say that it is small with regard to the overall budget. However, it is tough to achieve each one of those. For example, the changes made this year in regard to the shift to email from post is a €30 million saving but that now has to be implemented. Another example is that there is an opportunity to save €7.2 million in relation to food waste and that has to be done on a hospital-by- hospital basis. I would give a particular shoutout to Drogheda, which has done particularly good work.</p>
+          <p eId="para_69">The catering manager there has made savings of €92,000 this year, but through an extraordinarily hard piece of work to recalibrate and change the kitchen and the processes right across the hospital. Other hospitals are interested in doing that. I certainly regard that €92,000 as incredibly hard won and incredibly valuable. It takes a lot of those savings. I know it is small but it is really meaningful.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_24">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_70">It is small and it is important. I am not saying it is not important-----</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_25" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_71">I know the Deputy is not.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_26">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_72">-----but we had to provide an additional €1.5 billion last year to essentially plug a hole in what were cumulative deficits that had built up over a number of years. We were not allocating sufficient funding to deal with even existing levels of service. We had many discussions in this committee with the previous Minister for Health, the head of the HSE and the Secretary General of the Department and we were led to believe that very substantial savings would have to be achieved because, even as a standing start every year, we are talking about somewhere in the region of €700 million to €1 billion for so-called existing levels of service even before we can look at any additional capacity. Savings were identified in relation to agency spend and management consultancy. When I look at all of those areas, €251 million in the context of the overall budget is not really achieving the types of savings that we were led to believe would be achieved.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_27" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_73">It is not as much that. Part of the savings is about staying within profile. For example, the use of a virtual ward, while it might not be a saving cost that I can show the Deputy directly, saves 30 bed nights and those costs help stay within profile as well. All of those things are very important.</p>
+          <p eId="para_74"> The outpatient department, OPD, productivity measures, and the more quickly people are getting appointments, are a saving later in terms of insourcing and the NTPF and a saving in overall care because of earlier intervention. There is the workforce rostering, maximising the use of the public-only consultant contract, which we are paying for but not necessarily getting the value from. While they are not figures that I can show the Deputy, we are getting better productivity and better output from what we are spending.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_28">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_75">How much did we spend on agency in 2024?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_29" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_76">Which has not been converted.</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_77">We spent €734 million on agency. That is within the Department of Health-funded part of the HSE.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_31">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_78">We were told by the head of the HSE that very significant savings needed to be made in this area, including converting-----</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_79">That is correct.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_33">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_80">Bear with me, because I am not finished my question yet-----</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_81">There was plans for-----</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_35">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_82">This included converting a lot of that spend into whole-time equivalent positions, which is obviously a place we want to get to. How does that €730 million compare with the previous year?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_83">That was 7.6% higher than in the previous year.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_37">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_84">What about the year before that?</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_85">It was 9% higher than in the previous year.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_39">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_86">Rather than being reduced, it has increased year on year.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_40" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_87">It has to be seen in the context. We want agency spend to go down. It is difficult to do that and there should be more conversions to whole-time equivalents, WTEs. At the same time, it is also recognised, as the Deputy has recognised, that there are a number of agency staff for whom it suits to work in agency and it is hard to convert.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_41">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_88">I accept that but I am just making the point that there is-----</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_42" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_89">Nevertheless, the Deputy is correct.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_43">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_90">If I can finish, I am just making the point that there is a lot of expenditure in this area. Going back to my role in the previous health committee, we identified these areas over a long number of years as areas where we need to achieve savings and reduce expenditure. It seems to be going up and up rather than going down. I would like to see more focus on how we can achieve savings as opposed to the Minister coming in every year and saying that it is going up, because that is not the best use of our money.</p>
+          <p eId="para_91"> I want to come to the insourcing and outsourcing, if I can, because it is important. There are a number of different sources of funding here to deal with waiting list initiatives. We need them because waiting lists are high. Nobody is saying that we do not need initiatives. We must have them to reduce the length of time people are waiting. There are a number of different sources. We have the NTPF, the access to care fund and hospitals themselves. How much is available within the health service for insourcing and outsourcing outside of what is allocated to the healthcare system? What is the total figure?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_44" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_92">It is €420 million.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_45">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_93">How does that break down? How much is in the access to care fund?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_46" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_94">Two hundred and thirty million euro of that is NTPF. The access to care fund is €190 million.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_47">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_95">It is a huge amount of money and we have to make sure that we are getting value for that money. There does not seem to be a lot of transparency around the access to care fund. I put in parliamentary questions looking for a breakdown of how that money is spent across hospitals and we cannot seem to get it.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_48" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_96">Let me look at that and reflect on that, in particular with the insourcing review that is coming out. This is exactly the sort of transparency light that I am trying to shine on this practice, not only in itself but in how it intersects with productivity across the board. Many of the savings will be delivered through better productivity as well and that is really where I am trying to drive this.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_49">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_97">I accept that, but Deputy Carroll MacNeill is the Minister and she said that she wants to achieve efficiency within the healthcare system. When we allocate that amount of money for waiting list initiatives, it is not unreasonable for members of the health committee to know, by hospital, where that money is going-----</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_50" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_98">I agree.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_51">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_99">-----and how it is being spend.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_52" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_100">We will get that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_53">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_101">We have not been able to get it. That is the point.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_54" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_102">This audit on insourcing will show us what is happening in all of the different hospitals and where. We should be able to see that. I will work towards that.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_55">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_103">Will that be made available to the committee?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_56" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_104">Of course. We will work through that. Absolutely. It might take me a little time to get that together after the insourcing audit but that is the transparency that we want to have.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_57">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_105">The next slot is for Fine Gael. I call Deputy Colm Burke.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_58">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_106">My apologies for being out of the meeting for a period of time. I was at a meeting in the audiovisual room on advanced genomics, where one of the issues was that we are sending 20,000 samples abroad for analysis in relation to genomics when Irish companies are available to do it. We are also not sending them to any one place. We are sending them to over 100 different places and, therefore, there is no co-ordination. There is huge expenditure in this area. The Minister may not have the answers to this one now. I am merely saying it is something that should be looked at, given that every hospital is doing its own thing and there is no co-ordination. That is happening in quite a number of areas in the health service. It is something the Minister might come back to me on. I have already put down questions on it and it needs to be sorted. There are 20,000 tests going outside of Ireland when companies here in Ireland are available to do it.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_59" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_107">I agree with the Deputy. We are developing a national genomics strategy and that is a key part of that. I would like to discuss that with the Deputy further and get his input on that. We agree there is a lot more opportunity for efficiency, but also better outcomes, through that strategy.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_60">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_108">I have been a member of this health committee since 2011.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_61" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_109">Indeed.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_62">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_110">I think I am the longest serving member on the committee. I am raising the same questions today as I did ten or 12 years ago, relating to the computerisation of the health service. We are now behind every other country in Europe. In what I am seeing in the figures for 2025, I am not impressed that we are making any real progress. For instance, I just received a complaint stating that the primary care reimbursement service, PCRS, will not accept digitised signatures, which means the patient has to be brought in and has to sign the document again. That will slow up the whole process and add to the workload of staff. Will that issue be looked at?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_63" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_111">First, I absolutely recognise the Deputy's more considerable experience in health than mine as a member and Vice Chair of the committee and a former Minister of State. He knows the background to many of these different issues. I answered Deputy Daly in relation to electronic health records but I might ask Mr. Tierney to come in on some of the greater detail.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_112">Reflecting on what the Minister said earlier, for the first time we have a vision, a strategy and a clear implementation plan. The Government recognises and gives prominence to health digitalisation in the programme for Government and to continue digitalisation of health records. We have a three-tier approach to do that, with an app, a shared care record and an electronic health record.</p>
+          <p eId="para_113"> We also have commenced a focus on automation, which is particularly the point the Deputy is making, looking at how we automate our processes, remove paper and remove administrative burdens.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_65">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_114">Can I ask Mr. Tierney a simple one? For instance, we have 19 maternity hospitals. Four or five of them have introduced computerised records. That was done approximately five years ago.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:10:00+01:00"/></from>
+          <p eId="para_115">We have the last two remaining sites to complete by the end of this year, which means that by the end of the year 70% of all births will be captured in electronic terms.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_67">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_116">But not all of the hospitals will-----</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_117">No, because we have a programme to work through.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_69">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_118">Given the design was already in place, why should it take five years? Especially for maternity hospitals, we could start building up the records of babies when they are born, which would start the whole process of digitalisation of each person's healthcare into the future.</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_119">We have been very clear on the strategy and the implementation plan. For a successful roll-out, a key criterion is a funding level commensurate with that ambition. That affects pace of roll-out. That is recognised in the programme for Government and the commitment is there. We are in the middle of an NDP review with our colleagues in the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation. As the Minister said, we are looking for all support within that.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_71">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_120">For full digitalisation of all medical records, do we have a five-year plan with targets for each year-----</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_121">We do, absolutely, and it is publicly available.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_73">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_122">-----and showing what we will deliver. What are the repercussions if it is not delivered? Do we just move on and say issues arose and we could not go ahead with it?</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_123">It is very clear that without funding we will not accelerate digitalisation of the health service.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_75">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_124">What is the target date for full digitalisation? I know the new children's hospital will be fully digitised, as will the maternity hospitals. What is the timescale for all the other hospitals?</p>
+        </speech>
+        <speech by="#" eId="spk_76">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_125">Our plan is working to an EU target imposed on all member states to have 100% citizens' access to their medical records by 2031.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_77">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_126">A complaint I am getting is some hospitals have outdated systems and they are not getting the funding to update them. I was talking to a junior doctor recently. He told me he is an SHO and spends 50% of his day chasing scans and X-rays that have been taken and trying to get them on to the file. Fifty per cent of his time is taken up doing that.</p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_127">I think the Deputy recognises that without funding we cannot deliver on this agenda.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_79">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_128">I will touch on one or two other issues. One relates to step-down facilities. A problem I have come across involves, for instance, a person in a hospital who needed access to Dún Laoghaire rehab facility but that person occupied a bed in a public hospital for four months. Are we doing anything to identity step-down facilities where everything possible has been done for the person in hospital and no further work can be done, but they still need ongoing treatment? The idea of a step-down facility is that it would be close to a hospital so we can free up beds more quickly.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_80" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_129">That is of particular concern. I look every day at the hospital trolley figures. I am quite aware that in some hospitals, particularly across the west, delayed discharges of care are a key metric in that. For example, I was in Letterkenny on 1 May and there were 46 delayed discharges of care. More recently, it has come down to 34. There is a community nursing unit being built across the road which I think is a 100- or 110-bed unit. It will meet that need. These step-down facilities are essential in the community. We have a plan in our capital programme for refurbishment of many of those beds, which is essential, from HIQA. We will not be able to meet today's need, never mind tomorrow's need, without significant capital investment. We have a plan in our NDP review to do that and deliver that. There are programmes. There is another major community nursing home being built in Carrick-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_81">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_130">We are very reliant on existing structures. What I am saying is that-----</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_82" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_131">What I am saying is we need to build new ones. We need more.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_83">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_132">-----we need to look at step-down facilities to get people out of hospitals. For a person to be in a hospital costs the State around €8,000 per week, whereas the most it will cost in a step-down facility will be €2,000 per week.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_84" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_133">I could not agree with the Deputy more. That is why I am looking for capital funding for that sort of investment in community nursing homes and step-down facilities of a range of kinds. It is a much more efficient way, from a financial perspective, to look after somebody and a much better way to meet their needs when they no longer need to be in an acute hospital.</p>
+        </speech>
+        <speech by="#MaryButler" as="#Minister_of_State_at_the_Department_of_Health" eId="spk_85">
+          <from>Minister of State at the Department of Health (Deputy Mary Butler)<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_134">I will provide a short example of how the step-down beds work. In University Hospital Waterford, we have 48 step-down beds in various nursing homes into Wexford, up to Clonmel and in the whole hinterland. As a result, we have had zero trolleys with the last four years because we have those step-down beds. They are absolutely crucial. A patient deemed discharged by the consultant who still needs nursing care for up to 11 weeks is provided for and it is working.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_86" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_135">Not only that, but it is visible in the control room in University Hospital Waterford, where they track the electives coming in, who can be discharged based on this prioritisation of the diagnostics and where specifically they will go. Their integration with the community is one of the major reasons the hospital is being run so well and is able to maintain zero trolleys with the whole-of-hospital, whole-of-community focus that needs to be replicated in all other places.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_87">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_136">I will raise one other issue, which relates to dental services. We are now in a disastrous situation in relation to those services. In 2012, 393,000 medical card patients received dental treatment. In 2023, it was down to 283,000. That is a drop of 110,000. The number of dentists providing both private and public care has dropped from over 1,450 to 810. What action will the Department take? Dental care is an important part of healthcare. We seem to be sidelining it.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_88">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_137">The Deputy's time is up. We will get a brief answer to that question.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_89" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_138">It is an area I am concerned about. There is a motion in the Seanad today, tabled by Fine Gael Senators, which raises this important concern. Notwithstanding fees to provide public dental having gone up from, I think, €44 million to €69 million and there having been more appointments, it is not meeting the need. From a whole-of-government perspective, between us and the Department of Social Protection a total of €230 million is spent annually but I appreciate the problem the Deputy raises and it is a matter of concern for me. Our biggest issue is that, notwithstanding the increase in fees, dentists are not as interested as they were in performing this work. We are trying to find ways to employ dentists and provide a different programme. There were 240 dentists in the HSE oral healthcare service in 2024, compared to 256 in 2020 and 330 in 2005. It is going in the wrong direction and we have significant work to do on this but it has to be an area of attraction. I might speak to the Deputy more about it. I have private views about it.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_139">I have a number of questions to put to the Minister. Looking at the big picture and the structure of how information is presented to us, it is an atypical structure which is not programme based. That makes it harder to analyse it and go through this. There have been recommendations for reform, going back to 2008 and the Considine report, of how the Department presents the Revised Estimates. The Parliamentary Budget Office notes the absence of a programme Vote makes it harder for us to analyse how HSE funding is spent because there is not a direct link between the specific output and the targets. The Department said in 2014 it was working towards programme budgeting and the process would require some time. The Parliamentary Budget Office notes the design of the Estimates hampers effective Dáil scrutiny of money spent on public services. That is a concern. Can the Minister provide a definite timeline for the full implementation of programme budgeting?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_91" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_140">I will ask one of my more experienced officials to answer that.</p>
+        </speech>
+        <speech by="#" eId="spk_92">
+          <from> Mr. Patrick McGlynn<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_141">We have taken that on board. The issue revolves around the IT systems in the HSE in terms of collection of data that is suitable for presentation in the format required by the State, which is cash payments. The system in the HSE is designed around income and expenditure production rather than cash. In order to get oversight in a way that can be seen in a programme-based structure, we require full implementation of the IFMS system. That system is being introduced to the HSE at the moment and is expected to be delivered by the end of 2028. At that stage it should be possible to get a full programme view. It may be earlier than 2028.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_142">Is Mr. McGlynn saying 2029?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_94" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:20:00+01:00"/></from>
+          <p eId="para_143">I would very much like it earlier than that. I cannot overstate how important it is that everybody adopts this, including the section 38 hospitals. I say that very deliberately. It is very important that everybody adopts this system because that is the way to track spending across everyone. It is not just for the purpose of reporting, but is to make sure we have collective procurement and do not have, for example, a deviation whereby one hospital uses one type of equipment that might cost €6,000 and everybody else uses a different one that costs €4,000. I cannot stand over that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_95">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_144">That will need to be done better. </p>
+          <p eId="para_145"> I want to address a few other points. I am concerned to see a drop of 30% in ring-fenced funding for Sláintecare. While I accept some of the activities previously funded under the subheading have been mainstreamed under the HSE and core funding allocation, this is still a dramatic drop, particularly given we now have the Sláintecare implementation plan for Sláintecare 2025. This plan, however, lacks detailed costings and fails to state how much has been pledged to the implementation of it. There must be an acceptance that reform costs money but this investment will pay significant dividends in the long term and I do not think we can justify a 30% drop when so many reforms have yet to be implemented. Has a ring-fenced funding allocation been provided for the implementation of Sláintecare over a specific timeline or even the new implementation period?</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_146">The Chair may be referring to ring-fenced funding on the Sláintecare innovation fund, which is a very small part of the overall funding allocated towards achieving Sláintecare. He is right, in that we dropped that from €8 million to €5 million from 2024 to 2025 but this is just to recognise innovation has now been mainstreamed within the HSE. We do not have to prime that innovation as a separate stand-alone. </p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Mr. Patrick McGlynn<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_147">The amount disclosed in the subhead is really the seed for projects about to start. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_98">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_148">Do we have updated costings for the 2017 Sláintecare report and the implementation of that? Do we have a budget allocation for that or the costings around it? </p>
+        </speech>
+        <speech by="#" eId="spk_99">
+          <from> Mr. Patrick McGlynn<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_149">No, that is not available. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_100" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_150">It has all been mainstreamed at this point. There was a drop during Covid but much of this has been mainstreamed and is just going to------</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_101">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_151">I am referring to the Sláintecare report in 2017. Do we have updated costings on how much that will cost to implement?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_102" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_152">I will have to check that for the Chair. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_103">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_153">Regarding several other matters, such as sexual health, I am glad to see the strategy was published this morning.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_104" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_154">What is this in relation to?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_105">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_155">Sexual health. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_106" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_156">Yes. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_107">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_157">I believe the strategy was published this morning. I have not had a chance to look at it in detail but I welcome this. It is something we have been looking for.</p>
+          <p eId="para_158"> Again, this links back to my earlier question on the programme voting or the programme nature of the Estimates. It is very hard to see how much is being allocated to things like sexual health. I am interested to know the total allocation spend on sexual health. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_108" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_159">I will ask one of my officials for the Chair on that but it is very difficult because, for example, with sexual health, one of the key parts relates to the Rotunda where there is a major sexual health piece built into the funding of the hospital. The sexual assault treatment unit there is an excellent treatment facility in the Chair's constituency and does important work. It has been the deliverer of significant innovation, including a spark innovation award from the HSE for its integration of a forensic camera. This camera means patients only need to be seen once and forensic grade evidence is taken that can be used in court. This is an example of Sláintecare innovation and innovation more broadly. It is also an example of how sexual health services are integrated into other budget subheads.</p>
+          <p eId="para_160"> I agree with the Chair on the programme basis and it would be better to get to that for these purposes but at the end of the day, those systems are integrated into the delivery of broader hospital structures, so it is difficult. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_109">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_161">With regard to the new strategy then, do we have a costing on that and would the Department cost-implement it? There are now ten counties across the country that do not have in-person sexual health clinics. There are 900 people waiting for access to PrEP and 400 of those have been waiting more than 13 months for that access. There are huge deficiencies in the services and what we need is the funding and an allocation to address those significant needs. This is also preventative. If we can prevent infectious disease, it saves the State money in the long term.</p>
+        </speech>
+        <speech by="#JenniferMurnaneOConnor" eId="spk_110">
+          <from>Deputy Jennifer Murnane O'Connor<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_162">It is a priority. With the sexual health strategy, we prioritised three key actions which the Chair has spoken about. We are expanding access to PrEP, which is where much of the funding is going - I will come back to the Chair with the figures. We are also expanding on the free home STI testing and we have more access to free contraception. These are the largest three parts of the start of two or three action plans. While we have a lot more, these are the ones we are targeting for funding. We do understand we need more funding in and around the country but we are prioritising this. I will come back to the Chair with more information but this is a really good strategy. It is a start. While I know we have much more to do, these are the actions we have made urgent. We are starting on these now as our three urgent action plans. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_111">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_163">When the Minister of State comes back to us, she might give the committee a breakdown of the healthy Ireland initiative, the €16 million allocated there and how much of that is for sexual health. We would appreciate that as well. </p>
+          <p eId="para_164"> I have one final issue, if I have time. On ICT projects and procurement, I have a specific example. For the medical laboratory information system used for tracking and logging patients' bloods and tests, the HSE signed a €33 million contract in 2015 with a company called Oracle. In 2022, a €17.9 million contract extension was signed despite the fact the company had failed to deliver the system to the 40 public labs. To date, the system has only been rolled out in one lab in Beaumont. Is this the laboratory diagnostic solution referred to on page 8 of the Department's briefing note?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_112" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_165">I might ask Mr. Tierney to answer that. </p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_166">The Chair is referring to MedLIS, which is a national laboratory programme to digitise laboratory services. It covers a range of specialties within a lab environment. It was awarded to Oracle back in 2015 and the contract was subject to a public procurement at the time. It was reviewed in 2022 before it was extended. We had to contend with a pandemic and a cyberattack between then. We deployed MedLIS successfully in Beaumont on 17 August 2024. </p>
+          <p eId="para_167"> We are aware there is one remaining module to go live, which is histopathology, and the national and Beaumont teams are working with that speciality. We are targeting a go-live by the end of October this year. We have an ambition to then widen that nationally between now and 2028 but we will be widening it in Dublin and north east in three waves with a full roll-out schedule developed for that. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_168">Was that contract extension compliant with procurement rules?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_169">Yes. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_170">Last year, the Comptroller and Auditor General identified significant levels of non-compliance with the procurement rules within the HSE. The C and AG said the HSE control systems were failing to highlight the level of non-compliance in the procurement occurring. I am interested to know what measures have been taken to ensure the HSE does not continue to regularly contravene procurement rules. </p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_171">The C and AG raised a number of issues with the HSE at the time and they were addressed by way of return correspondence. We are now in deployment mode. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_172">Finally, on digital health, the 38% increase in spending on information systems is welcome but we are starting from a very low base. In 2023, we were lowest among the OECD in terms of digital health provision. Based on the Estimates I have looked at here in subheading M3, I have calculated they are now at 2%. </p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_173">We are investing approximately €200 million per annum in capital funding and just over €350 million-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_174">Is that a percentage of the overall spending?</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_175">It is €532 million-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_122">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_176">My calculation was approximately 2% and the HSE's own digital health implementation report said it should be approximately 4% to 5%. </p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_177">We are spending approximately 2.4% of our overall operational budget. Any international benchmark would recommend 4% to 4.6%. That is based on our engagement in the context of an NDP review which is feeding into that discussion. Again, it anchors our overall commitment to digitise that service so we await that review. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_124">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_178">I thank Mr. Tierney for that. Our next speaker is Deputy Sherlock from the Labour Party. </p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_125">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_179">I welcome the Minister, Deputy Carroll MacNeill, and the Ministers of State, Deputies Butler and Murnane O'Connor, and all the officials from the Department of Health. </p>
+          <p eId="para_180"> My first question relates to section 39 organisations, as well as organisations funded under sections 10, 40 and 56. There was a pay deal concluded approximately 15 weeks ago with two pay increases due to be backdated. When is the green light likely to be given from the Department of Health towards those pay increases and where does it appear here in the budget? </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_126" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_181">I will need one moment to check. As the Deputy has said, the agreement was reached on 10 March to fund the health, social care and homeless sector employees for a 9.25% increase equivalent to the public sector agreement and as the Deputy has said, they are backdated. The HSE is now preparing a process for providing funding to enable the increases. The Deputy knows the background to that. </p>
+          <p eId="para_182"> The HSE is working on progressing it and I will get an update for the Deputy before Oral parliamentary questions tomorrow, if that is okay. </p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_127">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_183">That would be great. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_128" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_184">I am conscious we have that again tomorrow but I do not know the timing of it so I will check. </p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_129">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_185">Is it budgeted for in the accounts for the 2025 allocation or otherwise?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_130" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_186">Let me check. </p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_131">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_187">Of course. What is the cost?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_132" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:30:00+01:00"/></from>
+          <p eId="para_188">The increases are broken down; 2.25% on 1 October. I will provide this to the Deputy. It is easier rather than taking the Deputy's time reading it out but it is budgeted for. </p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_133">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_189">The point is that we need to see this sanctioned as soon as possible.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_134" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_190">That is fair enough. I will get a more detailed update for Deputy Sherlock before oral parliamentary questions tomorrow.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_135">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_191">I thank the Minister. In terms of activity versus investment, many of us here are very much supportive of the increased investment. We need to see a return for it. The Minister mentioned a model 4 hospital with a 3% increase in activity. Which hospital is that?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_136" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_192">It is St. Vincent's hospital. What I could not encourage more is really spending time on the productivity dashboard. People will be able to see the increase in investment, the activity per specialism per hospital and the take-up of various contracts. People will be able to look at the section 38 hospitals versus the HSE hospitals. There are many different ways of analysing productivity and output. While there are always certain local nuances, the productivity dashboard is a real measure of transparency and a move away, if I might say, from ideas that everybody is an independent republic to this being very much a State system run by the State.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_137">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_193">Is the Minister satisfied that the reasons for this relate to issues of rostering or is there something else going on? We saw what happened at Beaumont Hospital, which was reflecting activity levels that were not the reality on the ground. Are there other factors at play here?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_138" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_194">I think it is much too complex for me to simply give an answer. There is too much variation, and this is why it is worth sitting down and looking through the dashboard. Analysis of it prompts questions in each specialism. It is for the hospitals to answer some of these questions in particular.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_139">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_195">It is not wrongdoing-----</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_140" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_196">No-----</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_141">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_197">-----it is just inefficiency.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_142" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_198">-----and I do not want to conflate those ideas.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_143">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_199">No, just to be clear on it.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_144" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_200">No, it is not necessarily my view at all that it is wrongdoing. What we are speaking about in productivity is that if we have more consultants, I would expect that we have more outpatient appointments. We can check the number of outpatient appointments per consultant and the level of activity per specialism, and it will start to become visible, perhaps, that some specialisms are better organised or more productive than others. There might be a range of different reasons behind this and the hospitals might like to account for it themselves. I am conscious that I am only one voice on this and perhaps my officials would like to add to it but I believe the dashboard is significant.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_145">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_201">We have seen the NTPF balloon from €55 million in 2018 to €230 million in 2025. The largest percentage increase of all the spending heads is to the NTPF, with a 130% increase. I get that temporary allocations are now being made permanent. We saw what has happened in Beaumont Hospital. I have serious concerns about the operation of the NTPF. What actions is the Minister taking with regard to the NTPF processes? What actions has she taken with regard to what has happened in Beaumont Hospital?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_146" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_202">The first thing I need is the analysis on a State basis of insourcing generally. I keep needing to separate insourcing and NTPF because they are linked but there is a measure of difference also. The issues of concern for me relate to both. The NTPF serves two purposes, as Deputy Sherlock knows. One is getting treatment abroad where it is appropriate and necessary. This may always be the case in the context of a population of 5 million people where there is more specialist treatment available abroad. While we have waiting times and waiting lists, and do not the capacity in the public system to deliver for everybody, it will also be appropriate. We will discuss how best to wean ourselves off.</p>
+          <p eId="para_203"> The NTPF is before the Committee of Public Accounts next week. I hope to get the insourcing report in advance of that meeting and to discuss it with the NTPF in advance of it going before the committee. I have been very conscious of this issue since April, and I was notified on the NTPF issue in Beaumont Hospital on 11 April. Having already begun the insourcing review, and recognising the NTPF is conducting its own investigation, I need this data and I need to understand what the analysis is.</p>
+          <p eId="para_204"> The matter has also been referred to HSE internal audit, which is important. It is undertaking a full review of all of the matters raised. It is important that we have this conversation three or four weeks from now, as I am now just before the stage when I will be able to take action because I have insufficient information today. I have several pathways through which the information is coming to me in a correct and detailed way. I am just slightly before it.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_147">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_205">With regard to the savings and productivity task force, I heard what the Minister said on cumulative savings of €633 million. I would like to see a breakdown for the 2025 targets. The Minister detailed the 2024 savings to a certain extent. I want to understand the agency figures. As Deputy Cullinane and the Labour Party have elicited from parliamentary questions, the agency spend is increasing and not decreasing. We see in certain hospitals, particularly in model 2 hospitals, that the agency spend on staffing is up to 20%. This is a phenomenal overreliance on agency staff. What specific actions are being taken when there is a systemic reliance on agency staff? It is different to other hospitals where we see 1% or 2%. This is up to 20% in the likes of the hospitals in Mullingar and Bantry and other model 2 and 3 hospitals.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_148" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_206">I would like a more detailed answer from one of the officials because I feel I have already answered this in the way that I can.</p>
+        </speech>
+        <speech by="#" eId="spk_149">
+          <from> Mr. Patrick McGlynn<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_207">I can come in on this. Deputy Sherlock is correct that there are very large variances between the various hospitals and where agency cost growth is. Some of the hospitals are well into double digit growth this year in this regard. The overall rate of growth is in the region of 8%. Measures are being taken by HSE management. We have had meetings with HSE management to introduce much stronger controls over when agency costs can be incurred. These are mainly to do with authorisation but we must also consider patient safety at the same time. Measures have definitely been implemented throughout the HSE in recent weeks towards reducing agency costs.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_150">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_208">This involves sanctioning directly employed staff in those hospitals.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_151" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_209">Yes, and there is progress on this. There is €80 million for conversion but this is partially offset by a €60 million increase in pay where there is conversion. The conversion process began in July 2024 after the pause. A total of 512 staff have been onboarded as part of the agency conversion process. This is 53% of the target. Of the 512, 268 are nurses and midwives, 142 are health and social care professionals, 82 are in patient and client care, six are medical support staff, there is one doctor and there are 13 administrative staff. By service, 347 are in acute services, 141 are in national services and 13 are in mental health services. Notwithstanding this, agency conversion has been slower than we would like. We have put in place strong internal controls over agency conversion to ensure managed growth in one way. There is also a part about staff not wanting to convert and this is an intersection. There are also different patterns on the spend during the year but that is by the by.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_152">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_210">I thank the Minister. I am conscious that I have only a few seconds left. I want to ask about the shortfall of €250 million. There are cumulative savings of €633 million to be arrived at by the end of this year. We can argue about the rights and wrongs of this. The Minister has also identified that she needs to make up a gap or shortfall of €250 million in terms of the Supplementary Estimates from last year being carried forward to this year. How does the Minister intend to achieve this €250 million? How does the Minister intend to bridge this gap?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_153" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_211">At present for 2025 we are on profile after a difficult start. January is always a difficult month. We are on profile at present but we will have to reflect on how we get on for the rest of the year. We did start lower and it is difficult to make these non-pay savings. It is a very focused effort, particularly in section 38 hospitals where there has not been the same delivery or focus on it. Making the savings is also about staying on profile this year. It is substantially difficult to make these non-pay savings. This is why almost every time I go out and speak, I mention the importance of focusing on non-pay savings.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_154">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:40:00+01:00"/></from>
+          <p eId="para_212">We are now slightly ahead of our planned break so we will take it now and then resume our session.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i>Sitting suspended at 10.49 a.m. and resumed at 10.58 a.m.</i>
+        </summary>
+        <speech by="#PadraigRice" eId="spk_155">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_213">I invite the Minister to speak.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_156" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_214">For accuracy, I just want to clarify something I said in my statement. I said that there had been an average increase of 36% in real expenditure and 18% in the workforce in model 3 and model 4 hospitals. I hope members will forgive me because what I should have said was "at least 36% and 18%". The actual averages are 48% in real expenditure growth and 30% in workforce growth. I say that for the purposes of the Official Report and to ensure accuracy. I hope members will please forgive my error.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_157">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_215">We appreciate that. I thank the Minister. Our next slot is a Fianna Fáil slot. I call Deputy O'Sullivan.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_158">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_216">I welcome the Minister and the Ministers of State. I say "well done" and "fair play" to the Minister on the rostering of staff over the weekend. It is very welcome news. I hope it will contribute to the transformation we all hope to see and are striving for on the health committee.</p>
+          <p eId="para_217"> I will start with the nursing homes issue, which has been very topical in recent weeks. In light of the programme and all of the discussion and the events around it, in the view of the Minister, the Ministers of State and the Department, will anything change in how we deliver nursing home care and care of the elderly? Given what we witnessed, will there be some shift in policy, perhaps, such as a greater proportion of public beds to private beds? Has anything been triggered in the Department?</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_159">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2025-06-25T10:50:00+01:00"/></from>
+          <p eId="para_218">I thank Deputy O'Sullivan very much.</p>
+          <p eId="para_219">The programme broadcast by "RTÉ Investigates" was horrific. It showed wanton neglect and abuse of older people. From that, we have had active engagement with HIQA, in regard to which I have a number of points. First, HIQA has acknowledged its processes, like any, need to be reviewed. I want to see a couple of changes in this area. I would like to see reports coming in real time. Currently, reports are historic. They should be updated at the time of publication to reflect changes and improvements made where needed. Second, given what has evolved, we need to ensure parent companies are also regulated by HIQA. That is exceedingly important.</p>
+          <p eId="para_220"> Another area we need to examine is that of public beds. This is very much front and centre and the Minister has referred to it. We committed in the programme for Government to increase the number of public community beds. We are currently carrying out a capacity review on planning and we want to ensure we get funding for that. This is important, but we always have a mix between public and private. Regulation is key and we are doing a body work on what improvements we can make. Ultimately, the objective is to provide a nursing home care system that is absolutely safe for older people. Alongside that, we are introducing statutory home care to enable people to live in their homes for as long as they wish. I feel very strongly about that. I am introducing home care providers legislation. It is a case of having a statutory scheme. We will always have a need for long-term nursing home care as well.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_160">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_221">It is welcome to hear that issues pertaining to governance are to be addressed and that the Minister of State hopes to make changes in this regard. The ratio of public beds to private beds is about 80:20 or 85:15.</p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_161">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_222">We have started a programme. We are currently conducting a capacity review of the provision of public beds. As Minister of State for older people, along with my colleagues the Minister, Deputy Carroll MacNeill, and the other two Ministers of State, in addition to the Department, I am preparing that capacity plan. The Deputy will appreciate that everything comes down to funding. We would appreciate the support of the committee in this area.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_162">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_223">The Minister will probably appreciate that I am going to raise one of my favourite topics: rare diseases. I thank her for meeting a group of us last week. We appreciated her time. As I said to her privately, I am encouraged about the direction this could be moving. However, I want to come back to the issue of early access. Thanks to Senator Costello, we had a group in a few weeks ago who suffer from Duchenne muscular dystrophy, and the Minister’s party colleague Deputy Aird had a group in with MLD in the past. We are going to keep having these cohorts of patients in periodically, looking for a either a drug or a treatment, because the system is inherently broken. It was Simon Harris who said, back in 2017 or 2018 when he was Minister for Health, the reimbursement process is broken. The one challenge I would like to see the current Minister take on is redrawing or reconfiguring, or possibly adding another strand to how we assess drugs for reimbursement in this country. Could she outline what she plans to do in the short term?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_163" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_224">An additional 34 staff were recruited in the HSE and they are dispersed across a range of relevant teams, including the negotiation and pre-clearance teams. There has been a 100% increase in the number of people working on this. What is important now is that they are working as efficiently as possible.</p>
+          <p eId="para_225"> It is a two-way stream, however, as the Deputy knows. It is also necessary for the drug companies to produce their documentation in an efficient and complete way. As with all things, whether drug companies or financial services companies and the Central Bank, there will be variation. The best possible and most efficient system is one in which both sides are working in the most efficient way possible. I will be ascertaining the benefit of the 34 staff and whether there are more efficient processes possible on the HSE side, but I recognise that there is also the drug side.</p>
+          <p eId="para_226"> We had a good meeting last week on some of the drugs. As the Deputy is well aware, once the EMA gives approval for a drug, it is then necessary for the drug company to make an application. One of the challenging tasks for me or any public representative is trying to answer the completely reasonable questions of parents who want a drug for their child that has been approved by the EMA but regarding which a drug company has not, or has not yet, made an application to Ireland. We went through a list of several drugs – we can do that again privately – for which, unfortunately, an application was not made in Ireland, an application was made and withdrawn, or licences were lost elsewhere. There are several disruptions and we just have be honest about some of that.</p>
+          <p eId="para_227"> On the Duchenne muscular dystrophy drug the Deputy alluded to, from the State’s perspective and mine, we tried to do everything we could proactively. We proactively reached out to the drug company to encourage it to send its documents to us. I met the Italian Minister of Health on Friday in Luxembourg and asked him whether he could encourage the drug company to make an application, but ultimately the drug company needs to make an application. When a company applies regarding any of the various drugs, we need to be able to respond in the most efficient way possible. </p>
+          <p eId="para_228"> We want to develop an early access programme but we are going to have to be careful about the intersection of three different things. To step one tiny degree back from the patient need, we are aware that some of the newer drugs that have been financed by private equity companies, in particular – it is great that there is innovation and new drugs coming out – are exceptionally expensive. Where there are drugs that involve millions of euro per dose, we have to get the balance right regarding how we incorporate them into our system and achieve the most efficiency, and also regarding the price we are able to reach in a small country in what is a commercial negotiation with a drug company. There is a matrix here that has to be got right from the perspectives of the State and patient. It is a case of the State not spending too much or spending too soon, yet I am more than acutely aware of patient needs and the impact the drugs can have. I am endeavouring to have an early access scheme, conscious of all the various elements concerning the State. I will try to provide the best transparency I can on the progress of different drugs, recognising that the companies do in fact need to make applications.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_164">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_229">I re-emphasise that the early access scheme might need to be completely different from the scheme already <i>in situ</i>. As we spoke about at the meeting last week, there are quality thresholds and the area of value for money, or whatever way we want to put it. The drugs in question will never meet the criteria we set down under the existing process, so whatever early access scheme is devised will have to be bespoke. I ask for flexibility in it.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_165" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_230">We are examining all the various models across Europe to identify models that do just that, but there will still be a balance to be struck on the price we can achieve.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_166">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_231">I have two more questions. On asking them, I will give the Minister the remainder of the time. First, the Minister mentioned the Italian health minister. The Italians do a very expensive heel-prick test. Over the past few years, Deputy Burke and I have lobbied for an expanded heel-prick test. Les Martin, a constituent of the Tánaiste, Deputy Simon Harris, has been very active on this over the past few years. Does the Minister have any plans or initiatives to expand the test? I am aware that we have expanded it by two in the past few years. We test for about 11 diseases here. In northern Italy, they test for 37 or 38. Are there any plans for expansion here?</p>
+          <p eId="para_232"> When I ask my second question, I will leave the Minister with the remainder of my time. A prescribing incentive scheme was once run for GPs in this country. I believe it ceased around 2019 or 2020. Deputy Daly might know. I heard the Minister talk about achieving savings. Does she believe she could get the incentive scheme up and running again to get the State to save money?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_167" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_233">I will have to reflect on the last question and revert to the Deputy. Ms Rachel Kenna will answer the question on the heel-prick test.</p>
+        </speech>
+        <speech by="#" eId="spk_168">
+          <from> Ms Rachel Kenna<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_234">The Deputy is correct that we have expanded the test by two conditions in recent years. The issue of the expansion of newborn screening remains open with the national screening advisory committee, NSAC. The important part it needs to consider is the availability of readily available treatments and evidence behind the expansion of the newborn screening programme heel-prick test. We have looked at what Italy and other countries around the world are doing in this regard, so we can keep the Deputy updated as we progress.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_169">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_235">I thank the Minister and Ministers of State for attending. They are very welcome.</p>
+          <p eId="para_236"> I am going to begin with mental health because I understand the Minister of State, Deputy Butler, is under some time pressure.</p>
+          <p eId="para_237">Does any of the additional capital expenditure provided in the Estimates relate to eating disorder beds, separate spaces in our accident and emergency departments for those who are presenting with acute mental health distress or additional child or adolescence mental health services, CAMHS, inpatient beds? Can the Minister of State, Deputy Butler, provide an update on the feasibility study around the perinatal mental health unit at St. Vincent's Hospital, which I understand has gone to the HSE, and her engagement on issue?</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_170" as="#Minister_of_State_at_the_Department_of_Health">
+          <from>Deputy Mary Butler<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_238">I thank the Deputy for her question. I will respond in reverse. I have not yet seen the feasibility study for the mother and baby unit at St. Vincent's hospital. There are two different thought processes in that regard. There was a perception that the new unit might be included in the new maternity hospital when it is built. However, I need a short-term solution in the meantime. We are currently considering a proposal to have six units in at St. Vincent's University Hospital. Each unit is a kind of suite for the mother and baby and some family support. We are awaiting those and I will be pushing for them when we enter the Estimates process. It is in the programme for Government and we are strong on that issue.</p>
+          <p eId="para_239"> The Deputy also asked about budget 2025. The additional funding, in the amount of €143.5 million, resulted in 210 whole-time equivalent staff. I can share this information with the Deputy. It means, for example, four extra adult teams for ADHD. For eating disorders, it means two extra teams comprising 20 whole-time equivalent staff. These are community-based teams and come at a cost of €1.1 million per team. It takes approximately 18 months to recruit a team. We currently have funding for 14 teams and 11 are in place. One was funded in 2024 and recruitment is under way. For the two teams that were funded in 2025, recruitment is also under way. I hope to continue that traction in the next budget.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_171">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_240">I thank the Minister of State, but my question related to inpatient beds.</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_172" as="#Minister_of_State_at_the_Department_of_Health">
+          <from>Deputy Mary Butler<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_241">In respect of inpatient beds for CAMHS, there is capacity in the sector at the moment. Some beds are closed because we do not have enough nurses to staff them. Those beds are funded but there is a safe staffing issue. According to the most recent figures I have, which are for 17 June, the waiting list nationally to access CAMHS inpatient units was three. Of the available 51 inpatient beds, 35 were occupied on 17 June and 16 beds were unoccupied. We have capacity there. With inpatient beds-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_173">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_242">There is capacity subject to staffing.</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_174" as="#Minister_of_State_at_the_Department_of_Health">
+          <from>Deputy Mary Butler<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_243">There is funding for staff. There have been closed beds at Lindara in Cherry Orchard for the past two years. I have engaged with the Psychiatric Nurses Association. Many of the staff who work in mental health in the inpatient units are newly qualified and young. It is a tough job. They are dealing with very ill people. I compliment the staff in the inpatient units. Many people do not know that there are school facilities in all the units. Some young people sat their leaving certificate examinations this year while getting care.</p>
+          <p eId="para_244"> I am awaiting a proposal from the HSE relating to adult beds for eating disorders. It is due at the end of the month. As the Deputy knows, we have three adult-only beds in St. Vincent's hospital. I met the Minister and Mr. Bernard Gloster in respect of this issue. Dr. Amir Niazi is bringing forward the proposal. We are going to try to grow the beds organically around the country. I am fixated on a geographical approach depending on where you live. Dieticians are key. Mental health supports will be provided. We are looking to ensure that any of the new premises we build contain dedicated eating disorder beds.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_175">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_245">With an eye on the clock, I also asked about separate spaces in accident and emergency departments for those who are presenting with acute mental health distress.</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_176" as="#Minister_of_State_at_the_Department_of_Health">
+          <from>Deputy Mary Butler<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_246">We all realise that emergency departments are not the ideal places for somebody in acute mental health distress. Some hospitals are able to provide alternatives. We are looking at investing more this year in crisis resolution teams in Solas cafés to support people so that the emergency department is not the first resort. We have supports open in Galway and Cork, with another to open shortly in Waterford. These Solas cafés have caused a reduction of 18% in presentations to emergency departments. We will continue to build them, but need partners to do so. We need mental health organisations in particular communities. We lean heavily on peer support and lived experience for those cafés.</p>
+          <p eId="para_247"> An audit is being conducted at the moment in respect of all emergency departments. It will include the additional staffing that will be required for a separate space. There is also an issue around the stigma associated with being filtered off to a separate area. There are two thoughts in that regard. We are considering the matter. For somebody who is psychotic, an accident and emergency department is not suitable.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_177">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_248">It really is not suitable and we have seen that situation end in tragedy.</p>
+          <p eId="para_249"> The Minister of State earlier referenced sexual assault treatment units, SATUs. I want to go to a recent HSE report on our SATUs, which are wonderful places. They are sadly overused, but that is a different conversation. The unit with the third highest number of attendees outside Dublin and Cork is in Mullingar. In feedback from service users, it has been described as not suitable for people with mobility issues. It needs to be more spacious. It is extremely noisy. The report is glowing with these exceptions. The clinical lead of the programme has been clear that there is a need for capital investment. As I said, it has the third highest number of presentations in the country outside Dublin and Cork. The unit is very busy. Some 25% of those who attended the unit last year were under the age of 18. There is a growing demand, unfortunately. We must deal with reality and that is it. I ask the Minister to consider this unit. When it comes to capital investment, I ask her to see what is there and to explore the potential to better meet the needs of those who require the services. The clinical lead tells me they have been logging in for this for a considerable length of time.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_178" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_250">Not only will I consider it but I will visit the unit. I will talk to the staff to understand the space and dynamic that service users view. They should not be there in the first place, for different reasons, but they need to be there.</p>
+          <p eId="para_251"> I will ask Mr. Tierney to come in on this point to speak about some of the capital programmes. I am also conscious that the hospital itself, and not just the unit or the clinical lead, must advance the case to the HSE. I am not aware of that having been done, but perhaps Mr. Tierney is. I ask him to come in on Mullingar more broadly, if that would be helpful.</p>
+        </speech>
+        <speech by="#" eId="spk_179">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_252">It is not on my radar. We expect every hospital to create a develop and control plan to prioritise their service needs. We can then understand how to match or fund a capital build to deal with those needs. There are various stages within the capital life cycle, from appraisal to design, tender and construction. We will engage with Mullingar to understand where that is within its ranked priority.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_180">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_253">I appreciate that.</p>
+          <p eId="para_254"> I have one final issue to raise. I am not going down the rabbit hole of digitisation because we could be here until the end of the calendar year. I do, however, have a suggestion. We have seen an increase in virtual appointments and clinics. For some service users, they absolutely meet the need. However, when a prescription is prescribed through one of these virtual appointments, it is sent out on the old inpatient form, which is a triplicate A4 piece of paper. One goes on the patient's file, one goes to the patient and one goes to the GP. If you are a medical cardholder, you have 24 hours to get that to a chemist. Those forms were designed for patients being discharged from hospital and not for virtual clinics. If you cannot get to your GP, your chemist can write a prescription for seven days. This is bonkers. In light of the fact that digitisation will not be around in the immediate future, I ask the Minister at the very least to extend that seven-day period to 14 days. I ask her to amend the scheme and give people two weeks. I cannot get a GP appointment within seven days and I suspect many others are also in that position.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_181" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_255">I completely agree. I will ask Mr. Tierney to come in on the specifics. That is a ridiculous inefficiency.</p>
+        </speech>
+        <speech by="#" eId="spk_182">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_256">That is clearly a time when we are behind the scheme. We will take the Deputy's suggestion back and will engage with-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_183">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_257">It is the emergency supply scheme.</p>
+        </speech>
+        <speech by="#" eId="spk_184">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_258">It is, yes. As the Minster said in her opening statement, we have now gone out to tender for e-prescription, which will be an end-to-end digital prescribing solution nationally. It will link GPs, hospitals and those who receive and need drugs medicines by way of prescription.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_185">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_259">In the interim-----</p>
+        </speech>
+        <speech by="#" eId="spk_186">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_260">We want to overhaul it.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_187">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_261">This can be changed very quickly.</p>
+        </speech>
+        <speech by="#" eId="spk_188">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:00:00+01:00"/></from>
+          <p eId="para_262">Exactly.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_189">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_263">We have two Deputies remaining who have not spoken. Deputy Roche has just stepped out. We will take Deputy Cahill's questions first. If Deputy Roche is back, he will get ten minutes. There will be a short three-minute time slot for the remaining members. We will conclude before 12 noon.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_190">
+          <from>Deputy Michael Cahill<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_264">I welcome the Minister, the Ministers of State, Deputies O'Donnell, Butler and Murnane O'Connor, and their officials. It is great to have them here. University Hospital Kerry is the county hospital in my county. We want to give the best possible service to the people of Kerry. In regard to the accident and emergency department, no different from any other such department, we too have huge issues with patients waiting for days in the waiting room and on trolleys. I understand that there are additional beds in train. I believe an entire new block of beds is required. Can I get an update on that? Hospital management have told me that is what is required to address the accident and emergency crisis in Kerry.</p>
+          <p eId="para_265"> Regarding the maternity unit, it is a long way from the theatre. This brings its own health issues to both mother and baby. What measures have been taken to address that? On the topic of occupational therapists, physiotherapists, nursing staff, etc., what is the position regarding contracts? Is the embargo still in place?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_191" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_266">No.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_192">
+          <from>Deputy Michael Cahill<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_267">There are issues regarding staffing and beds remaining closed in community hospitals, namely, Dingle Community Hospital and Caherciveen Community Hospital. That is a huge problem in Kerry. Patients are being moved to other hospitals. As the Minister of State, Deputy O'Donnell well knows, this is sometimes up to two and a half hours away from their homes. I thank him for his intervention on a case there recently. We need to get these beds open.</p>
+          <p eId="para_268"> I wish to ask the Minister of State, Deputy Butler, about CAMHS. We had the Maskey report and the north Kerry child and adolescent mental health service look back review. When will that be published? I was up on a number of deputations as a councillor. While I acknowledge the work done on this issue, this has had an impact on these individuals, many of whom are adults now. I witnessed this first-hand. There are people in my parish and in every corner of Kerry who have been impacted by this. We are talking about hundreds and hundreds of children. It was a major scandal. I wish to get an update in regard to what is happening in the context of engagement, compensation and the commitments that were given.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_193" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_269">There are number of different questions. I will ask the Minister of State, Deputy Butler, to come in on mental health and Mr. Tierney to come in on some of the infrastructure matters. In Kerry, there is a new ward block that is at design feasibility stage in accordance with the acute inpatient bed capacity expansion plan. In relation to community beds, there are 160 beds coming this year. Caherciveen Community Hospital is in the mix for some of that.</p>
+          <p eId="para_270"> I wish to set aside the emergency room in Kerry and provide a little context. It has been quite a mixed picture for the hospital and the management of the hospital. I am happy to provide the Deputy with figures going back to 1 February. For February going into March, there was a pretty average to poor experience there. However, the experience changed quite considerably with hospital trolley figures. I saw in the media in Kerry the INMO reporting zero trolleys. I see repeatedly throughout April and May very different figures of four, five and six compared with 20 and 24. There is a management issue in relation to that as well. I repeatedly see figures of zero. It is not just about bed capacity in Kerry. In Limerick, it is absolutely about bed capacity, not necessarily in Kerry. It is not a sufficient answer to the management of the emergency room in Kerry. It is necessary everywhere, but it is not a sufficient answer. It is also about the management of the hospital and the emergency room. I will provide the Deputy with the figures in order that he has them as a representative for that area. I am looking forward to coming and seeing the management of the different issues and pressures there.</p>
+          <p eId="para_271"> I ask Deputy Butler to come in and then Mr. Tierney to come in on some of the other capital projects.</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_194" as="#Minister_of_State_at_the_Department_of_Health">
+          <from>Deputy Mary Butler<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_272">I thank the Deputy for his question about Kerry CAMHS and his co-operation and support for all the families who have been affected by this situation in Kerry over many years. We have had huge number of engagements. I will provide an update on the initial report in January 2022. There were 240 young people who did not receive the standard of care they should have from CAMHS. The HSE issued an apology. Following on from that publication, the Government committed to a non-adversarial route for children and their families to seek compensation. The latest information available as of May is that there have been 228 applications to the scheme, with initial payments made to 222 applications of the 240. There are a lot of learnings from a non-adversarial type approach, where we are not dragging people through the courts, that are really worthwhile.</p>
+          <p eId="para_273"> Unfortunately, there are issues in north Kerry. I authorised a look back across every CAMHS team in the country. There were red flags in north Kerry as well. What has happened since is a senior clinician, supported by a team of CAMHS, was appointed to lead the look-back review. It was hoped that the review would be completed in a short time period with Dr. Colette Halpin. Unfortunately, they realised it would take longer because they had to explore. Red flags were raised immediately. They had to undertake a robust review of all cases. The HSE's priority was that every file of every young person would get a thorough and robust review. A report is currently being drafted based on the findings of all cases reviewed. Once the HSE receives the draft, there will be additional work before completion and publication. The HSE will expedite this as much as possible. I will get it as soon as possible. During the review, any young person whose file showed deficits in the care provided to them were called for an individual open disclosure meeting. That is happening the whole way through, like we dealt with in Kerry south. The important thing is that it is the family and the young person affected who will hear first. They will not hear it in the media. They will not hear it from the Deputy or me. They will hear it from the HSE and it will be dealt with it appropriately. I welcome the fact that we have a huge number of people opted in to the non-adversarial scheme. There are learnings from that.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_195" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_274">I want to answer one thing in relation to trolleys because Kerry is particularly interesting. On Wednesday, 5 February, there were figures as high as 28 people on trolleys. Just by way of interest, in May, which was particularly interestedly managed, on 11 days out of 31 days in Kerry there were zero people on trolleys. There were three days with one person on a trolley. There were only four days in May where Kerry had in excess of eight people on trolleys, which we would regard this as a red situation, whereas in June so far there have been ten. June is not as good as May. May and June are not different profile months. During the period after the bank holiday weekend in June was not as well managed. There is an infrastructure need. For the people of Kerry this is about the right people turning up, not just in the emergency department, where too much of the focus is in the sense of blame or the people in the emergency department are not there. It is the people throughout the rest of the hospital who are also responsible for the emergency department doing things such as bringing in electives without making sure that diagnostics have happened to discharge other people or not being there to discharge over the weekend in a way that is sufficient. That is why Kerry is a particularly interestingly mixed picture. The Deputy and I should spend some time on it.</p>
+        </speech>
+        <speech by="#" eId="spk_196">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:20:00+01:00"/></from>
+          <p eId="para_275">On infrastructure investment, last year we completed the upgrade and extension to the oncology day ward. We also have two important refurbishment projects under way on emergency lighting and electrical systems upgrades. If we do not do that, we cannot extend any provision within Kerry University Hospital. That is under way. Turning to the Deputy's question about the relocation of the women's health and maternity services, my understanding is that project is in construction.</p>
+          <p eId="para_276">A site and a building have been acquired and a fit-out is under way. University Hospital Kerry is to receive a future allocation of inpatient bed capacity. It is part of our overall inpatient bed capacity plan that delivers acute beds on a regional but balanced basis. University Hospital Kerry is in the queue for investment. That plan is agreed at a national and regional level. We are now progressing a design for a new ward block for Kerry.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_197">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:30:00+01:00"/></from>
+          <p eId="para_277">We have one more speaker in the first round. However, it might be of interest to members that there is an audiovisual room briefing at 1 p.m. by Cian's Kennels, which is an organisation that connects children in hospital with family pets and organists visits of dogs to hospital. It sounds like a worthy cause. I call Deputy Roche.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_198">
+          <from>Deputy Peter Roche<recordedTime time="2025-06-25T11:30:00+01:00"/></from>
+          <p eId="para_278">I thank the ministerial team and their officials for attending this meeting. It is most welcome that we are briefed on the Revised Estimate. My question relates to mental health. We have all heard about people presenting with emotional challenges, psychotic attacks or severe bouts of depression being referred by a GP to accident and emergency services. There are some difficult to listen to testimonials from people who presented and for one reason or another did not have the emotional ability or capacity to stay put and left. There are sad cases where a small number of them ended their life. I am a strong advocate of a system whereby if a GP makes a referral or somebody themselves presents at a hospital, he or she would not have to wait with people who are presenting with easier to manage ailments such as a broken arm or leg. Someone who presents with depression does not have the emotional well-being to withstand the torment in that crowded space. Are we any nearer to where that person will be signposted to psychiatric services or will have easier access to a counsellor rather than having to endure that wait? I hear lovely stories about specialist nurses in this area with whom people can make direct contact. There are two such nurses in County Mayo, for example. County Galway has a vastly higher population and a bigger geographic spread and we do not have any. When can we get to that space where rather than having to present to accident and emergency services, the specialist nurse would interact with that person following on his or her consultation with his or her GP? I ask this in the context of the enormous challenge for anyone who is emotionally challenged to have to go to his or her GP in the first instance. Sometimes it is much easier to have that cosy interaction with someone who understands. Those specialist nurses are fully equipped to deal with what is going to be presented to them because they are so familiar with that field. How close are we to having this service provided nationally? I am sure that any changes to the current system have a cost burden but it is a small price to pay to help people continue in life and become emotionally stronger.</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_199" as="#Minister_of_State_at_the_Department_of_Health">
+          <from>Deputy Mary Butler<recordedTime time="2025-06-25T11:30:00+01:00"/></from>
+          <p eId="para_279">I thank the Deputy for his question and for the way he put it because it is a very difficult situation. We are seeing increasing numbers of presentations of young people, people with dual addictions, such as drugs and alcohol, they might have a dual diagnosis, or they might be psychotic. Over the past five years we have been trying to grow community supports and we have been successful.</p>
+          <p eId="para_280"> As I referred to earlier in reply to Deputy Clarke, we now have Solace cafés, which used to be called crisis cafes. There is one in Galway immediately across the road from University Hospital Galway. I opened that three years ago. Since then there has been an 18% reduction in presentations to the accident and emergency department. People do not just rock up to the café. A family member or a doctor makes a referral to the facility, which opens out of hours from 6 p.m. to 11 p.m. It was the brainchild of Dr. Amanda Burke, who was the clinical lead for mental health for CAMHS. These are proving to work well. We opened one recently in Cork on Sullivan's Quay. Cork Mental Health Organisation is the stakeholder. It has a premises and this is working well. We are trying to roll these out across the country. We are trying to give people an alternative.</p>
+          <p eId="para_281"> We also have crisis resolution teams. We have five in place across the country and are trying to build on that. These crisis resolution teams work Thursday to Monday from 3 p.m. to 11 p.m. That is the time when people can be in a real crisis. GPs know that they can refer their patient to their local crisis resolution team. These are important. Another initiative that has been a game-changer is in Limerick and is called the Community Access Support Team, CAST. It is a pilot between the Department of Justice, An Garda Síochána and the Department of Health. The figures from it are really good. When there is a crisis situation and the emergency services are called, a car and a specialist mental health clinical nurse will travel with the ambulance. We have rolled out this pilot and we have put a lot of work into this pilot. I met with clinicians from North America and Northern Ireland where this initiative is working. This is working really well. We want to embedded this in Limerick first. All credit goes to superintendent Andrew Lacey who led this. It was his perspective and it has worked really well. This tries to support people before they need to get to the emergency department. </p>
+          <p eId="para_282"> We are pleased with this year's figures from the National Office for Suicide Prevention. Following a peak during the recession in 2012, the rate of death by suicide has been decreasing. The rate in 2000 was 12.9 deaths per 100,000 people. The rate this year is 9 per 100,000. That is a decrease of over 25% over the past 17 or 18 years. However, each death by suicide is one too many. We all know that and the effect that it has. </p>
+          <p eId="para_283"> Last week I launched SpunOut's new navigator tool. I secured €500,000 in funding in 2024 and we partnered with SpunOut to develop the navigator tool. It is for people between the ages of 14 and 34. It was devised by 900 young people and is user friendly. You type in "SpunOut/navigatortool" and there are three simple questions to be answered. I invite people to download it to their phone and try it. It leads immediately to a text portal where you can get an immediate answer if you are in distress. A young or a not-so-young person who is in distress on a Friday or Saturday night will get a response through this. It took longer to put in place than I would have liked but it is so much more than what I envisaged. It is evidence-based. It was devised by young people for young people. There is a backup to it and funding will be provided every year for the team. While we are delivering more community supports such as discovery and recovery colleges for people in mental health distress, we do have one problem, which I have spoken about a lot. We have a problem trying to encourage men of all ages to access supports. Of the people who died by suicide in recent years, 80% were male. We also know that two thirds of all counselling supports are accessed by women. There is a whole cohort of men out there who do not access supports. </p>
+          <p eId="para_284">Anecdotal figures will prove – the Department does not like me saying this because they are anecdotal – that one third of all men who die by suicide never accessed any support of any type. I have €2 million in additional funding this year, and this is targeting men only for counselling supports. These are men who may not have a medical card and cannot afford to apply for counselling. We will shortly roll out free counselling supports for men across all GPs. It will involve immediate contact by phone and users will get support for up to eight phone calls. If they need to meet somebody face to face after that, they will. We are doing a lot in this area. The more we talk about mental health, especially for men, the better. I thank the Deputy for all his work on this issue.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_200">
+          <from>Deputy Peter Roche<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_285">It behoves me to respond-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_201">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_286">We are just on time, so I ask the Deputy to be brief.</p>
+        </speech>
+        <speech by="#PeterRoche" eId="spk_202">
+          <from>Deputy Peter Roche<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_287">I thank the Minister of State for the enlightening update. I am taken by the progress made. It is now a case of promoting the services the Minister of State spoke about very eloquently. It is about reaching out to people looking for somewhere to go.</p>
+        </speech>
+        <speech by="#MaryButler" eId="spk_203" as="#Minister_of_State_at_the_Department_of_Health">
+          <from>Deputy Mary Butler<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_288">I have to step out to go to the Dáil. My apologies.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_204">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_289">As we have some additional speaking time, I propose that we take a few minutes to allow members to ask any remaining burning questions they have. Is that agreed? Agreed.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_205">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_290">I thank the Minister, the Ministers of State and their officials for all the enlightening answers. On the delivery of primary care centres, the question was on public-private partnerships and that model of delivery. It probably works better in some urban areas and less so in some rural areas. Are we too dependent on small developers who may or may not survive the process of delivery?</p>
+        </speech>
+        <speech by="#" eId="spk_206">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_291">We have 174 operational primary care centres. We deliver these primarily through three means. The first is traditional construction, where the State invests in design and build. We then have a PPP bundle. The final one, to which I think the Deputy is referring, is our operation-and-lease model. We try to maximise either the use of capital or current funding, depending on what is available. On the operation-and-lease model, we use a public procurement model to go out to the market to look for expressions of interest from those interested in partnering with the State to deliver. There is a qualification test around developers' financial stability, financial standing and ability to deliver because it is a 25-year lease. In fairness, the developers are taking on risk on upfront property acquisition, design and construction and the State is guaranteeing a 25-year rent roll.</p>
+          <p eId="para_292"> In the last two to three years, we have seen the impact of an inflationary environment spin out in two ways. One is the financing cost for the private sector and the second is the cost of input. Because it is public procurement, we had to abide by that set of rules. Where we could negotiate, we have done so, but clearly some developers have entered into an agreement to deliver on. We have given them an extended opportunity to commit to that or we retender. In fairness, many of the developers are best placed to do well in that retender. We had about 18 to 20 stuck in that period and we worked our way to resolve those and we are through to the other end. I do not think we will move away from having that blended mix of delivery formats. It is good because it allows us to leverage market capacity and maximise our own funding within it too.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_207">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_293">I will very quickly give two examples, Ballaghaderreen and Edgeworthstown. Ballaghaderreen is an area of severe deprivation, with a large immigrant population and huge needs. After five years, the town has been left without any prospect of having a primary care centre being delivered. I will leave it at that. I thank Mr. Tierney for his answer. I appreciate it.</p>
+        </speech>
+        <speech by="#" eId="spk_208">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_294">I will put some focus on that issue.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_209">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_295">For the Deputies' information, we have an additional speaking slot and the next speaker is from Sinn Féin.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_210">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_296">That was good timing, so.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_211">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_297">Several months ago, I raised the issue of the need to look at CORU registration following the conviction of a man in my constituency for sexually assaulting one of his clients and having hours of covert video of women he was providing sports injury and recovery services to. Does the Minister envisage that review of CORU registration in the near future?</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_212" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_298">I am due to meet CORU very shortly. I have been asking about this issue for different reasons. I ask Ms Kenna to comment.</p>
+        </speech>
+        <speech by="#" eId="spk_213">
+          <from> Ms Rachel Kenna<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_299">There is a meeting in the Minister's diary for next week with CORU, so we will be able to go through those issues in detail. Significant improvements have been made in the last 18 months with CORU registration. We are often criticised for the time it takes and the scrutiny involved in it, but we can see that when things go wrong it is absolutely necessary that we have the highest level of-----</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_214">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_300">I respect that, but this individual will leave jail and he will be free to continue with the employment and business he had beforehand because he does not currently fall under CORU's registration requirements.</p>
+        </speech>
+        <speech by="#" eId="spk_215">
+          <from> Ms Rachel Kenna<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_301">Not all professionals who work in the HSE or health services are regulated, but significant assurances around safety can be put in place through HR and employment practices. We need to make sure the balance is reached when these are not regulated professions. As the Deputy knows, we have a long list of aspirant professions for regulation.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_216">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_302">The issue in this case is that this man was the employer. He was the business owner.</p>
+        </speech>
+        <speech by="#" eId="spk_217">
+          <from> Ms Rachel Kenna<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_303">Yes. We are going to address that with CORU next week.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_218">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_304">I have two quick questions. The first is on the elective hospital in Cork. I was told by the former Minister, Stephen Donnelly, that a application permission would be made by October 2023. The design has not even been finalised. I ask for a timeline for this process?</p>
+          <p eId="para_305"> My second question concerns the lack of co-ordination between Departments in relation to the training of key people. For example, I started the campaign to increase the number of radiation therapists going through our colleges. It took me two years to get that changed, yet we had four linear scanners lying idle around the country, one in Galway, two in Dublin and one in Cork, because we did not have radiation therapists. Now, we have a problem with dental training. We are not producing enough Irish dentists in our colleges. To give the figures from Cork, 61 dentists qualified in 2023. Of those, 36 were non-European and 25 were Irish. In Trinity College Dublin, 46 dentists qualified, of whom 25 were Irish and 21 were non-European. These are crazy figures as regards forward planning in our health service. Our population has increased by 43% and we need to plan appropriately.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_219" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_306">I ask Mr. Tierney to come in on the Cork elective hospital and Ms Kenna on workforce planning. I will then have a perspective on dentistry.</p>
+        </speech>
+        <speech by="#" eId="spk_220">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_307">I thank the Deputy for the question. He will be aware that we appointed our design teams last November. We are moving at pace now through a detailed design. In fairness, the design teams have started to engage with the local authorities on preplanning discussions. Our ambition is to get to a planning application by the end of this year, for sure. We are not waiting for this, though. We are also starting to figure out how best to design enabling work packages. I am going to sound like a broken drum here, but we are back into an NDP review and a funding discussion, ultimately, to progress our elective programme. In the meantime, we are-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_221">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_308">Mr. Tierney is saying that by the end of this year, the planning application will have been submitted.</p>
+        </speech>
+        <speech by="#" eId="spk_222">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_309">That is the ambition. The target is to get a planning application into the local authorities or An Bord Pleanála, depending-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_223">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_310">I had the same answer from Stephen Donnelly in 2023.</p>
+        </speech>
+        <speech by="#" eId="spk_224">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_311">I am speaking for the current Minister.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_225" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_312">We also need the money.</p>
+        </speech>
+        <speech by="#" eId="spk_226">
+          <from> Ms Rachel Kenna<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_313">We have had significant increases across a number of professions from a workforce planning perspective. As the Deputy will be aware from the Department of Health, we now have the capacity to deliver projected planning estimates for workforce planning. A memo was approved by the Cabinet a number of weeks ago on increasing therapy places. It included a further increase for radiation therapy of 23 places for 2025. There will be more places for 2026. In addition, we know dentistry has increased requirements and we are approving 20 additional dentistry places in the RCSI-----</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_227">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_314">That is not enough.</p>
+        </speech>
+        <speech by="#" eId="spk_228">
+          <from> Ms Rachel Kenna<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_315">We know that is not enough.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_229">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_316">We want to try to get everybody in. The Minister wishes to comment briefly.</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_230" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_317">It is also very important that when dentists are being trained they come out and doing dentistry. I have a number of different ongoing concerns in relation to this issue.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_231">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:40:00+01:00"/></from>
+          <p eId="para_318">I have a brief question on multi-annual funding. Under the Department's high-level priorities for 2025, it states it wants to create certainty for the delivery of health projects through multi-annual budgeting. A multi-annual approach to health funding is also in the programme for Government. I think this is a key commitment that must be progressed as it will help to put HSE-funded services, projects and organisations on a sustainable footing and provide the certainty required for additional staffing levels.</p>
+          <p eId="para_319"> Is it the Minister's intention to progress this commitment in 2026, following the current tier agreement? </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_232" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_320">Yes, that is my ambition. This is subject to the agreement of the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation, but I am hoping that will be the case. One of the reasons I talk about non-pay savings all of the time is to try to stay within budget and make that best case.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_233">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_321">Regarding capital investment, there is an awful lot riding on the NDP review. The increase this year was a paltry €226 million. What conversations have taken place with the Department of public expenditure regarding procurement rules? That appears to be a major blocker with regards to the major projects above €200 million.</p>
+          <p eId="para_322"> I wholeheartedly agree with the Minister with regard to optimising the State investment. We have a 100-bed drug treatment facility in Usher's Island, Dublin 8. Almost €37 million went into this from the State and only 50 beds are operational. I was told last week by the drugs policy section in the Department that there is a plan for another 12 beds to be opened but that there is no plan for 27 beds. They are lying idle at a time when people are in serious crisis in the city. My appeal to the Minister is that she makes sure those 100 beds are operational as soon as possible. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_234" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_323">I agree. I met various representatives of the Simon Community last week on this and a number of other health and homelessness issues. The Minister of State, Deputy Murnane O'Connor, is well across this as well. I am aware of the issues with Usher's Island, as is the Minister of State. </p>
+          <p eId="para_324"> Regarding public procurement, we have been discussing a range of issues with the Department of public expenditure as it goes through its processes to try to improve the infrastructure guidelines on public procurement processes generally. I will ask Mr. Tierney to be more specific on this. </p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_235">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_325">Is there any possible relaxation or change to the guidelines? </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_236" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_326">We are advocating strongly for that. We are also advocating strongly for the review that the Department of housing is doing on what requires planning permission and what does not and what might be exempted. One thing we can see in the Department of Health, notwithstanding its very small capital budget and, as the Deputy pointed out, the very small increase in the capital budget relative to the rest of the budget and how much discretion we have to do new things within that, we do spend it and we spend it on time. We have a list of projects delivered on time and on budget. We spend our budget. Perhaps not every Department has the opportunity to do that as efficiently as our team. Mr. Tierney might like to give the Deputy more information. </p>
+        </speech>
+        <speech by="#" eId="spk_237">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_327">We are engaging with the Department of public expenditure and the infrastructure task force that was established, to give the benefit of our experience. We are looking at the infrastructure threshold. We see the current threshold of €200 million. A typical ward block costs €150 million, so it is already into the infrastructure guidelines. The health sector is obliged to follow the construction works management framework, while other sectors are not, so there is an inconsistency of application around rule sets. We have experience with the public works contract form. We share those with the Department as well. We are looking for consistency and flexibility and maybe some enhancements to that. As the Minister said, we have engaged with the Department of housing on planning exemptions. We are building ward blocks that are repeatable, consistent and standardised. There may be some efficiencies to be gleaned within the planning system to speed up how we deliver as well. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_238">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_328">We have two slots remaining and then we will conclude before 12 o'clock. Deputy Cahill, you have three minutes.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_239">
+          <from>Deputy Michael Cahill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_329">Regarding CAMHS, what happened to the children who were misdiagnosed and given the wrong medication was horrific. They deserve support. There is long-term, permanent damage in that regard.</p>
+          <p eId="para_330"> I welcome the response about the additional block of beds in University Hospital Kerry, UHK. Regarding the beds that are closed in our community hospitals, namely, Dingle and Cahersiveen, I received a response that said it is very difficult to get staff for these rural, isolated areas. We should probably be giving incentives, if possible. It is a nice place to live. Both hospitals are on lovely peninsulas, the Iveragh peninsula and the Dingle peninsula.</p>
+          <p eId="para_331"> On the accident and emergency overcrowding that I referenced, I am not going to dispute the facts and the Minister deals in facts. However, I have seen at first hand the overcrowding. I am aware of cases where elderly patients have fallen off their chairs in the waiting room, etc. Radio Kerry runs ads every week telling people not to attend the hospitals unless it is absolutely necessary, and rightly so. I am aware of patients now going to Limerick and Cork. Maybe that has a bearing on the figures. </p>
+          <p eId="para_332"> I want to reissue the invitation from University Hospital Kerry to the Minister. We would be delighted to welcome her. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_240" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_333">I am very much looking forward to going to University Hospital Kerry. I do not believe that there has been a change in the number of presentations to the emergency department there. The Deputy is quite right to highlight the very great distress that people in Kerry have experienced with overcrowding in the emergency department of the hospital. This went on right through February and March. It is exactly why I am so focused on making a whole-of-hospital response to make sure the Deputy's constituents are not in that situation. I am simply saying that the answer is complex. I do not see any drop in the number of presentations. In fact, there has been an increase in the number of presentations in most of the hospitals. There is not even a winter-summer variance in it. It is consistently increasing in most places, although I will get a detailed breakdown on that for Kerry. All hospitals need increased investment and I very much look forward to coming to understand the detail and the nuances in Kerry as soon as I have the opportunity to do so. There are 29 acute hospitals and I think I have been to 15 of them. I am doing my best to understand the feel of every place so far. </p>
+        </speech>
+        <speech by="#KieranODonnell" eId="spk_241">
+          <from>Deputy Kieran O'Donnell<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_334">Regarding Cahersiveen and Dingle, I will follow up with the HSE to get a full update on staff recruitment, because it is under way. We recognise how important this is to the Deputy. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_242">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_335">I want to get clarification on a number of issues. Last year, the health committee considered the review into the termination of pregnancy Act 2018. It was a very detailed review, commissioned by the previous Government. The work was done by Ms Marie O'Shea BL, who made very clear recommendations. I do not see it anywhere in the programme for Government. I think the committee has written to the Minister seeking an update. At this time, there is a question mark over what Government policy is on this review and its recommendations. What is the Government's position? </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_243" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_336">The Deputy is right in his observation that there is nothing in the programme for Government in relation to this. It is an area that I am very interested in. I might ask Ms Conroy to comment on the hospitals' maternity units.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_244">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_337">No, I do not need that. I know what was done operationally. There are issues that the Government has to make decisions on. What the system does with regard to resources is a different issue. I am talking about issues like the three-day wait. There were legislative changes. Those are what could be considered the more contentious issues. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_245" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_338">Yes, and very important issues. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_246">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_339">I agree, but the point is that a considerable body of work was done. It is a very significant report, which stands on its own merits. We all have our own views on lots of the issues, which are complex. Because such a volume of work was done and it does stand on its own merits, it is important that the report be given the status it deserves. It is important for the public to know where the Government stands on it. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_247" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_340">As I said, the Deputy is right to observe that there is nothing in the programme for Government in relation to it, but I personally remain very committed to the implementation of all the services that are necessary for the women of Ireland. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_248">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_341">What does that mean? </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_249" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_342">I think I need a little bit of time on it. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_250">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_343">A little bit of time to consider all of the recommendations. Would that mean then-----</p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_251" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_344">To consider how all of that is working and how the implementation has been to date. I was involved in that before I became a Minister, in much of the work that is the backdrop to that. My own interest and perspective on women's health is very clear, but the Deputy is right to observe that there is nothing about it in the programme for Government.</p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_252">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_345">Is there an estimated cost for the national maternity hospital? Mr. Tierney might have that. </p>
+        </speech>
+        <speech by="#JenniferCarrollMacNeill" eId="spk_253" as="#Minister_for_Health">
+          <from>Deputy Jennifer Carroll MacNeill<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_346">There is a contingency piece. Mr. Tierney might like to answer the Deputy's question. </p>
+        </speech>
+        <speech by="#" eId="spk_254">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_347">The market has responded. The HSE is finalising an evaluation. I do not really want to put that out into the public domain. I think it would be unfair to the process, given that it is still a live procurement. I do not want to give any advantage to those who have bid or those who have not bid in that space. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_255">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_348">There is a bidding process.</p>
+        </speech>
+        <speech by="#" eId="spk_256">
+          <from> Mr. Derek Tierney<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_349">The valuation is still under way and I just do not want to publicly put that number out. It would be unfair. </p>
+        </speech>
+        <speech by="#DavidCullinane" eId="spk_257">
+          <from>Deputy David Cullinane<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_350">Okay. </p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_258">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_351">If I may-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_259">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_352">Deputy Burke, we are out of time. We have already brought you back in.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_260">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-25T11:50:00+01:00"/></from>
+          <p eId="para_353">On forward planning, this should have been tried with radiation therapists. It took two years to take the decision. We will not see the results for four years. The Department needs to work with the higher education sector on forward planning, to make sure that something like this does not arise again.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_261">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T12:00:00+01:00"/></from>
+          <p eId="para_354">For members' information, regarding the issue raised by Deputy Cullinane on the review, we have received correspondence from the Department on it. It has notified the committee and I thank it for the detailed information on the question. I thank the Minister and Ministers of State for their attendance today, together with their officials. There are a number of items on which we are to receive correspondence and I hope we will receive the information from the Department.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Message to Dáil<recordedTime time="2025-06-25T12:00:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_262">
+          <from> An Cathaoirleach<recordedTime time="2025-06-25T12:00:00+01:00"/></from>
+          <p eId="para_355">In accordance with Standing Order 110, the following message will be sent to the Dáil:</p>
+          <p class="indent_1" eId="para_356">The Select Committee on Health has completed its consideration of the following Further Revised Estimate for Public Services for the service of the year ending 31 December 2025: Vote 38 - Health</p>
+        </speech>
+        <summary eId="sum_7"> The select committee adjourned at 12 noon <i>sine die</i>.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -1,0 +1,364 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-05-28/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-05-28/debate"/>
+          <FRBRdate date="2025-05-28" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-05-28/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-05-28/debate/mul@"/>
+          <FRBRdate date="2025-05-28" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-05-28/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-05-28/debate/mul@.akn"/>
+          <FRBRdate date="2025-05-30" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <analysis source="#source">
+        <parliamentary>
+          <voting eId="vote_1" href="#sum_7" outcome="#lost" refersTo="#sum_6">
+            <count eId="vote_1-count_1" href="#qty_1" refersTo="#ta" value="5"/>
+            <count eId="vote_1-count_2" href="#qty_2" refersTo="#nil" value="8"/>
+          </voting>
+          <voting eId="vote_2" href="#sum_12" outcome="#carried" refersTo="#sum_11">
+            <count eId="vote_2-count_1" href="#qty_3" refersTo="#ta" value="8"/>
+            <count eId="vote_2-count_2" href="#qty_4" refersTo="#nil" value="5"/>
+          </voting>
+        </parliamentary>
+      </analysis>
+      <references source="#debates">
+        <TLCConcept eId="#lost" href="/ie/oireachtas/ontology#DeclaredLost" showAs="Declared Lost"/>
+        <TLCConcept eId="#carried" href="/ie/oireachtas/ontology#DeclaredCarried" showAs="Declared Carried"/>
+        <TLCConcept eId="#staon" href="/ie/oireachtas/ontology#StaonVote" showAs="Staon Vote"/>
+        <TLCConcept eId="#nil" href="/ie/oireachtas/ontology#NílVote" showAs="Níl Vote"/>
+        <TLCConcept eId="#ta" href="/ie/oireachtas/ontology#TáVote" showAs="Tá Vote"/>
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="DavidCullinane" href="/ie/oireachtas/member/id/David-Cullinane.S.2011-05-25" showAs="David Cullinane"/>
+        <TLCPerson eId="GarretAhearn" href="/ie/oireachtas/member/id/Garret-Ahearn.S.2020-03-30" showAs="Garret Ahearn"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="NicoleRyan" href="/ie/oireachtas/member/id/Nicole-Ryan.S.2025-01-29" showAs="Nicole Ryan"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="PaulMcAuliffe" href="/ie/oireachtas/member/id/Paul-McAuliffe.D.2020-02-08" showAs="Paul McAuliffe"/>
+        <TLCPerson eId="PeterRoche" href="/ie/oireachtas/member/id/Peter-Roche.D.2024-11-29" showAs="Peter Roche"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCPerson eId="TeresaCostello" href="/ie/oireachtas/member/id/Teresa-Costello.S.2025-01-29" showAs="Teresa Costello"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-05-28">Dé Céadaoin, 28 Bealtaine 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-05-28">Wednesday, 28 May 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#GarretAhearn">Garret Ahearn,*</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#TeresaCostello">Teresa Costello</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#PaulMcAuliffe">Paul McAuliffe,*</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PadraigOSullivan">Pádraig O'Sullivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#PeterRoche">Peter Roche</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_15">
+                  <person refersTo="#MarieSherlock">Marie Sherlock.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">* In éagmais / In the absence of Deputy Michael Cahill and Senator Manus Boyle.</summary>
+          <summary eId="sum_5">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-05-28T09:30:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T09:30:00+01:00"/></from>
+          <p eId="para_16">Apologies have been received from Senator Manus Boyle, who is being substituted by Senator Garret Ahearn.</p>
+          <p eId="para_17"> I advise members of the constitutional requirement that they must be physically present within the confines of the Leinster House complex in order to participate in public meetings. I will not permit a member to participate where he or she is not adhering to this constitutional requirement. Therefore, a member who attempts to participate from outside the precincts will be asked to leave the meeting. In this regard, I ask members partaking on Teams that prior to making a contribution to the meeting they confirm they are on the grounds of the Leinster House complex.</p>
+          <p eId="para_18"> On utterances by members, members are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that would be regarded as damaging to the good name of the person or entity. Therefore, if their statements are potentially defamatory in respect of an identifiable person or entity, they will be directed to discontinue their remarks. It is imperative they comply with any such direction.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Election of Leas-Chathaoirleach<recordedTime time="2025-05-28T09:30:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T09:30:00+01:00"/></from>
+          <p eId="para_19">As agreed at the previous meeting, we took nominations. I will explain the set formula for going through the election of a Leas-Chathaoirleach. We run it on the basis of the person first nominated and then carry out a vote. Two nominations for the position were received. In order, they were for Deputies Martin Daly and Colm Burke. We will now consider the nominations in the order in which they were received. Is it agreed that Deputy Martin Daly be elected Leas-Chathaoirleach of the Joint Committee on Health? Not agreed.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_3">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-05-28T09:30:00+01:00"/></from>
+          <p eId="para_20">To be helpful, other members are at a different committee at the moment. They are serving on two committees and cannot be here. Can an opportunity be given to them to come to the committee?</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_4">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T09:30:00+01:00"/></from>
+          <p eId="para_21">There is provision to call a vote on this. We can ring the bells to call members.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_5">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-05-28T09:30:00+01:00"/></from>
+          <p eId="para_22">Vótáil.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_6">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T09:30:00+01:00"/></from>
+          <p eId="para_23">As less than the full membership is present, the clerk will ring the division bells. The bells will ring for four minutes and the division will be taken after eight minutes, or when the full membership is present.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_4">
+          <summary eId="sum_6">Question put: "That Deputy Martin Daly be elected Leas-Chathaoirleach of the Joint Committee on Health." </summary>
+          <summary title="division" eId="sum_7">The Committee divided: Tá, <quantity refersTo="#ta" normalized="5" eId="qty_1">5</quantity>; Níl, <quantity refersTo="#nil" normalized="8" eId="qty_2">8</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_5">
+            <p eId="para_24">Tá</p>
+            <p eId="para_25">
+              <person refersTo="#TomClonan">Clonan, Tom.</person>
+            </p>
+            <p eId="para_26">
+              <person refersTo="#TeresaCostello">Costello, Teresa.</person>
+            </p>
+            <p eId="para_27">
+              <person refersTo="#MartinDaly">Daly, Martin.</person>
+            </p>
+            <p eId="para_28">
+              <person refersTo="#PaulMcAuliffe">McAuliffe, Paul.</person>
+            </p>
+            <p eId="para_29">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_6">
+            <p eId="para_30">Níl</p>
+            <p eId="para_31">
+              <person refersTo="#GarretAhearn">Ahearn, Garret.</person>
+            </p>
+            <p eId="para_32">
+              <person refersTo="#ColmBurke">Burke, Colm.</person>
+            </p>
+            <p eId="para_33">
+              <person refersTo="#MariaByrne">Byrne, Maria.</person>
+            </p>
+            <p eId="para_34">
+              <person refersTo="#SorcaClarke">Clarke, Sorca.</person>
+            </p>
+            <p eId="para_35">
+              <person refersTo="#DavidCullinane">Cullinane, David.</person>
+            </p>
+            <p eId="para_36">
+              <person refersTo="#PeterRoche">Roche, Peter.</person>
+            </p>
+            <p eId="para_37">
+              <person refersTo="#NicoleRyan">Ryan, Nicole.</person>
+            </p>
+            <p eId="para_38">
+              <person refersTo="#MarieSherlock">Sherlock, Marie.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_8"/>
+          <summary title="decision" refersTo="#lost" eId="sum_9">Question declared lost.</summary>
+        </debateSection>
+        <summary eId="sum_10"> Staon: Deputy Pádraig Rice.</summary>
+        <speech by="#PadraigRice" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T09:40:00+01:00"/></from>
+          <p eId="para_39">We will take the second nomination. Is the election of Deputy Colm Burke as Leas-Chathaoirleach of the Joint Committee on Health agreed? Not agreed.</p>
+        </speech>
+        <debateSection name="division" eId="dbsect_7">
+          <summary eId="sum_11">Question put: "That Deputy Colm Burke be elected Leas-Chathaoirleach of the Joint Committee on Health."</summary>
+          <summary title="division" eId="sum_12">The Committee divided: Tá, <quantity refersTo="#ta" normalized="8" eId="qty_3">8</quantity>; Níl, <quantity refersTo="#nil" normalized="5" eId="qty_4">5</quantity>.</summary>
+          <debateSection name="ta" eId="dbsect_8">
+            <p eId="para_40">Tá</p>
+            <p eId="para_41">
+              <person refersTo="#GarretAhearn">Ahearn, Garret.</person>
+            </p>
+            <p eId="para_42">
+              <person refersTo="#ColmBurke">Burke, Colm.</person>
+            </p>
+            <p eId="para_43">
+              <person refersTo="#MariaByrne">Byrne, Maria.</person>
+            </p>
+            <p eId="para_44">
+              <person refersTo="#SorcaClarke">Clarke, Sorca.</person>
+            </p>
+            <p eId="para_45">
+              <person refersTo="#DavidCullinane">Cullinane, David.</person>
+            </p>
+            <p eId="para_46">
+              <person refersTo="#PeterRoche">Roche, Peter.</person>
+            </p>
+            <p eId="para_47">
+              <person refersTo="#NicoleRyan">Ryan, Nicole.</person>
+            </p>
+            <p eId="para_48">
+              <person refersTo="#MarieSherlock">Sherlock, Marie.</person>
+            </p>
+          </debateSection>
+          <debateSection name="nil" eId="dbsect_9">
+            <p eId="para_49">Níl</p>
+            <p eId="para_50">
+              <person refersTo="#TomClonan">Clonan, Tom.</person>
+            </p>
+            <p eId="para_51">
+              <person refersTo="#TeresaCostello">Costello, Teresa.</person>
+            </p>
+            <p eId="para_52">
+              <person refersTo="#MartinDaly">Daly, Martin.</person>
+            </p>
+            <p eId="para_53">
+              <person refersTo="#PaulMcAuliffe">McAuliffe, Paul.</person>
+            </p>
+            <p eId="para_54">
+              <person refersTo="#PadraigOSullivan">O'Sullivan, Pádraig.</person>
+            </p>
+          </debateSection>
+          <summary title="tellers" eId="sum_13"/>
+          <summary title="decision" refersTo="#carried" eId="sum_14">Question declared carried.</summary>
+        </debateSection>
+        <summary eId="sum_15"> Staon: Deputy Pádraig Rice.</summary>
+        <speech by="#PadraigRice" eId="spk_8">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T09:50:00+01:00"/></from>
+          <p eId="para_55">I congratulate the newly elected Leas-Chathaoirleach. I invite him to say a few words, if he wishes.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_9">
+          <from>Deputy Colm Burke<recordedTime time="2025-05-28T09:50:00+01:00"/></from>
+          <p eId="para_56">I very much thank everyone who voted for me. I also thank my competitor. He has huge experience in the medical area and I look forward to working with him. As I said at the previous meeting, I was on the health committee from 2011 to 2024. I certainly want to use that experience to help the Chairperson and all the other members of the committee. I look forward to working with all of them. I again thank them very much for their support.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_10">
+          <from> An Cathaoirleach<recordedTime time="2025-05-28T09:50:00+01:00"/></from>
+          <p eId="para_57">We will move into private session to deal with some housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_16"> The joint committee went into private session at 9.52 a.m. and adjourned at 10.52 a.m. until 9.30 a.m. on Wednesday, 11 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

@@ -3,6 +3,7 @@ import { z } from 'zod';
 import OpenAI from 'openai';
 import { supabaseDb } from '../db';
 import { generateEmbedding } from '../services/openaiService';
+import { getPolicyPositions } from '../services/politicianAgent';
 
 const router = Router();
 
@@ -62,13 +63,16 @@ router.post('/politician', async (req: Request, res: Response) => {
     // Convert embedding array to PostgreSQL vector format string
     const embeddingString = `[${questionEmbedding.join(',')}]`;
     
-    // Use pgvector semantic search via RPC function
+        // Use pgvector semantic search via RPC function
     try {
+      // Clean up the embedding string format
+      const embeddingString = `[${questionEmbedding.join(',')}]`;
+      
       const { data, error } = await supabaseDb.rpc('match_debate_chunks_text', {
         query_embedding_text: embeddingString,
         match_politician: politicianName,
-        match_threshold: 0.3, // Lower threshold to find more semantic matches
-        match_count: 20
+        match_threshold: 0.2, // Relaxed threshold (0.3 -> 0.2)
+        match_count: 30 // Increased from 20 to get more candidates
       });
       
       if (error) {
@@ -97,22 +101,29 @@ router.post('/politician', async (req: Request, res: Response) => {
         .split(' ')
         .filter(word => word.length > 3 && !stopWords.includes(word));
       
-      for (const searchTerm of keyTerms) {
-        const { data, error } = await supabaseDb
+      // Search using OR logic for better recall
+      if (keyTerms.length > 0) {
+        let query = supabaseDb
           .from('debate_chunks')
           .select('id, politician_name, chunk_content, date')
           .ilike('politician_name', `%${politicianName}%`)
-          .ilike('chunk_content', `%${searchTerm}%`)
           .order('date', { ascending: false })
-          .limit(15);
+          .limit(20);
+
+        // Construct OR filter for content
+        const orFilter = keyTerms.map(term => `chunk_content.ilike.%${term}%`).join(',');
+        if (orFilter) {
+          query = query.or(orFilter);
+        }
+
+        const { data, error } = await query;
         
         if (data && data.length > 0) {
           chunks = data.map((chunk: any) => ({
             ...chunk,
-            similarity: 0.6 // Assign reasonable similarity for keyword matches
+            similarity: 0.5 // Assign default relevance for keyword matches
           }));
-          console.log(`[Chat] Keyword fallback found ${chunks.length} chunks for term: ${searchTerm}`);
-          break;
+          console.log(`[Chat] Keyword fallback found ${chunks.length} chunks`);
         }
         if (error) searchError = error;
       }
@@ -185,30 +196,61 @@ router.post('/politician', async (req: Request, res: Response) => {
       console.log(`[Chat] Found ${citations.length} relevant chunks for "${politicianName}"`);
     }
 
+    // 3.5 Fetch Structured Policy Positions (The "Belief Graph")
+    console.log(`[Chat] Fetching structured policy positions for "${politicianName}"`);
+    const policyPositions = await getPolicyPositions(politicianName);
+    let structuredMemoryContext = '';
+    
+    if (policyPositions && policyPositions.length > 0) {
+      structuredMemoryContext = '\n=== KNOWN POLICY POSITIONS (STRUCTURED MEMORY) ===\n';
+      structuredMemoryContext += 'Use these core beliefs as the "skeleton" of your answer, then use the debate records below to add specific quotes and nuance.\n\n';
+      
+      // Group by topic
+      const byTopic: Record<string, any[]> = {};
+      policyPositions.forEach((p: any) => {
+        if (!byTopic[p.topic]) byTopic[p.topic] = [];
+        byTopic[p.topic].push(p);
+      });
+      
+      for (const [topic, positions] of Object.entries(byTopic)) {
+        structuredMemoryContext += `TOPIC: ${topic}\n`;
+        (positions as any[]).forEach(p => {
+          structuredMemoryContext += `- ${p.position_summary} (Strength: ${p.strength}, Trend: ${p.trend})\n`;
+        });
+        structuredMemoryContext += '\n';
+      }
+      structuredMemoryContext += '=== END OF STRUCTURED MEMORY ===\n\n';
+    } else {
+      console.log(`[Chat] No structured policy positions found for "${politicianName}"`);
+    }
+
     // 4. Build the system prompt
     console.log(`[Chat] Building prompt with context length: ${context.length} chars, hasRelevantContent: ${hasRelevantContent}`);
     
     const systemPrompt = `You are an AI representation of ${politicianName}, an Irish politician.
-Your responses must be based on the debate transcripts provided below.
+Your responses must be based on the structured memory and debate transcripts provided below.
 
 CRITICAL RULES:
-1. Use the information from the provided context to answer questions. The context contains REAL quotes from parliamentary debates.
-2. ONLY say "I don't have records" if the context explicitly says "NO RELEVANT DEBATE RECORDS FOUND". If there IS context below, USE IT to answer.
-3. Speak in first person as if you are ${politicianName}.
-4. Reference specific dates when quoting from the context to add credibility.
-5. Keep responses conversational but informative.
-6. If the debate records span multiple years and show DIFFERENT positions, acknowledge this:
+1. Use the "Known Policy Positions" as the high-level summary of your views.
+2. Use the "Parliamentary Debate Records" to find specific quotes, dates, and details to back up those views.
+3. IF "Known Policy Positions" are missing for the topic, you MUST rely entirely on the "Parliamentary Debate Records".
+4. NEVER say "I don't have records" if there are relevant quotes in the transcript section. Infer the position from the quotes.
+5. Speak in first person as if you are ${politicianName}.
+6. Reference specific dates when quoting from the context to add credibility.
+7. Keep responses conversational but informative.
+8. If the debate records span multiple years and show DIFFERENT positions, acknowledge this:
    - "My position on this has evolved over time..."
    - Present positions chronologically with dates
    - State your MOST RECENT position as current stance
-7. Be transparent about any contradictions in the record.
+9. Be transparent about any contradictions in the record.
 
 SPECIAL COMMANDS:
 - "Show me contradictions" or "Have you flip-flopped?" → List any contradictory statements with dates
 - "Timeline of your stance on [topic]" → Chronological bullet-point list with dates
 - "What have you changed your mind on?" → List any evolved positions honestly
 
-IMPORTANT: The context below contains REAL parliamentary debate quotes. Always use them to form your response unless the context says "NO RELEVANT DEBATE RECORDS FOUND".
+IMPORTANT: The context below contains your belief graph and REAL parliamentary debate quotes. Always use them to form your response.
+${structuredMemoryContext}
 ${positionEvolution}
 === PARLIAMENTARY DEBATE RECORDS ===
 ${context}
@@ -261,6 +303,59 @@ ${context}
   }
 });
 
+const feedbackSchema = z.object({
+  politicianName: z.string().min(1),
+  userQuestion: z.string().min(1),
+  aiResponse: z.string().min(1),
+  rating: z.enum(['positive', 'negative']),
+  feedbackText: z.string().optional(),
+  contextData: z.record(z.any()).optional()
+});
+
+/**
+ * POST /api/chat/politician/feedback
+ * Submit user feedback for a chat response
+ */
+router.post('/feedback', async (req: Request, res: Response) => {
+  try {
+    if (!supabaseDb) {
+      return res.status(503).json({ success: false, message: 'Database not available' });
+    }
+
+    const validated = feedbackSchema.parse(req.body);
+    
+    const { error } = await supabaseDb
+      .from('chat_feedback')
+      .insert({
+        politician_name: validated.politicianName,
+        user_question: validated.userQuestion,
+        ai_response: validated.aiResponse,
+        rating: validated.rating,
+        feedback_text: validated.feedbackText || null,
+        context_data: validated.contextData || {}
+      });
+
+    if (error) {
+      console.error('Error saving feedback:', error);
+      throw error;
+    }
+
+    console.log(`[Feedback] Saved ${validated.rating} rating for ${validated.politicianName}`);
+
+    return res.json({
+      success: true,
+      message: 'Feedback recorded'
+    });
+
+  } catch (error) {
+    console.error('Feedback submission error:', error);
+    if (error instanceof z.ZodError) {
+      return res.status(400).json({ success: false, message: 'Invalid data' });
+    }
+    return res.status(500).json({ success: false, message: 'Failed to save feedback' });
+  }
+});
+
 /**
  * GET /api/chat/politician/:name/consistency
  * Get consistency scores and flip-flops for a politician
@@ -273,40 +368,91 @@ router.get('/politician/:name/consistency', async (req: Request, res: Response) 
 
     const { name } = req.params;
 
-    // Get consistency scores by topic
-    const { data: scores, error: scoresError } = await supabaseDb.rpc(
-      'get_politician_consistency_score',
-      { p_name: name }
-    );
+    // Fetch positions from policy_positions (The Belief Graph)
+    // We derive consistency from the 'trend' field
+    const { data: positions, error: posError } = await supabaseDb
+      .from('policy_positions')
+      .select('topic, position_summary, trend, strength, updated_at, key_quote_ids, id')
+      .eq('politician_id', (await getPoliticianId(name)))
+      .order('updated_at', { ascending: false });
 
-    if (scoresError) {
-      console.error('Consistency score error:', scoresError);
+    if (posError) {
+      console.error('Error fetching policy positions:', posError);
     }
 
-    // Get recent position changes
-    const { data: changes, error: changesError } = await supabaseDb
-      .from('politician_stances')
-      .select('topic, stance, previous_stance, stance_summary, statement_date')
-      .ilike('politician_name', `%${name}%`)
-      .eq('is_position_change', true)
-      .order('statement_date', { ascending: false })
-      .limit(10);
+    // Process positions into consistency scores
+    const topicScores: any[] = [];
+    let totalConsistency = 0;
+    let scoredTopics = 0;
 
-    if (changesError) {
-      console.error('Position changes error:', changesError);
-    }
+    (positions || []).forEach((pos: any) => {
+      let baseScore = 0.5; // Default
+      let positionChanges = 0;
 
-    // Calculate overall consistency
-    const overallScore = scores && scores.length > 0
-      ? scores.reduce((sum: number, s: any) => sum + s.consistency_score, 0) / scores.length
-      : null;
+      // 1. Base Score from Trend
+      if (pos.trend === 'stable') {
+        baseScore = 1.0;
+      } else if (pos.trend === 'hardening' || pos.trend === 'softening') {
+        baseScore = 0.8; // Pragmatic evolution
+        positionChanges = 1;
+      } else if (pos.trend === 'reversal') {
+        baseScore = 0.0; // Flip-flop
+        positionChanges = 2;
+      } else if (pos.trend === 'new') {
+        baseScore = 0.5;
+      }
+
+      // 2. Time Span Penalty (Crucial for "Rock Solid" claims)
+      // Calculate days between first and last evidence
+      const start = pos.time_span_start ? new Date(pos.time_span_start).getTime() : Date.now();
+      const end = pos.time_span_end ? new Date(pos.time_span_end).getTime() : Date.now();
+      const daysDiff = Math.max(1, (end - start) / (1000 * 60 * 60 * 24));
+
+      let timeWeight = 1.0;
+      if (daysDiff < 30) {
+        timeWeight = 0.5; // < 1 month of data = 50% confidence max
+      } else if (daysDiff < 180) {
+        timeWeight = 0.8; // < 6 months = 80% confidence max
+      } else {
+        timeWeight = 1.0; // > 6 months = Full confidence
+      }
+
+      // Final Topic Score
+      const finalScore = baseScore * timeWeight;
+
+      topicScores.push({
+        topic: pos.topic,
+        consistency_score: finalScore,
+        total_statements: (pos.key_quote_ids || []).length,
+        position_changes: positionChanges,
+        history_days: Math.round(daysDiff)
+      });
+
+      totalConsistency += finalScore;
+      scoredTopics++;
+    });
+
+    // Calculate overall (weighted by number of statements/history could be better, but average is fine for now)
+    const overallScore = scoredTopics > 0 ? totalConsistency / scoredTopics : null;
+
+    // Get recent "changes" (hardening/softening/reversal)
+    const recentChanges = (positions || [])
+      .filter((p: any) => ['hardening', 'softening', 'reversal'].includes(p.trend))
+      .slice(0, 5)
+      .map((p: any) => ({
+        topic: p.topic,
+        stance: p.position_summary,
+        previous_stance: p.trend === 'reversal' ? 'Contradictory position' : (p.trend === 'hardening' ? 'Less strict' : 'Stricter'),
+        stance_summary: p.trend === 'reversal' ? 'Major position reversal detected' : `Position appears to be ${p.trend}`,
+        statement_date: p.updated_at
+      }));
 
     return res.json({
       success: true,
       politician: name,
       overallConsistencyScore: overallScore ? Math.round(overallScore * 100) : null,
-      topicScores: scores || [],
-      recentPositionChanges: changes || [],
+      topicScores: topicScores,
+      recentPositionChanges: recentChanges,
       message: overallScore 
         ? `${name} has a ${Math.round(overallScore * 100)}% consistency score across tracked topics.`
         : `No stance data available yet for ${name}.`
@@ -321,6 +467,15 @@ router.get('/politician/:name/consistency', async (req: Request, res: Response) 
   }
 });
 
+async function getPoliticianId(name: string) {
+  const { data } = await supabaseDb!
+    .from('td_scores')
+    .select('id')
+    .eq('politician_name', name)
+    .single();
+  return data?.id;
+}
+
 /**
  * GET /api/chat/politician/:name/stances
  * Get all extracted stances for a politician, grouped by topic
@@ -334,11 +489,12 @@ router.get('/politician/:name/stances', async (req: Request, res: Response) => {
     const { name } = req.params;
     const { topic } = req.query;
 
+    // Fetch from policy_positions (The Belief Graph)
     let query = supabaseDb
-      .from('politician_stances')
-      .select('topic, stance, stance_summary, statement_date, is_position_change, confidence')
-      .ilike('politician_name', `%${name}%`)
-      .order('statement_date', { ascending: true });
+      .from('policy_positions')
+      .select('topic, position_summary, trend, strength, updated_at, confidence_score')
+      .eq('politician_id', (await getPoliticianId(name)))
+      .order('updated_at', { ascending: false });
 
     if (topic) {
       query = query.eq('topic', topic);
@@ -356,7 +512,15 @@ router.get('/politician/:name/stances', async (req: Request, res: Response) => {
       if (!byTopic[stance.topic]) {
         byTopic[stance.topic] = [];
       }
-      byTopic[stance.topic].push(stance);
+      // Map to frontend expected format
+      byTopic[stance.topic].push({
+        topic: stance.topic,
+        stance: stance.trend === 'stable' ? 'Consistent' : stance.trend,
+        stance_summary: stance.position_summary,
+        statement_date: stance.updated_at,
+        is_position_change: stance.trend === 'hardening' || stance.trend === 'softening',
+        confidence: stance.confidence_score
+      });
     }
 
     return res.json({

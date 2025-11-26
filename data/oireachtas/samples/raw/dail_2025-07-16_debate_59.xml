@@ -1,0 +1,965 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_climate_environment_and_energy/2025-07-16/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_climate_environment_and_energy/2025-07-16/debate"/>
+          <FRBRdate date="2025-07-16" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/select_committee_on_climate_environment_and_energy"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_climate_environment_and_energy/2025-07-16/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_climate_environment_and_energy/2025-07-16/debate/mul@"/>
+          <FRBRdate date="2025-07-16" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/select_committee_on_climate_environment_and_energy/2025-07-16/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/select_committee_on_climate_environment_and_energy/2025-07-16/debate/mul@.akn"/>
+          <FRBRdate date="2025-07-24" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="BarryHeneghan" href="/ie/oireachtas/member/id/Barry-Heneghan.D.2024-11-29" showAs="Barry Heneghan"/>
+        <TLCPerson eId="CiaranAhern" href="/ie/oireachtas/member/id/Ciarán-Ahern.D.2024-11-29" showAs="Ciarán Ahern"/>
+        <TLCPerson eId="DarraghOBrien" href="/ie/oireachtas/member/id/Darragh-O'Brien.D.2007-06-14" showAs="Darragh O'Brien"/>
+        <TLCPerson eId="JenniferWhitmore" href="/ie/oireachtas/member/id/Jennifer-Whitmore.D.2020-02-08" showAs="Jennifer Whitmore"/>
+        <TLCPerson eId="JohnClendennen" href="/ie/oireachtas/member/id/John-Clendennen.D.2024-11-29" showAs="John Clendennen"/>
+        <TLCPerson eId="MalcolmByrne" href="/ie/oireachtas/member/id/Malcolm-Byrne.D.2019-11-29" showAs="Malcolm Byrne"/>
+        <TLCPerson eId="NaoiseOMuiri" href="/ie/oireachtas/member/id/Naoise-Ó-Muirí.D.2024-11-29" showAs="Naoise Ó Muirí"/>
+        <TLCPerson eId="PaDaly" href="/ie/oireachtas/member/id/Pa-Daly.D.2020-02-08" showAs="Pa Daly"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole eId="Minister_for_Climate,_Energy_and_the_Environment" href="/ie/oireachtas/role/minister/climate__energy__environment" showAs="Minister for Climate, Energy and the Environment"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN ROGHCHOISTE UM AERÁID, COMHSHAOL AGUS FUINNEAMH</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Select Committee on Climate, Environment and Energy</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-07-16">Dé Céadaoin, 16 Iúil 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-07-16">Wednesday, 16 July 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Roghchoiste le chéile ag 03:30 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Select Committee met at 03:30 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2"/>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#CiaranAhern">Ciarán Ahern</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#MalcolmByrne">Malcolm Byrne</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#JohnClendennen">John Clendennen</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#ReadaCronin">Réada Cronin</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#BarryHeneghan">Barry Heneghan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#DarraghOBrien">Darragh O'Brien, (Minister for Climate, Energy and the Environment)</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#JenniferWhitmore">Jennifer Whitmore.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#NaoiseOMuiri">Teachta / Deputy Naoise Ó Muirí sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Estimates for Public Services 2025<recordedTime time="2025-07-16T15:30:00+01:00"/></heading>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Vote 29 - Climate, Energy and the Environment (Revised)<recordedTime time="2025-07-16T15:30:00+01:00"/></heading>
+        <speech by="#NaoiseOMuiri" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:30:00+01:00"/></from>
+          <p eId="para_10">I will read a couple of notes for committee members. This committee does not make a decision. It considers the Estimates but cannot amend them or vote on them. We must then send a message to the Dail when we have completed that progress. That is a summary of how the process works.</p>
+          <p eId="para_11"> No apologies have been received. This meeting has been convened to consider the Revised Estimated of Vote 29 - Climate, Energy and the Environment, programmes A, B and C. I welcome the Minister for Climate, Energy and the Environment, Deputy Darragh O'Brien, and his officials. The proposed format of today's meeting is that we will deal with Vote 29 on a programme by programme basis. At the outset, the Minister will make an opening statement. There are three programmes and we will consider each of them separately with questions from members. We will then have some brief closing remarks. Is that approach agreed? Agreed.</p>
+          <p eId="para_12"> I remind members that in accordance with Standing Orders, the discussion should be confined to the items constituting the Revised Estimates. I also remind members of the long-standing parliamentary practice to the effect that they should not comment on, criticise or make charges against any person outside the Houses, or an official, either by name or in such a way as to make him or her identifiable. I invite the Minister to deliver his opening statement.</p>
+        </speech>
+        <speech by="#DarraghOBrien" as="#Minister_for_Climate,_Energy_and_the_Environment" eId="spk_2">
+          <from>Minister for Climate, Energy and the Environment (Deputy Darragh O'Brien)<recordedTime time="2025-07-16T15:30:00+01:00"/></from>
+          <p eId="para_13">Go raibh maith agat a Chathaoirligh agus go raibh maith agaibh arís as an gcuireadh bheith anseo os comhair an choiste tráthnóna inniu. I thank the Chair for the invitation to be here again in front of the committee. I thank the committee for the opportunity to present the 2025 Revised Estimates for programmes A and B and elements of programme C for the Department of Climate, Energy and the Environment.</p>
+          <p eId="para_14"> The 2025 Estimates in respect of the programme for marine spatial planning and the Maritime Area Regulatory Authority, MARA, were considered yesterday by the Select Committee on Fisheries and Maritime Affairs. The Estimates are required due to the recent transfer of the communications and cybersecurity functions from my Department to the Department of Culture, Communications and Sport, and the Department of justice. The total gross Estimate for the Department this year is €979 million, or €973.2 million net. This amount comprises just under €211 million in current funding and just over €768 million in capital funding. The 2025 Estimate represents a 45% decrease over last year’s allocation. However, when taking into account the €520 million allocation in 2024 for the electricity credit scheme and the transfer of the communications functions, the 2025 Estimate represents a 21% increase over last year’s Estimate for the Department. This significant increase in funding for this year demonstrates this Government’s continued commitment to achieving a climate-neutral Ireland, powered by clean energy, where our environment, society and economy thrive.</p>
+          <p eId="para_15"> I will now outline some key priorities across the climate action and environment leadership, energy transformation and circular economy programme areas. On programme A, climate action and environment leadership, more than €145 million has been allocated to this programme, which includes licensing and enforcement; monitoring, analysis and reporting on the environment; research and development; and implementation of climate action measures. The programme provides for over €48.5 million to the Environmental Protection Agency, EPA. This is an increase of over €1.9 million, or 4%, in operational and capital funding for the agency to deliver its important functions to protect our environment. The allocation includes funding for staffing resources across a number of policy areas, including the circular economy, climate change, licensing and energy security. A sum of €17.1 million is allocated for environmental and climate research, which includes €12.1 million for the EPA's research activities in line with its published research strategy. In addition, funding of €4 million is allocated for the climate action and modelling group to continue its work in providing technical support for wider climate and environment policy development. Funding is also included for phase 2 of the land use review, to provide an evidence base to determine the environmental, ecological and economic characteristics of land types across Ireland. Over €27.7 million is allocated to our international climate commitments, towards Ireland’s goal to more than double its annual funding for developing countries to tackle climate change to €225 million. More than €47.7 million is allocated under the EU just transition fund programme, of which €22.4 million is allocated for initiatives administered by my Department and €25.3 million is allocated to other Departments involved in the programme. This will result in up to €169 million of investment in the midlands region over the coming years. Nearly €12.3 million is being provided for climate initiatives, which include the climate action regional offices, national dialogue on climate action and a local authority climate action training programme.</p>
+          <p eId="para_16"> Over €704 million has been allocated for the energy transformation programme, which provides support to help Ireland achieve a high-renewable, low-carbon system to reduce greenhouse gas emissions. The programme aims to ensure continued, secure and reliable energy supplies necessary to support our economy and society on the pathway to net zero emissions. Just under €32.3 million is being provided to cover the operational costs of the Sustainable Energy Authority of Ireland, SEAI, which is an increase of 7% on last year's allocation. This includes funding for additional staff to enable it to deliver on the wide range of programmes and grant schemes it administers. A record sum of €566.8 million capital funding is allocated to the SEAI residential and community energy upgrade and support schemes, including the solar PV scheme, and delivery of the national retrofit plan. Of this sum, €469 million is carbon tax receipts, which is €89 million more than the previous year. This is further supplemented by an increased allocation from the European Regional Development Fund, ERDF, which will bring the SEAI warmer homes scheme budget to a record €280 million.</p>
+          <p eId="para_17"> Nearly €43.4 million is provided for other energy efficiency programmes, including supports for business and the public sector. This amount includes €30 million under the RePowerEU plan, which is funded from the EU's recovery and resilience facility. This €30 million will be invested in a HSE pilot energy and decarbonisation pathfinder project, which includes the deep retrofit of five HSE sites.</p>
+          <p eId="para_18">This investment will be critical in terms of providing learning and experience to the HSE, which has a vast national estate portfolio. These measures, administered by the Sustainable Energy Authority of Ireland, SEAI, are aimed at improving energy efficiency, increasing the use of renewable energy and developing a retrofit policy and measures across the wider public service.</p>
+          <p eId="para_19"> Some €5.8 million continues to be provided for measures to lay the groundwork for Ireland to deliver on its national and legally binding renewable energy targets and maximising the potential of our offshore renewable energy resources. Just under €29 million is provided for energy research programmes, including applied energy research and demonstration programmes and projects. This investment in innovative energy research projects is crucial in helping Ireland to transition to a clean and secure energy future for us all.</p>
+          <p eId="para_20"> Over €129.2 million is allocated to programme C, which relates to circular economy development, to tackle environmental damage, manage waste, safeguard our natural resources and support the move to a circular economy. Some €14.8 million is provided for Geological Survey Ireland services for geoscience projects, research and activities, including improved groundwater and drinking water supply, the supply of critical raw materials, tackling coastal vulnerability and geothermal energy development. Over €34.3 million is allocated to protect our environment through waste management initiatives and enforcement activities by local authorities. This includes €18.5 million for the remediation of environmentally degraded landfill sites.</p>
+          <p eId="para_21"> Nearly €39.5 million is provided for the conservation, management and regulation of Ireland's inland fisheries resource. Over €4 million of this allocation is ring-fenced for the Loughs Agency, a North-South, all-Ireland body. Over €2.1 million is provided for foreshore to support the regulation of the Irish foreshore as part of the public estate through the assessment and management of the consent process under the Foreshore Act 1933.</p>
+          <p eId="para_22"> Some €10.2 million, an increase of 31%, is provided for the Maritime Area Regulatory Authority, MARA, the regulator for the maritime area. This funding will support the agency to deliver on its remit through assessing marine area consent, MAC, applications for the maritime area, granting marine licensing for specified activities, conducting investigations and prosecutions, and enforcing MACs, licences and offshore development consents. These subheads were considered by the Select Committee on Fisheries and Maritime Affairs on 15 July, which was yesterday. I already made reference to that point.</p>
+          <p eId="para_23"> Appropriations-in-aid, which are income receipts of the Department other than from the Exchequer, are estimated at just under €5.9 million in 2025. These receipts are mainly composed of mining income, additional superannuation contributions payable by public servants and miscellaneous income.</p>
+          <p eId="para_24"> I am happy to take questions relating to the Revised Estimates for programmes A to C.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_25">I remind members that in accordance with Standing Orders, discussion should be confined to the items constituting the Revised Estimates. We will start with questions from members on programme A. When they are asking questions, I ask members to indicate the subhead within the programme to which they are referring and to limit their questions to one subhead at a time, allowing other members who have questions on that subhead to speak before moving on to another subhead. The same applies to all programmes. The first speaker will be Deputy Byrne.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_4">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_26">I thought we were going to take all the subheads together. Forgive me. I have two questions and one general comment, which relates to the expenditure. The key test with regard to expenditure is that we achieve particular outcomes. Our concern, particularly with regard to meeting our climate targets, is that if we are spending money to facilitate renewable energy, we can meet those targets. One of our frustrations relates to how long the decision-making process takes. Built into this expenditure, how are we improving outcomes to ensure we are able to reach the targets?</p>
+          <p eId="para_27"> I will also ask my other two questions, if I may, and leave it at that. Local authorities are primarily responsible at the moment, under climate resilience, for coastal protection and looking after our beaches. On specific resources for coastal protection, under climate resilience, and for beach renewal, the Minister might be able to answer.</p>
+          <p eId="para_28"> Under the circular economy legislation, the Minister will be aware that local authorities with necessary safeguards in place can use CCTV and other technologies to detect illegal dumping and track down illegal dumpers. However, an issue has been raised about the level of resources allocated. The Minister might indicate where, within the Estimates, sums to support local authorities to address the issue of illegal dumping are provided.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_5">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_29">Does the Deputy have any other question specific to subheads A1 to A9, inclusive?</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_6">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_30">I put it all to the Minister.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_31">Would anyone else like to come in on programme A? No.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_8">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_32">I will need to leave, which is why I wanted to-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_9">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_33">That is fine. I call the Minister on programme A.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_10" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:40:00+01:00"/></from>
+          <p eId="para_34">I mentioned that I was before the committee last week to discuss the carbon budget. The Environmental Protection Agency projections are clear. With additional measures, we are looking at a 23% reduction in greenhouse emissions, which is obviously substantially lower than the target of 51%. I see that as an opportunity and as a reason to redouble our efforts in that space. During the past three years, emissions have fallen while the economy has grown. From our 1990 base, there are approximately 1.5 million extra people in the country, thankfully. Our economy is now four times as large as it was in 1990.</p>
+          <p eId="para_35"> When I look at sectors such as renewables, it is critically important that we continue to advance. Renewable energy and electricity generation through renewables accounted for approximately 40% of our energy last year. Twenty years ago, it was 7%. Real progress is being made. However, we must consider our consenting processes. The establishment of MARA under the Marine Area Planning Act, which I was responsible for in my previous portfolio, allowed for a single consenting authority for MACs and maritime usage licences, MULs, which is critical. I met MARA about its work programme to try to accelerate its delivery. It has a statutory timeline of 90 days for decisions. That has not been met for any MAC or MUL application. It is a new agency that is working through new processes. It is based in the Deputy's county of Wexford. There is an excellent team down there. We are supporting MARA and have encouraged it to revisit its processes, which it is doing. We also have a workforce plan request for additional resources for MARA. It is going to be critical in all of this.</p>
+          <p eId="para_36"> The other piece relates to An Coimisiún Pleanála. We have a maritime commissioner for the first time. We have a maritime unit for the first time to look specifically at offshore activities. The Marine Area Planning Act brought forward by the previous Government was the first maritime planning legislation we ever had. For a country with a maritime area that is 6.5 or seven times the size of its landmass, it was critical for that to be done. The legislative foundations are there.</p>
+          <p eId="para_37"> On offshore renewables, there are six projects with five on the east coast, most of which have received requests for further information from An Coimisiún Pleanála. I have met the development sector on that issue and the companies involved will be addressing those requests. Our focus must be on the construction of offshore by 2030. It is unlikely that those critical projects will be connected to the grid by 2030. It is possible that one will be. The main thing is that we still see the delivery of 5 GW of offshore energy in 2031 and 2032. We will have a further Tonn Nua auction later this year, as the Deputy knows. There is interest in that regard.</p>
+          <p eId="para_38"> On the circular economy, we provide funding to local authorities in relation to the climate action regional offices and also for climate action teams. Approximately €7.7 million is being allocated for the local authority waste enforcement measures grant scheme in 2025. That will support further recruitment and retention of waste enforcement staff across the country. Funding is provided to each local authority on the basis that enforcement staffing will be maintained at a satisfactory level for the period that the national waste enforcement priorities will continue to be delivered.</p>
+          <p eId="para_39"> It is also important that we have made legislative changes around the use of CCTV and such footage to deal with issues like fly-tipping. We are talking to local authorities about other measures around the circular economy, particularly relating to textiles, and how we can improve our outputs in that area.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_11">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_40">Just on-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_12">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_41">Hold on a second. We have to follow through the programme here.</p>
+        </speech>
+        <speech by="#MalcolmByrne" eId="spk_13">
+          <from>Deputy Malcolm Byrne<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_42">It is just that we have to leave, but it is okay.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_14">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_43">That is it on programme A, unless-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_15">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_44">Under A.6, the target for the number of people engaged in the annual climate conversations has increased to 500. What effect will that have on climate goals? Some €27 million is put aside for international climate change commitments. How is that being spent?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_16" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_45">I will deal with the second question because I have the details. The €27.7 million that is allocated is under international agreements for our climate commitments and to assist developing countries in their challenge around tackling climate change. That brings our overall allocation as a country to €225 million. It is important work where we financially assist countries that may not have the resources we have to tackle climate change. Ireland will continue to do that and our allocation this year is just short of €28 million.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_17">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_46">That is administered through the Department.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_18" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_47">Yes. It is allocated out of this.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_19">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_48">Does the Minister have examples of any countries in particular?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_20" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_49">We will get the Deputy the details on the specific partner countries. They are generally paid through UN climate funds. It is our contribution to that fund. It is disbursed from the UN out to developing countries. We have strong relationships particularly with the Pacific Islands and countries at the forefront of climate change. It is to assist them. It is administered through the UN.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_21">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_50">It does not have anything to do with Irish Aid in Limerick or-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_22" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_51">It is not accounted as part of the Irish Aid budget, no. It is not part of point 7, if that is what the Deputy is asking.</p>
+          <p eId="para_52"> I think there was a question on the climate conversations. During 2024, the climate conversations report was published, outlining that, in total, 450 people were engaged through focus groups and workshops. That included the National Youth Assembly on Climate, which published its annual report. I met with the Environmental Pillar and other stakeholders. The climate conversations are very important, particularly from community level. We have seen some significant action being taken at community level that can be replicated across the country. It is getting people to share their learnings and experiences. It is supported through the CAROs as well. Every local authority now has a climate action plan that distils our national plan down to a local level. Those climate conversations are critical by way of feedback on, for example, what is working, what is not and what additional things we should be doing.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_23">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_53">In respect of A.7 and the just transition, €47.7 million was allocated. Some €25.3 million of that is allocated to other Departments. Presumably, that is the Department of agriculture, Bord na Móna and places like that. I am curious as to where the balance of that is going, if the Minister has that information.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_24" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_54">On A.7, just transition, we have €22.439 million. We have entered into grant agreements. Effectively, that is part of our EU just transition fund. I will give examples of a couple of projects. With regard to tourism infrastructure, €38 million in grants was provided to Fáilte Ireland. That is a type of project. Some €10 million was awarded to the Department of Agriculture, Food and Marine’s bioeconomy demonstration projects. A further €30 million was awarded to 44 projects to support locally led development in the region. I recently visited Tullamore on the Accelerate Green project in the midlands, where we have provided funding alongside Bord na Móna for startup seed capital or development capital for businesses in the green tech and green energy sector. Seventy enterprises in that space alone have started up. That is valuable because it creates new jobs and harnesses expertise. We have provided €12 million to the National Parks and Wildlife Service, for example. There are many elements to it. We can provide a list. I can go through them all. We are quite happy to provide sample funding. It is very much focused on the area but we have a good note on this that we can provide for the Deputy's information.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_25">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_55">That would be great.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_26">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_56">That is it on programme A, so we will move on to programme B, energy transformation. Next is Deputy Whitmore, and I ask her to give a subheading as well.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_27">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_57">We will start with B.14, the essential retrofit loan scheme. How many loans have been issued over the past year under that scheme?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_28" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_58">Is the Deputy asking about business or residential?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_29">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_59">Residential.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_30" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_60">That scheme was launched just over 12 months ago. There are 355 loans under the scheme. That is the most up-to-date figure I have. We have expanded that to other lenders as well. We announced that in May or June of this year. Some 355 loans were drawn down over the period to the end of quarter 1 of 2025, to the value of €17.2 million. We have expanded the home energy upgrade loan scheme. We have included An Post, Avant and all of the main street banks too. That was in April of this year. It is good to see. More work needs to be done with regard to advising people of the fact that these loans are available for people and also the key rates that these loans have. For energy retrofit, they are below normal lending rates and supplement the significant grants we give.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_31">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_61">I know €3 million is not much in the grand scheme of things, but how does it cost €3 million to run that programme when it is ultimately just pointing people to different banks?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_32" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_62">It is run by the SBCI, and we partner with the banks. Even from an administrative perspective, we have staff in that space. Much of that would be staff costs.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_33">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_63">How many staff work in that area?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_34" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_64">I am not sure but I will find out for the Deputy and come back to her.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_35">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_65">That would be great.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_36" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_66">There are other elements to it, such as marketing. We will get the Deputy a breakdown of that. That is no issue whatsoever.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_37">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T15:50:00+01:00"/></from>
+          <p eId="para_67">On the retrofit programmes, the priority of those is decarbonisation. I think there is a missed opportunity to have more of a focus on energy poverty alongside that element. Many people who come to my office are in or at risk of energy poverty and their homes are very old. They cannot get their homes retrofitted through the schemes. I have a long list of difficulties. To be fair, the SEAI came in and was very helpful and went through many of those. Because there is such a focus on the perfect with that programme, many people are not getting the 70% or 80%, and it would make a huge difference to them as individuals. Is there an opportunity to expand that?</p>
+          <p eId="para_68"> In respect of energy poverty, I have been calling for solar power for quite a while. We should be looking to make people’s homes more resilient to any global shocks. It is not just about making their homes energy efficient but making them more energy independent. Solar power is a huge opportunity to do that. I managed to get solar panels on my home and it is fantastic. I would love to see that expanded to people who cannot afford to take a loan out or cannot get it through the grants scheme. Would the Minister consider opening up the warmer homes scheme to also include solar panels so that people who are at risk of energy poverty can get solar panels and save themselves potentially 40% of their costs over the course of a year?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_38" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_69">Will I respond now?</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_39">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_70">Yes, just briefly, please. The question does not relate directly to the Estimates.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_40" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_71">I am happy to do so.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_41">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_72">Well, would the Minister set money aside in-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_42" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_73">If I may, I will deal with the warmer homes scheme first. We discussed it by way of questions in the Dáil just a couple of weeks ago. We have allocated €280 million to the scheme in the 2025 Estimate. That is €70 million more than in the previous year. The scheme is focused exclusively on low-income households. It is a free retrofit, and rightly so, to tackle energy poverty, to improve energy usage and to make homes warmer and more efficient. Last year, 7,743 upgrades were granted, and that was a 31% increase on the previous year. About 3,400, just short, have been provided in the first half of this year. That is about a 2% increase. It is slight but an increase nonetheless. The average cost per home in this regard is about €29,000, so it is significant, is needed and is really the biggest spending part of it. That focuses on those who need it most.</p>
+          <p eId="para_74"> We are looking at the waiting times. That is presented from date of application to completion of works. I am not sure that is the right way to present it because if you make your application, you get processed, you are approved and you get your contractors. There are different stages. I am looking at that and I have said here in committee and certainly in the Dáil that we are looking at the grants in the round to see how we can make them more accessible. Our SPV grants have been very successful. We are looking at about 64,500 home energy upgrades, which included solar PV. It is extremely popular. It keeps costs down and uses renewable energy. Our solar resources have multiplied over a very short time, and people really respond to that. I am looking at the grants. That will be in the last quarter of this year. I am not necessarily increasing them and I am not saying they will increase. It is a matter of looking at how they are structured and how we can access them. My big piece of work on the warmer homes scheme is seeing how we can reduce the waiting times. There are strains on the resources to do this work, like many sectors have also, but we will do more on that.</p>
+          <p eId="para_75"> The solar PV scheme for the medically vulnerable is targeted for the installation of PV panels for households who are registered on the life support category of the priority services register. It is not widely known that that scheme is available too. There were 137 systems installed in 2024. That is on top of the warmer homes scheme. We have done 142 to the first half of this year, so there has been a big increase in that.</p>
+          <p eId="para_76"> There are lots of good things out there; we just have to make sure that people are aware of them. As I said, as regards that accessibility, particularly around the grant side for middle-income families, it is a question of whether we can break the grants down such that you would not have to do a whole deep retrofit. The warmer homes scheme is fully paid for by the State, and rightly so. I have not included the social housing retrofit programme because it is under local government. There is a midlands retrofit and just transition as part of that. That is administered by colleagues in the Department of Housing, Local Government and Heritage.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_43">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_77">If solar grants were included in the warmer homes scheme, I think that would be a game-changer for people who are at risk of poverty, including energy poverty. The closer we get to winter, I think this will become more of an issue, so I welcome the fact that the Minister will look at this when he is looking at the scheme in the round.</p>
+          <p eId="para_78"> As regards this subhead, energy transformation, is this where capital expenditure would go in the event that agreement is reached on an LNG facility? Would that go into this section of the budget?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_44" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_79">Would it go into subhead A?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_45">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_80">No, subhead B, energy transformation. Is that the part of the budget that would-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_46" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_81">I would expect it would be by itself because it is a significant item of capital expenditure that would require its own subhead. It will not go into subhead B.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_47">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_82">So, potentially, it would be a new subhead.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_48" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_83">Potentially, but it will be funded separately. I know we have had some discussion on this on the floor of the Dáil as well. If there was some disparity between the cost I referred to on capital costs and what was reported in one of our newspapers saying there is €300 million versus €900 million, there is no disparity there because the €900 million includes the operating expenditure costs for a ten-year period such that, actually, there is no disparity in the projected cost. As officials will have said to the committee in its other hearing, it is an insurance policy. I have published the report that Deputies requested as well, so people can see the assessments that were done independently of my Department identifying the risk to our energy system by not having a floating storage and regasification unit, FSRU. That is why we have acted on it.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_49">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_84">When does the Minister expect that that will begin construction? Well, it is not construction, is it, because it is a-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_50" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_85">It would be because first we have to identify the site and there will be site surveys and all the things all Deputies here will know as regards planning. Onshore works will be required as regards piers, pipeline and so on. We are trying to accelerate this project. I have already met with the project group, GNI and my Department initially to step this out. It is hard to know how long it will take through the planning system, but this would be projected for delivery in the early 2030s. I would like to see it sooner but that is subject to planning. Who knows whether planning will be granted for it. It is all those things.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_51">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_86">It was the last time the Minister was before the committee that he had just received the letter from the board.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_52" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_87">I literally just received it as I was sitting here, yes.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_53">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_88">Has the Minister written back to the board?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_54" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_89">No, not yet, but I will write back to the board. Obviously, someone on the board was watching the hearing that day because the letter arrived in the office. It went to the wrong office and was dated, I think, 27 June. I have the letter and am working through it. It will be responded to before the target date. I think the board has asked for a response by 7 August. I am considering that at the moment.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_55">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_90">I call on Deputy Daly on subhead B.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_56">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_91">I see that the significant reduction of 24% is due to the absence of the energy credits. I think the Minister would accept that energy costs are huge at the moment. In real terms, household energy bills are not decreasing. In fact, they are still about 70% higher than where they were three years ago. Gas prices are close to double previous levels. We discussed this in one of the earlier committee meetings this afternoon in the context of the amount of standing charges. A figure of €250 or €300 was mentioned. Households are paying around €900 per year more than they were before Russia invaded Ukraine. Ours is, I think, the second most expensive country in Europe, at 38% more than the EU average. The cost of living and energy bills are one of the most urgent issues to be addressed by the Government. What is the Minister doing in the Estimates to try to attack the high cost of energy bills?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_57" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:00:00+01:00"/></from>
+          <p eId="para_92">I thank the Deputy for his questions and comments. It is important to recognise what the Government did during the acute phase of the cost-of-living crisis. We transferred over €1,500 to 2.2 million households, and that was a cost to the Exchequer of €3.3 billion. It was the most significant energy support any European country gave any of its citizens and it did help. There will not be energy credits in this budget. I want to look at a more sustainable way forward, and that is why I have established the task force on energy affordability, which I chair, with all stakeholders across the State, looking at things like the structure of the bills and how, through things we can control ourselves, we can drive down energy costs. When average incomes across the European Union are compared, Ireland is about the eighth most expensive country in Europe.</p>
+          <p eId="para_93">The figures that the Deputy gave at the start are correct in relation to the increase in gas and electricity prices. That task force, which I chair, will report back on an interim basis in advance of this budget. We will be looking at measures. There are a couple of things in place. I want to see the 9% VAT rate retained for electricity. That provides for a saving of approximately €92 per year. We have seen a 40% reduction in the public service obligation, PSO, levy announced last month. It was a small reduction, but a reduction nonetheless.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_58">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_94">What was the percentage?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_59" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_95">It was 40%. It is small in monetary terms, but it a reduction. I do not want to oversell it in that sense, but it is going in the right direction. We also have to make people aware of the savings that can be made through switching energy provider. Not enough people switch. The task force is also looking at how we can assist people in switching energy providers and make the information more available, particularly for those who may not be tech savvy as regards how we can help them do that.</p>
+          <p eId="para_96"> Fundamentally, there is an issue right across Europe. I attended the energy Council in Luxembourg recently. Electricity and energy prices across Europe are too high. Interconnection will help. The Greenlink interconnector, the second interconnector between Ireland and Britain, is now electrified, which is important. The delivery of the North-South interconnector is critical. It will, on average, reduce energy bills by approximately €110 per annum, but it has been delayed and will not be delivered until 2031. That interconnector is critical for our energy grid.</p>
+          <p eId="para_97"> On the discussion in Europe, I have already started a discussion with colleagues on how we strike electricity prices, in particular. They are currently struck on the basis of the wholesale gas price. Ireland and other countries in Europe are increasing our renewables. One then asks why fossil fuels are basically at the core of how that price is struck. That will not be resolved next week or this year but the discussion needs to happen at a European level.</p>
+          <p eId="para_98"> We need to increase our renewables further. Onshore renewables will be important this year. We have a further auction in September of this year for onshore wind and solar. We have an 80% target for renewables by the end of the decade. We are projecting now that they will account for approximately 68% to 70% of our energy by the end of the decade. It is short of the target, but it still significant. We are investing in that area. Renewables are not free either. There is a cost to the Exchequer relating to ensuring our bid prices are correct and that we have bidders entering those auctions.</p>
+          <p eId="para_99"> The task force will report before the budget. It may be useful, when I have assessed that report, for me to go through the options in the report with the committee. Energy prices are a big issue for families.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_60">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_100">The draft price 6 review, PR6, was published last week. It estimated that the network charge in energy bills could rise by €80 on the average bill over the next five years.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_61" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_101">That is per annum.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_62">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_102">The Minister mentioned switching. That is not going to reduce the €900 increase.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_63" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_103">No, it will not.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_64">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_104">It is only a drop in the ocean. The Minister's party's election manifesto referenced reforming the Commission for Regulation of Utilities.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_65" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_105">We will. </p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_66">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_106">That has not been done yet. Can that be done in advance of-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_67" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_107">The Government has been in power for six months. I have had more engagement with the CRU in the past six months than may have happened in the previous five years. We have resourced it. It is a professional organisation. Has it been before the committee?</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_68">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_108">Not yet. </p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_69" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_109">It is an independent regulator. We have to remember that. Having said that, PR6 is going to be critical. It could deliver anything up to €18 billion in investment in our grid. The national development plan, NDP, when concluded, will have further investment, should we get agreement there. We need to make our grid resilient. We need to expand it both from a generation and an energy distribution perspective. There will be a cost.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_70">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_110">Does the Minister need a task force to implement all the measures to reduce energy bills, particularly standing charges? Does he accept that the PSO levy needs to be reformed and he does not need a task force to advise him on that? His party's election manifesto mentioned-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_71" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_111">The Deputy read it.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_72">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_112">-----seven or eight ideas-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_73" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_113">All of which are very good.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_74">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_114">-----about reducing the PSO, funding the upgrade of the grid and reforming the CRU. None of that has been done.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_75" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_115">I am delighted the Deputy has raised this. They are things that we are doing.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_76">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_116">Fiction.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_77" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_117">I get what the Deputy is asking. Relating to the function of the CRU, it has a lot of responsibility. It is an independent regulator. We have to assist it in doing its work. The Deputy asked if we need a task force. Yes, we do. This is not a task force that I am asking to go off and spend two years working on this. I have established it and chaired the first meeting. It has good people from right across the sector, from the energy generators, to CRU, my Department, the Department of Finance, the Department of public expenditure, etc. It has a work-like focus on this and will work with me on options on an interim basis before the budget.</p>
+          <p eId="para_118"> On switching, I am not saying that everybody is going to be able to switch all of the time. Some of the savings available, depending on which energy company a person is with, are substantial. We have to make sure that people are aware of that and what role the Department or the CRU can have in relation to advertising the need to have that information with people. There are savings in the hundreds of euro for people. I am aware-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_78">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_119">That is per year.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_79" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_120">Absolutely, depending on which provider you are with.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_80">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_121">What is the percentage? </p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_81" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_122">The percentage I got in relation to switching-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_82">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_123">I apologise, but there are other speakers.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_83" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_124">I will conclude on this. The number of switchers is lower than 10%. That is the last-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_84">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_125">I mean what amount can be saved by switching, not the number of people who have switched.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_85" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_126">It depends which energy provider people are with, who they are going to, what price they are paying and what price the provider is offering. If I knew that, I would provide the Deputy with the percentage amount in the middle.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_127">I call Deputy Heneghan. I ask him to focus on the programme B energy transformation subheading. </p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_87">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_128">Gabhaim buíochas leis an Aire. Is deas a bheith ag caint leis inniu. Gabhaim míle buíochas leis as ucht an polasaithe nua maidir le private wires a sheoladh. Tá mé ag tnúth go mór le bheith ag oibriú ar an “Heneghan Bill”. </p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_88" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_129">Níl ainm an Teachta Heneghan ar an mBille.</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_89">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_130">On the security, continuity and dependence of the energy supply, it was beneficial for the committee to have EirGrid and the ESB in earlier. I will touch on something Deputy Daly said about the PSO levy for the customer. A huge issue at the moment alludes to this. The PSO levy will go through the roof if everything is done using overhead lines. Storm Éowyn did not take out the transmission lines. It only knocked down the distribution lines. The underground lines are something we need to look at to secure our grid and make it more future-proofed. Do I have to reference a number here or can I speak on-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_90">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_131">The meeting is about the Revised Estimates. It is about approving-----</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_91">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_132">There has been a bit of a looseness here.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_92" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_133">The Chair is allowing some latitude that the Deputy should welcome.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_93">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_134">I am trying to keep the discussion on track. There is a question in terms of the investment of going underground versus overground and the pluses and minuses.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_94" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:10:00+01:00"/></from>
+          <p eId="para_135">If we use the North-South interconnector project as an example, there are some parts of our grid, such as the east-west interconnector from Wales into Rush and beyond through north Dublin, are underground. As we get into the higher kV cables, it is next to near impossible, depending on the typography of the area, to underground them. We have done three independent reviews of the North-South interconnector. I say "we" because I know about this about from being around the Dáil for some years and having an interest in this issue. There have been four desktop studies, all of which have said that the optimum way to deliver this project, not just on delivery but in relation to future maintenance, is overground. The resilience piece is related but separate, if that is not a contradiction. What we have to work on in PR6 is improving the resilience of the grid that is there and our distribution network.</p>
+          <p eId="para_136"> The pole replacement programme was under way. The forestry corridors are critically important too. Storm Éowyn was exceptional, but those exceptions are not exceptions any more. This was just the ferocity of this storm and where it landed. If it had been 50 miles further south, we probably would have had 1.5 million premises out as opposed to 768,000. That is how serious it was. PR6 will assist in the investment. On that, we have a works programme under way right now.</p>
+          <p eId="para_137">I am bringing draft legislation to the Cabinet - I am aiming for 29 July - in respect of additional powers that EirGrid, but mainly ESB Networks, would need to access the distribution network in places where there are forestry corridors and other things for which we need some requests. They are operating under legislation that, in some instances, is 80 or more years old.</p>
+        </speech>
+        <speech by="#BarryHeneghan" eId="spk_95">
+          <from>Deputy Barry Heneghan<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_138">I understand that. When the private wires legislation is brought forward, it can future-proof our grid.</p>
+          <p eId="para_139"> I looked at the objective of eliminating energy poverty. We have spoken a lot about curtailment, how a huge chunk of our renewable energy is being thrown away. It is just gone and completely removed. We spoke about how we were still importing renewable energy. I did not agree with what the groups we had in were saying. The Minister had some engagement with EnerGeo, which we spoke about previously. Will he fast-track that so people in energy poverty can have their tanks heated up? It is something that would be highly beneficial and would help our curtailment issue.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_96" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_140">Curtailment is a big issue, as are dispatch down rates. That is why grid expansion and investment are critical. Storage is important too, especially for renewables, as is making our grid smarter. These are not just things we would like to see. These are things that can be done but will require substantial investment to do them. Battery storage technologies are improving but facilities will also be built that are in planning. That will help in that regard.</p>
+          <p eId="para_141"> EnergyCloud is a good example of how unused renewable energy can be used at the appropriate time to do things such as heating free tanks of water. It is doing approximately 1,000 homes, 500 of which are in the Fingal area. That is something we support, but a fundamental shift needs to happen with regard to being able to use more of the renewable energy that is generated. There will always be a balance. We saw that some of what happened on the Iberian Peninsula - we do not have a full report on it - was about not having the correct mix.</p>
+          <p eId="para_142"> The Deputy mentioned private wires. I thank him for his work on that, too. What we got approval for yesterday and will bring forward is the policy statement on private wires. It is a big change. It will not be the panacea for everything but if we get the legislation done, we can really get moving on this and show what the parameters of the first step of private wires are that we want to get in place. We want to get crew in place to be able to deal with these by the second half of next year. We will have a real opportunity, particularly for renewable generation and point to point. From generation to energy user, we obviously want the standard of private wires to be the same as our grid. That would allow more private investment, including firms that are locating to generate their own energy to also store that energy there. I was very pleased with that decision yesterday. That is something we can build on. This committee will be very involved in the pre-legislative scrutiny, which got approval from the Cabinet yesterday. The way we will proceed is with the draft heads of Bill, then coming to committee and speaking to stakeholders. We want to get this done as expeditiously as possible.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_97">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_143">We will move to programme C on the circular economy. Apologies, I missed Deputy Clendennen. I ask him to address just the subheading, please.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_98">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_144">I thank the Minister for joining us. On the allocation to the energy transformation programme-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_99" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_145">Which one?</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_100">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_146">The overall €704 million. If there is a change in policy and acceptance in respect of HVO, does it fall under that heading? </p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_101" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_147">Is this HVO in relation to home heating oil?</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_102">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_148">Yes. If it were to be accepted as a potential scheme to-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_103" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_149">We are looking at that, not necessarily by way of the budget, but for 2026. We got the renewable heat obligation, RHO, memo approved at Cabinet just yesterday. I expect that will enable us to look at the mix within home heating oil, in particular, and fossil, and when we start to blend there, what rate of blend it will be, especially in relation to the multiplier around anaerobic digestion, AD, which is an area we have not done well in so far. There are only two plants in the country. We can expand that very quickly for renewable gas that can go straight into our network. It that were to be, HVO would sit under energy transformation. I would expect it to be-----</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_104">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_150">The reality is there is unlikely to be a change until 2026.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_105" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_151">I need to get the RHO Bill passed. We have got approval at Cabinet for that. It is something we will advance in the autumn of this year, but we need a technical regulations information system, TRIS, notification. That has to go to the Commission before it can go to the Dáil. There are specific reasons for that around the price we will pay for indigenous input to AD and biomethane because that is in the same RHO Bill. I do not want to do one part of the Bill without the other. The blend piece and the rate at which we would do that is also in the draft heads of the Bill. We have already had three meetings with the Commission on that - two in March and one in June. We will be engaging with it again. To answer the Deputy's question, if everything goes well, it will be the second half of next year.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_106">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_152">On the SEAI and the whole energy transformation, the SEAI is getting a further increase in this year's Estimate. Is the Minister confident that we are getting value for money regarding what has been achieved? Have there been any research comparisons as to the effectiveness of the grant versus not applying for the grant?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_107" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_153">I know what you mean.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_108">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_154">Does the Minister?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_109" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_155">I do. It is a very good question and point. If we go back to 2019 and compare it with 2025 to date, more than 213,000 homes have had energy upgrades to various levels, with 69,000 B2 upgrades completed. It is a significant programme. It has worked well and there is a multi-annual commitment to it to the end of this decade. I believe we are getting value for money, but while I am not saying that we are increasing the grants, I have said that we are looking at how we can make the grants, as mentioned by Deputy Whitmore, more accessible and whether we can break them down into smaller chunks so they may be available on a phased basis. That is something I am considering we should do. I want to see all of the money allocated to this programme spent because it has a real impact on families.</p>
+          <p eId="para_156"> If we consider that 213,000 families have had their home upgrades, most will be saving on their energy costs and will have warmer, more energy-efficient and greener homes. The warmer homes scheme, as a free scheme, has been very significant for people, particularly from a fuel poverty perspective. There has been a significant increase of approximately 30% or more - I gave the figure earlier - in relation to the warmer homes scheme. There has been a €70 million increase from 2024 to 2025, bringing it up to €280 million. Value for money is obviously key to this. It is right and proper that a new Government and a new Minister like myself look at what the offering is, how we can improve it and, if it needs to be improved, how we do that.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_110">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_157">The number of people with chronic respiratory conditions receiving energy efficiency upgrades seems to have taken quite a dip in 2025. It has gone from 146 in 2023 and 174 in 2024 to 20 in 2025. It just seems unusually low.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_111" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_158">I do not have an answer right now for the Deputy as to why that is the case. I will raise that query and revert to the committee on it. Good schemes are in place, particularly for the medically vulnerable. We may have something here for the Deputy but if not, I will get it to him post the meeting. Fan nóiméad amháin. There is a good answer for that. I have been informed that that scheme was a pilot and is now being mainstreamed. It is part of the mainstream. That is the reason, so I do not need to get back to the Deputy.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_159">Are we going to the next round?</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_113">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_160">Before we leave this one-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_161">A quick question.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_115">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_162">The Minister said that Ireland was the-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_116" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_163">Is that the party manifesto again?</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_117">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_164">If the Minister wants, we can get it.</p>
+        </speech>
+        <speech by="#JohnClendennen" eId="spk_118">
+          <from>Deputy John Clendennen<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_165">Does the Deputy have the Fine Gael manifesto there?</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_119">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_166">Deputy Clendennen is next - step over there. The Minister said we were the eighth highest. According to Eurostat, we have the third highest bills in Europe.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_120" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:20:00+01:00"/></from>
+          <p eId="para_167">It depends on which index one looks at. One could look at the average income in this country and the percentage of net take-home pay. The average net take-home pay that is paid in Ireland versus other countries makes us about the eighth.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_121">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_168">But one way or another-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_122" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_169">We are still too expensive.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_123">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_170">-----the Minister will accept they are €900 a year more and gas prices went up.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_124" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_171">I never dispute facts and I do not dispute for one moment that energy bills are too high for people. We want to do what we can to get them down.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_125">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_172">All the more reason then. The Minister mentioned the manifesto. Fianna Fáil said in the manifesto it would get the CRU to regulate standing charges, it would appoint a Minister of State with responsibility for energy, it would reform the PSO levy-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_173">Which Estimate line are you on, Deputy Daly?</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_127">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_174">-----by switching to State subvention. When is any of that going to happen?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_128" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_175">When we came into government-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_129">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_176">I mean without having to go to a task force.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_130" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_177">The task force is not this holding group. It has to do all the work the Deputy has mentioned. On the basis that every single item-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_131">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_178">Was it that Fine Gael told Fianna Fail to rip those promises up?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_132" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_179">No. Every single thing the Deputy has mentioned is in my party's manifesto, but we are guided now by the programme for Government. The programme for Government was agreed by us, Fine Gael and the regional Independents. That is what we have published and-----</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_133">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_180">Yes, but what about the election manifesto?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_134" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_181">Everything the Deputy has mentioned is something we are doing.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_135">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_182">Okay, thank you.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_136" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_183">I would be very happy to report back on things-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_184">Thank you, Minister, and thank you, Deputy.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_138" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_185">-----we said we would do that we are actually going to do.</p>
+        </speech>
+        <speech by="#PaDaly" eId="spk_139">
+          <from>Deputy Pa Daly<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_186">But they will not be.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_140" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_187">I am glad the Deputy has actually-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_141">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_188">We are moving on to programme C, which is the circular economy. Deputy Whitmore is the first speaker. What is the subheading?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_142">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_189">It is C5. I am getting the hang of this. I have a comment to make initially. Obviously, the purpose of Inland Fisheries Ireland is to conserve and protect the resource. I am looking at the public policy impact and the outcomes. The Department is measuring the number of rivers assessed and the number of salmon licence sales. Would it consider looking at the number of salmon returning? Surely the ultimate outcome we are all looking for is an increase in that.</p>
+          <p eId="para_190"> This is a very small thing and I imagine it is within that sector, but does the funding of LAWPRO or of rivers trusts come under this?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_143" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_191">No, I think that is the Department of-----</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_144">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_192">Local government.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_145" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_193">-----local government.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_146">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_194">Is the Department of Climate, Energy and the Environment not responsible for rivers trusts?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_147" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_195">No, LAWPRO falls under local government.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_148">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_196">What about the rivers trusts? I am sure I asked-----</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_149" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_197">Does the Deputy mean Waterways Ireland?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_150">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_198">They are voluntary organisations. It is an all-Ireland programme. They are in the UK as well. They bring in local stakeholders, including local experts. I was on one. That is why I am especially interested in it. They are a brilliant resource and they do an incredible amount of work, but unfortunately there is no funding being provided to them for administrative purposes and it is very difficult for them to manage any projects if they cannot employ someone for a few hours a week to run different programmes or put in for funding and that kind of stuff.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_151" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_199">I remember the river basin management plans in my previous Department. LAWPRO was involved there.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_152">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_200">Okay, so maybe it is.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_153" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_201">We have Inland Fisheries Ireland. We have the Loughs Agency, which is the North-South body. I attended the North-South Ministerial Council in Carlingford just this month. There is work that focuses on Lough Foyle, Carlingford Lough and so on. I am trying to see the range of other measures to be helpful. There are the wild salmon and sea trout tagging scheme regulations. The status of each of Ireland's more than 140 salmon rivers is based on management advice we get from IFI, so there are counts done as well. I have draft regulations up in the office to sign in relation to trout. In a couple of areas of the country, we will be restricting the netting of trout based on the counts we have got.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_154">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_202">Okay.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_155" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_203">I am looking at them today. That sort of research and counting is done to provide an assessment and estimate of fish stocks in each of the rivers we are responsible for.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_156">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_204">It was more of a comment about the document and the Department's metrics. The output should be the number of salmon returning.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_157" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_205">The number of fish.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_158">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_206">Subhead C10 is marine spatial planning.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_159">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_207">That is not in our committee's scope. It is with fisheries.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_160" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_208">That was dealt with yesterday.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_161">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_209">It is more about the timeline. Does the Minister know when it is coming over or going over?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_162" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_210">The MARA and the-----</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_163">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_211">What about the MPA legislation and stuff? Is there any timeline, because there was a decision to be made?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_164" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_212">The Deputy asked about the marine-----</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_165">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_213">I am sorry, I was just using that as the headline and trying to squeeze it in there.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_166" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_214">That is okay. Does the Deputy mean the marine protected areas legislation?</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_167">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_215">Yes.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_168" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_216">That is something that will move across. It has not yet, but I think I mentioned to the committee, and I have talked to the Irish Environmental Network, about maybe advancing it through the national DMAP. We went from 3% to 10% marine protected areas over the course of the last Government and we are committed to doing 30%. We will do it. I would like to see primary legislation on it. There were difficulties in getting that concluded before the last general election, but a lot of the work is done. I am just assessing whether it would be quicker for us to do that under the national DMAP. The national DMAP does not just have to be about renewables, as the Deputy knows. We could do marine protected areas and renewables as part of that process.</p>
+          <p eId="para_217"> For the Deputy's information, I am not sure whether it will be before the recess but we will be seeking priority drafting of an amendment to the Maritime Area Planning Act 2021 in order to streamline the regulatory system. That is a different thing, as it is the planning Act that is in place, whereas the Deputy is asking about the marine protected areas Bill.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_169">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_218">Yes.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_170" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_219">That is fine.</p>
+        </speech>
+        <speech by="#JenniferWhitmore" eId="spk_171">
+          <from>Deputy Jennifer Whitmore<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_220">I assume that will be in the autumn.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_172" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_221">It would be. It is a decision on whether we go with the Bill or with the DMAP. I have not made up my mind on that but it is something we can discuss with members.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_173">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_222">I am looking at subhead C4. There was mention of geothermal energy development. It is not something we discuss particularly frequently. I understand that there is a trial in place at TUD Grangegorman about geothermal energy, but I am curious about where else this might be going on or how progressed it might be, as well as where it is potentially leading.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_174" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_223">A lot of really significant research is done in this space. The geological survey programmes have just short of €15 million in this Estimate. To give an idea of what it is used for, there are research programmes like the Tellus programme and by the end of 2025, about 92% of that airborne survey will be completed. Ground-based sample collection is complete, with samples now being processed and analysed. There is ongoing funding of research projects through EU and Exchequer projects. There is an INFOMAR programme that is continuing the mapping of the marine territory. It is currently focused around the Donegal area. That is expected to be completed at the end of 2026. Then it is really about providing the robust scientific basis for restoration, protection and enhancement of our natural resources, especially groundwater and the decarbonisation of our energy supply. These are a very important part of our Department and the work is very specialised. There are other areas concerning mine safety and monitoring.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_175">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_224">On the energy development piece, does the Minister know how much is being spent and what the status of the projects might be?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_176" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_225">We will revert specifically on that. I can get the Deputy that figure. I am sorry but I do not have it to hand.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_177">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_226">I understand it has significant potential.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_178" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_227">Yes, massive potential.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_179">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-07-16T16:30:00+01:00"/></from>
+          <p eId="para_228">I have one other item. It concerns subhead C6 and waste management and enforcement activities by local authorities. It has been on this committee's agenda already. We had Wexford County Council in here about Lady's Island Lake. I am querying whether there is any provision for funding for the recommendations this committee made in respect of getting that project under way to remediate the issues of waste around the lake.</p>
+          <p eId="para_229"> More generally, we have heard recently that there has been industrial-scale illegal turf cutting across seven county council areas. A number of those councils came forward and said they did not have the budget to enforce against this happening. I am wondering whether the enforcement by local authorities has been taken into consideration. If it does not fall under this heading, where might it be allocated?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_180" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_230">The illegal harvesting of peat is a planning matter and a matter for planning enforcement in the local authorities. I would reject their assertions that they do not have the resources to carry that out. What has occurred there, based on the EPA report, is nothing short of disgraceful and outrageous. It is a priority for the local authorities. We cannot micromanage it. They need to deal with this. I have written to the Minister, Deputy Browne, about it formally as the Minister who has responsibility for local government, but this is something we should all be concerned about. I would reject the local authorities' assertion. It is about prioritising what we need to do. In Kildare, in particular, we saw pictures where one side of the road was a haven for biodiversity and the natural environment and literally the other side of the road had commercial illegal harvesting of peat. That is something the EPA should not have had to highlight - I am glad it did - to any local authority. The local authority needs to address it. We provide funding and there is a breakdown of the type of funding for waste enforcement measures and grant schemes that help the local authorities. We have measures in respect of plastics and medical waste and allocations in respect of noise but the main thrust of much of this is through the local authorities. The EPA report the Deputy referred to showed 38 large-scale operations over seven counties where illegal peat extraction was taking place. It really pains me to see the excellent work that is being done on the restoration of our bogs by Bord na Móna and others, including local authorities, yet this activity, which is illegal, has been allowed to continue. The local authorities in question - Offaly, Kildare, Tipperary, Westmeath, Roscommon, Longford and Sligo - need to get their acts together and do it.</p>
+        </speech>
+        <speech by="#CiaranAhern" eId="spk_181">
+          <from>Deputy Ciarán Ahern<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_231">Out of interest, had any of those contacted the Minister seeking more funding before that report came out?</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_182" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_232">Not me, no. I am not the home Department there. If a body is involved in planning enforcement but decides to go after someone who might have built a bigger extension and use its resources there while someone else is illegally extracting peat at commercial level, I would think that is a big deal. It does not affect anyone cutting turf for his or her own use; we are not talking about any changes there. This is commercial.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_183">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_233">I would reinforce the point on Lady’s Island Lake. As the Minister probably knows, the committee looked at this. I will write to the Minister and some of his ministerial colleagues as Chair because we are looking for the Government to pull together on financial support for the programme of work that has to be done there to reverse that decline and try to get it back on track. That is just to reinforce what Deputy Ahern said.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_184" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_234">I thank the Chair. I meant to refer to that. The Taoiseach has specifically asked that a number of us, including myself, would meet, which we will. We have discussed convening a meeting between ourselves and officials from the Departments of agriculture and Housing, Local Government and Heritage. I have spoken to the Minister of State in the latter Department, Deputy O’Sullivan, about this. We need to see what we can do to help reverse what has happened there. We will work as a group on that. It would be helpful if the Chair wrote to us.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_185">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_235">It is in the post.</p>
+        </speech>
+        <speech by="#DarraghOBrien" eId="spk_186" as="#Minister_for_Climate,_Energy_and_the_Environment">
+          <from>Deputy Darragh O'Brien<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_236">Okay.</p>
+        </speech>
+        <speech by="#NaoiseOMuiri" eId="spk_187">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_237">As no one else has anything else on programme C, that is it on the main programmes. We mentioned that C10 and C11 were no longer within the remit of this committee.</p>
+          <p eId="para_238"> I thank the Minister and his officials for assisting us with our consideration of the Revised Estimates. We have completed consideration of Revised Estimates for Vote 29 – programmes A, B and C.</p>
+        </speech>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_4">
+        <heading>Message to Dáil<recordedTime time="2025-07-16T16:40:00+01:00"/></heading>
+        <speech by="#NaoiseOMuiri" eId="spk_188">
+          <from> An Cathaoirleach<recordedTime time="2025-07-16T16:40:00+01:00"/></from>
+          <p eId="para_239">In accordance with Standing Order 110, the following message will be sent to the Dáil:</p>
+          <p class="indent_1" eId="para_240">The Select Committee on Climate, Environment and Energy has completed its consideration of the following Revised Estimate for public services for the year ending 31 December 2025: Vote 29 - Climate, Energy and the Environment.</p>
+        </speech>
+        <summary eId="sum_5"> The select committee adjourned at 4.44 p.m. <i>sine die.</i></summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

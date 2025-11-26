@@ -1,0 +1,766 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-09-30/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-09-30/debate"/>
+          <FRBRdate date="2025-09-30" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_the_implementation_of_the_good_friday_agreement"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-09-30/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-09-30/debate/mul@"/>
+          <FRBRdate date="2025-09-30" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-09-30/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_the_implementation_of_the_good_friday_agreement/2025-09-30/debate/mul@.akn"/>
+          <FRBRdate date="2025-10-07" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="AlisonComyn" href="/ie/oireachtas/member/id/Alison-Comyn.S.2025-01-29" showAs="Alison Comyn"/>
+        <TLCPerson eId="CormacDevlin" href="/ie/oireachtas/member/id/Cormac-Devlin.D.2020-02-08" showAs="Cormac Devlin"/>
+        <TLCPerson eId="ErinMcGreehan" href="/ie/oireachtas/member/id/Erin-McGreehan.S.2020-06-29" showAs="Erin McGreehan"/>
+        <TLCPerson eId="FrancesBlack" href="/ie/oireachtas/member/id/Frances-Black.S.2016-04-25" showAs="Frances Black"/>
+        <TLCPerson eId="GarretKelleher" href="/ie/oireachtas/member/id/Garret-Kelleher.S.2025-01-29" showAs="Garret Kelleher"/>
+        <TLCPerson eId="NoelMcCarthy" href="/ie/oireachtas/member/id/Noel-McCarthy.D.2024-11-29" showAs="Noel McCarthy"/>
+        <TLCPerson eId="PeadarToibin" href="/ie/oireachtas/member/id/Peadar-Tóibín.D.2011-03-09" showAs="Peadar Tóibín"/>
+        <TLCPerson eId="RoseConwayWalsh" href="/ie/oireachtas/member/id/Rose-Conway-Walsh.S.2016-04-25" showAs="Rose Conway-Walsh"/>
+        <TLCPerson eId="SeanCroweSF" href="/ie/oireachtas/member/id/Seán-Crowe.D.2002-06-06" showAs="Seán Crowe"/>
+        <TLCPerson eId="ShaneMoynihan" href="/ie/oireachtas/member/id/Shane-Moynihan.D.2024-11-29" showAs="Shane Moynihan"/>
+        <TLCPerson eId="SineadGibney" href="/ie/oireachtas/member/id/Sinéad-Gibney.D.2024-11-29" showAs="Sinéad Gibney"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM FEIDHMIÚ CHOMHAONTÚ AOINE AN CHÉASTA</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on the Implementation of the Good Friday Agreement</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-09-30">Dé Máirt, 30 Meán Fómhair 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-09-30">Tuesday, 30 September 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 06:00 p.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 06:00 p.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#RoseConwayWalsh">Rose Conway-Walsh</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#FrancesBlack">Frances Black</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#SeanCroweSF">Seán Crowe</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#AlisonComyn">Alison Comyn</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SineadGibney">Sinéad Gibney</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#GarretKelleher">Garret Kelleher.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#NoelMcCarthy">Noel McCarthy</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#ErinMcGreehan">Erin McGreehan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#ShaneMoynihan">Shane Moynihan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#PeadarToibin">Peadar Tóibín.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#CormacDevlin">Teachta / Deputy Cormac Devlin sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+        <summary eId="sum_5">
+          <i> The joint committee met in private session until 6.16 p.m. </i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Engagement with Institute of Public Health<recordedTime time="2025-09-30T18:10:00+01:00"/></heading>
+        <speech by="#CormacDevlin" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T18:10:00+01:00"/></from>
+          <p eId="para_13">I welcome the witnesses from the Institute of Public Health, IPH. We are joined by Ms Suzanne Costello, chief executive officer; Dr. Jenny Mack, public health medicine consultant; Ms Sinéad Ward, director of finance and governance; and Dr. Paul Kavanagh, IPH board member and consultant in public health medicine in the national health intelligence unit of the HSE.</p>
+          <p eId="para_14"> I will invite Ms Costello to give her opening statement, which will be followed by questions from members of the committee. Each member has a five-minute slot to ask questions and for witnesses to respond.</p>
+          <p eId="para_15"> I remind members of the committee of the constitutional requirement that, in order to participate in public session, members must be physically present within the confines of the Leinster House complex. Members of the committee attending remotely must do so from within the precincts of Leinster House. This is due to the constitutional requirement that in order to participate in public meetings, members must be physically present within the confines of the place where Parliament has chosen to sit. In this regard, I ask any member participating via Microsoft Teams, prior to making his or her contribution to the meeting, to confirm that he or she is on the grounds of Leinster House.</p>
+          <p eId="para_16"> Members and witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against any person or entity by name or in such a way as to make him, her or it identifiable, or otherwise engage in speech that might be regarded as damaging to the good name of the committee or the person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, I will direct them to discontinue their remarks. It is imperative that they comply with any such direction.</p>
+          <p eId="para_17"> As the witnesses will probably be aware, the committee will publish the opening statement on our website. MPs participating in this committee meeting from a jurisdiction outside the State are advised that they should be mindful of their domestic law and how it may apply to their participation in proceedings.</p>
+        </speech>
+        <speech by="#" eId="spk_2">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:10:00+01:00"/></from>
+          <p eId="para_18">I thank the Chair, Deputies, Senators and Members of Parliament for the opportunity to attend the committee and discuss our work. It is our first opportunity to do so, and we are delighted to be here. The IPH was set up as a North-South agency prior to the signing of the Good Friday or Belfast Agreement in 1998, and in 2023 we marked 25 years of helping to shape public health policy in Ireland and Northern Ireland. The impetus to establish the institute came from public health officials who recognised that a geographical border offered no protection against disease or ill health, and that policymakers, North and South, faced similar challenges in promoting and supporting public health.</p>
+          <p eId="para_19"> Public health is often described as the science and art of preventing disease, prolonging life and promoting health at population level. This requires expertise across a range of specialist domains, including health improvement, infectious disease control, screening and service development. The remit of the institute is to inform public policy with the aim of improving population health and reducing health inequalities. Health inequalities are the unfair and avoidable differences in people's health across different groups in society caused by social, economic, and environmental factors, for example, differences in life expectancy or the prevalence of chronic diseases. As such, we work across a range of public health policy areas, including, but not limited to, alcohol harm, tobacco control, skin cancer prevention, physical activity, ageing and gambling harm, as well as the broader socioeconomic and environmental determinants of health.</p>
+          <p eId="para_20"> The IPH is jointly funded by the departments of health in Ireland and Northern Ireland and supports both in the development and evaluation of policy. The institute has an annual budget of just over €2 million, and a staff team of 20 people between Belfast and Dublin.</p>
+          <p eId="para_21">We have included some examples of our all-island work, the first of which is the joint public health conference. IPH has hosted the Joint North South Public Health Conference for several years, bringing together over 1,000 academic, policy and public health partners from North and South each year. The 2025 event, which took place a number of weeks ago, focused on tackling the commercial and political determinants of health through policy and practice, while previous conferences addressed health inequalities and climate change and health.</p>
+          <p eId="para_22"> IPH is a co-lead in a four-year PEACEPLUS cross-Border partnership to improve air quality and health across the island. The €6.5 million PEACE-Air partnership, announced by the Special EU Programmes Body, involves academic institutions, councils and environmental policy leads in both jurisdictions. IPH will translate research findings into tangible policy recommendations to reduce the impact of poor air quality on health, improve quality of life and reduce avoidable mortality.</p>
+          <p eId="para_23"> IPH contributes to specialist training in public health and currently offers training opportunities for public health specialist registrars in Northern Ireland. My colleague, Dr. Mack, is a registered supervisor for public health specialty registrars in both the UK and Ireland.</p>
+          <p eId="para_24"> While great work is being done, there remains potential for enhanced all-island co-operation. There is scope to build on the existing North-South co-operative arrangements in health within the Good Friday, or Belfast, Agreement. While the emphasis to date has been on healthcare co-operation, such as the successful arrangements for cardiac, paediatric and ambulance services among other treatment agreements, there is potential to address shared public health challenges by enhancing co-operation on island-wide approaches to population health and well-being. Developing an all-island public health dataset is a critical tool for future public health initiatives, as the lack of comparable local-level data presents significant challenges in designing all-island solutions to key public health challenges. There is also an opportunity to build on the impact and value for money delivered by North-South agencies and government-funded programmes through the use of EU border solutions and governance frameworks. For example, this could involve developing a unified governance framework for non-implementation entities, the application of the BRIDGEforEU regulation, and wider support of the b-solutions mechanism for cross-Border challenges.</p>
+          <p eId="para_25"> Our health and well-being are shaped by many factors or determinants of health, such as social, economic, environmental, and commercial factors that are often outside of the control of individuals. However, many of these factors can be addressed through a health-in-all-policies approach and our work seeks to ensure public policies in both jurisdictions safeguard health and are based on the best available evidence. The institute is prioritising several programmes of work to address shared public health challenges, such as alcohol harm, air pollution, skin cancer prevention and specialist training. In summary, we wish to make the following recommendations with respect to enhancing North-South co-operation, namely, that we should build on the existing North-South co-operative arrangements to address shared public health challenges, develop an all-island public health dataset and to avail of the EU border solutions and governance frameworks to optimise how all-island agencies operate.</p>
+          <p eId="para_26"> I thank members for their time; we are happy to answer any questions.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_3">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_27">I thank Ms Costello for that opening statement. We move to questions from members. I said five minutes each earlier but it is seven minutes. There is a bit of flexibility there because we have enough members. Deputy McCarthy will begin.</p>
+        </speech>
+        <speech by="#NoelMcCarthy" eId="spk_4">
+          <from>Deputy Noel McCarthy<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_28">I welcome the witnesses to the committee. Their work has been so good, North and South. How effective has IPH been in promoting genuine North-South collaboration since its establishment? What challenges exist in aligning public health policies North and South? Some examples include tobacco legislation and minimum unit pricing on alcohol. Are there lessons from Covid-19 when it comes to co-ordinating responses to future pandemics or cross-Border health emergencies?</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_29">Naturally we are going to say we have been very effective since our establishment in 1998. One of the things we can really stand over is that when the institute was established, its core focus, which remains today, was to address health inequalities. At that time health inequalities was sort of a niche interest but members will be very familiar with the fact that now health inequalities is woven through all public policy. There is a wide recognition of the issue of health inequalities and health equity and the holistic measures we need to take to address that. That is probably the outstanding achievement of IPH but having said that an awful lot more work needs to be done because new challenges have come along as society has modernised and changed and globalisation has come in. While we have achieved a lot, we still have many challenges ahead.</p>
+          <p eId="para_30"> On the alignment of policies, which the Deputy referred to, on tobacco, MUP and the pandemic, I will ask my colleague Dr. Kavanagh to speak about the differences between tobacco control policy in the UK and Ireland. MUP is a very good example. Efforts have been made between the two jurisdictions, which both have health improvement strategies. We have Healthy Ireland and in Northern Ireland there is Making Life Better. All western European countries have health improvement strategies because health improvement and building a flourishing and healthy population is so important with respect to all sorts of different societal issues. While we do not make policy on an all-island basis, there are many things we can do in alignment, and MUP and tobacco control are very good examples of that. The intention with minimum unit pricing was to implement it in parallel to deal with some of the issues that arise from different policies at different times. That was not achieved and has not been achieved, but we are very close to it and the intention is certainly there to move in that direction. Of course, MUP is a policy that has not only been implemented in Ireland and Northern Ireland but also in Scotland and Wales, so across these islands it is being implemented at different times and we are all learning from one another at the different stages of implementation and how we are approaching it.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_31">I will add some comments specifically on tobacco. Smoking is the leading cause of ill health, preventable disease, premature mortality and health inequalities across the island of Ireland. There is a shared goal across the island of moving towards reducing that harm and ultimately bringing it to an end. While that goal is shared across the island, there are some differences in the steps being taken. If we look at one measure, namely, focusing on the age at which somebody may buy tobacco products, in Northern Ireland the plan is to establish a tobacco-free generation. This is picking an age – children born in a particular year – and as those children age progressively it will be illegal to ever sell them a tobacco product. In the South we have taken a similar focus in terms of age restriction as a way of trying to reduce the harm associated with tobacco use, but we have done that through the tobacco 21 legislation which, as the Deputy will know, has been recently enacted. There is very much a shared goal but sometimes there are differences in the steps that are being taken at a particular time towards that goal and the great opportunity is looking for shared learning so we can harness the research around those differences and the differences in impact to try to build learning and improve health across the island. One of the big opportunities there would be, as Ms Costello mentioned, the establishment of an all-Ireland public health dataset we could use to track and evaluate some of these different steps that are taken at different times with different public health issues, like tobacco, to try to gather learning and share that across the island.</p>
+        </speech>
+        <speech by="#NoelMcCarthy" eId="spk_7">
+          <from>Deputy Noel McCarthy<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_32">That data is not in place yet between North and South, but the IPH thinks it would be a good idea to have that.</p>
+        </speech>
+        <speech by="#" eId="spk_8">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_33">It would be a strong recommendation of ours. While data is collected on both sides of the Border, it is not comparable. Again I point to Dr. Kavanagh, who is an expert on this, to maybe explain a little more about that.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_34">Everything we do to protect and improve the health of the public is underpinned by evidence. The role of evidence is becoming increasingly important in the world we live in and some of the trends like post-truth, fake news and things like that. Evidence is really important in everything we do. While there are extensive and quite well-developed systems of health data collection across the island, those systems are not harmonised and brought together. That means we do not have the same measurement framework across the island to try build learning, track changes in population, try to link those changes to changes in policy and intervention and try to share learning across the island.</p>
+        </speech>
+        <speech by="#NoelMcCarthy" eId="spk_10">
+          <from>Deputy Noel McCarthy<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_35">I thank the witnesses for their responses.</p>
+        </speech>
+        <speech by="#SeanCroweSF" eId="spk_11">
+          <from>Deputy Seán Crowe<recordedTime time="2025-09-30T18:20:00+01:00"/></from>
+          <p eId="para_36">Listening to what the witnesses are saying about sharing data, I would like to hear what the barriers are. Let us take St. James's Hospital and St. Luke's Hospital, which deals with cancer. One part of St. James's Hospital does not talk to another part in that they do not have a seamless connection. If I went for bloods in St. Luke's, my urologist in St. James's would not be able to get access without going through.</p>
+          <p eId="para_37">A lot of our hospitals do not talk to each other in the sense of sharing data and so on. We are doing this ambitious thing of trying to get co-operation North and South. From speaking to people in St. James's Hospital about co-operation, particularly around cancer care, they were saying there would be different barriers such as GDPR and sharing information about some of the cancers that are there and looking at that. At one level we are very much starting from scratch on this. The ambition should be that we bring this about. Will Dr. Kavanagh concentrate this evening on what the physical, legal and other barriers are? If he does not have time to go into it, that is grand. He can write to the committee on this. The committee realises there are huge barriers there. If we cannot get it done at micro level in hospitals, what will it be like at macro level?</p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_38">I would be happy to start with some comments and I might hand over to my colleague, Dr. Mack, as well. We are really pleased the committee responded to that recommendation in the submission for a shared island public health dataset. The example the Deputy spoke about relates to healthcare. Our focus is on public health, which would of course include a concern around data in relation to people using healthcare services but is much broader in terms of understanding the occurrence of disease and looking at health and well-being and other indicators.</p>
+          <p eId="para_39"> In terms of developing an all-island public health dataset I would step out three considerations that would be important. We would be very happy to follow up further information around all of this. There are technical considerations in terms of the infrastructure used to gather data. A lot of the data that would populate an all-island public health dataset would be secondary data from existing data collection systems, including healthcare data collection. There would be technical considerations in establishing an all-island public health dataset. </p>
+          <p eId="para_40"> There would also be considerations around data standards and legislation. It would be important to ensure that, across the island, people are working to common standards in terms of data definitions. For example, taking the case of cancer care that Deputy Crowe spoke about, when we are talking about the number of cases of a particular type of cancer North and South we need to be speaking the same language. We need to look at standards, and legislation would be the second step.</p>
+          <p eId="para_41"> The final step, and I think there is a real opportunity here for the IPH to build on its legacy, is around leadership and governance to ensure there is co-ordination, and that the data that is collected is not just gathering dust or something that is nice to look at but is actively being used in the pursuit of improving health across the island and trying to reduce health inequalities. The institute has a legacy and track record of providing that leadership and governance to not just ensure there is co-ordination around the use of data and evidence, but that it is being leveraged to build better policies to improve health across the island.</p>
+        </speech>
+        <speech by="#SeanCroweSF" eId="spk_13">
+          <from>Deputy Seán Crowe<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_42">Would it help to have a common health identifier number, for instance, or would it be better if we could anonymise access? For instance, it does not make sense that we would not share data or information on particular types of cancers and what can work and that who had gathered the research on this would not be able to share information.</p>
+        </speech>
+        <speech by="#" eId="spk_14">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_43">Absolutely. The Deputy has put his finger on one of the items that, to my mind, would sit under some of the technical considerations and also some of the standards, legislation and definitions. Issues such as unique identifiers to make sure an individual has been tracked across different datasets and that his or her data can be integrated to provide a holistic view of what their health needs are would be one example. Then there are issues around data governance and legislation in terms of anonymity to make sure data was being held in a way that was safe and secure, so that an individual's data was contributing to an understanding of levels of health and disease across the island but individuals could feel safe and secure their privacy was also being protected, so there is that sort of balance. I would be happy to put together a note for the committee on what we think the steps involved in that would be.</p>
+        </speech>
+        <speech by="#SeanCroweSF" eId="spk_15">
+          <from>Deputy Seán Crowe<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_44">On access to medicines and treatments that people really need which are available in one jurisdiction but can throw up all sorts of bureaucratic barriers and delays, I gave the example last week with the shared island unit of a number of young people who have Duchenne muscular dystrophy. There is a drug named givinostat, which is available in the North but not in the South. Have the witnesses come across barriers like that? Would they agree that a more streamlined approach and co-operation, particularly for children in this position, needs to be put in place as a matter of urgency? I do not think either Minister or jurisdiction would be opposed to that but clearly there are barriers within both jurisdictions and systems. Do the witnesses have any views on this matter?</p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_45">It is a very frustrating situation and we sympathise with people in that position. The policymakers are trying to overcome it.</p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_46">I completely empathise with those families and the individuals who are suffering from that condition. As Dr. Kavanagh and Ms Costello outlined, our role in the Institute of Public Health is more looking at prevention and population health at that level. The work we do does not necessarily relate to service delivery and access to treatments but there is a lot of opportunity by being on an island and having that North-South co-operation when it comes to population health and prevention. </p>
+          <p eId="para_47"> I refer to folic acid fortification, for example, and the prevention of neural tube defects, which are very serious conditions such as spina bifida. In the UK and then in Northern Ireland we will be moving to the mandatory fortification of flour with folic acid as a preventative measure to prevent the development of neural tube defects <i>in utero</i> . Part of that work is seeing if there is an opportunity to see if there is an all-island register of congenital anomalies. That is an example of how we can work North-South to collect data that is meaningful to those families and individuals who have conditions. We can look at the numbers and ask what service issues we need to think about, what are the service development issues and access to medications. That is where the data could really help us.</p>
+          <p eId="para_48"> To answer the previous question about population health datasets, we have the opportunity, if we are seriously considering a North-South approach to population health datasets, of thinking about the information we need to understand the health of the population in Northern Ireland and in Ireland. It is beyond looking at very important data on mortality, hospital admissions and disease burdens; it is also looking at the wider determinants of health such as the environmental conditions we live in, the economic conditions and the housing standards. There are a lot of issues that are very real to our communities that we know we can impact on our policies that are very relevant to population health and understanding the health and lives of people in different settings and different geographical locations. That is the opportunity we have in the institute to try to push forward a North-South approach to data collection.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_18">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_49">The witnesses are all very welcome and it is great to have them here. The datasets is what we have been very clear on. The lack of comparable data is an absolute barrier. It is a barrier for the Republic as well with the interdepartmental problems from not having clear datasets. The witnesses mentioned the BRIDGEforEU regulation and an application under that. Has the IPH submitted that application or who has put it in? What would that entail and how would it work to our benefit to get those comparable datasets or potentially comparable datasets?</p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Ms Sinéad Ward<recordedTime time="2025-09-30T18:30:00+01:00"/></from>
+          <p eId="para_50">I mentioned the EU solution because my area is around governance and finance, compliance, internal controls and so on. In the context, we were suggesting the new legislation that has come out this year from the EU. We were trying to address some of the issues as an entity working across the Border that is not an implementation body under the North-South Ministerial Council, NSMC. There are difficulties we meet weekly in trying to run our organisation and ensure both the impact for our programme team and value for money in how we spend money and so on. In terms of linking the suggestion around the EU legislation with the dataset, one of things contained in that legislation is a toolkit.</p>
+          <p eId="para_51">I cannot quite remember the phrase used in the EU legislation, but it is a toolkit that is supposed to be within the legislation. The national governments within the EU are supposed to effect the legislation and set up a co-ordination point for cross-border problems whereby entities such as ours could come to that organisation and say, "This is our problem." The entity formed by the national government is then legally required to look for the solution through whatever expertise it needs to seek. It would come back within an eight-month period and say, "Okay, the solution to your problem is legislation", or it may be a governance code, a joint agreement with two councils or whatever it might be. It would come back with the solution that way. In terms of the dataset, I am sure that the b-solutions toolkit could be used as a starting point to look at the problems around collecting data, but-----</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_20">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_52">Obviously, we implement the regulation because, well, it is a regulation, and it is our Department of Health that has to draw down any funding from the EU in relation to implementing the BRIDGEforEU regulation. Is that the case or is it-----</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Ms Sinéad Ward<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_53">To be truthful, I do not think it is the Department of Health specifically. I am not sure which Department it would rest with to enact the legislation but I do understand from reading the legislation that there is a requirement for the Government to set up a co-ordination point - I think that is what it is called - to allow entities to come and say, "We have a problem cross-border." It might be data, problems around taxation of employees, travel problems or accessing funding and so on. It is supposed to be like a one-stop shop.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_22">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_54">Maybe it is an opportunity for the committee to investigate that regulation. Cross-Border workers were mentioned. That is a massive problem and it will be aired at this committee as well.</p>
+          <p eId="para_55"> This is one thing but, looking ahead, as regards the IPH's draft strategy for 2025 onwards, and as the Committee on the Implementation of the Good Friday Agreement, what should our priorities be to support the IPH the best we can in implementing its strategy? What can we do for the IPH as it is going into its next strategy?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_56">That is a really good question; I am glad the Deputy has asked it. There are a number of things. To take them in sequence, the first is that, without being an expert on the Good Friday Agreement, there is enormous scope for health within the agreement. To date, it has been a mixture of the great work the implementation bodies are doing. There is some excellent work going on around the healthcare agreements, as we have spoken to. The big change between 1998 and now is the fact that the public health challenges have moved beyond health protection, which was a huge emphasis in those days, into the social and the commercial determinants of health. They are the same in every country - in Northern Ireland, Ireland, England, Scotland and Wales. There is therefore so much more to be gained from working in co-operation. What that would look like in reality is opportunities for shared research budgets and shared public information campaigns.</p>
+          <p eId="para_57"> One of the suggestions we have - it is aspirational - is that we would like to see consideration of an all-island centre for tobacco and alcohol research. Both departments of health face exactly the same problems. They both deal with them through tobacco and alcohol units. We do not have a dedicated research strand around tobacco and alcohol. Those two things alone are responsible for a huge amount of harm at population level.</p>
+          <p eId="para_58"> We would be looking then on practical levels of things. Dr. Mack, as the Deputy will know from the statement, is involved in specialist training for public health doctors. We would like to see more alignment between the training North and South, perhaps. The whole issue for people working in public health is to understand that interface on both a human level and a policy level at the Border area. That can be done through training, research and practical engagement. We would definitely like to see that. As a mature North-South agency and not an implementation body, we, like colleagues, and there are many agencies like ours, feel that we probably would like to have a role to use our experience as the shared island initiative develops. We have been doing this for many years, as have colleagues in other agencies, and we are delighted to see more people coming into the field and the impetus, engagement and energies around this now. We are very experienced in that area and we would like to become more formally engaged in that and perhaps see a framework set up under that umbrella that deals with agencies that have been doing this work for a long time. There are specific areas within challenges around governance, which is possibly not as well formed as it is for the implementation bodies. We have had extensive conversations with the co-secretaries of the NSMC, who have been enormously supportive and encouraging in looking at that work. That is a work in progress.</p>
+        </speech>
+        <speech by="#ErinMcGreehan" eId="spk_24">
+          <from>Deputy Erin McGreehan<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_59">Great. I thank the witnesses. My time is up.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_25">
+          <from>Senator Frances Black<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_60">I thank the witnesses for coming in to us. I will focus my first question on women's mental health. This may be for Ms Costello; I do not know. The latest women's health outcomes reports show that over the past few years suicide has been the second or third leading cause of female deaths: 12% in 2023, 13% in 2019 and 13% in 2015. The reports also highlight some really worrying trends, particularly for young girls, when it comes to the likelihood of experiencing depression, low self-esteem and so on. Has the institute carried out or considered carrying out any research on this, or is there an all-island approach to suicide prevention, in particular, and addressing the legacies of the trauma and the intergenerational harm, particularly from the conflict? Perhaps the witnesses might be able to share with us some insights on the impact, the socioeconomic pressures on mental health and the disparities North and South. I hope that is not out of their remit. I know we are talking about mental health here, but have they any views on that, or what is their thinking?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_61">I thank Senator Black. In a moment I will hand over to my clinical colleagues, who will have a view on that. The institute currently is not doing any work on mental health because it has not been on our recent programme as agreed with both Departments. However, that does not mean that it is not a huge priority. In the past the institute has done some work on suicide on the island of Ireland. I am sure the Senator is aware of the great work Professor Ella Arensman has done for many years looking at suicide and self-harm in both jurisdictions and the commonalities between them. While our programme of work does not currently include anything on this, it is an enormous issue. Of course, it falls under the heading of the social determinants of health because with suicide and self-harm, although there is a clinical response in terms of treatment, there are all the social pressures. Those are the social determinants we deal with every day - how people are living, working and raising their children. The pressures they come under every day have a huge and undeniable impact on mental health. While we are not doing anything specific on mental health in this particular programme of work, we are very aware of it all the time.</p>
+          <p eId="para_62"> I do not know whether Dr. Mack or Dr. Kavanagh would like to add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_27">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_63">I thank the Senator for asking that question. As regards the work on mental health in public health in Northern Ireland, where I am based, we sit with the public health agency and it does fantastic work in mental health, particularly in children and young people. I would echo some of what was said about the drivers of poor mental health, particularly in women - not just in mental health but in physical health as well. Women are a particularly vulnerable group in terms of being at higher risk of various conditions and the socioeconomic conditions around us. There are barriers to healthcare that are quite prevalent, and when it comes to mental health there are drivers in terms of the social determinants of health in relation to inequities we have seen in Northern Ireland. We have a Northern Ireland health inequalities monitoring system which is really helpful in grounding the data in sex as well. I would be very happy to share some of the data on the mental health experiences faced by women in Northern Ireland. Dr. Kavanagh may have more of a picture of the experience in Ireland.</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T18:40:00+01:00"/></from>
+          <p eId="para_64">I thank the Senator for the question. The question is interesting because, as my colleague Ms Costello pointed out, while there is no work ongoing in the institute at the moment in this area, the issue the Senator raises, which is around women's mental health, is a really good example of where an organisation like the institute can bring huge value across the island. As we have been emphasising, the role of the institute is about bringing a focus on health and well-being in a positive sense, which includes, of course, mental health, and then bringing a focus on the distribution of that health and well-being across population groups and trying to shine a light on inequalities like, for example, gender, differences across socioeconomic groups or differences across ethnic groups.</p>
+          <p eId="para_65">The institute is uniquely positioned to shine a light on these issues around mental health across the island. It has an all-island focus where, as the Senator has signalled, history and legacy play an important role in shaping mental health. It has a focus on social determinants, which are really important with regard to understanding mental health challenges around housing, employment, etc. It has a focus on emerging threats to health and well-being, for example, social media. There has been work in the institute around social media, which will be on our minds when we think about mental health.</p>
+          <p eId="para_66"> The other thing the Senator's question evokes for me is an underlining of the importance of how everything we do in the institute is underpinned by evidence, being evidence-led in this changing world, the different emphasis around one person's facts versus another person's facts, and the importance of evidence. It brings us back to the role that an all-island public health dataset could play in underpinning and understanding mental health across the island, tracking that and then understanding what the priorities for action are.</p>
+        </speech>
+        <speech by="#FrancesBlack" eId="spk_29">
+          <from>Senator Frances Black<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_67">I thank Dr. Kavanagh for that. He mentioned how health was influenced by a range of social, economic and environmental factors. One of Dr. Kavanagh's roles is to inform public policy in a way that reduces health inequalities and improves health equity for everyone on the island. This committee discusses a lot as regards constitutional change. If we are building a plan for what would essentially be a new healthcare system, how important does Dr. Kavanagh think it would be that we understand the particular vulnerabilities of each individual and community? That is really important. Should we be considering a health-mapping exercise or something similar to what Pobal has done, but a health index instead? It could be used to target health initiatives for communities and individuals most in need. Is that something that could be done and might it help us shape or work towards an all-island healthcare system? There are some inequalities within some of the communities. Is that something we should really be addressing going forward?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_68">I am happy to lead and other colleagues may add. On the Senator's question and point around health mapping, it would be an output from the public health dataset we are talking about. It would be important that any data be indexed in terms of geography. It would allow us to produce that sort of health map.</p>
+          <p eId="para_69"> Going back to the history and the genesis of public health, we think about John Snow, cholera in London and his ability to control that as a threat to public health. It was all down to understanding the geography and the spread of that within London. It is exactly the same now with regard to our contemporary challenges around public health. Certainly in the South - and it would be similar in the north of the island - there is a big emphasis now on population health needs assessment and trying to build up an understanding with communities of what their assets and not what their challenges are regarding health and well-being. The emphasis is also on trying to work with them to make sure there is a wide range of health services and on working across sectors to ensure there is a positive influence on their health and well-being in terms of local government looking at green spaces, water and air quality, etc. All of that work would be underpinned by an understanding of health and well-being from a public health dataset. One of the dimensions of that understanding would include geography or trying to map that across the island of Ireland. There would be huge opportunities there.</p>
+        </speech>
+        <speech by="#" eId="spk_31">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_70">I wish to add to that. I am leading the PEACE-Air programme for the institute. It was mentioned in the opening statement. We are the health partner across ten partners working to look at air quality on the island of Ireland.</p>
+          <p eId="para_71"> On community engagement, the research we are building is to inform policy and help policymakers make decisions to try to improve air quality and health, leading to more equitable societies. However, part of that has to be in community engagement because we are trying to improve the air quality for people who live in communities and who will have their own unique challenges when it comes to air pollution, the density of roads, the quality of housing and the quality of the air they breathe. Some of that work is going to involve working with local communities as well as citizen science with the use of air quality measurement tools.</p>
+          <p eId="para_72"> While from the institute's perspective, top-down approaches in policy and regulation are usually the most evidence-based ways to improve health on a population level, you have to bring people with you. Air pollution and health involves quite a complex message and it is sometimes quite overwhelming to explain, for people to understand and to bring the community alongside you, including children and young people in particular who are concerned about the environment they live in. It is hugely important to us. I am really looking forward to the opportunity to be involved in that community engagement-type research as part of the project.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_32">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_73">Míle buíochas leis na finnéithe as a gcuir i láthair inniu. The institute has 20 staff. Is there a cap on that? InterTradeIreland has a cap on its staff. Foras na Gaeilge is having difficulties with funding, so there seems to be, in some cross-Border structures, a limit to their development. In terms of staff and funding, how has it changed since 1998?</p>
+        </speech>
+        <speech by="#" eId="spk_33">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_74">I can answer the Deputy immediately by saying there is no actual cap on staff. However, resources are obviously a natural limit on staff. I will ask my colleague Ms Ward to speak to the Deputy about the detail of funding.</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Sinéad Ward<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_75">On the numbers, there were only two or three people when we started in 1998, but once it moved into the limited company status and had its own buildings around 2001, the staff settled at approximately 18 to 20 and it has remained at that number since then. Occasionally, it will go up. If we receive funding for research, we would bring a few researchers for a two- or three-year programme but generally speaking, our staff tends to stay somewhere between 18 and 20 staff members.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_35">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_76">Okay. In the witnesses' opening statement, they mentioned North-South health co-operation. People were obviously delighted with a whole lot of services that were made nearly all-island in 1998. I am thinking of Altnagelvin, children's cancer care, etc. Is there any quantitative information regarding how that has developed, or what are the figures on the number of people who are treated North-South currently? Has it changed in the last 20 years?</p>
+        </speech>
+        <speech by="#" eId="spk_36">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_77">That comes under the remit of healthcare rather than population and public health.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_37">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_78">Sure.</p>
+        </speech>
+        <speech by="#" eId="spk_38">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_79">We would not have figures in that regard. Those figures are available and we can certainly try to find them for the Deputy if he wishes.</p>
+          <p eId="para_80"> There is tremendous scope within the Good Friday Agreement around healthcare co-operation. There were formalised initiatives at the beginning and then there have been organic initiatives that have come out of patient need, community need and those sorts of initiatives. All of these have been very successful. However, what often happens in the balance between healthcare and public health is that healthcare is always urgent. For policymakers, the urgent sometimes trumps the bigger and longer term things. One of the things we try to do in public health, through the health improvement channels, is to try to focus policymakers' work on those long-term changes.</p>
+          <p eId="para_81"> The Good Friday Agreement's scope for health has a lot of potential to do that. We can think of, perhaps, three things. There are challenges like ageing, which is a huge challenge coming down the line for both jurisdictions, climate and health. There are issues arising for health from transnational trade agreements. These are types of things where potential really exists. What we would like to see is a little bit more of a medium- or long-term vision around what public health could do within the existing ambit of the Good Friday Agreement. It does not often feature in that way.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_39">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_82">If we could get those figures, it would be great. It might not be the institute's specific area but-----</p>
+        </speech>
+        <speech by="#" eId="spk_40">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_83">We can definitely try.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_41">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T18:50:00+01:00"/></from>
+          <p eId="para_84">-----from the information I have, there was a spike of co-operation in the early days after the Good Friday Agreement but things have remained pretty static since then with regard to new services coming on board that could be used by people North and South.</p>
+          <p eId="para_85"> This may not be the witnesses' area but there is a differential between services delivered North and South. There is a woman by the name of Catherine Sherry who recently died from cancer. The service was not available in the North of Ireland. It was available in the South of Ireland but she could not use the Southern service. She had to go to London, which really damaged her ability to recover and to be with her children in her last number of weeks. There are plenty of examples of that. I refer to even just having a systemic picture of what is available in the North, what is available in the South and what does not cross the Border, to be able to work systematically in trying to join up those two sources of healthcare delivery so we have an all-Ireland health service.</p>
+          <p eId="para_86">I do not know whether any work has been done on that. How would we find out that information?</p>
+        </speech>
+        <speech by="#" eId="spk_42">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_87">I am not aware of any work that has been done that would address that sort of tragic and unnecessary type of situation. It is an omission. While we are not experts on healthcare systems, there is potential within that space of the Good Friday Agreement if we move away from organic development of services based on need or what may be happening in the moment and look five to ten years down the line at the challenges we are going to have. To do that would require a strategy, framework and vision. The potential has been given to us. It is about how we create that between the two jurisdictions.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_43">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_88">I looked at the all-Ireland economy a few years ago and did a report on it. Everybody I spoke to, from all different backgrounds, was of the view that if we planned, funded and delivered together, there would be better services that would be more efficiently delivered. I do not know whether any of that is still happening. Is planning strategically together, as Ms Costello said, or funding and delivering together actually happening in any real sense at the moment?</p>
+        </speech>
+        <speech by="#" eId="spk_44">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_89">I will hand over to Dr. Kavanagh in a moment, but my observation in this arena is that there are excellent working relationships between colleagues North and South. As I mentioned, we are one of the maturer agencies. We know each other well. There is a lot of energy and impetus, but we lack the framework to deliver something meaningful. Everyone working in public health is very aware of the huge challenges that are coming down the line, particularly around the ageing population. We have a unit on ageing within our team. These challenges are immense. There is value, just as there is in business terms, in working in co-operation. There are the benefits of information sharing, but there are also cost savings in doing this together.</p>
+        </speech>
+        <speech by="#" eId="spk_45">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_90">I will add to that for context. I appreciate the focus of the question around healthcare services but in terms of the health of the nation and public health, which are the focus of the institute, it is important for us to remember - I say this as a medical doctor by training - that healthcare services only contribute about 20% to the levels of health and well-being that we see at a national level. It is important that we have organisations like the institute that are providing a voice on issues of preventing disease, keeping the population well, preparing for future challenges like population ageing, and focusing outside healthcare services on social determinants of health, health inequalities, commercial determinants of health and so on and so forth. It is important for us to remember when we are talking about the health of the nation that, while healthcare services are really important when people get sick, they are just one contributor to the levels of health and well-being.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_46">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_91">Does the institute have any information on the differentials between North and South in public health? My understanding is that length of life, for example, is currently lengthening in the South of Ireland. In the North of Ireland, life expectancy is not as high and is actually falling. Have any good studies been done on what may be the widening gap in public health between North and South at the moment, or is that the case?</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_92">What that speaks to is one of the recommendations we have come here with, which is on establishing an all-island public health dataset so that we can track, research and evaluate those differences. When the institute was founded, one of the landmark reports it published was on inequalities in mortality and the differences in mortality across the island of Ireland. It looked at those differences in terms of North-South but also across population groups and socioeconomic groups. There is a real opportunity, in establishing a public health dataset, to build an evidence base to understand the trajectory, trends and differences in health across the island so as to inform improved approaches to public health policy.</p>
+        </speech>
+        <speech by="#PeadarToibin" eId="spk_48">
+          <from>Deputy Peadar Tóibín<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_93">I have a final question. There are obviously different methodologies North and South, and a whole lot of differentials that make data collection difficult. Is there any systemic resistance to sharing data?</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_94">If I could maybe continue-----</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_50">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_95">Briefly, please.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_96">I will bring the Deputy back to the response I gave to his colleague. There is a requirement to look at three steps to build this all-island dataset. It is about technical issues, standards for data definitions, to the Deputy's point, and leadership and governance to make sure there is co-ordination and that data is used. There are a lot of similarities in how health data is collected across the island, but there are also differences.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_52">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_97">I thank all the witnesses for being here. It is good to see Ms Costello again. Our paths crossed in a different life a number of years ago.</p>
+          <p eId="para_98"> I had a load of questions about datasets, but Deputy Crowe got pretty forensic on that and used up all my questions. It is fascinating to hear the witnesses' thoughts on this because it is so important. In my previous job in rights and equality, we had a mantra that what you cannot measure, you cannot change. We had real frustrations, particularly in the justice sector, where it seemed at times that the Republic lagged a lot in terms of data collection. At best, it can sometimes be said that it might be State negligence and sometimes it genuinely feels there is no willingness to gather that data because there is no willingness to face up to the barriers and challenges within different areas. I hope that is not the case in the health sector. From the contributions, it sounds like that is not the case. As was said, it is the framework and the direction that are lacking. We have got some really good ideas from the witnesses on how this committee can assist and help them to bridge that and gather meaningful datasets to use in their work.</p>
+          <p eId="para_99"> I will shift my questions slightly. Obviously, we talked a lot about the Good Friday Agreement. I am also very keen to discuss the Windsor Framework and, essentially, the potential for divergence on both sides of the Border in terms of public health, from the IPH's perspective. I will open with a broad question. In what area of public health - I see from its website all the different areas it covers, such as obesity, alcohol, ageing and so on - does the IPH see the biggest divergence at the moment? That is not necessarily in the regulatory or data space. In either the clinical or public health picture, where are we seeing the most difference between the North and the South?</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_100">There are probably a number of different areas. My view, certainly in public health, is that we have come closer together over the past couple of years, more so than diverging. I cannot think of a specific area in which we are diverging. There may be a different pace on different issues. As I said, I cannot emphasise enough the strength of the working relationships between colleagues in the Departments of Health and colleagues in public health, North and South. It is a question of convergence but the pace is different. There are lots of reasons for that.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_54">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_101">Okay, excellent. Does anybody else want to add to that? No.</p>
+          <p eId="para_102"> Specifically on food insecurity and health, is there any potential divergence in that area? What does that look like? Is that within the institute's remit?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_103">I will ask Dr. Mack to deal with that.</p>
+        </speech>
+        <speech by="#" eId="spk_56">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:00:00+01:00"/></from>
+          <p eId="para_104">It slightly relates to the Deputy's previous question; I was just about to come in there. On food insecurity, the institute has done quite a lot of work on obesity prevention for the departments of health in Northern Ireland and Ireland. Our work has mainly looked at the policy measures, and the evidence behind those policy measures, as to what is the most effective in trying to prevent obesity. No country on this earth has been successful in preventing obesity to date. The measures we have the most developed evidence for are looking at fiscal policies, subsidising healthier foods and taxing unhealthy foods, but the issue of food poverty speaks to social inequity, the determinants of health and the inequity we face in society. That is very much the core of what we do, in particular in terms of child poverty measures. I do not have the detailed evidence in front of me but there is the distribution of free school meals, for example, and different measures. If we take a life-course approach to prevention of obesity and food poverty, trying to create conditions that are more equitable at a young age is where the policy in health needs to be directed.</p>
+          <p eId="para_105"> On the Deputy's previous question on divergence, I agree with Ms Costello that, in general, we are working towards the same goals in preventing harm from alcohol and tobacco, and skin cancer prevention. Our environmental governance frameworks are relevant and parallel to health. These are quite different North and South in terms of our policies on climate change and air quality. We know that the environment is an incredibly powerful determinant of health and health equity. I would really like to see a more collaborative approach towards environmental policy because with Brexit and the Windsor Framework, it is only going to become more difficult. A very good report was produced by the Northern Ireland Environment Agency and the Irish environment agency that looked at the divergence of environmental governance North and South. We have very different policies on air pollution and climate. Taking the most ambitious of those, and having human health, equity and social justice at the centre of them, would make a big difference to public health.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_57">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_106">Do the witnesses see any directives or EU regulations coming down the tracks now that they would have concerns about that would sharpen that post-Brexit divergence?</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_107">Not necessarily. Having European legislation that both jurisdictions worked to provided a setting for collaboration and secure footing to work from, so I suppose that does pose a lack of security. If we think of air quality, for example, the WHO air quality guidelines are very clear on there being no safe level of air pollution for human health but outline the levels we should try to get to as a society in terms of particulate matter or whatever it is. Evidence base is really important, such as when organisations like the WHO have clear limits that they set. If both jurisdictions could follow them and have legislation to harness that, that would be fantastic for population health.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_59">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_108">I might shift specifically to alcohol and data. Are there particular issues around the data picture for alcohol-related measures and alcohol-related public health prevention areas? Obviously, for example, we have seen the alcohol labelling sadly delayed by the Government recently on what I would describe as the very tenuous basis of tariff concerns. Is this an area where we can do more as a committee to encourage better collection of data and comparable data for alcohol prevention or alcohol health measures?</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_109">Does Dr. Mack want to speak to the data around alcohol in Northern Ireland?</p>
+        </speech>
+        <speech by="#" eId="spk_61">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_110">I can give the Deputy a picture from Northern Ireland in case that is helpful. I referred earlier in one of my answers to the Northern Ireland health and social care inequalities monitoring data set. It is a well-developed data set that looks at population health and different risk factors across the life course. With alcohol, for example, it would measure alcohol-specific mortality in Northern Ireland over time. We can see that trends are worsening in that area. It also looks at geographical levels of deprivation and how that relates to alcohol-specific mortality. We can see that the inequality gap in terms of the number of deaths in the most privileged areas versus the most deprived is widening. Having that data is incredibly important, not just for policymakers but for those working in services to understand what the general picture is here and then making a sort of plan for service delivery and policy development.</p>
+        </speech>
+        <speech by="#SineadGibney" eId="spk_62">
+          <from>Deputy Sinéad Gibney<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_111">Excellent. I have gone over time, so I will leave it there.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_63">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_112">I thank the Deputy. Claire Hanna was online, so when she comes back in, I will bring her back in because it is her slot. Next is Dáire Hughes.</p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Mr. Dáire Hughes<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_113">I thank the panel for coming in, presenting to us and fielding our questions. I would like to start by commending and echoing the comments of my party colleague Deputy Seán Crowe on Duchenne muscular dystrophy. I welcome the early access programme for that, which has been announced by the Belfast Trust. I specifically commend the families of the children suffering from DMD who have campaigned strenuously for that, including families in my constituency. I wish every applicant to the early access programme well.</p>
+          <p eId="para_114"> With regard to public health challenges, it is broadly accepted that public health challenges are universal across this island, although some are more acute depending on if you are in the North or the South and urban or rural, your peripheral status to Dublin or Belfast and, fundamentally, your socioeconomic circumstances. I would contest that partition has had an undeniable impact on both public health in general and healthcare provision throughout the island. Life expectancy in the North is lower. There is a general lower quality of life, incidences of chronic illnesses are higher and mental health issues are ongoing. That is owing to both the legacy of our conflict and decades of British Government austerity and underinvestment in both public health and healthcare initiatives.</p>
+          <p eId="para_115"> The island's population is completely interdependent and intertwined. We cross the border to work, to study, for recreation, for socialising and for family connections. It is in everybody's interest that public health be advanced across the island as a whole. That necessitates the bridging of the gap and developing complementary policies on issues like tobacco, vapes, alcohol, air quality, gambling and all of those things, and there are still considerable gaps in relation to that. To that end, the all-Ireland data set is a fundamental requirement to inform joined-up public policy.</p>
+          <p eId="para_116"> Tthe witnesses have acknowledged that we are close in terms of trajectory in public health on a North-South basis and that we are going in the right direction, albeit with the divergences I have listed. What are the principal obstacles to the formation of an all-Ireland data set? Where is the institute hitting a brick wall in taking this forward? Is there anything specifically that this committee could recommend or advance to take it forward? It seems like a logical and practical evolution of both the shared island unit and the North-South Ministerial Council to take this forward and deliver it, given that I can guarantee that neither health Minister, North or South, would recoil from the advantages of having such a concrete data set representing all citizens on the island.</p>
+        </speech>
+        <speech by="#" eId="spk_65">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_117">I will hand over to my clinical colleagues in a moment. There are two reasons that we may not see as barriers but perhaps have a lack of emphasis. As I said earlier, there is plenty of scope for this to happen but we lack a roadmap, a framework, a vision or a strategy for public health that could sit within the Good Friday Agreement or be derived from it. Without that, it is hard to go forward. There is a lot of energy, interest and agreement, but we need to have a roadmap. We need to have a joint statement on how we would address this. It does not have to be an enormous upfront investment; a pilot would be sufficient to start it.</p>
+          <p eId="para_118"> There are practical ways of doing it. I might take a moment to highlight one of the existing frameworks we use, which is not that well known. The North-South alcohol policy advisory group, which is convened at the behest of both chief medical officers and hosted by the IPH, is where civil servants working in the area of alcohol policy across different Departments come together to share information, to discuss policy alignment and to learn from one another. That is one of the things that is sometimes overlooked when we look at North-South policy. Again, we are just in alignment and we are not doing it together, but we do learn a great deal from one another. Sometimes, when we compare things, we point out that one side not being as good as the other but, as a colleague in Northern Ireland said to me, we are actually pushing each other to be better on each occasion. One goes forward and the other tries to match that. That is only a good thing. With regard to the data set, certainly from the public health side, there is probably universal acknowledgement that it is required.</p>
+          <p eId="para_119"> What is very valuable to us in coming to a committee like this today is to be able to talk about the fact that we need a roadmap to do it. We are all the time working to national strategies, objectives and action points set out by the Departments of Health and other Departments. To set out the roadmap towards that would enable everyone to follow on that path. I think that is the impetus that is needed, but my colleagues may want to add to that.</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:10:00+01:00"/></from>
+          <p eId="para_120">I can add to that. It was an important question. I thank Mr. Hughes for asking it. To provide a bit of context on data in Northern Ireland and Ireland, we have very different systems and the providers are quite disparate. There are many providers. We do things quite differently. In general, we are collecting data to measure the impact of our public health strategies, Making Life Better in Northern Ireland and Healthy Ireland in Ireland. There is learning to be had from each jurisdiction. It would be helpful to collect data that looked at population health as we understand it, which we have discussed, as well as the wider determinants of health because both population health frameworks talk about the importance of environmental conditions that we live in, economic structures around us, the quality of housing we live in and the safety of our communities. These other factors are highly relevant to health and we need to have them in the same picture.</p>
+          <p eId="para_121"> Operationally, we need to have the additional funding and resourcing in order to staff it. At the minute, you have to be from a medical background in other to train in public health and be a public health consultant in Ireland, whereas in Northern Ireland that has been opened up with the rest of the UK to include people from different disciplines. That is relevant because if we are going to have a North-South approach to data collection, we need to have the skills and expertise within the workforce. That is not to say our clinical colleagues do not have that - of course they do - but data analytics is a very specific skill and the art of being able to communicate it to different audiences is another skill entirely. Is there any point in having all of this data if we do not communicate it clearly to the communities that need it? They want to know the health of their local communities and the policymakers are trying to make big decisions. There is a whole art and science when it comes to data collection, and we need to have that multidisciplinary team around the system for it to work effectively.</p>
+        </speech>
+        <speech by="#GarretKelleher" eId="spk_67">
+          <from>Senator Garret Kelleher<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_122">At the outset, I commend the IPH on its great work. It is a fantastic example of cross-Border co-operation and the fact it was established prior to the Good Friday Agreement shows it was done proactively rather than in reaction to the agreement. Its work should be commended.</p>
+          <p eId="para_123"> Following on from some earlier questions related to the UK's withdrawal from the European Union, I have two specific questions. First, even though the health inequalities referenced are primarily societal and due to differences in healthcare outcomes and life expectancy as a result of people's backgrounds in the different socioeconomic groups, are there any obvious health inequalities or disparities that have come about or become more pronounced since the United Kingdom's withdrawal form the European Union? </p>
+          <p eId="para_124"> I have a slightly related question about initiatives that have been funded by EU funding. Dr. Mack referenced the PEACE-Air Partnership being funded by a special EU programmes body. What is the long-term sustainability of initiatives like that? Will they continue to be funded through the same funding channels or is that something that needs to be looked at?</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_125">I can take that question first and try to come back to the previous question as well. The context for the PEACE-Air Partnership is that there are ten partners across the island of Ireland. There are academic partners from a lot of the universities and the councils. We are the health partner and we are really pleased to be representing health across the island of Ireland in this initiative.</p>
+          <p eId="para_126"> We have been given what sounds like quite a large pot of money to work with over the next three and a half years on collecting research and looking at the impacts on air quality and health in relation to primarily solid fuels, air pollution from vehicles and traffic as well as agriculture. We will be looking at very broad areas of society across the island of Ireland. The data we will collect will have a legacy in the sense that we are forming partnerships between our institutions. Obviously, once the work comes to an end, the funding will come an end but those relationships will continue. Part of the work will be setting up North-South committees and relationships so we can have theses conversations about air quality and health and have defined forums where we can have those knowledge exchanges with the research we are developing. </p>
+          <p eId="para_127"> Once we have collected the data, one of the things we will be looking at is the influence of particulate matter on health and the impact on mortality to build on the research done by the British and Irish Heart Foundations a few years ago. I would like to be able to use that data to then inform different committees, whether the committees on health or on environment, after the project has finished as to how this data can transform policy to protect health going forward. The Senator is right in the sense that we have been able to come together and collaborate on this work through this particular pot of funding, and that is a concern when looking forwards.</p>
+        </speech>
+        <speech by="#GarretKelleher" eId="spk_69">
+          <from>Senator Garret Kelleher<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_128">The health inequalities have not been referenced. Presumably, there have not been any obvious ones that have manifested themselves or been exacerbated since the change due to the UK's withdrawal?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_129">I am sure there has been work done on whether there has been an impact of Brexit in Northern Ireland but I did not have it to hand. Does Dr. Mack recall work on the impact of Brexit on health inequalities in NI?</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_130">I am not aware of any work having been done to investigate that matter. In general, life expectancy, although it has been improving over the past few decades, has stalled. It would be very difficult to tie that to one specific thing but I think wider political, social and economic factors that have changed over time are contributing to that.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_131">Just to add, for any health impacts there would be from the EU withdrawal and the differences emerging across the island, the way public health works is that at a population level it can often take years, decades or generations for these impacts to become apparent. The Senator's question really underscores one of the points we have been emphasising this evening, which is the opportunity through establishing a common public health data set to track changes over time.</p>
+        </speech>
+        <speech by="#GarretKelleher" eId="spk_73">
+          <from>Senator Garret Kelleher<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_132">I was going to ask a couple of other questions but in the time that I have left, I will say this. A long time ago, I worked in the directorate general for health and consumer protection and on the task force that examined the co-ordination of European Union member state responses to the possibility of chemical, biological and nuclear attacks within the European Union. This is unlikely to fall under the scope of the work being done by the IPH at present but is it envisaged that the scope of the IPH will broaden at some point to look at a possible attack on Ireland? The IPH mentioned in its opening comments that diseases and public health concerns do not recognise borders.</p>
+        </speech>
+        <speech by="#" eId="spk_74">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_133">That would largely fall under the remit of the health services in both jurisdictions, namely the Public Health Agency, PHA, and the HSE. </p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_134">That would probably fit under health protection within the public health specialty. We have colleagues in the PHA in Northern Ireland and the HSE who would monitor threats such as those the Senator referenced. It would be part of the job. It would be outside the remit of the institute. However, we work on air pollution, climate change and those broader health protection-type determinants. We have very close relationships with our colleagues in both implementation organisations but, no, that would fall outside the remit of what we would do.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_76">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_135">The witnesses are all very welcome. It is very significant that they are here today because part of the Good Friday Agreement committee's work has been to break this down sector by sector and answer questions about what an all-island service would look like in different areas. We have already done economics and finance, and women and the constitution. I do not mean that they are static papers, and we have cross-party agreement on them, but rather that we add to them all of the time. This is our first session in our module on what an all-island health service would look like, so we wanted to have the IPH's input into this. I have certainly learned a lot today about the great work the IPH does.</p>
+          <p eId="para_136"> I am mindful that it has been 27 years since the Good Friday Agreement and that was when the IPH was set up. My questions will be framed around what we do from here. What do we do with the next phase or how would the witnesses answer the question about what a public health system would look like on an all-island basis? I particularly want to home in on the report that was based on a discussion paper examining the potential for a multidisciplinary public health workforce in Ireland because that is one of the challenges we have. I see from the discussion paper that we will need "a strategic roadmap, inter-disciplinary competency frameworks for skills development, a registration system for public health professionals, [as well as] a regulatory body, accreditation, and professional development." </p>
+          <p eId="para_137"> That, in itself is a huge piece of work. Will the witnesses speak to that and to how we will do this better? We are trying to do this across a whole load of areas in terms of sharing labour across the island because it is one of the biggest constraints we have in health and in other areas as well.</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_138">I thank the Deputy for raising this issue. My colleague Dr. Mack was the lead author of that report so I will ask her to expand on the differences between the two jurisdictions and, as we discussed in the paper, what might be required to bring the jurisdictions into alignment, which will be quite significant. </p>
+        </speech>
+        <speech by="#" eId="spk_78">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:20:00+01:00"/></from>
+          <p eId="para_139">I will try to answer the question. I trained in public health in Northern Ireland and the system is very different. I am now a trainer for trainees in both jurisdictions. What that means is public health specialist trainees going through a series of training programmes in order to, at the end, have a consultant or specialist post. The systems are incredibly different so, in Northern Ireland it is only really in the past couple of years that we have followed the UK example of not needing to be from a medical background to enter public health specialist training and to be able to have a consultant position without having a medical background.</p>
+          <p eId="para_140">It is different here. People need to have a medical degree to be a public health consultant. As regards multidisciplinary public health, we have talked today about the breadth of public health. It is everything from alcohol and tobacco to the air we breathe and the climate around us and because of that we need to have skills from environmentalists, social policy, the economy-----</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_79">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_141">Dr. Mack is correct in what she said. I thought she described it well when she mentioned trapped talent. For the purpose of this session, I want to specifically get at what the Irish Government needs to do to help to implement what Dr. Mack identified in the discussion paper and bring it forward.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_142">The creation of roles in health improvement would be a good start. Historically, the focus in public health training has been on health protection. That is the case in the majority of specialist training programmes. I am speaking about Northern Ireland. Dr. Kavanagh might be able to speak about Ireland. The majority of the posts are in service development, screening and health protection.</p>
+          <p eId="para_143"> I am quite unique on the island of Ireland in having a role in health improvement public health, but as we know, with the rise in non-communicable diseases and the influence of environmental and economic determinants, we need to have more specialist skills in looking at health improvement policy and the wider determinants. At the moment, the majority of posts do not reflect that. We need to have increased capacity and an increase in the number of jobs focusing on those areas and to have that range of skills.</p>
+          <p eId="para_144"> The Deputy spoke about trapped talent. Those words are important. A lot of students are coming off master's courses in public health and are struggling to find employment. They are highly skilled individuals from medical backgrounds and dental backgrounds who want to work in public health and provide their expertise but they do not necessarily have the employment opportunities and therefore go to other countries. Increasing the importance of the health improvement workforce, increasing capacity and resources and ultimately learning from the UK and opening up public health training to be multidisciplinary has been useful.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_81">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_145">How can we ensure there will be a flow across the island, so that people who train on one side of the island can apply for a job without having to go through all the barriers, if you like? We have the same problem with student mobility with people trying to get places here, which we are also trying to tackle.</p>
+        </speech>
+        <speech by="#" eId="spk_82">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_146">For example, as I work for a North-South organisation, I have to be registered with the General Medical Council and the Irish Medical Council. I need to go through two separate portfolio systems, so it is quite administratively burdensome and there are financial elements as well. Automatic recognition of qualifications in both jurisdictions would be helpful, particularly in instances like the Covid-19 pandemic, when increasing capacity quickly is useful. People do not have time to go through 12 weeks of applications for another jurisdiction's medical council. Removing those practical barriers by having automatic recognition of credentials could be helpful in trying to increase capacity on the island of Ireland.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_83">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_147">Does Dr. Kavanagh agree with that?</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_148">Yes, without a doubt. We need good quality training to make sure we have a workforce that will be able to meet future challenges in public health. We need people from broad sets of backgrounds with broad skills, including people with skills in history, policy and data as well as people with clinical skills like Dr. Mack and me. It is then about building career pathways and looking at the regulatory structures around them to make sure we have a fit-for-purpose workforce into the future, which is drawing people from various disciplines in public health.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_85">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_149">I am over time, but on data-----</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_86">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_150">Go ahead. The Deputy has started.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_87">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_151">Even in health economics as much as everything else, what can we as a committee do or suggest so we can have better congruence of data North and South? What lessons did we learn from the Covid-19 pandemic that we will implement now? These things cannot be tackled in two separate jurisdictions. We cannot deal with public health the way we have dealt with it heretofore because there will be mountains of challenges for us to climb all the time. How will things be different?</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_152">I will go back to Dr. Kavanagh and Dr. Mack in a moment, but it comes back to the structures, plan and roadmap. We have mature organisations with established relationships, but in some ways we have reached the limit of our remit. Perhaps a review of that remit, revisiting what is possible 27 years on from what was originally envisaged, would be worthwhile. There is greater potential now than perhaps there was at that time. Many things have happened that have affected public health since then, not least the pandemic, and there are significant lessons from that. There has been significant investment in public health medical consultants in the HSE in recent years and that has been welcome. Part of the focus on the need for a multidisciplinary approach is a result of those colleagues mapping out what they need to move forward. I think a public health strategy may be coming forward.</p>
+          <p eId="para_153"> A lot of work is ongoing, but in the North-South space, if the committee is minded to do so, it could set out some clear goals that are achievable. Things like the public health data set sound like enormously complex and difficult things to do, but it is relatively easy - we wrote a scoping exercise on this - to start with a pilot to just work in one area of health improvement. There are many topics that both jurisdictions are extremely advanced in, particularly tobacco control. That would be a good starting point and we could build from there. Sometimes, if we think about something that is so enormous, it is just too big, too complicated and too expensive for anyone to take on. In the landscape of health where there is so much acute pressure all the time, one of the challenges is to carve out time and space to think strategically about five, ten or 15 years hence because that is the space health improvement is in.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_154">That was a nice short question to ask at the end. I like that.</p>
+        </speech>
+        <speech by="#AlisonComyn" eId="spk_90">
+          <from>Senator Alison Comyn<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_155">Cuirim fáilte roimh na finnéithe go léir. I thank them for coming. One of the joys of being this far down the speakers list is that I have almost ticked off almost every question I had, but I thank the witnesses because I have learned a lot. I will have to think a little outside the box.</p>
+          <p eId="para_156"> I come from a Border county. I am based in County Louth so I have watched a steady flow of resources over and back across the Border. It is not always great, but it is usually fantastic. I have enjoyed seeing that. Hearing about the work the witnesses have been doing, I am reminded I availed of knee surgery in the Kingsbridge hospital in Belfast as part of the cross-Border initiative. That is a private hospital, but can that model be taken and used for anything else? Are there any plans for that within public health?</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_157">In public health, we are looking for a version of being able to get really good treatment in another jurisdiction in a timely manner. The public health version of that would be being able to co-operate closely in research and policy development for shared challenges. That is where the efficiency comes because we would both be investing smaller amounts of money to get a bigger outcome. Research is expensive. There are nuances to understand with the different policy environments, which are complex. In order to develop strong policy recommendations, they need to be understood.</p>
+          <p eId="para_158"> There are other opportunities. They are somewhat outside our remit, but are definitely part of public health. They are things I referenced earlier, such as joint public health campaigns. We are in a difficult environment with misinformation, particularly about public health, at the moment and it is important that public health keeps a strong narrative of what the evidence is and keeps the trust of the public. The agencies, the HSE and PHA in Northern Ireland, have high levels of trust among the public but we now need to keep a strong narrative of information moving and communicate in the national dialogue. Joint public health campaigns are one of the things that can be done. We would be addressing the same challenge, attempting to share the cost and looking for efficiencies. As I referenced earlier, it is a question of alignment and partnership and trying to make each other better. As one moves forward with a different policy initiative, the other can possibly follow. That is the public health version of being able to get good treatment in another jurisdiction mnore quickly.</p>
+        </speech>
+        <speech by="#AlisonComyn" eId="spk_92">
+          <from>Senator Alison Comyn<recordedTime time="2025-09-30T19:30:00+01:00"/></from>
+          <p eId="para_159">We need to get those policies to align.</p>
+          <p eId="para_160">I almost fell foul of those policy changes when I was getting the surgery because as a HRT user in the Republic, there were very different guidelines when I went to get the surgery. I was told either to come off HRT immediately, which, as we know, would have plunged me into symptoms, or the surgeons would refuse to carry out the surgery. It was very nuanced and particular to a woman of a certain age. I would love to see some sort of investigation or policy change. We should look into those inequalities and where there could be a broader use across the country.</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_161">A public health example of that would be the difference between the low-risk drinking guidelines in Northern Ireland and Ireland. There is work going on to review the low-risk drinking guidelines in Ireland. The UK undertook substantial work on the low-risk drinking guidelines a number of years ago and there is quite a difference between the two jurisdictions. That issue was raised with us by people working in addiction treatment. It can be problematic for people supporting those in addiction. We will await the outcome of the review that HIQA is undertaking.</p>
+        </speech>
+        <speech by="#AlisonComyn" eId="spk_94">
+          <from>Senator Alison Comyn<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_162">These are some of the challenges we are dealing with. How sensitive is Ms Costello's work to shifts in Government priorities, changes of Ministers or shifts in political will in either jurisdiction?</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_163">Public health is probably political. There are political determinants of health that are most obvious in terms of public health. Much of the good work in public health is done through legislation and regulation, which is inherently political. Ireland has a particularly good record of leadership around tobacco control and alcohol legislation. There is certainly great commitment in Northern Ireland at the moment from the Minister for Health, Mike Nesbitt MLA, around the issue of health inequalities. Public health has come onto the political agenda in the past five to ten years in a very meaningful way. We have always had good public health leaders in the health roles. We are now beginning to see a greater understanding of the role of other Government Departments and other policy areas on people's health and well-being. That is definitely progress.</p>
+        </speech>
+        <speech by="#" eId="spk_96">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_164">On the role that the institute has in respect of public health and shaping public policy, we have a small policy unit comprising staff who conduct research and rapid reviews of high-quality evidence to inform the policymakers, depending on what policy is going through the Department at the time. When work was ongoing in Northern Ireland on a new obesity prevention strategy, part of our contribution was conducting a rapid review of high-level evidence on obesity policies internationally and providing guidance to the Department on the highest level of evidence for different measures, whether they were fiscal measures or menu labelling, etc. The type of research we did was live, in the sense that it can be updated with the best-level evidence. If the political structure changes or the Minister changes, we still have the high-level evidence that we can then update if new studies come out or is there is anything new to bring to people's attention. We are able to support the Department in Ireland as well. In the context of the development of obesity policy in Ireland, we have done this evidence review and can inform the policymakers with the evidence we have already carried out. In that way, using obesity as an example, we can try to support policy development on a North-South basis and maximise the return on investment for the research of the IPH.</p>
+        </speech>
+        <speech by="#AlisonComyn" eId="spk_97">
+          <from>Senator Alison Comyn<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_165">How will the witnesses future-proof against those shocks and changes? How can we help with that?</p>
+        </speech>
+        <speech by="#" eId="spk_98">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_166">Being here today is a big step for us. We have never previously been before this committee and are delighted to be here. It underlines the fact that across the political class, there is a broader understanding of how many different policy areas are supporting health. I sometimes have a certain amount of sympathy for a minister for health because problems that are often created under other portfolios wash up on the shores of health. Ministers for health must deal with everything. Health in all policies is a very real thing. We in Ireland are entering into a new phase whereby there will shortly be a new health improvement strategy for the country, which I understand will run for the next ten years. Core to that is cross-departmental working and a commitment across government to a healthier population, and all the benefits that would bring. That concept of health in all policies would be significant in helping people to understand that whatever Department you are in, or whatever policy area you are dealing with, it will, more than likely, have an impact on the health and well-being of the population. It is everyone's concern in that sense.</p>
+        </speech>
+        <speech by="#ShaneMoynihan" eId="spk_99">
+          <from>Deputy Shane Moynihan<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_167">Cuirim fáilte romhaibh ar fad chuig an gcomhchoiste seo. I have only brief questions relating to the whole area of skills and training, on which the witnesses have touched already. My questions are two-pronged. I love the idea that the IPH is behind specialist training on the island of Ireland. I would like to get a sense of the volume of professionals in the pipeline; those who are coming down the track. The witnesses have identified a number of the challenges we are going to face in respect of general public health, including factors such as ageing, addiction and so on. Is there a healthy pipeline of professionals there at the moment? Is it seen as an attractive career? What sorts of steps are being taken to attract not only the clinical professionals, who have been mentioned, but also the more analytical and supporting professions? I do mean "supporting" because those roles are intrinsic, but the witnesses know what I am getting at. I am talking about the associated professions that are non-clinical but are equally as intrinsic.</p>
+          <p eId="para_168"> Will the witnesses talk a bit about the cross-Border element of the overall training provision? One thing the IPH has done well is the creation of a large academic public health community of people who talk about and discuss their research at the conferences the witnesses have described. The fabric that knits that together is the relationships that are built among the practitioners who work on a public health basis. Perhaps the witnesses would say something about the training and how to embed that fabric into the training that is provided for the specialist public health side of things.</p>
+          <p eId="para_169"> The following question arises from ignorance more than anything else. We are facing an issue with public health nurses because of demographics. Is that something that is within the IPH's wheelhouse, or in which it has an interest? That relates to career attractiveness. The pandemic has brought into focus, on this part of the island and in Northern Ireland, the need for a public health discipline in its own right. It has been brought to prominence in that regard. I would like to hear generally about how the witnesses are thinking about recruitment to that discipline and continuing to enhance it, and how we underpin that fabric to ensure an all-island discipline from cradle to grave, for want of a better expression.</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:40:00+01:00"/></from>
+          <p eId="para_170">I thank the Deputy for his questions. In the institute, I work as a public health consultant. Part of my role is acting as a supervisor for public health specialist trainees. We only relaunched our training programme in February this year. Two trainees from Northern Ireland joined us, one on a project-based attachment, looking at skin cancer prevention, and the other on a six-month full attachment. I will come to Dr. Kavanagh, who is also a registered trainer. Specialist training at that level, when you are ultimately going into a consultant position, is quite intense. A lot of rigour is required. We would not have people joining us <i>en masse</i>. We would take one trainee at a time. In general, we need to increase the workforce in public health when we consider all the challenges coming down the line, especially when we think about the wider pieces, such as climate change and all the rest.</p>
+          <p eId="para_171"> When we think about public health, there are different domains within it. There is health protection, service development, screening and health improvement. When we think about health improvement, there is the implementation side, including the smoking cessation services and weight management support. What we do is quite specific. It is looking at all the different policies and how health fits in. At the minute on the island of Ireland, IPH is the only provider of that type of health improvement policy specialist training. It would be fantastic if we could increase our capacity on that. The end goal for me is being able to have a trainee from Northern Ireland and Ireland at the same time. There is a benefit to that in terms of improving North-South collaboration with specialty public health doctors and others who are not from a medical background, and the learning that can come from that. At the moment, we are just starting. We are small and can accommodate only one trainee or two trainees at a time. The training programmes are also interested in increasing the capacity for North-South working. There is an annual training day whereby the registrars, the specialist trainees, from both jurisdictions come together and the IPH has been present at those to provide teaching on informing policy and legislation. We contributed to the sale of alcohol Bill in 2018. We are able to provide that specific expertise.</p>
+          <p eId="para_172">We would love to grow it as well.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Dr. Paul Kavanagh<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_173">Perhaps I will add just a few short comments from a southern perspective. There has been, on foot of a number of strategic reviews of public health in the South, big investment in terms of increasing the volume of doctors training in public health medicine. There have also been significant changes around terms and conditions, which, in the context of Deputy Conway-Walsh's question around talent and retention, meant that remaining within a career in public health medicine is much more attractive. The big opportunity in the South is around learning lessons from colleagues in Northern Ireland around the importance of multidisciplinary public health. That is where we need to focus now when it comes to building out the workforce.</p>
+          <p eId="para_174"> As a board member of the faculty of public health medicine here in the South, I stress that we have excellent relationships with our colleagues in Northern Ireland. I have been on visits to and met with members of the faculty there. I also met the trainees as well. We have received the dean of the faculty from the UK to our faculty as well. There are very strong collegiate relationships, and lots to build on.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_102">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_175">I was not aware that this is the Institute of Public Health's first appearance before the committee. Given the length of time that the institute has been in existence, it is quite shocking that it has not been here previously. It is great to have the representatives here. It has been very informative and interesting to hear about the work the institute does and to listen to answers to the questions from the various members.</p>
+          <p eId="para_176"> Is the engagement to which Ms Costello referred with the Departments of Health, North and South? Are those the main bodies the institute would engage with or are there other entities within the public health realm that it would engage in the context of the research it carries out, how it conducts that research and how it disseminates the resultant information?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_177">We are funded by the Department of Health, and our work programme each year is in support of its objectives. We seek to find commonality and synergy because we are both often aiming for the same thing. That forms the bulk of our work programme every year.</p>
+          <p eId="para_178"> We work very closely with the two Departments through the chief medical officers' divisions of both, where their focus on health improvement is, but we have a wide-ranging group of so-called stakeholders who work closely with academics and policy experts. We pride ourselves on the fact that we are very well networked across Europe and Britain, and that brings a huge amount to our work.</p>
+          <p eId="para_179"> One of our key roles is to engage with the leading thinkers in this area in order that we can bring that to our work. Our research relates to policy and policy development and recommendations. It is also aimed, as much as possible, at influencing policy and policymakers to focus on health inequalities and health equity, but also to understand what the drivers are. While political representatives are very informed on this, many members of the public do not understand that a lot of their health and well-being is not always a choice of personal discipline or going to the gym a lot. Many health outcomes are influenced by the environment in which people live. That should take some of the sort of self-flagellation off people. It can be very hard to stay in peak condition or live to optimum health unless that environment is supporting you. The aim of the work we do is to make sure that the environment in which people live is, as much as possible, supporting their health and well-being and allowing them to flourish with their families and seek optimal health. Obviously, that supports the economy and society. To a degree, it also takes some of the pressure off the healthcare services that are so important for us all.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_104">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_180">Ms Costello mentioned earlier that there are many health policy areas that the institute focused on, such as alcohol harm, tobacco and skin cancer. She also mentioned gambling harm. As she will be aware, in the South we have set up the regulator, etc., so there have been some changes in that regard. Can she elaborate a little more on the institute's research and its work on gambling harm and indicate if there are other areas on which the institute has focused? I am sure there is a plethora, but Ms Costello might outline them for the committee.</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_181">Public health, by its nature, is extremely board. I thank the Chair for raising that because the work we do with the Gambling Regulatory Authority in the Department of Justice is an example of us working outside of the direct health sphere. I wish I could expand on the health work. My colleagues, who are the experts on that and are members of the Gambling Regulatory Authority advisory group, are not with us this evening.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_106">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_182">Ms Costello could send the committee a note.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_183">Unless anybody would like to add anything, we will certainly send the committee a note on that work.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_108">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_184">Yes, please.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_185">Our colleagues Dr. Helen McAvoy and Dr. Ciara Reynolds have done a great deal of research on the impact of gambling on health. We know that it is associated with serious health harms, including mental ill-health and suicide, and is a driver of poverty. As a result, this is an incredibly important public health issue. I suppose it also ties in with our work on the commercial determinants of health, because we know that people who gamble at harmful levels generate 60% of gambling revenue. There is a commercial interest there as well. We do a lot of work on the social and commercial determinants of health.</p>
+          <p eId="para_186"> My colleagues, Dr. Reynolds and Dr. McAvoy, have been involved in publishing some research over the past year looking at the exposure of gambling marketing to the population in Ireland. They have also looked at suicide as an outcome of problem gambling and the association with young people, and young males in particular. I am sorry I do not have the details in front of me, but I would be more than happy to share the research with the committee.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_110">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_187">We will engage again on that aspect. Has the institute appeared before other committees over the period? Obviously, I assume it has appeared before the health committee. What other committees has it appeared before ?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_188">We appeared before the health committee. We also appeared before the justice committee to discuss licensing. There may have been something on the gambling as well, but it was mainly health.</p>
+          <p eId="para_189"> My colleague Professor O'Sullivan is doing a lot of work for the older person's unit within the Department of Health. He appeared before the health committee to discuss that. It is a distinct strand of work around ageing that he is undertaking.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_112">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_190">That is very informative. In the notes she circulated to us, Ms Costello mentioned enhanced all-island co-operation. She highlighted cardiac, paediatric and ambulance services, among other treatment agreements. Are there any others in respect of which there are all-island strategies or co-operation?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_191">There are a significant number, more than one would think. I am always very interested in the work that the breast milk bank does. Obviously, colleagues in court do a huge amount of work. There was a paper written by the UK Government mapping the work of all-island North-South agencies, which are diverse in size and areas of focus. We can certainly supply that information to the committee.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_114">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_192">That would be really helpful in light of the workload we have ahead of us.</p>
+          <p eId="para_193"> Dr. Mack spoke to the PEACE-Air partnership earlier on. The partnership, which was announced by the Special EU Programmes Body, involves academic institutions, councils and environmental policy leads in both jurisdictions. Who are the environmental leads, North and South?</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_194">I cannot remember their names at this moment.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_116">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_195">That is okay.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Dr. Jenny Mack<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_196">They are representatives from the Departments of the environment in each jurisdiction. They have been involved from the outset in terms of framing what the Departments' priorities would be in terms of PEACE-Air. As I mentioned, environmental policy is very different, North and South. There was a real ambition to try to work on air quality, because it is something that is so important to everyone's communities as well. We have had a representative from the Department of the environment in each jurisdiction, and they would be present at all of the steering group meetings as well. They are involved from start to finish of the PEACE-Air work.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_118">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_197">I thank Dr. Mack for that. I hear Ms Costello in terms of her ultimate strategy being a roadmap or a joint strategy in order for the institute to progress its work. She spoke about the possibility of a review of the institute's remit and how it can be somewhat reset or enhanced. Where does she see that going? Who would initiate it? Will the request go to the Departments of Health or it will go to the Governments? Ultimately, who is the arbiter of that decision?</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T19:50:00+01:00"/></from>
+          <p eId="para_198">The Departments of Health would obviously be arbiters of that. They are very engaged in this type of work. They are very supportive, and we are delighted with that. How we would normally approach this - I would take my colleague Ms Ward's advice on this as well - is there would be room for a scoping paper on the potential for public health on a North-South basis in a post-pandemic, post-Brexit and post-Good Friday-Belfast Agreement environment. We are many years on now. We live in a different world. There would be room for a scoping paper, or it may be something that the shared island unit could look at in terms of the many symposia it holds. It could be an area or identified strand. There are many agencies like us, which, from working with colleagues I know, would also welcome looking at what a new landscape would look like.</p>
+          <p eId="para_199">That is definitely something which could be progressed, perhaps under the auspices of the shared island unit. That seems like the obvious place for it. However, I would certainly feel that the Department of Health, from our side, would be supportive.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_120">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_200">That is interesting. Ms Costello referred to the BRIDGEforEU regulation and the b-solutions mechanism for the cross-border challenges that exist. I know we are up against the clock, but can she elaborate a little more on the regulation?</p>
+        </speech>
+        <speech by="#" eId="spk_121">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_201">I will hand over to Ms Ward to elaborate on the BRIDGEforEU regulation.</p>
+        </speech>
+        <speech by="#" eId="spk_122">
+          <from> Ms Sinéad Ward<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_202">The legislation is very new. It has only come into effect this year. It was published in May or June. Obviously, given that it is from the EU, it is quite a sizeable piece of legislation. From reading through it and watching the space about cross-border governance, which is my area of responsibility in the organisation, it seeks to address, at an EU level, the need to deal with the inequalities that arise in border regions. It also recognises that although legislation is being mapped from the EU into each country through national frameworks, in national legislation and so on, it is just plonked in there. The problem is that it might not be mapped or implemented in the same way in neighbouring countries. The relevant authorities discovered that and feel that the cohesion element of the EU should address those border regions.</p>
+          <p eId="para_203"> The legislation asks national governments to create a point of co-ordination, whether through an existing entity or a new statutory body, to allow citizens, NGOs, groups that work at community level and in cross-border situations and even state bodies to address the problems that they might in the context of delivering cross-border public services. The way the legislation is designed means there is a time limit. It cannot just sit there for years and you do not get an answer back. There is an eight-month limit whereby the entity involved would either have to pay for the relevant legal expertise or go to other government Departments to seek the solution to their problem. The latter would go back to the entity to assist it with implementing that solution.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_123">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_204">Interesting.</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_124">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_205">The solution is not to have the Border in Ireland. Sorry, Chair.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Sinéad Ward<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_206">Interestingly, the association for cross-border entities has done a mapping exercise for the European Commission - I can send that paper in - which explains the vision more clearly. When you see the map of Europe with the yellow dots of where these b-solutions have been implemented, you will see lots of yellow around the Spain-Portugal border, all down the French border and along the borders of Italy, Germany and Poland. There are no yellow dots around Ireland. It is quite interesting. It is just blank. It has worked. I think it has looked at around 180 cases so far over the years.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_126">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_207">Europe certainly remembers Brexit, so it knows there was an issue. Yellow dots will appear here at some point, maybe. Do any other members want to come in with other questions?</p>
+        </speech>
+        <speech by="#RoseConwayWalsh" eId="spk_127">
+          <from>Deputy Rose Conway-Walsh<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_208">I think that was a very good session. We will look at it again as we develop this module. We might have the witnesses in again or maybe, if it is okay with them, we will put some questions to them that may arise as we are discussing the issues with other witnesses. I very much hear what they are saying.</p>
+        </speech>
+        <speech by="#" eId="spk_128">
+          <from> Ms Suzanne Costello<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_209">We will put together some of the things we referred to here and send them in.</p>
+        </speech>
+        <speech by="#CormacDevlin" eId="spk_129">
+          <from> An Cathaoirleach<recordedTime time="2025-09-30T20:00:00+01:00"/></from>
+          <p eId="para_210">That would be very helpful. On behalf of the committee, I thank the witnesses for their engagement with the it today, particular at this hour. It was their first engagement with us but hopefully will not be their last. It has been really insightful for all of us. The fact that everyone engaged with the witnesses illustrates that. I thank them for attending.</p>
+        </speech>
+        <summary eId="sum_6"> The joint committee adjourned at 8.04 p.m. until 11 a.m. on Tuesday, 21 October 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>

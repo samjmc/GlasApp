@@ -1,0 +1,846 @@
+<akomaNtoso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13" xsi:schemaLocation="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13 ./akomantoso30.xsd">
+  <debate name="Official Report">
+    <meta>
+      <identification source="#debates">
+        <FRBRWork>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-11/debate/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-11/debate"/>
+          <FRBRdate date="2025-06-11" name="#generation"/>
+          <FRBRauthor as="#author" href="/ie/oireachtas/committee/dail/34/joint_committee_on_health"/>
+          <FRBRcountry value="ie"/>
+          <FRBRname value="debate"/>
+        </FRBRWork>
+        <FRBRExpression>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-11/debate/mul@/main"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-11/debate/mul@"/>
+          <FRBRdate date="2025-06-11" name="#reported"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+          <FRBRlanguage language="eng"/>
+        </FRBRExpression>
+        <FRBRManifestation>
+          <FRBRthis value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-11/debate/mul@/main.xml"/>
+          <FRBRuri value="/akn/ie/debateRecord/joint_committee_on_health/2025-06-11/debate/mul@.akn"/>
+          <FRBRdate date="2025-06-14" name="#publication"/>
+          <FRBRauthor as="#editor" href="#debates"/>
+        </FRBRManifestation>
+      </identification>
+      <references source="#debates">
+        <TLCPerson eId="ColmBurke" href="/ie/oireachtas/member/id/Colm-Burke.S.2011-05-25" showAs="Colm Burke"/>
+        <TLCPerson eId="ManusBoyle" href="/ie/oireachtas/member/id/Manus-Boyle.S.2025-01-29" showAs="Manus Boyle"/>
+        <TLCPerson eId="MariaByrne" href="/ie/oireachtas/member/id/Maria-Byrne.S.2016-04-25" showAs="Maria Byrne"/>
+        <TLCPerson eId="MarieSherlock" href="/ie/oireachtas/member/id/Marie-Sherlock.S.2020-03-30" showAs="Marie Sherlock"/>
+        <TLCPerson eId="MartinDaly" href="/ie/oireachtas/member/id/Martin-Daly.D.2024-11-29" showAs="Martin Daly"/>
+        <TLCPerson eId="MichaelCahill" href="/ie/oireachtas/member/id/Michael-Cahill.D.2024-11-29" showAs="Michael Cahill"/>
+        <TLCPerson eId="NicoleRyan" href="/ie/oireachtas/member/id/Nicole-Ryan.S.2025-01-29" showAs="Nicole Ryan"/>
+        <TLCPerson eId="PadraigOSullivan" href="/ie/oireachtas/member/id/Pádraig-O'Sullivan.D.2019-11-29" showAs="Pádraig O'Sullivan"/>
+        <TLCPerson eId="PadraigRice" href="/ie/oireachtas/member/id/Pádraig-Rice.D.2024-11-29" showAs="Pádraig Rice"/>
+        <TLCPerson eId="SorcaClarke" href="/ie/oireachtas/member/id/Sorca-Clarke.D.2020-02-08" showAs="Sorca Clarke"/>
+        <TLCPerson eId="TeresaCostello" href="/ie/oireachtas/member/id/Teresa-Costello.S.2025-01-29" showAs="Teresa Costello"/>
+        <TLCPerson eId="TomClonan" href="/ie/oireachtas/member/id/Tom-Clonan.S.2022-04-04" showAs="Tom Clonan"/>
+        <TLCRole href="role/chair" showAs="Chair" eId="Chair"/>
+        <TLCRole href="role/vice_chairman" showAs="Vice Chairman" eId="Vice_Chairman"/>
+        <TLCRole href="role/author" showAs="author" eId="author"/>
+        <TLCRole href="role/editor" showAs="editor" eId="editor"/>
+      </references>
+    </meta>
+    <preface>
+      <block name="title_ga">
+        <docTitle>DÍOSPÓIREACHTAÍ PARLAIMINTE</docTitle>
+      </block>
+      <block name="title_en">
+        <docTitle>PARLIAMENTARY DEBATES</docTitle>
+      </block>
+      <block name="proponent_ga">
+        <docProponent>TITHE an OIREACHTAS</docProponent>
+      </block>
+      <block name="proponent_en">
+        <docProponent>HOUSES OF THE OIREACHTAS</docProponent>
+      </block>
+      <block name="committee_ga">
+        <docCommittee>AN COMHCHOISTE UM SHLÁINTE</docCommittee>
+      </block>
+      <block name="committee_en">
+        <docCommittee>Joint Committee on Health</docCommittee>
+      </block>
+      <block name="status_ga">
+        <docStatus>TUAIRISC OIFIGIÚIL</docStatus>
+      </block>
+      <block name="status_en">
+        <docStatus>(OFFICIAL REPORT)</docStatus>
+      </block>
+      <block name="date_ga">
+        <docDate date="2025-06-11">Dé Céadaoin, 11 Meitheamh 2025</docDate>
+      </block>
+      <block name="date_en">
+        <docDate date="2025-06-11">Wednesday, 11 June 2025</docDate>
+      </block>
+      <block refersTo="#unrevised" name="version_en">
+        <docStatus/>
+      </block>
+      <block refersTo="#unrevised" name="version_ga">
+        <docStatus/>
+      </block>
+    </preface>
+    <debateBody>
+      <debateSection name="prelude" eId="dbsect_1">
+        <summary class="Center" eId="sum_1">Tháinig an Comhchoiste le chéile ag 09:30 a.m.</summary>
+        <summary class="Center" eId="sum_2">The Joint Committee met at 09:30 a.m.</summary>
+        <rollCall>
+          <summary class="Center" eId="sum_3">Comhaltaí a bhí i láthair / Members present:</summary>
+          <table>
+            <tr>
+              <th>
+                <p eId="para_1">Teachtaí Dála / Deputies</p>
+              </th>
+              <th>
+                <p eId="para_2">Seanadóirí / Senators</p>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_3">
+                  <person refersTo="#ColmBurke">Colm Burke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_4">
+                  <person refersTo="#ManusBoyle">Manus Boyle</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_5">
+                  <person refersTo="#MichaelCahill">Michael Cahill</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_6">
+                  <person refersTo="#MariaByrne">Maria Byrne</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_7">
+                  <person refersTo="#SorcaClarke">Sorca Clarke</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_8">
+                  <person refersTo="#TomClonan">Tom Clonan</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_9">
+                  <person refersTo="#DavidCullinane">David Cullinane</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_10">
+                  <person refersTo="#TeresaCostello">Teresa Costello</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_11">
+                  <person refersTo="#MartinDaly">Martin Daly</person>
+                </p>
+              </td>
+              <td>
+                <p eId="para_12">
+                  <person refersTo="#NicoleRyan">Nicole Ryan.</person>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_13">
+                  <person refersTo="#PadraigOSullivan">Pádraig O'Sullivan</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+            <tr>
+              <td>
+                <p eId="para_14">
+                  <person refersTo="#MarieSherlock">Marie Sherlock.</person>
+                </p>
+              </td>
+              <td/>
+            </tr>
+          </table>
+          <summary eId="sum_4">
+            <person as="#Chair" refersTo="#PadraigRice">Teachta / Deputy Pádraig Rice sa Chathaoir / in the Chair.</person>
+          </summary>
+        </rollCall>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_2">
+        <heading>Business of Joint Committee<recordedTime time="2025-06-11T09:30:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_1">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T09:30:00+01:00"/></from>
+          <p eId="para_15">We will now enter private session to consider some housekeeping matters.</p>
+        </speech>
+        <summary eId="sum_5">
+          <i> The joint committee went into private session at 9.32 a.m., suspended at 9.37 a.m. and resumed in public session at 9.39 a.m.</i>
+        </summary>
+      </debateSection>
+      <debateSection name="debate" eId="dbsect_3">
+        <heading>Mental Health Bill 2024: Discussion<recordedTime time="2025-06-11T09:30:00+01:00"/></heading>
+        <speech by="#PadraigRice" eId="spk_2">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T09:30:00+01:00"/></from>
+          <p eId="para_16">I welcome all of the members and witnesses who are here with us today to discuss the Mental Health Bill. By way of background, people will know that the Mental Health Bill is on Second Stage in the Dáil and is due to come before the Dáil again for Committee Stage. Since the Bill was last considered, we have a new Oireachtas health committee and new spokespeople, so we wanted to hold this session to debate some of the issues that have been raised by some of the key stakeholders since Second Stage of the Bill took place and before the Bill is considered later this evening on Committee Stage in the Dáil.</p>
+          <p eId="para_17"> As we all know, this is a long overdue Bill and a very important and significant piece of legislation to update the outdated legal framework under which our mental health services have been operating.</p>
+          <p eId="para_18">It is important legislation in terms of updating that legal framework and providing a human rights-based framework and person-centred approach to mental health services. I hope today’s briefing will be useful for members in advance of the Committee Stage deliberations that are due to start this evening.</p>
+          <p eId="para_19"> I welcome our witnesses. From An Garda Síochána we have Ms Paula Hilman, assistant commissioner for roads policing and community engagement, and Mr. Derek Smart, chief superintendent in the Limerick division. From the Irish Medical Organisation, IMO, we have Professor Matthew Sadlier, vice president and chair of the IMO consulting committee, Professor Brendan Kelly, consultant psychiatrist, and Ms Vanessa Hetherington, assistant director of policy and international affairs. From the Mental Health Commission we have Ms Orla Keane, general counsel, and Mr. Gary Kiernan, director of regulation. From Mental Health Reform we have Mr. Philip Watt, interim CEO, and Mr. Stephen Sheil, interim communications and engagement manager.</p>
+          <p eId="para_20"> I will read a note on privilege before we start. Witnesses are reminded of the long-standing parliamentary practice that they should not criticise or make charges against a person or entity by name or in such way as to make him, her or it identifiable, or otherwise engage in speech that would be regarded as damaging to the good name of a person or entity. Therefore, if their statements are potentially defamatory in relation to an identifiable person or entity, they will directed to discontinue their remarks. It is imperative they comply with such a direction.</p>
+          <p eId="para_21"> Members are reminded of the long-standing practice to the effect that they should not comment on, criticise or make charges against a person outside the Houses or an official either by name or in such a way as to make him or her identifiable. I think all our members are attending in person.</p>
+          <p eId="para_22"> To commence our considerations, I invite Ms Hilman, assistant commissioner from An Garda Síochána, to make her opening statement.</p>
+        </speech>
+        <speech by="#" eId="spk_3">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T09:40:00+01:00"/></from>
+          <p eId="para_23">I thank the Chairman and committee members for the invitation to address them today in respect of the discussions on the Mental Health Bill. I am here as I was the project sponsor for the CAST project under A Policing Service for the Future. I am accompanied by Chief Superintendent Derek Smart, who will be able to outline our operational experience since the pilot went live in Limerick in January 2025. The initiative is being trialled in partnership with the HSE and, as I outlined with the chief being here, in the Limerick Garda division. It is aimed at assisting people who are experiencing situational trauma or a mental health crisis. The initial project under A Policing Service for the Future was called crisis intervention teams but, as we developed the project, we adapted the name, and our pilot name, CAST, stand for community access support team. Its central goal is to reduce future presentations and interactions with gardaí or other blue light emergency services through community follow-ups and case management of complex cases. CAST has yet to be evaluated not only in terms of impact on individuals but also on the amount of Garda time being devoted to an area, some of which is not a core function of An Garda Síochána.</p>
+          <p eId="para_24"> It is important to note that, since its introduction, CAST has created greater integration among statutory and voluntary agencies operating in the Limerick Garda division. It is grounded in international evidence and research showing that co-response has delivered improved outcomes for adults requiring intervention at times of mental health crisis or situational trauma. It also serves to implement recommendations contained within a range of interdepartmental Government reports and policies. The result, in our view, is a project that can guide national policy on mental health service delivery through knowledge and learning.</p>
+          <p eId="para_25"> The team consists of three HSE staff, namely, a clinical nurse specialist, a social worker and a senior social care practitioner, and three gardaí, who work side by side from Henry Street Garda station in Limerick. They are further supported by an additional 50 gardaí who have completed co-responder specialist training and clinical HSE staff. The co-response is initiated by the CAST service which responds to appropriate calls. Trained gardaí, supported by the clinical HSE staff, provide an intervention and assessment, leading to a better outcome for persons involved.</p>
+          <p eId="para_26"> The early outcomes and available data are encouraging and have seen more than 40 diversions from arrest and detentions under section 12 of the Mental Health Act 2001. That is since the pilot went live in January - more than 40 diversions in one division. A further consequence of this would have seen an admission to an emergency department and medical call-outs. CAST has recorded more than 1,700 operational hours of service in its first four months of operation and has seen more than 150 individuals interact with the project.</p>
+          <p eId="para_27"> The second pillar of the project is the CAST forum. I have talked about the reactive calls and response to calls. The CAST forum clients are subject to levels of interagency work not witnessed in this jurisdiction previously. We currently have 11 persons registered for the forum, with 12 partner agencies involved. That is about prevention and putting interventions in place to prevent people engaging with both gardaí and blue light services. The scope of the delivery under the project has widened both in terms of the numbers of callbacks -142 in total - and outreach providing earlier intervention based on needs. An evaluation report being undertaken by the University of Limerick’s school of nursing will inform and ultimately decide the future implementation of the CAST model, but it has received wide cross-agency support.</p>
+          <p eId="para_28"> Based on our experiences with CAST, An Garda Síochána would like to highlight some areas for consideration by the committee in its consideration of the Mental Health Bill 2024, specifically on involuntary admission. The Bill in its current form appears to be dependent on the availability of authorised officers. It is the experience of our CAST team that there is a need for a 24-hour, 7-day-a-week service to support delivery in this area. While the proposed measure under the Bill is intended to enhance clinical oversight and safeguard individual rights, in practice, it is our view this will introduce significant delays and inefficiencies unless a significant number of out-of-hours authorised officers are installed. We further contend that only allowing authorised officers to make an application could add to the already adversarial and structured process and potentially cause significant delays to a person receiving treatment. It would also generate knock-on delays in emergency departments and Garda stations, depending on where a person presents. An Garda Síochána is supportive of the Bill’s objectives to achieve the least restrictive intervention, and this aligns to the ethos behind CAST. It is worth noting, however, that the change in criteria for involuntary admission to the point where someone presents as an immediate risk may also make it more likely that they will be subjected to more restrictive practices.</p>
+          <p eId="para_29"> A significant finding under CAST has been a concerning gap in service for individuals, who, following a detention under the Mental Health Act, receive a letter or advice to attend an approved centre such as a psychiatric hospital or emergency department. The person is not obliged to attend and, in practice, we have seen many individuals in acute psychological crisis simply walk away once released by gardaí, without ever engaging with services. To help bridge this gap, CAST has implemented a structured call-back protocol, providing follow-up contact with individuals after their release, checking on well-being and assessing ongoing risk, and we attempt to re-engage them with services. While this offers some assurance and has yielded significant results - 142 call-backs - it is not, in our opinion, a substitute for legislative authority.</p>
+          <p eId="para_30"> While CAST is in its infancy, it speaks to the commitments in the programme for Government and represents interagency collaboration in its purest form. The area of crisis presentations is incredibly complex and we recognise it is vital to build in protections and safeguards through the new Bill. I thank the committee for allowing us the time to outline that.</p>
+        </speech>
+        <speech by="#" eId="spk_4">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T09:40:00+01:00"/></from>
+          <p eId="para_31">The Irish Medical Organisation thanks the committee and the Chair for the opportunity for me and my colleagues, Professor Kelly and Vanessa Hetherington, to present to them today.</p>
+          <p eId="para_32"> We have a number of concerns related to the Mental Health Bill 2024, particularly in regard to the criteria for involuntary admission and the procedure for patients who lack decision-making capacity and decline treatment. Patients who require voluntary or involuntary admission to a psychiatric unit are among the most ill and vulnerable in our society and require timely and accountable care. While the intention of the Bill is to ensure the protection of patients’ rights with regard to autonomy, the provisions, which create a dual process for involuntary admission and consent to care, are legally, clinically and logistically impractical and could deny patients with serious mental illness the right to timely, and often life-saving, medical treatment.</p>
+          <p eId="para_33"> There are already significant workforce deficits. Based on our current population, we need about 760 consultant psychiatrist whole-time equivalents, but we cannot fill 30% of the 570 current approved posts.</p>
+          <p eId="para_34"> The IMO’s main concerns are the following. First, the criteria for involuntary admission states that admission is “immediately necessary for the protection of life of the person or that of another person, or ... necessary for protection from an immediate and serious threat to the health of the person, or that of other persons”.</p>
+          <p eId="para_35">The use of risk as an admission criteria asks mental healthcare professionals to do something that lacks a firm evidence base. Predicting risk is not scientifically possible. Thus, the risk criteria should be removed.</p>
+          <p eId="para_36"> The provisions for consent to treatment under section 3 create a dual process, one for detainment and a second process for treatment. This has the potential to significantly delay the treatment of involuntary patients with severe psychiatric illness. Allowing patients to be detained without treatment will result in a further decline in the patient’s condition, prolong distress and lead to potential long-term adverse outcomes. The suggested method of accessing treatment through court orders will result in a waste of precious medical time as well as court and other State resources. Effectively, where a patient is found to lack capacity to consent to treatment, the Bill would lead to a situation where, rather than treating patients, consultants and multidisciplinary teams would be required to make an application to the High Court to provide necessary and often life-saving treatment to these patients. With approximately 2,000 involuntary admissions a year, where many patients will lack capacity, the proposed system will put an inordinate strain on our courts and mental health services. This will lead to knock-on effects on waiting times for patients waiting to access the system as too much of our time will be taken up with court procedures.</p>
+          <p eId="para_37"> Patients' decision-making capacity should be assessed at the time of admission, with due consideration to supports available under the 2015 Act, with the same criteria for admission and treatment. This would make the admission order an admission and treatment order, which would be better for patients and the service and would just make sense, to be honest. For additional oversight, a second opinion on capacity could be provided by an independent consultant psychiatrist appointed by the Mental Health Commission and subject to ongoing review.</p>
+          <p eId="para_38"> The section on psychosocial assessment at the time of admission or change of admission status is not necessary for the urgent treatment of severe mental illness. Psychosocial assessments are a critical and important part of a recovery journey. However, making them part of an involuntary admission procedure could potentially lead to a situation where patients are more likely to have their liberty constrained based on their social circumstance, thus creating a two-tier detention process.</p>
+          <p eId="para_39"> On regulations for care plans, where a Minister can determine the content of care plans represents a significant and unprecedented regulatory and political interference in clinical care and the doctor-patient relationship. Patients are entitled to a collaborative individualised care plan based on the best available options, not based on political edicts from non-clinicians.</p>
+          <p eId="para_40"> In a number of areas, the Bill proposes to place statutory responsibility on clinicians, either consultants and clinical directors, for administrative tasks they have no ability to control. These include the responsibility for obtaining staff to conduct second opinions, psychosocial assessments and the responsibility for transporting patients to an approved centre. Clinical staff members do not have the authority to compel staff or approve budgets to allow these things to happen. What should be in the Act is an agency created by the HSE that runs 24 hours, seven days a week, which can fulfil these administrative functions and let clinicians do what clinicians should do.</p>
+          <p eId="para_41"> Under section 28(3), a person may be directed to give evidence to a review board at a specific date and time without consideration of that person's other workload. This could have a significant impact on service delivery, with cancellations of outpatient clinics and other services, if it is not done in consultation with staff in trying to accommodate staff schedules.</p>
+          <p eId="para_42"> Part 6 expands the remit of the Mental Health Commission to include inspection of community mental health services. When inspecting mental health services, the Mental Health Commission should assess not only the service but also the budget allocation received by that service to ensure services are adequately funded. Inspections should also include an assessment of appropriate staffing levels within services and HSE recruitment services, and the effects of national policy on individual approved centres and community centres, including external factors that affect a centre's ability to comply with regulation.</p>
+          <p eId="para_43"> I once again thank the committee for the opportunity to present today. We are aware amendments were proposed and published yesterday evening that may address some of our concerns, but these are obviously not yet accepted as part of the Bill.</p>
+        </speech>
+        <speech by="#" eId="spk_5">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T09:50:00+01:00"/></from>
+          <p eId="para_44">The Mental Health Commission welcomes the opportunity to speak to the committee. I am general counsel for the Mental Health Commission. I am accompanied by my colleague, Mr. Gary Kiernan, director of regulation. We commend the Minister and departmental officials on all their work on the Bill, many areas of which have been very complex.</p>
+          <p eId="para_45"> In providing its submissions, the commission has adopted a practical, person-centred and rights-based approach regarding the Mental Health Bill. I note that my opening statement is very long, so I will only read extracts from it to stick to the five minutes. There are a number of areas in the Bill where the commission believes progress has been made, particularly in the area of involuntary detention. I will focus on a few of those areas.</p>
+          <p eId="para_46"> The commission supported the views of the expert review group expressed in the report that the only persons who should be able to make applications for involuntary admission are authorised officers. The commission welcomes the fact An Garda Síochána may no longer make such applications. Applications for admission should be made by persons with appropriate skills and qualifications. The commission notes the Bill allows for a person other than an authorised officer to make an application, known as a relevant person. The commission acknowledges this is required to allow other mental health professionals, for example, those in emergency departments, to make applications. However, the commission is concerned that families will be required to make applications and, therefore, recommends that section 15(6) be amended to exclude references to a spouse or relative of the person. In addition, the commission recommends that the Bill include a provision for a code of practice setting out the skills and qualifications required to be an authorised officer. Furthermore, the commission recommends that a dedicated authorised officer unit be established within the HSE with full-time authorised officers.</p>
+          <p eId="para_47"> On involuntary admission orders under sections 22 and 23, the Bill provides for admission orders for 21 days and renewal orders of not more than three months. This is a significant step in progressing patient rights from when the Act commenced in 2006, where there were orders of not more than three months, six months or 12 months. The 12-month orders were only reviewed once a year. This was initially changed in 2018 to put away the 12-month orders and only leave orders for up to six months. These provisions reflect the person-centred approach being adopted in the Bill, allowing for more regular reviews and not placing the onus on a patient to seek a review. Under the current legislation, a patient has to seek an additional review. In addition, the commission welcomes the fact the review of an order will now be 14 days from the making of the order, which has been reduced from 21 days.</p>
+          <p eId="para_48"> I will move to Chapter 3 of Part 3. This is the most complex section of the Bill. There is a lot to be welcomed in it but the commission acknowledges there are still areas that require further attention. Specifically, the commission is not in agreement with section 51, as amended. We do not believe the section aligns with the 2015 Act and the right of a person or his or her decision supporter to refuse to consent to treatment, if such a person is deemed to have capacity. Notwithstanding this objection, if the section is to remain, the commission strongly recommends that the basis for any such application be limited to an immediate risk to the life of the detained person as the commission believes the current threshold in the Bill is too low for an application to be made.</p>
+          <p eId="para_49"> I will now move to restrictive practices. The commission has long been concerned about the inclusion of restrictive practices with provisions relating to treatment in the current Mental Health Acts. Restrictive practices are not a form of treatment. Therefore, from a human rights perspective, it is positive that restrictive practices can be found in their own Chapter in the Bill, where there are separate sections relating to seclusion, mechanical restraint and, importantly, physical restraint, which was not previously provided for.</p>
+          <p eId="para_50"> I will skip the section on children, but I note that this a very welcome section with a lot of important provisions in it.</p>
+          <p eId="para_51"> I will deal with the expanded regulatory remit of the commission. This Part of the Bill has seen dramatic changes that reflect the ever-changing landscape of regulations and standards and will be of benefit to those using mental health services for the next few decades. The Bill introduces important new gatekeeping safeguards to strengthen how services are managed and overseen. The Bill introduces the concept of a registered person and a responsible person, which concepts may be found in other legislation and have proved successful. Sections 161 to 165, inclusive, detail the requirements for the key positions in these centres and services. Furthermore, the regulations will set out the experience or qualifications required to carry out these roles. The commission shall review and approve each of these persons as part of the registration process.</p>
+          <p eId="para_52"> The most recent amendments to section 151 of the Bill provide that acute mental health services shall be registered for a period of not more than three years and, for community mental health services or centres, for a period of not more than five years.</p>
+          <p eId="para_53">This means that the commission can now register a service for a year or six months. This is important, and it adds teeth to the regulation powers, therefore adding further protection to the services.</p>
+        </speech>
+        <speech by="#" eId="spk_6">
+          <from> Mr. Philip Watt<recordedTime time="2025-06-11T10:00:00+01:00"/></from>
+          <p eId="para_54">I thank the Cathaoirleach, Deputies and Senators for the invitation to appear before the health committee today. I am interim CEO of Mental Health Reform, and I am joined by my colleague Mr. Stephen Sheil, who is our communications manager. We are very pleased to have the opportunity to continue to contribute to the scrutiny of the Mental Health Bill.</p>
+          <p eId="para_55"> Mental Health Reform warmly welcomes the progress of this Bill to Committee Stage. We acknowledge and thank the Minister of State, Deputy Mary Butler, and her officials for their considerable work in bringing this long-awaited legislation forward and for all the consultation involved in it. As members know, this is the first major overhaul of our mental health law in over 20 years and marks a critical step towards delivering on the vision of person-centred, recovery-focused mental health services as set out in our national policy, Sharing the Vision. I also warmly welcome the CAST initiative in Limerick. It is a fantastic initiative and I really hope that will be replicated throughout the country.</p>
+          <p eId="para_56"> We see this Bill as a significant opportunity, that is, a once-in-a-generation chance to modernise our mental health legislation and bring it into line with accepted international human rights standards. As Ireland’s leading mental health advocacy coalition, representing 80 organisations, Mental Health Reform is very supportive of this Bill and its overall direction. It includes many positive reforms, such as the recognition of advance healthcare directives, a new status for people with impaired capacity and a more structured approach to consent and supported decision-making. That said, we believe the Bill can be further strengthened in a number of key areas and these are set out in the detailed notes we have provided to Oireachtas Members today. I would like to briefly comment on these.</p>
+          <p eId="para_57"> First, we encourage a review of the clinical language. We much prefer "mental health difficulties" to “mental disorder” or “mental illness”. Such language is overmedicalised and we believe the language should be consistent with the language in Sharing a Vision, which is the national mental health policy, and with the UNCRPD. A definition of "mental health difficulties" would set out exactly what we mean by that.</p>
+          <p eId="para_58"> Second, we strongly support the provisions regarding a nominated person and decision-making supports. This should be complemented by the inclusion of a statutory right to independent advocacy for anyone accessing mental health services, particularly those who are involuntary or intermediate-status patients. Advocacy plays a vital role in ensuring individuals understand and can exercise their rights. While we support the move to reduce coercion and promote rights-based care, further safeguards are needed around involuntary treatment and capacity assessments, including the limits on time, independent oversight and guaranteed access to advocacy.</p>
+          <p eId="para_59"> Third, we are concerned that the Bill does not prohibit the admission of people to adult psychiatric units. We know there are practical issues here with respect to alternatives but this should be written in to the Bill, and its enactment perhaps delayed until those alternatives are provided. We recommend that the legislation should have a clear statutory prohibition, which should enforce the obligation to invest in appropriate child and adolescent services.</p>
+          <p eId="para_60"> Fourth, we would welcome the establishment of an independent complaints mechanism as part of the legislative reform. Many people using mental health services do not feel safe or empowered to raise concerns directly with service providers. Others are confident to do that but this gap needs to be addressed.</p>
+          <p eId="para_61"> We also propose reducing the review period for the Act from ten years to five years, ensuring that people with lived experience are part of this process. We see that there are amendments in line with this aim.</p>
+          <p eId="para_62"> The Bill is a crucial part of the jigsaw to improve mental health services in Ireland and we commend the Minister of State and the Department on the substantial work done to date. By making the further changes we outline in our submission, we believe the legislation can truly embed a compassionate, person-centred and human rights-based approach to mental health care for the future. The Bill, of course, needs to be supported with adequate resources to ensure its implementation, as the IMO has pointed out with regard to the necessary resources and policy priorities for ensuring the appropriate clinical staff are in place to make sure the Act works well. We also very much support the expansion of the oversight from the Mental Health Commission.</p>
+          <p eId="para_63"> We thank members again for this opportunity to engage and we look forward to their questions and the discussion.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_7">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T10:00:00+01:00"/></from>
+          <p eId="para_64">I thank all of our witnesses for the time and effort that went into preparing those opening statements and that background. No doubt it is going to be very helpful for our consideration this morning but also with regard to the wider consideration of the Bill over the coming months.</p>
+          <p eId="para_65"> We now move to some questions from members. As members know, we share a speaking rota and we will follow that rota, which has slots per party. We are going to allocate eight minutes for each person, and I ask members to try to stick to that time. I will cut them off at eight minutes to ensure everybody gets in. I know there is a lot of interest from members to speak on this morning, so we will try to stick to their eight minutes each. I want to flag that we will take a quick break in about an hour's time. It will be a five-minute comfort break.</p>
+          <p eId="para_66"> On our speaking rota, the first slot is a Fianna Fáil slot.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_8">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-11T10:00:00+01:00"/></from>
+          <p eId="para_67">I thank the Cathaoirleach for convening this meeting and giving us the opportunity to take questions. I thank the witnesses who have come here today and have taken time out. It is an extremely important issue.</p>
+          <p eId="para_68"> There is a lot to be welcomed in the Mental Health Bill that is proposed, and there is probably a consensus around that. I wish to speak about the area of involuntary admission, and I might direct this initially to the IMO and then to the other witnesses. It involves a relatively small number of people, namely, 2,000. We have a low involuntary admission rate compared with other jurisdictions. Thankfully, we have moved away from the situation 40 or 50 years ago where we were detaining people and sometimes not for the right reasons. However, there is a concern here about the ability of medical professionals to treat someone who has severe psychiatric illness and the definition of that, whether it is "mental disorder" or "mental health difficulties". I would like to hear Professor Kelly's opinion on that.</p>
+        </speech>
+        <speech by="#" eId="spk_9">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:00:00+01:00"/></from>
+          <p eId="para_69">I thank the Deputy. The Bill proposes changes to the criteria for admission without consent and to the criteria for treatment without consent. It has been a concern from the start that these criteria are different, creating the possibility, at least in theory, that a person would be admitted without consent on the basis of severe mental illness but would not meet criteria for treatment for that condition. That is a very real concern; it should simply not be possible for someone to be admitted on the basis of severity of mental illness but not treated for it. That does not make sense. I appreciate there are some amendments and that 298 amendments appeared yesterday afternoon. I am aware that these go some of the way towards addressing concerns about that but it remains the case that having separate criteria is not optimal.</p>
+          <p eId="para_70"> It is worth re-emphasising the Deputy's point that Ireland's rate of involuntary admission, that is, sectioning to use another language, is very low by international standards. It is approximately half the rate of England, for example. It is very important, even though the numbers are small - the numbers are large if the person is you - that this needs to be regulated with great care and clarity. Certainly, we would like to see clear consistency between criteria for admission without consent on the basis of mental disorder and treatment for that disorder.</p>
+        </speech>
+        <speech by="#" eId="spk_10">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T10:00:00+01:00"/></from>
+          <p eId="para_71">I might come in on that. As practitioners, what we want is clarity and a lack of ambiguity. We want terminology that is defined and that we can use. While I appreciate the non-stigmatising reasons for using words such as "mental health difficulties", it becomes difficult if you start trying to put legal definitions on phrases that have other definitions in common parlance. That is why if we are introducing words into this legislation, we would like to make sure they are not ambiguous and that there are very good definitions of it.</p>
+          <p eId="para_72">The most frustrating part as a clinician is that I am not a lawyer; I am here to treat patients. Having this argument as to whether we can admit this patient and asking whether their problem is serious or immediate and what do these terms mean, that is, questioning whether this is a mental illness or a mental heath difficulty or whatever, these are issues getting in the way of treating patients. It is about having unambiguous language and making sure things are clearly defined for practical applications on the ground so we can say this person should be admitted under legislation or that person should not be and to remove that ambiguity. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_11">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_73">Regarding Mental Health Reform, there seems to be a question around language regarding mental disorder versus mental health difficulty. Does Mr. Watt agree mental health difficulties could expand to cases of how I am feeling this morning because I have had a row with my wife, for example, or how I might feel stressed here in this committee asking questions for the first time? I do not want to trivialise it because this is an important issue. It is a small number of people but detaining someone and removing their liberty should only be done as a last resort. I believe we would all accept that but there is a human right to be treated well. </p>
+        </speech>
+        <speech by="#" eId="spk_12">
+          <from> Mr. Philip Watt<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_74">Absolutely. Language changes and it is important we recognise that. All we are doing is advocating for the language used by the Department of Health in Sharing the Vision, the national policy and mental health strategy. The key thing is definition. No matter what term is used, there must be clarity on the definitions which is where this would come in. It would mean a lot to people with mental health difficulties if the language reflected how they like to be perceived and spoken about. </p>
+          <p eId="para_75"> We acknowledge involuntary admission is an important part of the process and further acknowledge it is only a relatively small number of people who are admitted involuntarily. Our key point, however, would be for those who do not have somebody, like a friend or relation who can act on their behalf, that they have access to an independent advocacy organisation. One already exists in the health service so simply extending that to people who may be in a very vulnerable position is absolutely correct in our view. </p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_13">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_76">I thank Mr. Watt for that. </p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_14">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_77">I thank the Chair and all our guests for coming in today. This Bill has been a long time coming, even to Committee Stage. I have several questions for each of the groups so I will ask each question specifically to the groups and they may respond. If they wish to respond to another question they think may be relevant to their area, please feel free to do so. I will do this in the order in which they spoke. </p>
+          <p eId="para_78"> It is very important the Garda is here today. When the evaluation of its project is done, it is important it comes back to the health committee because we need to know what does and does not work. We need to know what resources are needed and if they are annual or multi-annual resources. I am specifically interested in what the witnesses spoke about regarding the evaluation of the Garda hours, the fact they are not necessarily being done on Garda work and the impact this is having on the funding. With the evaluation of Garda hours, what knock-on effect has the number of call-outs and hours put in had on other services asked of the Garda in Limerick? What changes to the Mental Health Bill from a policing perspective would An Garda Síochána like to see? The authorised officers were also mentioned. Will this also have an impact on the availability of gardaí to do the job they were hired for? </p>
+          <p eId="para_79"> The IMO mentioned the ministerial involvement in the care plans. Can its representatives elaborate more on that? Has the IMO been informed of any potential training courses or additional resources that will be provided either from a professional organisation or the Department of Health to help doctors and staff navigate these new procedures and additional compliance that may be asked of them? In their opinion, do the witnesses think new consent requirements will have an impact or effect on doctor-patient relationships and the provision of treatment, both for that person at that point in time and into the future?</p>
+          <p eId="para_80"> Is the Mental Health Commission aware there was an amendment submitted which sought to prohibit the in-patient treatment of children in adult psychiatric units and was ruled out of order? What is its opinion on that? The witnesses also spoke about the need for a dedicated unit of authorised officers and for those officers to be full-time. Does full-time mean 24-7 in this case or does it mean full-time office hours? How does the organisation see this working in practice with the expansion of authorised officers? As there are significant gaps in resources when it comes to staff where would the commission like to see these authorised officers coming from? What would this new unit look like in practice? Finally, in respect of section 51, the commission mentioned that the current threshold in the Bill is too low. What would the commission like to see that threshold look like? </p>
+          <p eId="para_81"> Again, I ask the same question to Mental Health Reform regarding the amendment for children to not be treated in adult psychiatric units, given children are not merely small adults and have a specific set of needs of their own. What would an independent complaint mechanism look like to the organisation? How would it see this working in best practice and how would it be accessed? Would there be an appeals procedure if the independent complaints mechanism did not reflect the will of a person? Could the organisation provide us with more detail on that please? </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_15">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_82">There are four minutes left in the slot so there will be a minute for each group and then we can pick someone back up if we do not get to them. </p>
+        </speech>
+        <speech by="#" eId="spk_16">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_83">The Deputy asked about the partners in Limerick and I will let Mr. Derek Smart talk about that. To give some additional data, we very much welcome that the Bill proposes removing us from the role of applicant for involuntary admission. Our worry, however, is that if authorised officers are not available 24-7, which is 24 hours a day, seven days a week, by default, we will be brought back into the system. We heard the figure of 2,000 involuntary admissions earlier. If you look at our data for the past two years, however, under section 12 of the Mental Health Act, we dealt with 6,927 cases in 2023. In 2024, it was more than 7,000 and in quarter 1 of this year, to date, it was 1,937, which would equate to just under 8,000 cases. That is what we are dealing with. Our concern is that if we did not have the authorised officers available, we would still be brought into that space. </p>
+        </speech>
+        <speech by="#" eId="spk_17">
+          <from> Mr. Derek Smart<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_84">Regarding Limerick, we have 55% cover on our roster at present for the people assigned to the CAST project. More than 1,729 operational hours have been put into this. The benefit is we have diverted 47 people away from the need for a section 12 arrest; eight people have been deferred from the criminal justice system all together, with files going to the DPP showing the person in question does not belong in that system. There were also a further four people deferred away from arrests, which again shows we had the time to deal with that. </p>
+          <p eId="para_85"> My people are still on the ground dealing with this stuff. Without CAST, we would still be going to calls in this regard but now we are able to offer a different outcome for the people we deal with which, for me, has been the fantastic part of this. </p>
+        </speech>
+        <speech by="#" eId="spk_18">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_86">As we do not think a Garda station is a place of safety, there are better outcomes. </p>
+        </speech>
+        <speech by="#" eId="spk_19">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:10:00+01:00"/></from>
+          <p eId="para_87">I thank the Deputy for the questions. With regard to the care plans, the Bill included regulations concerning care plans, which gave the Minister power to regulate many matters, including the content of a care plan. We regarded this as an unwarranted intrusion into clinical care at the level of primary legislation. This is an intricate matter agreed between clinicians and persons being treated. </p>
+          <p eId="para_88"> I note one of the ministerial amendments proposed yesterday suggests the Minister would regulate the form as opposed to the content of a care plan. We would regard this as a positive thing but we nevertheless question the need to include such detail in primary legislation, given it is a clinical matter. </p>
+          <p eId="para_89"> Regarding potential training courses, we are not aware of anything in particular being planned for this. Services have always had care plans. </p>
+          <p eId="para_90">This additional highly rigid regulatory requirement is a new thing. It is not necessarily in people's interest to duplicate everything from clinical notes into care plans of a particular kind because care plans have always existed in any case.</p>
+          <p eId="para_91"> These additional measures introduce considerable complexity and additional considerations into the patient-doctor relationship. Legislation can only do so much for such an interpersonal thing. Care is delivered to humans by humans and primary legislation gets very deep into what are very interpersonal areas for people in acute distress.</p>
+          <p eId="para_92"> I return briefly to the point about the number of involuntary admissions. I have the figures in front of me. In 2023, there were 2,566 involuntary admissions in Ireland and 15,500 voluntary admissions. Most involuntary admissions last for less than one month. The majority are discharged within a month and that is because we can currently treat people promptly and effectively. If it would be a great pity if that was no longer possible and detentions were longer as result.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_20">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_93">I thank the witnesses for their presentations. In particular, I thank the Garda for the work it is doing in Limerick. It is about everyone working together in a lot of cases where it is quite complex and difficult to manage.</p>
+          <p eId="para_94"> The Irish Medical Organisation has expressed concern about involuntary admissions. I presume there has been engagement with the Department on this issue. It sounds quite difficult if people are admitted and medical practitioners are restricted from proceeding with treatment. Where is this coming from, particularly if the people working at the coalface are not in agreement with it?</p>
+        </speech>
+        <speech by="#" eId="spk_21">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_95">There has been engagement with the Department of Health. The amendments that appeared yesterday afternoon suggest that the concerns have been heard to a significant degree but not fully. Some of the amendments suggest that it will be more possible to administer treatment. However, the criteria for treatment without consent are different from the criteria for admission without consent, although with increased overlap based on the ministerial amendments suggested.</p>
+          <p eId="para_96"> The motivation has been human rights based for much of this with particular focus rightly the rights to liberty and bodily integrity. I believe we also need to look at the right to treatment, the right to mental health and the right to access services. Given the relatively low rate of involuntary admission in Ireland, the key human rights issue for mental health services is not so much protection from excessive hospitalisation but rather access to services.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_22">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_97">I wish to ask about involuntary admission and access to records. If someone from Cork is admitted in Dublin, what is the current legislation on access to records? I am aware of a case where someone from another EU state was admitted and the medical services in that country would not release the records, causing significant difficulty for the medical team to deal with it. What is the situation with current legislation and changes that are being made regarding access to records where the person is admitted in a totally different part of the country?</p>
+        </speech>
+        <speech by="#" eId="spk_23">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_98">I will say two things on this and then my colleague Ms Hetherington will speak. The first relates to logistics and practicality of it. For 15 years, I have been coming in to appear before this committee on various issues and I have been saying that the way the information for a patient in an Irish hospital is recorded and stored has largely not changed since 1890. We use paper-based notes that are stored in cardboard files. After about three years, they are required to go off to a collective storage unit because obviously they pose a fire risk. When a patient is admitted, the biggest problem is the logistics of finding old notes, getting them out of storage and actually getting them to the patient. That is outside of the legislative problems of it and Ms Hetherington will deal with the legislation. We are advocating for better record keeping. Potentially there are these things called computers, which I have heard are quite effective at this process. Maybe we should be trying to utilise them slightly better than we are at the moment.</p>
+        </speech>
+        <speech by="#" eId="spk_24">
+          <from> Ms Vanessa Hetherington<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_99">We are aware that legislation has been passed in Europe on accessing records from another jurisdiction and the sharing of records from another jurisdiction. However, we are so far behind in our investment in electronic health records as it is that we have an awful lot to catch up on before that can be implemented.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_25">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_100">Regarding the sharing of information, if somebody is admitted in Cork who was previously treated in Dublin or the other way around, is there access to those records for the person who is involuntarily admitted?</p>
+        </speech>
+        <speech by="#" eId="spk_26">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_101">In theory, yes. The GDPR basis for information sharing within the health system is necessity rather than consent under the HSE information sharing policy. It is fair to say that not all areas of the HSE operationalise this with the alacrity that should happen.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_27">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_102">Do we need to include this in legislation now in order to protect the practitioners in getting access to information and being able to provide treatment on a timely basis?</p>
+        </speech>
+        <speech by="#" eId="spk_28">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_103">In theory, we do not need to include it in legislation because the HSE website is very clear that the GDPR basis for sharing of information within the health service is necessity and therefore it should be happening anyway. However, if the Deputy is asking if we need to put it in to re-emphasise it in the mental health area and make it happen, perhaps we do. In theory, the regulatory structure is already in place for the sharing of, admittedly, paper-based records within the HSE on the basis of essential need, which I think is the GDPR term, rather than consent. That should be happening anyway. Some months ago, the HSE issued a renewed memo to all staff about the sharing of information on this basis within the health service.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_29">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_104">I wish to ask the Garda representatives about their concerns with the legislation. Has there been engagement involving the Garda, the Department of justice and the Department of Health on those concerns at this stage?</p>
+        </speech>
+        <speech by="#" eId="spk_30">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_105">There has not been from us individually. I am not aware of what has gone on in the background.</p>
+        </speech>
+        <speech by="#ColmBurke" eId="spk_31">
+          <from>Deputy Colm Burke<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_106">It is important because the Garda is operating at the coalface and can see the challenges there. This legislation would appear to provide even more challenges to the Garda now. It is important to have that consultation and engagement. It is fine to put legislation in place but without the manpower to implement it, the Garda will have a problem.</p>
+        </speech>
+        <speech by="#" eId="spk_32">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_107">As I have outlined, we welcome the removal of gardaí from some roles. We still need to do the evaluation on the CAST project. There would be challenges in rolling out the reactive patrolling model, which has been trialled in Limerick, nationally. In other countries it works in urban areas and cities at weekends. For a country like Ireland with many rural areas, that would be a challenge. I spoke about the forum, which is 12 agencies doing preventative work. That is a great opportunity and could be linked the local community safety partnerships as they are established and do the preventative work. That model exists in other jurisdictions. We very much welcome the opportunity to be here today because we think there are great benefits. To replicate the model as it stands throughout the country, especially the reactive patrolling, would be challenging.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_33">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-11T10:20:00+01:00"/></from>
+          <p eId="para_108">I thank all the witnesses for attending today. I am conscious that we are having this conversation this morning and those of us who are Members of the Dáil will be asked to vote on amendments to this Bill later today. I know some of those present have had a chance to read in detail the amendments that were published last week and others have been catching up on them between yesterday and today. We are having this conversation in the middle of a moving piece.</p>
+          <p eId="para_109">I acknowledge that the resourcing of mental health colours all of this conversation because, while it is really important to introduce the very important rights that are contained in the Bill, it is the execution of the rights that are critical.</p>
+          <p eId="para_110"> I will direct my questions to Ms Hilman from An Garda Síochána. The experience of the project in Limerick has been fantastic, but will the Bill and the authorised officers undo the model there in terms of the interaction between An Garda Síochána and the health professionals? A new layer is now being introduced. I am extremely conscious that we must have a change for the Garda when we look at the time it takes for gardaí and the inappropriate environment people waiting for a hospital place are kept in for many hours. Does she believe that what is proposed in the Bill will undo some of the good work the Garda is doing?</p>
+        </speech>
+        <speech by="#" eId="spk_34">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_111">I will answer first and then I will let Mr. Smart outline some of the experience in Limerick. Policing, not just in Ireland but internationally, sees very many more calls relating to mental health. Sometimes, that is due to the medical nature of illness but also at times because of drink or drug addiction as well. Some of the things we have to deal with will not need a longer term medical intervention because of the trauma or crisis at that moment.</p>
+          <p eId="para_112"> With a 24-7 service, we will still be called but when we are sent to calls it will allow us to deal with them in a more appropriate way. We do not believe that a Garda station is a place of safety, so it allows the people who have the skills to make the appropriate decisions in a more timely way. The other thing we hear is that at times gardaí stay in hospitals. We see the benefits of that because undoubtedly we will get the calls and the point is how we respond then and get the intervention in place that is provided by people other than ourselves who are more appropriately trained. Mr. Smart might want to outline his experience.</p>
+        </speech>
+        <speech by="#" eId="spk_35">
+          <from> Mr. Derek Smart<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_113">From a CAST perspective, even if it was taken away, without having sufficient authorised officers, we are still going to be placed in the position where people will be left in our care for us to try and deal with. That is a huge concern. That will happen outside of CAST as well.</p>
+          <p eId="para_114"> The other part CAST provides for me and my team in Limerick is that where people are given a letter and told they can follow up on it voluntarily and they walk out the door of the station, we go back and check in with them the following day to make sure they are okay. We do that follow-up. That is something I would like to see captured going forward to ensure there is something for those people who are not committed but are released from the station with a letter in their possession to say they are okay, and they just need to check in. Somebody needs to be watching those people and supporting them as best we can. CAST gives us the ability to do that.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_36">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_115">That is continual care. I thank Mr. Smart.</p>
+          <p eId="para_116"> I have questions for the Mental Health Commission and Mental Health Reform but I will probably have to put them in the second session because of the few minutes that I have.</p>
+          <p eId="para_117"> I watched very closely the concerns of the IMO with regard to the amendments to the Bill that we have seen from the Minister in recent days, in particular Nos. 74 and 93. There was a reference to bridging the gap in regard to the admission and care pieces. What is the remaining gap that exists? We need to be clear about that when we vote on amendments this evening or the construction of future amendments on Report Stage.</p>
+        </speech>
+        <speech by="#" eId="spk_37">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_118">I will pass this question to Professor Kelly who is rapidly trying to find the amendments Deputy Sherlock asked about.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_38">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_119">I appreciate that.</p>
+        </speech>
+        <speech by="#" eId="spk_39">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_120">I thank the Deputy. The Bill sets out criteria for involuntary admission. I do not see that the Minister has suggested any changes to that. There are fundamentally two parts to that: a risk-based criterion and also a fundamentally treatment-based criterion. The criteria for treatment without consent, following such admission without consent is, again, risk based and treatment based. The treatment-based ones in the amendments are now consistent. That is something greatly to be welcomed. It introduces clarity, but the first part, the risk parts, remain different. It is not statistically possible to predict adverse outcomes in this area. Therefore, the inclusion of risk as a basis for doing anything without the person's consent is dubious and, certainly, it is not sufficient to justify deprivation of liberty. It is the view of the organisation that this should be based entirely on need for treatment, not on risk assessments which are of extremely dubious provenance, to put it mildly.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_40">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_121">I do not want to get into the semantics of the word "risk" but, as I see it, there is a fine line between assessing risk and using one's judgment as to the potential outcomes. In some ways, risk is effectively the same word as an outcome.</p>
+        </speech>
+        <speech by="#" eId="spk_41">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_122">Yes.</p>
+        </speech>
+        <speech by="#MarieSherlock" eId="spk_42">
+          <from>Deputy Marie Sherlock<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_123">That is to my mind. I am a layperson. I am not a clinician. I worry that there is an over-emphasis on the word "risk". If we were to replace the word "risk" with "outcome", the concern would fall away because clinicians would be using their clinical judgment to assess possible outcomes and therefore determining treatment.</p>
+        </speech>
+        <speech by="#" eId="spk_43">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_124">Yes. I share Deputy Sherlock's concern about the word "risk". We were extremely concerned about its prominence in earlier versions of the Bill. The current version has amended this slightly to include the exceptionally confusing concept of risk to health, which seems to be getting the word "risk" in but not really meaning risk. I do not think there is any way out of this risk issue, apart from eliminating it entirely and focusing on need for treatment, treatment, and likelihood of benefit from treatment. They are areas in which we are a lot more confident than predicting who will or will not do something like harming themselves or others. These are very real concerns. Treatment is likely to reduce those risks, but in advance we are unable to predict those risks with anything like a statistical or actuarial precision to justify deprivation of liberty.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_44">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_125">I thank Professor Kelly very much. The time for that session has, unfortunately, concluded.</p>
+          <p eId="para_126"> To pick up on Deputy Sherlock's point about the timing of the session. As members know but it is worthwhile for others to be aware we have been asked by the Minister and the Chief Whip to take Committee Stage of the Bill and that is why we scheduled this briefing in advance of it. We are bringing in witnesses to engage with us on the key issues before the committee engages on Committee Stage of the Bill. We got that request from the Minister in early May. After we had scheduled the session, she changed her mind on it. She decided to bypass the committee and to go straight to the Dáil. I made my views on that very clear: that I do not think it is in line with best practice. It is not the best way to deal with a Bill of this scale. I wrote to the Minister to express my frustration on that and I said Bills like this should be taken on Committee Stage in the committee so we can tease through each of the issues. I have made my frustration on that point very clear to the Minister. I hope, going forward, that we can engage on business in a better way and that we can schedule time to deal with matters in the committee.</p>
+          <p eId="para_127"> Our next slot is a Fianna Fáil slot.</p>
+        </speech>
+        <speech by="#MichaelCahill" eId="spk_45">
+          <from>Deputy Michael Cahill<recordedTime time="2025-06-11T10:30:00+01:00"/></from>
+          <p eId="para_128">I welcome all the witnesses here this morning. I also welcome the recognition of CAMHS in the Bill. I wish to raise a number of important points, which led originally to the Maskey report on the South Kerry CAMHS scandal. I want to recap on the care received by 240 children in south Kerry. Dr. Seán Maskey found unreliable diagnoses, inappropriate prescriptions, poor monitoring of treatment and potential adverse effects, which exposed many children unnecessarily to the risk of significant harm. The report also detailed the significant harm that was caused to 46 children and young people in south Kerry. I know a number of the children and who were misdiagnosed, mistreated and mis-medicated. Some are young adults today. I also know their families. I attended a couple of meetings. I was invited by the South Kerry CAMHS Family Support Group on two different occasions to meetings in Leinster House.</p>
+          <p eId="para_129">We met the Minister of State, Deputy Mary Butler, and saw her officials at the time. The lives of these children and young adults were destroyed and many are still suffering with major mental health issues. Some of them are like zombies today, and I am not exaggerating when I make that point.</p>
+          <p eId="para_130"> With regard to the Kerry CAMHS compensation scheme, is there any information on where that is at and how many cases have been dealt with to date? The north Kerry look-back review is long overdue. When will it be published? At the time, I believe, only 300 cases were examined, leaving many without answers. That is not good enough. I understand the Halpin report has been completed. When will it be published? Last year, it was decided that an independent regulator would be appointed to oversee community mental health services, including for children. Has this happened?</p>
+          <p eId="para_131"> While I do not want to delay the meeting further, to conclude, can the committee write to the Taoiseach and request a public apology for all the children and young adults and their families? I know the Tánaiste, Deputy Simon Harris, as Taoiseach, was previously asked for a public apology. It is the very least these individuals and families deserve and may just be of some comfort.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_46">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_132">We invited the witnesses to speak directly to the Bill and that is the basis on which we invited them in. Many of the questions are much wider and are not directly relevant to the Bill. If any of them wish to comment on the questions posed, they are free to do so, but it is not directly relevant to the topic.</p>
+        </speech>
+        <speech by="#" eId="spk_47">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_133">It is an adjacent issue. That is why we wanted the inspection of services to include the effect of national policy on the recruitment of staff. It must be remembered that Sharing the Vision, which is the policy to organise the mental health service, has not worked. We cannot fill 30% of the posts. They do not talk to the employment groups. They devise a service thinking that if it is built, people will work there, but we cannot compel somebody to work in the public service. Even if we say we are going to have a community centre in every parish in the country, people sometimes do not want to work in isolated rural areas. Would we be better off having a safer service that is cohorted in larger urban areas, rather than having an idealised service with nobody working in it that is operating in a dispersed manner as a rural service?</p>
+          <p eId="para_134"> A doctor was being supervised by another doctor 50 miles away. If there was a service that was cohorted in the local urban area near the general hospital, we would have a better chance of recruiting staff and operating services. I know from my experience that it is much easier to supervise somebody who is in the same building as me than supervising somebody who I am on the phone to from a distance away. When we devise a national service, we need a concept that looks at the ability to recruit staff. We have to talk to organisations like the Irish Medical Organisation, the PNA, the social workers’ organisation and all the different professional bodies. We have to ask, “Do you think you will recruit people to work in these services?”, rather than devising the service based on an idealised model where we think this is the best way of delivering services but then the jobs are advertised and nobody applies for them, and we are left with a huge deficit of staff. Some 30% of consultant posts in psychiatry are not filled. There should be an analysis of where those posts are and what the reason is we cannot fill these posts. We can devise the perfect service but if we cannot recruit people to that service, it does not exist.</p>
+        </speech>
+        <speech by="#" eId="spk_48">
+          <from> Mr. Philip Watt<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_135">I support the need for greater resources, but this also shows the need for the extension of human rights concepts to mental health services. That also needs to be addressed. If there were an independent advocacy service, the CAMHS issue would have been sorted out a lot quicker than it was. People were getting an inferior and inadequate service and were being overprescribed. If they had somebody to help them advocate for their position, we would not have had the need for inquiries and so on. Resources are an issue but, to be fair, people need to be heard and need to be supported to be heard as well.</p>
+        </speech>
+        <speech by="#" eId="spk_49">
+          <from> Mr. Gary Kiernan<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_136">From the point of view of the Mental Health Commission, Dr, Maskey's report, and subsequently Dr. Susan Finnerty's report from the commission, highlight the need for the urgent regulation of community mental health services, including CAMHS. We welcome the progression of this through the Bill. We welcome the additional enforcement tools that are provided for in the Bill, which include important gatekeeping functions, such as the requirement for all registered persons and responsible persons to be approved by the Mental Health Commission before they can participate in the governance and management of those services. We think that all of those additional powers of registration, inspection and monitoring would greatly address many of the recommendations from both of those reports and improve the safety of the services.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_50">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_137">I thank the witnesses for coming in today and for sharing such comprehensive opening statements. My first question is to An Garda Síochána. The new Bill centres on individuals being - again, we come back to the words - an immediate risk. Has An Garda Síochána seen situations where that narrow threshold has limited its ability to give care or early intervention safely? A second part of that question is whether, in the witnesses’ opinion, they think An Garda Síochána should have mandatory training across the board regarding mental health supports.</p>
+        </speech>
+        <speech by="#" eId="spk_51">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_138">We have been rolling out training in terms of the 50 gardaí who have taken part in the pilot in Limerick and we have also rolled out mental health first aid training. All of the executive and senior leadership team have undertaken training, and I have undertaken it myself with my other SLT colleagues. Both in terms of responding to calls for services and also looking after our own people within our organisation, this is something we are very committed to. We recognise it forms a part of many of the calls for service that we get today.</p>
+          <p eId="para_139"> Without naming anyone, Mr. Smart might have examples of the lived experience that we have had with CAST.</p>
+        </speech>
+        <speech by="#" eId="spk_52">
+          <from> Mr. Derek Smart<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_140">By having the clinical nurse specialist present in the patrol car with our members going to these scenes, he gets that view of what our members are engaging with. He can then come back and relay that to a medical practitioner when they come to the station to talk about a case, so we get a fuller picture. We are pushing very hard to get a better outcome for the person who is in distress that we are dealing with. To have the expertise of people like George, Christine and Sarah there is phenomenal because they have access to the medical side of the house. They have access to their records and we access our records on our side of it, and we share that information.</p>
+          <p eId="para_141"> The assistant commissioner will talk about the data sharing agreement that we have in place with regard to allowing that to happen on a legal basis. Again, it is towards having a better outcome for the patient.</p>
+        </speech>
+        <speech by="#" eId="spk_53">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_142">Yes, that would be another key enabler of the work we are doing and will do going forward. With regard to the forum, a lot of the work we do is with the agreement of the individual, whereas if we had a stronger legislative framework surrounding data sharing, it would assist greatly. At the minute, it is working because we have people from two organisations in the one vehicle. However, for interventions with those who potentially do not agree with some of the longer-term, more proactive interventions that the forum will look at in terms of case-managing those individuals, certainly, data sharing would be a great enabler for us.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_54">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_143">In terms of immediate risk, has this hindered it? How does Ms Hilman assess the immediate risk as opposed to somebody who may not be an immediate risk?</p>
+        </speech>
+        <speech by="#" eId="spk_55">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T10:40:00+01:00"/></from>
+          <p eId="para_144">A lot of that will come under the training we get currently, both the training from the college and the ongoing training and observations of gardaí dealing with something. We have those escalated responses. We have negotiators trained. It sometimes can go into a more protracted period of time and that is when we would use our trained negotiators to talk to individuals if something like that happened. We have various elements of training that we would use if there was that immediate high risk.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_56">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-11T10:50:00+01:00"/></from>
+          <p eId="para_145">That is brilliant. I thank Ms Hilman.</p>
+          <p eId="para_146"> My second question is for the IMO. Will its representatives elaborate a little on why a psychosocial assessment at the point of involuntary admission might delay treatment or lead to detainment on the basis of social factors rather than clinical need?</p>
+        </speech>
+        <speech by="#" eId="spk_57">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T10:50:00+01:00"/></from>
+          <p eId="para_147">Yes. There are two issues with that. One is just simple logistics. Health and social care professionals do not routinely - a very small number do - do on-call rotas. The only people working 24-7 in the mental health service are those involved in nursing and doctors. If we want a psychosocial assessment done by someone in another profession, we would have to start moving into rostering these other professions on a 24-7 basis, which would mean going from two people in whatever specialty we want to talk about to eight or nine in order to cover that roster. To cover that in every area of the country, we would be looking at trying to create an employment cohort that just does not exist. We would be looking at major cost and recruitment and retention implications. Often, people will not want to work in jobs that involve 24-hour on-call work. Sometimes, a person will leave or it will be about childcare or whatever. Those are just the simple logistics involved. It would create a huge difficulty. Professor Kelly wishes to come in.</p>
+        </speech>
+        <speech by="#" eId="spk_58">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T10:50:00+01:00"/></from>
+          <p eId="para_148">Turning to the amendments, the Minister has proposed that this psychosocial assessment at the point of involuntary admission would occur within the following two working days. We welcome that proposed amendment from the Minister as, if you like, a concession to the reality of the fact, which is that many of these other professions are not available 24-7. For what it is worth, it would be great if they were. It would be wonderful if we had social workers and clinical psychologists rostered for 2:00 a.m. in the emergency department but they are not. The organisation welcomes this amendment in being slightly more realistic about obtaining a psychosocial assessment within two working days.</p>
+        </speech>
+        <speech by="#NicoleRyan" eId="spk_59">
+          <from>Senator Nicole Ryan<recordedTime time="2025-06-11T10:50:00+01:00"/></from>
+          <p eId="para_149">It is just around the workforce. The amendment sounds greats but the reality is-----</p>
+        </speech>
+        <speech by="#" eId="spk_60">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T10:50:00+01:00"/></from>
+          <p eId="para_150">It also comes back to my initial point about ambiguity. The concept of psychosocial assessment is being put into legislation, but are you talking about psychodynamics, cognitive behavioural therapy, rational emotive behaviour therapy or Lacanian, Freudian or Jungian therapy? What is meant by your analysis? These kind of vague terms are being put in that are understood among clinicians but should not really be in legal frameworks, which will open up doors for contesting what a psychosocial assessment is. It then ends up with Supreme Court rulings trying to define these things. We are better off not having these words in legislation and allowing care to proceed. Every patient gets a psychosocial assessment as part of their assessments, but I am not sure it should be in legislation.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_61">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T10:50:00+01:00"/></from>
+          <p eId="para_151">As it is approaching 11 a.m., I suggest that we take a comfort break and resume in five minutes. Is that agreed? Agreed.</p>
+        </speech>
+        <summary eId="sum_6">
+          <i> Sitting suspended at 10.53 a.m. and resumed at 11.04 a.m.</i>
+        </summary>
+        <speech by="#PadraigRice" eId="spk_62">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:00:00+01:00"/></from>
+          <p eId="para_152">We are now back in public session and will resume our consideration of issues of concern relating to the Mental Health Bill 2024. The next slot is for Fine Gael.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_63">
+          <from>Senator Manus Boyle<recordedTime time="2025-06-11T11:00:00+01:00"/></from>
+          <p eId="para_153">I thank everybody for coming in. It is really interesting and, to be honest, it is totally new to me. It is great to listen and learn from our guests, because they are the ones that are going through it. I only have a couple of quick questions because colleagues have already covered a lot. On the Garda project, what is being done in Limerick is brilliant and An Garda Síochána should be congratulated on it. Could a similar project be rolled out in another Garda divisions to show that it can work in another county? It works in Limerick and our guests have to be congratulated on it because it is a totally new way of patrolling and looking after people. It is a great positive and we should be shouting about it from the mountain tops. This takes a lot of people out of casualty and our guests are the first to be there to assess. What they have done is brilliant and I can only congratulate them. It is great that 50 gardaí wanted to do this. They got so involved in it and it is working. Are there any plans to roll it out in other areas? </p>
+        </speech>
+        <speech by="#" eId="spk_64">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T11:00:00+01:00"/></from>
+          <p eId="para_154">In terms of the two pillars that are ongoing at the minute, there is potentially a third pillar that we could look at, which is having health staff involved. We have four regional control centres in the country and having health staff in those control centres who could access health data to assist in the response to calls is an option. In terms of the two pillars, the reactive patrolling one which is the response to the calls - the committee has heard about the 40 individuals we have helped - obviously it would be with health and the resourcing issue around that needs to come out in the evaluation. As I said earlier, we will look at the evaluation of that but, internationally, that type of model really works in city environments and especially at weekends. Without pre-empting the evaluation, to roll it out 24-7 right across the country is not what the lived experience of that type of project has shown. We will look at the evaluation. There is something we feel we could do sooner or more quickly and we have been looking at it and discussing it with the three pilot local community safety partnerships, the forum. There are the reactive calls and the CAST forum. The forum is where the agencies come together and look at people who have been referred through CAST or people who we know are high-end service users who are calling An Garda Síochána or other emergency services<b>
+						</b>a lot. We currently have 11 people on that whom we are helping through the forum. We think there is a great opportunity as the local community partnerships roll out to have that type of forum, using the structure of those partnerships. The three pilot partnerships in Longford, Waterford and the north inner city have had a lot of engagement with support forums, or hubs, as they are called, in Northern Ireland, who work alongside their policing community safety partnerships. As they were formed, they did a lot of engagement. They did a cross-Border conference on community safety. There is an opportunity to do that even more quickly.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_65">
+          <from>Senator Manus Boyle<recordedTime time="2025-06-11T11:00:00+01:00"/></from>
+          <p eId="para_155">Professor Sadlier answered a question from my colleague before she left but if this goes ahead in the morning, how long will it take to get the personnel in place? We do not have all of the personnel in place right now. If the Bill is passed in six month's time, realistically how many years would it take to get the people in place that we need?</p>
+        </speech>
+        <speech by="#" eId="spk_66">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:00:00+01:00"/></from>
+          <p eId="para_156">My honest opinion is that as long as we have the current system, the answer is infinity because we just will not do it. We can have as much time as we like. The problem with mental health services is, bizarrely, not finance. There is a huge amount of unpaid salaries every year because we cannot fill posts. There is this concept of throwing money at it and creating posts in various parts of the country, which would be fantastic, but when we advertise, no one applies. Every policy regarding the health service must involve talking to the service providers. The Government needs to talk to the IMO and to the Psychiatric Nurses Association, PNA, on the nursing side, who have not been consulted on this Bill at all. They comprise the largest group of staff within the mental health service but they were not consulted on Sharing the Vision. We are making up stuff. It is like "Field of Dreams" stuff - if we build it, they will come - but, in reality, people are not taking up posts and the further away we get from large urban centres, the harder it is to fill posts. When local services put in some sort of incentive in a desperate attempt to fill a post, and they pay a locum or something, the next thing is that it comes up in front of the Committee of Public Accounts and local services get their hand slapped for providing a service.</p>
+          <p eId="para_157">They are then scared to do that again, so we end up with this situation where we have a sectorisation of mental health services. Where I work in north Dublin we have seven sectors. If you are missing a psychologist in one sector that area of the population has no psychology. The service is down by 14%, but because of sectorisation one person gets nothing and the other people get a continuation of service. We have created a postcode lottery. We have created a difficult situation to recruit and employ staff. Time wise, I think we can be here forever. So long as we keep doing what we are doing and do not learn from our mistakes we will just keep having the same problems.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_67">
+          <from>Senator Manus Boyle<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_158">My God, I am glad I asked the question. From a parochial end, I am from Donegal, where we say we are the forgotten county. What Professor Sadlier is telling me is that we might never have anybody in Donegal.</p>
+        </speech>
+        <speech by="#" eId="spk_68">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_159">It depends on what part of Donegal we are talking about. It is obviously easier to recruit in the large urban areas than in the next classification down, which towns such as Letterkenny fall into. I am not fully up to date with those sorts of things. It is when you get to community treatment centres or primary care centres that are out in more rural areas that it is much harder to recruit. It is hard to get staff to work there. At the end of the day, the Irish healthcare service relies on the 65% of our staff who have trained abroad. We are the largest recruiter of international healthcare staff in the world. We are leading that, and it is not even close. We are approximately 20% ahead of the nearest comparator. You also have people coming from other countries, who are of different religions and want to have a community they can integrate into. With all due respect to small rural populations in Ireland, that is not feasible. They want to have their communities and live in areas where they have people they know, etc., so it is easier to recruit into those areas. These are the realities on the ground we have to take into consideration when we devise policy. Too much mental health policy is devised without considering these recruitment problems.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_69">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_160">The next slot is for the Labour Party or the Social Democrats so I will take it. I will tease out some issues we did not get to earlier, particularly on the rights and views of the child, admission to adult facilities and restraint of the child. Ms Keane mentioned having some more thoughts on children in her opening statement that we did not get to. The Ombudsman for Children has expressed concerns about provisions relating to provisions that relate to respecting the views of the child. They are too weak. Does she have any thoughts on the Ombudsman's observations, and does she believe the right balance has been struck?</p>
+        </speech>
+        <speech by="#" eId="spk_70">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_161">It has come a significant way forward from what is in the current legislation. There are specific provisions about the information to be provided to the child. It is opportune that Covid happened, because up until now a lot of children were not involved in meetings or court hearings. That is being provided for. From our point of view, there are a lot of additional provisions with regard to providing information. This will also be supplemented by regulations and codes. We have to remember it is not just what is in the Bill. It will be supplemented, and we hope the Commission will be consulted. We will be very much involved in anything we are allocated to draft. I will pass to my colleague, who is doing some work on CAMHS standards at the moment and may be able to add to it.</p>
+        </speech>
+        <speech by="#" eId="spk_71">
+          <from> Mr. Gary Kiernan<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_162">The Mental Health Commission welcomes the support from the Minister to develop CAMHS standards. We will be expediting those and putting systems in place to consult children and their families around the country to do that. I agree that much of the detail on how the consultation with children needs to happen has to be through some of the regulations, standards and codes of practice that will sit under this Act. We will be supportive of any additional measures that support children's voices being more loudly heard as part of this process.</p>
+        </speech>
+        <speech by="#" eId="spk_72">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_163">There is a huge issue with emergency department care for children in this country. We have two non-adherent policies. This is a policy problem that should be solved, where our paediatric hospitals have a ceiling where they define a child as being under 16, while our mental health services define a child as somebody under 18. I apologise for having to discuss this today. If somebody in that gap between the two has an episode of something like self-harm, where they need a medical intervention, they go to an adult emergency department because paediatric emergency departments will not see them over the age of 16. They need a mental health assessment in an adult emergency department, but there is no child and adolescent psychiatry provided to adult emergency departments. They then get seen by adult psychiatry, which leads to that line of potentially being involved in adult admissions, etc. This is a policy problem that needs to be aligned. Either a child is someone under 16 or not. We brought this up at our AGM with the Ombudsman, who said that paediatric hospitals should be treating patients up to the age of 18, but we are about to open a big national hospital that will not see anybody over the age of 16. This is a problem with the unalignment of mental and physical health age. That needs to be clarified to help to deal with this problem.</p>
+        </speech>
+        <speech by="#" eId="spk_73">
+          <from> Mr. Stephen Sheil<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_164">I am grateful for the opportunity to come in on this. To speak to Deputy Clarke's point, Mental Health Reform was disappointed to see that the amendment on the prohibition on admitting children to adult psychiatric units was dismissed, as I think was mentioned earlier. To comply with the UNCRC, its concluding observations about Ireland repeatedly express concern about the issue. Most recently, it criticised the continued admission of children to adult psychiatric wards due to inadequate availability of child-specific mental health facilities, long waiting lists for services and insufficient out-of-hours mental health supports for children and adolescents. We strongly believe this amendment should have been brought forward, and we are disappointed to see it will not be. We realise the figure from last year is five children. Lots of figures have been mentioned today. As Professor Sadlier has said, every figure is made up of a person. We believe one person is too many, never mind five. The figure goes on for this year. We are not sure what it will be, but we believe it should be zero. We know it is difficult in practice to regulate for that. However, it should be best practice as we now have a chance to regulate for many decades to come.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_74">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_165">Would they like to see an explicit prohibition on children being admitted to adult psychiatric wards?</p>
+        </speech>
+        <speech by="#" eId="spk_75">
+          <from> Mr. Stephen Sheil<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_166">Yes, 100%. That is our call.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_76">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_167">I turn to the restraint of children. I know the Mental Health Commission has flagged concerns about provisions that allow seclusion or restraint of the child and whether that is in their best interests. Has it engaged with the Minister on that matter?</p>
+        </speech>
+        <speech by="#" eId="spk_77">
+          <from> Mr. Gary Kiernan<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_168">Yes, we have successfully seen the introduction of codes of practice under the existing framework that have reduced the numbers of restrictive practices in Irish mental health services. Irish mental health services are doing extremely well and showing a lot of leadership in this area. The number of restraints and seclusions have all dramatically decreased in recent years in favour of more person-centred practices, which is a good and positive thing. Through that process, we introduced a complete ban on the use of mechanical restraint for children. We would not want to see that re-emerge. Mental health services have responded positively in following the new rules. They have not been using mechanical restraint. It has not been necessary. Other ways and supports have been found to avoid its use. We would not be in support of any provision that might see it being reintroduced.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_78">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_169">Does the Commission think it should be explicitly banned in the legislation?</p>
+        </speech>
+        <speech by="#" eId="spk_79">
+          <from> Mr. Gary Kiernan<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_170">Yes, we will promote that.</p>
+        </speech>
+        <speech by="#" eId="spk_80">
+          <from> Mr. Stephen Sheil<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_171">I will come in on that as well. Mental Health Reform would also like to note about chemical restraint. The UNCRPD mentioned physical, chemical and mechanical restraint. In our explanatory notes, provided to the committee, we outlined a potential definition for "chemical restraint" that we believe should also be included. It is not defined at the minute.</p>
+        </speech>
+        <speech by="#" eId="spk_81">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_172">The Mental Health Commission would agree with that.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_82">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-11T11:10:00+01:00"/></from>
+          <p eId="para_173">I will speak more about the under 18s. I am glad the comment was made about how some 16-year-olds or 17-year-olds are classed as adults. I think that is wrong. It is terrible to think of a 16-year-old being treated in this way. As a mother, I definitely think that if you are under 18 you are a child. I am interested to hear the witnesses' thoughts on 16- and 17-year-olds being able to make decisions about their treatment.</p>
+          <p eId="para_174"> My next query is probably outside the scope of this, but when children have mental health difficulties and get appointments with clinicians, I think Zoom is very ineffective. I know many appointments are carried out over Zoom. I would be interested to hear the witnesses' thoughts on this aspect. Do they think speaking with children and carrying out appointments with them over Zoom is effective? I am interested in this point.</p>
+          <p eId="para_175"> I turn next to involuntary admission, when people are put into prison rather than being admitted for psychiatric issues. I know a multidisciplinary approach is needed to correctly put people in the right place, but in my experience of seeing people who have been really struggling, very unwell and a danger to themselves and other people - and I am no medical person - they have ended up in prison rather than getting the help they need. I am interested in hearing the witnesses' opinions on this aspect and what the best way to move forward is.</p>
+        </speech>
+        <speech by="#" eId="spk_83">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_176">I have said what I said about children and I accept that. The only other thing I will say about children is that they are not one entity. While people will say it is inappropriate to have a child in an adult unit, it is also potentially inappropriate to have a 12-year-old in the same unit as a 17-year-old because they will be at two very different stages of development and two very different stages of maturity. I, and I think our organisation, am not in favour of having hard rules, such as never being able to admit a child. We would not be in favour of that approach. I refer to what happens on the day. We have seen this. I was a clinical director at one point and resigned for reasons relating to overregulation. We had a child in the emergency department for a week. We could not admit that child into the acute adult unit because we were too scared we were going to get given out to and told we were torturing someone and abusing human rights. No bed was available in the child unit. Where is the most suitable place for that child to be? Is it more suitable for a 17-year-old to be in an adult psychiatric unit where an 18-year-old who is six months older is happily admitted? Is it more suitable, instead, for that 17-year-old to be sitting in an emergency department in a side room waiting for a bed to become available in a paediatric unit, from which they will be discharged in six months' time? There are also issues where somebody develops a long-term mental illness like schizophrenia or psychosis in their 16th or 17th year and is going to be with an adult service potentially for a long time, but first has to hit this speed bump of going into a paediatric service for a brief period of time.</p>
+          <p eId="para_177"> While I absolutely agree with the principle of children, especially children with developmental and child-related disorders, not being in adult units, hard rules create bad cases. There should be some flexibility. As I said, if somebody is aged 17 years and nine months and develops a first psychotic episode, in my opinion they are probably better treated in an adult service because the likelihood is that episode will go past their 18th birthday and they are going to have a long-term relationship with an adult service. Why would we put them in that temporary position in the meantime? Professor Kelly will deal with the Senator's question about prison.</p>
+        </speech>
+        <speech by="#" eId="spk_84">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_178">The point the Senator made about people with mental illness in prison is very well taken. In every country where the number of psychiatry inpatients falls, as it has in Ireland over the past few decades, we have seen that the number of people with mental illness in prisons tends to increase. The national forensic mental health service does its very best to deliver mental health care in prisons, but the simple fact is that many people with mental illness in prisons are there for very minor reasons and would be better off diverted from prison. There are some very innovative programmes, particularly the court liaison and diversion service at Cloverhill Prison, but these need to be rolled out nationally to ensure people with serious mental illness, whose offending is very minor and related to their illness, receive treatment rather than custody. Prison is non-therapeutic no matter how hard people try to make it so. Prison is toxic for people with mental illness.</p>
+        </speech>
+        <speech by="#" eId="spk_85">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_179">Regarding online consultations, obviously face-to-face contact is better. All the evidence I have ever read is that if a relationship has been established, then it can be maintained, but it is certainly different with first appointments and establishing that relationship. There is a difference if it is a patient who knows their clinician having had an online relationship, rather than a patient prior to the establishment of a relationship. That is the issue.</p>
+        </speech>
+        <speech by="#TeresaCostello" eId="spk_86">
+          <from>Senator Teresa Costello<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_180">I disagree with Professor Sadlier on that point. I do not think any person with any kind of mental health difficulties should be seen over Zoom. Face-to-face consultation should be standard. Using Zoom was grand for the Covid pandemic. The pandemic is long gone, however, and holding consultations over Zoom is unfair. I do not think it is possible to get the same energy and feeling online. People walk away from it. From personal experience, I know feeling like nothing had been achieved.</p>
+        </speech>
+        <speech by="#" eId="spk_87">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_181">I agreed with the Senator 100%.</p>
+        </speech>
+        <speech by="#" eId="spk_88">
+          <from> Mr. Philip Watt<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_182">A major report was published by the Mental Health Commission on the inappropriateness or lack of facilities in emergency departments in hospitals in terms of people having critical phases of mental health difficulties. As Deputy Sherlock said earlier, the critical need is about this being accompanied by the necessary resources. This is incredibly important. Equally, just in terms of the resources issue, it is important not to just see this in terms of human personnel but to also take into account the facilities in which people receive care, as Professor Sadlier mentioned. Many of the facilities are not up to scratch. This is a catch-22 issue because then clinicians and their teams are less likely to stay there because the infrastructure facilities are not good. We know the Minister is trying to do her best, but we really hope the next budget will be reflective of the absolute need for this Bill to be resourced and for the necessary human resources and capital resources to be provided.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_89">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_183">I thank the witnesses very much. I am conscious we have about 35 minutes left in this slot and several members to come in. For the remaining slots for members of groups who have already spoken, we will reduce the time to five minutes. Those who have not spoken will have eight minutes. Our next slot is for Sinn Féin. I call Deputy Clarke, if she would like to come back in.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_90">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_184">Yes. I will go back to the questions from the previous round. I have no real additional questions to ask. Rather, I have a comment on the appropriateness of young adults being in accident and emergency departments. I do not think anybody agrees that an accident and emergency department, no more than a police station, is the place for somebody in profound mental health distress to be.</p>
+        </speech>
+        <speech by="#" eId="spk_91">
+          <from> Mr. Philip Watt<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_185">I absolutely agree. Some of the hospitals, the tertiary hospitals, are better than others. They have a dedicated room in case somebody is experiencing a significant episode, and that is great. In addition, this is about the need for expertise to be available all the way round. Doctors have some specialised training in mental health but it is extremely important that a specialised mental health practitioner is available, especially for out-of-hours services. A little bit of imagination goes a long way. There are some really good examples in Australia and the UK around how to avoid having to treat people in emergency departments in hospitals. A little bit more imagination and work with the clinicians and the voluntary sector could address these issues.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_92">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_186">Would the witnesses like to comment on my question from the previous round concerning what an independent complaints mechanism would look like?</p>
+        </speech>
+        <speech by="#" eId="spk_93">
+          <from> Mr. Stephen Sheil<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_187">Yes. I will go through it quickly because I want to leave some time for Ms Keane. Again, this is in the briefing document we have provided to the committee. We suggested that such a mechanism be separate from the health service provider; accessible to all individuals, including those with disabilities or impaired capacity; have specific, binding deadlines for initiating court applications to authorise continued detention; be grounded in the principle of the least restrictive alternative; mandate the use of a standardised form; require independent oversight by the Mental Health Commission of all cases where treatment is provided without consent and without a completed capacity assessment; and guarantee automatic access to independent advocacy for all individuals to these provisions, ensuring their will and preferences are respected and their rights are upheld. As the Deputy mentioned, however, this has been deemed to be out of order. It will be something we will continue to advocate for in future. I am sure Ms Keane can speak to this issue a bit more.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_94">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_188">I also asked previously about the authorised officer unit, how this would be seen as working and the staffing of it.</p>
+        </speech>
+        <speech by="#" eId="spk_95">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:20:00+01:00"/></from>
+          <p eId="para_189">Since 2020, the commission has been talking about the lack of authorised officers. We understand several people have been trained but have never taken up the post. People who are authorised officers generally do it as an add-on to their existing role. We believe there needs to be a dedicated unit. It may be a centralised unit that has regional offices in the context of the new structure of the HSE, which is the REOs. This would be linked to the relevant approved centres rather than being linked to counties because the authorised officer will be bringing people to the approved centres or recommending local GPs bring people to the approved centres.</p>
+          <p eId="para_190">That is where we think the link should be. We think there should be a centralised office because it would be in charge of recruitment, training and ensuring people have the appropriate skills and expertise. Something we are very keen on is that, either in the regulations or the code, there is guidance that authorised officers have the appropriate qualifications and skills to do this job, that they would be full-time and that there would be a 24-7 service. As we know, things do not just happen from nine to five. This is a resource issue.</p>
+        </speech>
+        <speech by="#SorcaClarke" eId="spk_96">
+          <from>Deputy Sorca Clarke<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_191">I apologise for interrupting but I have an eye on the clock. In this regard, am I correct that by not being limited by county boundaries and being able to cluster services, there would be a specialised unit that would have a pool of authorised officers to pull from if and when the need arose?</p>
+        </speech>
+        <speech by="#" eId="spk_97">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_192">Absolutely. Our annual report will be published shortly. Last year, 16% of the applications were made by authorised officers. When the operative parts of the Mental Health Act commenced in 2006, the aim was that this figure would be 80%. A total of 32% of applications are made by the Garda and 21% are by families. We are very anxious that the applications are being left to families and it can really damage the relationships within families. This is an important issue for us.</p>
+          <p eId="para_193"> Deputy Clarke also asked me to address section 51. We agree with some of our colleagues who have said that people should not be rushing to the High Court. They need to get on with the care and treatment job. If somebody has been treated for, say, two periods of 21 days and that person has capacity and is still refusing, the commission also has a role under the Assisted (Decision-Making) Capacity Act. These roles do not align because we are not respecting the person's right to refuse treatment or their decision supporter's right to refuse treatment. We are not saying this would be on day one. We take it that these applications would not be made until well into the person's treatment and that they should not be made on day one. We hope there will be very few of these applications, if any. Even if the provision remains, what we are saying is that the basis for any such applications should be limited. We must remember that the person is in the approved centre and the person will be involuntarily detained. In our view, the current threshold in the Bill is too low and it needs to be raised with regard to there being an immediate risk to the life of the person. Our core issue is that, after those two periods of 21 days, if the person does have the capacity and the person is still not consenting, there needs to be some recognition that this view is respected.</p>
+          <p eId="para_194"> Deputy Clarke also raised an issue on adults-----</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_98">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_195">We have gone over time. I thank Ms Keane because it was an important point.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_99">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_196">I apologise for missing my earlier slot. I had to go to another meeting. I thank all of the presenters here today. I am very aware of the CAST project in Limerick and its workings. I compliment Superintendent Smart and the team for the wonderful work they are doing there. I note its report highlights a gap. Where somebody is detained and receives a letter to go back to centre, be it to the hospital or services, I know there is a call-back facility, but should it be made definite under the Act that somebody needs to go back for the treatment? Should it be made compulsory that they should do so? I know it would be very difficult to implement.</p>
+          <p eId="para_197"> Other people have spoken about youths and adults being in the same place at the same time, for example unit 5B in University Hospital Limerick. Only one underage person has been in unit 5B in the past year or two but, in saying this, it does happen from time to time. I am very aware of a family whose son has been in and out quite a bit. It is not the ideal situation for an underage person to be with adults. Does the Department or organisations on the mental health side have plans for how this difference can be implemented?</p>
+        </speech>
+        <speech by="#" eId="spk_100">
+          <from> Mr. Derek Smart<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_198">With regard to CAST, as the commissioner said, whether CAST is to be the way forward depends on the review that will be done with the University of Limerick. From our perspective, a strong recommendation we would make is that, if CAST is not to be the way forward, then something needs to be in place, so we are looking after these people's welfare when they walk from wherever they are with just a letter in their pocket. Somebody must be looking after their welfare and checking in with them to make sure they are okay and signpost to them where they need to go.</p>
+        </speech>
+        <speech by="#" eId="spk_101">
+          <from> Mr. Stephen Sheil<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_199">I will speak on children in adult psychiatric units. We are aware that enshrining it in law would not eliminate the practice. However, it would significantly increase the onus on the HSE to ensure the provision of age-appropriate regionally distributed inpatient mental care facilities throughout all six HSE regions. We understand there are cases for which it is required, but this is best practice. We have had the current law for 24 years, so this one will probably be for the next 25 years. We are trying to enshrine best practice. If the resources are not there, the onus is on the Government and the HSE to appropriately distribute the funding and those resources.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_102">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_200">There are many organisations involved in youth mental health along with many mental health groups. Are there extra resources or extra facilities that should be put in place and should be in the Bill with regard to youth mental health?</p>
+        </speech>
+        <speech by="#" eId="spk_103">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_201">In general with regard to community mental health, the Bill we have been discussing today tends to deal with those who are most unwell. Most mental health care in Ireland happens at general practice and primary care level. Enhancing primary care services and general practice access to counselling services, psychology and multidisciplinary teams could potentially reduce the number of people who escalate their problems to this level. Working with voluntary groups is also beneficial. One of the gaps we have in the Irish service is very much creative, for want of a better word. When I was working in Blanchardstown the best programme we ever had was in conjunction with the FAI. I will stand over saying this and it has been published. There was a kick-start training programme which took seven service users at a time. It was weekly programme. It has been published and I will not go into its full details. The improvement it made was beyond anything I ever saw in those patients from medication or psychological therapy. It was done through normalising behaviour and bringing them to a non-mental health environment where they were treated as people and not patients. This is one of the areas where we really fall down. We should be trying to enhance this work with other groups, whether it is the GAA, the IRFU and non-sporting bodies such as music. This would really help.</p>
+        </speech>
+        <speech by="#MariaByrne" eId="spk_104">
+          <from>Senator Maria Byrne<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_202">Collaboration between-----</p>
+        </speech>
+        <speech by="#" eId="spk_105">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_203">The voluntary sector and the statutory sector.</p>
+        </speech>
+        <speech by="#TomClonan" eId="spk_106">
+          <from>Senator Tom Clonan<recordedTime time="2025-06-11T11:30:00+01:00"/></from>
+          <p eId="para_204">I am also a member of the disability matters committee which, unfortunately, sits at precisely the same time as the health committee and I apologise for leaving earlier. To declare a conflict of interest, I sat on mental health tribunals for more than a decade before I was elected. I have attended hundreds of mental health tribunals. Before I ask questions, I want to say that I cannot speak highly enough of all the people involved, including the legal chairs, barristers and solicitors, who perform the tribunal's role of reviewing a person's involuntary detention, and the independent panel of psychiatrists who work in conjunction with the Mental Health Commission. I have one quick observation to make on the amount of effort that goes into it by everyone involved, and particularly by the legal representatives who advocate for the interests of those who are involuntarily detained.</p>
+          <p eId="para_205">I have never seen anybody dial it in, as it were. It is a really rigorous framework of oversight and governance, and I know from the narratives of the detentions the role that An Garda Síochána plays. I know this from over a decade of talking to psychiatrists and legal representatives.</p>
+          <p eId="para_206"> I will not mention the station involved, but in the Dublin metropolitan region, there was a particular Garda sergeant who was very skilled at diagnosing a person<i> in extremis</i> and what his or her actual illness might be. He had become something of a legend and somebody people would call if they had a person who was<i> in extremis</i>.</p>
+          <p eId="para_207"> I have only positive things to say. I do not know that members of the Irish public or even elected representatives necessarily understand what a psychiatrist is, particularly one with higher specialist training. There is much confusion, even among the allied medical professions, in this regard. I do not know that there is necessarily a proper understanding of what psychiatrists do. I refer to the full range of not just their medical but also their psychosocial skills. Many of them are fully qualified in CBT and other forms of medical intervention. That said, I cannot think of another medical specialty that is subject to this level of oversight and governance. I am involved in a charity. One of the board members is a plastic surgeon. When I was explaining to him about how tribunals operate, he was very surprised, frankly, to learn that his practice might be interrogated by another fellow professional and that a third independent professional would write a report based on his treatment. There is already a significant level of governance and oversight in that regard.</p>
+          <p eId="para_208"> From informal feedback from my contacts, I know there is a lot of genuine concern about the legislation. If this Bill is enacted, will it empower psychiatrists to fully meet their professional and ethical obligations to treat some of the most vulnerable people in society? Are there aspects of it that would act as an impediment to that? In the context of the provision around having to apply to the High Court for permission to provide treatment, would that inhibit their professional and ethical obligations to a vulnerable patient? Is it even workable in the clinical environment, such as it is?</p>
+          <p eId="para_209"> Professor Sadlier mentioned recruitment issues. Do he, Professor Kelly or the Mental Health Commission have a view on the appointment of people to consultant posts in psychiatry who do not have higher specialist training? The Mental Health Act is quite vague in that regard. It does not stipulate that a person must have higher specialist training. I shudder to think what would happen in any other medical specialty if people who did not have higher specialist training were able to be appointed.</p>
+        </speech>
+        <speech by="#" eId="spk_107">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T11:40:00+01:00"/></from>
+          <p eId="para_210">In response to the Senator's first question on the workability of the Bill, the answer is "No". The Bill as presented was not workable and would present problems with the provision of treatment. It simply is not fit for purpose. In fairness to the Minister, a series of amendments that would make significant improvements were made available yesterday afternoon. They introduce the need for treatment as a reason for treatment, something which was not articulated clearly in the original Bill. There are signs of improvement in the amendments proposed by the Minister, and this will hopefully become an empowering piece of legislation. However, it has some distance to travel before that happens.</p>
+          <p eId="para_211"> We have a history of passing inoperable mental health legislation. The 1981 Act was passed by the Dáil and Seanad and signed by the President, but it was not operable and never commenced. It set back reform by several decades. This needs to be thought about carefully, but the direction of many amendments is positive.</p>
+        </speech>
+        <speech by="#" eId="spk_108">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:40:00+01:00"/></from>
+          <p eId="para_212">I echo my colleague's sentiments. In regard to the appointment of people not on the specialist register, it comes back to the issue of recruitment and retention. Services are often faced with the problem that the alternative to someone who is not on the specialist register is nobody. In the service where I worked, when I was clinical director, which I stopped being about three years ago, there were something like 52 nursing vacancies, two or three consultant vacancies and a number of junior doctor vacancies. In terms of the budget, people have talked about capital spending previously. They are 100% right that we do need better infrastructure. However, in regard to human capital, a huge amount of the mental health budget is unspent every year. We have to look at that and at why we are designing services that people do not want to work in.</p>
+        </speech>
+        <speech by="#" eId="spk_109">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:40:00+01:00"/></from>
+          <p eId="para_213">The commission specifically requested that the Bill include a stipulation that all consultant psychiatrists would be on the specialist register. Under the mental health tribunal process, everybody who sits on our tribunal consultant panel and our independent consultant panel must be on the specialist register, and we believe the same should apply. However, we do recognise the resource and recruitment issues.</p>
+          <p eId="para_214"> In relation to operability, in our opening statement we referred to section 49. We have noted the additional amendments that were made late last week and believe they have assisted, but we have raised a question as to whether the provisions in section 47(1)(a), (b) and (c) are required. We have suggested that the section could just be linked with section 12, which sets out the criteria for involuntary detention.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_110">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-11T11:40:00+01:00"/></from>
+          <p eId="para_215">I am another one of those who was late. I was at another meeting. I offer my apologies.</p>
+          <p eId="para_216"> I was listening to some of the proceedings before I came in. What struck me, to follow on from what Senator Clonan said, is that we are great at theory and legislation in this country. However, the concerns I have are primarily about the practicalities of implementing the various aspects of this legislation. I was struck by the presentation by the Garda. In my experience as a public representative and seven years as a TD, I have been called to incidents involving families who have basically been dealing with gardaí, and that is where the initial presentation emerged. There are one or two things in the Garda presentation on which I wish to seek clarity. The CAST model being run in Limerick seems to be well thought of, and Senator Byrne spoke about its merits. In relation to authorised officers, it was stated:</p>
+          <p class="indent_1" eId="para_217">We further contend that only allowing authorised officers to make an application could add to the already adversarial and structured process and potentially cause significant delays to a person receiving treatment.</p>
+          <p eId="para_218"> Are our guests asking that An Garda Síochána would still maintain a role in terms of being authorised officers?</p>
+          <p eId="para_219"> The second point comes back to what Ms Keane just spoke about in relation to resourcing and staffing this model going forward. I can envisage a situation where we have people waiting in accident and emergency departments or in Garda stations, potentially, for an authorised officer to come. There are 186 people carrying out this role in the model that is in place. Until we beef that up to 500 or whatever the target is, I am afraid we might have situations where people are blocked in the system in some way. What are the concerns around that?</p>
+        </speech>
+        <speech by="#" eId="spk_111">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:40:00+01:00"/></from>
+          <p eId="para_220">Yes, I would agree. It is something that the commission has been actively talking to the HSE about since 2020. In fact, we had our first conversation in the middle of Covid. It is something that we had hoped the HSE would have activated, and we understood that there was to be a project plan on this. We are not being critical of the HSE because we know there are lots of things for it to do, but of the current authorised officers, the important point to note is that they are only part time. They are not available 24-7.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_112">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_221">To clarify, are they psychiatric nurses or social workers? Primarily, what are they?</p>
+        </speech>
+        <speech by="#" eId="spk_113">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_222">There can be a mix. In fact, I have just done training for the authorised officers.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_114">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_223">So we are going to be robbing Peter to pay Paul here. We are going to be moving them from one side of the HSE or the Department of Health. We already know the difficulties we have with recruitment and retention. My main concern is that we could provide this legislation, and it could be fantastic and provide that patient-centred approach we are looking for, but we do not back it up in a meaningful way.</p>
+        </speech>
+        <speech by="#" eId="spk_115">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_224">They absolutely have to be full-time posts. They cannot be somebody as an add-on. They have to be available 24-7. However, we also have to move away from gardaí being involved in applications. That has to be welcomed, given the stigma associated with people with mental health and the criminal world. At any given opportunity that this link can be broken, it needs to be. That is an important move forward in the Bill. I agree there are practical issues for implementation and, obviously, they are issues for both the Department and the HSE to address.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_116">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_225">There are also the 2,000 involuntary admissions that typically happen. I assume some of those would include multiple admissions for certain patients.</p>
+        </speech>
+        <speech by="#" eId="spk_117">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_226">Yes, they would.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_118">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_227">They are not all individuals. We will have 500 staff policing 2,000, although I know they will do more than that and I am not suggesting that is all they will be doing. Are the 500 more than enough to cater for the 2,000 involuntary admissions?</p>
+        </speech>
+        <speech by="#" eId="spk_119">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_228">I would say that 500 might be too much. The big thing here is having people available full-time and with the appropriate skills. Colleagues mentioned earlier that some people within the HSE, such as doctors and nurses, work on a rota basis 24-7 and other clinicians do not. It is about ensuring that we have people who work full-time and are dedicated to this role, that different people are allocated to different regions and that they have the appropriate skills to do the job.</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_120">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_229">I might come back in later.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_121">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_230">The last slot is for Fine Gael. Perhaps Senator Boyle has additional points.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_122">
+          <from>Senator Manus Boyle<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_231">A lot of it has been covered. It is about how we get it right. We have the Bill coming before us. It is great to talk and get everybody's point of view but, at the end of the day, if we pass this Bill, do we have the people in place to follow it through? From what I am hearing today, we do not have the people to do the work. That is going to be a big stumbling block moving forward. Unless we get these people in place, we will be going around in circles. In fairness, Professor Sadlier said he did not know when people could be put in place. Somebody has to step up and say that this can be done, that we can put the personnel in place and that it will take whatever number of months or years. At least then we would have a way to move forward.</p>
+        </speech>
+        <speech by="#" eId="spk_123">
+          <from> Professor Matthew Sadlier<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_232">The authorised officer is the paradigmatic example of this situation. We would have to invent a new grade in the health service. We would have to invent a new salary. Where would we peg the salary of this? Have we advertised a job yet? Are we going to get any applications for it? Are people going to do a job that requires 24 hours on call? Are they going to be located in one part of the country and have to travel all over the country? Will there be four regions? At 2,000 cases a year, if there are 500, that is only four each. To run a rota 24-7 takes nine staff, so how many will be needed overall? Some of this employment law and employment regulation stuff needs to be teased out before we stick things down in regulation.</p>
+          <p eId="para_233"> If I may be permitted to use a further 20 seconds, the one person we have not mentioned today is the elderly person. We have not mentioned the care of the elderly within mental health facilities. What we in the IMO have asked for before is that there would be separate regulations for elderly and frail patients who are admitted to psychiatric units. I will not go into the details as to why, but I want to mention that so it is on the record.</p>
+        </speech>
+        <speech by="#ManusBoyle" eId="spk_124">
+          <from>Senator Manus Boyle<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_234">That is a fair point. There is no point in having the best policy if we have nobody to implement it.</p>
+        </speech>
+        <speech by="#" eId="spk_125">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_235">With regard to regulations or a code on the care of the elderly, the commission would welcome that.</p>
+        </speech>
+        <speech by="#" eId="spk_126">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_236">We welcome the removal of gardaí from the role of involuntary admissions. We do not think it should be our role. I appreciate other scoping has to be undertaken for other models but this will free up gardaí to do the core duties that we should be undertaking. We very much welcome that step, although we recognise there has to be an implementation plan that will deliver that.</p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_127">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_237">We have a few minutes left. I call Deputy Daly.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_128">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_238">When I gave my opening remarks, I wanted to pay tribute to the Mental Health Commission for the brilliant work it does on the reporting and governance of the mental health service, and also to the gardaí. As a rural GP, I and my colleagues have relied on gardaí in situations where we were supposed to have assisted admission teams but they were impossible to get. We were waiting six or seven hours one day in a situation where a man had a gun out a window. A Garda unit and I were there, and that was my day and the gardaí’s day gone. The poor man was ill. In the end, we got the gun off him and I drove him to the hospital. That is the reality on the ground. I pay tribute to gardaí for their role in this. I can understand why they do not want to be authorised officers. The concerning point is that if we do not have a system of authorised officers that is reliable, timely and inaccessible, it will fall back to the gardaí because they are the front-line workers, as well as to the GPs on the ground and other people.</p>
+          <p eId="para_239"> Dr. Keane mentioned sections 49(a), 49(b) and 49(c) and the link to section 12. Will she elaborate on that?</p>
+        </speech>
+        <speech by="#PadraigOSullivan" eId="spk_129">
+          <from>Deputy Pádraig O'Sullivan<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_240">I had a supplementary question that I did not get to touch on. The 2,000 involuntary admissions potentially involve 2,000 court dates under the proposed legislation. If somebody is presenting on multiple occasions, is there scope for that person not having to await another court date? Is there merit in suggesting that provision might be provided for a person who is presenting repeatedly throughout the course of a year?</p>
+        </speech>
+        <speech by="#" eId="spk_130">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_241">On the last question, I hope there will not be a necessity for all of these court applications. First, if section 49, which has now become section 47, is tweaked a little further, then people can be treated for 21 days and a second 21 days. Usually, during that period, although I am not a clinician, people who have not had capacity or do not think they have capacity can regain capacity and engage with treatment. In that event, the necessity for either having an application to the Circuit Court or the High Court should fall away. I do not think anybody wants a system where people are going to the Circuit Court or the High Court. The avenue to the Circuit Court is where people are deemed to have long-term capacity issues or lack of capacity and they would then be appointed decision supporters under the Assisted Decision-Making (Capacity) Act. That is what it is hoped the plan will be. On the applications to the High Court, the commission has its own view, which is that if somebody has capacity, you should not be applying to the High Court to apply treatment. I know my clinical colleagues here may not agree with that. The plan would be that if the person is receiving treatment for 21 days or the second 21 days, the requirement to apply to the courts should hopefully fall away.</p>
+          <p eId="para_242"> I have forgotten the second question.</p>
+        </speech>
+        <speech by="#MartinDaly" eId="spk_131">
+          <from>Deputy Martin Daly<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_243">Dr. Keane mentioned section 49 and the link to section 12.</p>
+        </speech>
+        <speech by="#" eId="spk_132">
+          <from> Ms Orla Keane<recordedTime time="2025-06-11T11:50:00+01:00"/></from>
+          <p eId="para_244">I understand there have been varying views about the inclusion of subsections (a) and (b). I know that, as of last Friday, subsection (c) was introduced and that appears to have alleviated some of the concerns. The question is whether subsections (a), (b) and (c) are another form of what is already in section 12. Section 12 sets out the new criteria for involuntary detention and is now going to be the basis upon which a person can be involuntarily detained. It is just a consideration. This is a very complex piece of the Bill and I do not envy the people drafting it. It is always easier to review drafts than to be the drafter. Maybe consideration could be given to linking it back to section 12.</p>
+        </speech>
+        <speech by="#" eId="spk_133">
+          <from> Professor Brendan Kelly<recordedTime time="2025-06-11T12:00:00+01:00"/></from>
+          <p eId="para_245">I agree with the Mental Health Commission on all these points. We agree there will be a great number of Circuit Court applications which will likely not be fulfilled and we would like to see much of that needless work taken out, but people should still be able to access the supports of the 2015 Act. </p>
+          <p eId="para_246"> We also agree with the Mental Health Commission that it should not be possible for the High Court to over-rule a capacitous refusal of treatment which is still in the amendments. We also generally agree - getting back to my original points - that criteria for treatment should be the same as the criteria for involuntary admission, by linking those two sections of the Act. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_134">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T12:00:00+01:00"/></from>
+          <p eId="para_247">Does An Garda Síochána or Mental Health Reform have any final remarks or anything to say?</p>
+        </speech>
+        <speech by="#" eId="spk_135">
+          <from> Mr. Stephen Sheil<recordedTime time="2025-06-11T12:00:00+01:00"/></from>
+          <p eId="para_248">I thank the committee again for the opportunity to speak today. Mental Health Reform speaks for the people with lived experience of mental health difficulties and we believe we can all work together to provide historic legislation. We have some issues with some amendments and we would prefer some other amendments to be brought forward. We will continue to engage with the Minister of State and her officials on Report Stage of this Bill. </p>
+          <p eId="para_249"> We are aware this is a good day. The fact we are all here today speaking about this piece of legislation is important but it is also important we keep the voice of lived experience in and at the forefront of the conversation, alongside the clinical side of things. I thank the Cathaoirleach again.</p>
+        </speech>
+        <speech by="#" eId="spk_136">
+          <from> Ms Paula Hilman<recordedTime time="2025-06-11T12:00:00+01:00"/></from>
+          <p eId="para_250">To add to that, we very much welcome the opportunity to be here today and in a collaborative approach as well. We recognise the complex issues we are dealing with need to be looked at collectively and no one organisation can resolve this. We thank the committee for the opportunity. The Policing, Security and Community Safety Act also places responsibilities on us and our role and we are committed to delivering on those but we welcome the opportunity to give feedback today. </p>
+        </speech>
+        <speech by="#PadraigRice" eId="spk_137">
+          <from> An Cathaoirleach<recordedTime time="2025-06-11T12:00:00+01:00"/></from>
+          <p eId="para_251">I thank all the witnesses for coming in today, for all their work and preparation on this as well as all the research done in advance of this meeting. Much work goes into the preparation for days like this. I thank them for sharing their expertise with us and no doubt it will help inform the debate in the Dáil as this Bill moves through the Oireachtas. This was an important session to tease out some of the key issues and to hear the variety of perspectives from each of the experts from the Mental Health Commission, An Garda Síochána, Mental Health Reform and the IMO. I thank everyone for that. </p>
+          <p eId="para_252"> Our meeting is now adjourned until next Wednesday, 18 June, when the committee will meet with HIQA and the Minister of State with responsibility for older people, Deputy O'Donnell, to consider issues relating to the practices in nursing homes, related practices and oversight of these issues.</p>
+        </speech>
+        <summary eId="sum_7"> The joint committee adjourned at 12.02 p.m. until 9.30 a.m. on Wednesday, 18 June 2025.</summary>
+      </debateSection>
+    </debateBody>
+  </debate>
+</akomaNtoso>
